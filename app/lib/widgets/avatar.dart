@@ -63,7 +63,7 @@ class _TutorPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final s = size.width;
     final fill = Paint()..style = PaintingStyle.fill;
-    final dark = const Color(0xFF2B2D42);
+    const dark = Color(0xFF2B2D42);
     final line = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = s * 0.035

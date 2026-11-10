@@ -1,0 +1,27 @@
+name: Web preview
+
+# Run by hand from the Actions tab. Builds a browser version of the app
+# so screens can be checked without installing on a phone.
+on:
+  workflow_dispatch:
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Build
+        working-directory: app
+        run: |
+          python3 ../tools/build_content.py
+          flutter create --platforms=web --project-name scol .
+          rm -f test/widget_test.dart
+          flutter build web --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scol-web
+          path: app/build/web
