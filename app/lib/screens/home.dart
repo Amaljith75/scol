@@ -1,0 +1,268 @@
+// Home: the tutor greets the child and chooses what to learn next.
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+
+import '../content.dart';
+import '../mastery.dart';
+import '../state.dart';
+import '../strings.dart';
+import '../tutor.dart';
+import '../widgets/avatar.dart';
+import '../widgets/ui.dart';
+import 'classroom.dart';
+import 'parent.dart';
+import 'path.dart';
+
+class _Plan {
+  _Plan(this.subject, this.lesson, this.isRevision);
+  final Subject subject;
+  final Lesson lesson;
+  final bool isRevision;
+}
+
+/// The tutor's choice for "what next": weak ideas first, then new lessons,
+/// taking turns between subjects.
+_Plan? _tutorPlan(List<Subject> subjects) {
+  for (final s in subjects) {
+    final r = appState.revisionLesson(s);
+    if (r != null) return _Plan(s, r, true);
+  }
+  final open = subjects.where((s) => appState.nextLesson(s) != null).toList();
+  if (open.isEmpty) return null;
+  final s = open[appState.todayLessons % open.length];
+  return _Plan(s, appState.nextLesson(s)!, false);
+}
+
+void openLesson(BuildContext context, Subject subject, Lesson lesson) {
+  final lang = appState.mainLang;
+  if (appState.timeUp) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(tr('timeUp', lang))));
+    return;
+  }
+  Navigator.of(context).push(MaterialPageRoute(builder: (_) => ClassroomScreen(subject: subject, lesson: lesson)));
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final lang = appState.mainLang;
+    final tutor = tutorById(appState.tutorId);
+    final subjects = appState.mySubjects(contentStore.bundle);
+    final plan = _tutorPlan(subjects);
+    final hasLessons = subjects.any((s) => s.lessons.isNotEmpty);
+
+    String message;
+    if (appState.timeUp) {
+      message = tr('timeUp', lang);
+    } else if (plan == null) {
+      message = tr(hasLessons ? 'allDone' : 'comingSoon', lang);
+    } else {
+      final title = plan.isRevision ? tr('practice', lang) : pick(plan.lesson.title, lang);
+      message = '${tr('nextUp', lang)}: $title';
+    }
+
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 600),
+            child: ListView(padding: const EdgeInsets.all(16), children: [
+              Row(children: [
+                Expanded(
+                  child: Text('${tr('hi', lang)}, ${appState.childName}! 👋',
+                      style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: ink)),
+                ),
+                Pill('🔥', '${appState.liveStreak}'),
+                const SizedBox(width: 8),
+                Pill('⭐', '${appState.stars}'),
+              ]),
+              const SizedBox(height: 16),
+              // The tutor's plan for right now.
+              SoftCard(
+                color: const Color(0xFFEFF1FF),
+                child: Column(children: [
+                  Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                    TutorAvatar(tutor: tutor, size: 104, mood: Mood.happy),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.all(14),
+                        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                          Text(tutor.displayName(lang),
+                              style: TextStyle(fontWeight: FontWeight.w800, color: darker(Color(tutor.color), 0.2))),
+                          const SizedBox(height: 4),
+                          Text(message, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: ink)),
+                          if (plan != null && !appState.timeUp)
+                            Text('${plan.subject.icon} ${pick(plan.subject.name, lang)}',
+                                style: const TextStyle(fontSize: 14, color: Color(0xFF6B6F80))),
+                        ]),
+                      ),
+                    ),
+                  ]),
+                  if (plan != null && !appState.timeUp) ...[
+                    const SizedBox(height: 14),
+                    Chunky(
+                      color: mint,
+                      onTap: () => openLesson(context, plan.subject, plan.lesson),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                        Text(tr('go', lang), style: const TextStyle(fontSize: 22)),
+                        const SizedBox(width: 8),
+                        const Icon(Icons.play_arrow_rounded, color: Colors.white, size: 30),
+                      ]),
+                    ),
+                  ],
+                ]),
+              ),
+              const SizedBox(height: 14),
+              // Daily goal
+              SoftCard(
+                child: Row(children: [
+                  const Text('🎯', style: TextStyle(fontSize: 30)),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text('${tr('todayGoal', lang)}: ${min(appState.todayLessons, appState.dailyGoal)}/${appState.dailyGoal} ${tr('lessons', lang)}',
+                          style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16, color: ink)),
+                      const SizedBox(height: 8),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: LinearProgressIndicator(
+                            value: min(1.0, appState.todayLessons / appState.dailyGoal),
+                            minHeight: 14,
+                            backgroundColor: cloud,
+                            color: sun),
+                      ),
+                    ]),
+                  ),
+                ]),
+              ),
+              const SizedBox(height: 20),
+              Text(tr('subjects', lang), style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: ink)),
+              const SizedBox(height: 10),
+              for (final s in subjects) _SubjectCard(subject: s),
+              if (subjects.isEmpty)
+                SoftCard(child: Text(tr('comingSoon', lang), style: const TextStyle(fontSize: 17, color: ink))),
+              const SizedBox(height: 10),
+              Row(children: [
+                Expanded(
+                  child: Chunky(color: sun, onTap: () => _showRewards(context), child: Text('🏆 ${tr('rewards', lang)}', style: const TextStyle(color: ink))),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Chunky(color: Colors.white, onTap: () => openParentZone(context), child: Text('🔒 ${tr('parents', lang)}', style: const TextStyle(color: ink))),
+                ),
+              ]),
+            ]),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SubjectCard extends StatelessWidget {
+  const _SubjectCard({required this.subject});
+  final Subject subject;
+
+  @override
+  Widget build(BuildContext context) {
+    final lang = appState.mainLang;
+    final total = subject.lessons.length;
+    final done = subject.lessons.where(appState.isDone).length;
+    final color = Color(subject.color);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Chunky(
+        color: color,
+        padding: const EdgeInsets.all(14),
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PathScreen(subject: subject))),
+        child: Row(children: [
+          Container(
+            width: 58,
+            height: 58,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(color: Colors.white.withAlpha(60), borderRadius: BorderRadius.circular(18)),
+            child: Text(subject.icon, style: const TextStyle(fontSize: 30)),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(pick(subject.name, lang), textAlign: TextAlign.left, style: const TextStyle(fontSize: 20)),
+              const SizedBox(height: 6),
+              if (total == 0)
+                Text(tr('comingSoon', lang), style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600))
+              else ...[
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(6),
+                  child: LinearProgressIndicator(
+                      value: done / total, minHeight: 10, backgroundColor: Colors.white.withAlpha(70), color: Colors.white),
+                ),
+                const SizedBox(height: 4),
+                Text('$done / $total', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700)),
+              ],
+            ]),
+          ),
+          const Icon(Icons.chevron_right_rounded, color: Colors.white, size: 34),
+        ]),
+      ),
+    );
+  }
+}
+
+void _showRewards(BuildContext context) {
+  final lessons = appState.lessonStars.length;
+  final secure = appState.concepts.values.where((c) => c.status == Understanding.secure).length;
+  final badges = <List<Object>>[
+    ['🌱', 'First lesson', lessons >= 1],
+    ['📚', '5 lessons', lessons >= 5],
+    ['🔥', '3 days in a row', appState.bestStreak >= 3],
+    ['🌟', '7 days in a row', appState.bestStreak >= 7],
+    ['⭐', '10 stars', appState.stars >= 10],
+    ['🧠', 'Really understood an idea', secure >= 1],
+  ];
+  showModalBottomSheet<void>(
+    context: context,
+    backgroundColor: cream,
+    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
+    builder: (_) => SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Pill('⭐', '${appState.stars}'),
+            const SizedBox(width: 8),
+            Pill('⚡', '${appState.xp} XP'),
+            const SizedBox(width: 8),
+            Pill('🔥', '${appState.bestStreak}'),
+          ]),
+          const SizedBox(height: 16),
+          Wrap(spacing: 12, runSpacing: 12, alignment: WrapAlignment.center, children: [
+            for (final b in badges)
+              Opacity(
+                opacity: b[2] == true ? 1 : 0.35,
+                child: SizedBox(
+                  width: 100,
+                  child: Column(children: [
+                    Container(
+                      width: 72,
+                      height: 72,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Colors.white, shape: BoxShape.circle, border: Border.all(color: sun, width: 4)),
+                      child: Text('${b[0]}', style: const TextStyle(fontSize: 34)),
+                    ),
+                    const SizedBox(height: 6),
+                    Text('${b[1]}', textAlign: TextAlign.center, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: ink)),
+                  ]),
+                ),
+              ),
+          ]),
+        ]),
+      ),
+    ),
+  );
+}

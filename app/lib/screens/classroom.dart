@@ -1,0 +1,334 @@
+// The classroom: the tutor runs the lesson, the child answers.
+import 'package:flutter/material.dart';
+
+import '../content.dart';
+import '../state.dart';
+import '../strings.dart';
+import '../tutor.dart';
+import '../widgets/avatar.dart';
+import '../widgets/ui.dart';
+import '../widgets/visuals.dart';
+
+class ClassroomScreen extends StatefulWidget {
+  const ClassroomScreen({super.key, required this.subject, required this.lesson});
+  final Subject subject;
+  final Lesson lesson;
+
+  @override
+  State<ClassroomScreen> createState() => _ClassroomScreenState();
+}
+
+class _ClassroomScreenState extends State<ClassroomScreen> {
+  late final TutorDirector d;
+  final Stopwatch _watch = Stopwatch()..start();
+  String _typed = '';
+  bool _closed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    d = TutorDirector(
+      lesson: widget.lesson,
+      lang: appState.mainLang,
+      tutor: tutorById(appState.tutorId),
+      recordFor: appState.concept,
+      day: dayNumber(),
+      speaker: appState.voiceOn ? appSpeaker : null,
+    );
+    d.addListener(_onChange);
+  }
+
+  void _onChange() {
+    if (d.phase == Phase.finished && !_closed) {
+      _closed = true;
+      _logTime();
+      final newDay = appState.finishLesson(widget.lesson.id, d.starsEarned, d.xpEarned);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!mounted) return;
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (_) => CelebrationScreen(stars: d.starsEarned, xp: d.xpEarned, newDay: newDay)));
+      });
+    }
+  }
+
+  void _logTime() {
+    final secs = _watch.elapsed.inSeconds.clamp(0, 20 * 60).toInt();
+    _watch
+      ..stop()
+      ..reset();
+    appState.addLearningTime(secs);
+  }
+
+  @override
+  void dispose() {
+    if (!_closed) {
+      _logTime();
+      appState.save(); // keep what was learned even if the lesson was left early
+    }
+    d.removeListener(_onChange);
+    d.dispose();
+    super.dispose();
+  }
+
+  void _submitNumber() {
+    if (_typed.isEmpty) return;
+    final v = _typed;
+    setState(() => _typed = '');
+    d.answer(v);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: d,
+      builder: (context, _) {
+        final lang = d.lang;
+        final step = d.current;
+        final other = lang == 'ml' ? 'en' : 'ml';
+        String second = '';
+        if (appState.bilingual && step != null && step.text is Map && (step.text as Map).containsKey(other)) {
+          second = '${(step.text as Map)[other]}';
+        }
+        return Scaffold(
+          body: SafeArea(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 600),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                    Row(children: [
+                      IconButton(
+                          onPressed: () => Navigator.of(context).pop(),
+                          icon: const Icon(Icons.close_rounded, size: 30, color: ink)),
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: TweenAnimationBuilder<double>(
+                            tween: Tween(begin: 0, end: d.progress),
+                            duration: const Duration(milliseconds: 400),
+                            builder: (_, v, __) =>
+                                LinearProgressIndicator(value: v, minHeight: 14, backgroundColor: cloud, color: mint),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                    ]),
+                    // The board: what the tutor is showing.
+                    Expanded(
+                      child: Center(
+                        child: d.visual == null
+                            ? Text(widget.subject.icon, style: const TextStyle(fontSize: 64))
+                            : SingleChildScrollView(
+                                child: SoftCard(
+                                  key: ValueKey(d.visual.toString()),
+                                  child: VisualView(d.visual!),
+                                ),
+                              ),
+                      ),
+                    ),
+                    // The tutor walks to wherever the action is.
+                    SizedBox(
+                      height: 92,
+                      child: AnimatedAlign(
+                        duration: const Duration(milliseconds: 600),
+                        curve: Curves.easeInOutBack,
+                        alignment: switch (d.spot) {
+                          Spot.left => Alignment.centerLeft,
+                          Spot.center => Alignment.center,
+                          Spot.right => Alignment.centerRight,
+                        },
+                        child: TutorAvatar(tutor: d.tutor, size: 88, talking: d.phase == Phase.talking, mood: d.mood),
+                      ),
+                    ),
+                    // Speech bubble
+                    Container(
+                      constraints: const BoxConstraints(maxHeight: 170),
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(22),
+                        border: Border.all(
+                            color: d.mood == Mood.happy ? mint : (d.mood == Mood.caring ? sun : cloud), width: 3),
+                      ),
+                      child: SingleChildScrollView(
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                          if (d.badge.isNotEmpty)
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 6),
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                              decoration: BoxDecoration(color: sun, borderRadius: BorderRadius.circular(10)),
+                              child: Text(d.badge, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: ink)),
+                            ),
+                          Text(d.bubble,
+                              style: const TextStyle(fontSize: 20, height: 1.3, fontWeight: FontWeight.w700, color: ink)),
+                          if (second.isNotEmpty && (d.phase == Phase.talking || d.phase == Phase.asking || d.phase == Phase.thinkAsk))
+                            Padding(
+                              padding: const EdgeInsets.only(top: 6),
+                              child: Text(second, style: const TextStyle(fontSize: 15, height: 1.3, color: Color(0xFF6B6F80))),
+                            ),
+                        ]),
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    _controls(lang),
+                  ]),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _controls(String lang) {
+    final q = d.question;
+    switch (d.phase) {
+      case Phase.talking:
+        return Chunky(color: indigo, onTap: d.next, child: Text('${tr('next', lang)}  ▶'));
+      case Phase.feedback:
+        return Chunky(color: mint, onTap: d.next, child: Text(tr('continue', lang)));
+      case Phase.thinkAsk:
+        return Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          Text(tr('think', lang), textAlign: TextAlign.center, style: const TextStyle(color: Color(0xFF6B6F80))),
+          const SizedBox(height: 8),
+          Chunky(color: indigo, onTap: d.revealThink, child: Text(tr('showAnswer', lang))),
+        ]);
+      case Phase.thinkReveal:
+        return Row(children: [
+          Expanded(child: Chunky(color: sun, onTap: () => d.rateThink(false), child: Text('🤔 ${tr('notYet', lang)}', style: const TextStyle(color: ink)))),
+          const SizedBox(width: 12),
+          Expanded(child: Chunky(color: mint, onTap: () => d.rateThink(true), child: Text('👍 ${tr('gotIt', lang)}'))),
+        ]);
+      case Phase.finished:
+        return const SizedBox(height: 52);
+      case Phase.asking:
+        final hint = d.canHint
+            ? Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Chunky(color: Colors.white, onTap: d.showHint, child: Text('💡 ${tr('hint', lang)}', style: const TextStyle(color: ink))),
+              )
+            : const SizedBox.shrink();
+        if (q != null && q.form == 'choice') {
+          return Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            for (var i = 0; i < q.options.length; i++)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Chunky(
+                  color: Colors.white,
+                  onTap: d.wrongOptions.contains(q.options[i]) ? null : () => d.answer(q.options[i]),
+                  child: Text(q.optionLabel(i, lang),
+                      style: TextStyle(
+                          fontSize: 20, color: d.wrongOptions.contains(q.options[i]) ? const Color(0xFF9A948A) : ink)),
+                ),
+              ),
+            hint,
+          ]);
+        }
+        return Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          Container(
+            height: 52,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(16), border: Border.all(color: indigo, width: 3)),
+            child: Text(_typed.isEmpty ? '?' : _typed,
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: _typed.isEmpty ? cloud : ink)),
+          ),
+          const SizedBox(height: 8),
+          for (final row in const [
+            ['1', '2', '3', '4', '5'],
+            ['6', '7', '8', '9', '0'],
+          ])
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: Row(children: [
+                for (final k in row)
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 3),
+                      child: Chunky(
+                        color: Colors.white,
+                        radius: 14,
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        onTap: () => setState(() {
+                          if (_typed.length < 4) _typed += k;
+                        }),
+                        child: Text(k, style: const TextStyle(fontSize: 22, color: ink)),
+                      ),
+                    ),
+                  ),
+              ]),
+            ),
+          Row(children: [
+            Expanded(
+              child: Chunky(
+                color: Colors.white,
+                onTap: _typed.isEmpty ? null : () => setState(() => _typed = _typed.substring(0, _typed.length - 1)),
+                child: const Text('⌫', style: TextStyle(color: ink)),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              flex: 2,
+              child: Chunky(color: mint, onTap: _typed.isEmpty ? null : _submitNumber, child: Text('${tr('check', lang)} ✓')),
+            ),
+          ]),
+          hint,
+        ]);
+    }
+  }
+}
+
+class CelebrationScreen extends StatelessWidget {
+  const CelebrationScreen({super.key, required this.stars, required this.xp, required this.newDay});
+  final int stars;
+  final int xp;
+  final bool newDay;
+
+  @override
+  Widget build(BuildContext context) {
+    final lang = appState.mainLang;
+    final tutor = tutorById(appState.tutorId);
+    return Scaffold(
+      backgroundColor: const Color(0xFFFFE9A8),
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 520),
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                Center(child: TutorAvatar(tutor: tutor, size: 160, mood: Mood.happy)),
+                const SizedBox(height: 16),
+                Text(tr('lessonDone', lang),
+                    textAlign: TextAlign.center, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: ink)),
+                const SizedBox(height: 12),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  for (var i = 0; i < 3; i++)
+                    TweenAnimationBuilder<double>(
+                      tween: Tween(begin: 0, end: 1),
+                      duration: Duration(milliseconds: 500 + i * 300),
+                      curve: Curves.elasticOut,
+                      builder: (_, v, __) => Transform.scale(
+                        scale: v,
+                        child: Text(i < stars ? '⭐' : '☆',
+                            style: TextStyle(fontSize: 56, color: i < stars ? null : const Color(0xFFC9A94A))),
+                      ),
+                    ),
+                ]),
+                const SizedBox(height: 12),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Pill('⚡', '+$xp XP'),
+                  if (newDay) ...[const SizedBox(width: 8), Pill('🔥', '${appState.streak} ${tr('dayStreak', lang)}')],
+                ]),
+                const SizedBox(height: 32),
+                Chunky(color: mint, onTap: () => Navigator.of(context).pop(), child: Text(tr('continue', lang))),
+              ]),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,70 @@
+# From groups to "times"
+title.ml: കൂട്ടങ്ങളിൽ നിന്ന് ഗുണനത്തിലേക്ക്
+objective: Read and write equal groups using the × sign.
+objective.ml: × ചിഹ്നം ഉപയോഗിച്ച് തുല്യ കൂട്ടങ്ങൾ എഴുതുക.
+concept: times-sign
+concept.name: Meaning of the × sign
+concept.name.ml: × ചിഹ്നത്തിന്റെ അർത്ഥം
+minutes: 5
+
+## say
+en: Remember our 3 baskets with 4 mangoes each? There is a short way to write that.
+ml: 4 മാങ്ങ വീതമുള്ള 3 കൊട്ടകൾ ഓർമ്മയുണ്ടോ? അത് ചുരുക്കി എഴുതാൻ ഒരു വഴിയുണ്ട്.
+visual: groups 3 4 🥭
+
+## say
+en: We write 3 × 4. We read it as "3 times 4". It means 3 groups of 4.
+ml: നമ്മൾ 3 × 4 എന്ന് എഴുതും. നാലിന്റെ 3 കൂട്ടങ്ങൾ എന്നാണ് അതിന്റെ അർത്ഥം.
+visual: text 3 × 4 = 12
+
+## ask
+form: choice
+en: 2 groups of 6. How do we write it?
+ml: ആറിന്റെ 2 കൂട്ടങ്ങൾ. എങ്ങനെ എഴുതും?
+options: 2 × 6 | 2 + 6 | 26
+answer: 2 × 6
+hint.en: "Groups of" becomes the × sign.
+hint.ml: "കൂട്ടങ്ങൾ" എന്നത് × ചിഹ്നമാകും.
+explain.en: 2 groups of 6 is written 2 × 6.
+explain.ml: ആറിന്റെ 2 കൂട്ടങ്ങൾ 2 × 6 എന്ന് എഴുതും.
+mistake 2 + 6: used + where groups need ×
+mistake 26: joined the two numbers together
+
+## ask
+form: number
+en: 3 × 2 = ?
+ml: 3 × 2 = ?
+visual: groups 3 2 ⭐
+answer: 6
+hint.en: 3 groups of 2. Count the stars.
+hint.ml: രണ്ടിന്റെ 3 കൂട്ടങ്ങൾ. നക്ഷത്രങ്ങൾ എണ്ണൂ.
+explain.en: 2 and 2 and 2 make 6.
+explain.ml: 2-ഉം 2-ഉം 2-ഉം ചേർന്നാൽ 6.
+mistake 5: added 3 and 2 instead of making groups
+
+## ask
+form: choice
+level: 2
+en: Ammu has 5 × 2 marbles. Which story fits?
+ml: അമ്മുവിന് 5 × 2 ഗോലികളുണ്ട്. ഏത് കഥയാണ് ചേരുന്നത്?
+options: 5 bags with 2 marbles in each | 5 marbles and 2 more marbles
+options.ml: 2 ഗോലി വീതമുള്ള 5 സഞ്ചികൾ | 5 ഗോലികളും 2 ഗോലികൾ കൂടിയും
+answer: 5 bags with 2 marbles in each
+hint.en: × means equal groups.
+hint.ml: × എന്നാൽ തുല്യ കൂട്ടങ്ങൾ.
+explain.en: 5 × 2 means 5 groups of 2, like 5 bags with 2 marbles each.
+explain.ml: 5 × 2 എന്നാൽ രണ്ടിന്റെ 5 കൂട്ടങ്ങൾ.
+mistake 5 marbles and 2 more marbles: read × as adding
+
+## ask
+form: number
+level: 2
+en: 4 × 5 = ?
+ml: 4 × 5 = ?
+visual: groups 4 5 🐟
+answer: 20
+hint.en: Count in fives: 5, 10, ...
+hint.ml: അഞ്ച് വീതം എണ്ണൂ: 5, 10, ...
+explain.en: 5, 10, 15, 20. Four groups of 5 make 20.
+explain.ml: 5, 10, 15, 20. അഞ്ചിന്റെ നാല് കൂട്ടങ്ങൾ 20.
+mistake 9: added 4 and 5 instead of making groups

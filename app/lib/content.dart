@@ -1,0 +1,247 @@
+// Curriculum content: everything the app teaches comes from one bundle file
+// built from the content/ folder. No lesson text lives in the app code.
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+
+const String rawBase = 'https://raw.githubusercontent.com/Amaljith75/scol/main/';
+const String contentUrl = '${rawBase}app/assets/content/bundle.json';
+
+/// Picks the right language from "text" or {"en": .., "ml": ..}.
+String pick(dynamic text, String lang) {
+  if (text is String) return text;
+  if (text is Map && text.isNotEmpty) {
+    final v = text[lang] ?? text['en'] ?? text.values.first;
+    return v?.toString() ?? '';
+  }
+  return '';
+}
+
+class LessonStep {
+  LessonStep({
+    required this.type,
+    required this.text,
+    this.visual,
+    this.form = '',
+    this.options = const [],
+    this.optionsMl = const [],
+    this.answer = '',
+    this.hint,
+    this.explain,
+    this.concept = '',
+    this.level = 1,
+    this.mistakes = const {},
+    this.label = '',
+  });
+
+  final String type; // say | ask
+  final dynamic text;
+  final Map<String, dynamic>? visual;
+  final String form; // choice | number | think
+  final List<String> options;
+  final List<String> optionsMl;
+  final String answer;
+  final dynamic hint;
+  final dynamic explain;
+  final String concept;
+  final int level;
+  final Map<String, String> mistakes;
+  final String label;
+
+  bool get isAsk => type == 'ask';
+
+  bool isCorrect(String given) => given.trim().toLowerCase() == answer.trim().toLowerCase();
+
+  /// What to show on the button for option [i] in the given language.
+  String optionLabel(int i, String lang) =>
+      (lang == 'ml' && optionsMl.length == options.length) ? optionsMl[i] : options[i];
+
+  factory LessonStep.fromJson(Map<String, dynamic> j) => LessonStep(
+        type: j['t'] as String? ?? 'say',
+        text: j['text'],
+        visual: (j['visual'] as Map?)?.cast<String, dynamic>(),
+        form: j['form'] as String? ?? '',
+        options: ((j['options'] as List?) ?? const []).map((e) => '$e').toList(),
+        optionsMl: ((j['optionsMl'] as List?) ?? const []).map((e) => '$e').toList(),
+        answer: '${j['answer'] ?? ''}',
+        hint: j['hint'],
+        explain: j['explain'],
+        concept: j['concept'] as String? ?? '',
+        level: (j['level'] as num?)?.toInt() ?? 1,
+        mistakes: ((j['mistakes'] as Map?) ?? const {}).map((k, v) => MapEntry('$k', '$v')),
+        label: j['label'] as String? ?? '',
+      );
+}
+
+class Lesson {
+  Lesson({required this.id, required this.title, required this.steps, this.objective, this.minutes = 5});
+  final String id;
+  final dynamic title;
+  final dynamic objective;
+  final int minutes;
+  final List<LessonStep> steps;
+
+  factory Lesson.fromJson(Map<String, dynamic> j) => Lesson(
+        id: j['id'] as String,
+        title: j['title'],
+        objective: j['objective'],
+        minutes: (j['minutes'] as num?)?.toInt() ?? 5,
+        steps: ((j['steps'] as List?) ?? const [])
+            .map((e) => LessonStep.fromJson((e as Map).cast<String, dynamic>()))
+            .toList(),
+      );
+}
+
+class Chapter {
+  Chapter({required this.id, required this.title, required this.verified, required this.lessons});
+  final String id;
+  final dynamic title;
+  final bool verified;
+  final List<Lesson> lessons;
+
+  factory Chapter.fromJson(Map<String, dynamic> j) => Chapter(
+        id: j['id'] as String,
+        title: j['title'],
+        verified: j['verified'] == true,
+        lessons: ((j['lessons'] as List?) ?? const [])
+            .map((e) => Lesson.fromJson((e as Map).cast<String, dynamic>()))
+            .toList(),
+      );
+}
+
+class Subject {
+  Subject({required this.id, required this.key, required this.name, required this.icon, required this.color, required this.chapters});
+  final String id;
+  final String key;
+  final dynamic name;
+  final String icon;
+  final int color;
+  final List<Chapter> chapters;
+
+  List<Lesson> get lessons => [for (final c in chapters) ...c.lessons];
+
+  factory Subject.fromJson(Map<String, dynamic> j) {
+    final hex = (j['color'] as String? ?? '#5B6CFF').replaceAll('#', '');
+    return Subject(
+      id: j['id'] as String,
+      key: j['key'] as String? ?? '',
+      name: j['name'],
+      icon: j['icon'] as String? ?? '📘',
+      color: (int.tryParse(hex, radix: 16) ?? 0x5B6CFF) | 0xFF000000,
+      chapters: ((j['chapters'] as List?) ?? const [])
+          .map((e) => Chapter.fromJson((e as Map).cast<String, dynamic>()))
+          .toList(),
+    );
+  }
+}
+
+class SchoolClass {
+  SchoolClass({required this.number, required this.subjects});
+  final int number;
+  final List<Subject> subjects;
+}
+
+class Board {
+  Board({required this.id, required this.name, required this.classes});
+  final String id;
+  final dynamic name;
+  final List<SchoolClass> classes;
+}
+
+class Bundle {
+  Bundle({required this.version, required this.built, required this.boards, required this.concepts});
+  final String version;
+  final int built;
+  final List<Board> boards;
+  final Map<String, dynamic> concepts;
+
+  factory Bundle.empty() => Bundle(version: '', built: 0, boards: const [], concepts: const {});
+
+  factory Bundle.parse(String source) {
+    final j = (jsonDecode(source) as Map).cast<String, dynamic>();
+    return Bundle(
+      version: j['version'] as String? ?? '',
+      built: (j['built'] as num?)?.toInt() ?? 0,
+      concepts: ((j['concepts'] as Map?) ?? const {}).cast<String, dynamic>(),
+      boards: ((j['boards'] as List?) ?? const []).map((b) {
+        final bj = (b as Map).cast<String, dynamic>();
+        return Board(
+          id: bj['id'] as String,
+          name: bj['name'],
+          classes: ((bj['classes'] as List?) ?? const []).map((c) {
+            final cj = (c as Map).cast<String, dynamic>();
+            return SchoolClass(
+              number: (cj['number'] as num).toInt(),
+              subjects: ((cj['subjects'] as List?) ?? const [])
+                  .map((s) => Subject.fromJson((s as Map).cast<String, dynamic>()))
+                  .toList(),
+            );
+          }).toList(),
+        );
+      }).toList(),
+    );
+  }
+
+  Board? board(String id) {
+    for (final b in boards) {
+      if (b.id == id) return b;
+    }
+    return null;
+  }
+
+  List<Subject> subjectsFor(String boardId, int classNumber) {
+    final b = board(boardId);
+    if (b == null) return const [];
+    for (final c in b.classes) {
+      if (c.number == classNumber) return c.subjects;
+    }
+    return const [];
+  }
+
+  String conceptName(String key, String lang) {
+    final n = pick(concepts[key], lang);
+    return n.isNotEmpty ? n : key.split('#').last.replaceAll('-', ' ');
+  }
+}
+
+/// Loads the lessons shipped inside the app, then quietly looks for a newer
+/// copy online so new chapters appear without reinstalling.
+class ContentStore extends ChangeNotifier {
+  Bundle bundle = Bundle.empty();
+  static const _cacheKey = 'content_cache_v1';
+
+  Future<void> load() async {
+    bundle = Bundle.parse(await rootBundle.loadString('assets/content/bundle.json'));
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final cached = prefs.getString(_cacheKey);
+      if (cached != null) {
+        final c = Bundle.parse(cached);
+        if (c.built > bundle.built) bundle = c;
+      }
+    } catch (_) {
+      // A broken cache must never stop the app from opening.
+    }
+    notifyListeners();
+  }
+
+  Future<void> refresh() async {
+    try {
+      final res = await http.get(Uri.parse(contentUrl)).timeout(const Duration(seconds: 8));
+      if (res.statusCode != 200) return;
+      final body = utf8.decode(res.bodyBytes);
+      final fresh = Bundle.parse(body);
+      if (fresh.built > bundle.built && fresh.boards.isNotEmpty) {
+        bundle = fresh;
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString(_cacheKey, body);
+        notifyListeners();
+      }
+    } catch (_) {
+      // Offline is fine: keep using the lessons we already have.
+    }
+  }
+}

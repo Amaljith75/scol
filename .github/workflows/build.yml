@@ -1,0 +1,76 @@
+name: Build Scol
+
+# Runs every time something is pushed: checks the lessons, tests the app,
+# builds the Android app, and publishes it under Releases.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check lessons and build the lesson bundle
+        run: python3 tools/build_content.py
+
+      - name: Save the lesson bundle so installed apps can pick up new lessons
+        if: github.event_name != 'pull_request'
+        run: |
+          if ! git diff --quiet -- app/assets/content/bundle.json; then
+            git config user.name "scol-bot"
+            git config user.email "scol-bot@users.noreply.github.com"
+            git add app/assets/content/bundle.json
+            git commit -m "Update lesson bundle [skip ci]"
+            git push
+          fi
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Prepare Android project
+        working-directory: app
+        run: |
+          flutter create --platforms=android --org com.scolapp --project-name scol .
+          rm -f test/widget_test.dart
+          python3 ../tools/patch_android.py .
+          flutter pub get
+
+      - name: Analyze and test
+        working-directory: app
+        run: |
+          flutter analyze --no-fatal-infos
+          flutter test
+
+      - name: Build Android app
+        working-directory: app
+        run: |
+          flutter build apk --release
+          cp build/app/outputs/flutter-apk/app-release.apk ../scol.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scol-apk
+          path: scol.apk
+
+      - name: Publish under Releases
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete latest --yes --cleanup-tag || true
+          gh release create latest scol.apk --title "Scol - latest test build" \
+            --notes "Latest test build of the Scol Android app. Download scol.apk on an Android phone and open it to install."

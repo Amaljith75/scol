@@ -1,0 +1,844 @@
+{
+ "boards": [
+  {
+   "classes": [
+    {
+     "id": "class-1",
+     "number": 1,
+     "subjects": [
+      {
+       "chapters": [],
+       "color": "#FF8A3D",
+       "icon": "🔢",
+       "id": "kerala-scert/class-1/maths",
+       "key": "maths",
+       "name": {
+        "en": "Maths",
+        "ml": "ഗണിതം"
+       },
+       "order": 1
+      },
+      {
+       "chapters": [],
+       "color": "#5B6CFF",
+       "icon": "🔤",
+       "id": "kerala-scert/class-1/english",
+       "key": "english",
+       "name": {
+        "en": "English",
+        "ml": "ഇംഗ്ലീഷ്"
+       },
+       "order": 2
+      },
+      {
+       "chapters": [],
+       "color": "#E5488B",
+       "icon": "📖",
+       "id": "kerala-scert/class-1/malayalam",
+       "key": "malayalam",
+       "name": {
+        "en": "Malayalam",
+        "ml": "മലയാളം"
+       },
+       "order": 3
+      }
+     ]
+    },
+    {
+     "id": "class-2",
+     "number": 2,
+     "subjects": [
+      {
+       "chapters": [],
+       "color": "#FF8A3D",
+       "icon": "🔢",
+       "id": "kerala-scert/class-2/maths",
+       "key": "maths",
+       "name": {
+        "en": "Maths",
+        "ml": "ഗണിതം"
+       },
+       "order": 1
+      },
+      {
+       "chapters": [],
+       "color": "#5B6CFF",
+       "icon": "🔤",
+       "id": "kerala-scert/class-2/english",
+       "key": "english",
+       "name": {
+        "en": "English",
+        "ml": "ഇംഗ്ലീഷ്"
+       },
+       "order": 2
+      },
+      {
+       "chapters": [],
+       "color": "#E5488B",
+       "icon": "📖",
+       "id": "kerala-scert/class-2/malayalam",
+       "key": "malayalam",
+       "name": {
+        "en": "Malayalam",
+        "ml": "മലയാളം"
+       },
+       "order": 3
+      }
+     ]
+    },
+    {
+     "id": "class-3",
+     "number": 3,
+     "subjects": [
+      {
+       "chapters": [
+        {
+         "id": "kerala-scert/class-3/maths/00-sample-equal-groups",
+         "lessons": [
+          {
+           "id": "kerala-scert/class-3/maths/00-sample-equal-groups/01-equal-groups",
+           "minutes": 5,
+           "objective": {
+            "en": "Count objects arranged in equal groups.",
+            "ml": "തുല്യ കൂട്ടങ്ങളായി വെച്ച വസ്തുക്കൾ എണ്ണുക."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Look! I have 3 baskets. Each basket has 4 mangoes.",
+              "ml": "നോക്കൂ! എന്റെ കയ്യിൽ 3 കൊട്ടകളുണ്ട്. ഓരോ കൊട്ടയിലും 4 മാങ്ങ വീതം."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "4",
+               "🥭"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Every basket has the same number of mangoes. We call these equal groups.",
+              "ml": "എല്ലാ കൊട്ടയിലും ഒരേ എണ്ണം മാങ്ങയുണ്ട്. ഇവയെ തുല്യ കൂട്ടങ്ങൾ എന്ന് പറയും."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "4",
+               "🥭"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
+             "answer": "12",
+             "concept": "kerala-scert/class-3/maths#equal-groups",
+             "explain": {
+              "en": "4 and 4 and 4 make 12. Three equal groups of 4 is 12.",
+              "ml": "4-ഉം 4-ഉം 4-ഉം ചേർന്നാൽ 12. നാലിന്റെ മൂന്ന് കൂട്ടങ്ങൾ 12 ആണ്."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Count basket by basket: 4, then 8, then...",
+              "ml": "ഓരോ കൊട്ടയായി എണ്ണൂ: 4, പിന്നെ 8, പിന്നെ..."
+             },
+             "level": 1,
+             "mistakes": {
+              "34": "joined the two numbers together",
+              "7": "added 3 and 4 instead of counting every group"
+             },
+             "options": [
+              "7",
+              "12",
+              "34"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "How many mangoes are there in all?",
+              "ml": "ആകെ എത്ര മാങ്ങയുണ്ട്?"
+             },
+             "visual": {
+              "args": [
+               "3",
+               "4",
+               "🥭"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
+             "answer": "10",
+             "concept": "kerala-scert/class-3/maths#equal-groups",
+             "explain": {
+              "en": "5 and 5 make 10.",
+              "ml": "5-ഉം 5-ഉം ചേർന്നാൽ 10."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count the first plate, then keep counting on the second plate.",
+              "ml": "ആദ്യത്തെ പാത്രം എണ്ണൂ, പിന്നെ രണ്ടാമത്തേതിൽ തുടർന്ന് എണ്ണൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "7": "added 2 and 5 instead of counting every group"
+             },
+             "t": "ask",
+             "text": {
+              "en": "2 plates. 5 laddus on each plate. How many laddus altogether?",
+              "ml": "2 പാത്രങ്ങൾ. ഓരോ പാത്രത്തിലും 5 ലഡ്ഡു. ആകെ എത്ര ലഡ്ഡു?"
+             },
+             "visual": {
+              "args": [
+               "2",
+               "5",
+               "🟡"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
+             "answer": "5 + 5 + 5",
+             "concept": "kerala-scert/class-3/maths#equal-groups",
+             "explain": {
+              "en": "3 groups of 5 means 5, three times: 5 + 5 + 5.",
+              "ml": "അഞ്ചിന്റെ 3 കൂട്ടങ്ങൾ എന്നാൽ 5 മൂന്ന് തവണ: 5 + 5 + 5."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Imagine 3 bags. Each bag has 5 things.",
+              "ml": "3 സഞ്ചികൾ സങ്കൽപ്പിക്കൂ. ഓരോന്നിലും 5 സാധനങ്ങൾ."
+             },
+             "level": 2,
+             "mistakes": {
+              "3 + 5": "added the two numbers instead of repeating the group",
+              "35": "joined the two numbers together"
+             },
+             "options": [
+              "5 + 5 + 5",
+              "3 + 5",
+              "35"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which one means the same as 3 groups of 5?",
+              "ml": "അഞ്ചിന്റെ 3 കൂട്ടങ്ങൾ എന്നതിന് തുല്യമായത് ഏത്?"
+             }
+            },
+            {
+             "answer": "8",
+             "concept": "kerala-scert/class-3/maths#equal-groups",
+             "explain": {
+              "en": "2 and 2 and 2 and 2 make 8.",
+              "ml": "2-ഉം 2-ഉം 2-ഉം 2-ഉം ചേർന്നാൽ 8."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Try drawing 4 bags and putting 2 dots in each.",
+              "ml": "4 സഞ്ചികൾ വരച്ച് ഓരോന്നിലും 2 കുത്തുകൾ ഇട്ടു നോക്കൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "6": "added 4 and 2 instead of counting every group"
+             },
+             "t": "ask",
+             "text": {
+              "en": "There are 4 bags. Each bag has 2 balls. How many balls?",
+              "ml": "4 സഞ്ചികളുണ്ട്. ഓരോ സഞ്ചിയിലും 2 പന്തുകൾ. ആകെ എത്ര പന്തുകൾ?"
+             },
+             "visual": {
+              "args": [
+               "4",
+               "2",
+               "⚽"
+              ],
+              "kind": "groups"
+             }
+            }
+           ],
+           "title": {
+            "en": "Equal groups",
+            "ml": "തുല്യ കൂട്ടങ്ങൾ"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/00-sample-equal-groups/02-groups-to-times",
+           "minutes": 5,
+           "objective": {
+            "en": "Read and write equal groups using the × sign.",
+            "ml": "× ചിഹ്നം ഉപയോഗിച്ച് തുല്യ കൂട്ടങ്ങൾ എഴുതുക."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Remember our 3 baskets with 4 mangoes each? There is a short way to write that.",
+              "ml": "4 മാങ്ങ വീതമുള്ള 3 കൊട്ടകൾ ഓർമ്മയുണ്ടോ? അത് ചുരുക്കി എഴുതാൻ ഒരു വഴിയുണ്ട്."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "4",
+               "🥭"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "We write 3 × 4. We read it as \"3 times 4\". It means 3 groups of 4.",
+              "ml": "നമ്മൾ 3 × 4 എന്ന് എഴുതും. നാലിന്റെ 3 കൂട്ടങ്ങൾ എന്നാണ് അതിന്റെ അർത്ഥം."
+             },
+             "visual": {
+              "args": [
+               "3 × 4 = 12"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "2 × 6",
+             "concept": "kerala-scert/class-3/maths#times-sign",
+             "explain": {
+              "en": "2 groups of 6 is written 2 × 6.",
+              "ml": "ആറിന്റെ 2 കൂട്ടങ്ങൾ 2 × 6 എന്ന് എഴുതും."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "\"Groups of\" becomes the × sign.",
+              "ml": "\"കൂട്ടങ്ങൾ\" എന്നത് × ചിഹ്നമാകും."
+             },
+             "level": 1,
+             "mistakes": {
+              "2 + 6": "used + where groups need ×",
+              "26": "joined the two numbers together"
+             },
+             "options": [
+              "2 × 6",
+              "2 + 6",
+              "26"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "2 groups of 6. How do we write it?",
+              "ml": "ആറിന്റെ 2 കൂട്ടങ്ങൾ. എങ്ങനെ എഴുതും?"
+             }
+            },
+            {
+             "answer": "6",
+             "concept": "kerala-scert/class-3/maths#times-sign",
+             "explain": {
+              "en": "2 and 2 and 2 make 6.",
+              "ml": "2-ഉം 2-ഉം 2-ഉം ചേർന്നാൽ 6."
+             },
+             "form": "number",
+             "hint": {
+              "en": "3 groups of 2. Count the stars.",
+              "ml": "രണ്ടിന്റെ 3 കൂട്ടങ്ങൾ. നക്ഷത്രങ്ങൾ എണ്ണൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "5": "added 3 and 2 instead of making groups"
+             },
+             "t": "ask",
+             "text": {
+              "en": "3 × 2 = ?",
+              "ml": "3 × 2 = ?"
+             },
+             "visual": {
+              "args": [
+               "3",
+               "2",
+               "⭐"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
+             "answer": "5 bags with 2 marbles in each",
+             "concept": "kerala-scert/class-3/maths#times-sign",
+             "explain": {
+              "en": "5 × 2 means 5 groups of 2, like 5 bags with 2 marbles each.",
+              "ml": "5 × 2 എന്നാൽ രണ്ടിന്റെ 5 കൂട്ടങ്ങൾ."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "× means equal groups.",
+              "ml": "× എന്നാൽ തുല്യ കൂട്ടങ്ങൾ."
+             },
+             "level": 2,
+             "mistakes": {
+              "5 marbles and 2 more marbles": "read × as adding"
+             },
+             "options": [
+              "5 bags with 2 marbles in each",
+              "5 marbles and 2 more marbles"
+             ],
+             "optionsMl": [
+              "2 ഗോലി വീതമുള്ള 5 സഞ്ചികൾ",
+              "5 ഗോലികളും 2 ഗോലികൾ കൂടിയും"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Ammu has 5 × 2 marbles. Which story fits?",
+              "ml": "അമ്മുവിന് 5 × 2 ഗോലികളുണ്ട്. ഏത് കഥയാണ് ചേരുന്നത്?"
+             }
+            },
+            {
+             "answer": "20",
+             "concept": "kerala-scert/class-3/maths#times-sign",
+             "explain": {
+              "en": "5, 10, 15, 20. Four groups of 5 make 20.",
+              "ml": "5, 10, 15, 20. അഞ്ചിന്റെ നാല് കൂട്ടങ്ങൾ 20."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count in fives: 5, 10, ...",
+              "ml": "അഞ്ച് വീതം എണ്ണൂ: 5, 10, ..."
+             },
+             "level": 2,
+             "mistakes": {
+              "9": "added 4 and 5 instead of making groups"
+             },
+             "t": "ask",
+             "text": {
+              "en": "4 × 5 = ?",
+              "ml": "4 × 5 = ?"
+             },
+             "visual": {
+              "args": [
+               "4",
+               "5",
+               "🐟"
+              ],
+              "kind": "groups"
+             }
+            }
+           ],
+           "title": {
+            "en": "From groups to \"times\"",
+            "ml": "കൂട്ടങ്ങളിൽ നിന്ന് ഗുണനത്തിലേക്ക്"
+           }
+          }
+         ],
+         "objectives": [
+          {
+           "en": "Count objects arranged in equal groups",
+           "ml": "തുല്യ കൂട്ടങ്ങളായി വെച്ച വസ്തുക്കൾ എണ്ണുക"
+          },
+          {
+           "en": "Read and write 'groups of' using the × sign",
+           "ml": "× ചിഹ്നം ഉപയോഗിച്ച് കൂട്ടങ്ങൾ എഴുതുക"
+          }
+         ],
+         "source": "Sample written to test the app. It is NOT a textbook chapter - replace it with real SCERT chapters.",
+         "title": {
+          "en": "Sample chapter: Equal groups",
+          "ml": "മാതൃകാ പാഠം: തുല്യ കൂട്ടങ്ങൾ"
+         },
+         "verified": false
+        }
+       ],
+       "color": "#FF8A3D",
+       "icon": "🔢",
+       "id": "kerala-scert/class-3/maths",
+       "key": "maths",
+       "name": {
+        "en": "Maths",
+        "ml": "ഗണിതം"
+       },
+       "order": 1
+      },
+      {
+       "chapters": [],
+       "color": "#5B6CFF",
+       "icon": "🔤",
+       "id": "kerala-scert/class-3/english",
+       "key": "english",
+       "name": {
+        "en": "English",
+        "ml": "ഇംഗ്ലീഷ്"
+       },
+       "order": 2
+      },
+      {
+       "chapters": [],
+       "color": "#E5488B",
+       "icon": "📖",
+       "id": "kerala-scert/class-3/malayalam",
+       "key": "malayalam",
+       "name": {
+        "en": "Malayalam",
+        "ml": "മലയാളം"
+       },
+       "order": 3
+      },
+      {
+       "chapters": [],
+       "color": "#2BB673",
+       "icon": "🌱",
+       "id": "kerala-scert/class-3/evs",
+       "key": "evs",
+       "name": {
+        "en": "Environmental Studies",
+        "ml": "പരിസരപഠനം"
+       },
+       "order": 4
+      }
+     ]
+    },
+    {
+     "id": "class-4",
+     "number": 4,
+     "subjects": [
+      {
+       "chapters": [],
+       "color": "#FF8A3D",
+       "icon": "🔢",
+       "id": "kerala-scert/class-4/maths",
+       "key": "maths",
+       "name": {
+        "en": "Maths",
+        "ml": "ഗണിതം"
+       },
+       "order": 1
+      },
+      {
+       "chapters": [],
+       "color": "#5B6CFF",
+       "icon": "🔤",
+       "id": "kerala-scert/class-4/english",
+       "key": "english",
+       "name": {
+        "en": "English",
+        "ml": "ഇംഗ്ലീഷ്"
+       },
+       "order": 2
+      },
+      {
+       "chapters": [],
+       "color": "#E5488B",
+       "icon": "📖",
+       "id": "kerala-scert/class-4/malayalam",
+       "key": "malayalam",
+       "name": {
+        "en": "Malayalam",
+        "ml": "മലയാളം"
+       },
+       "order": 3
+      },
+      {
+       "chapters": [],
+       "color": "#2BB673",
+       "icon": "🌱",
+       "id": "kerala-scert/class-4/evs",
+       "key": "evs",
+       "name": {
+        "en": "Environmental Studies",
+        "ml": "പരിസരപഠനം"
+       },
+       "order": 4
+      }
+     ]
+    }
+   ],
+   "id": "kerala-scert",
+   "name": {
+    "en": "Kerala State (SCERT)",
+    "ml": "കേരള സിലബസ്"
+   },
+   "order": 1
+  },
+  {
+   "classes": [
+    {
+     "id": "class-1",
+     "number": 1,
+     "subjects": [
+      {
+       "chapters": [],
+       "color": "#FF8A3D",
+       "icon": "🔢",
+       "id": "cbse/class-1/maths",
+       "key": "maths",
+       "name": {
+        "en": "Maths",
+        "ml": "ഗണിതം"
+       },
+       "order": 1
+      },
+      {
+       "chapters": [],
+       "color": "#5B6CFF",
+       "icon": "🔤",
+       "id": "cbse/class-1/english",
+       "key": "english",
+       "name": {
+        "en": "English",
+        "ml": "ഇംഗ്ലീഷ്"
+       },
+       "order": 2
+      }
+     ]
+    },
+    {
+     "id": "class-2",
+     "number": 2,
+     "subjects": [
+      {
+       "chapters": [],
+       "color": "#FF8A3D",
+       "icon": "🔢",
+       "id": "cbse/class-2/maths",
+       "key": "maths",
+       "name": {
+        "en": "Maths",
+        "ml": "ഗണിതം"
+       },
+       "order": 1
+      },
+      {
+       "chapters": [],
+       "color": "#5B6CFF",
+       "icon": "🔤",
+       "id": "cbse/class-2/english",
+       "key": "english",
+       "name": {
+        "en": "English",
+        "ml": "ഇംഗ്ലീഷ്"
+       },
+       "order": 2
+      }
+     ]
+    },
+    {
+     "id": "class-3",
+     "number": 3,
+     "subjects": [
+      {
+       "chapters": [
+        {
+         "id": "cbse/class-3/maths/00-sample-tens-and-ones",
+         "lessons": [
+          {
+           "fromNotes": true,
+           "id": "cbse/class-3/maths/00-sample-tens-and-ones/notes-1",
+           "minutes": 4,
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "When we count in tens, we jump ten steps each time: 10, 20, 30, 40."
+             },
+             "visual": {
+              "args": [
+               "0",
+               "50",
+               "30"
+              ],
+              "kind": "numberline"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "3 jumps of ten take us to 30."
+             }
+            },
+            {
+             "answer": "50",
+             "concept": "cbse/class-3/maths#counting-in-tens",
+             "form": "number",
+             "hint": {
+              "en": "Jump ten more steps from 40."
+             },
+             "level": 1,
+             "t": "ask",
+             "text": {
+              "en": "What comes after 40 when we count in tens?"
+             }
+            },
+            {
+             "answer": "50",
+             "concept": "cbse/class-3/maths#counting-in-tens",
+             "form": "choice",
+             "level": 1,
+             "options": [
+              "30",
+              "50"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which is bigger?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Counting in tens"
+           }
+          },
+          {
+           "fromNotes": true,
+           "id": "cbse/class-3/maths/00-sample-tens-and-ones/notes-2",
+           "minutes": 4,
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "A two-digit number is made of tens and ones. The number 34 has 3 tens and 4 ones."
+             },
+             "visual": {
+              "args": [
+               "34 = 30 + 4"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "5",
+             "concept": "cbse/class-3/maths#tens-and-ones",
+             "form": "number",
+             "level": 1,
+             "t": "ask",
+             "text": {
+              "en": "How many tens are in 52?"
+             }
+            },
+            {
+             "answer": "Because 43 has 4 tens and 34 has only 3 tens.",
+             "concept": "cbse/class-3/maths#tens-and-ones",
+             "form": "think",
+             "level": 1,
+             "t": "ask",
+             "text": {
+              "en": "Why is 43 bigger than 34?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Tens and ones"
+           }
+          }
+         ],
+         "objectives": [
+          {
+           "en": "Count in tens and read two-digit numbers as tens and ones"
+          }
+         ],
+         "source": "Sample written to test the app. It is NOT a textbook chapter - replace it with real NCERT chapters.",
+         "title": {
+          "en": "Sample chapter: Tens and ones"
+         },
+         "verified": false
+        }
+       ],
+       "color": "#FF8A3D",
+       "icon": "🔢",
+       "id": "cbse/class-3/maths",
+       "key": "maths",
+       "name": {
+        "en": "Maths",
+        "ml": "ഗണിതം"
+       },
+       "order": 1
+      },
+      {
+       "chapters": [],
+       "color": "#5B6CFF",
+       "icon": "🔤",
+       "id": "cbse/class-3/english",
+       "key": "english",
+       "name": {
+        "en": "English",
+        "ml": "ഇംഗ്ലീഷ്"
+       },
+       "order": 2
+      },
+      {
+       "chapters": [],
+       "color": "#2BB673",
+       "icon": "🌱",
+       "id": "cbse/class-3/evs",
+       "key": "evs",
+       "name": {
+        "en": "Environmental Studies",
+        "ml": "പരിസരപഠനം"
+       },
+       "order": 4
+      }
+     ]
+    },
+    {
+     "id": "class-4",
+     "number": 4,
+     "subjects": [
+      {
+       "chapters": [],
+       "color": "#FF8A3D",
+       "icon": "🔢",
+       "id": "cbse/class-4/maths",
+       "key": "maths",
+       "name": {
+        "en": "Maths",
+        "ml": "ഗണിതം"
+       },
+       "order": 1
+      },
+      {
+       "chapters": [],
+       "color": "#5B6CFF",
+       "icon": "🔤",
+       "id": "cbse/class-4/english",
+       "key": "english",
+       "name": {
+        "en": "English",
+        "ml": "ഇംഗ്ലീഷ്"
+       },
+       "order": 2
+      },
+      {
+       "chapters": [],
+       "color": "#2BB673",
+       "icon": "🌱",
+       "id": "cbse/class-4/evs",
+       "key": "evs",
+       "name": {
+        "en": "Environmental Studies",
+        "ml": "പരിസരപഠനം"
+       },
+       "order": 4
+      }
+     ]
+    }
+   ],
+   "id": "cbse",
+   "name": {
+    "en": "CBSE (NCERT)",
+    "ml": "സി.ബി.എസ്.ഇ"
+   },
+   "order": 2
+  }
+ ],
+ "built": 1794341022,
+ "concepts": {
+  "cbse/class-3/maths#counting-in-tens": {
+   "en": "Counting in tens"
+  },
+  "cbse/class-3/maths#tens-and-ones": {
+   "en": "Tens and ones"
+  },
+  "kerala-scert/class-3/maths#equal-groups": {
+   "en": "Counting equal groups",
+   "ml": "തുല്യ കൂട്ടങ്ങൾ എണ്ണൽ"
+  },
+  "kerala-scert/class-3/maths#times-sign": {
+   "en": "Meaning of the × sign",
+   "ml": "× ചിഹ്നത്തിന്റെ അർത്ഥം"
+  }
+ },
+ "version": "53bc636b2645"
+}

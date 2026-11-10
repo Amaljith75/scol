@@ -1,0 +1,12 @@
+{
+  "title": {
+    "en": "Sample chapter: Tens and ones"
+  },
+  "verified": false,
+  "source": "Sample written to test the app. It is NOT a textbook chapter - replace it with real NCERT chapters.",
+  "objectives": [
+    {
+      "en": "Count in tens and read two-digit numbers as tens and ones"
+    }
+  ]
+}
