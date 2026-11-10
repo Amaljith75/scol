@@ -135,8 +135,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         ];
       case 4:
         return [
-          _option('English', lang == 'en', () => setState(() => lang = 'en'), leading: '🅰️'),
-          _option('മലയാളം', lang == 'ml', () => setState(() => lang = 'ml'), leading: '🅼'),
+          _option('English', lang == 'en', () => setState(() => lang = 'en'), leading: 'Aa'),
+          _option('മലയാളം', lang == 'ml', () => setState(() => lang = 'ml'), leading: 'അ'),
           _option('Both together', lang == 'both', () => setState(() => lang = 'both'),
               leading: '🔁', sub: 'English first, with Malayalam shown below'),
         ];

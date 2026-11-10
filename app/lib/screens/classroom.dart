@@ -143,7 +143,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
                     ),
                     // Speech bubble
                     Container(
-                      constraints: const BoxConstraints(maxHeight: 170),
+                      constraints: const BoxConstraints(maxHeight: 190),
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -159,6 +159,13 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                               decoration: BoxDecoration(color: sun, borderRadius: BorderRadius.circular(10)),
                               child: Text(d.badge, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: ink)),
+                            ),
+                          // Keep the question in view while the tutor gives a hint.
+                          if (d.phase == Phase.asking && d.question != null && !d.bubble.endsWith(pick(d.question!.text, lang)))
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 6),
+                              child: Text(pick(d.question!.text, lang),
+                                  style: const TextStyle(fontSize: 16, height: 1.3, fontWeight: FontWeight.w800, color: indigo)),
                             ),
                           Text(d.bubble,
                               style: const TextStyle(fontSize: 20, height: 1.3, fontWeight: FontWeight.w700, color: ink)),
