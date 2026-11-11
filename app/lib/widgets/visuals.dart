@@ -199,19 +199,25 @@ class VisualView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 for (var i = 0; i < ticks.length; i++)
-                  Pop(
-                    i,
-                    child: Container(
-                      width: 28,
-                      height: 30,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: ticks[i] == mark ? coral : Colors.transparent,
-                        shape: BoxShape.circle,
+                  Expanded(
+                    child: Pop(
+                      i,
+                      child: Container(
+                        height: 30,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: ticks[i] == mark ? coral : Colors.transparent,
+                          shape: BoxShape.circle,
+                        ),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text('${ticks[i]}',
+                              style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w800,
+                                  color: ticks[i] == mark ? Colors.white : ink)),
+                        ),
                       ),
-                      child: Text('${ticks[i]}',
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w800, color: ticks[i] == mark ? Colors.white : ink)),
                     ),
                   ),
               ],

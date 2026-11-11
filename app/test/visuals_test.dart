@@ -13,6 +13,7 @@ void main() {
     addTearDown(tester.view.reset);
     final b = Bundle.parse(File('assets/content/bundle.json').readAsStringSync());
     final seen = <String>{};
+    final problems = <String>[];
     for (final board in b.boards) {
       for (final c in board.classes) {
         for (final s in c.subjects) {
@@ -31,12 +32,14 @@ void main() {
                 ),
               ));
               await tester.pump(const Duration(seconds: 6));
-              expect(tester.takeException(), isNull, reason: '${l.id}: $v');
+              final e = tester.takeException();
+              if (e != null) problems.add('${l.id}: $v -> $e');
             }
           }
         }
       }
     }
+    expect(problems, isEmpty);
     expect(seen.length, greaterThan(40));
   });
 }
