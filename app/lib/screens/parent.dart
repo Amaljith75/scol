@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import '../content.dart';
 import '../mastery.dart';
 import '../state.dart';
-import '../tutor.dart';
 import '../widgets/ui.dart';
 
 /// A small sum keeps young children out of the parent area.
@@ -125,7 +124,7 @@ class ParentScreen extends StatelessWidget {
                     (v) => {'en': 'English', 'ml': 'മലയാളം', 'both': 'Both'}[v]!, (v) => appState.lang = v),
                 const SizedBox(height: 10),
                 const Text('Tutor', style: TextStyle(fontWeight: FontWeight.w700)),
-                chips<String>([for (final t in tutors) t.id], appState.tutorId, (v) => tutorById(v).name,
+                chips<String>([for (final t in tutors) t.id], appState.tutorId, (v) => tutorById(v).displayName('en'),
                     (v) => appState.tutorId = v),
                 const SizedBox(height: 10),
                 const Text('Daily learning time limit', style: TextStyle(fontWeight: FontWeight.w700)),
@@ -133,7 +132,7 @@ class ParentScreen extends StatelessWidget {
                 SwitchListTile(
                   contentPadding: EdgeInsets.zero,
                   title: const Text('Tutor speaks aloud'),
-                  subtitle: const Text('Uses the voice built into this phone. Nothing is recorded.'),
+                  subtitle: const Text('Plays ready-made voice files, or the phone voice when a file is not ready. Nothing is recorded.'),
                   value: appState.voiceOn,
                   onChanged: (v) {
                     appState.voiceOn = v;

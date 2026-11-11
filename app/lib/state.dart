@@ -222,3 +222,6 @@ class AppState extends ChangeNotifier {
 // One shared copy of each for the whole app.
 final AppState appState = AppState();
 final ContentStore contentStore = ContentStore();
+
+List<TutorCharacter> get tutors => contentStore.bundle.tutors;
+TutorCharacter tutorById(String id) => contentStore.bundle.tutor(id);

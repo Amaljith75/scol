@@ -93,10 +93,3342 @@
       {
        "chapters": [
         {
-         "id": "kerala-scert/class-3/maths/00-sample-equal-groups",
+         "id": "kerala-scert/class-3/maths/01-lets-draw",
          "lessons": [
           {
-           "id": "kerala-scert/class-3/maths/00-sample-equal-groups/01-equal-groups",
+           "id": "kerala-scert/class-3/maths/01-lets-draw/01-shapes-at-the-fest",
+           "minutes": 5,
+           "objective": {
+            "en": "Name circles, triangles and rectangles and count their corners."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "The school is dressed up for a festival! Flags and paper chains hang everywhere. Look closely. They are all made of shapes.",
+              "ml": "സ്കൂൾ ഉത്സവത്തിനായി അലങ്കരിച്ചിരിക്കുന്നു! എല്ലായിടത്തും തോരണങ്ങൾ. സൂക്ഷിച്ചു നോക്കൂ. അവയെല്ലാം രൂപങ്ങൾ കൊണ്ടാണ് ഉണ്ടാക്കിയത്."
+             },
+             "visual": {
+              "args": [
+               "🎉",
+               "🎏",
+               "🎈"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "The round one is a circle. The one with 3 corners is a triangle. The one with 4 corners is a rectangle.",
+              "ml": "ഉരുണ്ടത് വൃത്തം. 3 മൂലകളുള്ളത് ത്രികോണം. 4 മൂലകളുള്ളത് ചതുരം."
+             },
+             "visual": {
+              "args": [
+               "circle",
+               "triangle",
+               "rectangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "circle",
+             "concept": "kerala-scert/class-3/maths#shape-names",
+             "explain": {
+              "en": "A circle is round all the way. It has no corners.",
+              "ml": "വൃത്തം മുഴുവനും ഉരുണ്ടതാണ്. അതിന് മൂലകളില്ല."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Move your finger around each shape. Which one never makes a sharp turn?",
+              "ml": "ഓരോ രൂപത്തിനും ചുറ്റും വിരൽ ഓടിച്ചു നോക്കൂ. കൂർത്ത തിരിവ് ഇല്ലാത്തത് ഏത്?"
+             },
+             "level": 1,
+             "mistakes": {
+              "rectangle": "mixed up the names circle and rectangle",
+              "triangle": "mixed up the names circle and triangle"
+             },
+             "options": [
+              "circle",
+              "triangle",
+              "rectangle"
+             ],
+             "optionsMl": [
+              "വൃത്തം",
+              "ത്രികോണം",
+              "ചതുരം"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which shape has no corners at all?",
+              "ml": "ഒരു മൂലയും ഇല്ലാത്ത രൂപം ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "circle",
+               "triangle",
+               "rectangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "3",
+             "concept": "kerala-scert/class-3/maths#shape-names",
+             "explain": {
+              "en": "A triangle has 3 corners and 3 sides.",
+              "ml": "ത്രികോണത്തിന് 3 മൂലകളും 3 വശങ്ങളുമുണ്ട്."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Touch each pointed tip and count.",
+              "ml": "ഓരോ കൂർത്ത അറ്റവും തൊട്ട് എണ്ണൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "4": "gave the corners of a rectangle"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many corners does a triangle have?",
+              "ml": "ഒരു ത്രികോണത്തിന് എത്ര മൂലകളുണ്ട്?"
+             },
+             "visual": {
+              "args": [
+               "triangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "3",
+             "concept": "kerala-scert/class-3/maths#shape-names",
+             "explain": {
+              "en": "There are 3 triangles, 1 circle and 1 rectangle.",
+              "ml": "3 ത്രികോണങ്ങളും 1 വൃത്തവും 1 ചതുരവും ഉണ്ട്."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Point to every shape that has 3 corners.",
+              "ml": "3 മൂലകളുള്ള ഓരോ രൂപവും ചൂണ്ടി എണ്ണൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "5": "counted every shape, not only the triangles"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many triangles are in this row of flags?",
+              "ml": "ഈ തോരണത്തിൽ എത്ര ത്രികോണങ്ങളുണ്ട്?"
+             },
+             "visual": {
+              "args": [
+               "triangle",
+               "circle",
+               "triangle",
+               "rectangle",
+               "triangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "rectangle",
+             "concept": "kerala-scert/class-3/maths#shape-names",
+             "explain": {
+              "en": "Each has 4 corners and 4 straight sides. They are rectangles.",
+              "ml": "ഓരോന്നിനും 4 മൂലകളും 4 നേർവശങ്ങളുമുണ്ട്. അവ ചതുരങ്ങളാണ്."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Count the corners of a book cover.",
+              "ml": "പുസ്തകത്തിന്റെ പുറംചട്ടയുടെ മൂലകൾ എണ്ണൂ."
+             },
+             "level": 2,
+             "options": [
+              "rectangle",
+              "circle",
+              "triangle"
+             ],
+             "optionsMl": [
+              "ചതുരം",
+              "വൃത്തം",
+              "ത്രികോണം"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A door, a book cover and a phone screen. What shape are they?",
+              "ml": "വാതിൽ, പുസ്തകത്തിന്റെ പുറംചട്ട, ഫോണിന്റെ സ്ക്രീൻ. ഇവയുടെ രൂപം ഏത്?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Shapes at the school fest",
+            "ml": "സ്കൂൾ ഉത്സവത്തിലെ രൂപങ്ങൾ"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/01-lets-draw/02-shapes-from-sticks",
+           "minutes": 5,
+           "objective": {
+            "en": "Know how many sides a triangle and a rectangle need."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Let us make shapes with small sticks, like eerkkil bits from a coconut leaf.",
+              "ml": "ഈർക്കിൽ കഷണങ്ങൾ കൊണ്ട് നമുക്ക് രൂപങ്ങൾ ഉണ്ടാക്കാം."
+             },
+             "visual": {
+              "args": [
+               "7"
+              ],
+              "kind": "sticks"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "3 sticks make a triangle. 4 sticks make a rectangle.",
+              "ml": "3 ഈർക്കിൽ കൊണ്ട് ഒരു ത്രികോണം. 4 ഈർക്കിൽ കൊണ്ട് ഒരു ചതുരം."
+             },
+             "visual": {
+              "args": [
+               "Triangle = 3 sticks",
+               "Rectangle = 4 sticks"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "6",
+             "concept": "kerala-scert/class-3/maths#shape-sides",
+             "explain": {
+              "en": "3 and 3 make 6 sticks.",
+              "ml": "3-ഉം 3-ഉം ചേർന്നാൽ 6 ഈർക്കിൽ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "One triangle needs 3. Now add 3 more for the second one.",
+              "ml": "ഒരു ത്രികോണത്തിന് 3 വേണം. രണ്ടാമത്തേതിന് 3 കൂടി ചേർക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "3": "counted sticks for only one triangle",
+              "5": "added the number of shapes to the sticks"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many sticks do you need to make 2 triangles?",
+              "ml": "2 ത്രികോണങ്ങൾ ഉണ്ടാക്കാൻ എത്ര ഈർക്കിൽ വേണം?"
+             },
+             "visual": {
+              "args": [
+               "triangle",
+               "triangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "8",
+             "concept": "kerala-scert/class-3/maths#shape-sides",
+             "explain": {
+              "en": "4 and 4 make 8 sticks.",
+              "ml": "4-ഉം 4-ഉം ചേർന്നാൽ 8 ഈർക്കിൽ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "One rectangle needs 4 sticks.",
+              "ml": "ഒരു ചതുരത്തിന് 4 ഈർക്കിൽ വേണം."
+             },
+             "level": 1,
+             "mistakes": {
+              "4": "counted sticks for only one rectangle",
+              "6": "used 3 sticks for a rectangle"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many sticks do you need to make 2 rectangles?",
+              "ml": "2 ചതുരങ്ങൾ ഉണ്ടാക്കാൻ എത്ര ഈർക്കിൽ വേണം?"
+             },
+             "visual": {
+              "args": [
+               "rectangle",
+               "rectangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "4",
+             "concept": "kerala-scert/class-3/maths#shape-sides",
+             "explain": {
+              "en": "3 + 3 + 3 + 3 = 12. So 12 sticks make 4 triangles.",
+              "ml": "3 + 3 + 3 + 3 = 12. അതുകൊണ്ട് 12 ഈർക്കിൽ കൊണ്ട് 4 ത്രികോണങ്ങൾ."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Keep taking 3 sticks at a time: 3, 6, 9, 12.",
+              "ml": "3 വീതം എടുത്തു നോക്കൂ: 3, 6, 9, 12."
+             },
+             "level": 2,
+             "mistakes": {
+              "12": "counted the sticks instead of the triangles",
+              "3": "used 4 sticks for each triangle"
+             },
+             "options": [
+              "4",
+              "3",
+              "12"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "You have 12 sticks. You make only triangles. How many triangles can you make?",
+              "ml": "നിന്റെ കയ്യിൽ 12 ഈർക്കിലുണ്ട്. ത്രികോണങ്ങൾ മാത്രം ഉണ്ടാക്കിയാൽ എത്രയെണ്ണം കിട്ടും?"
+             },
+             "visual": {
+              "args": [
+               "12"
+              ],
+              "kind": "sticks"
+             }
+            },
+            {
+             "answer": "3",
+             "concept": "kerala-scert/class-3/maths#shape-sides",
+             "explain": {
+              "en": "4 + 4 + 4 = 12. So 12 sticks make 3 rectangles.",
+              "ml": "4 + 4 + 4 = 12. അതുകൊണ്ട് 12 ഈർക്കിൽ കൊണ്ട് 3 ചതുരങ്ങൾ."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Keep taking 4 sticks at a time: 4, 8, 12.",
+              "ml": "4 വീതം എടുത്തു നോക്കൂ: 4, 8, 12."
+             },
+             "level": 2,
+             "mistakes": {
+              "4": "used 3 sticks for each rectangle"
+             },
+             "options": [
+              "3",
+              "4",
+              "6"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "With the same 12 sticks you make only rectangles. How many rectangles?",
+              "ml": "അതേ 12 ഈർക്കിൽ കൊണ്ട് ചതുരങ്ങൾ മാത്രം ഉണ്ടാക്കിയാൽ എത്രയെണ്ണം?"
+             },
+             "visual": {
+              "args": [
+               "12"
+              ],
+              "kind": "sticks"
+             }
+            }
+           ],
+           "title": {
+            "en": "Shapes from sticks",
+            "ml": "ഈർക്കിൽ കൊണ്ട് രൂപങ്ങൾ"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/01-lets-draw/03-cut-and-join",
+           "minutes": 5,
+           "objective": {
+            "en": "See that shapes can be cut into, and built from, other shapes."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Take a paper rectangle. Cut it in a straight line from one corner to the opposite corner.",
+              "ml": "ഒരു ചതുരക്കടലാസ് എടുക്കൂ. ഒരു മൂലയിൽ നിന്ന് എതിർമൂലയിലേക്ക് നേരെ മുറിക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "rectangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Look, you get two triangles! Shapes can hide inside other shapes.",
+              "ml": "നോക്കൂ, രണ്ട് ത്രികോണങ്ങൾ കിട്ടി! രൂപങ്ങൾക്കുള്ളിൽ വേറെ രൂപങ്ങൾ ഒളിഞ്ഞിരിക്കാം."
+             },
+             "visual": {
+              "args": [
+               "triangle",
+               "triangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "2",
+             "concept": "kerala-scert/class-3/maths#shape-join",
+             "explain": {
+              "en": "One corner-to-corner cut gives 2 triangles.",
+              "ml": "മൂലയിൽ നിന്ന് മൂലയിലേക്ക് ഒരു തവണ മുറിച്ചാൽ 2 ത്രികോണങ്ങൾ കിട്ടും."
+             },
+             "form": "number",
+             "hint": {
+              "en": "One cut makes two pieces. What shape is each piece?",
+              "ml": "ഒരു മുറിക്കൽ രണ്ട് കഷണങ്ങൾ തരും. ഓരോ കഷണത്തിന്റെയും രൂപം എന്താണ്?"
+             },
+             "level": 1,
+             "mistakes": {
+              "1": "did not count both pieces",
+              "4": "counted corners instead of pieces"
+             },
+             "t": "ask",
+             "text": {
+              "en": "A rectangle is cut once, from corner to corner. How many triangles do you get?",
+              "ml": "ഒരു ചതുരം മൂലയിൽ നിന്ന് മൂലയിലേക്ക് ഒരു തവണ മുറിച്ചു. എത്ര ത്രികോണങ്ങൾ കിട്ടും?"
+             }
+            },
+            {
+             "answer": "rectangle",
+             "concept": "kerala-scert/class-3/maths#shape-join",
+             "explain": {
+              "en": "The two triangles join to make the rectangle again.",
+              "ml": "രണ്ട് ത്രികോണങ്ങൾ ചേർന്നാൽ വീണ്ടും ചതുരമാകും."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "What shape did we cut at the start?",
+              "ml": "ആദ്യം നമ്മൾ മുറിച്ചത് ഏത് രൂപമായിരുന്നു?"
+             },
+             "level": 1,
+             "options": [
+              "rectangle",
+              "circle"
+             ],
+             "optionsMl": [
+              "ചതുരം",
+              "വൃത്തം"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Put the two triangles back exactly as they were. Which shape comes back?",
+              "ml": "ആ രണ്ട് ത്രികോണങ്ങൾ പഴയതുപോലെ ചേർത്തുവെച്ചാൽ ഏത് രൂപം തിരിച്ചുകിട്ടും?"
+             },
+             "visual": {
+              "args": [
+               "triangle",
+               "triangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "No",
+             "concept": "kerala-scert/class-3/maths#shape-join",
+             "explain": {
+              "en": "The pieces of a circle keep a curved edge, so they are not triangles.",
+              "ml": "വൃത്തത്തിന്റെ കഷണങ്ങൾക്ക് വളഞ്ഞ അരികുണ്ട്. അതുകൊണ്ട് അവ ത്രികോണങ്ങളല്ല."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "A triangle needs straight sides. Does a circle have any straight side?",
+              "ml": "ത്രികോണത്തിന് നേർവശങ്ങൾ വേണം. വൃത്തത്തിന് നേർവശമുണ്ടോ?"
+             },
+             "level": 2,
+             "mistakes": {
+              "Yes": "thinks any cut piece is a triangle"
+             },
+             "options": [
+              "No",
+              "Yes"
+             ],
+             "optionsMl": [
+              "ഇല്ല",
+              "കിട്ടും"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Can one straight cut turn a circle into two triangles?",
+              "ml": "ഒരു വൃത്തം നേരെ ഒരു തവണ മുറിച്ചാൽ രണ്ട് ത്രികോണങ്ങൾ കിട്ടുമോ?"
+             },
+             "visual": {
+              "args": [
+               "circle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "6",
+             "concept": "kerala-scert/class-3/maths#shape-join",
+             "explain": {
+              "en": "3 and 3 make 6 sides.",
+              "ml": "3-ഉം 3-ഉം ചേർന്നാൽ 6 വശങ്ങൾ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count the sides of the first one, then keep counting on the second.",
+              "ml": "ആദ്യത്തേതിന്റെ വശങ്ങൾ എണ്ണൂ, പിന്നെ രണ്ടാമത്തേതിൽ തുടർന്ന് എണ്ണൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "3": "counted only one triangle"
+             },
+             "t": "ask",
+             "text": {
+              "en": "One triangle has 3 sides. How many sides do two separate triangles have altogether?",
+              "ml": "ഒരു ത്രികോണത്തിന് 3 വശങ്ങൾ. വേറെ വേറെ വെച്ച രണ്ട് ത്രികോണങ്ങൾക്ക് ആകെ എത്ര വശങ്ങൾ?"
+             },
+             "visual": {
+              "args": [
+               "triangle",
+               "triangle"
+              ],
+              "kind": "shapes"
+             }
+            }
+           ],
+           "title": {
+            "en": "Cut and join",
+            "ml": "മുറിക്കാം, ചേർക്കാം"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/01-lets-draw/04-patterns-blocks-and-balls",
+           "minutes": 5,
+           "objective": {
+            "en": "Continue a repeating pattern and tell a block from a sphere."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Shapes can make a pattern. A pattern repeats in the same order, again and again.",
+              "ml": "രൂപങ്ങൾ കൊണ്ട് ഒരു ക്രമം ഉണ്ടാക്കാം. ഒരേ രീതിയിൽ വീണ്ടും വീണ്ടും ആവർത്തിക്കുന്നതാണ് ക്രമം."
+             },
+             "visual": {
+              "args": [
+               "🔺",
+               "⚪",
+               "🔺",
+               "⚪",
+               "🔺",
+               "?"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "answer": "⚪",
+             "concept": "kerala-scert/class-3/maths#patterns-solids",
+             "explain": {
+              "en": "Triangle and circle take turns. After a triangle comes a circle.",
+              "ml": "ത്രികോണവും വൃത്തവും മാറിമാറി വരുന്നു. ത്രികോണത്തിന് ശേഷം വൃത്തം."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Say it aloud: triangle, circle, triangle, circle...",
+              "ml": "ഉറക്കെ പറഞ്ഞു നോക്കൂ: ത്രികോണം, വൃത്തം, ത്രികോണം, വൃത്തം..."
+             },
+             "level": 1,
+             "mistakes": {
+              "🔺": "repeated the last shape instead of following the pattern"
+             },
+             "options": [
+              "⚪",
+              "🔺",
+              "🟦"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What comes next in this pattern?",
+              "ml": "ഈ ക്രമത്തിൽ അടുത്തത് ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "🔺",
+               "⚪",
+               "🔺",
+               "⚪",
+               "🔺",
+               "?"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "answer": "🟦",
+             "concept": "kerala-scert/class-3/maths#patterns-solids",
+             "explain": {
+              "en": "The repeating part is square, square, triangle. After one square comes another square.",
+              "ml": "ചതുരം, ചതുരം, ത്രികോണം എന്നതാണ് ആവർത്തിക്കുന്നത്. ഒരു ചതുരത്തിന് ശേഷം ഒരു ചതുരം കൂടി."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Find the part that repeats: square, square, triangle.",
+              "ml": "ആവർത്തിക്കുന്ന ഭാഗം കണ്ടെത്തൂ: ചതുരം, ചതുരം, ത്രികോണം."
+             },
+             "level": 2,
+             "mistakes": {
+              "🔺": "did not find the repeating part of three"
+             },
+             "options": [
+              "🟦",
+              "🔺"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Now a harder one. What comes next?",
+              "ml": "ഇനി അല്പം കൂടി പ്രയാസമുള്ളത്. അടുത്തത് ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "🟦",
+               "🟦",
+               "🔺",
+               "🟦",
+               "🟦",
+               "🔺",
+               "🟦",
+               "?"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Some things are flat, like paper. Some are solid. A brick is a rectangular block. A ball is a sphere.",
+              "ml": "ചിലത് കടലാസ് പോലെ പരന്നതാണ്. ചിലത് ഘനമുള്ളതാണ്. ഇഷ്ടിക ഒരു ചതുരക്കട്ടയാണ്. പന്ത് ഒരു ഗോളമാണ്."
+             },
+             "visual": {
+              "args": [
+               "🧱",
+               "⚽"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "an orange",
+             "concept": "kerala-scert/class-3/maths#patterns-solids",
+             "explain": {
+              "en": "An orange is round on every side, like a ball. It is a sphere.",
+              "ml": "ഓറഞ്ച് പന്ത് പോലെ എല്ലാ വശത്തും ഉരുണ്ടതാണ്. അത് ഗോളമാണ്."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "A sphere is round on every side and can roll anywhere.",
+              "ml": "ഗോളം എല്ലാ വശത്തും ഉരുണ്ടതാണ്, എങ്ങോട്ടും ഉരുളും."
+             },
+             "level": 1,
+             "options": [
+              "an orange",
+              "a book",
+              "a brick"
+             ],
+             "optionsMl": [
+              "ഓറഞ്ച്",
+              "പുസ്തകം",
+              "ഇഷ്ടിക"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which one is shaped like a sphere?",
+              "ml": "ഗോളത്തിന്റെ രൂപമുള്ളത് ഏത്?"
+             }
+            },
+            {
+             "answer": "a rectangular block",
+             "concept": "kerala-scert/class-3/maths#patterns-solids",
+             "explain": {
+              "en": "A matchbox has flat rectangle faces, like a brick. It is a rectangular block.",
+              "ml": "തീപ്പെട്ടിക്ക് ഇഷ്ടിക പോലെ പരന്ന ചതുരമുഖങ്ങളുണ്ട്. അത് ചതുരക്കട്ടയാണ്."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Does a matchbox roll like a ball, or does it have flat faces?",
+              "ml": "തീപ്പെട്ടി പന്ത് പോലെ ഉരുളുമോ, അതോ പരന്ന മുഖങ്ങളുണ്ടോ?"
+             },
+             "level": 2,
+             "options": [
+              "a rectangular block",
+              "a sphere"
+             ],
+             "optionsMl": [
+              "ചതുരക്കട്ട",
+              "ഗോളം"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A matchbox is shaped like which one?",
+              "ml": "തീപ്പെട്ടിയുടെ രൂപം ഏതുപോലെയാണ്?"
+             }
+            },
+            {
+             "answer": "3",
+             "concept": "kerala-scert/class-3/maths#patterns-solids",
+             "explain": {
+              "en": "There are 3 triangles and 3 circles, taking turns.",
+              "ml": "3 ത്രികോണങ്ങളും 3 വൃത്തങ്ങളും മാറിമാറി വരുന്നു."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Point to each triangle and count. Skip the circles.",
+              "ml": "ഓരോ ത്രികോണവും ചൂണ്ടി എണ്ണൂ. വൃത്തങ്ങൾ വിട്ടേക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "6": "counted every shape, not only the triangles"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Look at this pattern. How many triangles are in it?",
+              "ml": "ഈ ക്രമം നോക്കൂ. ഇതിൽ എത്ര ത്രികോണങ്ങളുണ്ട്?"
+             },
+             "visual": {
+              "args": [
+               "🔺",
+               "⚪",
+               "🔺",
+               "⚪",
+               "🔺",
+               "⚪"
+              ],
+              "kind": "pattern"
+             }
+            }
+           ],
+           "title": {
+            "en": "Patterns, blocks and balls",
+            "ml": "ക്രമങ്ങളും കട്ടകളും പന്തുകളും"
+           }
+          }
+         ],
+         "objectives": [
+          {
+           "en": "Name and count circles, triangles and rectangles"
+          },
+          {
+           "en": "Make and join shapes, and see shapes inside shapes"
+          },
+          {
+           "en": "Continue shape patterns; tell blocks from spheres"
+          }
+         ],
+         "source": "Follows Unit 1 of SCERT Kerala Mathematics Standard III, Part 1 (2024). Explanations and questions are our own.",
+         "title": {
+          "en": "Let's Draw"
+         },
+         "verified": false
+        },
+        {
+         "id": "kerala-scert/class-3/maths/02-numbers-are-our-friends",
+         "lessons": [
+          {
+           "id": "kerala-scert/class-3/maths/02-numbers-are-our-friends/01-packets-and-boxes",
+           "minutes": 5,
+           "objective": {
+            "en": "Group in tens and hundreds, up to one thousand."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "A pencil factory is packing pencils. 10 pencils go into one packet.",
+              "ml": "ഒരു പെൻസിൽ ഫാക്ടറിയിൽ പെൻസിലുകൾ പാക്ക് ചെയ്യുന്നു. ഒരു പാക്കറ്റിൽ 10 പെൻസിൽ."
+             },
+             "visual": {
+              "args": [
+               "10",
+               "✏️"
+              ],
+              "kind": "count"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "10 packets go into one box. 10 tens make 100. So one box holds 100 pencils.",
+              "ml": "ഒരു പെട്ടിയിൽ 10 പാക്കറ്റ്. 10 പത്തുകൾ ചേർന്നാൽ 100. അതുകൊണ്ട് ഒരു പെട്ടിയിൽ 100 പെൻസിൽ."
+             },
+             "visual": {
+              "args": [
+               "10 tens = 100"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "30",
+             "concept": "kerala-scert/class-3/maths#tens-hundreds",
+             "explain": {
+              "en": "10, 20, 30. Three tens make 30.",
+              "ml": "10, 20, 30. മൂന്ന് പത്തുകൾ 30."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count in tens: 10, 20, ...",
+              "ml": "പത്ത് വീതം എണ്ണൂ: 10, 20, ..."
+             },
+             "level": 1,
+             "mistakes": {
+              "13": "added 3 and 10 instead of counting three tens",
+              "3": "counted packets, not pencils"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many pencils are in 3 packets?",
+              "ml": "3 പാക്കറ്റിൽ ആകെ എത്ര പെൻസിൽ?"
+             },
+             "visual": {
+              "args": [
+               "3",
+               "10",
+               "✏️"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
+             "answer": "200",
+             "concept": "kerala-scert/class-3/maths#tens-hundreds",
+             "explain": {
+              "en": "100 and 100 make 200.",
+              "ml": "100-ഉം 100-ഉം ചേർന്നാൽ 200."
+             },
+             "form": "number",
+             "hint": {
+              "en": "100 and 100 more.",
+              "ml": "100-ഉം ഒരു 100 കൂടിയും."
+             },
+             "level": 1,
+             "mistakes": {
+              "102": "added 2 to 100 instead of taking two hundreds"
+             },
+             "t": "ask",
+             "text": {
+              "en": "One box holds 100 pencils. How many pencils are in 2 boxes?",
+              "ml": "ഒരു പെട്ടിയിൽ 100 പെൻസിൽ. 2 പെട്ടിയിൽ എത്ര പെൻസിൽ?"
+             }
+            },
+            {
+             "answer": "540",
+             "concept": "kerala-scert/class-3/maths#tens-hundreds",
+             "explain": {
+              "en": "5 hundreds are 500. 4 tens are 40. Together 540.",
+              "ml": "5 നൂറുകൾ 500. 4 പത്തുകൾ 40. ചേർന്നാൽ 540."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "5 boxes are 5 hundreds. 4 packets are 4 tens.",
+              "ml": "5 പെട്ടികൾ എന്നാൽ 5 നൂറുകൾ. 4 പാക്കറ്റുകൾ എന്നാൽ 4 പത്തുകൾ."
+             },
+             "level": 2,
+             "mistakes": {
+              "504": "put the tens in the ones place",
+              "54": "wrote the counts side by side without their place values"
+             },
+             "options": [
+              "540",
+              "54",
+              "504"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "5 boxes and 4 packets. How many pencils is that?",
+              "ml": "5 പെട്ടികളും 4 പാക്കറ്റുകളും. ആകെ എത്ര പെൻസിൽ?"
+             }
+            },
+            {
+             "answer": "1000",
+             "concept": "kerala-scert/class-3/maths#tens-hundreds",
+             "explain": {
+              "en": "10 hundreds make 1000. We call it one thousand.",
+              "ml": "10 നൂറുകൾ ചേർന്നാൽ 1000. അതിനെ ആയിരം എന്ന് പറയും."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count in hundreds: 100, 200, 300, ... ten times.",
+              "ml": "നൂറ് വീതം എണ്ണൂ: 100, 200, 300, ... പത്ത് തവണ."
+             },
+             "level": 2,
+             "mistakes": {
+              "110": "added 10 and 100 instead of taking ten hundreds"
+             },
+             "t": "ask",
+             "text": {
+              "en": "There are 10 boxes. Each box holds 100 pencils. How many pencils in all?",
+              "ml": "10 പെട്ടികളുണ്ട്. ഓരോന്നിലും 100 പെൻസിൽ. ആകെ എത്ര പെൻസിൽ?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Packets and boxes",
+            "ml": "പാക്കറ്റുകളും പെട്ടികളും"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/02-numbers-are-our-friends/02-hundreds-tens-ones",
+           "minutes": 5,
+           "objective": {
+            "en": "Build and read three-digit numbers using place value."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Every three-digit number has three places: hundreds, tens and ones. Each bead on this abacus stands for one of them.",
+              "ml": "മൂന്നക്ക സംഖ്യയ്ക്ക് മൂന്ന് സ്ഥാനങ്ങളുണ്ട്: നൂറുകൾ, പത്തുകൾ, ഒന്നുകൾ. ഈ മണിച്ചട്ടത്തിലെ ഓരോ മണിയും അവയിലൊന്നിനെ കാണിക്കുന്നു."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "4",
+               "2"
+              ],
+              "kind": "place"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "3 beads in hundreds, 4 in tens, 2 in ones. That is 300 and 40 and 2. The number is 342.",
+              "ml": "നൂറിൽ 3 മണി, പത്തിൽ 4, ഒന്നിൽ 2. അതായത് 300-ഉം 40-ഉം 2-ഉം. സംഖ്യ 342."
+             },
+             "visual": {
+              "args": [
+               "342 = 300 + 40 + 2"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "256",
+             "concept": "kerala-scert/class-3/maths#place-value",
+             "explain": {
+              "en": "2 hundreds, 5 tens and 6 ones make 256.",
+              "ml": "2 നൂറുകളും 5 പത്തുകളും 6 ഒന്നുകളും ചേർന്നാൽ 256."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count the beads on each rod, starting from hundreds.",
+              "ml": "നൂറിൽ നിന്ന് തുടങ്ങി ഓരോ കമ്പിയിലെയും മണികൾ എണ്ണൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "13": "added all the beads together",
+              "652": "read the rods from ones to hundreds"
+             },
+             "t": "ask",
+             "text": {
+              "en": "What number does this abacus show?",
+              "ml": "ഈ മണിച്ചട്ടം കാണിക്കുന്ന സംഖ്യ ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "2",
+               "5",
+               "6"
+              ],
+              "kind": "place"
+             }
+            },
+            {
+             "answer": "60",
+             "concept": "kerala-scert/class-3/maths#place-value",
+             "explain": {
+              "en": "The 6 is in the tens place. 6 tens are 60.",
+              "ml": "6 പത്തിന്റെ സ്ഥാനത്താണ്. 6 പത്തുകൾ 60."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Which place is the 6 standing in?",
+              "ml": "6 ഏത് സ്ഥാനത്താണ് നിൽക്കുന്നത്?"
+             },
+             "level": 1,
+             "mistakes": {
+              "6": "read the digit without its place value",
+              "600": "confused the tens place with the hundreds place"
+             },
+             "options": [
+              "60",
+              "6",
+              "600"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "In the number 764, what is the 6 worth?",
+              "ml": "764 എന്ന സംഖ്യയിൽ 6-ന്റെ വില എത്ര?"
+             },
+             "visual": {
+              "args": [
+               "7",
+               "6",
+               "4"
+              ],
+              "kind": "place"
+             }
+            },
+            {
+             "answer": "409",
+             "concept": "kerala-scert/class-3/maths#place-value",
+             "explain": {
+              "en": "400 and 9 make 409. The 0 keeps the tens place.",
+              "ml": "400-ഉം 9-ഉം ചേർന്നാൽ 409. പത്തിന്റെ സ്ഥാനത്ത് 0 നിൽക്കുന്നു."
+             },
+             "form": "number",
+             "hint": {
+              "en": "No tens means a 0 sits in the tens place.",
+              "ml": "പത്തുകളില്ല എന്നാൽ പത്തിന്റെ സ്ഥാനത്ത് 0."
+             },
+             "level": 2,
+             "mistakes": {
+              "49": "left out the zero for the empty tens place",
+              "490": "put the ones in the tens place"
+             },
+             "t": "ask",
+             "text": {
+              "en": "4 hundreds, no tens, and 9 ones. Which number is it?",
+              "ml": "4 നൂറുകൾ, പത്തുകളില്ല, 9 ഒന്നുകൾ. ഏത് സംഖ്യ?"
+             },
+             "visual": {
+              "args": [
+               "4",
+               "0",
+               "9"
+              ],
+              "kind": "place"
+             }
+            },
+            {
+             "answer": "685",
+             "concept": "kerala-scert/class-3/maths#place-value",
+             "explain": {
+              "en": "600 and 80 and 5 make 685.",
+              "ml": "600-ഉം 80-ഉം 5-ഉം ചേർന്നാൽ 685."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Hundreds first, then tens, then ones.",
+              "ml": "ആദ്യം നൂറുകൾ, പിന്നെ പത്തുകൾ, പിന്നെ ഒന്നുകൾ."
+             },
+             "level": 2,
+             "mistakes": {
+              "658": "swapped the tens and the ones",
+              "865": "swapped the hundreds and the tens"
+             },
+             "options": [
+              "685",
+              "658",
+              "865"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "6 hundred-rupee notes, 8 ten-rupee notes and 5 one-rupee coins. How many rupees?",
+              "ml": "6 നൂറു രൂപ നോട്ടുകൾ, 8 പത്തു രൂപ നോട്ടുകൾ, 5 ഒരു രൂപ നാണയങ്ങൾ. ആകെ എത്ര രൂപ?"
+             },
+             "visual": {
+              "args": [
+               "100",
+               "10",
+               "1"
+              ],
+              "kind": "notes"
+             }
+            }
+           ],
+           "title": {
+            "en": "Hundreds, tens and ones",
+            "ml": "നൂറുകൾ, പത്തുകൾ, ഒന്നുകൾ"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/02-numbers-are-our-friends/03-reading-and-writing-numbers",
+           "minutes": 5,
+           "objective": {
+            "en": "Read and write three-digit numbers in words and count on across a hundred."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Numbers can be written in words too. On a cheque, people write the amount in words. 125 is one hundred twenty five.",
+              "ml": "സംഖ്യകൾ അക്ഷരത്തിലും എഴുതാം. ചെക്കിൽ തുക അക്ഷരത്തിൽ എഴുതാറുണ്ട്. 125 എന്നാൽ നൂറ്റി ഇരുപത്തിയഞ്ച്."
+             },
+             "visual": {
+              "args": [
+               "125"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "405",
+             "concept": "kerala-scert/class-3/maths#number-names",
+             "explain": {
+              "en": "400 and 5 make 405. The tens place has 0.",
+              "ml": "400-ഉം 5-ഉം ചേർന്നാൽ 405. പത്തിന്റെ സ്ഥാനത്ത് 0."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Four hundred, no tens, and five ones.",
+              "ml": "നാനൂറ്, പത്തുകളില്ല, അഞ്ച് ഒന്നുകൾ."
+             },
+             "level": 1,
+             "mistakes": {
+              "45": "left out the zero for the empty tens place",
+              "450": "put the five in the tens place"
+             },
+             "options": [
+              "405",
+              "450",
+              "45"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which number is four hundred five?",
+              "ml": "നാനൂറ്റി അഞ്ച് ഏത് സംഖ്യയാണ്?"
+             }
+            },
+            {
+             "answer": "six hundred seventeen",
+             "concept": "kerala-scert/class-3/maths#number-names",
+             "explain": {
+              "en": "617 is 600 and 17: six hundred seventeen.",
+              "ml": "617 എന്നാൽ 600-ഉം 17-ഉം: അറുനൂറ്റി പതിനേഴ്."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "6 hundreds, then 17.",
+              "ml": "6 നൂറുകൾ, പിന്നെ 17."
+             },
+             "level": 1,
+             "mistakes": {
+              "six hundred seventy": "confused seventeen with seventy"
+             },
+             "options": [
+              "six hundred seventeen",
+              "six hundred seventy",
+              "sixty one seven"
+             ],
+             "optionsMl": [
+              "അറുനൂറ്റി പതിനേഴ്",
+              "അറുനൂറ്റി എഴുപത്",
+              "അറുപത്തിയൊന്ന് ഏഴ്"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "How do we say 617?",
+              "ml": "617 എങ്ങനെ വായിക്കും?"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Now let us count on. After 299 the ones and tens are full, so a new hundred begins.",
+              "ml": "ഇനി തുടർന്ന് എണ്ണാം. 299 കഴിഞ്ഞാൽ ഒന്നുകളും പത്തുകളും നിറഞ്ഞു, അതുകൊണ്ട് പുതിയ നൂറ് തുടങ്ങും."
+             },
+             "visual": {
+              "args": [
+               "297",
+               "298",
+               "299",
+               "?"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "answer": "300",
+             "concept": "kerala-scert/class-3/maths#number-names",
+             "explain": {
+              "en": "299 and 1 more make 300.",
+              "ml": "299-ഉം 1-ഉം ചേർന്നാൽ 300."
+             },
+             "form": "number",
+             "hint": {
+              "en": "299 and one more. The 99 becomes a full hundred.",
+              "ml": "299-ഉം ഒന്ന് കൂടിയും. 99 ഒരു മുഴുവൻ നൂറാകും."
+             },
+             "level": 1,
+             "mistakes": {
+              "2100": "wrote ten in the ones place instead of starting a new hundred",
+              "290": "went back instead of forward"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Which number comes just after 299?",
+              "ml": "299-ന് തൊട്ടുശേഷം വരുന്ന സംഖ്യ ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "297",
+               "298",
+               "299",
+               "?"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "answer": "499",
+             "concept": "kerala-scert/class-3/maths#number-names",
+             "explain": {
+              "en": "One less than 500 is 499.",
+              "ml": "500-ൽ നിന്ന് ഒന്ന് കുറച്ചാൽ 499."
+             },
+             "form": "number",
+             "hint": {
+              "en": "One less than 500. Think of 100 minus 1 first.",
+              "ml": "500-നെക്കാൾ ഒന്ന് കുറവ്. ആദ്യം 100-ൽ നിന്ന് 1 കുറച്ചാൽ എത്രയെന്ന് ആലോചിക്കൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "490": "went back ten instead of one",
+              "501": "gave the number after, not before"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Which number comes just before 500?",
+              "ml": "500-ന് തൊട്ടുമുമ്പ് വരുന്ന സംഖ്യ ഏത്?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Reading and writing numbers",
+            "ml": "സംഖ്യകൾ വായിക്കാം, എഴുതാം"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/02-numbers-are-our-friends/04-splitting-and-comparing",
+           "minutes": 5,
+           "objective": {
+            "en": "Split hundreds into two parts and compare three-digit numbers."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "A shop wants 1000 pencils in two bags. One bag has 300. Then the other must have 700, because 300 and 700 make 1000.",
+              "ml": "ഒരു കടയ്ക്ക് 1000 പെൻസിൽ രണ്ട് സഞ്ചികളിലായി വേണം. ഒന്നിൽ 300. അപ്പോൾ മറ്റേതിൽ 700 വേണം, കാരണം 300-ഉം 700-ഉം ചേർന്നാൽ 1000."
+             },
+             "visual": {
+              "args": [
+               "1000",
+               "300",
+               "700"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "answer": "600",
+             "concept": "kerala-scert/class-3/maths#split-hundreds",
+             "explain": {
+              "en": "400 and 600 make 1000, just as 4 and 6 make 10.",
+              "ml": "4-ഉം 6-ഉം 10 ആകുന്നതുപോലെ 400-ഉം 600-ഉം ചേർന്നാൽ 1000."
+             },
+             "form": "number",
+             "hint": {
+              "en": "4 hundreds and how many more hundreds make 10 hundreds?",
+              "ml": "4 നൂറുകളോട് എത്ര നൂറുകൾ ചേർന്നാൽ 10 നൂറുകൾ?"
+             },
+             "level": 1,
+             "mistakes": {
+              "1400": "added instead of finding the missing part"
+             },
+             "t": "ask",
+             "text": {
+              "en": "1000 pencils in two bags. One bag has 400. How many are in the other bag?",
+              "ml": "1000 പെൻസിൽ രണ്ട് സഞ്ചികളിൽ. ഒന്നിൽ 400. മറ്റേതിൽ എത്ര?"
+             },
+             "visual": {
+              "args": [
+               "1000",
+               "400",
+               "?"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "answer": "400",
+             "concept": "kerala-scert/class-3/maths#split-hundreds",
+             "explain": {
+              "en": "400 and 400 make 800.",
+              "ml": "400-ഉം 400-ഉം ചേർന്നാൽ 800."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Which number, taken two times, makes 800? Think of 8 first.",
+              "ml": "ഏത് സംഖ്യ രണ്ട് തവണ എടുത്താൽ 800 ആകും? ആദ്യം 8-നെക്കുറിച്ച് ആലോചിക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "800": "did not split the total"
+             },
+             "t": "ask",
+             "text": {
+              "en": "800 pencils are shared equally into two bags. How many in each bag?",
+              "ml": "800 പെൻസിൽ രണ്ട് സഞ്ചികളിൽ തുല്യമായി വെച്ചു. ഓരോന്നിലും എത്ര?"
+             },
+             "visual": {
+              "args": [
+               "800",
+               "?",
+               "?"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "To compare two numbers, look at the hundreds first. If they are the same, look at the tens.",
+              "ml": "രണ്ട് സംഖ്യകൾ താരതമ്യം ചെയ്യാൻ ആദ്യം നൂറുകൾ നോക്കൂ. അവ തുല്യമാണെങ്കിൽ പത്തുകൾ നോക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "244 has 2 hundreds, 4 tens",
+               "209 has 2 hundreds, 0 tens",
+               "244 is bigger"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "244 km",
+             "concept": "kerala-scert/class-3/maths#compare-order",
+             "explain": {
+              "en": "244 has 4 tens and 209 has 0 tens, so 244 is larger.",
+              "ml": "244-ൽ 4 പത്തുകൾ, 209-ൽ 0 പത്തുകൾ. അതുകൊണ്ട് 244 വലുത്."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Both have 2 hundreds. Now compare the tens.",
+              "ml": "രണ്ടിലും 2 നൂറുകൾ. ഇനി പത്തുകൾ നോക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "209 km": "compared the ones digit instead of the tens"
+             },
+             "options": [
+              "244 km",
+              "209 km"
+             ],
+             "optionsMl": [
+              "244 കി.മീ",
+              "209 കി.മീ"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "The Periyar river is 244 km long. The Bharathappuzha is 209 km long. Which length is longer?",
+              "ml": "പെരിയാറിന്റെ നീളം 244 കി.മീ. ഭാരതപ്പുഴയുടെ നീളം 209 കി.മീ. ഏതാണ് കൂടുതൽ?"
+             }
+            },
+            {
+             "answer": "110, 169, 176",
+             "concept": "kerala-scert/class-3/maths#compare-order",
+             "explain": {
+              "en": "110 has the fewest tens, then 169, then 176.",
+              "ml": "110-ൽ ഏറ്റവും കുറവ് പത്തുകൾ, പിന്നെ 169, പിന്നെ 176."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "All have 1 hundred. Compare the tens: 1, 6 and 7.",
+              "ml": "എല്ലാത്തിലും 1 നൂറ്. പത്തുകൾ നോക്കൂ: 1, 6, 7."
+             },
+             "level": 2,
+             "mistakes": {
+              "176, 169, 110": "ordered from largest to smallest"
+             },
+             "options": [
+              "110, 169, 176",
+              "169, 110, 176",
+              "176, 169, 110"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which list goes from the smallest to the largest?",
+              "ml": "ചെറുതിൽ നിന്ന് വലുതിലേക്കുള്ള ക്രമം ഏത്?"
+             }
+            },
+            {
+             "answer": "110",
+             "concept": "kerala-scert/class-3/maths#split-hundreds",
+             "explain": {
+              "en": "It has 540. From 540 to 600 is 60, and 50 more reaches 650. So 110 more.",
+              "ml": "കയ്യിൽ 540. 540 മുതൽ 600 വരെ 60, പിന്നെ 50 കൂടി ആയാൽ 650. അതുകൊണ്ട് 110 കൂടി വേണം."
+             },
+             "form": "number",
+             "hint": {
+              "en": "First find how many it has: 500 and 40. Then count up to 650.",
+              "ml": "ആദ്യം കയ്യിലുള്ളത് കണ്ടെത്തൂ: 500-ഉം 40-ഉം. പിന്നെ 650 വരെ എണ്ണൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "540": "stopped after finding how many it already has"
+             },
+             "t": "ask",
+             "text": {
+              "en": "A school needs 650 pencils. It already has 5 boxes of 100 and 4 packets of 10. How many more pencils does it need?",
+              "ml": "ഒരു സ്കൂളിന് 650 പെൻസിൽ വേണം. 100 വീതമുള്ള 5 പെട്ടികളും 10 വീതമുള്ള 4 പാക്കറ്റുകളും കയ്യിലുണ്ട്. ഇനി എത്ര പെൻസിൽ കൂടി വേണം?"
+             }
+            },
+            {
+             "answer": "300 + 400",
+             "concept": "kerala-scert/class-3/maths#split-hundreds",
+             "explain": {
+              "en": "3 hundreds and 4 hundreds make 7 hundreds. 300 + 400 = 700.",
+              "ml": "3 നൂറുകളും 4 നൂറുകളും ചേർന്നാൽ 7 നൂറുകൾ. 300 + 400 = 700."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Add the hundreds in each pair. Which gives 7 hundreds?",
+              "ml": "ഓരോ ജോഡിയിലെയും നൂറുകൾ കൂട്ടൂ. 7 നൂറുകൾ കിട്ടുന്നത് ഏതിൽ?"
+             },
+             "level": 1,
+             "options": [
+              "300 + 400",
+              "300 + 300",
+              "500 + 100"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which pair makes 700?",
+              "ml": "700 ആക്കുന്ന ജോഡി ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "700",
+               "?",
+               "?"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "answer": "176",
+             "concept": "kerala-scert/class-3/maths#compare-order",
+             "explain": {
+              "en": "176 has 7 tens. The others have only 2 tens. So 176 is the largest.",
+              "ml": "176-ൽ 7 പത്തുകൾ. മറ്റുള്ളവയിൽ 2 പത്തുകൾ മാത്രം. അതുകൊണ്ട് 176 ഏറ്റവും വലുത്."
+             },
+             "form": "number",
+             "hint": {
+              "en": "All have 1 hundred. Which has the most tens?",
+              "ml": "എല്ലാത്തിലും 1 നൂറ്. ഏറ്റവും കൂടുതൽ പത്തുകൾ ഏതിൽ?"
+             },
+             "level": 1,
+             "mistakes": {
+              "128": "compared the ones digit instead of the tens"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Three rivers are 128 km, 121 km and 176 km long. Type the largest number.",
+              "ml": "മൂന്ന് പുഴകളുടെ നീളം 128, 121, 176 കി.മീ. ഏറ്റവും വലിയ സംഖ്യ ടൈപ്പ് ചെയ്യൂ."
+             }
+            }
+           ],
+           "title": {
+            "en": "Splitting and comparing",
+            "ml": "പിരിക്കാം, താരതമ്യം ചെയ്യാം"
+           }
+          }
+         ],
+         "objectives": [
+          {
+           "en": "Group in tens and hundreds up to 1000"
+          },
+          {
+           "en": "Read, write and build three-digit numbers using place value"
+          },
+          {
+           "en": "Split hundreds into two parts; compare and order three-digit numbers"
+          }
+         ],
+         "source": "Follows Unit 2 of SCERT Kerala Mathematics Standard III, Part 1 (2024). Explanations and questions are our own.",
+         "title": {
+          "en": "Numbers Are Our Friends!"
+         },
+         "verified": false
+        },
+        {
+         "id": "kerala-scert/class-3/maths/03-thousands-and-thousands",
+         "lessons": [
+          {
+           "id": "kerala-scert/class-3/maths/03-thousands-and-thousands/01-past-one-thousand",
+           "minutes": 5,
+           "objective": {
+            "en": "Read and continue numbers beyond 1000."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "It is sports day in the forest, and every runner gets a chest number. After 999 comes 1000, one thousand. It has four digits.",
+              "ml": "കാട്ടിൽ കായികമേളയാണ്. ഓരോ ഓട്ടക്കാരനും ഒരു നമ്പർ കിട്ടും. 999 കഴിഞ്ഞാൽ 1000, അതായത് ആയിരം. അതിന് നാല് അക്കങ്ങളുണ്ട്."
+             },
+             "visual": {
+              "args": [
+               "997",
+               "998",
+               "999",
+               "?"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "1000 and 1 together make 1001. Then come 1002, 1003, and so on.",
+              "ml": "1000-ഉം 1-ഉം ചേർന്നാൽ 1001. പിന്നെ 1002, 1003 എന്നിങ്ങനെ."
+             },
+             "visual": {
+              "args": [
+               "1000 + 1 = 1001"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "1005",
+             "concept": "kerala-scert/class-3/maths#beyond-1000",
+             "explain": {
+              "en": "1004 and 1 more make 1005.",
+              "ml": "1004-ഉം 1-ഉം ചേർന്നാൽ 1005."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Only the ones digit changes. What comes after 4?",
+              "ml": "ഒന്നിന്റെ സ്ഥാനത്തെ അക്കം മാത്രം മാറും. 4 കഴിഞ്ഞാൽ?"
+             },
+             "level": 1,
+             "mistakes": {
+              "2004": "added one to the thousands instead of the ones"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Which chest number comes just after 1004?",
+              "ml": "1004-ന് തൊട്ടുശേഷം വരുന്ന നമ്പർ ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "1002",
+               "1003",
+               "1004",
+               "?"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "answer": "1012",
+             "concept": "kerala-scert/class-3/maths#beyond-1000",
+             "explain": {
+              "en": "1000 and 12 make 1012.",
+              "ml": "1000-ഉം 12-ഉം ചേർന്നാൽ 1012."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Keep the 1000 and put 12 in the last two places.",
+              "ml": "1000 അങ്ങനെ വെച്ച്, അവസാന രണ്ട് സ്ഥാനങ്ങളിൽ 12 വെക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "100012": "wrote the two numbers side by side",
+              "1120": "put the 12 in the wrong places"
+             },
+             "t": "ask",
+             "text": {
+              "en": "1000 and 12 together make which number?",
+              "ml": "1000-ഉം 12-ഉം ചേർന്നാൽ ഏത് സംഖ്യ?"
+             }
+            },
+            {
+             "answer": "1001",
+             "concept": "kerala-scert/class-3/maths#beyond-1000",
+             "explain": {
+              "en": "1001 has four digits. Every four-digit number is larger than any three-digit number.",
+              "ml": "1001-ന് നാല് അക്കങ്ങളുണ്ട്. ഏത് നാലക്ക സംഖ്യയും ഏത് മൂന്നക്ക സംഖ്യയെക്കാളും വലുതാണ്."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Count the digits in each number.",
+              "ml": "ഓരോ സംഖ്യയിലെയും അക്കങ്ങൾ എണ്ണൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "999": "judged by the size of the digits, not the number of digits"
+             },
+             "options": [
+              "1001",
+              "999"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which number is larger?",
+              "ml": "ഏത് സംഖ്യയാണ് വലുത്?"
+             }
+            },
+            {
+             "answer": "1100",
+             "concept": "kerala-scert/class-3/maths#beyond-1000",
+             "explain": {
+              "en": "1099 and 1 more make 1100: one thousand one hundred.",
+              "ml": "1099-ഉം 1-ഉം ചേർന്നാൽ 1100: ആയിരത്തി ഒരുനൂറ്."
+             },
+             "form": "number",
+             "hint": {
+              "en": "The 99 is full. One more makes a new hundred.",
+              "ml": "99 നിറഞ്ഞു. ഒന്ന് കൂടി ചേർന്നാൽ പുതിയ നൂറ്."
+             },
+             "level": 2,
+             "mistakes": {
+              "1090": "went back instead of forward",
+              "2000": "jumped to the next thousand"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Which number comes just after 1099?",
+              "ml": "1099-ന് തൊട്ടുശേഷം വരുന്ന സംഖ്യ ഏത്?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Past one thousand",
+            "ml": "ആയിരത്തിനപ്പുറം"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/03-thousands-and-thousands/02-how-many-numbers",
+           "minutes": 5,
+           "objective": {
+            "en": "Count how many numbers there are from one number to another."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Number cards from 10 to 20 are made for a race. How many cards is that? Careful! We must count both the first card and the last card.",
+              "ml": "ഒരു ഓട്ടമത്സരത്തിന് 10 മുതൽ 20 വരെ നമ്പർ കാർഡുകൾ ഉണ്ടാക്കി. എത്ര കാർഡുകൾ? ശ്രദ്ധിക്കൂ! ആദ്യത്തെ കാർഡും അവസാനത്തെ കാർഡും എണ്ണണം."
+             },
+             "visual": {
+              "args": [
+               "10",
+               "20"
+              ],
+              "kind": "numberline"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "20 minus 10 is 10. But that leaves out the first card. Add 1 for it. So there are 11 cards.",
+              "ml": "20-ൽ നിന്ന് 10 കുറച്ചാൽ 10. പക്ഷേ അതിൽ ആദ്യത്തെ കാർഡ് ഇല്ല. അതിനായി 1 ചേർക്കൂ. അപ്പോൾ 11 കാർഡുകൾ."
+             },
+             "visual": {
+              "args": [
+               "20 − 10 + 1 = 11"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "10",
+             "concept": "kerala-scert/class-3/maths#counting-range",
+             "explain": {
+              "en": "From 1 to 10 there are 10 cards.",
+              "ml": "1 മുതൽ 10 വരെ 10 കാർഡുകൾ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count them on your fingers: 1, 2, 3, ...",
+              "ml": "വിരലിൽ എണ്ണൂ: 1, 2, 3, ..."
+             },
+             "level": 1,
+             "mistakes": {
+              "9": "subtracted and forgot to count the first card"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Cards are numbered from 1 to 10. How many cards?",
+              "ml": "1 മുതൽ 10 വരെ നമ്പറിട്ട കാർഡുകൾ. എത്ര കാർഡുകൾ?"
+             },
+             "visual": {
+              "args": [
+               "1",
+               "10"
+              ],
+              "kind": "numberline"
+             }
+            },
+            {
+             "answer": "21",
+             "concept": "kerala-scert/class-3/maths#counting-range",
+             "explain": {
+              "en": "50 − 30 = 20, and 1 more for the first card makes 21.",
+              "ml": "50 − 30 = 20, ആദ്യത്തെ കാർഡിനായി 1 കൂടി ചേർത്താൽ 21."
+             },
+             "form": "number",
+             "hint": {
+              "en": "50 minus 30, then add 1 for the first card.",
+              "ml": "50-ൽ നിന്ന് 30 കുറയ്ക്കൂ, പിന്നെ ആദ്യത്തെ കാർഡിനായി 1 ചേർക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "20": "subtracted and forgot to count the first card"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Cards from 30 to 50 are made for swimming. How many cards?",
+              "ml": "നീന്തൽ മത്സരത്തിന് 30 മുതൽ 50 വരെ കാർഡുകൾ. എത്ര കാർഡുകൾ?"
+             }
+            },
+            {
+             "answer": "41",
+             "concept": "kerala-scert/class-3/maths#counting-range",
+             "explain": {
+              "en": "100 − 60 = 40, and 1 more makes 41.",
+              "ml": "100 − 60 = 40, 1 കൂടി ചേർത്താൽ 41."
+             },
+             "form": "number",
+             "hint": {
+              "en": "100 minus 60, then add 1.",
+              "ml": "100-ൽ നിന്ന് 60 കുറയ്ക്കൂ, പിന്നെ 1 ചേർക്കൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "40": "subtracted and forgot to count the first card"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Cards from 60 to 100. How many cards?",
+              "ml": "60 മുതൽ 100 വരെ കാർഡുകൾ. എത്ര കാർഡുകൾ?"
+             }
+            },
+            {
+             "answer": "90",
+             "concept": "kerala-scert/class-3/maths#counting-range",
+             "explain": {
+              "en": "99 − 10 = 89, and 1 more makes 90.",
+              "ml": "99 − 10 = 89, 1 കൂടി ചേർത്താൽ 90."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "99 minus 10, then add 1.",
+              "ml": "99-ൽ നിന്ന് 10 കുറയ്ക്കൂ, പിന്നെ 1 ചേർക്കൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "89": "subtracted and forgot to count the first number",
+              "99": "counted the one-digit numbers too"
+             },
+             "options": [
+              "90",
+              "89",
+              "99"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Two-digit numbers go from 10 to 99. How many two-digit numbers are there?",
+              "ml": "രണ്ടക്ക സംഖ്യകൾ 10 മുതൽ 99 വരെയാണ്. ആകെ എത്ര രണ്ടക്ക സംഖ്യകളുണ്ട്?"
+             }
+            }
+           ],
+           "title": {
+            "en": "How many numbers?",
+            "ml": "എത്ര സംഖ്യകൾ?"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/03-thousands-and-thousands/03-odd-and-even",
+           "minutes": 5,
+           "objective": {
+            "en": "Tell odd numbers from even numbers and see what happens when they are added."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Even numbers can be shared into two equal groups with nothing left over. 2, 4, 6, 8 and 10 are even.",
+              "ml": "ഇരട്ട സംഖ്യകളെ ബാക്കിയില്ലാതെ രണ്ട് തുല്യ കൂട്ടങ്ങളാക്കാം. 2, 4, 6, 8, 10 ഇരട്ട സംഖ്യകളാണ്."
+             },
+             "visual": {
+              "args": [
+               "2",
+               "3",
+               "🔵"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Odd numbers always leave one out. 1, 3, 5, 7 and 9 are odd. To check a big number, just look at its last digit.",
+              "ml": "ഒറ്റ സംഖ്യകളിൽ എപ്പോഴും ഒന്ന് ബാക്കി വരും. 1, 3, 5, 7, 9 ഒറ്റ സംഖ്യകളാണ്. വലിയ സംഖ്യ പരിശോധിക്കാൻ അവസാനത്തെ അക്കം നോക്കിയാൽ മതി."
+             },
+             "visual": {
+              "args": [
+               "7",
+               "🔵"
+              ],
+              "kind": "count"
+             }
+            },
+            {
+             "answer": "14",
+             "concept": "kerala-scert/class-3/maths#odd-even",
+             "explain": {
+              "en": "14 ends in 4, so it is even.",
+              "ml": "14 അവസാനിക്കുന്നത് 4-ൽ, അതുകൊണ്ട് അത് ഇരട്ട സംഖ്യ."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Look at the last digit. Is it 0, 2, 4, 6 or 8?",
+              "ml": "അവസാനത്തെ അക്കം നോക്കൂ. അത് 0, 2, 4, 6, 8 ഇവയിലൊന്നാണോ?"
+             },
+             "level": 1,
+             "mistakes": {
+              "15": "mixed up odd and even",
+              "21": "looked at the first digit instead of the last"
+             },
+             "options": [
+              "14",
+              "15",
+              "21"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which of these is an even number?",
+              "ml": "ഇവയിൽ ഇരട്ട സംഖ്യ ഏത്?"
+             }
+            },
+            {
+             "answer": "47",
+             "concept": "kerala-scert/class-3/maths#odd-even",
+             "explain": {
+              "en": "47 ends in 7, so it is odd.",
+              "ml": "47 അവസാനിക്കുന്നത് 7-ൽ, അതുകൊണ്ട് അത് ഒറ്റ സംഖ്യ."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Look at the last digit. Is it 1, 3, 5, 7 or 9?",
+              "ml": "അവസാനത്തെ അക്കം നോക്കൂ. അത് 1, 3, 5, 7, 9 ഇവയിലൊന്നാണോ?"
+             },
+             "level": 1,
+             "mistakes": {
+              "30": "looked at the first digit instead of the last",
+              "52": "looked at the first digit instead of the last"
+             },
+             "options": [
+              "47",
+              "30",
+              "52"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which of these is an odd number?",
+              "ml": "ഇവയിൽ ഒറ്റ സംഖ്യ ഏത്?"
+             }
+            },
+            {
+             "answer": "always even",
+             "concept": "kerala-scert/class-3/maths#odd-even",
+             "explain": {
+              "en": "3 + 5 = 8 and 7 + 9 = 16. The two left-over ones join to make a pair, so the sum is even.",
+              "ml": "3 + 5 = 8, 7 + 9 = 16. ബാക്കി വന്ന രണ്ട് ഒന്നുകൾ ചേർന്ന് ഒരു ജോഡിയാകും. അതുകൊണ്ട് ഉത്തരം ഇരട്ട സംഖ്യ."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Work out 3 + 5 and 7 + 9. Look at the answers.",
+              "ml": "3 + 5, 7 + 9 ഇവ കണക്കാക്കി ഉത്തരങ്ങൾ നോക്കൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "always odd": "assumed odd numbers always give odd answers"
+             },
+             "options": [
+              "always even",
+              "always odd"
+             ],
+             "optionsMl": [
+              "എപ്പോഴും ഇരട്ട",
+              "എപ്പോഴും ഒറ്റ"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Add two odd numbers, like 3 + 5 or 7 + 9. What kind of number is the answer?",
+              "ml": "3 + 5, 7 + 9 എന്നിങ്ങനെ രണ്ട് ഒറ്റ സംഖ്യകൾ കൂട്ടിയാൽ കിട്ടുന്ന ഉത്തരം എങ്ങനെയുള്ളതാണ്?"
+             }
+            },
+            {
+             "answer": "always odd",
+             "concept": "kerala-scert/class-3/maths#odd-even",
+             "explain": {
+              "en": "5 + 6 = 11 and 8 + 9 = 17. One of the two is odd and the other even, so one is always left over.",
+              "ml": "5 + 6 = 11, 8 + 9 = 17. ഒന്ന് ഒറ്റയും മറ്റേത് ഇരട്ടയും ആയതുകൊണ്ട് എപ്പോഴും ഒന്ന് ബാക്കി വരും."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Work out 5 + 6 and 8 + 9. Look at the answers.",
+              "ml": "5 + 6, 8 + 9 ഇവ കണക്കാക്കി ഉത്തരങ്ങൾ നോക്കൂ."
+             },
+             "level": 2,
+             "options": [
+              "always odd",
+              "always even"
+             ],
+             "optionsMl": [
+              "എപ്പോഴും ഒറ്റ",
+              "എപ്പോഴും ഇരട്ട"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Add two numbers that are next to each other, like 5 + 6 or 8 + 9. What kind of number is the answer?",
+              "ml": "5 + 6, 8 + 9 എന്നിങ്ങനെ അടുത്തടുത്തുള്ള രണ്ട് സംഖ്യകൾ കൂട്ടിയാൽ കിട്ടുന്ന ഉത്തരം എങ്ങനെയുള്ളതാണ്?"
+             }
+            },
+            {
+             "answer": "18",
+             "concept": "kerala-scert/class-3/maths#odd-even",
+             "explain": {
+              "en": "17 is odd, so the next even number is 18.",
+              "ml": "17 ഒറ്റയാണ്. അതുകൊണ്ട് അടുത്ത ഇരട്ട സംഖ്യ 18."
+             },
+             "form": "number",
+             "hint": {
+              "en": "17 is odd. Go one more step.",
+              "ml": "17 ഒറ്റ സംഖ്യയാണ്. ഒരു പടി കൂടി മുന്നോട്ട്."
+             },
+             "level": 1,
+             "mistakes": {
+              "17": "gave the next number without checking it is even"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Which even number comes just after 16?",
+              "ml": "16-ന് തൊട്ടുശേഷം വരുന്ന ഇരട്ട സംഖ്യ ഏത്?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Odd and even",
+            "ml": "ഒറ്റയും ഇരട്ടയും"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/03-thousands-and-thousands/04-making-numbers-from-digits",
+           "minutes": 5,
+           "objective": {
+            "en": "Make the largest and the smallest number from given digits."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Here are three cards: 2, 5 and 7. Use each card once. To make the largest number, put the biggest digit in the hundreds place.",
+              "ml": "ഇതാ മൂന്ന് കാർഡുകൾ: 2, 5, 7. ഓരോന്നും ഒരു തവണ ഉപയോഗിക്കാം. ഏറ്റവും വലിയ സംഖ്യ ഉണ്ടാക്കാൻ ഏറ്റവും വലിയ അക്കം നൂറിന്റെ സ്ഥാനത്ത് വെക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "7 5 2"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "For the smallest number, do the opposite. Put the smallest digit first: 257.",
+              "ml": "ഏറ്റവും ചെറിയ സംഖ്യയ്ക്ക് നേരെ തിരിച്ച് ചെയ്യൂ. ഏറ്റവും ചെറിയ അക്കം ആദ്യം: 257."
+             },
+             "visual": {
+              "args": [
+               "2 5 7"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "831",
+             "concept": "kerala-scert/class-3/maths#digits-make-numbers",
+             "explain": {
+              "en": "8 hundreds, 3 tens, 1 one: 831.",
+              "ml": "8 നൂറുകൾ, 3 പത്തുകൾ, 1 ഒന്ന്: 831."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Biggest digit in the hundreds place, then the next biggest.",
+              "ml": "ഏറ്റവും വലിയ അക്കം നൂറിന്റെ സ്ഥാനത്ത്, പിന്നെ അടുത്ത വലുത്."
+             },
+             "level": 1,
+             "mistakes": {
+              "381": "kept the digits in the given order",
+              "813": "put the smallest digit in the tens place"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Use the digits 3, 8 and 1 once each. What is the largest number you can make?",
+              "ml": "3, 8, 1 എന്നീ അക്കങ്ങൾ ഓരോ തവണ ഉപയോഗിച്ച് ഉണ്ടാക്കാവുന്ന ഏറ്റവും വലിയ സംഖ്യ ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "3 8 1"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "138",
+             "concept": "kerala-scert/class-3/maths#digits-make-numbers",
+             "explain": {
+              "en": "1 hundred, 3 tens, 8 ones: 138.",
+              "ml": "1 നൂറ്, 3 പത്തുകൾ, 8 ഒന്നുകൾ: 138."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Smallest digit in the hundreds place, then the next smallest.",
+              "ml": "ഏറ്റവും ചെറിയ അക്കം നൂറിന്റെ സ്ഥാനത്ത്, പിന്നെ അടുത്ത ചെറുത്."
+             },
+             "level": 1,
+             "mistakes": {
+              "183": "put the largest digit in the tens place",
+              "831": "gave the largest number instead"
+             },
+             "t": "ask",
+             "text": {
+              "en": "With the same digits 3, 8 and 1, what is the smallest number?",
+              "ml": "അതേ അക്കങ്ങൾ 3, 8, 1 കൊണ്ട് ഉണ്ടാക്കാവുന്ന ഏറ്റവും ചെറിയ സംഖ്യ ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "3 8 1"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "406",
+             "concept": "kerala-scert/class-3/maths#digits-make-numbers",
+             "explain": {
+              "en": "0 cannot go first, so 4 goes first, then 0, then 6: 406.",
+              "ml": "0 ആദ്യം വെക്കാൻ പറ്റില്ല. അതുകൊണ്ട് ആദ്യം 4, പിന്നെ 0, പിന്നെ 6: 406."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "A three-digit number cannot begin with 0.",
+              "ml": "മൂന്നക്ക സംഖ്യ 0-ൽ തുടങ്ങാൻ പറ്റില്ല."
+             },
+             "level": 2,
+             "mistakes": {
+              "046": "put zero in the hundreds place",
+              "460": "did not put the zero in the tens place"
+             },
+             "options": [
+              "406",
+              "046",
+              "460"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Use 4, 0 and 6 once each. What is the smallest three-digit number?",
+              "ml": "4, 0, 6 ഓരോ തവണ ഉപയോഗിച്ച് ഉണ്ടാക്കാവുന്ന ഏറ്റവും ചെറിയ മൂന്നക്ക സംഖ്യ ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "4 0 6"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "765",
+             "concept": "kerala-scert/class-3/maths#digits-make-numbers",
+             "explain": {
+              "en": "700 and 60 and 5 make 765.",
+              "ml": "700-ഉം 60-ഉം 5-ഉം ചേർന്നാൽ 765."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Write the hundreds first, then the tens, then the ones.",
+              "ml": "ആദ്യം നൂറുകൾ, പിന്നെ പത്തുകൾ, പിന്നെ ഒന്നുകൾ എഴുതൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "567": "wrote the places in the opposite order",
+              "675": "swapped the hundreds and the tens"
+             },
+             "t": "ask",
+             "text": {
+              "en": "7 hundreds, 6 tens and 5 ones. Which number is it?",
+              "ml": "7 നൂറുകൾ, 6 പത്തുകൾ, 5 ഒന്നുകൾ. ഏത് സംഖ്യ?"
+             },
+             "visual": {
+              "args": [
+               "7",
+               "6",
+               "5"
+              ],
+              "kind": "place"
+             }
+            }
+           ],
+           "title": {
+            "en": "Making numbers from digits",
+            "ml": "അക്കങ്ങൾ കൊണ്ട് സംഖ്യകൾ"
+           }
+          }
+         ],
+         "objectives": [
+          {
+           "en": "Read and continue numbers beyond 1000"
+          },
+          {
+           "en": "Count how many numbers lie in a range; tell odd from even"
+          },
+          {
+           "en": "Make the largest and smallest numbers from given digits"
+          }
+         ],
+         "source": "Follows Unit 3 of SCERT Kerala Mathematics Standard III, Part 1 (2024). Explanations and questions are our own.",
+         "title": {
+          "en": "Thousands and Thousands"
+         },
+         "verified": false
+        },
+        {
+         "id": "kerala-scert/class-3/maths/04-lets-join-together",
+         "lessons": [
+          {
+           "id": "kerala-scert/class-3/maths/04-lets-join-together/01-pairs-that-make-100",
+           "minutes": 5,
+           "objective": {
+            "en": "Find the number that pairs with another to make 100."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Welcome to the maths fair! At this stall, two cards that add up to 100 make a pair. 80 and 20 are a pair.",
+              "ml": "ഗണിതമേളയിലേക്ക് സ്വാഗതം! ഈ സ്റ്റാളിൽ, കൂട്ടിയാൽ 100 കിട്ടുന്ന രണ്ട് കാർഡുകൾ ഒരു ജോഡിയാണ്. 80-ഉം 20-ഉം ഒരു ജോഡി."
+             },
+             "visual": {
+              "args": [
+               "100",
+               "80",
+               "20"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "49 and 51 are a pair too. Here is a trick: go up to the next ten first, then on to 100.",
+              "ml": "49-ഉം 51-ഉം ഒരു ജോഡിയാണ്. ഒരു സൂത്രം: ആദ്യം അടുത്ത പത്തിലേക്ക് പോകൂ, പിന്നെ 100-ലേക്ക്."
+             },
+             "visual": {
+              "args": [
+               "49 + 1 = 50",
+               "50 + 50 = 100",
+               "49 + 51 = 100"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "40",
+             "concept": "kerala-scert/class-3/maths#pairs-100",
+             "explain": {
+              "en": "60 and 40 make 100.",
+              "ml": "60-ഉം 40-ഉം ചേർന്നാൽ 100."
+             },
+             "form": "number",
+             "hint": {
+              "en": "6 tens and how many more tens make 10 tens?",
+              "ml": "6 പത്തുകളോട് എത്ര പത്തുകൾ ചേർന്നാൽ 10 പത്തുകൾ?"
+             },
+             "level": 1,
+             "mistakes": {
+              "160": "added instead of finding the missing part"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Which number pairs with 60 to make 100?",
+              "ml": "60-നോടൊപ്പം ചേർന്ന് 100 ആക്കുന്ന സംഖ്യ ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "100",
+               "60",
+               "?"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "answer": "65",
+             "concept": "kerala-scert/class-3/maths#pairs-100",
+             "explain": {
+              "en": "5 and 60 make 65. So 35 and 65 make 100.",
+              "ml": "5-ഉം 60-ഉം ചേർന്നാൽ 65. അതുകൊണ്ട് 35-ഉം 65-ഉം ചേർന്നാൽ 100."
+             },
+             "form": "number",
+             "hint": {
+              "en": "From 35 to 40 is 5. From 40 to 100 is 60.",
+              "ml": "35 മുതൽ 40 വരെ 5. 40 മുതൽ 100 വരെ 60."
+             },
+             "level": 1,
+             "mistakes": {
+              "75": "made the tens add to ten and forgot the ones already make a ten"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Which number pairs with 35 to make 100?",
+              "ml": "35-നോടൊപ്പം ചേർന്ന് 100 ആക്കുന്ന സംഖ്യ ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "100",
+               "35",
+               "?"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "answer": "45 + 55",
+             "concept": "kerala-scert/class-3/maths#pairs-100",
+             "explain": {
+              "en": "5 and 5 make 10. 40 and 50 make 90. Together 100.",
+              "ml": "5-ഉം 5-ഉം 10. 40-ഉം 50-ഉം 90. ചേർന്നാൽ 100."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Add the ones first. Do they make a ten?",
+              "ml": "ആദ്യം ഒന്നുകൾ കൂട്ടൂ. അവ ഒരു പത്താകുന്നുണ്ടോ?"
+             },
+             "level": 1,
+             "mistakes": {
+              "40 + 50": "stopped one ten short",
+              "45 + 65": "made the tens add to ten and forgot the ones already make a ten"
+             },
+             "options": [
+              "45 + 55",
+              "45 + 65",
+              "40 + 50"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which pair makes 100?",
+              "ml": "100 ആക്കുന്ന ജോഡി ഏത്?"
+             }
+            },
+            {
+             "answer": "75",
+             "concept": "kerala-scert/class-3/maths#pairs-100",
+             "explain": {
+              "en": "From 25 to 30 is 5, and 30 to 100 is 70. You get back 75 rupees.",
+              "ml": "25 മുതൽ 30 വരെ 5, 30 മുതൽ 100 വരെ 70. 75 രൂപ ബാക്കി കിട്ടും."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Which number pairs with 25 to make 100?",
+              "ml": "25-നോടൊപ്പം ചേർന്ന് 100 ആക്കുന്ന സംഖ്യ ഏത്?"
+             },
+             "level": 2,
+             "mistakes": {
+              "125": "added instead of finding the change",
+              "85": "made the tens add to ten and forgot the ones already make a ten"
+             },
+             "t": "ask",
+             "text": {
+              "en": "You pay 100 rupees for crayons that cost 25 rupees. How many rupees do you get back?",
+              "ml": "25 രൂപയുടെ ക്രയോണിന് നീ 100 രൂപ കൊടുത്തു. എത്ര രൂപ ബാക്കി കിട്ടും?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Pairs that make 100",
+            "ml": "100 ആക്കുന്ന ജോഡികൾ"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/04-lets-join-together/02-pairs-that-make-1000",
+           "minutes": 5,
+           "objective": {
+            "en": "Find the number that pairs with another to make 1000."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "The same idea works for bigger numbers. 3 and 7 make 10. So 300 and 700 make 1000.",
+              "ml": "ഇതേ ആശയം വലിയ സംഖ്യകളിലും ശരിയാണ്. 3-ഉം 7-ഉം ചേർന്നാൽ 10. അതുപോലെ 300-ഉം 700-ഉം ചേർന്നാൽ 1000."
+             },
+             "visual": {
+              "args": [
+               "1000",
+               "300",
+               "700"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "What about 150? Go up to the next hundred first: 150 to 200 is 50. Then 200 to 1000 is 800. So 150 pairs with 850.",
+              "ml": "150 ആണെങ്കിലോ? ആദ്യം അടുത്ത നൂറിലേക്ക്: 150 മുതൽ 200 വരെ 50. പിന്നെ 200 മുതൽ 1000 വരെ 800. അപ്പോൾ 150-ന്റെ ജോഡി 850."
+             },
+             "visual": {
+              "args": [
+               "150 + 50 = 200",
+               "200 + 800 = 1000",
+               "150 + 850 = 1000"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "600",
+             "concept": "kerala-scert/class-3/maths#pairs-1000",
+             "explain": {
+              "en": "4 and 6 make 10, so 400 and 600 make 1000.",
+              "ml": "4-ഉം 6-ഉം 10. അതുകൊണ്ട് 400-ഉം 600-ഉം ചേർന്നാൽ 1000."
+             },
+             "form": "number",
+             "hint": {
+              "en": "4 and what make 10?",
+              "ml": "4-നോട് എത്ര ചേർന്നാൽ 10?"
+             },
+             "level": 1,
+             "mistakes": {
+              "1400": "added instead of finding the missing part"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Which number pairs with 400 to make 1000?",
+              "ml": "400-നോടൊപ്പം ചേർന്ന് 1000 ആക്കുന്ന സംഖ്യ ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "1000",
+               "400",
+               "?"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "answer": "750",
+             "concept": "kerala-scert/class-3/maths#pairs-1000",
+             "explain": {
+              "en": "50 and 700 make 750. So 250 and 750 make 1000.",
+              "ml": "50-ഉം 700-ഉം ചേർന്നാൽ 750. അതുകൊണ്ട് 250-ഉം 750-ഉം ചേർന്നാൽ 1000."
+             },
+             "form": "number",
+             "hint": {
+              "en": "250 to 300 is 50. Then 300 to 1000 is?",
+              "ml": "250 മുതൽ 300 വരെ 50. പിന്നെ 300 മുതൽ 1000 വരെ?"
+             },
+             "level": 1,
+             "mistakes": {
+              "850": "made the hundreds add to ten and forgot the fifties already make a hundred"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Which number pairs with 250 to make 1000?",
+              "ml": "250-നോടൊപ്പം ചേർന്ന് 1000 ആക്കുന്ന സംഖ്യ ഏത്?"
+             },
+             "visual": {
+              "args": [
+               "1000",
+               "250",
+               "?"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "answer": "50",
+             "concept": "kerala-scert/class-3/maths#pairs-1000",
+             "explain": {
+              "en": "950 and 50 make 1000.",
+              "ml": "950-ഉം 50-ഉം ചേർന്നാൽ 1000."
+             },
+             "form": "number",
+             "hint": {
+              "en": "950 is very close to 1000. How far away?",
+              "ml": "950, 1000-ന് വളരെ അടുത്താണ്. എത്ര ദൂരം?"
+             },
+             "level": 1,
+             "mistakes": {
+              "150": "made the hundreds add to ten and forgot the fifties already make a hundred"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Which number pairs with 950 to make 1000?",
+              "ml": "950-നോടൊപ്പം ചേർന്ന് 1000 ആക്കുന്ന സംഖ്യ ഏത്?"
+             }
+            },
+            {
+             "answer": "550",
+             "concept": "kerala-scert/class-3/maths#pairs-1000",
+             "explain": {
+              "en": "50 and 500 make 550. So 450 and 550 make 1000.",
+              "ml": "50-ഉം 500-ഉം ചേർന്നാൽ 550. അതുകൊണ്ട് 450-ഉം 550-ഉം ചേർന്നാൽ 1000."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "450 to 500 is 50. Then 500 to 1000 is 500.",
+              "ml": "450 മുതൽ 500 വരെ 50. പിന്നെ 500 മുതൽ 1000 വരെ 500."
+             },
+             "level": 2,
+             "mistakes": {
+              "650": "made the hundreds add to ten and forgot the fifties already make a hundred"
+             },
+             "options": [
+              "550",
+              "650",
+              "450"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A shop wants 1000 pencils. It has 450. How many more does it need?",
+              "ml": "ഒരു കടയ്ക്ക് 1000 പെൻസിൽ വേണം. കയ്യിൽ 450 ഉണ്ട്. ഇനി എത്ര വേണം?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Pairs that make 1000",
+            "ml": "1000 ആക്കുന്ന ജോഡികൾ"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/04-lets-join-together/03-adding-in-parts",
+           "minutes": 5,
+           "objective": {
+            "en": "Add three-digit numbers by splitting them into hundreds, tens and ones."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "To add 231 and 146, split each number into hundreds, tens and ones.",
+              "ml": "231-ഉം 146-ഉം കൂട്ടാൻ, ഓരോ സംഖ്യയെയും നൂറുകൾ, പത്തുകൾ, ഒന്നുകൾ ആയി പിരിക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "231 = 200 + 30 + 1",
+               "146 = 100 + 40 + 6"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Now add the hundreds, then the tens, then the ones. 300 and 70 and 7. The sum is 377.",
+              "ml": "ഇനി നൂറുകൾ കൂട്ടൂ, പിന്നെ പത്തുകൾ, പിന്നെ ഒന്നുകൾ. 300-ഉം 70-ഉം 7-ഉം. ആകെ 377."
+             },
+             "visual": {
+              "args": [
+               "200 + 100 = 300",
+               "30 + 40 = 70",
+               "1 + 6 = 7",
+               "231 + 146 = 377"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "540",
+             "concept": "kerala-scert/class-3/maths#add-split",
+             "explain": {
+              "en": "500 and 40 make 540.",
+              "ml": "500-ഉം 40-ഉം ചേർന്നാൽ 540."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Add the hundreds: 300 and 200. Then the tens: 10 and 30.",
+              "ml": "നൂറുകൾ കൂട്ടൂ: 300-ഉം 200-ഉം. പിന്നെ പത്തുകൾ: 10-ഉം 30-ഉം."
+             },
+             "level": 1,
+             "mistakes": {
+              "504": "put the tens in the ones place"
+             },
+             "t": "ask",
+             "text": {
+              "en": "310 + 230 = ?",
+              "ml": "310 + 230 = ?"
+             }
+            },
+            {
+             "answer": "546",
+             "concept": "kerala-scert/class-3/maths#add-split",
+             "explain": {
+              "en": "500 and 40 and 6 make 546.",
+              "ml": "500-ഉം 40-ഉം 6-ഉം ചേർന്നാൽ 546."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Hundreds: 300 + 200. Tens: 10 + 30. Ones: 5 + 1.",
+              "ml": "നൂറുകൾ: 300 + 200. പത്തുകൾ: 10 + 30. ഒന്നുകൾ: 5 + 1."
+             },
+             "level": 1,
+             "mistakes": {
+              "540": "left out the ones"
+             },
+             "t": "ask",
+             "text": {
+              "en": "315 + 231 = ?",
+              "ml": "315 + 231 = ?"
+             }
+            },
+            {
+             "answer": "836",
+             "concept": "kerala-scert/class-3/maths#add-split",
+             "explain": {
+              "en": "800 and 30 and 6 make 836.",
+              "ml": "800-ഉം 30-ഉം 6-ഉം ചേർന്നാൽ 836."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Hundreds: 500 + 300. Tens: 20 + 10. Ones: 4 + 2.",
+              "ml": "നൂറുകൾ: 500 + 300. പത്തുകൾ: 20 + 10. ഒന്നുകൾ: 4 + 2."
+             },
+             "level": 1,
+             "mistakes": {
+              "736": "made a slip adding the hundreds",
+              "846": "made a slip adding the tens"
+             },
+             "options": [
+              "836",
+              "846",
+              "736"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "524 + 312 = ?",
+              "ml": "524 + 312 = ?"
+             }
+            },
+            {
+             "answer": "568",
+             "concept": "kerala-scert/class-3/maths#add-split",
+             "explain": {
+              "en": "200 + 300 = 500, 40 + 20 = 60, 3 + 5 = 8. In all 568.",
+              "ml": "200 + 300 = 500, 40 + 20 = 60, 3 + 5 = 8. ആകെ 568."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Split both numbers, then add hundreds, tens and ones.",
+              "ml": "രണ്ട് സംഖ്യകളും പിരിച്ച്, നൂറുകളും പത്തുകളും ഒന്നുകളും കൂട്ടൂ."
+             },
+             "level": 2,
+             "t": "ask",
+             "text": {
+              "en": "243 children came from one school and 325 from another. How many children came in all?",
+              "ml": "ഒരു സ്കൂളിൽ നിന്ന് 243 കുട്ടികളും മറ്റൊരു സ്കൂളിൽ നിന്ന് 325 കുട്ടികളും വന്നു. ആകെ എത്ര കുട്ടികൾ?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Adding big numbers in parts",
+            "ml": "വലിയ സംഖ്യകൾ ഭാഗങ്ങളാക്കി കൂട്ടാം"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/04-lets-join-together/04-a-new-ten",
+           "minutes": 5,
+           "objective": {
+            "en": "Add three-digit numbers when the ones add up to more than 9."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Let us add 248 and 135. Look at the ones first: 8 and 5 make 13. That is 1 ten and 3 ones.",
+              "ml": "248-ഉം 135-ഉം കൂട്ടാം. ആദ്യം ഒന്നുകൾ നോക്കൂ: 8-ഉം 5-ഉം ചേർന്നാൽ 13. അതായത് 1 പത്തും 3 ഒന്നുകളും."
+             },
+             "visual": {
+              "args": [
+               "8 + 5 = 13"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "The new ten moves over to join the tens. 300 and 70 and 13 make 383.",
+              "ml": "ആ പുതിയ പത്ത് പത്തുകളുടെ കൂടെ ചേരും. 300-ഉം 70-ഉം 13-ഉം ചേർന്നാൽ 383."
+             },
+             "visual": {
+              "args": [
+               "200 + 100 = 300",
+               "40 + 30 = 70",
+               "8 + 5 = 13",
+               "300 + 70 + 13 = 383"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "472",
+             "concept": "kerala-scert/class-3/maths#add-carry",
+             "explain": {
+              "en": "400 and 60 and 12 make 472.",
+              "ml": "400-ഉം 60-ഉം 12-ഉം ചേർന്നാൽ 472."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Ones: 7 + 5 = 12. Keep the 2 and move the ten over to the tens.",
+              "ml": "ഒന്നുകൾ: 7 + 5 = 12. 2 അവിടെ വെച്ച്, പത്തിനെ പത്തുകളുടെ കൂടെ ചേർക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "4612": "wrote 12 in the ones place without moving the ten",
+              "462": "forgot to add the new ten"
+             },
+             "t": "ask",
+             "text": {
+              "en": "327 + 145 = ?",
+              "ml": "327 + 145 = ?"
+             }
+            },
+            {
+             "answer": "775",
+             "concept": "kerala-scert/class-3/maths#add-carry",
+             "explain": {
+              "en": "700 and 60 and 15 make 775.",
+              "ml": "700-ഉം 60-ഉം 15-ഉം ചേർന്നാൽ 775."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Ones: 8 + 7 = 15. Tens: 10 + 50, and one more ten.",
+              "ml": "ഒന്നുകൾ: 8 + 7 = 15. പത്തുകൾ: 10 + 50, പിന്നെ ഒരു പത്ത് കൂടി."
+             },
+             "level": 1,
+             "mistakes": {
+              "7615": "wrote 15 in the ones place without moving the ten",
+              "765": "forgot to add the new ten"
+             },
+             "t": "ask",
+             "text": {
+              "en": "418 + 357 = ?",
+              "ml": "418 + 357 = ?"
+             }
+            },
+            {
+             "answer": "693",
+             "concept": "kerala-scert/class-3/maths#add-carry",
+             "explain": {
+              "en": "600 and 80 and 13 make 693.",
+              "ml": "600-ഉം 80-ഉം 13-ഉം ചേർന്നാൽ 693."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Ones: 5 + 8 = 13. Do not forget the new ten.",
+              "ml": "ഒന്നുകൾ: 5 + 8 = 13. പുതിയ പത്ത് മറക്കരുത്."
+             },
+             "level": 1,
+             "mistakes": {
+              "6813": "wrote 13 in the ones place without moving the ten",
+              "683": "forgot to add the new ten"
+             },
+             "options": [
+              "693",
+              "683",
+              "6813"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "465 + 228 = ?",
+              "ml": "465 + 228 = ?"
+             }
+            },
+            {
+             "answer": "1000",
+             "concept": "kerala-scert/class-3/maths#add-carry",
+             "explain": {
+              "en": "600 + 300 = 900, and 40 + 60 = 100. Together 1000.",
+              "ml": "600 + 300 = 900, 40 + 60 = 100. ചേർന്നാൽ 1000."
+             },
+             "form": "number",
+             "hint": {
+              "en": "40 and 60 make a new hundred. Then add the hundreds.",
+              "ml": "40-ഉം 60-ഉം ചേർന്നാൽ ഒരു പുതിയ നൂറ്. പിന്നെ നൂറുകൾ കൂട്ടൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "900": "forgot the new hundred made by the tens"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Try this one in your head. 640 + 360 = ?",
+              "ml": "ഇത് മനസ്സിൽ ചെയ്തു നോക്കൂ. 640 + 360 = ?"
+             }
+            }
+           ],
+           "title": {
+            "en": "When the ones make a new ten",
+            "ml": "ഒന്നുകൾ ഒരു പുതിയ പത്താകുമ്പോൾ"
+           }
+          }
+         ],
+         "objectives": [
+          {
+           "en": "Find pairs of numbers that make 100 and 1000"
+          },
+          {
+           "en": "Add three-digit numbers by splitting them into hundreds, tens and ones"
+          },
+          {
+           "en": "Add when the ones make a new ten"
+          }
+         ],
+         "source": "Follows Unit 4 of SCERT Kerala Mathematics Standard III, Part 1 (2024). Explanations and questions are our own.",
+         "title": {
+          "en": "Let's Join Together"
+         },
+         "verified": false
+        },
+        {
+         "id": "kerala-scert/class-3/maths/05-lets-measure",
+         "lessons": [
+          {
+           "id": "kerala-scert/class-3/maths/05-lets-measure/01-why-we-need-a-scale",
+           "minutes": 5,
+           "objective": {
+            "en": "Measure lengths in centimetres with a scale."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Two friends roll a marble and measure how far it went with their feet. One says 9 feet, the other says 11! Why? Their feet are not the same size.",
+              "ml": "രണ്ട് കൂട്ടുകാർ ഒരു ഗോലി ഉരുട്ടി, അത് പോയ ദൂരം കാലടി വെച്ച് അളന്നു. ഒരാൾക്ക് 9 അടി, മറ്റേയാൾക്ക് 11! എന്തുകൊണ്ട്? അവരുടെ കാലുകൾക്ക് ഒരേ വലിപ്പമല്ല."
+             },
+             "visual": {
+              "args": [
+               "👣",
+               "👣"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "So everyone uses the same measure: a scale. The gap between two long lines on it is 1 centimetre. We write cm for short.",
+              "ml": "അതുകൊണ്ട് എല്ലാവരും ഒരേ അളവ് ഉപയോഗിക്കുന്നു: സ്കെയിൽ. അതിലെ രണ്ട് നീണ്ട വരകൾക്കിടയിലെ അകലം 1 സെന്റിമീറ്റർ. ചുരുക്കി സെ.മീ എന്ന് എഴുതും."
+             },
+             "visual": {
+              "args": [
+               "5"
+              ],
+              "kind": "ruler"
+             }
+            },
+            {
+             "answer": "7",
+             "concept": "kerala-scert/class-3/maths#cm-scale",
+             "explain": {
+              "en": "The pencil ends at the 7 mark. It is 7 cm long.",
+              "ml": "പെൻസിൽ 7 എന്ന വരയിൽ അവസാനിക്കുന്നു. നീളം 7 സെ.മീ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "The pencil starts at 0. Read the number where it ends.",
+              "ml": "പെൻസിൽ 0-ൽ തുടങ്ങുന്നു. അത് അവസാനിക്കുന്നിടത്തെ സംഖ്യ വായിക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "8": "counted the lines, including the line at 0"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many centimetres long is this pencil?",
+              "ml": "ഈ പെൻസിലിന്റെ നീളം എത്ര സെന്റിമീറ്റർ?"
+             },
+             "visual": {
+              "args": [
+               "7",
+               "✏️"
+              ],
+              "kind": "ruler"
+             }
+            },
+            {
+             "answer": "3",
+             "concept": "kerala-scert/class-3/maths#cm-scale",
+             "explain": {
+              "en": "The eraser ends at the 3 mark. It is 3 cm long.",
+              "ml": "റബ്ബർ 3 എന്ന വരയിൽ അവസാനിക്കുന്നു. നീളം 3 സെ.മീ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Read the number where the eraser ends.",
+              "ml": "റബ്ബർ അവസാനിക്കുന്നിടത്തെ സംഖ്യ വായിക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "4": "counted the lines, including the line at 0"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many centimetres long is this eraser?",
+              "ml": "ഈ റബ്ബറിന്റെ നീളം എത്ര സെന്റിമീറ്റർ?"
+             },
+             "visual": {
+              "args": [
+               "3",
+               "🟪"
+              ],
+              "kind": "ruler"
+             }
+            },
+            {
+             "answer": "9 cm",
+             "concept": "kerala-scert/class-3/maths#cm-scale",
+             "explain": {
+              "en": "9 is more than 6, so the 9 cm ribbon is longer.",
+              "ml": "9, 6-നെക്കാൾ കൂടുതൽ. അതുകൊണ്ട് 9 സെ.മീ റിബൺ നീളം കൂടിയത്."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "The bigger number of centimetres is the longer ribbon.",
+              "ml": "കൂടുതൽ സെന്റിമീറ്ററുള്ളതാണ് നീളം കൂടിയ റിബൺ."
+             },
+             "level": 1,
+             "options": [
+              "9 cm",
+              "6 cm"
+             ],
+             "optionsMl": [
+              "9 സെ.മീ",
+              "6 സെ.മീ"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "One ribbon is 9 cm long. Another is 6 cm long. Which is longer?",
+              "ml": "ഒരു റിബണിന്റെ നീളം 9 സെ.മീ. മറ്റൊന്നിന്റെ നീളം 6 സെ.മീ. ഏതാണ് നീളം കൂടിയത്?"
+             }
+            },
+            {
+             "answer": "Their feet are different sizes",
+             "concept": "kerala-scert/class-3/maths#cm-scale",
+             "explain": {
+              "en": "Feet come in different sizes, so they give different answers. A scale is the same for everyone.",
+              "ml": "കാലുകൾക്ക് പല വലിപ്പമായതുകൊണ്ട് ഉത്തരങ്ങൾ മാറും. സ്കെയിൽ എല്ലാവർക്കും ഒരുപോലെയാണ്."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Is your foot the same size as your friend's foot?",
+              "ml": "നിന്റെ കാലിനും കൂട്ടുകാരന്റെ കാലിനും ഒരേ വലിപ്പമാണോ?"
+             },
+             "level": 2,
+             "options": [
+              "Their feet are different sizes",
+              "The marble moved"
+             ],
+             "optionsMl": [
+              "അവരുടെ കാലുകൾക്ക് വ്യത്യസ്ത വലിപ്പമാണ്",
+              "ഗോലി നീങ്ങിപ്പോയി"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Why did the two friends get different answers when they measured with their feet?",
+              "ml": "കാലടി വെച്ച് അളന്നപ്പോൾ രണ്ട് കൂട്ടുകാർക്കും വ്യത്യസ്ത ഉത്തരം കിട്ടിയത് എന്തുകൊണ്ട്?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Why we need a scale",
+            "ml": "സ്കെയിൽ എന്തിന്?"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/05-lets-measure/02-joining-lengths",
+           "minutes": 5,
+           "objective": {
+            "en": "Add lengths that are joined end to end."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Before you measure anything, make a guess first. Then measure and see how close you were. It is a fun game!",
+              "ml": "എന്തെങ്കിലും അളക്കുന്നതിന് മുമ്പ് ആദ്യം ഊഹിക്കൂ. പിന്നെ അളന്നു നോക്കി ഊഹം എത്ര അടുത്തെന്ന് കാണൂ. അതൊരു രസമുള്ള കളിയാണ്!"
+             },
+             "visual": {
+              "args": [
+               "🤔",
+               "📏"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Join a 10 cm stick and a 12 cm stick end to end. The total length is 10 and 12 together: 22 cm.",
+              "ml": "10 സെ.മീ ഈർക്കിലും 12 സെ.മീ ഈർക്കിലും അറ്റത്തോടറ്റം ചേർത്തു വെക്കൂ. ആകെ നീളം 10-ഉം 12-ഉം ചേർന്നത്: 22 സെ.മീ."
+             },
+             "visual": {
+              "args": [
+               "10 cm + 12 cm = 22 cm"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "25",
+             "concept": "kerala-scert/class-3/maths#add-lengths",
+             "explain": {
+              "en": "11 and 14 make 25 cm.",
+              "ml": "11-ഉം 14-ഉം ചേർന്നാൽ 25 സെ.മീ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Add the tens: 10 and 10. Then the ones: 1 and 4.",
+              "ml": "പത്തുകൾ കൂട്ടൂ: 10-ഉം 10-ഉം. പിന്നെ ഒന്നുകൾ: 1-ഉം 4-ഉം."
+             },
+             "level": 1,
+             "t": "ask",
+             "text": {
+              "en": "An 11 cm stick and a 14 cm stick are joined end to end. How many centimetres in all?",
+              "ml": "11 സെ.മീ ഈർക്കിലും 14 സെ.മീ ഈർക്കിലും അറ്റത്തോടറ്റം ചേർത്തു. ആകെ എത്ര സെന്റിമീറ്റർ?"
+             }
+            },
+            {
+             "answer": "25",
+             "concept": "kerala-scert/class-3/maths#add-lengths",
+             "explain": {
+              "en": "10 and 10 make 20, and 5 more make 25 cm.",
+              "ml": "10-ഉം 10-ഉം 20, 5 കൂടി ചേർന്നാൽ 25 സെ.മീ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "10 and 10 first. Then 5 more.",
+              "ml": "ആദ്യം 10-ഉം 10-ഉം. പിന്നെ 5 കൂടി."
+             },
+             "level": 1,
+             "mistakes": {
+              "20": "left out the last stick"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Three sticks of 10 cm, 10 cm and 5 cm are joined end to end. How long is the line?",
+              "ml": "10 സെ.മീ, 10 സെ.മീ, 5 സെ.മീ നീളമുള്ള മൂന്ന് ഈർക്കിലുകൾ അറ്റത്തോടറ്റം ചേർത്തു. ആകെ നീളം എത്ര?"
+             },
+             "visual": {
+              "args": [
+               "10 cm + 10 cm + 5 cm"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "12 cm + 13 cm",
+             "concept": "kerala-scert/class-3/maths#add-lengths",
+             "explain": {
+              "en": "12 and 13 make 25.",
+              "ml": "12-ഉം 13-ഉം ചേർന്നാൽ 25."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Add each pair and check.",
+              "ml": "ഓരോ ജോഡിയും കൂട്ടി നോക്കൂ."
+             },
+             "level": 1,
+             "options": [
+              "12 cm + 13 cm",
+              "10 cm + 14 cm",
+              "15 cm + 15 cm"
+             ],
+             "optionsMl": [
+              "12 സെ.മീ + 13 സെ.മീ",
+              "10 സെ.മീ + 14 സെ.മീ",
+              "15 സെ.മീ + 15 സെ.മീ"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which two sticks together make 25 cm?",
+              "ml": "ഏത് രണ്ട് ഈർക്കിലുകൾ ചേർന്നാൽ 25 സെ.മീ ആകും?"
+             }
+            },
+            {
+             "answer": "20",
+             "concept": "kerala-scert/class-3/maths#add-lengths",
+             "explain": {
+              "en": "30 take away 10 leaves 20 cm.",
+              "ml": "30-ൽ നിന്ന് 10 കുറച്ചാൽ 20 സെ.മീ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "This time a piece goes away. Take 10 from 30.",
+              "ml": "ഇത്തവണ ഒരു കഷണം പോകുകയാണ്. 30-ൽ നിന്ന് 10 കുറയ്ക്കൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "40": "added the lengths when a piece was cut off"
+             },
+             "t": "ask",
+             "text": {
+              "en": "A ribbon is 30 cm long. You cut off 10 cm. How many centimetres are left?",
+              "ml": "ഒരു റിബണിന്റെ നീളം 30 സെ.മീ. അതിൽ നിന്ന് 10 സെ.മീ മുറിച്ചു മാറ്റി. ബാക്കി എത്ര സെന്റിമീറ്റർ?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Joining lengths",
+            "ml": "നീളങ്ങൾ ചേർക്കാം"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/05-lets-measure/03-the-metre",
+           "minutes": 5,
+           "objective": {
+            "en": "Know that 100 centimetres make 1 metre and use metres and centimetres together."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "A sari or a classroom is far too long for a small scale. For long things we use a bigger measure, the metre.",
+              "ml": "ഒരു സാരിയോ ക്ലാസ്മുറിയോ ചെറിയ സ്കെയിൽ കൊണ്ട് അളക്കാൻ പ്രയാസമാണ്. നീളമുള്ളവയ്ക്ക് നമ്മൾ വലിയൊരു അളവ് ഉപയോഗിക്കും: മീറ്റർ."
+             },
+             "visual": {
+              "args": [
+               "📏",
+               "🥻"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "100 centimetres make 1 metre. We write m for metre.",
+              "ml": "100 സെന്റിമീറ്റർ ചേർന്നാൽ 1 മീറ്റർ. ചുരുക്കി മീ എന്ന് എഴുതും."
+             },
+             "visual": {
+              "args": [
+               "100 cm = 1 m"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "answer": "200",
+             "concept": "kerala-scert/class-3/maths#metre",
+             "explain": {
+              "en": "100 and 100 make 200 cm.",
+              "ml": "100-ഉം 100-ഉം ചേർന്നാൽ 200 സെ.മീ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "One metre is 100 cm. Take it two times.",
+              "ml": "ഒരു മീറ്റർ 100 സെ.മീ. അത് രണ്ട് തവണ എടുക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "102": "added 2 to 100 instead of taking two hundreds",
+              "20": "used 10 centimetres for a metre"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many centimetres are there in 2 metres?",
+              "ml": "2 മീറ്ററിൽ എത്ര സെന്റിമീറ്റർ ഉണ്ട്?"
+             }
+            },
+            {
+             "answer": "the length of the classroom",
+             "concept": "kerala-scert/class-3/maths#metre",
+             "explain": {
+              "en": "A classroom is long, so we use metres. An eraser is small, so we use centimetres.",
+              "ml": "ക്ലാസ്മുറി നീളമുള്ളതാണ്, അതിന് മീറ്റർ. റബ്ബർ ചെറുതാണ്, അതിന് സെന്റിമീറ്റർ."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Metres are for long things.",
+              "ml": "നീളമുള്ളവ അളക്കാനാണ് മീറ്റർ."
+             },
+             "level": 1,
+             "options": [
+              "the length of the classroom",
+              "the length of an eraser"
+             ],
+             "optionsMl": [
+              "ക്ലാസ്മുറിയുടെ നീളം",
+              "റബ്ബറിന്റെ നീളം"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which of these would you measure in metres?",
+              "ml": "ഇവയിൽ ഏതാണ് മീറ്ററിൽ അളക്കുക?"
+             }
+            },
+            {
+             "answer": "1 m 35 cm",
+             "concept": "kerala-scert/class-3/maths#metre",
+             "explain": {
+              "en": "135 cm is 100 cm and 35 cm. That is 1 metre 35 centimetres.",
+              "ml": "135 സെ.മീ എന്നാൽ 100 സെ.മീ-ഉം 35 സെ.മീ-ഉം. അതായത് 1 മീറ്റർ 35 സെന്റിമീറ്റർ."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Take out 100 cm as 1 metre. What is left?",
+              "ml": "100 സെ.മീ 1 മീറ്ററായി മാറ്റൂ. ബാക്കി എത്ര?"
+             },
+             "level": 2,
+             "mistakes": {
+              "13 m 5 cm": "split the digits instead of taking out 100 centimetres",
+              "135 m": "changed the unit without changing the number"
+             },
+             "options": [
+              "1 m 35 cm",
+              "13 m 5 cm",
+              "135 m"
+             ],
+             "optionsMl": [
+              "1 മീ 35 സെ.മീ",
+              "13 മീ 5 സെ.മീ",
+              "135 മീ"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "You jumped 135 cm. How else can we say that?",
+              "ml": "നീ 135 സെ.മീ ചാടി. ഇത് വേറെ എങ്ങനെ പറയാം?"
+             }
+            },
+            {
+             "answer": "120",
+             "concept": "kerala-scert/class-3/maths#metre",
+             "explain": {
+              "en": "100 and 20 make 120 cm.",
+              "ml": "100-ഉം 20-ഉം ചേർന്നാൽ 120 സെ.മീ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "1 metre is 100 cm. Add the 20 cm.",
+              "ml": "1 മീറ്റർ 100 സെ.മീ. അതിനോട് 20 സെ.മീ ചേർക്കൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "21": "added the two numbers without changing metres to centimetres",
+              "30": "used 10 centimetres for a metre"
+             },
+             "t": "ask",
+             "text": {
+              "en": "A table is 1 m 20 cm long. How many centimetres is that?",
+              "ml": "ഒരു മേശയുടെ നീളം 1 മീ 20 സെ.മീ. അത് എത്ര സെന്റിമീറ്റർ?"
+             }
+            }
+           ],
+           "title": {
+            "en": "The metre",
+            "ml": "മീറ്റർ"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/05-lets-measure/04-measuring-around",
+           "minutes": 5,
+           "objective": {
+            "en": "Measure around objects and add the sides of a shape."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "How thick is a pillar or a water bottle? Wrap a thread once around it. Then lay the thread straight on a scale and measure it.",
+              "ml": "ഒരു തൂണിനോ വെള്ളക്കുപ്പിക്കോ എത്ര വണ്ണമുണ്ട്? ഒരു നൂൽ അതിന് ചുറ്റും ഒരു തവണ ചുറ്റൂ. പിന്നെ നൂൽ നിവർത്തി സ്കെയിലിൽ വെച്ച് അളക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "🧵",
+               "🧴"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "For a shape with straight sides, add all its sides. A rectangle made of sticks 6 cm, 4 cm, 6 cm and 4 cm is 20 cm all the way around.",
+              "ml": "നേർവശങ്ങളുള്ള രൂപത്തിന്, എല്ലാ വശങ്ങളും കൂട്ടിയാൽ മതി. 6, 4, 6, 4 സെ.മീ ഈർക്കിലുകൾ കൊണ്ടുള്ള ചതുരത്തിന് ചുറ്റും ആകെ 20 സെ.മീ."
+             },
+             "visual": {
+              "args": [
+               "6 + 4 + 6 + 4 = 20 cm"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "15",
+             "concept": "kerala-scert/class-3/maths#around",
+             "explain": {
+              "en": "5 + 5 + 5 = 15 cm.",
+              "ml": "5 + 5 + 5 = 15 സെ.മീ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Add all three sides: 5 and 5 and 5.",
+              "ml": "മൂന്ന് വശങ്ങളും കൂട്ടൂ: 5-ഉം 5-ഉം 5-ഉം."
+             },
+             "level": 1,
+             "mistakes": {
+              "10": "added only two of the three sides",
+              "5": "gave the length of one side"
+             },
+             "t": "ask",
+             "text": {
+              "en": "A triangle is made with three sticks, each 5 cm long. How many centimetres of stick were used in all?",
+              "ml": "5 സെ.മീ വീതം നീളമുള്ള മൂന്ന് ഈർക്കിൽ കൊണ്ട് ഒരു ത്രികോണം ഉണ്ടാക്കി. ആകെ എത്ര സെന്റിമീറ്റർ ഈർക്കിൽ വേണ്ടിവന്നു?"
+             },
+             "visual": {
+              "args": [
+               "triangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "12",
+             "concept": "kerala-scert/class-3/maths#around",
+             "explain": {
+              "en": "3 + 3 + 3 + 3 = 12 cm.",
+              "ml": "3 + 3 + 3 + 3 = 12 സെ.മീ."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Add all four sides: 3, 6, 9, ...",
+              "ml": "നാല് വശങ്ങളും കൂട്ടൂ: 3, 6, 9, ..."
+             },
+             "level": 1,
+             "mistakes": {
+              "7": "added the number of sticks to the length",
+              "9": "added only three of the four sides"
+             },
+             "t": "ask",
+             "text": {
+              "en": "A square is made with four sticks, each 3 cm long. How many centimetres in all?",
+              "ml": "3 സെ.മീ വീതം നീളമുള്ള നാല് ഈർക്കിൽ കൊണ്ട് ഒരു സമചതുരം ഉണ്ടാക്കി. ആകെ എത്ര സെന്റിമീറ്റർ?"
+             },
+             "visual": {
+              "args": [
+               "square"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "20 cm",
+             "concept": "kerala-scert/class-3/maths#around",
+             "explain": {
+              "en": "8 + 2 + 8 + 2 = 20 cm.",
+              "ml": "8 + 2 + 8 + 2 = 20 സെ.മീ."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "There are four sides: 8, 2, 8 and 2.",
+              "ml": "നാല് വശങ്ങളുണ്ട്: 8, 2, 8, 2."
+             },
+             "level": 2,
+             "mistakes": {
+              "10 cm": "added only two of the four sides",
+              "16 cm": "left out the two short sides"
+             },
+             "options": [
+              "20 cm",
+              "10 cm",
+              "16 cm"
+             ],
+             "optionsMl": [
+              "20 സെ.മീ",
+              "10 സെ.മീ",
+              "16 സെ.മീ"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A rectangle has two long sides of 8 cm and two short sides of 2 cm. How far is it all the way around?",
+              "ml": "ഒരു ചതുരത്തിന് 8 സെ.മീ നീളമുള്ള രണ്ട് വശങ്ങളും 2 സെ.മീ നീളമുള്ള രണ്ട് വശങ്ങളുമുണ്ട്. ചുറ്റും ആകെ എത്ര?"
+             },
+             "visual": {
+              "args": [
+               "rectangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "answer": "Wrap a thread around it, then measure the thread",
+             "concept": "kerala-scert/class-3/maths#around",
+             "explain": {
+              "en": "A thread bends around the bottle. Straighten it on a scale to read the length.",
+              "ml": "നൂൽ കുപ്പിക്ക് ചുറ്റും വളയും. അത് നിവർത്തി സ്കെയിലിൽ വെച്ചാൽ നീളം അറിയാം."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "A scale cannot bend. What can bend around the bottle?",
+              "ml": "സ്കെയിൽ വളയില്ല. കുപ്പിക്ക് ചുറ്റും വളയുന്നത് എന്താണ്?"
+             },
+             "level": 1,
+             "options": [
+              "Wrap a thread around it, then measure the thread",
+              "Press a straight scale against it"
+             ],
+             "optionsMl": [
+              "ഒരു നൂൽ ചുറ്റി, പിന്നെ ആ നൂൽ അളക്കുക",
+              "നേരെയുള്ള സ്കെയിൽ അതിൽ അമർത്തി വെക്കുക"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What is a good way to measure around a round bottle?",
+              "ml": "ഉരുണ്ട കുപ്പിക്ക് ചുറ്റും അളക്കാൻ നല്ല വഴി ഏത്?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Measuring around",
+            "ml": "ചുറ്റളവ് അളക്കാം"
+           }
+          }
+         ],
+         "objectives": [
+          {
+           "en": "Measure lengths in centimetres with a scale"
+          },
+          {
+           "en": "Add lengths; know that 100 centimetres make 1 metre"
+          },
+          {
+           "en": "Measure around objects and shapes"
+          }
+         ],
+         "source": "Follows Unit 5 of SCERT Kerala Mathematics Standard III, Part 1 (2024). Explanations and questions are our own.",
+         "title": {
+          "en": "Let's Measure"
+         },
+         "verified": false
+        },
+        {
+         "id": "kerala-scert/class-3/maths/06-adding-and-adding-again",
+         "lessons": [
+          {
+           "id": "kerala-scert/class-3/maths/06-adding-and-adding-again/01-equal-groups",
            "minutes": 5,
            "objective": {
             "en": "Count objects arranged in equal groups.",
@@ -106,8 +3438,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Look! I have 3 baskets. Each basket has 4 mangoes.",
-              "ml": "നോക്കൂ! എന്റെ കയ്യിൽ 3 കൊട്ടകളുണ്ട്. ഓരോ കൊട്ടയിലും 4 മാങ്ങ വീതം."
+              "en": "It is the school anniversary, and snacks are being shared. Look! Here are 3 baskets. Each basket has 4 mangoes.",
+              "ml": "സ്കൂൾ വാർഷികമാണ്, പലഹാരങ്ങൾ പങ്കുവെക്കുന്നു. നോക്കൂ! ഇതാ 3 കൊട്ടകൾ. ഓരോ കൊട്ടയിലും 4 മാങ്ങ വീതം."
              },
              "visual": {
               "args": [
@@ -121,8 +3453,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Every basket has the same number of mangoes. We call these equal groups.",
-              "ml": "എല്ലാ കൊട്ടയിലും ഒരേ എണ്ണം മാങ്ങയുണ്ട്. ഇവയെ തുല്യ കൂട്ടങ്ങൾ എന്ന് പറയും."
+              "en": "Every basket has the same number of mangoes. We call these equal groups. To find the total we add 4 again and again: 4 + 4 + 4.",
+              "ml": "എല്ലാ കൊട്ടയിലും ഒരേ എണ്ണം മാങ്ങയുണ്ട്. ഇവയെ തുല്യ കൂട്ടങ്ങൾ എന്ന് പറയും. ആകെ എത്രയെന്നറിയാൻ 4 വീണ്ടും വീണ്ടും കൂട്ടണം: 4 + 4 + 4."
              },
              "visual": {
               "args": [
@@ -264,7 +3596,7 @@
            }
           },
           {
-           "id": "kerala-scert/class-3/maths/00-sample-equal-groups/02-groups-to-times",
+           "id": "kerala-scert/class-3/maths/06-adding-and-adding-again/02-groups-to-times",
            "minutes": 5,
            "objective": {
             "en": "Read and write equal groups using the × sign.",
@@ -297,6 +3629,20 @@
                "3 × 4 = 12"
               ],
               "kind": "text"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "2 × 3 has a special name. Two groups of 3 is the same as 3 doubled. 3 doubled is 6.",
+              "ml": "2 × 3-ന് ഒരു പ്രത്യേക പേരുണ്ട്. മൂന്നിന്റെ രണ്ട് കൂട്ടങ്ങൾ എന്നാൽ 3-ന്റെ ഇരട്ടി. 3-ന്റെ ഇരട്ടി 6."
+             },
+             "visual": {
+              "args": [
+               "2 × 3 = 3 + 3",
+               "3 doubled = 6"
+              ],
+              "kind": "steps"
              }
             },
             {
@@ -416,28 +3762,370 @@
               ],
               "kind": "groups"
              }
+            },
+            {
+             "answer": "50",
+             "concept": "kerala-scert/class-3/maths#times-sign",
+             "explain": {
+              "en": "25 and 25 make 50.",
+              "ml": "25-ഉം 25-ഉം ചേർന്നാൽ 50."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Doubled means two of them: 25 + 25.",
+              "ml": "ഇരട്ടി എന്നാൽ അത് രണ്ടെണ്ണം: 25 + 25."
+             },
+             "level": 2,
+             "mistakes": {
+              "27": "added 2 instead of doubling"
+             },
+             "t": "ask",
+             "text": {
+              "en": "What is 25 doubled?",
+              "ml": "25-ന്റെ ഇരട്ടി എത്ര?"
+             }
             }
            ],
            "title": {
             "en": "From groups to \"times\"",
             "ml": "കൂട്ടങ്ങളിൽ നിന്ന് ഗുണനത്തിലേക്ക്"
            }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/06-adding-and-adding-again/03-rows-and-packets",
+           "minutes": 5,
+           "objective": {
+            "en": "Use multiplication for packets and for rows."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "At a stall, soap bars are packed 4 in a packet. For 5 packets we add 4 five times. 5 × 4 = 20.",
+              "ml": "ഒരു സ്റ്റാളിൽ സോപ്പുകൾ 4 വീതം പാക്കറ്റിലാക്കുന്നു. 5 പാക്കറ്റിന് 4 അഞ്ച് തവണ കൂട്ടണം. 5 × 4 = 20."
+             },
+             "visual": {
+              "args": [
+               "5",
+               "4",
+               "🧼"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Chairs stand in rows for a meeting. 3 rows with 6 chairs in each row. That is 6 + 6 + 6, or 3 × 6 = 18.",
+              "ml": "യോഗത്തിനായി കസേരകൾ വരികളായി ഇട്ടിരിക്കുന്നു. 6 കസേര വീതമുള്ള 3 വരികൾ. അതായത് 6 + 6 + 6, അല്ലെങ്കിൽ 3 × 6 = 18."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "6",
+               "🪑"
+              ],
+              "kind": "array"
+             }
+            },
+            {
+             "answer": "16",
+             "concept": "kerala-scert/class-3/maths#times-facts",
+             "explain": {
+              "en": "4, 8, 12, 16. So 4 × 4 = 16.",
+              "ml": "4, 8, 12, 16. അതുകൊണ്ട് 4 × 4 = 16."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count in fours: 4, 8, ...",
+              "ml": "നാല് വീതം എണ്ണൂ: 4, 8, ..."
+             },
+             "level": 1,
+             "mistakes": {
+              "8": "added 4 and 4 instead of making four groups"
+             },
+             "t": "ask",
+             "text": {
+              "en": "4 teams run in a relay race. Each team has 4 runners. How many runners in all?",
+              "ml": "റിലേ ഓട്ടത്തിൽ 4 ടീമുകൾ. ഓരോ ടീമിലും 4 പേർ. ആകെ എത്ര ഓട്ടക്കാർ?"
+             },
+             "visual": {
+              "args": [
+               "4",
+               "4",
+               "🏃"
+              ],
+              "kind": "array"
+             }
+            },
+            {
+             "answer": "28",
+             "concept": "kerala-scert/class-3/maths#times-facts",
+             "explain": {
+              "en": "20 and 4 and 4 make 28. So 7 × 4 = 28.",
+              "ml": "20-ഉം 4-ഉം 4-ഉം ചേർന്നാൽ 28. അതുകൊണ്ട് 7 × 4 = 28."
+             },
+             "form": "number",
+             "hint": {
+              "en": "You know 5 × 4 = 20. Add two more fours.",
+              "ml": "5 × 4 = 20 എന്ന് അറിയാം. രണ്ട് നാലുകൾ കൂടി ചേർക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "11": "added 7 and 4 instead of making groups",
+              "24": "counted only six groups of four"
+             },
+             "t": "ask",
+             "text": {
+              "en": "7 winners each get 4 vegetable seedlings. How many seedlings are needed?",
+              "ml": "7 വിജയികൾക്ക് 4 വീതം പച്ചക്കറിത്തൈകൾ നൽകണം. ആകെ എത്ര തൈകൾ വേണം?"
+             }
+            },
+            {
+             "answer": "40",
+             "concept": "kerala-scert/class-3/maths#times-facts",
+             "explain": {
+              "en": "20 and 20 make 40. So 10 × 4 = 40.",
+              "ml": "20-ഉം 20-ഉം ചേർന്നാൽ 40. അതുകൊണ്ട് 10 × 4 = 40."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Ten fours. 5 × 4 is 20, so double it.",
+              "ml": "പത്ത് നാലുകൾ. 5 × 4 = 20, അതിന്റെ ഇരട്ടി."
+             },
+             "level": 2,
+             "mistakes": {
+              "14": "added 10 and 4 instead of making groups"
+             },
+             "t": "ask",
+             "text": {
+              "en": "10 × 4 = ?",
+              "ml": "10 × 4 = ?"
+             }
+            },
+            {
+             "answer": "36",
+             "concept": "kerala-scert/class-3/maths#times-facts",
+             "explain": {
+              "en": "18 and 18 make 36. So 6 × 6 = 36.",
+              "ml": "18-ഉം 18-ഉം ചേർന്നാൽ 36. അതുകൊണ്ട് 6 × 6 = 36."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "3 rows have 18 chairs. 6 rows are double that.",
+              "ml": "3 വരികളിൽ 18 കസേര. 6 വരികളിൽ അതിന്റെ ഇരട്ടി."
+             },
+             "level": 2,
+             "mistakes": {
+              "12": "added 6 and 6 instead of making six groups",
+              "66": "joined the two numbers together"
+             },
+             "options": [
+              "36",
+              "12",
+              "66"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "There are 6 rows with 6 chairs in each row. How many chairs?",
+              "ml": "6 കസേര വീതമുള്ള 6 വരികളുണ്ട്. ആകെ എത്ര കസേരകൾ?"
+             },
+             "visual": {
+              "args": [
+               "6",
+               "6",
+               "🪑"
+              ],
+              "kind": "array"
+             }
+            }
+           ],
+           "title": {
+            "en": "Rows and packets",
+            "ml": "വരികളും പാക്കറ്റുകളും"
+           }
+          },
+          {
+           "id": "kerala-scert/class-3/maths/06-adding-and-adding-again/04-number-relations",
+           "minutes": 5,
+           "objective": {
+            "en": "Find relations between multiplication facts."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Look at these. 2 × 3 = 6. 4 × 3 = 12. 8 × 3 = 24. When the number of groups doubles, the answer doubles too.",
+              "ml": "ഇവ നോക്കൂ. 2 × 3 = 6. 4 × 3 = 12. 8 × 3 = 24. കൂട്ടങ്ങളുടെ എണ്ണം ഇരട്ടിയാകുമ്പോൾ ഉത്തരവും ഇരട്ടിയാകും."
+             },
+             "visual": {
+              "args": [
+               "2 × 3 = 6",
+               "4 × 3 = 12",
+               "8 × 3 = 24"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "20",
+             "concept": "kerala-scert/class-3/maths#mult-relations",
+             "explain": {
+              "en": "Double 10 is 20. So 4 × 5 = 20.",
+              "ml": "10-ന്റെ ഇരട്ടി 20. അതുകൊണ്ട് 4 × 5 = 20."
+             },
+             "form": "number",
+             "hint": {
+              "en": "4 groups is double 2 groups. Double the answer.",
+              "ml": "4 കൂട്ടങ്ങൾ 2 കൂട്ടങ്ങളുടെ ഇരട്ടി. ഉത്തരവും ഇരട്ടിയാക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "12": "added 2 to the answer instead of doubling it"
+             },
+             "t": "ask",
+             "text": {
+              "en": "2 × 5 = 10. So what is 4 × 5?",
+              "ml": "2 × 5 = 10. അപ്പോൾ 4 × 5 എത്ര?"
+             }
+            },
+            {
+             "answer": "15",
+             "concept": "kerala-scert/class-3/maths#mult-relations",
+             "explain": {
+              "en": "3 fives and 5 threes are the same dots counted another way. Both are 15.",
+              "ml": "3 അഞ്ചുകളും 5 മൂന്നുകളും ഒരേ കുത്തുകൾ രണ്ട് രീതിയിൽ എണ്ണുന്നതാണ്. രണ്ടും 15."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Turn the picture sideways. Rows become columns. Does the number of dots change?",
+              "ml": "ചിത്രം ചരിച്ചു നോക്കൂ. വരികൾ നിരകളാകും. കുത്തുകളുടെ എണ്ണം മാറുമോ?"
+             },
+             "level": 1,
+             "t": "ask",
+             "text": {
+              "en": "3 × 5 = 15. So what is 5 × 3?",
+              "ml": "3 × 5 = 15. അപ്പോൾ 5 × 3 എത്ര?"
+             },
+             "visual": {
+              "args": [
+               "3",
+               "5",
+               "🔵"
+              ],
+              "kind": "array"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Different pairs can give the same answer. 1 × 12, 2 × 6 and 3 × 4 all make 12.",
+              "ml": "വ്യത്യസ്ത ജോഡികൾ ഒരേ ഉത്തരം തരാം. 1 × 12, 2 × 6, 3 × 4 ഇവയെല്ലാം 12."
+             },
+             "visual": {
+              "args": [
+               "1 × 12 = 12",
+               "2 × 6 = 12",
+               "3 × 4 = 12"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "4 × 6",
+             "concept": "kerala-scert/class-3/maths#mult-relations",
+             "explain": {
+              "en": "2 × 6 = 12, so 4 × 6 = 24.",
+              "ml": "2 × 6 = 12, അതുകൊണ്ട് 4 × 6 = 24."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "You know 2 × 6 = 12. Double the groups.",
+              "ml": "2 × 6 = 12 എന്ന് അറിയാം. കൂട്ടങ്ങൾ ഇരട്ടിയാക്കൂ."
+             },
+             "level": 1,
+             "options": [
+              "4 × 6",
+              "4 × 5",
+              "2 × 10"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which of these makes 24?",
+              "ml": "ഇവയിൽ 24 കിട്ടുന്നത് ഏത്?"
+             }
+            },
+            {
+             "answer": "6",
+             "concept": "kerala-scert/class-3/maths#mult-relations",
+             "explain": {
+              "en": "2 groups of 3 is 3 + 3 = 6. Adding and multiplying usually give different answers.",
+              "ml": "മൂന്നിന്റെ 2 കൂട്ടങ്ങൾ 3 + 3 = 6. കൂട്ടലും ഗുണനവും മിക്കപ്പോഴും വ്യത്യസ്ത ഉത്തരം തരും."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "× means groups. 2 groups of 3.",
+              "ml": "× എന്നാൽ കൂട്ടങ്ങൾ. മൂന്നിന്റെ 2 കൂട്ടങ്ങൾ."
+             },
+             "level": 2,
+             "mistakes": {
+              "23": "joined the two numbers together",
+              "5": "read × as adding"
+             },
+             "options": [
+              "6",
+              "5",
+              "23"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "2 + 3 = 5. But what is 2 × 3?",
+              "ml": "2 + 3 = 5. എന്നാൽ 2 × 3 എത്ര?"
+             }
+            },
+            {
+             "answer": "120",
+             "concept": "kerala-scert/class-3/maths#mult-relations",
+             "explain": {
+              "en": "60 and 60 make 120. So 20 × 6 = 120.",
+              "ml": "60-ഉം 60-ഉം ചേർന്നാൽ 120. അതുകൊണ്ട് 20 × 6 = 120."
+             },
+             "form": "number",
+             "hint": {
+              "en": "10 overs have 60 balls. 20 overs are double that.",
+              "ml": "10 ഓവറിൽ 60 പന്തുകൾ. 20 ഓവറിൽ അതിന്റെ ഇരട്ടി."
+             },
+             "level": 2,
+             "mistakes": {
+              "26": "added 20 and 6 instead of making groups"
+             },
+             "t": "ask",
+             "text": {
+              "en": "In cricket, one over has 6 balls. How many balls are bowled in 20 overs?",
+              "ml": "ക്രിക്കറ്റിൽ ഒരു ഓവറിൽ 6 പന്തുകൾ. 20 ഓവറിൽ എത്ര പന്തുകൾ എറിയും?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Number relations",
+            "ml": "സംഖ്യാബന്ധങ്ങൾ"
+           }
           }
          ],
          "objectives": [
           {
-           "en": "Count objects arranged in equal groups",
-           "ml": "തുല്യ കൂട്ടങ്ങളായി വെച്ച വസ്തുക്കൾ എണ്ണുക"
+           "en": "See multiplication as adding equal groups again and again"
           },
           {
-           "en": "Read and write 'groups of' using the × sign",
-           "ml": "× ചിഹ്നം ഉപയോഗിച്ച് കൂട്ടങ്ങൾ എഴുതുക"
+           "en": "Read and write the × sign; double numbers"
+          },
+          {
+           "en": "Find relations between multiplication facts"
           }
          ],
-         "source": "Sample written to test the app. It is NOT a textbook chapter - replace it with real SCERT chapters.",
+         "source": "Follows Unit 6 of SCERT Kerala Mathematics Standard III, Part 1 (2024). Explanations and questions are our own.",
          "title": {
-          "en": "Sample chapter: Equal groups",
-          "ml": "മാതൃകാ പാഠം: തുല്യ കൂട്ടങ്ങൾ"
+          "en": "Adding... and Adding Again"
          },
          "verified": false
         }
@@ -619,123 +4307,7 @@
      "number": 3,
      "subjects": [
       {
-       "chapters": [
-        {
-         "id": "cbse/class-3/maths/00-sample-tens-and-ones",
-         "lessons": [
-          {
-           "fromNotes": true,
-           "id": "cbse/class-3/maths/00-sample-tens-and-ones/notes-1",
-           "minutes": 4,
-           "steps": [
-            {
-             "t": "say",
-             "text": {
-              "en": "When we count in tens, we jump ten steps each time: 10, 20, 30, 40."
-             },
-             "visual": {
-              "args": [
-               "0",
-               "50",
-               "30"
-              ],
-              "kind": "numberline"
-             }
-            },
-            {
-             "label": "example",
-             "t": "say",
-             "text": {
-              "en": "3 jumps of ten take us to 30."
-             }
-            },
-            {
-             "answer": "50",
-             "concept": "cbse/class-3/maths#counting-in-tens",
-             "form": "number",
-             "hint": {
-              "en": "Jump ten more steps from 40."
-             },
-             "level": 1,
-             "t": "ask",
-             "text": {
-              "en": "What comes after 40 when we count in tens?"
-             }
-            },
-            {
-             "answer": "50",
-             "concept": "cbse/class-3/maths#counting-in-tens",
-             "form": "choice",
-             "level": 1,
-             "options": [
-              "30",
-              "50"
-             ],
-             "t": "ask",
-             "text": {
-              "en": "Which is bigger?"
-             }
-            }
-           ],
-           "title": {
-            "en": "Counting in tens"
-           }
-          },
-          {
-           "fromNotes": true,
-           "id": "cbse/class-3/maths/00-sample-tens-and-ones/notes-2",
-           "minutes": 4,
-           "steps": [
-            {
-             "t": "say",
-             "text": {
-              "en": "A two-digit number is made of tens and ones. The number 34 has 3 tens and 4 ones."
-             },
-             "visual": {
-              "args": [
-               "34 = 30 + 4"
-              ],
-              "kind": "text"
-             }
-            },
-            {
-             "answer": "5",
-             "concept": "cbse/class-3/maths#tens-and-ones",
-             "form": "number",
-             "level": 1,
-             "t": "ask",
-             "text": {
-              "en": "How many tens are in 52?"
-             }
-            },
-            {
-             "answer": "Because 43 has 4 tens and 34 has only 3 tens.",
-             "concept": "cbse/class-3/maths#tens-and-ones",
-             "form": "think",
-             "level": 1,
-             "t": "ask",
-             "text": {
-              "en": "Why is 43 bigger than 34?"
-             }
-            }
-           ],
-           "title": {
-            "en": "Tens and ones"
-           }
-          }
-         ],
-         "objectives": [
-          {
-           "en": "Count in tens and read two-digit numbers as tens and ones"
-          }
-         ],
-         "source": "Sample written to test the app. It is NOT a textbook chapter - replace it with real NCERT chapters.",
-         "title": {
-          "en": "Sample chapter: Tens and ones"
-         },
-         "verified": false
-        }
-       ],
+       "chapters": [],
        "color": "#FF8A3D",
        "icon": "🔢",
        "id": "cbse/class-3/maths",
@@ -823,22 +4395,364 @@
    "order": 2
   }
  ],
- "built": 1794341022,
+ "built": 1794374651,
  "concepts": {
-  "cbse/class-3/maths#counting-in-tens": {
-   "en": "Counting in tens"
+  "kerala-scert/class-3/maths#add-carry": {
+   "en": "Adding when the ones make a new ten",
+   "ml": "ഒന്നുകൾ പത്താകുമ്പോഴുള്ള കൂട്ടൽ"
   },
-  "cbse/class-3/maths#tens-and-ones": {
-   "en": "Tens and ones"
+  "kerala-scert/class-3/maths#add-lengths": {
+   "en": "Adding lengths",
+   "ml": "നീളങ്ങൾ കൂട്ടൽ"
+  },
+  "kerala-scert/class-3/maths#add-split": {
+   "en": "Adding by splitting into hundreds, tens and ones",
+   "ml": "നൂറുകളും പത്തുകളും ഒന്നുകളുമാക്കി കൂട്ടൽ"
+  },
+  "kerala-scert/class-3/maths#around": {
+   "en": "Measuring around a shape",
+   "ml": "ചുറ്റും അളക്കൽ"
+  },
+  "kerala-scert/class-3/maths#beyond-1000": {
+   "en": "Numbers beyond 1000",
+   "ml": "ആയിരത്തിന് മുകളിലുള്ള സംഖ്യകൾ"
+  },
+  "kerala-scert/class-3/maths#cm-scale": {
+   "en": "Measuring in centimetres",
+   "ml": "സെന്റിമീറ്ററിൽ അളക്കൽ"
+  },
+  "kerala-scert/class-3/maths#compare-order": {
+   "en": "Comparing and ordering numbers"
+  },
+  "kerala-scert/class-3/maths#counting-range": {
+   "en": "Counting numbers in a range",
+   "ml": "ഒരു പരിധിയിലെ സംഖ്യകൾ എണ്ണൽ"
+  },
+  "kerala-scert/class-3/maths#digits-make-numbers": {
+   "en": "Building numbers from digits",
+   "ml": "അക്കങ്ങളിൽ നിന്ന് സംഖ്യകൾ ഉണ്ടാക്കൽ"
   },
   "kerala-scert/class-3/maths#equal-groups": {
    "en": "Counting equal groups",
    "ml": "തുല്യ കൂട്ടങ്ങൾ എണ്ണൽ"
+  },
+  "kerala-scert/class-3/maths#metre": {
+   "en": "Metres and centimetres",
+   "ml": "മീറ്ററും സെന്റിമീറ്ററും"
+  },
+  "kerala-scert/class-3/maths#mult-relations": {
+   "en": "Relations between multiplication facts",
+   "ml": "ഗുണനത്തിലെ ബന്ധങ്ങൾ"
+  },
+  "kerala-scert/class-3/maths#number-names": {
+   "en": "Number names and counting on",
+   "ml": "സംഖ്യാനാമങ്ങളും തുടർന്നെണ്ണലും"
+  },
+  "kerala-scert/class-3/maths#odd-even": {
+   "en": "Odd and even numbers",
+   "ml": "ഒറ്റ, ഇരട്ട സംഖ്യകൾ"
+  },
+  "kerala-scert/class-3/maths#pairs-100": {
+   "en": "Pairs that make 100",
+   "ml": "100 ആക്കുന്ന ജോഡികൾ"
+  },
+  "kerala-scert/class-3/maths#pairs-1000": {
+   "en": "Pairs that make 1000",
+   "ml": "1000 ആക്കുന്ന ജോഡികൾ"
+  },
+  "kerala-scert/class-3/maths#patterns-solids": {
+   "en": "Patterns and solid shapes",
+   "ml": "ക്രമങ്ങളും ഘനരൂപങ്ങളും"
+  },
+  "kerala-scert/class-3/maths#place-value": {
+   "en": "Place value",
+   "ml": "സ്ഥാനവില"
+  },
+  "kerala-scert/class-3/maths#shape-join": {
+   "en": "Shapes inside shapes",
+   "ml": "രൂപങ്ങൾക്കുള്ളിലെ രൂപങ്ങൾ"
+  },
+  "kerala-scert/class-3/maths#shape-names": {
+   "en": "Naming shapes",
+   "ml": "രൂപങ്ങളുടെ പേരുകൾ"
+  },
+  "kerala-scert/class-3/maths#shape-sides": {
+   "en": "Sides of shapes",
+   "ml": "രൂപങ്ങളുടെ വശങ്ങൾ"
+  },
+  "kerala-scert/class-3/maths#split-hundreds": {
+   "en": "Splitting hundreds",
+   "ml": "നൂറുകൾ പിരിക്കൽ"
+  },
+  "kerala-scert/class-3/maths#tens-hundreds": {
+   "en": "Tens, hundreds and a thousand",
+   "ml": "പത്തുകളും നൂറുകളും ആയിരവും"
+  },
+  "kerala-scert/class-3/maths#times-facts": {
+   "en": "Multiplying with packets and rows",
+   "ml": "പാക്കറ്റുകളും വരികളും ഉപയോഗിച്ച് ഗുണനം"
   },
   "kerala-scert/class-3/maths#times-sign": {
    "en": "Meaning of the × sign",
    "ml": "× ചിഹ്നത്തിന്റെ അർത്ഥം"
   }
  },
- "version": "53bc636b2645"
+ "phrases": {
+  "again": {
+   "en": "Remember this one? Let us try again.",
+   "ml": "ഇത് ഓർമ്മയുണ്ടോ? ഒന്നുകൂടി നോക്കാം."
+  },
+  "allDone": {
+   "en": "You finished everything here. Amazing!",
+   "ml": "ഇവിടെയുള്ളതെല്ലാം നീ പൂർത്തിയാക്കി. അടിപൊളി!"
+  },
+  "comingSoon": {
+   "en": "Lessons are on the way!",
+   "ml": "പാഠങ്ങൾ ഉടൻ വരും!"
+  },
+  "lookAgain": {
+   "en": "Look at it once more, slowly.",
+   "ml": "പതുക്കെ ഒന്നുകൂടി നോക്കൂ."
+  },
+  "nextUp": {
+   "en": "Next for you:",
+   "ml": "അടുത്തത്:"
+  },
+  "pickLevel": {
+   "en": "Tap the glowing level to start.",
+   "ml": "തിളങ്ങുന്ന ലെവൽ അമർത്തി തുടങ്ങൂ."
+  },
+  "practice": {
+   "en": "Practice time",
+   "ml": "പരിശീലന സമയം"
+  },
+  "practiceFirst": {
+   "en": "Some of these were tricky last time. Let us try them again, slowly.",
+   "ml": "കഴിഞ്ഞ തവണ ഇവയിൽ ചിലത് അല്പം പ്രയാസമായിരുന്നു. നമുക്ക് പതുക്കെ ഒന്നുകൂടി നോക്കാം."
+  },
+  "tapGo": {
+   "en": "Tap the green button and follow me!",
+   "ml": "പച്ച ബട്ടൺ അമർത്തി എന്റെ കൂടെ വരൂ!"
+  },
+  "think": {
+   "en": "Think about it, then tap the button.",
+   "ml": "ആലോചിച്ചിട്ട് ബട്ടൺ അമർത്തൂ."
+  },
+  "timeUp": {
+   "en": "That is enough learning for today. See you tomorrow!",
+   "ml": "ഇന്നത്തേക്ക് ഇത്രയും മതി. നാളെ കാണാം!"
+  },
+  "tryLater": {
+   "en": "We will try this one again in a little while.",
+   "ml": "ഇത് നമുക്ക് കുറച്ചു കഴിഞ്ഞ് ഒന്നുകൂടി നോക്കാം."
+  }
+ },
+ "tutors": [
+  {
+   "about": {
+    "en": "Gentle and warm. Loves turning maths into little stories.",
+    "ml": "സൗമ്യയാണ്. കണക്ക് കൊച്ചു കഥകളാക്കാൻ ഇഷ്ടം."
+   },
+   "cheer": {
+    "en": "You finished the level! I am so proud of you.",
+    "ml": "നീ ഈ ലെവൽ പൂർത്തിയാക്കി! എനിക്ക് വളരെ അഭിമാനം."
+   },
+   "color": "#FFB81F",
+   "energy": 1.0,
+   "eyes": "round",
+   "hello": {
+    "en": "Hello! I am Minnu. Shall we learn with a story today?",
+    "ml": "ഹലോ! ഞാൻ മിന്നു. ഇന്ന് ഒരു കഥയിലൂടെ പഠിക്കാമോ?"
+   },
+   "id": "minnu",
+   "name": {
+    "en": "Minnu",
+    "ml": "മിന്നു"
+   },
+   "oops": {
+    "en": "Not yet, and that is okay.",
+    "ml": "സാരമില്ല, ഒന്നുകൂടി നോക്കാം."
+   },
+   "praise": {
+    "en": [
+     "Lovely! ✨",
+     "You shine! 🌟",
+     "Beautifully done!"
+    ],
+    "ml": [
+     "വളരെ നന്നായി! ✨",
+     "നീ തിളങ്ങുന്നു! 🌟",
+     "അടിപൊളി!"
+    ]
+   },
+   "shape": "blob",
+   "style": "a warm, gentle storyteller talking to a young child, unhurried and smiling",
+   "voice": "Sulafat"
+  },
+  {
+   "about": {
+    "en": "Full of energy. Treats every question like a game to win.",
+    "ml": "നിറയെ ഊർജ്ജം. ഓരോ ചോദ്യവും ജയിക്കാനുള്ള കളിയാണ്."
+   },
+   "cheer": {
+    "en": "Level complete! What a champion!",
+    "ml": "ലെവൽ പൂർത്തിയായി! നീയൊരു ചാമ്പ്യൻ തന്നെ!"
+   },
+   "color": "#19B5A5",
+   "energy": 1.8,
+   "eyes": "wide",
+   "hello": {
+    "en": "Hey hey! I am Tiko. Ready to play and win?",
+    "ml": "ഹേയ്! ഞാൻ ടിക്കോ. കളിച്ചു ജയിക്കാൻ റെഡിയാണോ?"
+   },
+   "id": "tiko",
+   "name": {
+    "en": "Tiko",
+    "ml": "ടിക്കോ"
+   },
+   "oops": {
+    "en": "Oops! Let us crack it together.",
+    "ml": "അയ്യോ! നമുക്ക് ഒരുമിച്ച് കണ്ടുപിടിക്കാം."
+   },
+   "praise": {
+    "en": [
+     "Boom! Correct! 💥",
+     "High five! 🙌",
+     "Zap! You got it! ⚡"
+    ],
+    "ml": [
+     "ബൂം! ശരിയാണ്! 💥",
+     "സൂപ്പർ! 🙌",
+     "കലക്കി! ⚡"
+    ]
+   },
+   "shape": "spiky",
+   "style": "an excited, playful game host talking to a young child, upbeat and bouncy",
+   "voice": "Puck"
+  },
+  {
+   "about": {
+    "en": "Calm and patient. Never in a hurry, happy to go again.",
+    "ml": "ശാന്തവും ക്ഷമയുള്ളതും. ഒരിക്കലും തിരക്കില്ല."
+   },
+   "cheer": {
+    "en": "You did it, step by step. Wonderful.",
+    "ml": "പടിപടിയായി നീ അത് ചെയ്തു. മനോഹരം."
+   },
+   "color": "#F178A6",
+   "energy": 0.6,
+   "eyes": "soft",
+   "hello": {
+    "en": "Hello, little one. I am Pompy. We will go nice and slow.",
+    "ml": "ഹലോ കുഞ്ഞേ. ഞാൻ പോംപി. നമുക്ക് പതുക്കെ പതുക്കെ പഠിക്കാം."
+   },
+   "id": "pompy",
+   "name": {
+    "en": "Pompy",
+    "ml": "പോംപി"
+   },
+   "oops": {
+    "en": "No hurry. Let us look again, slowly.",
+    "ml": "തിരക്കില്ല. പതുക്കെ ഒന്നുകൂടി നോക്കാം."
+   },
+   "praise": {
+    "en": [
+     "Well done. 🌸",
+     "That is right. Nicely thought.",
+     "Yes! Slow and steady. 🐢"
+    ],
+    "ml": [
+     "നന്നായി. 🌸",
+     "അത് ശരിയാണ്. നന്നായി ആലോചിച്ചു.",
+     "അതെ! പതുക്കെ, ഉറപ്പോടെ. 🐢"
+    ]
+   },
+   "shape": "cloud",
+   "style": "a calm, patient, soothing friend talking slowly to a young child",
+   "voice": "Vindemiatrix"
+  },
+  {
+   "about": {
+    "en": "Always curious. Loves asking why and finding out.",
+    "ml": "എപ്പോഴും ജിജ്ഞാസ. എന്തുകൊണ്ട് എന്ന് ചോദിക്കാൻ ഇഷ്ടം."
+   },
+   "cheer": {
+    "en": "Level complete! Look how much we discovered.",
+    "ml": "ലെവൽ പൂർത്തിയായി! നമ്മൾ എത്രയെല്ലാം കണ്ടുപിടിച്ചു."
+   },
+   "color": "#8E6BFF",
+   "energy": 1.2,
+   "eyes": "curious",
+   "hello": {
+    "en": "Ooh, hello! I am Zizu. I wonder what we will discover today?",
+    "ml": "ഓ, ഹലോ! ഞാൻ സിസു. ഇന്ന് നമ്മൾ എന്താണ് കണ്ടുപിടിക്കുക?"
+   },
+   "id": "zizu",
+   "name": {
+    "en": "Zizu",
+    "ml": "സിസു"
+   },
+   "oops": {
+    "en": "Hmm, interesting! Let us find out why.",
+    "ml": "ഹും, കൊള്ളാമല്ലോ! കാരണം കണ്ടുപിടിക്കാം."
+   },
+   "praise": {
+    "en": [
+     "Ooh, you found it! 🔍",
+     "Yes! Now I know why. 💡",
+     "What a discovery! 🚀"
+    ],
+    "ml": [
+     "ഓ, നീ കണ്ടുപിടിച്ചു! 🔍",
+     "അതെ! ഇപ്പോൾ കാരണം മനസ്സിലായി. 💡",
+     "എന്തൊരു കണ്ടുപിടിത്തം! 🚀"
+    ]
+   },
+   "shape": "flower",
+   "style": "a curious, wonder-filled young explorer talking to a young child, bright and questioning",
+   "voice": "Leda"
+  },
+  {
+   "about": {
+    "en": "Funny and relaxed. Makes learning feel like a joke between friends.",
+    "ml": "തമാശക്കാരൻ. പഠനം കൂട്ടുകാർക്കിടയിലെ തമാശ പോലെ."
+   },
+   "cheer": {
+    "en": "Level done! Now that deserves a happy dance.",
+    "ml": "ലെവൽ കഴിഞ്ഞു! ഇതിനൊരു ഡാൻസ് വേണം."
+   },
+   "color": "#FF7A45",
+   "energy": 0.9,
+   "eyes": "sleepy",
+   "hello": {
+    "en": "Yo! Koko here. I was napping, but maths is more fun.",
+    "ml": "ഹായ്! ഞാൻ കോക്കോ. ഉറങ്ങുകയായിരുന്നു, പക്ഷേ കണക്കാണ് കൂടുതൽ രസം."
+   },
+   "id": "koko",
+   "name": {
+    "en": "Koko",
+    "ml": "കോക്കോ"
+   },
+   "oops": {
+    "en": "Whoops! Even I get that wrong sometimes.",
+    "ml": "അയ്യോ! എനിക്കും ചിലപ്പോൾ ഇത് തെറ്റാറുണ്ട്."
+   },
+   "praise": {
+    "en": [
+     "Ha! Too easy for you. 😎",
+     "Nailed it! 🎯",
+     "Whoa, big brain! 🧠"
+    ],
+    "ml": [
+     "ഹ! നിനക്കിത് നിസ്സാരം. 😎",
+     "കൃത്യം! 🎯",
+     "അമ്പോ, വലിയ ബുദ്ധി! 🧠"
+    ]
+   },
+   "shape": "bean",
+   "style": "a funny, cheeky, good-humoured friend talking to a young child, with a playful grin in the voice",
+   "voice": "Sadachbia"
+  }
+ ],
+ "version": "3dfbab9c27c0"
 }

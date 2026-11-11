@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../content.dart';
 import '../state.dart';
 import '../tutor.dart';
+import '../voice.dart';
 import '../widgets/avatar.dart';
 import '../widgets/ui.dart';
 
@@ -30,7 +31,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     'Which class?',
     'Which language should the tutor use?',
     'Which subjects is your child studying?',
-    'Let your child pick a tutor!',
+    'Let your child pick a friend to learn with!',
   ];
 
   @override
@@ -160,15 +161,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               padding: const EdgeInsets.only(bottom: 12),
               child: Chunky(
                 color: tutorId == t.id ? indigo : Colors.white,
-                onTap: () => setState(() => tutorId = t.id),
+                onTap: () {
+                  setState(() => tutorId = t.id);
+                  final l = lang == 'ml' ? 'ml' : 'en';
+                  appSpeaker?.say([pick(t.hello, l)], l, t);
+                },
                 child: Row(children: [
-                  TutorAvatar(tutor: t, size: 84, mood: tutorId == t.id ? Mood.happy : Mood.calm),
+                  TutorAvatar(tutor: t, size: 78, mood: tutorId == t.id ? Mood.happy : Mood.calm),
                   const SizedBox(width: 14),
                   Expanded(
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text('${t.name} · ${t.nameMl}',
-                          style: TextStyle(fontSize: 21, color: tutorId == t.id ? Colors.white : ink)),
-                      Text(lang == 'ml' ? t.aboutMl : t.about,
+                      Text('${pick(t.name, 'en')} · ${pick(t.name, 'ml')}',
+                          style: TextStyle(fontSize: 20, color: tutorId == t.id ? Colors.white : ink)),
+                      Text(pick(t.about, lang == 'ml' ? 'ml' : 'en'),
                           textAlign: TextAlign.left,
                           style: TextStyle(
                               fontSize: 14,

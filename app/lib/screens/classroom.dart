@@ -1,10 +1,13 @@
 // The classroom: the tutor runs the lesson, the child answers.
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../content.dart';
 import '../state.dart';
 import '../strings.dart';
 import '../tutor.dart';
+import '../voice.dart';
 import '../widgets/avatar.dart';
 import '../widgets/ui.dart';
 import '../widgets/visuals.dart';
@@ -23,6 +26,11 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
   final Stopwatch _watch = Stopwatch()..start();
   String _typed = '';
   bool _closed = false;
+  Spot _lastSpot = Spot.left;
+  Offset? _walkLook; // eyes lead the way while the tutor is moving
+  Timer? _walkTimer;
+  Timer? _peekTimer;
+  bool _peek = false; // while teaching, glance from the board back to the child
 
   @override
   void initState() {
@@ -33,12 +41,42 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
       tutor: tutorById(appState.tutorId),
       recordFor: appState.concept,
       day: dayNumber(),
+      phrases: contentStore.bundle.phrases,
       speaker: appState.voiceOn ? appSpeaker : null,
     );
+    _lastSpot = d.spot;
+    if (appState.voiceOn) appSpeaker?.prefetch(d.allLines, d.lang, d.tutor);
     d.addListener(_onChange);
+    _peekTimer = Timer.periodic(const Duration(milliseconds: 2600), (_) {
+      if (mounted && d.look == Look.board && d.phase == Phase.talking) setState(() => _peek = !_peek);
+    });
+  }
+
+  /// Where the tutor's eyes should point right now.
+  Offset get _gaze {
+    if (_walkLook != null) return _walkLook!;
+    final towardCentre = switch (d.spot) { Spot.left => 0.55, Spot.center => 0.0, Spot.right => -0.55 };
+    switch (d.look) {
+      case Look.board:
+        return _peek ? Offset.zero : Offset(towardCentre, -0.9);
+      case Look.answers:
+        return Offset(towardCentre * 0.8, 0.9);
+      case Look.child:
+        return Offset.zero;
+    }
   }
 
   void _onChange() {
+    _peek = false;
+    if (d.spot != _lastSpot) {
+      final dir = d.spot.index > _lastSpot.index ? 1.0 : -1.0;
+      _lastSpot = d.spot;
+      _walkLook = Offset(dir, 0.1);
+      _walkTimer?.cancel();
+      _walkTimer = Timer(const Duration(milliseconds: 700), () {
+        if (mounted) setState(() => _walkLook = null);
+      });
+    }
     if (d.phase == Phase.finished && !_closed) {
       _closed = true;
       _logTime();
@@ -65,6 +103,8 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
       _logTime();
       appState.save(); // keep what was learned even if the lesson was left early
     }
+    _walkTimer?.cancel();
+    _peekTimer?.cancel();
     d.removeListener(_onChange);
     d.dispose();
     super.dispose();
@@ -138,7 +178,11 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
                           Spot.center => Alignment.center,
                           Spot.right => Alignment.centerRight,
                         },
-                        child: TutorAvatar(tutor: d.tutor, size: 88, talking: d.phase == Phase.talking, mood: d.mood),
+                        child: ValueListenableBuilder<bool>(
+                          valueListenable: d.speaker?.speaking ?? const AlwaysStoppedAnimation(false),
+                          builder: (_, speaking, __) =>
+                              TutorAvatar(tutor: d.tutor, size: 88, talking: speaking, mood: d.mood, gaze: _gaze),
+                        ),
                       ),
                     ),
                     // Speech bubble
@@ -287,11 +331,29 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
   }
 }
 
-class CelebrationScreen extends StatelessWidget {
+class CelebrationScreen extends StatefulWidget {
   const CelebrationScreen({super.key, required this.stars, required this.xp, required this.newDay});
   final int stars;
   final int xp;
   final bool newDay;
+
+  @override
+  State<CelebrationScreen> createState() => _CelebrationScreenState();
+}
+
+class _CelebrationScreenState extends State<CelebrationScreen> {
+  int get stars => widget.stars;
+  int get xp => widget.xp;
+  bool get newDay => widget.newDay;
+
+  @override
+  void initState() {
+    super.initState();
+    if (appState.voiceOn) {
+      final t = tutorById(appState.tutorId);
+      appSpeaker?.say([pick(t.cheer, appState.mainLang)], appState.mainLang, t);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

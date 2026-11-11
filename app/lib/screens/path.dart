@@ -51,12 +51,13 @@ class PathScreen extends StatelessWidget {
             final stars = appState.lessonStars[l.id] ?? 0;
             final x = sin(i * 1.1) * 0.55;
             i++;
+            final level = i;
             items.add(Padding(
               padding: const EdgeInsets.only(bottom: 18),
               child: Align(
                 alignment: Alignment(x, 0),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
-                  if (isCurrent && x > 0) TutorAvatar(tutor: tutor, size: 64, mood: Mood.happy),
+                  if (isCurrent && x > 0) TutorAvatar(tutor: tutor, size: 64, mood: Mood.happy, gaze: const Offset(0.9, 0.1)),
                   Column(mainAxisSize: MainAxisSize.min, children: [
                     SizedBox(
                       width: 92,
@@ -81,7 +82,7 @@ class PathScreen extends StatelessWidget {
                     const SizedBox(height: 6),
                     SizedBox(
                       width: 150,
-                      child: Text(pick(l.title, lang),
+                      child: Text('${tr('level', lang)} $level\n${pick(l.title, lang)}',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 14,
@@ -89,7 +90,7 @@ class PathScreen extends StatelessWidget {
                               color: done || isCurrent ? ink : const Color(0xFF9A948A))),
                     ),
                   ]),
-                  if (isCurrent && x <= 0) TutorAvatar(tutor: tutor, size: 64, mood: Mood.happy),
+                  if (isCurrent && x <= 0) TutorAvatar(tutor: tutor, size: 64, mood: Mood.happy, gaze: const Offset(-0.9, 0.1)),
                 ]),
               ),
             ));

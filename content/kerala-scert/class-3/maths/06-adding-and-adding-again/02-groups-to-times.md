@@ -17,6 +17,11 @@ en: We write 3 × 4. We read it as "3 times 4". It means 3 groups of 4.
 ml: നമ്മൾ 3 × 4 എന്ന് എഴുതും. നാലിന്റെ 3 കൂട്ടങ്ങൾ എന്നാണ് അതിന്റെ അർത്ഥം.
 visual: text 3 × 4 = 12
 
+## say
+en: 2 × 3 has a special name. Two groups of 3 is the same as 3 doubled. 3 doubled is 6.
+ml: 2 × 3-ന് ഒരു പ്രത്യേക പേരുണ്ട്. മൂന്നിന്റെ രണ്ട് കൂട്ടങ്ങൾ എന്നാൽ 3-ന്റെ ഇരട്ടി. 3-ന്റെ ഇരട്ടി 6.
+visual: steps 2 × 3 = 3 + 3 / 3 doubled = 6
+
 ## ask
 form: choice
 en: 2 groups of 6. How do we write it?
@@ -68,3 +73,15 @@ hint.ml: അഞ്ച് വീതം എണ്ണൂ: 5, 10, ...
 explain.en: 5, 10, 15, 20. Four groups of 5 make 20.
 explain.ml: 5, 10, 15, 20. അഞ്ചിന്റെ നാല് കൂട്ടങ്ങൾ 20.
 mistake 9: added 4 and 5 instead of making groups
+
+## ask
+form: number
+level: 2
+en: What is 25 doubled?
+ml: 25-ന്റെ ഇരട്ടി എത്ര?
+answer: 50
+hint.en: Doubled means two of them: 25 + 25.
+hint.ml: ഇരട്ടി എന്നാൽ അത് രണ്ടെണ്ണം: 25 + 25.
+explain.en: 25 and 25 make 50.
+explain.ml: 25-ഉം 25-ഉം ചേർന്നാൽ 50.
+mistake 27: added 2 instead of doubling

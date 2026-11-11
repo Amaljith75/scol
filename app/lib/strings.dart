@@ -24,7 +24,8 @@ const Map<String, List<String>> _s = {
     'That is enough learning for today. See you tomorrow!',
     'ഇന്നത്തേക്ക് ഇത്രയും മതി. നാളെ കാണാം!'
   ],
-  'lessonDone': ['Lesson complete!', 'പാഠം പൂർത്തിയായി!'],
+  'lessonDone': ['Level complete!', 'ലെവൽ പൂർത്തിയായി!'],
+  'level': ['Level', 'ലെവൽ'],
   'stars': ['stars', 'നക്ഷത്രങ്ങൾ'],
   'dayStreak': ['day streak', 'ദിവസം തുടർച്ചയായി'],
   'parents': ['Parents', 'രക്ഷിതാക്കൾ'],

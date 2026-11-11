@@ -20,6 +20,67 @@ String pick(dynamic text, String lang) {
   return '';
 }
 
+/// A tutor character. Defined in content/_app/tutors.json.
+class TutorCharacter {
+  const TutorCharacter({
+    required this.id,
+    required this.name,
+    required this.shape,
+    required this.color,
+    required this.voice,
+    this.eyes = 'round',
+    this.energy = 1.0,
+    this.about,
+    this.hello,
+    this.praise,
+    this.oops,
+    this.cheer,
+  });
+  final String id;
+  final dynamic name;
+  final String shape; // blob | spiky | cloud | flower | bean
+  final int color;
+  final String voice;
+  final String eyes; // round | wide | soft | curious | sleepy
+  final double energy;
+  final dynamic about;
+  final dynamic hello;
+  final dynamic praise;
+  final dynamic oops;
+  final dynamic cheer;
+
+  String displayName(String lang) => pick(name, lang);
+
+  List<String> praiseList(String lang) {
+    final p = praise;
+    if (p is Map) {
+      final l = p[lang] ?? p['en'];
+      if (l is List && l.isNotEmpty) return l.map((e) => '$e').toList();
+    }
+    return const ['Well done!'];
+  }
+
+  factory TutorCharacter.fromJson(Map<String, dynamic> j) {
+    final hex = (j['color'] as String? ?? '#FFB81F').replaceAll('#', '');
+    return TutorCharacter(
+      id: j['id'] as String? ?? 'tutor',
+      name: j['name'],
+      shape: j['shape'] as String? ?? 'blob',
+      color: (int.tryParse(hex, radix: 16) ?? 0xFFB81F) | 0xFF000000,
+      voice: j['voice'] as String? ?? '',
+      eyes: j['eyes'] as String? ?? 'round',
+      energy: (j['energy'] as num?)?.toDouble() ?? 1.0,
+      about: j['about'],
+      hello: j['hello'],
+      praise: j['praise'],
+      oops: j['oops'],
+      cheer: j['cheer'],
+    );
+  }
+}
+
+const fallbackTutor = TutorCharacter(id: 'minnu', name: 'Minnu', shape: 'blob', color: 0xFFFFB81F, voice: 'Sulafat');
+
 class LessonStep {
   LessonStep({
     required this.type,
@@ -152,17 +213,30 @@ class Board {
 }
 
 class Bundle {
-  Bundle({required this.version, required this.built, required this.boards, required this.concepts});
+  Bundle({required this.version, required this.built, required this.boards, required this.concepts,
+      this.tutors = const [fallbackTutor], this.phrases = const {}});
   final String version;
   final int built;
   final List<Board> boards;
   final Map<String, dynamic> concepts;
+  final List<TutorCharacter> tutors;
+  final Map<String, dynamic> phrases;
+
+  /// A line the tutor says, e.g. phrase('tryLater', 'ml').
+  String phrase(String key, String lang) => pick(phrases[key], lang);
+
+  TutorCharacter tutor(String id) => tutors.firstWhere((t) => t.id == id, orElse: () => tutors.first);
 
   factory Bundle.empty() => Bundle(version: '', built: 0, boards: const [], concepts: const {});
 
   factory Bundle.parse(String source) {
     final j = (jsonDecode(source) as Map).cast<String, dynamic>();
+    final ts = ((j['tutors'] as List?) ?? const [])
+        .map((e) => TutorCharacter.fromJson((e as Map).cast<String, dynamic>()))
+        .toList();
     return Bundle(
+      tutors: ts.isEmpty ? const [fallbackTutor] : ts,
+      phrases: ((j['phrases'] as Map?) ?? const {}).cast<String, dynamic>(),
       version: j['version'] as String? ?? '',
       built: (j['built'] as num?)?.toInt() ?? 0,
       concepts: ((j['concepts'] as Map?) ?? const {}).cast<String, dynamic>(),

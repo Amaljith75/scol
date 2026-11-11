@@ -8,6 +8,7 @@ import '../mastery.dart';
 import '../state.dart';
 import '../strings.dart';
 import '../tutor.dart';
+import '../voice.dart';
 import '../widgets/avatar.dart';
 import '../widgets/ui.dart';
 import 'classroom.dart';
@@ -34,17 +35,52 @@ _Plan? _tutorPlan(List<Subject> subjects) {
   return _Plan(s, appState.nextLesson(s)!, false);
 }
 
-void openLesson(BuildContext context, Subject subject, Lesson lesson) {
+Future<void> openLesson(BuildContext context, Subject subject, Lesson lesson) async {
   final lang = appState.mainLang;
   if (appState.timeUp) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(tr('timeUp', lang))));
     return;
   }
-  Navigator.of(context).push(MaterialPageRoute(builder: (_) => ClassroomScreen(subject: subject, lesson: lesson)));
+  appSpeaker?.stop();
+  await Navigator.of(context).push(MaterialPageRoute(builder: (_) => ClassroomScreen(subject: subject, lesson: lesson)));
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _greet(first: true));
+  }
+
+  /// The tutor says hello and tells the child what to do next.
+  void _greet({bool first = false}) {
+    if (!mounted || !appState.voiceOn) return;
+    final lang = appState.mainLang;
+    final b = contentStore.bundle;
+    final tutor = tutorById(appState.tutorId);
+    final subjects = appState.mySubjects(b);
+    final plan = _tutorPlan(subjects);
+    final parts = <String>[if (first) pick(tutor.hello, lang)];
+    if (appState.timeUp) {
+      parts.add(b.phrase('timeUp', lang));
+    } else if (plan == null) {
+      parts.add(b.phrase(subjects.any((s) => s.lessons.isNotEmpty) ? 'allDone' : 'comingSoon', lang));
+    } else {
+      parts.addAll([
+        b.phrase('nextUp', lang),
+        plan.isRevision ? b.phrase('practice', lang) : pick(plan.lesson.title, lang),
+        b.phrase('tapGo', lang),
+      ]);
+    }
+    appSpeaker?.say(parts, lang, tutor);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +121,7 @@ class HomeScreen extends StatelessWidget {
                 color: const Color(0xFFEFF1FF),
                 child: Column(children: [
                   Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                    TutorAvatar(tutor: tutor, size: 104, mood: Mood.happy),
+                    TutorAvatar(tutor: tutor, size: 104, mood: Mood.happy, gaze: plan == null ? Offset.zero : const Offset(0.7, 0.75)),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Container(
@@ -107,7 +143,10 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 14),
                     Chunky(
                       color: mint,
-                      onTap: () => openLesson(context, plan.subject, plan.lesson),
+                      onTap: () async {
+                        await openLesson(context, plan.subject, plan.lesson);
+                        _greet();
+                      },
                       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                         Text(tr('go', lang), style: const TextStyle(fontSize: 22)),
                         const SizedBox(width: 8),
@@ -179,7 +218,10 @@ class _SubjectCard extends StatelessWidget {
       child: Chunky(
         color: color,
         padding: const EdgeInsets.all(14),
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => PathScreen(subject: subject))),
+        onTap: () {
+          appSpeaker?.stop();
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) => PathScreen(subject: subject)));
+        },
         child: Row(children: [
           Container(
             width: 58,

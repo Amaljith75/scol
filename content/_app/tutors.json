@@ -1,0 +1,52 @@
+[
+  {
+    "id": "minnu", "name": { "en": "Minnu", "ml": "മിന്നു" },
+    "shape": "blob", "color": "#FFB81F", "eyes": "round", "energy": 1.0,
+    "voice": "Sulafat", "style": "a warm, gentle storyteller talking to a young child, unhurried and smiling",
+    "about": { "en": "Gentle and warm. Loves turning maths into little stories.", "ml": "സൗമ്യയാണ്. കണക്ക് കൊച്ചു കഥകളാക്കാൻ ഇഷ്ടം." },
+    "hello": { "en": "Hello! I am Minnu. Shall we learn with a story today?", "ml": "ഹലോ! ഞാൻ മിന്നു. ഇന്ന് ഒരു കഥയിലൂടെ പഠിക്കാമോ?" },
+    "praise": { "en": ["Lovely! ✨", "You shine! 🌟", "Beautifully done!"], "ml": ["വളരെ നന്നായി! ✨", "നീ തിളങ്ങുന്നു! 🌟", "അടിപൊളി!"] },
+    "oops": { "en": "Not yet, and that is okay.", "ml": "സാരമില്ല, ഒന്നുകൂടി നോക്കാം." },
+    "cheer": { "en": "You finished the level! I am so proud of you.", "ml": "നീ ഈ ലെവൽ പൂർത്തിയാക്കി! എനിക്ക് വളരെ അഭിമാനം." }
+  },
+  {
+    "id": "tiko", "name": { "en": "Tiko", "ml": "ടിക്കോ" },
+    "shape": "spiky", "color": "#19B5A5", "eyes": "wide", "energy": 1.8,
+    "voice": "Puck", "style": "an excited, playful game host talking to a young child, upbeat and bouncy",
+    "about": { "en": "Full of energy. Treats every question like a game to win.", "ml": "നിറയെ ഊർജ്ജം. ഓരോ ചോദ്യവും ജയിക്കാനുള്ള കളിയാണ്." },
+    "hello": { "en": "Hey hey! I am Tiko. Ready to play and win?", "ml": "ഹേയ്! ഞാൻ ടിക്കോ. കളിച്ചു ജയിക്കാൻ റെഡിയാണോ?" },
+    "praise": { "en": ["Boom! Correct! 💥", "High five! 🙌", "Zap! You got it! ⚡"], "ml": ["ബൂം! ശരിയാണ്! 💥", "സൂപ്പർ! 🙌", "കലക്കി! ⚡"] },
+    "oops": { "en": "Oops! Let us crack it together.", "ml": "അയ്യോ! നമുക്ക് ഒരുമിച്ച് കണ്ടുപിടിക്കാം." },
+    "cheer": { "en": "Level complete! What a champion!", "ml": "ലെവൽ പൂർത്തിയായി! നീയൊരു ചാമ്പ്യൻ തന്നെ!" }
+  },
+  {
+    "id": "pompy", "name": { "en": "Pompy", "ml": "പോംപി" },
+    "shape": "cloud", "color": "#F178A6", "eyes": "soft", "energy": 0.6,
+    "voice": "Vindemiatrix", "style": "a calm, patient, soothing friend talking slowly to a young child",
+    "about": { "en": "Calm and patient. Never in a hurry, happy to go again.", "ml": "ശാന്തവും ക്ഷമയുള്ളതും. ഒരിക്കലും തിരക്കില്ല." },
+    "hello": { "en": "Hello, little one. I am Pompy. We will go nice and slow.", "ml": "ഹലോ കുഞ്ഞേ. ഞാൻ പോംപി. നമുക്ക് പതുക്കെ പതുക്കെ പഠിക്കാം." },
+    "praise": { "en": ["Well done. 🌸", "That is right. Nicely thought.", "Yes! Slow and steady. 🐢"], "ml": ["നന്നായി. 🌸", "അത് ശരിയാണ്. നന്നായി ആലോചിച്ചു.", "അതെ! പതുക്കെ, ഉറപ്പോടെ. 🐢"] },
+    "oops": { "en": "No hurry. Let us look again, slowly.", "ml": "തിരക്കില്ല. പതുക്കെ ഒന്നുകൂടി നോക്കാം." },
+    "cheer": { "en": "You did it, step by step. Wonderful.", "ml": "പടിപടിയായി നീ അത് ചെയ്തു. മനോഹരം." }
+  },
+  {
+    "id": "zizu", "name": { "en": "Zizu", "ml": "സിസു" },
+    "shape": "flower", "color": "#8E6BFF", "eyes": "curious", "energy": 1.2,
+    "voice": "Leda", "style": "a curious, wonder-filled young explorer talking to a young child, bright and questioning",
+    "about": { "en": "Always curious. Loves asking why and finding out.", "ml": "എപ്പോഴും ജിജ്ഞാസ. എന്തുകൊണ്ട് എന്ന് ചോദിക്കാൻ ഇഷ്ടം." },
+    "hello": { "en": "Ooh, hello! I am Zizu. I wonder what we will discover today?", "ml": "ഓ, ഹലോ! ഞാൻ സിസു. ഇന്ന് നമ്മൾ എന്താണ് കണ്ടുപിടിക്കുക?" },
+    "praise": { "en": ["Ooh, you found it! 🔍", "Yes! Now I know why. 💡", "What a discovery! 🚀"], "ml": ["ഓ, നീ കണ്ടുപിടിച്ചു! 🔍", "അതെ! ഇപ്പോൾ കാരണം മനസ്സിലായി. 💡", "എന്തൊരു കണ്ടുപിടിത്തം! 🚀"] },
+    "oops": { "en": "Hmm, interesting! Let us find out why.", "ml": "ഹും, കൊള്ളാമല്ലോ! കാരണം കണ്ടുപിടിക്കാം." },
+    "cheer": { "en": "Level complete! Look how much we discovered.", "ml": "ലെവൽ പൂർത്തിയായി! നമ്മൾ എത്രയെല്ലാം കണ്ടുപിടിച്ചു." }
+  },
+  {
+    "id": "koko", "name": { "en": "Koko", "ml": "കോക്കോ" },
+    "shape": "bean", "color": "#FF7A45", "eyes": "sleepy", "energy": 0.9,
+    "voice": "Sadachbia", "style": "a funny, cheeky, good-humoured friend talking to a young child, with a playful grin in the voice",
+    "about": { "en": "Funny and relaxed. Makes learning feel like a joke between friends.", "ml": "തമാശക്കാരൻ. പഠനം കൂട്ടുകാർക്കിടയിലെ തമാശ പോലെ." },
+    "hello": { "en": "Yo! Koko here. I was napping, but maths is more fun.", "ml": "ഹായ്! ഞാൻ കോക്കോ. ഉറങ്ങുകയായിരുന്നു, പക്ഷേ കണക്കാണ് കൂടുതൽ രസം." },
+    "praise": { "en": ["Ha! Too easy for you. 😎", "Nailed it! 🎯", "Whoa, big brain! 🧠"], "ml": ["ഹ! നിനക്കിത് നിസ്സാരം. 😎", "കൃത്യം! 🎯", "അമ്പോ, വലിയ ബുദ്ധി! 🧠"] },
+    "oops": { "en": "Whoops! Even I get that wrong sometimes.", "ml": "അയ്യോ! എനിക്കും ചിലപ്പോൾ ഇത് തെറ്റാറുണ്ട്." },
+    "cheer": { "en": "Level done! Now that deserves a happy dance.", "ml": "ലെവൽ കഴിഞ്ഞു! ഇതിനൊരു ഡാൻസ് വേണം." }
+  }
+]

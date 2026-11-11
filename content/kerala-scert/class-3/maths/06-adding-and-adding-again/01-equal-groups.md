@@ -8,13 +8,13 @@ concept.name.ml: തുല്യ കൂട്ടങ്ങൾ എണ്ണൽ
 minutes: 5
 
 ## say
-en: Look! I have 3 baskets. Each basket has 4 mangoes.
-ml: നോക്കൂ! എന്റെ കയ്യിൽ 3 കൊട്ടകളുണ്ട്. ഓരോ കൊട്ടയിലും 4 മാങ്ങ വീതം.
+en: It is the school anniversary, and snacks are being shared. Look! Here are 3 baskets. Each basket has 4 mangoes.
+ml: സ്കൂൾ വാർഷികമാണ്, പലഹാരങ്ങൾ പങ്കുവെക്കുന്നു. നോക്കൂ! ഇതാ 3 കൊട്ടകൾ. ഓരോ കൊട്ടയിലും 4 മാങ്ങ വീതം.
 visual: groups 3 4 🥭
 
 ## say
-en: Every basket has the same number of mangoes. We call these equal groups.
-ml: എല്ലാ കൊട്ടയിലും ഒരേ എണ്ണം മാങ്ങയുണ്ട്. ഇവയെ തുല്യ കൂട്ടങ്ങൾ എന്ന് പറയും.
+en: Every basket has the same number of mangoes. We call these equal groups. To find the total we add 4 again and again: 4 + 4 + 4.
+ml: എല്ലാ കൊട്ടയിലും ഒരേ എണ്ണം മാങ്ങയുണ്ട്. ഇവയെ തുല്യ കൂട്ടങ്ങൾ എന്ന് പറയും. ആകെ എത്രയെന്നറിയാൻ 4 വീണ്ടും വീണ്ടും കൂട്ടണം: 4 + 4 + 4.
 visual: groups 3 4 🥭
 
 ## ask

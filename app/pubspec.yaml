@@ -1,7 +1,7 @@
 name: scol
 description: A personal AI tutor for children in Classes 1-4.
 publish_to: none
-version: 0.1.0+1
+version: 0.2.0+2
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
@@ -12,6 +12,9 @@ dependencies:
   shared_preferences: ^2.2.0
   flutter_tts: ^4.0.2
   http: ^1.2.0
+  audioplayers: ^6.0.0
+  crypto: ^3.0.3
+  path_provider: ^2.1.0
 
 dev_dependencies:
   flutter_test:

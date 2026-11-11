@@ -22,11 +22,21 @@ LANGS = ("en", "ml")
 VISUALS = {  # kind -> (min args, max args)
     "groups": (3, 3),      # groups <how many groups> <items in each> <emoji>
     "count": (2, 2),       # count <how many> <emoji>
+    "array": (3, 3),       # array <rows> <in each row> <emoji>
     "numberline": (2, 3),  # numberline <from> <to> [marked number]
+    "shapes": (1, 8),      # shapes circle triangle rectangle square
+    "sticks": (1, 1),      # sticks 7
+    "place": (3, 3),       # place <hundreds> <tens> <ones>   (an abacus)
+    "notes": (1, 12),      # notes 100 100 10 1               (money)
+    "ruler": (1, 2),       # ruler <length in cm> [emoji]
+    "pattern": (2, 10),    # pattern 10 20 30 ?
+    "split": (3, 3),       # split 1000 300 ?                 (a number and its two parts)
+    "steps": (1, 99),      # steps 200 + 100 = 300 / 30 + 40 = 70
     "text": (1, 99),       # text 3 x 4 = 12
     "emoji": (1, 99),      # emoji 🍎 🍌
     "image": (1, 1),       # image picture.png  (file in the chapter's images/ folder)
 }
+SHAPES = ("circle", "triangle", "rectangle", "square")
 FORMS = ("choice", "number", "think")
 KEY = re.compile(r"^([a-z][a-z_]*(?:\.[a-z]+)*)(?: ([^:]{1,40}))?:\s*(.*)$")
 errors = []
@@ -44,7 +54,7 @@ def load_json(path, required=()):
         err(path, 0, f"not valid JSON - {e}")
         return {}
     for k in required:
-        if k not in data:
+        if isinstance(data, dict) and k not in data:
             err(path, 0, f'missing "{k}"')
     return data
 
@@ -68,17 +78,44 @@ def parse_visual(spec, path, line, chapter_dir):
     if not lo <= len(args) <= hi:
         err(path, line, f'visual "{kind}" needs {lo}{"" if lo == hi else "-" + str(hi)} values')
         return None
-    if kind in ("groups", "count", "numberline"):
-        nums = args[:2] if kind != "numberline" else args
-        if kind == "count":
-            nums = args[:1]
-        if not all(re.fullmatch(r"-?\d+", n) for n in nums):
-            err(path, line, f'visual "{kind}" needs whole numbers')
+    def ints(values, lo_v=0, hi_v=9999):
+        ok = all(re.fullmatch(r"-?\d+", v) and lo_v <= int(v) <= hi_v for v in values)
+        if not ok:
+            err(path, line, f'visual "{kind}" needs whole numbers between {lo_v} and {hi_v}')
+        return ok
+
+    if kind in ("groups", "array"):
+        if not ints(args[:2], 1, 60):
             return None
-        if kind == "groups" and int(args[0]) * int(args[1]) > 60:
+        if int(args[0]) * int(args[1]) > 60:
             err(path, line, "too many objects to show (max 60)")
-        if kind == "count" and int(args[0]) > 60:
-            err(path, line, "too many objects to show (max 60)")
+    elif kind == "count":
+        if not ints(args[:1], 1, 60):
+            return None
+    elif kind == "numberline":
+        if not ints(args):
+            return None
+    elif kind == "sticks":
+        if not ints(args, 1, 30):
+            return None
+    elif kind == "place":
+        if not ints(args, 0, 9):
+            return None
+    elif kind == "notes":
+        if not ints(args, 1, 2000):
+            return None
+    elif kind == "ruler":
+        if not ints(args[:1], 1, 15):
+            return None
+    elif kind == "shapes":
+        bad = [x for x in args if x not in SHAPES]
+        if bad:
+            err(path, line, f'unknown shape "{bad[0]}". Use: {", ".join(SHAPES)}')
+            return None
+    elif kind == "steps":
+        args = [x.strip() for x in " ".join(args).split(" / ") if x.strip()]
+        if len(args) > 5:
+            err(path, line, "steps: at most 5 lines")
     if kind == "image":
         img = chapter_dir / "images" / args[0]
         if not img.is_file():
@@ -386,7 +423,14 @@ def build():
         board["classes"].sort(key=lambda c: c["number"])
         boards.append(board)
     boards.sort(key=lambda b: (b["order"], b["id"]))
-    body = {"boards": boards, "concepts": concepts}
+    app_dir = CONTENT / "_app"
+    tutors = load_json(app_dir / "tutors.json") if (app_dir / "tutors.json").exists() else []
+    phrases = load_json(app_dir / "phrases.json") if (app_dir / "phrases.json").exists() else {}
+    for t in tutors if isinstance(tutors, list) else []:
+        for k in ("id", "name", "shape", "color", "voice"):
+            if k not in t:
+                err(app_dir / "tutors.json", 0, f'tutor is missing "{k}"')
+    body = {"boards": boards, "concepts": concepts, "tutors": tutors, "phrases": phrases}
     digest = hashlib.sha256(json.dumps(body, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12]
     return {"version": digest, **body}
 

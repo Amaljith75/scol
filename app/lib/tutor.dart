@@ -1,86 +1,13 @@
-// The tutor: who they are, how they speak, and the Director that lets the
-// tutor run a lesson (talk, move, show pictures, ask, check, re-teach).
+// The Director lets the tutor run a lesson: talk, move, show pictures, ask,
+// check, and teach again. The screens only draw what the Director decides.
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 
 import 'content.dart';
 import 'mastery.dart';
 import 'strings.dart';
-
-class TutorCharacter {
-  const TutorCharacter(this.id, this.name, this.nameMl, this.color, this.about, this.aboutMl, this.praise,
-      this.praiseMl, this.oops, this.oopsMl);
-  final String id;
-  final String name;
-  final String nameMl;
-  final int color;
-  final String about;
-  final String aboutMl;
-  final List<String> praise;
-  final List<String> praiseMl;
-  final String oops;
-  final String oopsMl;
-
-  String displayName(String lang) => lang == 'ml' ? nameMl : name;
-}
-
-const tutors = <TutorCharacter>[
-  TutorCharacter(
-    'minnu', 'Minnu', 'മിന്നു', 0xFFFFB81F,
-    'A gentle firefly who loves stories', 'കഥകൾ ഇഷ്ടപ്പെടുന്ന ഒരു മിന്നാമിനുങ്ങ്',
-    ['Lovely! ✨', 'You shine! 🌟', 'Beautifully done!'],
-    ['വളരെ നന്നായി! ✨', 'നീ തിളങ്ങുന്നു! 🌟', 'അടിപൊളി!'],
-    'Not yet, and that is okay.', 'സാരമില്ല, ഒന്നുകൂടി നോക്കാം.',
-  ),
-  TutorCharacter(
-    'tiko', 'Tiko', 'ടിക്കോ', 0xFF19B5A5,
-    'A playful robot who loves puzzles', 'കളികൾ ഇഷ്ടപ്പെടുന്ന ഒരു റോബോട്ട്',
-    ['Beep boop, correct! 🤖', 'High five! 🙌', 'Zap! You got it! ⚡'],
-    ['ബീപ് ബൂപ്, ശരിയാണ്! 🤖', 'സൂപ്പർ! 🙌', 'കലക്കി! ⚡'],
-    'Oops! Let us work it out together.', 'അയ്യോ! നമുക്ക് ഒരുമിച്ച് കണ്ടുപിടിക്കാം.',
-  ),
-];
-
-TutorCharacter tutorById(String id) => tutors.firstWhere((t) => t.id == id, orElse: () => tutors.first);
-
-// ---------------- Voice ----------------
-
-/// The device voice, set up once when the app starts.
-Speaker? appSpeaker;
-
-abstract class Speaker {
-  Future<void> say(String text, String lang);
-  void stop();
-}
-
-class TtsSpeaker implements Speaker {
-  final FlutterTts _tts = FlutterTts();
-  static final _noise = RegExp(
-      r'[\u{1F000}-\u{1FFFF}\u{2190}-\u{21FF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}]',
-      unicode: true);
-
-  @override
-  Future<void> say(String text, String lang) async {
-    try {
-      await _tts.stop();
-      await _tts.setLanguage(lang == 'ml' ? 'ml-IN' : 'en-IN');
-      await _tts.setSpeechRate(0.42);
-      await _tts.setPitch(1.15);
-      await _tts.speak(text.replaceAll(_noise, ' ').replaceAll('×', lang == 'ml' ? ' ഗുണം ' : ' times '));
-    } catch (_) {
-      // No voice on this device: the lesson still works with text.
-    }
-  }
-
-  @override
-  void stop() {
-    _tts.stop().catchError((_) {});
-  }
-}
-
-// ---------------- Director ----------------
+import 'voice.dart';
 
 enum Phase { talking, asking, feedback, thinkAsk, thinkReveal, finished }
 
@@ -88,16 +15,18 @@ enum Spot { left, center, right }
 
 enum Mood { calm, happy, caring }
 
+/// Where the tutor's eyes should rest.
+enum Look { child, board, answers }
+
 class _Item {
   _Item(this.step, {this.retry = false});
   final LessonStep step;
   final bool retry; // a question the tutor brought back because it was missed
 }
 
-/// Runs one lesson. The screen only draws what the Director says and passes
-/// the child's taps back in. Today the Director follows the written lesson and
-/// adapts with simple rules; a live AI model can later drive the very same
-/// controls (say / show / ask / move) without changing the screens.
+/// Runs one lesson. Today the Director follows the written lesson and adapts
+/// with simple rules; a live AI model can later drive the very same controls
+/// (say / show / ask / move / look) without changing the screens.
 class TutorDirector extends ChangeNotifier {
   TutorDirector({
     required this.lesson,
@@ -105,6 +34,7 @@ class TutorDirector extends ChangeNotifier {
     required this.tutor,
     required this.recordFor,
     required this.day,
+    this.phrases = const {},
     this.speaker,
     Random? random,
   }) : _rnd = random ?? Random() {
@@ -118,6 +48,7 @@ class TutorDirector extends ChangeNotifier {
   final TutorCharacter tutor;
   final ConceptRecord Function(String concept) recordFor;
   final int day;
+  final Map<String, dynamic> phrases;
   final Speaker? speaker;
   final Random _rnd;
 
@@ -129,6 +60,7 @@ class TutorDirector extends ChangeNotifier {
   Phase phase = Phase.talking;
   Spot spot = Spot.left;
   Mood mood = Mood.calm;
+  Look look = Look.child;
   String bubble = '';
   String badge = '';
   Map<String, dynamic>? visual;
@@ -156,9 +88,25 @@ class TutorDirector extends ChangeNotifier {
 
   int get xpEarned => 10 + 5 * firstTryRight;
 
-  void _say(String text) {
-    bubble = text;
-    speaker?.say(text, lang);
+  String _ph(String key) {
+    final p = pick(phrases[key], lang);
+    return p.isNotEmpty ? p : tr(key, lang);
+  }
+
+  /// Every line this lesson might speak, so the sound can be fetched early.
+  List<String> get allLines => [
+        for (final s in lesson.steps) ...[pick(s.text, lang), pick(s.hint, lang), pick(s.explain, lang)],
+        ...tutor.praiseList(lang),
+        pick(tutor.oops, lang),
+        _ph('lookAgain'),
+        _ph('tryLater'),
+        _ph('again'),
+      ];
+
+  void _say(List<String> parts) {
+    final said = parts.where((p) => p.isNotEmpty).toList();
+    bubble = said.join(' ');
+    speaker?.say(said, lang, tutor);
   }
 
   void _enter() {
@@ -167,6 +115,7 @@ class TutorDirector extends ChangeNotifier {
       question = null;
       mood = Mood.happy;
       spot = Spot.center;
+      look = Look.child;
       speaker?.stop();
       notifyListeners();
       return;
@@ -185,13 +134,15 @@ class TutorDirector extends ChangeNotifier {
       question = null;
       phase = Phase.talking;
       spot = visual == null ? Spot.center : (_index.isEven ? Spot.left : Spot.right);
-      _say(text);
+      look = visual == null ? Look.child : Look.board;
+      _say([text]);
     } else {
       question = step;
       phase = step.form == 'think' ? Phase.thinkAsk : Phase.asking;
       spot = Spot.right;
+      look = Look.answers;
       _askedAt = DateTime.now();
-      _say(item.retry ? '${tr('again', lang)} $text' : text);
+      _say(item.retry ? [_ph('again'), text] : [text]);
     }
     notifyListeners();
   }
@@ -208,7 +159,8 @@ class TutorDirector extends ChangeNotifier {
     if (!canHint) return;
     hintShown = true;
     mood = Mood.caring;
-    _say(pick(question!.hint, lang));
+    look = Look.board;
+    _say([pick(question!.hint, lang)]);
     notifyListeners();
   }
 
@@ -221,36 +173,37 @@ class TutorDirector extends ChangeNotifier {
       final clean = _attempts == 0 && !hintShown && !_queue[_index].retry;
       _finishQuestion(clean ? 'first' : 'help', millis);
       mood = Mood.happy;
-      final praise = (lang == 'ml' ? tutor.praiseMl : tutor.praise);
+      look = Look.child;
+      final praise = tutor.praiseList(lang);
       final explain = pick(q.explain, lang);
-      _say(clean || explain.isEmpty ? praise[_rnd.nextInt(praise.length)] : '${praise.first} $explain');
+      _say(clean || explain.isEmpty ? [praise[_rnd.nextInt(praise.length)]] : [praise.first, explain]);
     } else {
       _attempts++;
       wrongOptions.add(given);
       final note = q.mistakes[given];
       if (note != null) _mistakes.add(note);
       mood = Mood.caring;
-      final oops = lang == 'ml' ? tutor.oopsMl : tutor.oops;
+      final oops = pick(tutor.oops, lang);
       if (_attempts == 1) {
         // First miss: never give the answer away. Give a hint and let them retry.
         final hint = pick(q.hint, lang);
         hintShown = true;
-        _say('$oops ${hint.isEmpty ? tr('lookAgain', lang) : hint}');
+        look = Look.board;
+        _say([oops, hint.isEmpty ? _ph('lookAgain') : hint]);
       } else {
         // Second miss: explain kindly, then bring the question back later.
         _finishQuestion('failed', millis);
+        look = Look.child;
         final explain = pick(q.explain, lang);
-        final shown = q.options.contains(q.answer)
-            ? q.optionLabel(q.options.indexOf(q.answer), lang)
-            : q.answer;
+        final shown = q.options.contains(q.answer) ? q.optionLabel(q.options.indexOf(q.answer), lang) : q.answer;
         final body = explain.isEmpty ? '${tr('answerIs', lang)} $shown.' : explain;
         final already = _queue.skip(_index + 1).any((i) => i.retry && identical(i.step, q));
         if (!_queue[_index].retry && !already) {
           _queue.add(_Item(q, retry: true));
           _total = _queue.length;
-          _say('$body ${tr('tryLater', lang)}');
+          _say([body, _ph('tryLater')]);
         } else {
-          _say(body);
+          _say([body]);
         }
       }
     }
@@ -275,7 +228,8 @@ class TutorDirector extends ChangeNotifier {
   void revealThink() {
     if (phase != Phase.thinkAsk) return;
     phase = Phase.thinkReveal;
-    _say(question!.answer);
+    look = Look.child;
+    _say([question!.answer]);
     notifyListeners();
   }
 
