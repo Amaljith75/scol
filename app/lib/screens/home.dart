@@ -82,8 +82,14 @@ class _HomeScreenState extends State<HomeScreen> {
     appSpeaker?.say(parts, lang, tutor);
   }
 
+  // Redraw whenever progress or lessons change (stars, streak, next level).
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) => ListenableBuilder(
+        listenable: Listenable.merge([appState, contentStore]),
+        builder: (context, _) => _page(context),
+      );
+
+  Widget _page(BuildContext context) {
     final lang = appState.mainLang;
     final tutor = tutorById(appState.tutorId);
     final subjects = appState.mySubjects(contentStore.bundle);
