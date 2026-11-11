@@ -78,3 +78,12 @@ hint.ml: 17 ഒറ്റ സംഖ്യയാണ്. ഒരു പടി കൂ
 explain.en: 17 is odd, so the next even number is 18.
 explain.ml: 17 ഒറ്റയാണ്. അതുകൊണ്ട് അടുത്ത ഇരട്ട സംഖ്യ 18.
 mistake 17: gave the next number without checking it is even
+
+## story
+en: Children walk to the assembly in pairs, holding hands. If everyone has a partner, the number is even. If one child is left without a partner, the number is odd.
+ml: കുട്ടികൾ കൈ പിടിച്ച് ജോഡികളായി അസംബ്ലിക്ക് പോകുന്നു. എല്ലാവർക്കും കൂട്ടുണ്ടെങ്കിൽ സംഖ്യ ഇരട്ട. ഒരു കുട്ടിക്ക് കൂട്ടില്ലെങ്കിൽ സംഖ്യ ഒറ്റ.
+
+## picture
+visual: groups 3 2 🧒
+en: Six children make 3 pairs and nobody is left out. Six is even. One more child would have no partner, so seven is odd.
+ml: ആറ് കുട്ടികൾ 3 ജോഡിയാകും, ആരും ബാക്കിയില്ല. ആറ് ഇരട്ട. ഒരു കുട്ടി കൂടി വന്നാൽ കൂട്ടില്ല, അതുകൊണ്ട് ഏഴ് ഒറ്റ.

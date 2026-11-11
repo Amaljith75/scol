@@ -120,13 +120,47 @@ mistake 7: added 3 and 4 instead of counting every group
 | `# Title` | Lesson name in English. `title.ml:` for Malayalam. |
 | `concept:` | The idea this lesson teaches. Questions with the same concept are judged together, even across lessons. Use short names like `equal-groups`. |
 | `## say` | The tutor explains. Needs `en:` and/or `ml:`. `visual:` is optional. |
-| `## ask` | The tutor asks. `form:` is `choice`, `number` or `think`. |
+| `## ask` | The tutor asks. `form:` is `choice`, `number`, `think`, or a touch activity: `abacus`, `measure`, `build`. |
+| `## story` | Another way to explain this lesson's idea, as a short story. Used only after a child gets a question wrong twice. |
+| `## picture` | Another way to explain it, with a `visual:` line and one or two sentences. |
 | `options:` | Choices separated by `\|`. Add `options.ml:` for Malayalam choices in the same order. |
 | `answer:` | The right answer. For `choice` it must match one of the options exactly. |
 | `hint.en:` / `hint.ml:` | Said after the first wrong answer. The tutor never gives the answer straight away. |
 | `explain.en:` / `explain.ml:` | Said after a second wrong answer. The question then comes back later in the lesson. |
 | `mistake 7:` | If the child answers 7, remember why. If the same mistake repeats, the parent report says so in these words. |
 | `level:` | 1 = basic, 2 = same idea in a new situation. |
+
+### Touch activities
+
+```
+## ask
+form: abacus
+en: Move the beads to show the number 235.
+answer: 235
+
+## ask
+form: measure
+en: Slide the scale until its 0 is at the start of the pencil. How long is the pencil?
+visual: ruler 6 ✏️
+answer: 6
+mistake 8: read the scale without putting 0 at the start
+
+## ask
+form: build
+en: Drag the sticks to build the shape that has 3 sides.
+options: triangle | rectangle
+answer: triangle
+```
+
+- `abacus`: the child moves beads on hundreds, tens and ones rods. The answer is a number up to 999.
+- `measure`: the object starts 2 cm from the left, so the child must slide the scale first. Reading without sliding gives the length plus 2, which is worth listing as a `mistake`.
+- `build`: the child drags sticks onto one of the outlines. Shapes can be `triangle`, `rectangle` or `square`.
+
+### Explaining another way
+
+Give every lesson one `## story` and one `## picture`. When a child misses a question twice, the tutor corrects it,
+then tells the story or shows the picture and asks again. The app notes which of the two led to a right answer
+and uses that one first next time.
 
 For the tutor to count an idea as understood, a child must answer correctly at least three times,
 in at least two question styles. So give every concept both `choice` and `number` questions,

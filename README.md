@@ -22,10 +22,13 @@ Scol follows two syllabuses: **Kerala State (SCERT)** and **CBSE (NCERT)**.
    up on the board: baskets of mangoes for multiplication, an abacus for hundreds, tens and ones,
    a scale for centimetres.
 3. **The tutor asks.** Your child answers by tapping a choice or typing a number. A level takes about five minutes.
-4. **A wrong answer is never the end.** The tutor does not give the answer away. It gives a hint and
-   lets your child try again. If it is still hard, the tutor explains kindly and brings the same
-   question back a little later.
-5. **Stars, not pressure.** Your child earns stars, builds a streak of learning days, and collects badges.
+4. **Hands on.** Some questions are done with fingers: dragging sticks to build a triangle,
+   moving beads on an abacus to make 235, sliding a scale under a pencil to measure it.
+5. **A wrong answer is never the end.** The tutor does not give the answer away. It gives a hint and
+   lets your child try again. If it is still hard, the tutor corrects the mistake kindly and then
+   explains the idea another way, as a little story or as a picture, and asks again. Scol remembers
+   which way works better for your child.
+6. **Stars, not pressure.** Your child earns stars, builds a streak of learning days, and collects badges.
    Missing a day takes nothing away.
 
 ## How Scol knows whether your child has understood
@@ -46,6 +49,9 @@ kind of question. Ideas learned a week ago come back for a quick check.
 
 Tap **Parents** on the home screen (a small sum keeps children out). You will see:
 
+- **A weekly report** in English or Malayalam: days and minutes learned, levels finished, what is understood,
+  what needs practice, and whether stories or pictures help your child more. Share it (for example on WhatsApp)
+  or press Listen to hear it read aloud.
 - **What your child understands, in plain words.** For example: *"Counting equal groups: keeps
   making the same mistake: added the numbers instead of making groups. Scol will teach this again in a different way."*
 - **Time spent today, lessons done, and learning days.**
@@ -59,11 +65,11 @@ Five little creatures live in the app. Each has its own voice and its own way of
 
 | | |
 | --- | --- |
-| **Minnu** (മിന്നു) | Gentle and warm. Turns maths into little stories. |
-| **Tiko** (ടിക്കോ) | Full of energy. Every question is a game to win. |
-| **Pompy** (പോംപി) | Calm and patient. Never in a hurry. |
-| **Zizu** (സിസു) | Always curious. Loves asking why. |
-| **Koko** (കോക്കോ) | Funny and relaxed. Learning feels like a joke between friends. |
+| **Mio** (മിയോ) | Gentle and warm. Turns maths into little stories. |
+| **Leo** (ലിയോ) | Full of energy. Every question is a game to win. |
+| **Yuki** (യൂകി) | Calm and patient. Never in a hurry. |
+| **Ruby** (റൂബി) | Always curious. Loves asking why. |
+| **Ollie** (ഒല്ലി) | Funny and relaxed. Learning feels like a joke between friends. |
 
 They feel alive. Their eyes follow where they are going, look at the picture while they teach,
 look at your child while they talk, and glance at wherever your child touches the screen.
@@ -82,7 +88,7 @@ The app uses the internet only to download new lessons and the tutors' voice fil
 ## Try it
 
 1. On an Android phone or tablet, open the [Releases page](https://github.com/Amaljith75/scol/releases).
-2. Download **scol.apk** from "Scol - latest test build" and open it to install.
+2. Download the **.apk** file from the newest release (for example "Scol V1 build 2") and open it to install.
    (Your phone may ask you to allow installing apps from your browser.)
 3. Do the one-minute parent setup: name, syllabus, class, language, tutor.
 4. Hand the phone to your child.
@@ -96,11 +102,11 @@ files are downloaded, so use Wi-Fi or mobile data for that. After that the level
 | --- | --- |
 | Class 3 Maths (Kerala): 24 levels in 6 units | Talking to the tutor: your child asks questions by voice and the tutor answers |
 | Five tutors with their own voices, in English and Malayalam | Other subjects and Classes 1, 2 and 4; CBSE |
-| Pictures that build up: shapes, abacus, money, scale, number patterns | Drag-and-drop, matching and drawing activities |
-| Hints, kind re-teaching, and questions that come back | Weekly progress report for parents, in Malayalam too |
-| Understanding check across several questions | A daily timetable across all subjects |
+| Touch activities: build shapes with sticks, move abacus beads, slide a scale to measure | More activities: matching, drawing, sorting |
+| A story or a picture when the first explanation does not work | A daily timetable across all subjects |
+| Understanding check across several questions | The weekly report sent automatically |
+| Weekly report for parents in English and Malayalam, to share or listen to | |
 | Stars, streaks, badges, level path | |
-| Parent report and controls | |
 | New lessons and voices arrive without reinstalling | |
 
 ## Questions

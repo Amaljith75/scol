@@ -69,3 +69,37 @@ hint.ml: 4 വീതം എടുത്തു നോക്കൂ: 4, 8, 12.
 explain.en: 4 + 4 + 4 = 12. So 12 sticks make 3 rectangles.
 explain.ml: 4 + 4 + 4 = 12. അതുകൊണ്ട് 12 ഈർക്കിൽ കൊണ്ട് 3 ചതുരങ്ങൾ.
 mistake 4: used 3 sticks for each rectangle
+
+## ask
+form: build
+en: Drag the sticks to build the shape that has 3 sides.
+ml: 3 വശങ്ങളുള്ള രൂപം ഈർക്കിലുകൾ വലിച്ചുവെച്ച് ഉണ്ടാക്കൂ.
+options: triangle | rectangle
+answer: triangle
+hint.en: Count the sides of each outline before you build.
+hint.ml: ഉണ്ടാക്കുന്നതിന് മുമ്പ് ഓരോ രൂപരേഖയുടെയും വശങ്ങൾ എണ്ണൂ.
+explain.en: A triangle has 3 sides, so it takes 3 sticks.
+explain.ml: ത്രികോണത്തിന് 3 വശങ്ങൾ, അതുകൊണ്ട് 3 ഈർക്കിൽ മതി.
+mistake rectangle: built the 4-sided shape when asked for 3 sides
+
+## ask
+form: build
+level: 2
+en: Now build the shape that needs 4 sticks.
+ml: ഇനി 4 ഈർക്കിൽ വേണ്ട രൂപം ഉണ്ടാക്കൂ.
+options: triangle | rectangle
+answer: rectangle
+hint.en: Which outline has 4 sides?
+hint.ml: ഏത് രൂപരേഖയ്ക്കാണ് 4 വശങ്ങൾ?
+explain.en: A rectangle has 4 sides, so it takes 4 sticks.
+explain.ml: ചതുരത്തിന് 4 വശങ്ങൾ, അതുകൊണ്ട് 4 ഈർക്കിൽ വേണം.
+mistake triangle: built the 3-sided shape when asked for 4 sticks
+
+## story
+en: A little bird builds with twigs. For a triangle nest it carries 3 twigs. For a rectangle window it carries 4. For two triangles it must bring 3, and then 3 more.
+ml: ഒരു കൊച്ചു കിളി ചുള്ളിക്കമ്പുകൾ കൊണ്ട് പണിയുന്നു. ത്രികോണക്കൂടിന് 3 കമ്പ്. ചതുരജനലിന് 4 കമ്പ്. രണ്ട് ത്രികോണത്തിന് 3-ഉം പിന്നെ 3 കൂടിയും കൊണ്ടുവരണം.
+
+## picture
+visual: steps 1 triangle = 3 sticks / 2 triangles = 3 + 3 = 6 / 1 rectangle = 4 sticks
+en: Each side is one stick. Count the sides and you know how many sticks.
+ml: ഓരോ വശവും ഒരു ഈർക്കിൽ. വശങ്ങൾ എണ്ണിയാൽ എത്ര ഈർക്കിൽ വേണമെന്ന് അറിയാം.

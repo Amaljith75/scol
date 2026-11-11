@@ -4,6 +4,8 @@ import 'dart:math';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scol/content.dart';
 import 'package:scol/mastery.dart';
+import 'package:scol/report.dart';
+import 'package:scol/state.dart';
 import 'package:scol/tutor.dart';
 import 'package:scol/voice.dart';
 
@@ -172,6 +174,72 @@ void main() {
       expect(d.firstTryRight, 0);
       expect(d.starsEarned, 1);
       expect(recs.values.first.failed, greaterThan(0));
+    });
+
+    test('after a repeated mistake the tutor explains another way and remembers if it worked', () {
+      final b = loadBundle();
+      final lesson = mathsLessons(b).first;
+      final results = <String, bool>{};
+      final d = TutorDirector(
+        lesson: lesson,
+        lang: 'en',
+        tutor: b.tutors.first,
+        phrases: b.phrases,
+        recordFor: (_) => ConceptRecord(),
+        day: 1,
+        pickStyle: (available) => available.contains('story') ? 'story' : available.first,
+        onStyleResult: (style, worked) => results[style] = worked,
+      );
+      while (d.phase != Phase.asking) {
+        d.next();
+      }
+      final q = d.question!;
+      d.answer('nonsense');
+      d.answer('nonsense again');
+      expect(d.phase, Phase.feedback);
+      d.next(); // the tutor now tells the story
+      expect(d.phase, Phase.talking);
+      expect(d.badge, 'A little story');
+      expect(d.bubble, pick(lesson.alts['story']!.text, 'en'));
+      d.next(); // and asks the same question again
+      expect(identical(d.question, q), true);
+      d.answer(q.answer);
+      expect(results, {'story': true});
+    });
+
+    test('the app learns which way of explaining suits the child', () {
+      final a = AppState();
+      expect(a.pickStyle(['story', 'picture']), 'story'); // nothing tried yet
+      a.recordStyle('story', false);
+      expect(a.pickStyle(['story', 'picture']), 'picture'); // try the other one
+      a.recordStyle('picture', true);
+      a.recordStyle('picture', true);
+      expect(a.pickStyle(['story', 'picture']), 'picture');
+      expect(a.bestStyle, 'picture');
+    });
+
+    test('weekly report reads sensibly in English and Malayalam', () {
+      final b = loadBundle();
+      final a = AppState()
+        ..childName = 'Anu'
+        ..stars = 7;
+      a.history[dayNumber()] = [600, 2];
+      a.history[dayNumber() - 1] = [300, 1];
+      a.history[dayNumber() - 20] = [900, 5]; // too old to count
+      final key = b.concepts.keys.first;
+      a.concept(key)
+        ..record(form: 'choice', outcome: 'help', day: 1, mistakeNotes: ['added'])
+        ..record(form: 'number', outcome: 'failed', day: 1, mistakeNotes: ['added']);
+      expect(a.week, [2, 15, 3]);
+      final en = weeklyReport(a, b, 'en').join(' ');
+      expect(en, contains('Anu'));
+      expect(en, contains('2 days'));
+      expect(en, contains('3 levels'));
+      expect(en, contains('added'));
+      final ml = weeklyReport(a, b, 'ml').join(' ');
+      expect(ml, contains('Anu'));
+      expect(ml, contains(b.conceptName(key, 'ml')));
+      expect(weeklyReport(AppState(), b, 'en').length, greaterThan(1)); // works with no data too
     });
 
     test('the tutor looks at the board while teaching and at the answers while asking', () {

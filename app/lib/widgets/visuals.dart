@@ -65,8 +65,8 @@ class _ShapePainter extends CustomPainter {
   bool shouldRepaint(covariant _ShapePainter old) => old.name != name || old.color != color;
 }
 
-class _RulerPainter extends CustomPainter {
-  _RulerPainter(this.maxCm);
+class RulerPainter extends CustomPainter {
+  RulerPainter(this.maxCm);
   final int maxCm;
 
   @override
@@ -93,7 +93,7 @@ class _RulerPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant _RulerPainter old) => old.maxCm != maxCm;
+  bool shouldRepaint(covariant RulerPainter old) => old.maxCm != maxCm;
 }
 
 class _SplitLines extends CustomPainter {
@@ -343,7 +343,7 @@ class VisualView extends StatelessWidget {
                   ),
                 ),
               ),
-            CustomPaint(size: Size(w, 46), painter: _RulerPainter(maxCm)),
+            CustomPaint(size: Size(w, 46), painter: RulerPainter(maxCm)),
           ]);
         });
       case 'pattern':

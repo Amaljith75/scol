@@ -63,3 +63,37 @@ hint.en: Is your foot the same size as your friend's foot?
 hint.ml: നിന്റെ കാലിനും കൂട്ടുകാരന്റെ കാലിനും ഒരേ വലിപ്പമാണോ?
 explain.en: Feet come in different sizes, so they give different answers. A scale is the same for everyone.
 explain.ml: കാലുകൾക്ക് പല വലിപ്പമായതുകൊണ്ട് ഉത്തരങ്ങൾ മാറും. സ്കെയിൽ എല്ലാവർക്കും ഒരുപോലെയാണ്.
+
+## ask
+form: measure
+en: Slide the scale until its 0 is at the start of the pencil. How many centimetres long is the pencil?
+ml: സ്കെയിലിലെ 0 പെൻസിലിന്റെ തുടക്കത്തിൽ വരുന്നതുവരെ സ്കെയിൽ നീക്കൂ. പെൻസിലിന്റെ നീളം എത്ര സെന്റിമീറ്റർ?
+visual: ruler 6 ✏️
+answer: 6
+hint.en: Drag the scale sideways until the 0 line touches the left end of the pencil.
+hint.ml: 0 എന്ന വര പെൻസിലിന്റെ ഇടത്തേ അറ്റത്ത് തൊടുന്നതുവരെ സ്കെയിൽ വശത്തേക്ക് വലിക്കൂ.
+explain.en: With 0 at the start, the pencil ends at 6. It is 6 cm long.
+explain.ml: 0 തുടക്കത്തിൽ വെച്ചാൽ പെൻസിൽ 6-ൽ അവസാനിക്കും. നീളം 6 സെ.മീ.
+mistake 8: read the scale without putting 0 at the start
+
+## ask
+form: measure
+level: 2
+en: Now measure this crayon.
+ml: ഇനി ഈ ക്രയോൺ അളക്കൂ.
+visual: ruler 4 🖍️
+answer: 4
+hint.en: First bring the 0 of the scale to where the crayon begins.
+hint.ml: ആദ്യം സ്കെയിലിലെ 0 ക്രയോൺ തുടങ്ങുന്നിടത്ത് കൊണ്ടുവരൂ.
+explain.en: With 0 at the start, the crayon ends at 4. It is 4 cm long.
+explain.ml: 0 തുടക്കത്തിൽ വെച്ചാൽ ക്രയോൺ 4-ൽ അവസാനിക്കും. നീളം 4 സെ.മീ.
+mistake 6: read the scale without putting 0 at the start
+
+## story
+en: A giant and a small child both measure a mat with their hands. The giant says 3 hands. The child says 9 hands. They argue until someone brings a scale. On the scale, both read the same number.
+ml: ഒരു രാക്ഷസനും ഒരു കൊച്ചു കുട്ടിയും ഒരു പായ കൈ കൊണ്ട് അളന്നു. രാക്ഷസൻ പറഞ്ഞു 3 ചാൺ. കുട്ടി പറഞ്ഞു 9 ചാൺ. ഒരാൾ സ്കെയിൽ കൊണ്ടുവരുന്നതുവരെ അവർ തർക്കിച്ചു. സ്കെയിലിൽ രണ്ടുപേർക്കും ഒരേ സംഖ്യ കിട്ടി.
+
+## picture
+visual: ruler 5
+en: Each gap between two long lines is 1 centimetre. Start at 0 and count the gaps.
+ml: രണ്ട് നീണ്ട വരകൾക്കിടയിലെ ഓരോ അകലവും 1 സെന്റിമീറ്റർ. 0-ൽ തുടങ്ങി അകലങ്ങൾ എണ്ണൂ.

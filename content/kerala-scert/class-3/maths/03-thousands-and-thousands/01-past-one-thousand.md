@@ -63,3 +63,12 @@ explain.en: 1099 and 1 more make 1100: one thousand one hundred.
 explain.ml: 1099-ഉം 1-ഉം ചേർന്നാൽ 1100: ആയിരത്തി ഒരുനൂറ്.
 mistake 2000: jumped to the next thousand
 mistake 1090: went back instead of forward
+
+## story
+en: A car's meter shows 999 kilometres. One more kilometre and all the nines roll over to zero, and a 1 appears in front: 1000. After that it simply keeps counting: 1001, 1002.
+ml: ഒരു കാറിന്റെ മീറ്ററിൽ 999 കിലോമീറ്റർ. ഒരു കിലോമീറ്റർ കൂടി ഓടിയാൽ എല്ലാ ഒമ്പതുകളും പൂജ്യമാകും, മുന്നിൽ ഒരു 1 വരും: 1000. പിന്നെ അത് എണ്ണിക്കൊണ്ടേയിരിക്കും: 1001, 1002.
+
+## picture
+visual: pattern 998 999 1000 1001 1002
+en: After 999 the counting does not stop. A new place opens for thousands.
+ml: 999 കഴിഞ്ഞാലും എണ്ണൽ നിൽക്കില്ല. ആയിരങ്ങൾക്കായി ഒരു പുതിയ സ്ഥാനം തുറക്കും.

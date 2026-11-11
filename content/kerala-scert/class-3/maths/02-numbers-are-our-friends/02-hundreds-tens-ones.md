@@ -70,3 +70,36 @@ explain.en: 600 and 80 and 5 make 685.
 explain.ml: 600-ഉം 80-ഉം 5-ഉം ചേർന്നാൽ 685.
 mistake 658: swapped the tens and the ones
 mistake 865: swapped the hundreds and the tens
+
+## ask
+form: abacus
+en: Move the beads to show the number 235.
+ml: മണികൾ നീക്കി 235 എന്ന സംഖ്യ കാണിക്കൂ.
+answer: 235
+hint.en: 2 beads on hundreds, 3 on tens, 5 on ones.
+hint.ml: നൂറിൽ 2 മണി, പത്തിൽ 3, ഒന്നിൽ 5.
+explain.en: 235 is 2 hundreds, 3 tens and 5 ones.
+explain.ml: 235 എന്നാൽ 2 നൂറുകൾ, 3 പത്തുകൾ, 5 ഒന്നുകൾ.
+mistake 532: put the digits on the rods in the opposite order
+
+## ask
+form: abacus
+level: 2
+en: Show the number four hundred six on the abacus.
+ml: നാനൂറ്റി ആറ് എന്ന സംഖ്യ മണിച്ചട്ടത്തിൽ കാണിക്കൂ.
+answer: 406
+hint.en: There are no tens, so leave the tens rod empty.
+hint.ml: പത്തുകളില്ല, അതുകൊണ്ട് പത്തിന്റെ കമ്പി ഒഴിച്ചിടൂ.
+explain.en: 406 is 4 hundreds, no tens and 6 ones.
+explain.ml: 406 എന്നാൽ 4 നൂറുകൾ, പത്തുകളില്ല, 6 ഒന്നുകൾ.
+mistake 460: put the ones on the tens rod
+mistake 46: left the hundreds rod empty
+
+## story
+en: Three friends share a house. Hundreds lives in the first room, Tens in the middle room, Ones in the last room. In 342, Hundreds has 3, Tens has 4 and Ones has 2. If a room is empty, a 0 hangs on its door.
+ml: മൂന്ന് കൂട്ടുകാർ ഒരു വീട്ടിൽ താമസിക്കുന്നു. ആദ്യത്തെ മുറിയിൽ നൂറുകൾ, നടുവിലെ മുറിയിൽ പത്തുകൾ, അവസാന മുറിയിൽ ഒന്നുകൾ. 342-ൽ നൂറിന് 3, പത്തിന് 4, ഒന്നിന് 2. ഒരു മുറി ഒഴിഞ്ഞാൽ അതിന്റെ വാതിലിൽ 0 തൂക്കും.
+
+## picture
+visual: place 3 4 2
+en: Each rod has its own job. The first counts hundreds, the middle counts tens, the last counts ones. Read them from left to right.
+ml: ഓരോ കമ്പിക്കും ഓരോ ജോലി. ആദ്യത്തേത് നൂറുകൾ, നടുവിലേത് പത്തുകൾ, അവസാനത്തേത് ഒന്നുകൾ. ഇടത്തു നിന്ന് വലത്തോട്ട് വായിക്കൂ.

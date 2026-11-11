@@ -101,7 +101,7 @@ class LessonStep {
   final String type; // say | ask
   final dynamic text;
   final Map<String, dynamic>? visual;
-  final String form; // choice | number | think
+  final String form; // choice | number | think | abacus | measure | build
   final List<String> options;
   final List<String> optionsMl;
   final String answer;
@@ -138,18 +138,23 @@ class LessonStep {
 }
 
 class Lesson {
-  Lesson({required this.id, required this.title, required this.steps, this.objective, this.minutes = 5});
+  Lesson({required this.id, required this.title, required this.steps, this.objective, this.minutes = 5, this.alts = const {}});
   final String id;
   final dynamic title;
   final dynamic objective;
   final int minutes;
   final List<LessonStep> steps;
 
+  /// Other ways to explain this lesson's idea: 'story' and/or 'picture'.
+  final Map<String, LessonStep> alts;
+
   factory Lesson.fromJson(Map<String, dynamic> j) => Lesson(
         id: j['id'] as String,
         title: j['title'],
         objective: j['objective'],
         minutes: (j['minutes'] as num?)?.toInt() ?? 5,
+        alts: ((j['alts'] as Map?) ?? const {}).map((k, v) => MapEntry(
+            '$k', LessonStep.fromJson({...(v as Map).cast<String, dynamic>(), 't': 'say', 'label': '$k'}))),
         steps: ((j['steps'] as List?) ?? const [])
             .map((e) => LessonStep.fromJson((e as Map).cast<String, dynamic>()))
             .toList(),

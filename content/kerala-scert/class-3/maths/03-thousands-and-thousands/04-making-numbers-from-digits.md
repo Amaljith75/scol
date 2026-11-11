@@ -69,3 +69,25 @@ explain.en: 700 and 60 and 5 make 765.
 explain.ml: 700-ഉം 60-ഉം 5-ഉം ചേർന്നാൽ 765.
 mistake 675: swapped the hundreds and the tens
 mistake 567: wrote the places in the opposite order
+
+## ask
+form: abacus
+level: 2
+en: Use the digits 1, 4 and 2 once each. Show the largest number on the abacus.
+ml: 1, 4, 2 എന്നീ അക്കങ്ങൾ ഓരോ തവണ ഉപയോഗിച്ച് ഉണ്ടാക്കാവുന്ന ഏറ്റവും വലിയ സംഖ്യ മണിച്ചട്ടത്തിൽ കാണിക്കൂ.
+answer: 421
+hint.en: The biggest digit goes on the hundreds rod.
+hint.ml: ഏറ്റവും വലിയ അക്കം നൂറിന്റെ കമ്പിയിൽ.
+explain.en: 4 hundreds, 2 tens, 1 one: 421.
+explain.ml: 4 നൂറുകൾ, 2 പത്തുകൾ, 1 ഒന്ന്: 421.
+mistake 142: kept the digits in the given order
+mistake 124: made the smallest number instead
+
+## story
+en: Three children want to sit in a row of three chairs. The first chair is worth hundreds, so for the largest number the biggest digit sits there. For the smallest number the smallest digit sits first. But zero is too shy to sit in the first chair.
+ml: മൂന്ന് കുട്ടികൾക്ക് മൂന്ന് കസേരകളിൽ ഇരിക്കണം. ആദ്യത്തെ കസേര നൂറിന്റേതാണ്, അതുകൊണ്ട് ഏറ്റവും വലിയ സംഖ്യയ്ക്ക് ഏറ്റവും വലിയ അക്കം അവിടെ ഇരിക്കും. ഏറ്റവും ചെറിയ സംഖ്യയ്ക്ക് ഏറ്റവും ചെറിയ അക്കം ആദ്യം. പക്ഷേ പൂജ്യത്തിന് ആദ്യത്തെ കസേരയിൽ ഇരിക്കാൻ നാണമാണ്.
+
+## picture
+visual: steps Largest: 7 5 2 / Smallest: 2 5 7
+en: The hundreds place matters most. Put your biggest digit there for the largest number.
+ml: നൂറിന്റെ സ്ഥാനമാണ് ഏറ്റവും പ്രധാനം. ഏറ്റവും വലിയ സംഖ്യയ്ക്ക് ഏറ്റവും വലിയ അക്കം അവിടെ വെക്കൂ.

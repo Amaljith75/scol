@@ -60,3 +60,24 @@ hint.ml: ഇത്തവണ ഒരു കഷണം പോകുകയാണ്. 
 explain.en: 30 take away 10 leaves 20 cm.
 explain.ml: 30-ൽ നിന്ന് 10 കുറച്ചാൽ 20 സെ.മീ.
 mistake 40: added the lengths when a piece was cut off
+
+## ask
+form: measure
+en: Slide the scale and measure this ribbon.
+ml: സ്കെയിൽ നീക്കി ഈ റിബൺ അളക്കൂ.
+visual: ruler 9 🎀
+answer: 9
+hint.en: Bring the 0 of the scale to where the ribbon begins.
+hint.ml: സ്കെയിലിലെ 0 റിബൺ തുടങ്ങുന്നിടത്ത് കൊണ്ടുവരൂ.
+explain.en: With 0 at the start, the ribbon ends at 9. It is 9 cm long.
+explain.ml: 0 തുടക്കത്തിൽ വെച്ചാൽ റിബൺ 9-ൽ അവസാനിക്കും. നീളം 9 സെ.മീ.
+mistake 11: read the scale without putting 0 at the start
+
+## story
+en: Two toy trains are joined together. One is 10 cm long and the other is 12 cm long. The long train is as long as both together: 22 cm.
+ml: രണ്ട് കളിത്തീവണ്ടികൾ ഒന്നിച്ചു ചേർത്തു. ഒന്നിന് 10 സെ.മീ, മറ്റേതിന് 12 സെ.മീ. നീണ്ട തീവണ്ടിയുടെ നീളം രണ്ടും ചേർന്നത്: 22 സെ.മീ.
+
+## picture
+visual: steps 10 cm + 12 cm / 10 + 10 = 20 / 20 + 2 = 22 cm
+en: Joining end to end means adding the lengths.
+ml: അറ്റത്തോടറ്റം ചേർക്കുക എന്നാൽ നീളങ്ങൾ കൂട്ടുക.

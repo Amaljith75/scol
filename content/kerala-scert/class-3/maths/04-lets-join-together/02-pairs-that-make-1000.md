@@ -62,3 +62,12 @@ hint.ml: 450 മുതൽ 500 വരെ 50. പിന്നെ 500 മുതൽ 
 explain.en: 50 and 500 make 550. So 450 and 550 make 1000.
 explain.ml: 50-ഉം 500-ഉം ചേർന്നാൽ 550. അതുകൊണ്ട് 450-ഉം 550-ഉം ചേർന്നാൽ 1000.
 mistake 650: made the hundreds add to ten and forgot the fifties already make a hundred
+
+## story
+en: A water tank holds 1000 litres. If 400 litres are already inside, 600 more will fill it. What is inside and what is missing always make 1000.
+ml: ഒരു വാട്ടർ ടാങ്കിൽ 1000 ലിറ്റർ കൊള്ളും. 400 ലിറ്റർ ഉള്ളിലുണ്ടെങ്കിൽ 600 കൂടി ഒഴിച്ചാൽ നിറയും. ഉള്ളിലുള്ളതും ഇനി വേണ്ടതും ചേർന്നാൽ എപ്പോഴും 1000.
+
+## picture
+visual: steps 4 + 6 = 10 / 40 + 60 = 100 / 400 + 600 = 1000
+en: The same pair works for ones, for tens and for hundreds.
+ml: ഒരേ ജോഡി ഒന്നുകളിലും പത്തുകളിലും നൂറുകളിലും ശരിയാണ്.

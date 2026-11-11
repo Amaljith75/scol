@@ -73,3 +73,12 @@ hint.ml: 10 ഓവറിൽ 60 പന്തുകൾ. 20 ഓവറിൽ അത�
 explain.en: 60 and 60 make 120. So 20 × 6 = 120.
 explain.ml: 60-ഉം 60-ഉം ചേർന്നാൽ 120. അതുകൊണ്ട് 20 × 6 = 120.
 mistake 26: added 20 and 6 instead of making groups
+
+## story
+en: A shop sells pens in packets of 3. Two packets have 6 pens. If you buy twice as many packets, you get twice as many pens: 4 packets have 12.
+ml: ഒരു കടയിൽ പേനകൾ 3 വീതം പാക്കറ്റിലാണ്. രണ്ട് പാക്കറ്റിൽ 6 പേന. ഇരട്ടി പാക്കറ്റ് വാങ്ങിയാൽ ഇരട്ടി പേന കിട്ടും: 4 പാക്കറ്റിൽ 12.
+
+## picture
+visual: steps 2 × 3 = 6 / 4 × 3 = 12 / twice the groups, twice the answer
+en: When the groups double, the answer doubles.
+ml: കൂട്ടങ്ങൾ ഇരട്ടിയായാൽ ഉത്തരവും ഇരട്ടിയാകും.

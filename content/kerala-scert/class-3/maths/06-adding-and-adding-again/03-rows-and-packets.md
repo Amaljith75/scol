@@ -65,3 +65,24 @@ explain.en: 18 and 18 make 36. So 6 × 6 = 36.
 explain.ml: 18-ഉം 18-ഉം ചേർന്നാൽ 36. അതുകൊണ്ട് 6 × 6 = 36.
 mistake 12: added 6 and 6 instead of making six groups
 mistake 66: joined the two numbers together
+
+## ask
+form: abacus
+en: Work out 5 × 4. Show the answer on the abacus.
+ml: 5 × 4 കണക്കാക്കൂ. ഉത്തരം മണിച്ചട്ടത്തിൽ കാണിക്കൂ.
+answer: 20
+hint.en: Count in fours, five times. Then put the tens on the tens rod.
+hint.ml: നാല് വീതം അഞ്ച് തവണ എണ്ണൂ. പിന്നെ പത്തുകൾ പത്തിന്റെ കമ്പിയിൽ വെക്കൂ.
+explain.en: 5 × 4 = 20. That is 2 beads on the tens rod and none on the ones.
+explain.ml: 5 × 4 = 20. പത്തിന്റെ കമ്പിയിൽ 2 മണി, ഒന്നിൽ ഒന്നുമില്ല.
+mistake 9: added 5 and 4 instead of making groups
+mistake 2: put the tens on the ones rod
+
+## story
+en: In the school hall, chairs stand in neat rows of 6. The teacher does not count every chair. She counts the rows: 6, 12, 18.
+ml: സ്കൂൾ ഹാളിൽ കസേരകൾ 6 വീതം വരികളായി ഇട്ടിരിക്കുന്നു. ടീച്ചർ ഓരോ കസേരയും എണ്ണുന്നില്ല. വരികൾ എണ്ണുന്നു: 6, 12, 18.
+
+## picture
+visual: array 3 6 🪑
+en: Count one row. Then count how many rows there are. 3 rows of 6 is 3 × 6.
+ml: ഒരു വരി എണ്ണൂ. പിന്നെ എത്ര വരികളുണ്ടെന്ന് എണ്ണൂ. 6 വീതമുള്ള 3 വരികൾ 3 × 6.

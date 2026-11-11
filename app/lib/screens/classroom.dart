@@ -8,6 +8,7 @@ import '../state.dart';
 import '../strings.dart';
 import '../tutor.dart';
 import '../voice.dart';
+import '../widgets/activities.dart';
 import '../widgets/avatar.dart';
 import '../widgets/ui.dart';
 import '../widgets/visuals.dart';
@@ -25,6 +26,8 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
   late final TutorDirector d;
   final Stopwatch _watch = Stopwatch()..start();
   String _typed = '';
+  List<int> _beads = [0, 0, 0];
+  LessonStep? _shownQuestion;
   bool _closed = false;
   Spot _lastSpot = Spot.left;
   Offset? _walkLook; // eyes lead the way while the tutor is moving
@@ -42,6 +45,8 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
       recordFor: appState.concept,
       day: dayNumber(),
       phrases: contentStore.bundle.phrases,
+      pickStyle: appState.pickStyle,
+      onStyleResult: appState.recordStyle,
       speaker: appState.voiceOn ? appSpeaker : null,
     );
     _lastSpot = d.spot;
@@ -68,6 +73,11 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
 
   void _onChange() {
     _peek = false;
+    if (!identical(d.question, _shownQuestion)) {
+      _shownQuestion = d.question;
+      _beads = [0, 0, 0];
+      _typed = '';
+    }
     if (d.spot != _lastSpot) {
       final dir = d.spot.index > _lastSpot.index ? 1.0 : -1.0;
       _lastSpot = d.spot;
@@ -157,14 +167,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
                     // The board: what the tutor is showing.
                     Expanded(
                       child: Center(
-                        child: d.visual == null
-                            ? Text(widget.subject.icon, style: const TextStyle(fontSize: 64))
-                            : SingleChildScrollView(
-                                child: SoftCard(
-                                  key: ValueKey(d.visual.toString()),
-                                  child: VisualView(d.visual!),
-                                ),
-                              ),
+                        child: SingleChildScrollView(child: _board()),
                       ),
                     ),
                     // The tutor walks to wherever the action is.
@@ -233,6 +236,43 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
     );
   }
 
+  /// The board: a picture the tutor shows, or something for the child to touch.
+  Widget _board() {
+    final q = d.question;
+    if (q != null && d.phase == Phase.asking) {
+      if (q.form == 'abacus') return AbacusPad(values: _beads, onChanged: (v) => setState(() => _beads = v));
+      if (q.form == 'measure') {
+        final args = (q.visual?['args'] as List?) ?? const [];
+        return ScaleBoard(
+          key: ObjectKey(q),
+          length: int.tryParse('${args.isEmpty ? 5 : args.first}') ?? 5,
+          emoji: args.length > 1 ? '${args[1]}' : '',
+        );
+      }
+      if (q.form == 'build') {
+        return StickBuilder(key: ObjectKey(q), options: q.options, disabled: d.wrongOptions, onBuilt: d.answer);
+      }
+    }
+    var v = d.visual;
+    if (q != null && d.phase == Phase.feedback) {
+      // after a touch activity, show what the right answer looks like
+      if (q.form == 'abacus') {
+        final n = int.tryParse(q.answer) ?? 0;
+        v = {'kind': 'place', 'args': [n ~/ 100, (n ~/ 10) % 10, n % 10]};
+      } else if (q.form == 'build') {
+        v = {'kind': 'shapes', 'args': [q.answer]};
+      }
+    }
+    if (v == null) return Text(widget.subject.icon, style: const TextStyle(fontSize: 64));
+    return SoftCard(key: ValueKey(v.toString()), child: VisualView(v));
+  }
+
+  Widget _tip(String key, String lang) => Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: Text(tr(key, lang),
+            textAlign: TextAlign.center, style: const TextStyle(color: Color(0xFF6B6F80), fontWeight: FontWeight.w600)),
+      );
+
   Widget _controls(String lang) {
     final q = d.question;
     switch (d.phase) {
@@ -261,6 +301,23 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
                 child: Chunky(color: Colors.white, onTap: d.showHint, child: Text('💡 ${tr('hint', lang)}', style: const TextStyle(color: ink))),
               )
             : const SizedBox.shrink();
+        if (q != null && q.form == 'build') {
+          return Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            _tip('dragSticks', lang),
+            hint,
+          ]);
+        }
+        if (q != null && q.form == 'abacus') {
+          return Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            _tip('moveBeads', lang),
+            Chunky(
+              color: mint,
+              onTap: () => d.answer('${_beads[0] * 100 + _beads[1] * 10 + _beads[2]}'),
+              child: Text('${tr('check', lang)} ✓'),
+            ),
+            hint,
+          ]);
+        }
         if (q != null && q.form == 'choice') {
           return Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             for (var i = 0; i < q.options.length; i++)
@@ -278,6 +335,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
           ]);
         }
         return Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          if (q != null && q.form == 'measure') _tip('slideScale', lang),
           Container(
             height: 52,
             alignment: Alignment.center,
@@ -360,7 +418,7 @@ class _CelebrationScreenState extends State<CelebrationScreen> {
     final lang = appState.mainLang;
     final tutor = tutorById(appState.tutorId);
     return Scaffold(
-      backgroundColor: const Color(0xFFFFE9A8),
+      backgroundColor: violetSoft,
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(

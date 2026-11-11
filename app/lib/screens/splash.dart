@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import '../widgets/avatar.dart';
 import '../widgets/ui.dart';
 
-const brandTop = Color(0xFFFF9A3D);
-const brandBottom = Color(0xFFFF5C7A);
+const brandTop = Color(0xFF9D80FF);
+const brandBottom = Color(0xFF6243E0);
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key, required this.onDone});
@@ -81,14 +81,14 @@ class _SplashPainter extends CustomPainter {
     final c = Offset(w / 2, h * 0.46 + (1 - up) * (h * 0.6));
     if (t > 0.3) {
       final body = creaturePath('blob', c, r, t * 2.2);
-      canvas.drawPath(body, Paint()..color = const Color(0xFFFFF6E9));
+      canvas.drawPath(body, Paint()..color = const Color(0xFFF6F1FF));
       // eyes glance left, then right, then at you
       final lookX = t < 0.62 ? -1.0 : (t < 0.78 ? 1.0 : 0.0);
       final lookY = t < 0.78 ? -0.2 : 0.0;
       final blink = t > 0.83 && t < 0.87;
       const dark = Color(0xFF23243A);
       for (final side in [-1, 1]) {
-        final e = Offset(c.dx + side * r * 0.34, c.dy - r * 0.08);
+        final e = Offset(c.dx + side * r * 0.34, c.dy);
         if (blink) {
           canvas.drawLine(
               e.translate(-r * 0.16, 0),
@@ -103,16 +103,6 @@ class _SplashPainter extends CustomPainter {
         canvas.drawCircle(p, r * 0.2, Paint()..color = dark);
         canvas.drawCircle(p.translate(r * 0.06, -r * 0.07), r * 0.06, Paint()..color = Colors.white);
       }
-      canvas.drawArc(
-          Rect.fromCenter(center: c.translate(0, r * 0.28), width: r * 0.42, height: r * 0.26),
-          0.1 * pi,
-          0.8 * pi,
-          false,
-          Paint()
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = r * 0.07
-            ..strokeCap = StrokeCap.round
-            ..color = dark);
     }
 
     // 3. the name

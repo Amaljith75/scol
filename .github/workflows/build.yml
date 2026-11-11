@@ -75,3 +75,12 @@ jobs:
           gh release delete latest --yes --cleanup-tag || true
           gh release create latest scol.apk --title "Scol - latest test build" \
             --notes "Latest test build of the Scol Android app. Download scol.apk on an Android phone and open it to install."
+          # A numbered release for each new version in app/pubspec.yaml (e.g. 1.0.0+2 -> "Scol V1 build 2").
+          VERSION=$(grep '^version:' app/pubspec.yaml | sed 's/version: *//')
+          NAME=${VERSION%%+*}; BUILD=${VERSION##*+}; TAG="v${NAME}-build${BUILD}"
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            cp scol.apk "scol-v${NAME%%.*}-build${BUILD}.apk"
+            gh release create "$TAG" "scol-v${NAME%%.*}-build${BUILD}.apk" --target "$GITHUB_SHA" \
+              --title "Scol V${NAME%%.*} build ${BUILD}" \
+              --notes "Scol V${NAME%%.*} build ${BUILD}. Download the .apk file on an Android phone and open it to install."
+          fi

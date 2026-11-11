@@ -68,3 +68,12 @@ hint.en: A scale cannot bend. What can bend around the bottle?
 hint.ml: സ്കെയിൽ വളയില്ല. കുപ്പിക്ക് ചുറ്റും വളയുന്നത് എന്താണ്?
 explain.en: A thread bends around the bottle. Straighten it on a scale to read the length.
 explain.ml: നൂൽ കുപ്പിക്ക് ചുറ്റും വളയും. അത് നിവർത്തി സ്കെയിലിൽ വെച്ചാൽ നീളം അറിയാം.
+
+## story
+en: An ant walks all the way around a rectangular biscuit, along every edge, until it is back where it started. The distance it walked is all the sides added together.
+ml: ഒരു ഉറുമ്പ് ചതുരത്തിലുള്ള ഒരു ബിസ്കറ്റിന് ചുറ്റും, ഓരോ അരികിലൂടെയും നടന്ന് തുടങ്ങിയിടത്ത് തിരിച്ചെത്തി. അത് നടന്ന ദൂരം എല്ലാ വശങ്ങളും കൂട്ടിയതാണ്.
+
+## picture
+visual: steps 6 + 4 + 6 + 4 / 6 + 6 = 12 / 4 + 4 = 8 / 12 + 8 = 20 cm
+en: Go around the shape and add every side once.
+ml: രൂപത്തിന് ചുറ്റും പോയി ഓരോ വശവും ഒരു തവണ കൂട്ടൂ.

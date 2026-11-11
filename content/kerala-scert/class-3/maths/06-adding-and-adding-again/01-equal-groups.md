@@ -69,3 +69,12 @@ explain.en: 2 and 2 and 2 and 2 make 8.
 explain.ml: 2-ഉം 2-ഉം 2-ഉം 2-ഉം ചേർന്നാൽ 8.
 visual: groups 4 2 ⚽
 mistake 6: added 4 and 2 instead of counting every group
+
+## story
+en: Amma puts 4 unniyappams on each of 3 plates. To know how many she made, she counts plate by plate: 4, 8, 12.
+ml: അമ്മ 3 പാത്രങ്ങളിൽ 4 വീതം ഉണ്ണിയപ്പം വെച്ചു. ആകെ എത്രയെന്നറിയാൻ ഓരോ പാത്രമായി എണ്ണി: 4, 8, 12.
+
+## picture
+visual: array 3 4 🟤
+en: 3 rows with 4 in each row. Count row by row: 4, 8, 12.
+ml: 4 വീതമുള്ള 3 വരികൾ. ഓരോ വരിയായി എണ്ണൂ: 4, 8, 12.

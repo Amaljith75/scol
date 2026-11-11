@@ -67,3 +67,12 @@ hint.ml: ആദ്യത്തേതിന്റെ വശങ്ങൾ എണ്
 explain.en: 3 and 3 make 6 sides.
 explain.ml: 3-ഉം 3-ഉം ചേർന്നാൽ 6 വശങ്ങൾ.
 mistake 3: counted only one triangle
+
+## story
+en: Amma cuts a rectangular dosa from corner to corner. Now there are two triangle pieces, one for you and one for me. Put them back together and the rectangle returns.
+ml: അമ്മ ചതുരത്തിലുള്ള ഒരു ദോശ മൂലയിൽ നിന്ന് മൂലയിലേക്ക് മുറിച്ചു. ഇപ്പോൾ രണ്ട് ത്രികോണക്കഷണങ്ങൾ, ഒന്ന് നിനക്ക്, ഒന്ന് എനിക്ക്. അവ ചേർത്തുവെച്ചാൽ ചതുരം തിരിച്ചുവരും.
+
+## picture
+visual: shapes rectangle triangle triangle
+en: One rectangle. One cut from corner to corner. Two triangles.
+ml: ഒരു ചതുരം. മൂലയിൽ നിന്ന് മൂലയിലേക്ക് ഒരു മുറിക്കൽ. രണ്ട് ത്രികോണങ്ങൾ.

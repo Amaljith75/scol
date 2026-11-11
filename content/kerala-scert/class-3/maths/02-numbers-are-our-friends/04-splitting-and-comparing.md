@@ -103,3 +103,12 @@ hint.ml: എല്ലാത്തിലും 1 നൂറ്. ഏറ്റവു
 explain.en: 176 has 7 tens. The others have only 2 tens. So 176 is the largest.
 explain.ml: 176-ൽ 7 പത്തുകൾ. മറ്റുള്ളവയിൽ 2 പത്തുകൾ മാത്രം. അതുകൊണ്ട് 176 ഏറ്റവും വലുത്.
 mistake 128: compared the ones digit instead of the tens
+
+## story
+en: Two brothers carry 1000 mangoes in two baskets. If the first carries 300, the second must carry the rest, 700. When one basket gets heavier the other gets lighter, but together it is always 1000.
+ml: രണ്ട് സഹോദരന്മാർ 1000 മാങ്ങ രണ്ട് കൊട്ടകളിൽ ചുമക്കുന്നു. ഒരാൾ 300 എടുത്താൽ മറ്റേയാൾ ബാക്കി 700 എടുക്കണം. ഒരു കൊട്ടയിൽ കൂടിയാൽ മറ്റേതിൽ കുറയും, പക്ഷേ രണ്ടും ചേർന്നാൽ എപ്പോഴും 1000.
+
+## picture
+visual: split 1000 300 700
+en: The top number is the whole. The two below are its parts. The parts always add up to the whole.
+ml: മുകളിലെ സംഖ്യ മുഴുവൻ. താഴെയുള്ള രണ്ടും അതിന്റെ ഭാഗങ്ങൾ. ഭാഗങ്ങൾ കൂട്ടിയാൽ എപ്പോഴും മുഴുവൻ കിട്ടും.

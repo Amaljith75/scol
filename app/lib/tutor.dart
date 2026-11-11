@@ -19,9 +19,10 @@ enum Mood { calm, happy, caring }
 enum Look { child, board, answers }
 
 class _Item {
-  _Item(this.step, {this.retry = false});
+  _Item(this.step, {this.retry = false, this.style});
   final LessonStep step;
   final bool retry; // a question the tutor brought back because it was missed
+  final String? style; // 'story' or 'picture': the other way it was just explained
 }
 
 /// Runs one lesson. Today the Director follows the written lesson and adapts
@@ -36,6 +37,8 @@ class TutorDirector extends ChangeNotifier {
     required this.day,
     this.phrases = const {},
     this.speaker,
+    this.pickStyle,
+    this.onStyleResult,
     Random? random,
   }) : _rnd = random ?? Random() {
     _queue = [for (final s in lesson.steps) _Item(s)];
@@ -50,7 +53,15 @@ class TutorDirector extends ChangeNotifier {
   final int day;
   final Map<String, dynamic> phrases;
   final Speaker? speaker;
+
+  /// Chooses which other way of explaining to try for this child.
+  final String Function(List<String> available)? pickStyle;
+
+  /// Told whether that other way worked (the child then got the question right).
+  final void Function(String style, bool worked)? onStyleResult;
   final Random _rnd;
+  final Set<String> _usedStyles = {};
+  bool _styleReported = false;
 
   late List<_Item> _queue;
   late int _total;
@@ -96,8 +107,10 @@ class TutorDirector extends ChangeNotifier {
   /// Every line this lesson might speak, so the sound can be fetched early.
   List<String> get allLines => [
         for (final s in lesson.steps) ...[pick(s.text, lang), pick(s.hint, lang), pick(s.explain, lang)],
+        for (final a in lesson.alts.values) pick(a.text, lang),
         ...tutor.praiseList(lang),
         pick(tutor.oops, lang),
+        _ph('anotherWay'),
         _ph('lookAgain'),
         _ph('tryLater'),
         _ph('again'),
@@ -128,7 +141,8 @@ class TutorDirector extends ChangeNotifier {
     _attempts = 0;
     _mistakes.clear();
     mood = Mood.calm;
-    badge = step.label == 'example' ? tr('example', lang) : '';
+    _styleReported = false;
+    badge = const ['example', 'story', 'picture'].contains(step.label) ? tr(step.label, lang) : '';
     final text = pick(step.text, lang);
     if (!step.isAsk) {
       question = null;
@@ -169,6 +183,12 @@ class TutorDirector extends ChangeNotifier {
     final q = question;
     if (q == null || phase != Phase.asking) return;
     final millis = DateTime.now().difference(_askedAt).inMilliseconds;
+    final style = _queue[_index].style;
+    if (style != null && !_styleReported) {
+      // Did explaining it the other way work? Remember that for this child.
+      _styleReported = true;
+      onStyleResult?.call(style, q.isCorrect(given) && _attempts == 0);
+    }
     if (q.isCorrect(given)) {
       final clean = _attempts == 0 && !hintShown && !_queue[_index].retry;
       _finishQuestion(clean ? 'first' : 'help', millis);
@@ -198,7 +218,16 @@ class TutorDirector extends ChangeNotifier {
         final shown = q.options.contains(q.answer) ? q.optionLabel(q.options.indexOf(q.answer), lang) : q.answer;
         final body = explain.isEmpty ? '${tr('answerIs', lang)} $shown.' : explain;
         final already = _queue.skip(_index + 1).any((i) => i.retry && identical(i.step, q));
-        if (!_queue[_index].retry && !already) {
+        final left = lesson.alts.keys.where((k) => !_usedStyles.contains(k)).toList();
+        if (!_queue[_index].retry && !already && left.isNotEmpty) {
+          // Explain it another way (a story or a picture), then ask again straight away.
+          final mode = pickStyle?.call(left) ?? left.first;
+          final chosen = left.contains(mode) ? mode : left.first;
+          _usedStyles.add(chosen);
+          _queue.insertAll(_index + 1, [_Item(lesson.alts[chosen]!), _Item(q, retry: true, style: chosen)]);
+          _total = _queue.length;
+          _say([body, _ph('anotherWay')]);
+        } else if (!_queue[_index].retry && !already) {
           _queue.add(_Item(q, retry: true));
           _total = _queue.length;
           _say([body, _ph('tryLater')]);

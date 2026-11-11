@@ -96,6 +96,28 @@
          "id": "kerala-scert/class-3/maths/01-lets-draw",
          "lessons": [
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Count the corners with me. Circle: none. Triangle: 1, 2, 3. Rectangle: 1, 2, 3, 4.",
+              "ml": "എന്റെ കൂടെ മൂലകൾ എണ്ണൂ. വൃത്തം: ഒന്നുമില്ല. ത്രികോണം: 1, 2, 3. ചതുരം: 1, 2, 3, 4."
+             },
+             "visual": {
+              "args": [
+               "circle",
+               "triangle",
+               "rectangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Circle the ball loves to roll, because it has no corners. Triangle the hill has 3 pointed tips. Rectangle the door stands tall on its 4 corners.",
+              "ml": "ഉരുളാൻ ഇഷ്ടമുള്ള പന്താണ് വൃത്തം, അതിന് മൂലകളില്ല. മൂന്ന് കൂർത്ത അറ്റങ്ങളുള്ള കുന്നാണ് ത്രികോണം. നാല് മൂലകളിൽ നിവർന്നു നിൽക്കുന്ന വാതിലാണ് ചതുരം."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/01-lets-draw/01-shapes-at-the-fest",
            "minutes": 5,
            "objective": {
@@ -269,6 +291,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Each side is one stick. Count the sides and you know how many sticks.",
+              "ml": "ഓരോ വശവും ഒരു ഈർക്കിൽ. വശങ്ങൾ എണ്ണിയാൽ എത്ര ഈർക്കിൽ വേണമെന്ന് അറിയാം."
+             },
+             "visual": {
+              "args": [
+               "1 triangle = 3 sticks",
+               "2 triangles = 3 + 3 = 6",
+               "1 rectangle = 4 sticks"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A little bird builds with twigs. For a triangle nest it carries 3 twigs. For a rectangle window it carries 4. For two triangles it must bring 3, and then 3 more.",
+              "ml": "ഒരു കൊച്ചു കിളി ചുള്ളിക്കമ്പുകൾ കൊണ്ട് പണിയുന്നു. ത്രികോണക്കൂടിന് 3 കമ്പ്. ചതുരജനലിന് 4 കമ്പ്. രണ്ട് ത്രികോണത്തിന് 3-ഉം പിന്നെ 3 കൂടിയും കൊണ്ടുവരണം."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/01-lets-draw/02-shapes-from-sticks",
            "minutes": 5,
            "objective": {
@@ -428,6 +472,58 @@
               ],
               "kind": "sticks"
              }
+            },
+            {
+             "answer": "triangle",
+             "concept": "kerala-scert/class-3/maths#shape-sides",
+             "explain": {
+              "en": "A triangle has 3 sides, so it takes 3 sticks.",
+              "ml": "ത്രികോണത്തിന് 3 വശങ്ങൾ, അതുകൊണ്ട് 3 ഈർക്കിൽ മതി."
+             },
+             "form": "build",
+             "hint": {
+              "en": "Count the sides of each outline before you build.",
+              "ml": "ഉണ്ടാക്കുന്നതിന് മുമ്പ് ഓരോ രൂപരേഖയുടെയും വശങ്ങൾ എണ്ണൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "rectangle": "built the 4-sided shape when asked for 3 sides"
+             },
+             "options": [
+              "triangle",
+              "rectangle"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Drag the sticks to build the shape that has 3 sides.",
+              "ml": "3 വശങ്ങളുള്ള രൂപം ഈർക്കിലുകൾ വലിച്ചുവെച്ച് ഉണ്ടാക്കൂ."
+             }
+            },
+            {
+             "answer": "rectangle",
+             "concept": "kerala-scert/class-3/maths#shape-sides",
+             "explain": {
+              "en": "A rectangle has 4 sides, so it takes 4 sticks.",
+              "ml": "ചതുരത്തിന് 4 വശങ്ങൾ, അതുകൊണ്ട് 4 ഈർക്കിൽ വേണം."
+             },
+             "form": "build",
+             "hint": {
+              "en": "Which outline has 4 sides?",
+              "ml": "ഏത് രൂപരേഖയ്ക്കാണ് 4 വശങ്ങൾ?"
+             },
+             "level": 2,
+             "mistakes": {
+              "triangle": "built the 3-sided shape when asked for 4 sticks"
+             },
+             "options": [
+              "triangle",
+              "rectangle"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Now build the shape that needs 4 sticks.",
+              "ml": "ഇനി 4 ഈർക്കിൽ വേണ്ട രൂപം ഉണ്ടാക്കൂ."
+             }
             }
            ],
            "title": {
@@ -436,6 +532,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "One rectangle. One cut from corner to corner. Two triangles.",
+              "ml": "ഒരു ചതുരം. മൂലയിൽ നിന്ന് മൂലയിലേക്ക് ഒരു മുറിക്കൽ. രണ്ട് ത്രികോണങ്ങൾ."
+             },
+             "visual": {
+              "args": [
+               "rectangle",
+               "triangle",
+               "triangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Amma cuts a rectangular dosa from corner to corner. Now there are two triangle pieces, one for you and one for me. Put them back together and the rectangle returns.",
+              "ml": "അമ്മ ചതുരത്തിലുള്ള ഒരു ദോശ മൂലയിൽ നിന്ന് മൂലയിലേക്ക് മുറിച്ചു. ഇപ്പോൾ രണ്ട് ത്രികോണക്കഷണങ്ങൾ, ഒന്ന് നിനക്ക്, ഒന്ന് എനിക്ക്. അവ ചേർത്തുവെച്ചാൽ ചതുരം തിരിച്ചുവരും."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/01-lets-draw/03-cut-and-join",
            "minutes": 5,
            "objective": {
@@ -598,6 +716,31 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Clap for a triangle, tap for a circle. Clap, tap, clap, tap. The pattern tells you what comes next.",
+              "ml": "ത്രികോണത്തിന് കൈയടി, വൃത്തത്തിന് തട്ട്. കൈയടി, തട്ട്, കൈയടി, തട്ട്. അടുത്തത് എന്തെന്ന് ക്രമം പറഞ്ഞുതരും."
+             },
+             "visual": {
+              "args": [
+               "🔺",
+               "⚪",
+               "🔺",
+               "⚪",
+               "🔺",
+               "⚪"
+              ],
+              "kind": "pattern"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A drummer plays dum, tak, dum, tak. If you know the beat, you know what comes next. Shapes can follow a beat too.",
+              "ml": "ഒരു ചെണ്ടക്കാരൻ ഡും, തക്, ഡും, തക് എന്ന് കൊട്ടുന്നു. താളം അറിഞ്ഞാൽ അടുത്തത് എന്തെന്ന് അറിയാം. രൂപങ്ങൾക്കും ഒരു താളമുണ്ടാകാം."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/01-lets-draw/04-patterns-blocks-and-balls",
            "minutes": 5,
            "objective": {
@@ -830,6 +973,28 @@
          "id": "kerala-scert/class-3/maths/02-numbers-are-our-friends",
          "lessons": [
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Every time we have 10 of something, we pack it into the next bigger one.",
+              "ml": "ഏതെങ്കിലും 10 എണ്ണം ആയാൽ, അതിനെ അടുത്ത വലിയ ഒന്നാക്കി പാക്ക് ചെയ്യും."
+             },
+             "visual": {
+              "args": [
+               "10 ones = 1 ten",
+               "10 tens = 1 hundred",
+               "10 hundreds = 1 thousand"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A shopkeeper ties 10 pencils with a rubber band. That is one ten. He puts 10 bundles in a box. That is one hundred. Ten boxes fill a carton. That is one thousand.",
+              "ml": "ഒരു കടക്കാരൻ 10 പെൻസിൽ റബ്ബർബാൻഡ് ഇട്ട് കെട്ടുന്നു. അതൊരു പത്ത്. അങ്ങനെ 10 കെട്ടുകൾ ഒരു പെട്ടിയിൽ. അതൊരു നൂറ്. പത്ത് പെട്ടികൾ ഒരു വലിയ പെട്ടിയിൽ. അതൊരു ആയിരം."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/02-numbers-are-our-friends/01-packets-and-boxes",
            "minutes": 5,
            "objective": {
@@ -965,6 +1130,29 @@
               "en": "There are 10 boxes. Each box holds 100 pencils. How many pencils in all?",
               "ml": "10 പെട്ടികളുണ്ട്. ഓരോന്നിലും 100 പെൻസിൽ. ആകെ എത്ര പെൻസിൽ?"
              }
+            },
+            {
+             "answer": "520",
+             "concept": "kerala-scert/class-3/maths#tens-hundreds",
+             "explain": {
+              "en": "5 hundreds and 2 tens make 520. The ones rod stays empty.",
+              "ml": "5 നൂറുകളും 2 പത്തുകളും ചേർന്നാൽ 520. ഒന്നിന്റെ കമ്പി ഒഴിഞ്ഞിരിക്കും."
+             },
+             "form": "abacus",
+             "hint": {
+              "en": "Boxes are hundreds. Packets are tens. There are no loose pencils.",
+              "ml": "പെട്ടികൾ നൂറുകൾ. പാക്കറ്റുകൾ പത്തുകൾ. ഒറ്റ പെൻസിലുകളില്ല."
+             },
+             "level": 2,
+             "mistakes": {
+              "502": "put the tens on the ones rod",
+              "52": "left the hundreds rod empty"
+             },
+             "t": "ask",
+             "text": {
+              "en": "5 boxes of 100 and 2 packets of 10. Move the beads to show how many pencils that is.",
+              "ml": "100 വീതമുള്ള 5 പെട്ടികളും 10 വീതമുള്ള 2 പാക്കറ്റുകളും. ആകെ പെൻസിലുകളുടെ എണ്ണം മണികൾ നീക്കി കാണിക്കൂ."
+             }
             }
            ],
            "title": {
@@ -973,6 +1161,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Each rod has its own job. The first counts hundreds, the middle counts tens, the last counts ones. Read them from left to right.",
+              "ml": "ഓരോ കമ്പിക്കും ഓരോ ജോലി. ആദ്യത്തേത് നൂറുകൾ, നടുവിലേത് പത്തുകൾ, അവസാനത്തേത് ഒന്നുകൾ. ഇടത്തു നിന്ന് വലത്തോട്ട് വായിക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "4",
+               "2"
+              ],
+              "kind": "place"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Three friends share a house. Hundreds lives in the first room, Tens in the middle room, Ones in the last room. In 342, Hundreds has 3, Tens has 4 and Ones has 2. If a room is empty, a 0 hangs on its door.",
+              "ml": "മൂന്ന് കൂട്ടുകാർ ഒരു വീട്ടിൽ താമസിക്കുന്നു. ആദ്യത്തെ മുറിയിൽ നൂറുകൾ, നടുവിലെ മുറിയിൽ പത്തുകൾ, അവസാന മുറിയിൽ ഒന്നുകൾ. 342-ൽ നൂറിന് 3, പത്തിന് 4, ഒന്നിന് 2. ഒരു മുറി ഒഴിഞ്ഞാൽ അതിന്റെ വാതിലിൽ 0 തൂക്കും."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/02-numbers-are-our-friends/02-hundreds-tens-ones",
            "minutes": 5,
            "objective": {
@@ -1140,6 +1350,51 @@
               ],
               "kind": "notes"
              }
+            },
+            {
+             "answer": "235",
+             "concept": "kerala-scert/class-3/maths#place-value",
+             "explain": {
+              "en": "235 is 2 hundreds, 3 tens and 5 ones.",
+              "ml": "235 എന്നാൽ 2 നൂറുകൾ, 3 പത്തുകൾ, 5 ഒന്നുകൾ."
+             },
+             "form": "abacus",
+             "hint": {
+              "en": "2 beads on hundreds, 3 on tens, 5 on ones.",
+              "ml": "നൂറിൽ 2 മണി, പത്തിൽ 3, ഒന്നിൽ 5."
+             },
+             "level": 1,
+             "mistakes": {
+              "532": "put the digits on the rods in the opposite order"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Move the beads to show the number 235.",
+              "ml": "മണികൾ നീക്കി 235 എന്ന സംഖ്യ കാണിക്കൂ."
+             }
+            },
+            {
+             "answer": "406",
+             "concept": "kerala-scert/class-3/maths#place-value",
+             "explain": {
+              "en": "406 is 4 hundreds, no tens and 6 ones.",
+              "ml": "406 എന്നാൽ 4 നൂറുകൾ, പത്തുകളില്ല, 6 ഒന്നുകൾ."
+             },
+             "form": "abacus",
+             "hint": {
+              "en": "There are no tens, so leave the tens rod empty.",
+              "ml": "പത്തുകളില്ല, അതുകൊണ്ട് പത്തിന്റെ കമ്പി ഒഴിച്ചിടൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "46": "left the hundreds rod empty",
+              "460": "put the ones on the tens rod"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Show the number four hundred six on the abacus.",
+              "ml": "നാനൂറ്റി ആറ് എന്ന സംഖ്യ മണിച്ചട്ടത്തിൽ കാണിക്കൂ."
+             }
             }
            ],
            "title": {
@@ -1148,6 +1403,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Break the number into parts and read each part.",
+              "ml": "സംഖ്യയെ ഭാഗങ്ങളാക്കി ഓരോ ഭാഗവും വായിക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "405 = 400 + 5",
+               "617 = 600 + 17",
+               "299 + 1 = 300"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Grandfather writes a cheque for 405 rupees. He says four hundred, and five. There are no tens, so he writes a 0 in the middle to hold the place.",
+              "ml": "മുത്തച്ഛൻ 405 രൂപയുടെ ചെക്ക് എഴുതുന്നു. നാനൂറ്, പിന്നെ അഞ്ച് എന്ന് പറയുന്നു. പത്തുകളില്ലാത്തതുകൊണ്ട് സ്ഥാനം നിലനിർത്താൻ നടുവിൽ 0 എഴുതുന്നു."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/02-numbers-are-our-friends/03-reading-and-writing-numbers",
            "minutes": 5,
            "objective": {
@@ -1305,6 +1582,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "The top number is the whole. The two below are its parts. The parts always add up to the whole.",
+              "ml": "മുകളിലെ സംഖ്യ മുഴുവൻ. താഴെയുള്ള രണ്ടും അതിന്റെ ഭാഗങ്ങൾ. ഭാഗങ്ങൾ കൂട്ടിയാൽ എപ്പോഴും മുഴുവൻ കിട്ടും."
+             },
+             "visual": {
+              "args": [
+               "1000",
+               "300",
+               "700"
+              ],
+              "kind": "split"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Two brothers carry 1000 mangoes in two baskets. If the first carries 300, the second must carry the rest, 700. When one basket gets heavier the other gets lighter, but together it is always 1000.",
+              "ml": "രണ്ട് സഹോദരന്മാർ 1000 മാങ്ങ രണ്ട് കൊട്ടകളിൽ ചുമക്കുന്നു. ഒരാൾ 300 എടുത്താൽ മറ്റേയാൾ ബാക്കി 700 എടുക്കണം. ഒരു കൊട്ടയിൽ കൂടിയാൽ മറ്റേതിൽ കുറയും, പക്ഷേ രണ്ടും ചേർന്നാൽ എപ്പോഴും 1000."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/02-numbers-are-our-friends/04-splitting-and-comparing",
            "minutes": 5,
            "objective": {
@@ -1562,6 +1861,30 @@
          "id": "kerala-scert/class-3/maths/03-thousands-and-thousands",
          "lessons": [
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "After 999 the counting does not stop. A new place opens for thousands.",
+              "ml": "999 കഴിഞ്ഞാലും എണ്ണൽ നിൽക്കില്ല. ആയിരങ്ങൾക്കായി ഒരു പുതിയ സ്ഥാനം തുറക്കും."
+             },
+             "visual": {
+              "args": [
+               "998",
+               "999",
+               "1000",
+               "1001",
+               "1002"
+              ],
+              "kind": "pattern"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A car's meter shows 999 kilometres. One more kilometre and all the nines roll over to zero, and a 1 appears in front: 1000. After that it simply keeps counting: 1001, 1002.",
+              "ml": "ഒരു കാറിന്റെ മീറ്ററിൽ 999 കിലോമീറ്റർ. ഒരു കിലോമീറ്റർ കൂടി ഓടിയാൽ എല്ലാ ഒമ്പതുകളും പൂജ്യമാകും, മുന്നിൽ ഒരു 1 വരും: 1000. പിന്നെ അത് എണ്ണിക്കൊണ്ടേയിരിക്കും: 1001, 1002."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/03-thousands-and-thousands/01-past-one-thousand",
            "minutes": 5,
            "objective": {
@@ -1707,6 +2030,27 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Count every number on the line, including the first one and the last one. There are 11.",
+              "ml": "വരയിലെ എല്ലാ സംഖ്യയും എണ്ണൂ, ആദ്യത്തേതും അവസാനത്തേതും ഉൾപ്പെടെ. ആകെ 11."
+             },
+             "visual": {
+              "args": [
+               "10",
+               "20"
+              ],
+              "kind": "numberline"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Children stand in a line with tokens 10 to 20. The teacher subtracts and says there are 10 children. But the child holding token 10 says, you forgot me! So we add 1 for the first child.",
+              "ml": "10 മുതൽ 20 വരെ ടോക്കണുമായി കുട്ടികൾ വരിയായി നിൽക്കുന്നു. ടീച്ചർ കുറച്ചു നോക്കി 10 കുട്ടികൾ എന്ന് പറഞ്ഞു. പക്ഷേ 10-ാം ടോക്കണുള്ള കുട്ടി പറഞ്ഞു, എന്നെ മറന്നു! അതുകൊണ്ട് ആദ്യത്തെ കുട്ടിക്കായി 1 ചേർക്കണം."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/03-thousands-and-thousands/02-how-many-numbers",
            "minutes": 5,
            "objective": {
@@ -1848,6 +2192,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Six children make 3 pairs and nobody is left out. Six is even. One more child would have no partner, so seven is odd.",
+              "ml": "ആറ് കുട്ടികൾ 3 ജോഡിയാകും, ആരും ബാക്കിയില്ല. ആറ് ഇരട്ട. ഒരു കുട്ടി കൂടി വന്നാൽ കൂട്ടില്ല, അതുകൊണ്ട് ഏഴ് ഒറ്റ."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "2",
+               "🧒"
+              ],
+              "kind": "groups"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Children walk to the assembly in pairs, holding hands. If everyone has a partner, the number is even. If one child is left without a partner, the number is odd.",
+              "ml": "കുട്ടികൾ കൈ പിടിച്ച് ജോഡികളായി അസംബ്ലിക്ക് പോകുന്നു. എല്ലാവർക്കും കൂട്ടുണ്ടെങ്കിൽ സംഖ്യ ഇരട്ട. ഒരു കുട്ടിക്ക് കൂട്ടില്ലെങ്കിൽ സംഖ്യ ഒറ്റ."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/03-thousands-and-thousands/03-odd-and-even",
            "minutes": 5,
            "objective": {
@@ -2025,6 +2391,27 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "The hundreds place matters most. Put your biggest digit there for the largest number.",
+              "ml": "നൂറിന്റെ സ്ഥാനമാണ് ഏറ്റവും പ്രധാനം. ഏറ്റവും വലിയ സംഖ്യയ്ക്ക് ഏറ്റവും വലിയ അക്കം അവിടെ വെക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "Largest: 7 5 2",
+               "Smallest: 2 5 7"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Three children want to sit in a row of three chairs. The first chair is worth hundreds, so for the largest number the biggest digit sits there. For the smallest number the smallest digit sits first. But zero is too shy to sit in the first chair.",
+              "ml": "മൂന്ന് കുട്ടികൾക്ക് മൂന്ന് കസേരകളിൽ ഇരിക്കണം. ആദ്യത്തെ കസേര നൂറിന്റേതാണ്, അതുകൊണ്ട് ഏറ്റവും വലിയ സംഖ്യയ്ക്ക് ഏറ്റവും വലിയ അക്കം അവിടെ ഇരിക്കും. ഏറ്റവും ചെറിയ സംഖ്യയ്ക്ക് ഏറ്റവും ചെറിയ അക്കം ആദ്യം. പക്ഷേ പൂജ്യത്തിന് ആദ്യത്തെ കസേരയിൽ ഇരിക്കാൻ നാണമാണ്."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/03-thousands-and-thousands/04-making-numbers-from-digits",
            "minutes": 5,
            "objective": {
@@ -2179,6 +2566,29 @@
               ],
               "kind": "place"
              }
+            },
+            {
+             "answer": "421",
+             "concept": "kerala-scert/class-3/maths#digits-make-numbers",
+             "explain": {
+              "en": "4 hundreds, 2 tens, 1 one: 421.",
+              "ml": "4 നൂറുകൾ, 2 പത്തുകൾ, 1 ഒന്ന്: 421."
+             },
+             "form": "abacus",
+             "hint": {
+              "en": "The biggest digit goes on the hundreds rod.",
+              "ml": "ഏറ്റവും വലിയ അക്കം നൂറിന്റെ കമ്പിയിൽ."
+             },
+             "level": 2,
+             "mistakes": {
+              "124": "made the smallest number instead",
+              "142": "kept the digits in the given order"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Use the digits 1, 4 and 2 once each. Show the largest number on the abacus.",
+              "ml": "1, 4, 2 എന്നീ അക്കങ്ങൾ ഓരോ തവണ ഉപയോഗിച്ച് ഉണ്ടാക്കാവുന്ന ഏറ്റവും വലിയ സംഖ്യ മണിച്ചട്ടത്തിൽ കാണിക്കൂ."
+             }
             }
            ],
            "title": {
@@ -2208,6 +2618,28 @@
          "id": "kerala-scert/class-3/maths/04-lets-join-together",
          "lessons": [
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Stand at 60. How far is it to 100? Four more jumps of ten. So 60 pairs with 40.",
+              "ml": "60-ൽ നിൽക്കൂ. 100 വരെ എത്ര ദൂരം? പത്തിന്റെ നാല് ചാട്ടം കൂടി. അതുകൊണ്ട് 60-ന്റെ ജോഡി 40."
+             },
+             "visual": {
+              "args": [
+               "0",
+               "100",
+               "60"
+              ],
+              "kind": "numberline"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "You have a 100 rupee note and buy a pen for 60 rupees. The shopkeeper gives back 40. The price and the change are a pair, because together they make 100.",
+              "ml": "നിന്റെ കയ്യിൽ 100 രൂപ നോട്ടുണ്ട്. 60 രൂപയ്ക്ക് ഒരു പേന വാങ്ങി. കടക്കാരൻ 40 തിരിച്ചു തന്നു. വിലയും ബാക്കിയും ഒരു ജോഡിയാണ്, കാരണം രണ്ടും ചേർന്നാൽ 100."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/04-lets-join-together/01-pairs-that-make-100",
            "minutes": 5,
            "objective": {
@@ -2362,6 +2794,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "The same pair works for ones, for tens and for hundreds.",
+              "ml": "ഒരേ ജോഡി ഒന്നുകളിലും പത്തുകളിലും നൂറുകളിലും ശരിയാണ്."
+             },
+             "visual": {
+              "args": [
+               "4 + 6 = 10",
+               "40 + 60 = 100",
+               "400 + 600 = 1000"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A water tank holds 1000 litres. If 400 litres are already inside, 600 more will fill it. What is inside and what is missing always make 1000.",
+              "ml": "ഒരു വാട്ടർ ടാങ്കിൽ 1000 ലിറ്റർ കൊള്ളും. 400 ലിറ്റർ ഉള്ളിലുണ്ടെങ്കിൽ 600 കൂടി ഒഴിച്ചാൽ നിറയും. ഉള്ളിലുള്ളതും ഇനി വേണ്ടതും ചേർന്നാൽ എപ്പോഴും 1000."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/04-lets-join-together/02-pairs-that-make-1000",
            "minutes": 5,
            "objective": {
@@ -2514,6 +2968,30 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Add each place on its own. Then put them together.",
+              "ml": "ഓരോ സ്ഥാനവും വെവ്വേറെ കൂട്ടൂ. പിന്നെ എല്ലാം ചേർക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "231 + 146",
+               "200 + 100 = 300",
+               "30 + 40 = 70",
+               "1 + 6 = 7",
+               "300 + 70 + 7 = 377"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Two classes bring coins in three jars: one jar for hundreds, one for tens, one for ones. Pour hundreds with hundreds, tens with tens, ones with ones. Then read the three jars.",
+              "ml": "രണ്ട് ക്ലാസുകൾ മൂന്ന് ഭരണികളിൽ നാണയങ്ങൾ കൊണ്ടുവന്നു: നൂറിന് ഒന്ന്, പത്തിന് ഒന്ന്, ഒന്നിന് ഒന്ന്. നൂറുകൾ നൂറുകളോട്, പത്തുകൾ പത്തുകളോട്, ഒന്നുകൾ ഒന്നുകളോട് ചേർക്കൂ. പിന്നെ മൂന്ന് ഭരണികളും വായിക്കൂ."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/04-lets-join-together/03-adding-in-parts",
            "minutes": 5,
            "objective": {
@@ -2640,6 +3118,28 @@
               "en": "243 children came from one school and 325 from another. How many children came in all?",
               "ml": "ഒരു സ്കൂളിൽ നിന്ന് 243 കുട്ടികളും മറ്റൊരു സ്കൂളിൽ നിന്ന് 325 കുട്ടികളും വന്നു. ആകെ എത്ര കുട്ടികൾ?"
              }
+            },
+            {
+             "answer": "350",
+             "concept": "kerala-scert/class-3/maths#add-split",
+             "explain": {
+              "en": "300 and 50 make 350: 3 beads on hundreds and 5 on tens.",
+              "ml": "300-ഉം 50-ഉം ചേർന്നാൽ 350: നൂറിൽ 3 മണി, പത്തിൽ 5."
+             },
+             "form": "abacus",
+             "hint": {
+              "en": "Hundreds: 1 and 2. Tens: 2 and 3.",
+              "ml": "നൂറുകൾ: 1-ഉം 2-ഉം. പത്തുകൾ: 2-ഉം 3-ഉം."
+             },
+             "level": 1,
+             "mistakes": {
+              "305": "put the tens on the ones rod"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Work out 120 + 230. Show the answer on the abacus.",
+              "ml": "120 + 230 കണക്കാക്കൂ. ഉത്തരം മണിച്ചട്ടത്തിൽ കാണിക്കൂ."
+             }
             }
            ],
            "title": {
@@ -2648,6 +3148,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "When the ones go past 9, a new ten is made. Move it over to the tens.",
+              "ml": "ഒന്നുകൾ 9 കടന്നാൽ ഒരു പുതിയ പത്ത് ഉണ്ടാകും. അതിനെ പത്തുകളിലേക്ക് മാറ്റൂ."
+             },
+             "visual": {
+              "args": [
+               "8 + 5 = 13",
+               "13 = 10 + 3",
+               "the 10 joins the tens"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "The ones jar can hold only 9 coins. When 8 coins and 5 coins meet, there are 13. Ten of them are tied into a bundle and moved to the tens jar. Only 3 stay behind.",
+              "ml": "ഒന്നിന്റെ ഭരണിയിൽ 9 നാണയം മാത്രമേ കൊള്ളൂ. 8 നാണയവും 5 നാണയവും ചേർന്നാൽ 13. അതിൽ പത്തെണ്ണം ഒരു കെട്ടാക്കി പത്തിന്റെ ഭരണിയിലേക്ക് മാറ്റും. 3 മാത്രം ബാക്കി."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/04-lets-join-together/04-a-new-ten",
            "minutes": 5,
            "objective": {
@@ -2807,6 +3329,26 @@
          "id": "kerala-scert/class-3/maths/05-lets-measure",
          "lessons": [
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Each gap between two long lines is 1 centimetre. Start at 0 and count the gaps.",
+              "ml": "രണ്ട് നീണ്ട വരകൾക്കിടയിലെ ഓരോ അകലവും 1 സെന്റിമീറ്റർ. 0-ൽ തുടങ്ങി അകലങ്ങൾ എണ്ണൂ."
+             },
+             "visual": {
+              "args": [
+               "5"
+              ],
+              "kind": "ruler"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A giant and a small child both measure a mat with their hands. The giant says 3 hands. The child says 9 hands. They argue until someone brings a scale. On the scale, both read the same number.",
+              "ml": "ഒരു രാക്ഷസനും ഒരു കൊച്ചു കുട്ടിയും ഒരു പായ കൈ കൊണ്ട് അളന്നു. രാക്ഷസൻ പറഞ്ഞു 3 ചാൺ. കുട്ടി പറഞ്ഞു 9 ചാൺ. ഒരാൾ സ്കെയിൽ കൊണ്ടുവരുന്നതുവരെ അവർ തർക്കിച്ചു. സ്കെയിലിൽ രണ്ടുപേർക്കും ഒരേ സംഖ്യ കിട്ടി."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/05-lets-measure/01-why-we-need-a-scale",
            "minutes": 5,
            "objective": {
@@ -2951,6 +3493,64 @@
               "en": "Why did the two friends get different answers when they measured with their feet?",
               "ml": "കാലടി വെച്ച് അളന്നപ്പോൾ രണ്ട് കൂട്ടുകാർക്കും വ്യത്യസ്ത ഉത്തരം കിട്ടിയത് എന്തുകൊണ്ട്?"
              }
+            },
+            {
+             "answer": "6",
+             "concept": "kerala-scert/class-3/maths#cm-scale",
+             "explain": {
+              "en": "With 0 at the start, the pencil ends at 6. It is 6 cm long.",
+              "ml": "0 തുടക്കത്തിൽ വെച്ചാൽ പെൻസിൽ 6-ൽ അവസാനിക്കും. നീളം 6 സെ.മീ."
+             },
+             "form": "measure",
+             "hint": {
+              "en": "Drag the scale sideways until the 0 line touches the left end of the pencil.",
+              "ml": "0 എന്ന വര പെൻസിലിന്റെ ഇടത്തേ അറ്റത്ത് തൊടുന്നതുവരെ സ്കെയിൽ വശത്തേക്ക് വലിക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "8": "read the scale without putting 0 at the start"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Slide the scale until its 0 is at the start of the pencil. How many centimetres long is the pencil?",
+              "ml": "സ്കെയിലിലെ 0 പെൻസിലിന്റെ തുടക്കത്തിൽ വരുന്നതുവരെ സ്കെയിൽ നീക്കൂ. പെൻസിലിന്റെ നീളം എത്ര സെന്റിമീറ്റർ?"
+             },
+             "visual": {
+              "args": [
+               "6",
+               "✏️"
+              ],
+              "kind": "ruler"
+             }
+            },
+            {
+             "answer": "4",
+             "concept": "kerala-scert/class-3/maths#cm-scale",
+             "explain": {
+              "en": "With 0 at the start, the crayon ends at 4. It is 4 cm long.",
+              "ml": "0 തുടക്കത്തിൽ വെച്ചാൽ ക്രയോൺ 4-ൽ അവസാനിക്കും. നീളം 4 സെ.മീ."
+             },
+             "form": "measure",
+             "hint": {
+              "en": "First bring the 0 of the scale to where the crayon begins.",
+              "ml": "ആദ്യം സ്കെയിലിലെ 0 ക്രയോൺ തുടങ്ങുന്നിടത്ത് കൊണ്ടുവരൂ."
+             },
+             "level": 2,
+             "mistakes": {
+              "6": "read the scale without putting 0 at the start"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Now measure this crayon.",
+              "ml": "ഇനി ഈ ക്രയോൺ അളക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "4",
+               "🖍️"
+              ],
+              "kind": "ruler"
+             }
             }
            ],
            "title": {
@@ -2959,6 +3559,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Joining end to end means adding the lengths.",
+              "ml": "അറ്റത്തോടറ്റം ചേർക്കുക എന്നാൽ നീളങ്ങൾ കൂട്ടുക."
+             },
+             "visual": {
+              "args": [
+               "10 cm + 12 cm",
+               "10 + 10 = 20",
+               "20 + 2 = 22 cm"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Two toy trains are joined together. One is 10 cm long and the other is 12 cm long. The long train is as long as both together: 22 cm.",
+              "ml": "രണ്ട് കളിത്തീവണ്ടികൾ ഒന്നിച്ചു ചേർത്തു. ഒന്നിന് 10 സെ.മീ, മറ്റേതിന് 12 സെ.മീ. നീണ്ട തീവണ്ടിയുടെ നീളം രണ്ടും ചേർന്നത്: 22 സെ.മീ."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/05-lets-measure/02-joining-lengths",
            "minutes": 5,
            "objective": {
@@ -3089,6 +3711,35 @@
               "en": "A ribbon is 30 cm long. You cut off 10 cm. How many centimetres are left?",
               "ml": "ഒരു റിബണിന്റെ നീളം 30 സെ.മീ. അതിൽ നിന്ന് 10 സെ.മീ മുറിച്ചു മാറ്റി. ബാക്കി എത്ര സെന്റിമീറ്റർ?"
              }
+            },
+            {
+             "answer": "9",
+             "concept": "kerala-scert/class-3/maths#add-lengths",
+             "explain": {
+              "en": "With 0 at the start, the ribbon ends at 9. It is 9 cm long.",
+              "ml": "0 തുടക്കത്തിൽ വെച്ചാൽ റിബൺ 9-ൽ അവസാനിക്കും. നീളം 9 സെ.മീ."
+             },
+             "form": "measure",
+             "hint": {
+              "en": "Bring the 0 of the scale to where the ribbon begins.",
+              "ml": "സ്കെയിലിലെ 0 റിബൺ തുടങ്ങുന്നിടത്ത് കൊണ്ടുവരൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "11": "read the scale without putting 0 at the start"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Slide the scale and measure this ribbon.",
+              "ml": "സ്കെയിൽ നീക്കി ഈ റിബൺ അളക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "9",
+               "🎀"
+              ],
+              "kind": "ruler"
+             }
             }
            ],
            "title": {
@@ -3097,6 +3748,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Every 100 centimetres turns into 1 metre.",
+              "ml": "ഓരോ 100 സെന്റിമീറ്ററും 1 മീറ്ററാകും."
+             },
+             "visual": {
+              "args": [
+               "100 cm = 1 m",
+               "200 cm = 2 m",
+               "135 cm = 1 m 35 cm"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A tailor measures cloth for a shirt. Counting hundreds of centimetres is tiring. So she uses a long stick called a metre. One metre is the same as 100 centimetres.",
+              "ml": "ഒരു തയ്യൽക്കാരി ഷർട്ടിനുള്ള തുണി അളക്കുന്നു. നൂറുകണക്കിന് സെന്റിമീറ്റർ എണ്ണുന്നത് മടുപ്പാണ്. അതുകൊണ്ട് അവർ മീറ്റർ എന്ന നീണ്ട വടി ഉപയോഗിക്കുന്നു. ഒരു മീറ്റർ എന്നാൽ 100 സെന്റിമീറ്റർ."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/05-lets-measure/03-the-metre",
            "minutes": 5,
            "objective": {
@@ -3243,6 +3916,29 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Go around the shape and add every side once.",
+              "ml": "രൂപത്തിന് ചുറ്റും പോയി ഓരോ വശവും ഒരു തവണ കൂട്ടൂ."
+             },
+             "visual": {
+              "args": [
+               "6 + 4 + 6 + 4",
+               "6 + 6 = 12",
+               "4 + 4 = 8",
+               "12 + 8 = 20 cm"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "An ant walks all the way around a rectangular biscuit, along every edge, until it is back where it started. The distance it walked is all the sides added together.",
+              "ml": "ഒരു ഉറുമ്പ് ചതുരത്തിലുള്ള ഒരു ബിസ്കറ്റിന് ചുറ്റും, ഓരോ അരികിലൂടെയും നടന്ന് തുടങ്ങിയിടത്ത് തിരിച്ചെത്തി. അത് നടന്ന ദൂരം എല്ലാ വശങ്ങളും കൂട്ടിയതാണ്."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/05-lets-measure/04-measuring-around",
            "minutes": 5,
            "objective": {
@@ -3428,6 +4124,28 @@
          "id": "kerala-scert/class-3/maths/06-adding-and-adding-again",
          "lessons": [
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "3 rows with 4 in each row. Count row by row: 4, 8, 12.",
+              "ml": "4 വീതമുള്ള 3 വരികൾ. ഓരോ വരിയായി എണ്ണൂ: 4, 8, 12."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "4",
+               "🟤"
+              ],
+              "kind": "array"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Amma puts 4 unniyappams on each of 3 plates. To know how many she made, she counts plate by plate: 4, 8, 12.",
+              "ml": "അമ്മ 3 പാത്രങ്ങളിൽ 4 വീതം ഉണ്ണിയപ്പം വെച്ചു. ആകെ എത്രയെന്നറിയാൻ ഓരോ പാത്രമായി എണ്ണി: 4, 8, 12."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/06-adding-and-adding-again/01-equal-groups",
            "minutes": 5,
            "objective": {
@@ -3596,6 +4314,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Three ways to say the same thing.",
+              "ml": "ഒരേ കാര്യം പറയാൻ മൂന്ന് വഴികൾ."
+             },
+             "visual": {
+              "args": [
+               "4 + 4 + 4 = 12",
+               "3 groups of 4 = 12",
+               "3 × 4 = 12"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Writing 4 + 4 + 4 + 4 + 4 takes so long! So people invented a short way. 5 × 4 means 4, five times.",
+              "ml": "4 + 4 + 4 + 4 + 4 എന്ന് എഴുതാൻ എത്ര നേരം വേണം! അതുകൊണ്ട് ആളുകൾ ഒരു എളുപ്പവഴി കണ്ടുപിടിച്ചു. 5 × 4 എന്നാൽ 4 അഞ്ച് തവണ."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/06-adding-and-adding-again/02-groups-to-times",
            "minutes": 5,
            "objective": {
@@ -3792,6 +4532,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Count one row. Then count how many rows there are. 3 rows of 6 is 3 × 6.",
+              "ml": "ഒരു വരി എണ്ണൂ. പിന്നെ എത്ര വരികളുണ്ടെന്ന് എണ്ണൂ. 6 വീതമുള്ള 3 വരികൾ 3 × 6."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "6",
+               "🪑"
+              ],
+              "kind": "array"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "In the school hall, chairs stand in neat rows of 6. The teacher does not count every chair. She counts the rows: 6, 12, 18.",
+              "ml": "സ്കൂൾ ഹാളിൽ കസേരകൾ 6 വീതം വരികളായി ഇട്ടിരിക്കുന്നു. ടീച്ചർ ഓരോ കസേരയും എണ്ണുന്നില്ല. വരികൾ എണ്ണുന്നു: 6, 12, 18."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/06-adding-and-adding-again/03-rows-and-packets",
            "minutes": 5,
            "objective": {
@@ -3938,6 +4700,29 @@
               ],
               "kind": "array"
              }
+            },
+            {
+             "answer": "20",
+             "concept": "kerala-scert/class-3/maths#times-facts",
+             "explain": {
+              "en": "5 × 4 = 20. That is 2 beads on the tens rod and none on the ones.",
+              "ml": "5 × 4 = 20. പത്തിന്റെ കമ്പിയിൽ 2 മണി, ഒന്നിൽ ഒന്നുമില്ല."
+             },
+             "form": "abacus",
+             "hint": {
+              "en": "Count in fours, five times. Then put the tens on the tens rod.",
+              "ml": "നാല് വീതം അഞ്ച് തവണ എണ്ണൂ. പിന്നെ പത്തുകൾ പത്തിന്റെ കമ്പിയിൽ വെക്കൂ."
+             },
+             "level": 1,
+             "mistakes": {
+              "2": "put the tens on the ones rod",
+              "9": "added 5 and 4 instead of making groups"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Work out 5 × 4. Show the answer on the abacus.",
+              "ml": "5 × 4 കണക്കാക്കൂ. ഉത്തരം മണിച്ചട്ടത്തിൽ കാണിക്കൂ."
+             }
             }
            ],
            "title": {
@@ -3946,6 +4731,28 @@
            }
           },
           {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "When the groups double, the answer doubles.",
+              "ml": "കൂട്ടങ്ങൾ ഇരട്ടിയായാൽ ഉത്തരവും ഇരട്ടിയാകും."
+             },
+             "visual": {
+              "args": [
+               "2 × 3 = 6",
+               "4 × 3 = 12",
+               "twice the groups, twice the answer"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A shop sells pens in packets of 3. Two packets have 6 pens. If you buy twice as many packets, you get twice as many pens: 4 packets have 12.",
+              "ml": "ഒരു കടയിൽ പേനകൾ 3 വീതം പാക്കറ്റിലാണ്. രണ്ട് പാക്കറ്റിൽ 6 പേന. ഇരട്ടി പാക്കറ്റ് വാങ്ങിയാൽ ഇരട്ടി പേന കിട്ടും: 4 പാക്കറ്റിൽ 12."
+             }
+            }
+           },
            "id": "kerala-scert/class-3/maths/06-adding-and-adding-again/04-number-relations",
            "minutes": 5,
            "objective": {
@@ -4395,7 +5202,7 @@
    "order": 2
   }
  ],
- "built": 1794374651,
+ "built": 1794380873,
  "concepts": {
   "kerala-scert/class-3/maths#add-carry": {
    "en": "Adding when the ones make a new ten",
@@ -4506,6 +5313,10 @@
    "en": "You finished everything here. Amazing!",
    "ml": "ഇവിടെയുള്ളതെല്ലാം നീ പൂർത്തിയാക്കി. അടിപൊളി!"
   },
+  "anotherWay": {
+   "en": "Let me show you this another way.",
+   "ml": "ഇത് മറ്റൊരു രീതിയിൽ കാണിച്ചു തരാം."
+  },
   "comingSoon": {
    "en": "Lessons are on the way!",
    "ml": "പാഠങ്ങൾ ഉടൻ വരും!"
@@ -4561,13 +5372,13 @@
    "energy": 1.0,
    "eyes": "round",
    "hello": {
-    "en": "Hello! I am Minnu. Shall we learn with a story today?",
-    "ml": "ഹലോ! ഞാൻ മിന്നു. ഇന്ന് ഒരു കഥയിലൂടെ പഠിക്കാമോ?"
+    "en": "Hello! I am Mio. Shall we learn with a story today?",
+    "ml": "ഹലോ! ഞാൻ മിയോ. ഇന്ന് ഒരു കഥയിലൂടെ പഠിക്കാമോ?"
    },
    "id": "minnu",
    "name": {
-    "en": "Minnu",
-    "ml": "മിന്നു"
+    "en": "Mio",
+    "ml": "മിയോ"
    },
    "oops": {
     "en": "Not yet, and that is okay.",
@@ -4602,13 +5413,13 @@
    "energy": 1.8,
    "eyes": "wide",
    "hello": {
-    "en": "Hey hey! I am Tiko. Ready to play and win?",
-    "ml": "ഹേയ്! ഞാൻ ടിക്കോ. കളിച്ചു ജയിക്കാൻ റെഡിയാണോ?"
+    "en": "Hey hey! I am Leo. Ready to play and win?",
+    "ml": "ഹേയ്! ഞാൻ ലിയോ. കളിച്ചു ജയിക്കാൻ റെഡിയാണോ?"
    },
    "id": "tiko",
    "name": {
-    "en": "Tiko",
-    "ml": "ടിക്കോ"
+    "en": "Leo",
+    "ml": "ലിയോ"
    },
    "oops": {
     "en": "Oops! Let us crack it together.",
@@ -4643,13 +5454,13 @@
    "energy": 0.6,
    "eyes": "soft",
    "hello": {
-    "en": "Hello, little one. I am Pompy. We will go nice and slow.",
-    "ml": "ഹലോ കുഞ്ഞേ. ഞാൻ പോംപി. നമുക്ക് പതുക്കെ പതുക്കെ പഠിക്കാം."
+    "en": "Hello, little one. I am Yuki. We will go nice and slow.",
+    "ml": "ഹലോ കുഞ്ഞേ. ഞാൻ യൂകി. നമുക്ക് പതുക്കെ പതുക്കെ പഠിക്കാം."
    },
    "id": "pompy",
    "name": {
-    "en": "Pompy",
-    "ml": "പോംപി"
+    "en": "Yuki",
+    "ml": "യൂകി"
    },
    "oops": {
     "en": "No hurry. Let us look again, slowly.",
@@ -4684,13 +5495,13 @@
    "energy": 1.2,
    "eyes": "curious",
    "hello": {
-    "en": "Ooh, hello! I am Zizu. I wonder what we will discover today?",
-    "ml": "ഓ, ഹലോ! ഞാൻ സിസു. ഇന്ന് നമ്മൾ എന്താണ് കണ്ടുപിടിക്കുക?"
+    "en": "Ooh, hello! I am Ruby. I wonder what we will discover today?",
+    "ml": "ഓ, ഹലോ! ഞാൻ റൂബി. ഇന്ന് നമ്മൾ എന്താണ് കണ്ടുപിടിക്കുക?"
    },
    "id": "zizu",
    "name": {
-    "en": "Zizu",
-    "ml": "സിസു"
+    "en": "Ruby",
+    "ml": "റൂബി"
    },
    "oops": {
     "en": "Hmm, interesting! Let us find out why.",
@@ -4725,13 +5536,13 @@
    "energy": 0.9,
    "eyes": "sleepy",
    "hello": {
-    "en": "Yo! Koko here. I was napping, but maths is more fun.",
-    "ml": "ഹായ്! ഞാൻ കോക്കോ. ഉറങ്ങുകയായിരുന്നു, പക്ഷേ കണക്കാണ് കൂടുതൽ രസം."
+    "en": "Yo! Ollie here. I was napping, but maths is more fun.",
+    "ml": "ഹായ്! ഞാൻ ഒല്ലി. ഉറങ്ങുകയായിരുന്നു, പക്ഷേ കണക്കാണ് കൂടുതൽ രസം."
    },
    "id": "koko",
    "name": {
-    "en": "Koko",
-    "ml": "കോക്കോ"
+    "en": "Ollie",
+    "ml": "ഒല്ലി"
    },
    "oops": {
     "en": "Whoops! Even I get that wrong sometimes.",
@@ -4754,5 +5565,5 @@
    "voice": "Sadachbia"
   }
  ],
- "version": "3dfbab9c27c0"
+ "version": "83ee628650b9"
 }

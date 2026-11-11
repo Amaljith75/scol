@@ -63,3 +63,12 @@ hint.ml: 40-ഉം 60-ഉം ചേർന്നാൽ ഒരു പുതിയ 
 explain.en: 600 + 300 = 900, and 40 + 60 = 100. Together 1000.
 explain.ml: 600 + 300 = 900, 40 + 60 = 100. ചേർന്നാൽ 1000.
 mistake 900: forgot the new hundred made by the tens
+
+## story
+en: The ones jar can hold only 9 coins. When 8 coins and 5 coins meet, there are 13. Ten of them are tied into a bundle and moved to the tens jar. Only 3 stay behind.
+ml: ഒന്നിന്റെ ഭരണിയിൽ 9 നാണയം മാത്രമേ കൊള്ളൂ. 8 നാണയവും 5 നാണയവും ചേർന്നാൽ 13. അതിൽ പത്തെണ്ണം ഒരു കെട്ടാക്കി പത്തിന്റെ ഭരണിയിലേക്ക് മാറ്റും. 3 മാത്രം ബാക്കി.
+
+## picture
+visual: steps 8 + 5 = 13 / 13 = 10 + 3 / the 10 joins the tens
+en: When the ones go past 9, a new ten is made. Move it over to the tens.
+ml: ഒന്നുകൾ 9 കടന്നാൽ ഒരു പുതിയ പത്ത് ഉണ്ടാകും. അതിനെ പത്തുകളിലേക്ക് മാറ്റൂ.

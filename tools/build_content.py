@@ -37,7 +37,7 @@ VISUALS = {  # kind -> (min args, max args)
     "image": (1, 1),       # image picture.png  (file in the chapter's images/ folder)
 }
 SHAPES = ("circle", "triangle", "rectangle", "square")
-FORMS = ("choice", "number", "think")
+FORMS = ("choice", "number", "think", "abacus", "measure", "build")
 KEY = re.compile(r"^([a-z][a-z_]*(?:\.[a-z]+)*)(?: ([^:]{1,40}))?:\s*(.*)$")
 errors = []
 
@@ -192,8 +192,16 @@ def make_ask(f, lines, path, line, scope, default_concept, chapter_dir, text):
             err(path, line, "choice question needs 'options: a | b | c'")
         elif answer not in options:
             err(path, line, f'answer "{answer}" is not one of the options')
-    if form == "number" and answer and not re.fullmatch(r"\d{1,6}", answer):
-        err(path, line, "number question needs a whole-number answer")
+    if form in ("number", "abacus", "measure") and answer and not re.fullmatch(r"\d{1,6}", answer):
+        err(path, line, f"{form} question needs a whole-number answer")
+    if form == "abacus" and answer and int(answer) > 999:
+        err(path, line, "abacus answers must be 999 or less")
+    if form == "measure" and not f.get("visual", "").startswith("ruler "):
+        err(path, line, "measure question needs 'visual: ruler <length> <emoji>'")
+    if form == "build":
+        bad = [o for o in options if o not in SHAPES or o == "circle"]
+        if len(options) < 2 or bad or answer not in options:
+            err(path, line, "build question needs 'options: triangle | rectangle' (or square) and an answer from them")
     concept = f.get("concept", default_concept)
     if not concept:
         err(path, line, "question has no concept (add 'concept:' at the top of the lesson)")
@@ -231,6 +239,7 @@ def parse_lesson(path, scope, chapter_dir):
     if default_concept:
         concepts[f"{scope}#{default_concept}"] = text_of(head, "concept.name") or title
     steps = []
+    alts = {}
     for b in blocks[1:]:
         f = b.fields
         text = text_of(f, "text", short=True)
@@ -245,19 +254,33 @@ def parse_lesson(path, scope, chapter_dir):
                 if v:
                     step["visual"] = v
             steps.append(step)
+        elif b.kind in ("story", "picture"):
+            # another way to explain this lesson's idea, used after a repeated mistake
+            if not text:
+                err(path, b.line, f"'## {b.kind}' needs an 'en:' or 'ml:' line")
+            alt = {"text": text}
+            if f.get("visual"):
+                v = parse_visual(f["visual"], path, b.lines.get("visual", b.line), chapter_dir)
+                if v:
+                    alt["visual"] = v
+            elif b.kind == "picture":
+                err(path, b.line, "'## picture' needs a 'visual:' line")
+            alts[b.kind] = alt
         elif b.kind == "ask":
             step, concept = make_ask(f, b.lines, path, b.line, scope, default_concept, chapter_dir, text)
             key = step["concept"]
             concepts.setdefault(key, text_of(f, "concept.name") or {"en": concept.replace("-", " ").capitalize()})
             steps.append(step)
         else:
-            err(path, b.line, f'unknown block "## {b.kind}". Use "## say" or "## ask"')
+            err(path, b.line, f'unknown block "## {b.kind}". Use "## say", "## ask", "## story" or "## picture"')
     if not steps:
         err(path, 1, "lesson has no steps")
     lesson = {"title": title, "steps": steps, "minutes": int(head.get("minutes", "5") or 5)}
     obj = text_of(head, "objective")
     if obj:
         lesson["objective"] = obj
+    if alts:
+        lesson["alts"] = alts
     return lesson, concepts
 
 

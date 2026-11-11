@@ -66,3 +66,12 @@ explain.en: One less than 500 is 499.
 explain.ml: 500-ൽ നിന്ന് ഒന്ന് കുറച്ചാൽ 499.
 mistake 501: gave the number after, not before
 mistake 490: went back ten instead of one
+
+## story
+en: Grandfather writes a cheque for 405 rupees. He says four hundred, and five. There are no tens, so he writes a 0 in the middle to hold the place.
+ml: മുത്തച്ഛൻ 405 രൂപയുടെ ചെക്ക് എഴുതുന്നു. നാനൂറ്, പിന്നെ അഞ്ച് എന്ന് പറയുന്നു. പത്തുകളില്ലാത്തതുകൊണ്ട് സ്ഥാനം നിലനിർത്താൻ നടുവിൽ 0 എഴുതുന്നു.
+
+## picture
+visual: steps 405 = 400 + 5 / 617 = 600 + 17 / 299 + 1 = 300
+en: Break the number into parts and read each part.
+ml: സംഖ്യയെ ഭാഗങ്ങളാക്കി ഓരോ ഭാഗവും വായിക്കൂ.

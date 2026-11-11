@@ -2,10 +2,13 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../content.dart';
 import '../mastery.dart';
+import '../report.dart';
 import '../state.dart';
+import '../voice.dart';
 import '../widgets/ui.dart';
 
 /// A small sum keeps young children out of the parent area.
@@ -57,8 +60,33 @@ const _statusColor = {
   Understanding.notStarted: cloud,
 };
 
-class ParentScreen extends StatelessWidget {
+class ParentScreen extends StatefulWidget {
   const ParentScreen({super.key});
+
+  @override
+  State<ParentScreen> createState() => _ParentScreenState();
+}
+
+class _ParentScreenState extends State<ParentScreen> {
+  late String _reportLang = appState.lang == 'ml' ? 'ml' : 'en';
+  bool _reading = false;
+
+  @override
+  void dispose() {
+    appSpeaker?.stop();
+    super.dispose();
+  }
+
+  Future<void> _listen(List<String> report) async {
+    if (_reading) {
+      appSpeaker?.stop();
+      setState(() => _reading = false);
+      return;
+    }
+    setState(() => _reading = true);
+    await appSpeaker?.say(report, _reportLang, tutorById(appState.tutorId));
+    if (mounted) setState(() => _reading = false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +121,55 @@ class ParentScreen extends StatelessWidget {
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 640),
               child: ListView(padding: const EdgeInsets.fromLTRB(16, 0, 16, 32), children: [
-                h('This week at a glance'),
+                h('Weekly report'),
+                Wrap(spacing: 8, children: [
+                  for (final l in const ['en', 'ml'])
+                    ChoiceChip(
+                      label: Text(l == 'en' ? 'English' : 'മലയാളം'),
+                      selected: _reportLang == l,
+                      onSelected: (_) {
+                        appSpeaker?.stop();
+                        setState(() {
+                          _reportLang = l;
+                          _reading = false;
+                        });
+                      },
+                    ),
+                ]),
+                const SizedBox(height: 8),
+                Builder(builder: (context) {
+                  final report = weeklyReport(appState, bundle, _reportLang);
+                  return SoftCard(
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Text(report.first, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w900, color: ink)),
+                      for (final para in report.skip(1))
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: Text(para, style: const TextStyle(fontSize: 15, height: 1.4, color: ink)),
+                        ),
+                      const SizedBox(height: 12),
+                      Row(children: [
+                        Expanded(
+                          child: FilledButton.icon(
+                            style: FilledButton.styleFrom(backgroundColor: violet),
+                            onPressed: () => Share.share(report.join('\n\n')),
+                            icon: const Icon(Icons.share_rounded),
+                            label: const Text('Share'),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: OutlinedButton.icon(
+                            onPressed: () => _listen(report),
+                            icon: Icon(_reading ? Icons.stop_rounded : Icons.volume_up_rounded),
+                            label: Text(_reading ? 'Stop' : 'Listen'),
+                          ),
+                        ),
+                      ]),
+                    ]),
+                  );
+                }),
+                h('Today and so far'),
                 Wrap(spacing: 8, runSpacing: 8, children: [
                   Pill('⏱️', '${(appState.todaySeconds / 60).ceil()} min today'),
                   Pill('📚', '${appState.lessonStars.length} lessons done'),

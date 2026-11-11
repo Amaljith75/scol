@@ -63,3 +63,12 @@ explain.en: 99 − 10 = 89, and 1 more makes 90.
 explain.ml: 99 − 10 = 89, 1 കൂടി ചേർത്താൽ 90.
 mistake 89: subtracted and forgot to count the first number
 mistake 99: counted the one-digit numbers too
+
+## story
+en: Children stand in a line with tokens 10 to 20. The teacher subtracts and says there are 10 children. But the child holding token 10 says, you forgot me! So we add 1 for the first child.
+ml: 10 മുതൽ 20 വരെ ടോക്കണുമായി കുട്ടികൾ വരിയായി നിൽക്കുന്നു. ടീച്ചർ കുറച്ചു നോക്കി 10 കുട്ടികൾ എന്ന് പറഞ്ഞു. പക്ഷേ 10-ാം ടോക്കണുള്ള കുട്ടി പറഞ്ഞു, എന്നെ മറന്നു! അതുകൊണ്ട് ആദ്യത്തെ കുട്ടിക്കായി 1 ചേർക്കണം.
+
+## picture
+visual: numberline 10 20
+en: Count every number on the line, including the first one and the last one. There are 11.
+ml: വരയിലെ എല്ലാ സംഖ്യയും എണ്ണൂ, ആദ്യത്തേതും അവസാനത്തേതും ഉൾപ്പെടെ. ആകെ 11.

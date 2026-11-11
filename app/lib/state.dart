@@ -37,6 +37,12 @@ class AppState extends ChangeNotifier {
   final Map<String, int> lessonStars = {}; // lesson id -> best stars (1-3)
   final Map<String, ConceptRecord> concepts = {};
 
+  /// What each recent day held: day number -> [seconds learned, levels finished].
+  final Map<int, List<int>> history = {};
+
+  /// How often each other way of explaining worked: 'story' -> [worked, tried].
+  final Map<String, List<int>> styleStats = {};
+
   /// Language used for speaking and for the main line of text.
   String get mainLang => lang == 'ml' ? 'ml' : 'en';
   bool get bilingual => lang == 'both';
@@ -77,6 +83,8 @@ class AppState extends ChangeNotifier {
     _fromJson(fresh._toJson());
     lessonStars.clear();
     concepts.clear();
+    history.clear();
+    styleStats.clear();
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove(_key);
@@ -89,6 +97,53 @@ class AppState extends ChangeNotifier {
   void addLearningTime(int seconds) {
     _rollDay();
     todaySeconds += seconds;
+    (history[today] ??= [0, 0])[0] += seconds;
+    history.removeWhere((d, _) => d < today - 40);
+  }
+
+  /// Which other way of explaining to try: one not tried yet, else the one that has worked most often.
+  String pickStyle(List<String> available) {
+    for (final s in available) {
+      if ((styleStats[s]?[1] ?? 0) == 0) return s;
+    }
+    double rate(String s) => styleStats[s]![0] / styleStats[s]![1];
+    return available.reduce((a, b) => rate(b) > rate(a) ? b : a);
+  }
+
+  void recordStyle(String style, bool worked) {
+    final st = styleStats[style] ??= [0, 0];
+    st[1]++;
+    if (worked) st[0]++;
+  }
+
+  /// 'story' or 'picture' once there is enough evidence that one helps this child more; else null.
+  String? get bestStyle {
+    final tried = styleStats.values.fold<int>(0, (a, v) => a + v[1]);
+    if (tried < 3 || styleStats.isEmpty) return null;
+    String? best;
+    var bestRate = 0.0;
+    styleStats.forEach((k, v) {
+      final r = v[1] == 0 ? 0.0 : v[0] / v[1];
+      if (r > bestRate) {
+        bestRate = r;
+        best = k;
+      }
+    });
+    return best;
+  }
+
+  /// Totals for the last 7 days: [days learned, minutes, levels].
+  List<int> get week {
+    final t = dayNumber();
+    var days = 0, secs = 0, levels = 0;
+    history.forEach((d, v) {
+      if (d > t - 7 && d <= t && (v[0] > 0 || v[1] > 0)) {
+        days++;
+        secs += v[0];
+        levels += v[1];
+      }
+    });
+    return [days, (secs / 60).ceil(), levels];
   }
 
   /// Called when a lesson is finished. Returns true if this is a new streak day.
@@ -101,6 +156,7 @@ class AppState extends ChangeNotifier {
     }
     xp += earnedXp;
     todayLessons++;
+    (history[today] ??= [0, 0])[1]++;
     var newDay = false;
     if (lastActiveDay != today) {
       newDay = true;
@@ -190,6 +246,8 @@ class AppState extends ChangeNotifier {
         'todayLessons': todayLessons,
         'lessonStars': lessonStars,
         'concepts': concepts.map((k, v) => MapEntry(k, v.toJson())),
+        'history': history.map((k, v) => MapEntry('$k', v)),
+        'styleStats': styleStats,
       };
 
   void _fromJson(Map<String, dynamic> j) {
@@ -213,6 +271,15 @@ class AppState extends ChangeNotifier {
     todayLessons = (j['todayLessons'] as num?)?.toInt() ?? 0;
     lessonStars.clear();
     ((j['lessonStars'] as Map?) ?? const {}).forEach((k, v) => lessonStars['$k'] = (v as num).toInt());
+    history.clear();
+    ((j['history'] as Map?) ?? const {}).forEach((k, v) {
+      final d = int.tryParse('$k');
+      if (d != null && v is List && v.length == 2) history[d] = [(v[0] as num).toInt(), (v[1] as num).toInt()];
+    });
+    styleStats.clear();
+    ((j['styleStats'] as Map?) ?? const {}).forEach((k, v) {
+      if (v is List && v.length == 2) styleStats['$k'] = [(v[0] as num).toInt(), (v[1] as num).toInt()];
+    });
     concepts.clear();
     ((j['concepts'] as Map?) ?? const {}).forEach(
         (k, v) => concepts['$k'] = ConceptRecord.fromJson((v as Map).cast<String, dynamic>()));

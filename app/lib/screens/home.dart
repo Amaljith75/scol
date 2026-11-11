@@ -100,7 +100,41 @@ class _HomeScreenState extends State<HomeScreen> {
       message = '${tr('nextUp', lang)}: $title';
     }
 
+    Widget tab(String emoji, String label, bool active, VoidCallback onTap) => Expanded(
+          child: InkWell(
+            onTap: onTap,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Column(mainAxisSize: MainAxisSize.min, children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+                  decoration: BoxDecoration(
+                      color: active ? violetSoft : Colors.transparent, borderRadius: BorderRadius.circular(16)),
+                  child: Text(emoji, style: const TextStyle(fontSize: 24)),
+                ),
+                Text(label,
+                    style: TextStyle(
+                        fontSize: 13, fontWeight: FontWeight.w800, color: active ? violet : const Color(0xFF8A84A6))),
+              ]),
+            ),
+          ),
+        );
+
     return Scaffold(
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(color: Colors.white, border: Border(top: BorderSide(color: cloud, width: 2))),
+        child: SafeArea(
+          top: false,
+          child: Row(children: [
+            tab('🏠', tr('home', lang), true, () {}),
+            tab('🏆', tr('rewards', lang), false, () => _showRewards(context)),
+            tab('👪', tr('parents', lang), false, () {
+              appSpeaker?.stop();
+              openParentZone(context);
+            }),
+          ]),
+        ),
+      ),
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
@@ -118,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16),
               // The tutor's plan for right now.
               SoftCard(
-                color: const Color(0xFFEFF1FF),
+                color: violetSoft,
                 child: Column(children: [
                   Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
                     TutorAvatar(tutor: tutor, size: 104, mood: Mood.happy, gaze: plan == null ? Offset.zero : const Offset(0.7, 0.75)),
@@ -142,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   if (plan != null && !appState.timeUp) ...[
                     const SizedBox(height: 14),
                     Chunky(
-                      color: mint,
+                      color: violet,
                       onTap: () async {
                         await openLesson(context, plan.subject, plan.lesson);
                         _greet();
@@ -185,16 +219,6 @@ class _HomeScreenState extends State<HomeScreen> {
               for (final s in subjects) _SubjectCard(subject: s),
               if (subjects.isEmpty)
                 SoftCard(child: Text(tr('comingSoon', lang), style: const TextStyle(fontSize: 17, color: ink))),
-              const SizedBox(height: 10),
-              Row(children: [
-                Expanded(
-                  child: Chunky(color: sun, onTap: () => _showRewards(context), child: Text('🏆 ${tr('rewards', lang)}', style: const TextStyle(color: ink))),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Chunky(color: Colors.white, onTap: () => openParentZone(context), child: Text('🔒 ${tr('parents', lang)}', style: const TextStyle(color: ink))),
-                ),
-              ]),
             ]),
           ),
         ),
@@ -268,7 +292,7 @@ void _showRewards(BuildContext context) {
   ];
   showModalBottomSheet<void>(
     context: context,
-    backgroundColor: cream,
+    backgroundColor: Colors.white,
     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(28))),
     builder: (_) => SafeArea(
       child: Padding(

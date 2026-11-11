@@ -66,3 +66,12 @@ hint.en: Count the corners of a book cover.
 hint.ml: പുസ്തകത്തിന്റെ പുറംചട്ടയുടെ മൂലകൾ എണ്ണൂ.
 explain.en: Each has 4 corners and 4 straight sides. They are rectangles.
 explain.ml: ഓരോന്നിനും 4 മൂലകളും 4 നേർവശങ്ങളുമുണ്ട്. അവ ചതുരങ്ങളാണ്.
+
+## story
+en: Circle the ball loves to roll, because it has no corners. Triangle the hill has 3 pointed tips. Rectangle the door stands tall on its 4 corners.
+ml: ഉരുളാൻ ഇഷ്ടമുള്ള പന്താണ് വൃത്തം, അതിന് മൂലകളില്ല. മൂന്ന് കൂർത്ത അറ്റങ്ങളുള്ള കുന്നാണ് ത്രികോണം. നാല് മൂലകളിൽ നിവർന്നു നിൽക്കുന്ന വാതിലാണ് ചതുരം.
+
+## picture
+visual: shapes circle triangle rectangle
+en: Count the corners with me. Circle: none. Triangle: 1, 2, 3. Rectangle: 1, 2, 3, 4.
+ml: എന്റെ കൂടെ മൂലകൾ എണ്ണൂ. വൃത്തം: ഒന്നുമില്ല. ത്രികോണം: 1, 2, 3. ചതുരം: 1, 2, 3, 4.

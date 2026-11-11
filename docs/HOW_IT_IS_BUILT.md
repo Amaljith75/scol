@@ -37,6 +37,8 @@ The classroom screen does not know how to teach. It only draws what the **Tutor 
 | ask (choice / number / think) | answer buttons or number pad |
 | give a hint, explain, praise | bubble changes colour, tutor's mood changes |
 | bring a question back | the lesson gets longer for this child only |
+| explain another way | a story or picture card appears, then the question returns |
+| hand over a touch activity | abacus beads, a sliding scale, or sticks to drag |
 | choose the next lesson | the "Next for you" card on the home screen |
 
 Today the Director follows the written lesson and adapts with rules (hint first, explain second, re-ask later, weak ideas before new ones). The next stage puts an AI model behind the same set of controls. Screens, lessons and the learning record stay as they are.
@@ -47,12 +49,12 @@ Today the Director follows the written lesson and adapts with rules (hint first,
 | --- | --- | --- |
 | Curriculum Management | `content/`, `tools/build_content.py`, `app/lib/content.dart` | Working. Class 3 Maths (Kerala) Part 1 written: 6 units, 24 levels. Other classes scaffolded. |
 | AI Tutor and Conversation | `app/lib/tutor.dart` (Director), `content/_app/tutors.json` | Five characters. Scripted and rule-based. No live AI conversation yet. |
-| Adaptive Learning | Director re-teaching; `revisionLesson` and `nextLesson` in `app/lib/state.dart` | Working, rule-based. |
+| Adaptive Learning | Director re-teaching; `revisionLesson`, `nextLesson`, `pickStyle` in `app/lib/state.dart` | Working, rule-based. After a repeated mistake it explains with a story or a picture and remembers which works for the child. |
 | Assessment | `app/lib/mastery.dart` | Working. Evidence across attempts, question styles, speed and repeated mistakes. |
 | Gamification and Rewards | `state.dart`, home, path and celebration screens | Stars, XP, streak, badges, path. |
 | Voice and Speech | `tools/build_voice.py`, `app/lib/voice.dart` | Each tutor has a Gemini voice, pre-made per line, cached on the phone; phone voice as fallback. No listening yet. |
 | Timetable and Revision | Tutor's pick on home; daily goal; daily time limit | Simple version. No parent-set schedule yet. |
-| Parent Dashboard | `app/lib/screens/parent.dart` | Plain-words report and controls. English only. |
+| Parent Dashboard | `app/lib/screens/parent.dart`, `app/lib/report.dart` | Weekly report in English and Malayalam with Share and Listen; per-idea report and controls in English. |
 | Child Safety and Privacy | Parent gate; all data on device; no accounts; no recording | Good for this stage. Must be redesigned before any data leaves the phone. |
 
 ## Why the voices are made in advance

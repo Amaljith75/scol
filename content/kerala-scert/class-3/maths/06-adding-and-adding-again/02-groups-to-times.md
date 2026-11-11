@@ -85,3 +85,12 @@ hint.ml: ഇരട്ടി എന്നാൽ അത് രണ്ടെണ്�
 explain.en: 25 and 25 make 50.
 explain.ml: 25-ഉം 25-ഉം ചേർന്നാൽ 50.
 mistake 27: added 2 instead of doubling
+
+## story
+en: Writing 4 + 4 + 4 + 4 + 4 takes so long! So people invented a short way. 5 × 4 means 4, five times.
+ml: 4 + 4 + 4 + 4 + 4 എന്ന് എഴുതാൻ എത്ര നേരം വേണം! അതുകൊണ്ട് ആളുകൾ ഒരു എളുപ്പവഴി കണ്ടുപിടിച്ചു. 5 × 4 എന്നാൽ 4 അഞ്ച് തവണ.
+
+## picture
+visual: steps 4 + 4 + 4 = 12 / 3 groups of 4 = 12 / 3 × 4 = 12
+en: Three ways to say the same thing.
+ml: ഒരേ കാര്യം പറയാൻ മൂന്ന് വഴികൾ.

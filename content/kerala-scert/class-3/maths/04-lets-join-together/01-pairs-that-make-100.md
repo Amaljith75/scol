@@ -64,3 +64,12 @@ explain.en: From 25 to 30 is 5, and 30 to 100 is 70. You get back 75 rupees.
 explain.ml: 25 മുതൽ 30 വരെ 5, 30 മുതൽ 100 വരെ 70. 75 രൂപ ബാക്കി കിട്ടും.
 mistake 85: made the tens add to ten and forgot the ones already make a ten
 mistake 125: added instead of finding the change
+
+## story
+en: You have a 100 rupee note and buy a pen for 60 rupees. The shopkeeper gives back 40. The price and the change are a pair, because together they make 100.
+ml: നിന്റെ കയ്യിൽ 100 രൂപ നോട്ടുണ്ട്. 60 രൂപയ്ക്ക് ഒരു പേന വാങ്ങി. കടക്കാരൻ 40 തിരിച്ചു തന്നു. വിലയും ബാക്കിയും ഒരു ജോഡിയാണ്, കാരണം രണ്ടും ചേർന്നാൽ 100.
+
+## picture
+visual: numberline 0 100 60
+en: Stand at 60. How far is it to 100? Four more jumps of ten. So 60 pairs with 40.
+ml: 60-ൽ നിൽക്കൂ. 100 വരെ എത്ര ദൂരം? പത്തിന്റെ നാല് ചാട്ടം കൂടി. അതുകൊണ്ട് 60-ന്റെ ജോഡി 40.

@@ -64,3 +64,25 @@ hint.ml: നൂറ് വീതം എണ്ണൂ: 100, 200, 300, ... പത്
 explain.en: 10 hundreds make 1000. We call it one thousand.
 explain.ml: 10 നൂറുകൾ ചേർന്നാൽ 1000. അതിനെ ആയിരം എന്ന് പറയും.
 mistake 110: added 10 and 100 instead of taking ten hundreds
+
+## ask
+form: abacus
+level: 2
+en: 5 boxes of 100 and 2 packets of 10. Move the beads to show how many pencils that is.
+ml: 100 വീതമുള്ള 5 പെട്ടികളും 10 വീതമുള്ള 2 പാക്കറ്റുകളും. ആകെ പെൻസിലുകളുടെ എണ്ണം മണികൾ നീക്കി കാണിക്കൂ.
+answer: 520
+hint.en: Boxes are hundreds. Packets are tens. There are no loose pencils.
+hint.ml: പെട്ടികൾ നൂറുകൾ. പാക്കറ്റുകൾ പത്തുകൾ. ഒറ്റ പെൻസിലുകളില്ല.
+explain.en: 5 hundreds and 2 tens make 520. The ones rod stays empty.
+explain.ml: 5 നൂറുകളും 2 പത്തുകളും ചേർന്നാൽ 520. ഒന്നിന്റെ കമ്പി ഒഴിഞ്ഞിരിക്കും.
+mistake 502: put the tens on the ones rod
+mistake 52: left the hundreds rod empty
+
+## story
+en: A shopkeeper ties 10 pencils with a rubber band. That is one ten. He puts 10 bundles in a box. That is one hundred. Ten boxes fill a carton. That is one thousand.
+ml: ഒരു കടക്കാരൻ 10 പെൻസിൽ റബ്ബർബാൻഡ് ഇട്ട് കെട്ടുന്നു. അതൊരു പത്ത്. അങ്ങനെ 10 കെട്ടുകൾ ഒരു പെട്ടിയിൽ. അതൊരു നൂറ്. പത്ത് പെട്ടികൾ ഒരു വലിയ പെട്ടിയിൽ. അതൊരു ആയിരം.
+
+## picture
+visual: steps 10 ones = 1 ten / 10 tens = 1 hundred / 10 hundreds = 1 thousand
+en: Every time we have 10 of something, we pack it into the next bigger one.
+ml: ഏതെങ്കിലും 10 എണ്ണം ആയാൽ, അതിനെ അടുത്ത വലിയ ഒന്നാക്കി പാക്ക് ചെയ്യും.

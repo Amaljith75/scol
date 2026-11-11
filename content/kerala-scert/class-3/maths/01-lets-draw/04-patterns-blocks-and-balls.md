@@ -78,3 +78,12 @@ hint.ml: ഓരോ ത്രികോണവും ചൂണ്ടി എണ്�
 explain.en: There are 3 triangles and 3 circles, taking turns.
 explain.ml: 3 ത്രികോണങ്ങളും 3 വൃത്തങ്ങളും മാറിമാറി വരുന്നു.
 mistake 6: counted every shape, not only the triangles
+
+## story
+en: A drummer plays dum, tak, dum, tak. If you know the beat, you know what comes next. Shapes can follow a beat too.
+ml: ഒരു ചെണ്ടക്കാരൻ ഡും, തക്, ഡും, തക് എന്ന് കൊട്ടുന്നു. താളം അറിഞ്ഞാൽ അടുത്തത് എന്തെന്ന് അറിയാം. രൂപങ്ങൾക്കും ഒരു താളമുണ്ടാകാം.
+
+## picture
+visual: pattern 🔺 ⚪ 🔺 ⚪ 🔺 ⚪
+en: Clap for a triangle, tap for a circle. Clap, tap, clap, tap. The pattern tells you what comes next.
+ml: ത്രികോണത്തിന് കൈയടി, വൃത്തത്തിന് തട്ട്. കൈയടി, തട്ട്, കൈയടി, തട്ട്. അടുത്തത് എന്തെന്ന് ക്രമം പറഞ്ഞുതരും.

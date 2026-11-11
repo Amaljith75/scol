@@ -60,3 +60,23 @@ hint.en: Split both numbers, then add hundreds, tens and ones.
 hint.ml: രണ്ട് സംഖ്യകളും പിരിച്ച്, നൂറുകളും പത്തുകളും ഒന്നുകളും കൂട്ടൂ.
 explain.en: 200 + 300 = 500, 40 + 20 = 60, 3 + 5 = 8. In all 568.
 explain.ml: 200 + 300 = 500, 40 + 20 = 60, 3 + 5 = 8. ആകെ 568.
+
+## ask
+form: abacus
+en: Work out 120 + 230. Show the answer on the abacus.
+ml: 120 + 230 കണക്കാക്കൂ. ഉത്തരം മണിച്ചട്ടത്തിൽ കാണിക്കൂ.
+answer: 350
+hint.en: Hundreds: 1 and 2. Tens: 2 and 3.
+hint.ml: നൂറുകൾ: 1-ഉം 2-ഉം. പത്തുകൾ: 2-ഉം 3-ഉം.
+explain.en: 300 and 50 make 350: 3 beads on hundreds and 5 on tens.
+explain.ml: 300-ഉം 50-ഉം ചേർന്നാൽ 350: നൂറിൽ 3 മണി, പത്തിൽ 5.
+mistake 305: put the tens on the ones rod
+
+## story
+en: Two classes bring coins in three jars: one jar for hundreds, one for tens, one for ones. Pour hundreds with hundreds, tens with tens, ones with ones. Then read the three jars.
+ml: രണ്ട് ക്ലാസുകൾ മൂന്ന് ഭരണികളിൽ നാണയങ്ങൾ കൊണ്ടുവന്നു: നൂറിന് ഒന്ന്, പത്തിന് ഒന്ന്, ഒന്നിന് ഒന്ന്. നൂറുകൾ നൂറുകളോട്, പത്തുകൾ പത്തുകളോട്, ഒന്നുകൾ ഒന്നുകളോട് ചേർക്കൂ. പിന്നെ മൂന്ന് ഭരണികളും വായിക്കൂ.
+
+## picture
+visual: steps 231 + 146 / 200 + 100 = 300 / 30 + 40 = 70 / 1 + 6 = 7 / 300 + 70 + 7 = 377
+en: Add each place on its own. Then put them together.
+ml: ഓരോ സ്ഥാനവും വെവ്വേറെ കൂട്ടൂ. പിന്നെ എല്ലാം ചേർക്കൂ.

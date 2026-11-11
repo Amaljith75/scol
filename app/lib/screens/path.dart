@@ -21,7 +21,6 @@ class PathScreen extends StatelessWidget {
       listenable: appState,
       builder: (context, _) {
         final lang = appState.mainLang;
-        final color = Color(subject.color);
         final tutor = tutorById(appState.tutorId);
         final current = appState.nextLesson(subject);
         final revision = appState.revisionLesson(subject);
@@ -37,11 +36,14 @@ class PathScreen extends StatelessWidget {
             ),
           ));
         }
+        var ci = -1;
         for (final ch in subject.chapters) {
+          ci++;
+          final chColor = chapterColors[ci % chapterColors.length];
           items.add(Container(
             margin: const EdgeInsets.only(bottom: 18, top: 6),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(18)),
+            decoration: BoxDecoration(color: chColor, borderRadius: BorderRadius.circular(18)),
             child: Text(pick(ch.title, lang),
                 style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800)),
           ));
@@ -64,7 +66,7 @@ class PathScreen extends StatelessWidget {
                       child: Chunky(
                         radius: 46,
                         padding: const EdgeInsets.symmetric(vertical: 20),
-                        color: done ? mint : (isCurrent ? color : cloud),
+                        color: done ? chColor : (isCurrent ? violet : cloud),
                         onTap: () {
                           if (done || isCurrent) {
                             openLesson(context, subject, l);

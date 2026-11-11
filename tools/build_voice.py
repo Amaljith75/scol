@@ -90,6 +90,8 @@ def lines_for(bundle, tutor):
                 for ch in s["chapters"]:
                     for lesson in ch["lessons"]:
                         add(lesson.get("title"))
+                        for alt in lesson.get("alts", {}).values():
+                            add(alt.get("text"))
                         for st in lesson["steps"]:
                             add(st.get("text"))
                             add(st.get("hint"))
@@ -112,6 +114,9 @@ def _post(url, body):
     except urllib.error.HTTPError as e:
         detail = e.read().decode("utf-8", "replace")[:400]
         if e.code == 429:
+            if not _mode.get("told"):
+                _mode["told"] = True
+                print(f"  Gemini says the limit is reached: {detail}", flush=True)
             raise Quota(detail) from None
         raise RuntimeError(f"HTTP {e.code}: {detail}") from None
 
@@ -247,7 +252,7 @@ def main():
             quota_hits += result == "quota"
             if n % 25 == 0:
                 print(f"  {n}/{len(jobs)} done, {made} made", flush=True)
-            if quota_hits >= 6 or (failed >= 12 and made == 0):
+            if (quota_hits >= 6 or (failed >= 12 and made == 0)) and start:
                 print("Stopping early: the speech service is refusing requests "
                       "(daily limit reached, or the key cannot use this model).", flush=True)
                 start = 0  # makes the remaining jobs skip

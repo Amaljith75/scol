@@ -66,3 +66,12 @@ explain.en: 100 and 20 make 120 cm.
 explain.ml: 100-ഉം 20-ഉം ചേർന്നാൽ 120 സെ.മീ.
 mistake 30: used 10 centimetres for a metre
 mistake 21: added the two numbers without changing metres to centimetres
+
+## story
+en: A tailor measures cloth for a shirt. Counting hundreds of centimetres is tiring. So she uses a long stick called a metre. One metre is the same as 100 centimetres.
+ml: ഒരു തയ്യൽക്കാരി ഷർട്ടിനുള്ള തുണി അളക്കുന്നു. നൂറുകണക്കിന് സെന്റിമീറ്റർ എണ്ണുന്നത് മടുപ്പാണ്. അതുകൊണ്ട് അവർ മീറ്റർ എന്ന നീണ്ട വടി ഉപയോഗിക്കുന്നു. ഒരു മീറ്റർ എന്നാൽ 100 സെന്റിമീറ്റർ.
+
+## picture
+visual: steps 100 cm = 1 m / 200 cm = 2 m / 135 cm = 1 m 35 cm
+en: Every 100 centimetres turns into 1 metre.
+ml: ഓരോ 100 സെന്റിമീറ്ററും 1 മീറ്ററാകും.

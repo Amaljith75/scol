@@ -36,6 +36,12 @@ const Map<String, List<String>> _s = {
   'again': ['Remember this one? Let us try again.', 'ഇത് ഓർമ്മയുണ്ടോ? ഒന്നുകൂടി നോക്കാം.'],
   'think': ['Think about it, then tap the button.', 'ആലോചിച്ചിട്ട് ബട്ടൺ അമർത്തൂ.'],
   'example': ['Example', 'ഉദാഹരണം'],
+  'story': ['A little story', 'ഒരു കൊച്ചു കഥ'],
+  'picture': ['Look at it this way', 'ഇങ്ങനെ നോക്കൂ'],
+  'home': ['Home', 'ഹോം'],
+  'dragSticks': ['Drag a stick onto a shape', 'ഒരു ഈർക്കിൽ രൂപത്തിലേക്ക് വലിച്ചിടൂ'],
+  'moveBeads': ['Tap or drag on a rod to move beads', 'മണികൾ നീക്കാൻ കമ്പിയിൽ തൊടുകയോ വലിക്കുകയോ ചെയ്യൂ'],
+  'slideScale': ['Drag the scale left or right', 'സ്കെയിൽ ഇടത്തോട്ടോ വലത്തോട്ടോ വലിക്കൂ'],
   'locked': ['Finish the lesson before this one first.', 'ഇതിന് മുമ്പുള്ള പാഠം ആദ്യം പൂർത്തിയാക്കൂ.'],
 };
 

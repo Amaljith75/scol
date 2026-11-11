@@ -1,13 +1,29 @@
 // Shared look and feel: colours, chunky buttons, cards.
 import 'package:flutter/material.dart';
 
-const cream = Color(0xFFFFF6E9);
-const ink = Color(0xFF2B2D42);
-const indigo = Color(0xFF5B6CFF);
+// Brand colours. Violet is Scol's own colour and is used for everything that
+// belongs to the app itself: main buttons, the bar at the bottom, the tutor's
+// card. Chapters and topics each get their own colour from [chapterColors].
+const violet = Color(0xFF7B5CFA);
+const violetDeep = Color(0xFF5B3FD6);
+const violetSoft = Color(0xFFEDE7FF);
+const cream = Color(0xFFF8F5FF); // page background: a very light lavender
+const ink = Color(0xFF2A2350);
+const indigo = violet; // older name, same brand colour
 const coral = Color(0xFFFF6B5E);
 const mint = Color(0xFF2BB673);
 const sun = Color(0xFFFFC233);
-const cloud = Color(0xFFE9E4DA);
+const cloud = Color(0xFFE7E1F5);
+
+/// One colour per chapter, repeating if a subject has more chapters.
+const chapterColors = [
+  Color(0xFFFF8A3D), // orange
+  Color(0xFF2FA8F5), // sky
+  Color(0xFF2BB673), // green
+  Color(0xFFE5488B), // pink
+  Color(0xFF19B5A5), // teal
+  Color(0xFFF2A413), // amber
+];
 
 Color darker(Color c, [double amount = 0.18]) {
   final h = HSLColor.fromColor(c);
