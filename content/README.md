@@ -141,7 +141,18 @@ and at least one question that looks different from the examples.
 | `visual: numberline 0 50 30` | A number line from 0 to 50 with 30 marked |
 | `visual: text 3 × 4 = 12` | Big text on the board |
 | `visual: emoji 🐘 🐅` | Big emoji |
+| `visual: array 3 6 🪑` | 3 rows of 6 chairs |
+| `visual: shapes circle triangle rectangle square` | Coloured shapes in a row |
+| `visual: sticks 12` | 12 small sticks |
+| `visual: place 3 4 2` | An abacus showing 3 hundreds, 4 tens, 2 ones |
+| `visual: notes 100 100 10 1` | Money notes and coins |
+| `visual: ruler 7 ✏️` | A scale with a 7 cm pencil lying on it |
+| `visual: pattern 10 20 30 ?` | A row of cards, with `?` for the missing one |
+| `visual: split 1000 300 ?` | A number and the two parts it splits into |
+| `visual: steps 200 + 100 = 300 / 30 + 40 = 70` | Working shown line by line (separate lines with ` / `) |
 | `visual: image tiger.png` | A picture file from this chapter's `images/` folder (needs internet) |
+
+Pieces of every picture pop in one after another, so the child watches it being built.
 
 ## 5. Adding a new subject, class or board
 
@@ -153,7 +164,18 @@ and at least one question that looks different from the examples.
 
 No app changes are needed for any of these.
 
-## 6. If something is wrong
+## 6. The tutors and their voices
+
+- **Characters** are in `content/_app/tutors.json`: name, body shape (`blob`, `spiky`, `cloud`, `flower`, `bean`),
+  colour, eye style, voice, and the things each one says (hello, praise, encouragement). Add a new block to add a new tutor.
+- **Shared lines** the tutors say (such as "We will try this one again in a little while") are in `content/_app/phrases.json`.
+- **Voices** are made automatically. Whenever lessons change, every new line is turned into a sound file with
+  Gemini's speech model and saved in the `voice/` folder. This needs the Gemini key saved once as a repository secret
+  named `GEMINI_API_KEY` (repository **Settings > Secrets and variables > Actions > New repository secret**).
+  Never put the key in a file: this repository is public.
+- If a voice file is not ready yet, the app reads that line with the phone's own voice.
+
+## 7. If something is wrong
 
 Every commit is checked automatically. If a file has a mistake, the check fails and tells you the
 file and line, for example:
@@ -165,7 +187,7 @@ content/cbse/class-3/maths/01-shapes/02-corners.md (line 14): answer "3" is not 
 Nothing broken is ever sent to children: the app keeps the last good set of lessons until the mistake is fixed.
 See the result under the repository's **Actions** tab.
 
-## 7. Rules for content
+## 8. Rules for content
 
 - Follow the textbook's chapter order and learning objectives, but write explanations in your own words.
   Do not copy textbook text or pictures: SCERT and NCERT books are copyrighted.

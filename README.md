@@ -2,22 +2,26 @@
 
 **A personal tutor for every child in Classes 1 to 4.**
 
-Scol is an Android app where a friendly tutor character teaches your child their own school
-syllabus, one short lesson at a time. The tutor explains, shows pictures, asks questions, notices
+<img src="app/branding/logo.png" width="96" alt="Scol">
+
+Scol is an Android app where a friendly little creature teaches your child their own school
+syllabus, one short level at a time. The tutor explains, shows pictures, asks questions, notices
 where your child is stuck, and tries again in a different way. It works in English, Malayalam, or both together.
 
 Scol follows two syllabuses: **Kerala State (SCERT)** and **CBSE (NCERT)**.
 
-> Scol is in early testing with a small number of families. The lessons inside it today are samples.
-> Real textbook-aligned chapters are being added class by class.
+> Scol is in early testing with a small number of families. The first complete subject is
+> **Class 3 Maths, Kerala syllabus**: 24 levels across the six units of Part 1 of the textbook.
+> More classes and subjects are being added.
 
 ## How a lesson works
 
 1. **Your child opens the app.** Their tutor greets them and has already chosen what to learn today.
    Ideas your child found hard last time come first, then new lessons.
-2. **The tutor teaches.** A short explanation in simple words, read aloud, with pictures on the board:
-   baskets of mangoes for multiplication, a number line for counting in tens.
-3. **The tutor asks.** Your child answers by tapping a choice or typing a number. Lessons take about five minutes.
+2. **The tutor teaches.** A short explanation in simple words, spoken aloud, with pictures that build
+   up on the board: baskets of mangoes for multiplication, an abacus for hundreds, tens and ones,
+   a scale for centimetres.
+3. **The tutor asks.** Your child answers by tapping a choice or typing a number. A level takes about five minutes.
 4. **A wrong answer is never the end.** The tutor does not give the answer away. It gives a hint and
    lets your child try again. If it is still hard, the tutor explains kindly and brings the same
    question back a little later.
@@ -51,22 +55,29 @@ When the daily limit is reached, the tutor says goodbye until tomorrow.
 
 ## Meet the tutors
 
+Five little creatures live in the app. Each has its own voice and its own way of talking.
+
 | | |
 | --- | --- |
-| **Minnu** (മിന്നു) | A gentle firefly who loves stories. |
-| **Tiko** (ടിക്കോ) | A playful robot who loves puzzles. |
+| **Minnu** (മിന്നു) | Gentle and warm. Turns maths into little stories. |
+| **Tiko** (ടിക്കോ) | Full of energy. Every question is a game to win. |
+| **Pompy** (പോംപി) | Calm and patient. Never in a hurry. |
+| **Zizu** (സിസു) | Always curious. Loves asking why. |
+| **Koko** (കോക്കോ) | Funny and relaxed. Learning feels like a joke between friends. |
 
+They feel alive. Their eyes follow where they are going, look at the picture while they teach,
+look at your child while they talk, and glance at wherever your child touches the screen.
 Your child picks one and can switch at any time.
 
 ## Your child's privacy
 
 - A parent sets up the app. Scol asks only for a first name or nickname.
 - Your child's name and progress are stored **on your phone only**. They are not sent to us or anyone else.
-- The tutor's voice is the one built into your phone. The app does not record your child.
+- The tutors' voices are sound files we prepare in advance. Nothing your child says or does is sent to any AI service. The app does not record your child.
 - No advertisements.
 - You can delete everything with one button in the parent area.
 
-The app uses the internet for one thing: downloading new lessons.
+The app uses the internet only to download new lessons and the tutors' voice files.
 
 ## Try it
 
@@ -76,18 +87,21 @@ The app uses the internet for one thing: downloading new lessons.
 3. Do the one-minute parent setup: name, syllabus, class, language, tutor.
 4. Hand the phone to your child.
 
-For Malayalam speech, your phone needs a Malayalam voice: Settings > search "Text-to-speech" > install Malayalam voice data.
+The tutors speak English and Malayalam in natural voices. The first time a level is opened the voice
+files are downloaded, so use Wi-Fi or mobile data for that. After that the level works offline.
 
 ## What works today, and what is coming
 
 | Today | Coming next |
 | --- | --- |
-| Tutor-led lessons with pictures, hints and re-teaching | Talking to the tutor: your child asks questions by voice and the tutor answers |
-| Understanding check across several questions | Real SCERT and CBSE chapters for Classes 1 to 4 |
-| English, Malayalam, or both | More kinds of activities: drag and drop, matching, stories |
-| Stars, streaks, badges, learning path | Weekly progress report for parents, in Malayalam too |
-| Parent report and controls | A daily timetable across all subjects |
-| New lessons arrive without reinstalling | |
+| Class 3 Maths (Kerala): 24 levels in 6 units | Talking to the tutor: your child asks questions by voice and the tutor answers |
+| Five tutors with their own voices, in English and Malayalam | Other subjects and Classes 1, 2 and 4; CBSE |
+| Pictures that build up: shapes, abacus, money, scale, number patterns | Drag-and-drop, matching and drawing activities |
+| Hints, kind re-teaching, and questions that come back | Weekly progress report for parents, in Malayalam too |
+| Understanding check across several questions | A daily timetable across all subjects |
+| Stars, streaks, badges, level path | |
+| Parent report and controls | |
+| New lessons and voices arrive without reinstalling | |
 
 ## Questions
 
@@ -104,4 +118,5 @@ For Malayalam speech, your phone needs a Malayalam voice: Settings > search "Tex
 ### Behind the scenes
 
 - [How lessons are added](content/README.md): for the team writing curriculum content.
-- [How Scol is built](docs/HOW_IT_IS_BUILT.md): the parts of the system and the plan.
+- [How Scol is built](docs/HOW_IT_IS_BUILT.md): the parts of the system.
+- [What to build next](docs/NEXT_STEPS.md): features and the plan for the MVP.

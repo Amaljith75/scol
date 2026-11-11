@@ -6,9 +6,13 @@ This is the team's map of the project. Parents and customers should read the mai
 
 ```
 content/      Every lesson, organised board > class > subject > chapter. Plain text files.
+              content/_app/ holds the tutor characters and the lines they share.
 tools/        build_content.py checks the lessons and packs them into one bundle for the app.
-app/          The Android app (Flutter).
+              build_voice.py turns every tutor line into a sound file with Gemini speech.
+voice/        The sound files, one folder per tutor, plus index.json.
+app/          The Android app (Flutter). app/branding/ holds the icon.
 .github/      On every push: check lessons, test the app, build scol.apk, publish under Releases.
+              A second workflow makes the voice files.
 docs/         This file.
 ```
 
@@ -28,7 +32,8 @@ The classroom screen does not know how to teach. It only draws what the **Tutor 
 | --- | --- |
 | say something | speech bubble, read aloud |
 | show a picture | the board changes |
-| move | the tutor walks to the left, centre or right |
+| move | the tutor walks to the left, centre or right, eyes leading the way |
+| look | eyes go to the board while teaching, to the answers while asking, to the child while talking |
 | ask (choice / number / think) | answer buttons or number pad |
 | give a hint, explain, praise | bubble changes colour, tutor's mood changes |
 | bring a question back | the lesson gets longer for this child only |
@@ -40,15 +45,19 @@ Today the Director follows the written lesson and adapts with rules (hint first,
 
 | Module in the brief | Where it is now | State |
 | --- | --- | --- |
-| Curriculum Management | `content/`, `tools/build_content.py`, `app/lib/content.dart` | Working. Two boards, Classes 1-4 scaffolded, sample chapters only. |
-| AI Tutor and Conversation | `app/lib/tutor.dart` (Director) | Scripted and rule-based. No live AI model yet. |
+| Curriculum Management | `content/`, `tools/build_content.py`, `app/lib/content.dart` | Working. Class 3 Maths (Kerala) Part 1 written: 6 units, 24 levels. Other classes scaffolded. |
+| AI Tutor and Conversation | `app/lib/tutor.dart` (Director), `content/_app/tutors.json` | Five characters. Scripted and rule-based. No live AI conversation yet. |
 | Adaptive Learning | Director re-teaching; `revisionLesson` and `nextLesson` in `app/lib/state.dart` | Working, rule-based. |
 | Assessment | `app/lib/mastery.dart` | Working. Evidence across attempts, question styles, speed and repeated mistakes. |
 | Gamification and Rewards | `state.dart`, home, path and celebration screens | Stars, XP, streak, badges, path. |
-| Voice and Speech | `TtsSpeaker` in `tutor.dart` | Tutor speaks using the phone's voice. No listening yet. |
+| Voice and Speech | `tools/build_voice.py`, `app/lib/voice.dart` | Each tutor has a Gemini voice, pre-made per line, cached on the phone; phone voice as fallback. No listening yet. |
 | Timetable and Revision | Tutor's pick on home; daily goal; daily time limit | Simple version. No parent-set schedule yet. |
 | Parent Dashboard | `app/lib/screens/parent.dart` | Plain-words report and controls. English only. |
 | Child Safety and Privacy | Parent gate; all data on device; no accounts; no recording | Good for this stage. Must be redesigned before any data leaves the phone. |
+
+## Why the voices are made in advance
+
+The tutors only say lines that are written in the lessons, so each line can be turned into sound once and reused by every child. That gives natural Gemini voices in English and Malayalam with no waiting, no cost per child, no key inside the app, lessons that work offline, and nothing about a child ever sent to an AI service. The key is stored only as the GitHub secret `GEMINI_API_KEY`.
 
 ## Not built yet, on purpose
 
