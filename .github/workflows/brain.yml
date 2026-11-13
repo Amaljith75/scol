@@ -57,9 +57,9 @@ jobs:
           PY
       - name: Send settings and code to the server
         run: |
-          supabase secrets set --project-ref "$REF" --env-file brain.env
-          rm brain.env
-          supabase functions deploy brain --project-ref "$REF" --no-verify-jwt --use-api
+          trap 'rm -f brain.env' EXIT
+          supabase secrets set --project-ref "$REF" --env-file brain.env --yes
+          supabase functions deploy brain --project-ref "$REF" --no-verify-jwt --use-api --yes
       - name: Ask the live brain a test question
         run: |
           URL=$(python3 -c "import json;print(json.load(open('content/_app/brain.json'))['url'])")
