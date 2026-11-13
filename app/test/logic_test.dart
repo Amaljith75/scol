@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scol/content.dart';
+import 'package:scol/edge_voice.dart';
 import 'package:scol/mastery.dart';
 import 'package:scol/report.dart';
 import 'package:scol/state.dart';
@@ -116,6 +117,21 @@ void main() {
       for (final v in b.phrases.values) {
         expect(words.hasMatch('$v'), false, reason: '$v');
       }
+    });
+
+    test('live Edge voice token matches the edge-tts library', () {
+      // Values made with edge_tts.drm.generate_sec_ms_gec_v2 (edge-tts 7.3.1).
+      expect(secMsGec(1794540000.0),
+          'C463238EAF8E9DEA-7E5486F8C93AC3A6444BA3A3BC403ED131B99C2118784821CFCDF91AFB94C484');
+      expect(secMsGec(1794555555.5),
+          'C446C4E2F1C42521-BD1C6052DC08A1775E0C0F177F94E7E014E2E64083F1A4B45C6C7D81EF95B6D8');
+      expect(secMsGec(1700000000.0),
+          '2CD23A2CA0B2595A-F3C846C370E05F9CC83ACC5F995C5F5D87A4D0F14CE8936A0F902E64099E38A2');
+    });
+
+    test('symbols are read out in words', () {
+      expect(spokenText('3 × 4 = 12 🥭', 'en'), '3 times 4 equals 12');
+      expect(spokenText('7 cm', 'en'), '7 centimetres');
     });
 
     test('language of a line is detected for the voice', () {

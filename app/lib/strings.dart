@@ -55,6 +55,7 @@ const Map<String, List<String>> _s = {
     'ഈ ഫോണിൽ സംസാരിച്ച് ചോദിക്കാൻ പറ്റില്ല. ടൈപ്പ് ചെയ്യാം.'
   ],
   'ask': ['Ask', 'ചോദിക്കൂ'],
+  'explainMore': ['Explain more', 'വിശദമാക്കൂ'],
   'newLessons': ['New lessons have arrived!', 'പുതിയ പാഠങ്ങൾ എത്തി!'],
   'slideScale': ['Drag the scale left or right', 'സ്കെയിൽ ഇടത്തോട്ടോ വലത്തോട്ടോ വലിക്കൂ'],
   'locked': ['Finish the lesson before this one first.', 'ഇതിന് മുമ്പുള്ള പാഠം ആദ്യം പൂർത്തിയാക്കൂ.'],

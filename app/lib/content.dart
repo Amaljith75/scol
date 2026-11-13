@@ -30,6 +30,8 @@ class TutorCharacter {
     required this.voice,
     this.eyes = 'round',
     this.energy = 1.0,
+    this.rate = '+0%',
+    this.pitch = '+0Hz',
     this.about,
     this.hello,
     this.praise,
@@ -44,6 +46,8 @@ class TutorCharacter {
   final Map<String, String> voice;
   final String eyes; // round | wide | soft | curious | sleepy
   final double energy;
+  final String rate; // speaking speed for the Edge voice, e.g. '-6%'
+  final String pitch; // e.g. '+4Hz'
   final dynamic about;
   final dynamic hello;
   final dynamic praise;
@@ -77,6 +81,8 @@ class TutorCharacter {
       },
       eyes: j['eyes'] as String? ?? 'round',
       energy: (j['energy'] as num?)?.toDouble() ?? 1.0,
+      rate: j['rate'] as String? ?? '+0%',
+      pitch: j['pitch'] as String? ?? '+0Hz',
       about: j['about'],
       hello: j['hello'],
       praise: j['praise'],

@@ -91,7 +91,10 @@ class _ParentScreenState extends State<ParentScreen> {
       return;
     }
     setState(() => _reading = true);
-    await appSpeaker?.say(report, _reportLang, tutorById(appState.tutorId));
+    // Read by the tutor who has a natural voice (Mio), whichever tutor the child chose.
+    final voiced = contentStore.bundle.tutors
+        .firstWhere((t) => t.voiceFor(_reportLang).isNotEmpty, orElse: () => tutorById(appState.tutorId));
+    await appSpeaker?.say(report, _reportLang, voiced);
     if (mounted) setState(() => _reading = false);
   }
 

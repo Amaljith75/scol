@@ -169,6 +169,16 @@ class TutorDirector extends ChangeNotifier {
     }
   }
 
+  /// The tutor explains something extra (for example from the tutor brain) and stays on this step.
+  void tutorSays(String text) {
+    if (text.trim().isEmpty) return;
+    mood = Mood.happy;
+    look = Look.child;
+    badge = '';
+    _say([text]);
+    notifyListeners();
+  }
+
   void showHint() {
     if (!canHint) return;
     hintShown = true;

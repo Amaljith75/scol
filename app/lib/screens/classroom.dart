@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../content.dart';
+import '../brain.dart';
 import '../reminders.dart';
 import '../state.dart';
 import '../strings.dart';
@@ -38,6 +39,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
   Timer? _peekTimer;
   bool _peek = false; // while teaching, glance from the board back to the child
   int _hop = 0; // the tutor hops each time the lesson moves on
+  bool _explaining = false; // waiting for the tutor brain to explain more
   LessonStep? _lastStep;
 
   @override
@@ -313,6 +315,28 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     return SoftCard(key: ValueKey(v.toString()), child: VisualView(v));
   }
 
+  /// "Explain more": the tutor brain explains the current step again, another way.
+  Future<void> _explainMore() async {
+    final step = d.current;
+    if (step == null || _explaining) return;
+    setState(() => _explaining = true);
+    final lang = d.lang;
+    final what = pick(step.text, lang);
+    final reply = await askBrain(
+      bundle: contentStore.bundle,
+      question: lang == 'ml'
+          ? 'ഇത് എനിക്ക് മനസ്സിലായില്ല. ഒരു ദിവസേനയുള്ള ഉദാഹരണത്തോടെ, മറ്റൊരു രീതിയിൽ ലളിതമായി പറഞ്ഞു തരാമോ? "$what"'
+          : 'I did not understand this. Please explain it again in a different, simple way with an everyday example: "$what"',
+      lang: lang,
+      tutorName: d.tutor.displayName('en'),
+      lessonTitle: pick(widget.lesson.title, 'en'),
+      notes: _notes,
+    );
+    if (!mounted) return;
+    setState(() => _explaining = false);
+    d.tutorSays(reply.text);
+  }
+
   Widget _tip(String key, String lang) => Padding(
         padding: const EdgeInsets.only(bottom: 8),
         child: Text(tr(key, lang),
@@ -323,7 +347,19 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     final q = d.question;
     switch (d.phase) {
       case Phase.talking:
-        return Chunky(color: indigo, onTap: d.next, child: Text('${tr('next', lang)}  ▶'));
+        return Row(children: [
+          Expanded(
+            child: Chunky(
+              color: Colors.white,
+              onTap: _explaining ? null : _explainMore,
+              child: _explaining
+                  ? const SizedBox(width: 22, height: 22, child: CircularProgressIndicator(strokeWidth: 3, color: violet))
+                  : Text('🤔 ${tr('explainMore', lang)}', style: const TextStyle(color: ink, fontSize: 16)),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(child: Chunky(color: indigo, onTap: d.next, child: Text('${tr('next', lang)}  ▶'))),
+        ]);
       case Phase.feedback:
         return Chunky(color: mint, onTap: d.next, child: Text(tr('continue', lang)));
       case Phase.thinkAsk:
