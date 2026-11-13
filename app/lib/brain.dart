@@ -1,9 +1,11 @@
-// "Ask Mio": the child asks a question by voice (or typing) and the tutor
-// brain on our server answers. The app only knows the server's public address;
-// the AI key and the choice of AI model live on the server.
+// The tutor brain on our server: it teaches each lesson in the tutor's own
+// words, and ("Ask Mio") answers a question the child asks by voice or typing.
+// The app only knows the server's public address; the AI key and the choice of
+// AI model live on the server.
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -81,5 +83,122 @@ Future<BrainAnswer> askBrain({
     return answer.isEmpty ? BrainAnswer(sorry('error', lang), ok: false) : BrainAnswer(answer);
   } catch (_) {
     return BrainAnswer(sorry('offline', lang), ok: false);
+  }
+}
+
+// ---------------- Teaching a whole lesson ----------------
+
+/// A teaching step as the brain sees it: the written line plus what is on the board.
+Map<String, dynamic> _teachStep(LessonStep s, String lang) {
+  final v = s.visual;
+  return {
+    't': s.isAsk ? 'ask' : 'say',
+    'text': pick(s.text, lang),
+    if (v != null) 'visual': '${v['kind']} ${((v['args'] as List?) ?? const []).join(' ')}'.trim(),
+    if (s.label.isNotEmpty) 'label': s.label,
+    if (s.isAsk) 'form': s.form,
+    if (s.isAsk) 'answer': s.answer,
+    if (s.isAsk && s.options.isNotEmpty) 'options': s.options,
+  };
+}
+
+/// What is sent to the brain so it can teach [lesson] in [lang]. Only lesson text, never anything about the child.
+Map<String, dynamic> teachRequest(Lesson lesson, String lang, TutorCharacter tutor, String tone) => {
+      'mode': 'teach',
+      'lang': lang,
+      'tutor': tutor.displayName('en'),
+      'about': pick(tutor.about, 'en'),
+      'tone': tone,
+      'lesson': pick(lesson.title, 'en'),
+      'objective': pick(lesson.objective, 'en'),
+      'steps': [for (final s in lesson.steps) _teachStep(s, lang)],
+    };
+
+/// Lines the brain wrote, lined up with [lesson.steps]: text for each "say" step, null for questions.
+/// Returns null (use the written lines) if the list does not fit the lesson.
+List<String?>? alignTeaching(Lesson lesson, List<dynamic>? written) {
+  if (written == null) return null;
+  final says = lesson.steps.where((s) => !s.isAsk).length;
+  if (written.length != says) return null;
+  var i = 0;
+  final out = <String?>[];
+  for (final s in lesson.steps) {
+    if (s.isAsk) {
+      out.add(null);
+    } else {
+      final t = '${written[i++]}'.trim();
+      if (t.isEmpty) return null;
+      out.add(t);
+    }
+  }
+  return out;
+}
+
+/// The same lesson, language, tutor and mood always give the same key, so a lesson is written once.
+String teachKey(Lesson lesson, String lang, TutorCharacter tutor, String tone) =>
+    sha1.convert(utf8.encode(jsonEncode(teachRequest(lesson, lang, tutor, tone)))).toString().substring(0, 24);
+
+const _teachCacheKey = 'teach_cache_v1';
+const _teachCacheMax = 80;
+
+Future<List<String?>?> _teachFromCache(String key, Lesson lesson) async {
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getString(_teachCacheKey);
+    if (raw == null) return null;
+    final all = (jsonDecode(raw) as Map).cast<String, dynamic>();
+    return alignTeaching(lesson, all[key] as List?);
+  } catch (_) {
+    return null;
+  }
+}
+
+Future<void> _teachToCache(String key, List<dynamic> written) async {
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getString(_teachCacheKey);
+    final all = raw == null ? <String, dynamic>{} : (jsonDecode(raw) as Map).cast<String, dynamic>();
+    all.remove(key);
+    all[key] = written;
+    while (all.length > _teachCacheMax) {
+      all.remove(all.keys.first); // the oldest
+    }
+    await prefs.setString(_teachCacheKey, jsonEncode(all));
+  } catch (_) {}
+}
+
+/// Asks the tutor brain to teach [lesson]: what the tutor says at every "say"
+/// step, in its own words, in [lang], as [tutor] in the parent's chosen [tone].
+/// Kept on the phone, so a lesson is fetched once and then works offline.
+/// Returns null when the brain cannot help; the lesson's own lines are used then.
+Future<List<String?>?> teachLesson({
+  required Bundle bundle,
+  required Lesson lesson,
+  required String lang,
+  required TutorCharacter tutor,
+  String tone = 'normal',
+  http.Client? client,
+}) async {
+  if (lesson.steps.every((s) => s.isAsk)) return null;
+  final key = teachKey(lesson, lang, tutor, tone);
+  final cached = await _teachFromCache(key, lesson);
+  if (cached != null) return cached;
+  final url = '${bundle.brain['url'] ?? ''}';
+  if (url.isEmpty) return null;
+  try {
+    final res = await (client ?? http.Client())
+        .post(
+          Uri.parse(url),
+          headers: {'content-type': 'application/json', 'apikey': '${bundle.brain['public_key'] ?? ''}'},
+          body: jsonEncode({...teachRequest(lesson, lang, tutor, tone), 'device': await deviceId()}),
+        )
+        .timeout(const Duration(seconds: 45));
+    if (res.statusCode != 200) return null;
+    final written = (jsonDecode(utf8.decode(res.bodyBytes)) as Map)['steps'] as List?;
+    final aligned = alignTeaching(lesson, written);
+    if (aligned != null) await _teachToCache(key, written!);
+    return aligned;
+  } catch (_) {
+    return null;
   }
 }

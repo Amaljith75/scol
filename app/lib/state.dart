@@ -26,6 +26,7 @@ class AppState extends ChangeNotifier {
   bool voiceOn = true;
   int dailyLimitMin = 30;
   bool askEnabled = false; // a parent must turn on questions to the AI tutor
+  bool teachOn = true; // the tutor brain teaches each lesson in its own words (only lesson text leaves the phone)
   bool remindersOn = true;
   int studyMinute = 18 * 60; // daily study time, minutes after midnight (6:00 PM)
   List<String> subjectKeys = [];
@@ -256,6 +257,7 @@ class AppState extends ChangeNotifier {
         'voiceOn': voiceOn,
         'dailyLimitMin': dailyLimitMin,
         'askEnabled': askEnabled,
+        'teachOn': teachOn,
         'remindersOn': remindersOn,
         'studyMinute': studyMinute,
         'subjectKeys': subjectKeys,
@@ -286,6 +288,7 @@ class AppState extends ChangeNotifier {
     voiceOn = j['voiceOn'] != false;
     dailyLimitMin = (j['dailyLimitMin'] as num?)?.toInt() ?? 30;
     askEnabled = j['askEnabled'] == true;
+    teachOn = j['teachOn'] != false;
     remindersOn = j['remindersOn'] != false;
     studyMinute = (j['studyMinute'] as num?)?.toInt() ?? 18 * 60;
     subjectKeys = ((j['subjectKeys'] as List?) ?? const []).map((e) => '$e').toList();

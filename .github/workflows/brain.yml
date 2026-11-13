@@ -68,3 +68,16 @@ jobs:
           curl -sS -X POST "$URL" -H 'content-type: application/json' \
             -d '{"question":"Why do leaves need sunlight?","device":"deploy-check-0001","lang":"en","lesson":"Plant parts","notes":"Leaves make food for the plant."}'
           echo
+      - name: Ask the live brain to teach a small lesson
+        run: |
+          URL=$(python3 -c "import json;print(json.load(open('content/_app/brain.json'))['url'])")
+          curl -sS -X POST "$URL" -H 'content-type: application/json' -d '{
+            "mode":"teach","device":"deploy-check-0001","lang":"en","tutor":"Mio",
+            "about":"Gentle and warm. Loves turning maths into little stories.","tone":"normal",
+            "lesson":"Equal groups","objective":"Count objects arranged in equal groups.",
+            "steps":[
+              {"t":"say","text":"Look! Here are 3 baskets. Each basket has 4 mangoes.","visual":"groups 3 4 🥭"},
+              {"t":"say","text":"Every basket has the same number of mangoes. We call these equal groups. To find the total we add 4 again and again: 4 + 4 + 4.","visual":"groups 3 4 🥭"},
+              {"t":"ask","text":"How many mangoes are there in all?","form":"choice","answer":"12","options":["7","12","34"]}
+            ]}'
+          echo

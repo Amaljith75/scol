@@ -187,12 +187,49 @@ String _stamp() {
 
 String _escape(String s) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 
+/// How many seconds the phone's clock is behind the voice server. The token above is
+/// made from the time, so a phone whose clock is off is refused until we learn the difference
+/// (the same trick the edge-tts library uses).
+double _clockSkew = 0;
+bool _clockSynced = false;
+
+Future<void> _syncClock() async {
+  _clockSynced = true;
+  final client = HttpClient()..connectionTimeout = const Duration(seconds: 8);
+  try {
+    final req = await client.getUrl(Uri.parse(
+        'https://speech.platform.bing.com/consumer/speech/synthesize/readaloud/voices/list?trustedclienttoken=$_token'));
+    final res = await req.close().timeout(const Duration(seconds: 8));
+    final date = res.headers.value('date');
+    await res.drain<void>();
+    if (date == null) return;
+    final server = HttpDate.parse(date);
+    _clockSkew = (server.millisecondsSinceEpoch - DateTime.now().millisecondsSinceEpoch) / 1000;
+  } catch (_) {
+    // Could not read the server's clock: keep going with the phone's.
+  } finally {
+    client.close(force: true);
+  }
+}
+
 /// Returns MP3 audio of [text] spoken by [voice], or throws.
+/// If the server refuses the connection (usually a phone clock that is off), it learns the
+/// server's time once and tries again.
 Future<Uint8List> edgeSpeak(String text, String voice, {String rate = '+0%', String pitch = '+0Hz'}) async {
+  try {
+    return await _edgeSpeak(text, voice, rate: rate, pitch: pitch);
+  } on WebSocketException {
+    if (_clockSynced) rethrow;
+    await _syncClock();
+    return _edgeSpeak(text, voice, rate: rate, pitch: pitch);
+  }
+}
+
+Future<Uint8List> _edgeSpeak(String text, String voice, {required String rate, required String pitch}) async {
   const major = '143';
   final url = 'wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1'
       '?TrustedClientToken=$_token&ConnectionId=${_rand(16)}'
-      '&Sec-MS-GEC=${secMsGec(DateTime.now().millisecondsSinceEpoch / 1000)}&Sec-MS-GEC-Version=2-$_chromium';
+      '&Sec-MS-GEC=${secMsGec(DateTime.now().millisecondsSinceEpoch / 1000 + _clockSkew)}&Sec-MS-GEC-Version=2-$_chromium';
   final ws = await WebSocket.connect(url, headers: {
     'Pragma': 'no-cache',
     'Cache-Control': 'no-cache',

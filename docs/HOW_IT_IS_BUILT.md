@@ -41,14 +41,14 @@ The classroom screen does not know how to teach. It only draws what the **Tutor 
 | hand over a touch activity | abacus beads, a sliding scale, or sticks to drag |
 | choose the next lesson | the "Next for you" card on the home screen |
 
-Today the Director follows the written lesson and adapts with rules (hint first, explain second, re-ask later, weak ideas before new ones). The next stage puts an AI model behind the same set of controls. Screens, lessons and the learning record stay as they are.
+The Director follows the written lesson and adapts with rules (hint first, explain second, re-ask later, weak ideas before new ones). The tutor brain (`supabase/functions/brain`, `app/lib/brain.dart`) writes what the tutor says at each teaching step in the tutor's own words, once per level, language, tutor and mood; the Director speaks those words and keeps every question, hint and answer as written. Screens, lessons and the learning record stay as they are. See [TUTOR_BRAIN.md](TUTOR_BRAIN.md).
 
 ## Modules
 
 | Module in the brief | Where it is now | State |
 | --- | --- | --- |
 | Curriculum Management | `content/`, `tools/build_content.py`, `app/lib/content.dart` | Working. Class 3 Maths (Kerala) Part 1 written: 6 units, 24 levels. Other classes scaffolded. |
-| AI Tutor and Conversation | `app/lib/tutor.dart` (Director), `content/_app/tutors.json` | Five characters. Scripted and rule-based. No live AI conversation yet. |
+| AI Tutor and Conversation | `app/lib/tutor.dart` (Director), `app/lib/brain.dart`, `supabase/functions/brain`, `content/_app/tutors.json` | Five characters. The brain teaches each level in the tutor's own words (cached per level), answers questions and "Explain more". Questions and answers stay scripted. |
 | Adaptive Learning | Director re-teaching; `revisionLesson`, `nextLesson`, `pickStyle` in `app/lib/state.dart` | Working, rule-based. After a repeated mistake it explains with a story or a picture and remembers which works for the child. |
 | Assessment | `app/lib/mastery.dart` | Working. Evidence across attempts, question styles, speed and repeated mistakes. |
 | Gamification and Rewards | `state.dart`, home, path and celebration screens | Stars, XP, streak, badges, path. |

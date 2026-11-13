@@ -25,9 +25,11 @@ class _Item {
   final String? style; // 'story' or 'picture': the other way it was just explained
 }
 
-/// Runs one lesson. Today the Director follows the written lesson and adapts
-/// with simple rules; a live AI model can later drive the very same controls
-/// (say / show / ask / move / look) without changing the screens.
+/// Runs one lesson. The Director follows the written lesson and adapts with
+/// simple rules (hint first, explain second, re-ask later). When the tutor
+/// brain has written out the lesson in the tutor's own words ([setTeaching]),
+/// the Director speaks that at each teaching step instead of reading the line;
+/// questions, hints and explanations stay exactly as written.
 class TutorDirector extends ChangeNotifier {
   TutorDirector({
     required this.lesson,
@@ -40,8 +42,10 @@ class TutorDirector extends ChangeNotifier {
     this.speaker,
     this.pickStyle,
     this.onStyleResult,
+    bool waitForTeaching = false,
     Random? random,
-  }) : _rnd = random ?? Random() {
+  })  : _rnd = random ?? Random(),
+        _hold = waitForTeaching {
     _queue = [for (final s in lesson.steps) _Item(s)];
     _total = _queue.length;
     _enter();
@@ -69,6 +73,12 @@ class TutorDirector extends ChangeNotifier {
   late int _total;
   int _index = 0;
 
+  /// What the brain wrote for each step of [lesson] (null for questions), or null: read the lines as written.
+  List<String?>? _teaching;
+
+  /// True while the first line is shown but not yet spoken, because the brain's words are on their way.
+  bool _hold;
+
   // What the screen should show right now.
   Phase phase = Phase.talking;
   Spot spot = Spot.left;
@@ -91,6 +101,40 @@ class TutorDirector extends ChangeNotifier {
   LessonStep? get current => _index < _queue.length ? _queue[_index].step : null;
 
   double get progress => _total == 0 ? 1 : (_index / _total).clamp(0.0, 1.0).toDouble();
+
+  /// The brain's words for [step], if it wrote any.
+  String? _taught(LessonStep step) {
+    final t = _teaching;
+    if (t == null) return null;
+    final i = lesson.steps.indexWhere((s) => identical(s, step));
+    return i >= 0 && i < t.length ? t[i] : null;
+  }
+
+  /// True when what the tutor is saying now was written by the brain, not read from the lesson.
+  bool get taughtByBrain => phase == Phase.talking && current != null && _taught(current!) != null;
+
+  /// The lesson's own line for the current step, so it can be shown under the tutor's words.
+  String get lessonLine => current == null ? '' : pick(current!.text, lang);
+
+  /// The brain has written the lesson out in the tutor's own words (or null: it could not).
+  /// Steps not reached yet use these words; if the tutor is still on a teaching step, it says it again this way.
+  void setTeaching(List<String?>? perStep) {
+    _teaching = perStep != null && perStep.length == lesson.steps.length ? perStep : null;
+    final again = _hold || (phase == Phase.talking && _teaching != null);
+    _hold = false;
+    if (again) {
+      _enter();
+    } else {
+      notifyListeners();
+    }
+  }
+
+  /// The brain's words did not come in time: speak the first line as written.
+  void stopWaiting() {
+    if (!_hold) return;
+    _hold = false;
+    if (phase == Phase.talking || phase == Phase.asking || phase == Phase.thinkAsk) _enter();
+  }
   bool get canHint => phase == Phase.asking && !hintShown && pick(question?.hint, lang).isNotEmpty;
 
   int get starsEarned {
@@ -108,6 +152,7 @@ class TutorDirector extends ChangeNotifier {
 
   /// Every line this lesson might speak, so the sound can be fetched early.
   List<String> get allLines => [
+        ...?_teaching?.whereType<String>(),
         for (final s in lesson.steps) ...[pick(s.text, lang), pick(s.hint, lang), pick(s.explain, lang)],
         for (final a in lesson.alts.values) pick(a.text, lang),
         ..._praise,
@@ -125,6 +170,7 @@ class TutorDirector extends ChangeNotifier {
   void setLang(String l) {
     if (l == lang) return;
     lang = l;
+    _teaching = null; // the brain's words were in the old language; the classroom asks for new ones
     if (phase == Phase.talking || phase == Phase.asking || phase == Phase.thinkAsk) {
       _enter();
     } else {
@@ -135,7 +181,7 @@ class TutorDirector extends ChangeNotifier {
   void _say(List<String> parts) {
     final said = parts.where((p) => p.isNotEmpty).toList();
     bubble = said.join(' ');
-    speaker?.say(said, lang, tutor);
+    if (!_hold) speaker?.say(said, lang, tutor);
   }
 
   void _enter() {
@@ -165,8 +211,9 @@ class TutorDirector extends ChangeNotifier {
       phase = Phase.talking;
       spot = visual == null ? Spot.center : (_index.isEven ? Spot.left : Spot.right);
       look = visual == null ? Look.child : Look.board;
-      _say([text]);
+      _say([_taught(step) ?? text]);
     } else {
+      _hold = false; // a question is always asked at once, as written
       question = step;
       phase = step.form == 'think' ? Phase.thinkAsk : Phase.asking;
       spot = Spot.right;
