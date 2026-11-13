@@ -17,7 +17,7 @@ from pathlib import Path
 
 KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 BASE = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
-MODELS = ["gemini-flash-latest", "gemini-3.5-flash", "gemini-flash-lite-latest"]
+MODELS = ["gemini-3.5-flash", "gemini-flash-lite-latest", "gemini-flash-latest"]
 ML_KEYS = {"ml", "title.ml", "objective.ml", "concept.name.ml", "hint.ml", "explain.ml", "options.ml"}
 EN_FOR = {"en": "ml", "title": "title.ml", "concept.name": "concept.name.ml", "hint.en": "hint.ml",
           "explain.en": "explain.ml", "options": "options.ml"}
@@ -44,13 +44,13 @@ def ask(text):
             req = urllib.request.Request(BASE, data=json.dumps(body).encode(),
                                          headers={"authorization": f"Bearer {KEY}", "content-type": "application/json"})
             try:
-                with urllib.request.urlopen(req, timeout=180) as r:
+                with urllib.request.urlopen(req, timeout=120) as r:
                     out = json.load(r)["choices"][0]["message"]["content"] or ""
                 return re.sub(r"^```\w*\n|\n```\s*$", "", out.strip()) + "\n"
             except urllib.error.HTTPError as e:
                 print(f"    {model}: HTTP {e.code}")
-                if e.code in (404, 400):
-                    break
+                if e.code in (404, 400, 503):
+                    break  # busy or not available: try the next model now
                 time.sleep(10 * (attempt + 1))
             except Exception as e:  # noqa: BLE001
                 print(f"    {model}: {e}")
@@ -107,7 +107,7 @@ def main():
             p.write_text(text)
             continue
         done += 1
-        print(f"  {p}: added Malayalam")
+        print(f"  {p}: added Malayalam", flush=True)
     print(f"Done: {done} of {len(todo)}")
 
 
