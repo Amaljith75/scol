@@ -290,6 +290,8 @@ def main():
     jobs, wanted = [], {}
     for tutor in bundle.get("tutors", []):
         keep = wanted.setdefault(tutor["id"], set())
+        if not tutor.get("ready_made"):
+            continue  # this tutor's voice is made on the phone when needed (keeps the repo small)
         for lang, text in lines_for(bundle, tutor):
             voice = voice_for(tutor, lang)
             if not voice:

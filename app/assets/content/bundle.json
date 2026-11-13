@@ -9203,7 +9203,8 @@
            "alts": {
             "picture": {
              "text": {
-              "en": "Clean hands keep germs away from our food."
+              "en": "Clean hands keep germs away from our food.",
+              "ml": "വൃത്തിയുള്ള കൈകൾ രോഗാണുക്കളെ നമ്മുടെ ഭക്ഷണത്തിൽ നിന്ന് അകറ്റി നിർത്തുന്നു."
              },
              "visual": {
               "args": [
@@ -9215,7 +9216,8 @@
             },
             "story": {
              "text": {
-              "en": "The children washed their hands into one bucket. Then they compared a glass of fresh water with a glass of the washing water. The washing water was cloudy! Alan said, so that is what was on our hands!"
+              "en": "The children washed their hands into one bucket. Then they compared a glass of fresh water with a glass of the washing water. The washing water was cloudy! Alan said, so that is what was on our hands!",
+              "ml": "കുട്ടികൾ ഒരു ബക്കറ്റിലേക്ക് കൈ കഴുകി. പിന്നെ ഒരു ഗ്ലാസ് ശുദ്ധജലവും ഒരു ഗ്ലാസ് കൈ കഴുകിയ വെള്ളവും താരതമ്യം ചെയ്തു. കഴുകിയ വെള്ളം കലങ്ങിയിരുന്നു! ആലൻ പറഞ്ഞു, അപ്പോൾ ഇതാണ് നമ്മുടെ കൈകളിൽ ഉണ്ടായിരുന്നത്!"
              }
             }
            },
@@ -9228,7 +9230,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Our hands get dirty when we play and work. Dirt and tiny germs on our hands can reach our mouth with food and make us ill."
+              "en": "Our hands get dirty when we play and work. Dirt and tiny germs on our hands can reach our mouth with food and make us ill.",
+              "ml": "കളിക്കുമ്പോഴും ജോലി ചെയ്യുമ്പോഴും നമ്മുടെ കൈകളിൽ അഴുക്കാകും. കൈകളിലെ അഴുക്കും ചെറിയ രോഗാണുക്കളും ഭക്ഷണത്തോടൊപ്പം വായിലെത്തി നമുക്ക് അസുഖം വരുത്താം."
              },
              "visual": {
               "args": [
@@ -9241,7 +9244,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Washing with soap destroys germs. Wash your hands before eating, after eating, after using the toilet, and after travelling."
+              "en": "Washing with soap destroys germs. Wash your hands before eating, after eating, after using the toilet, and after travelling.",
+              "ml": "സോപ്പിട്ട് കഴുകുമ്പോൾ രോഗാണുക്കൾ നശിക്കും. ഭക്ഷണത്തിനു മുമ്പും ശേഷവും, ശുചിമുറി ഉപയോഗിച്ച ശേഷവും, യാത്ര കഴിഞ്ഞു വന്നാലും കൈ കഴുകണം."
              },
              "visual": {
               "args": [
@@ -9256,7 +9260,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Washing has 6 steps. One: wet your hands and put on soap. Two: rub your palms together. Three: clean the backs of your hands and between your fingers."
+              "en": "Washing has 6 steps. One: wet your hands and put on soap. Two: rub your palms together. Three: clean the backs of your hands and between your fingers.",
+              "ml": "കൈ കഴുകാൻ 6 ഘട്ടങ്ങളുണ്ട്. ഒന്ന്: കൈ നനച്ച് സോപ്പ് പുരട്ടുക. രണ്ട്: ഉള്ളംകൈകൾ തമ്മിൽ ഉരസുക. മൂന്ന്: പുറംകൈയും വിരലുകൾക്കിടയും വൃത്തിയാക്കുക."
              },
              "visual": {
               "args": [
@@ -9270,7 +9275,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Four: rub your nails and fingertips on your palm. Five: rub your fingers and wrists in circles. Six: rinse in clean water and dry with a clean cloth."
+              "en": "Four: rub your nails and fingertips on your palm. Five: rub your fingers and wrists in circles. Six: rinse in clean water and dry with a clean cloth.",
+              "ml": "നാല്: നഖങ്ങളും വിരൽത്തുമ്പുകളും ഉള്ളംകൈയിൽ ഉരസുക. അഞ്ച്: വിരലുകളും കൈത്തണ്ടയും വട്ടത്തിൽ ഉരസുക. ആറ്: ശുദ്ധമായ വെള്ളത്തിൽ കഴുകി വൃത്തിയുള്ള തുണി കൊണ്ട് തുടയ്ക്കുക."
              },
              "visual": {
               "args": [
@@ -9285,7 +9291,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Trim and clean your nails too. Dirt hiding under nails can reach your stomach with food."
+              "en": "Trim and clean your nails too. Dirt hiding under nails can reach your stomach with food.",
+              "ml": "നഖങ്ങൾ വെട്ടി വൃത്തിയാക്കുകയും വേണം. നഖത്തിനടിയിലെ അഴുക്ക് ഭക്ഷണത്തോടൊപ്പം വയറ്റിലെത്താം."
              },
              "visual": {
               "args": [
@@ -9299,11 +9306,13 @@
              "answer": "6",
              "concept": "kerala-scert/class-3/evs#clean-hands",
              "explain": {
-              "en": "There are 6 steps."
+              "en": "There are 6 steps.",
+              "ml": "6 ഘട്ടങ്ങളുണ്ട്."
              },
              "form": "number",
              "hint": {
-              "en": "Count the steps from wetting to drying."
+              "en": "Count the steps from wetting to drying.",
+              "ml": "നനയ്ക്കുന്നതു മുതൽ തുടയ്ക്കുന്നതു വരെയുള്ള ഘട്ടങ്ങൾ എണ്ണൂ."
              },
              "level": 1,
              "mistakes": {
@@ -9311,18 +9320,21 @@
              },
              "t": "ask",
              "text": {
-              "en": "How many steps are there in washing hands properly?"
+              "en": "How many steps are there in washing hands properly?",
+              "ml": "ശരിയായി കൈ കഴുകാൻ എത്ര ഘട്ടങ്ങളുണ്ട്?"
              }
             },
             {
              "answer": "after using the toilet",
              "concept": "kerala-scert/class-3/evs#clean-hands",
              "explain": {
-              "en": "Wash with soap after using the toilet, and before and after eating."
+              "en": "Wash with soap after using the toilet, and before and after eating.",
+              "ml": "ശുചിമുറി ഉപയോഗിച്ച ശേഷവും ഭക്ഷണത്തിനു മുമ്പും ശേഷവും സോപ്പിട്ട് കൈ കഴുകണം."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of when germs get on our hands."
+              "en": "Think of when germs get on our hands.",
+              "ml": "എപ്പോഴാണ് കൈകളിൽ രോഗാണുക്കൾ എത്തുന്നത് എന്ന് ആലോചിക്കൂ."
              },
              "level": 1,
              "mistakes": {
@@ -9333,20 +9345,28 @@
               "only on Sundays",
               "only when they look black"
              ],
+             "optionsMl": [
+              "ശുചിമുറി ഉപയോഗിച്ച ശേഷം",
+              "ഞായറാഴ്ച മാത്രം",
+              "കൈ കറുത്തു കാണുമ്പോൾ മാത്രം"
+             ],
              "t": "ask",
              "text": {
-              "en": "When must we wash our hands with soap?"
+              "en": "When must we wash our hands with soap?",
+              "ml": "എപ്പോഴാണ് നമ്മൾ സോപ്പിട്ട് കൈ കഴുകേണ്ടത്?"
              }
             },
             {
              "answer": "it destroys them",
              "concept": "kerala-scert/class-3/evs#clean-hands",
              "explain": {
-              "en": "Soap destroys germs on our hands."
+              "en": "Soap destroys germs on our hands.",
+              "ml": "സോപ്പ് കൈകളിലെ രോഗാണുക്കളെ നശിപ്പിക്കുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "That is why we use soap and not only water."
+              "en": "That is why we use soap and not only water.",
+              "ml": "അതുകൊണ്ടാണ് വെള്ളം മാത്രമല്ല, സോപ്പും ഉപയോഗിക്കുന്നത്."
              },
              "level": 1,
              "options": [
@@ -9354,20 +9374,28 @@
               "it feeds them",
               "nothing"
              ],
+             "optionsMl": [
+              "അവയെ നശിപ്പിക്കും",
+              "അവയ്ക്ക് ഭക്ഷണം കൊടുക്കും",
+              "ഒന്നും ചെയ്യില്ല"
+             ],
              "t": "ask",
              "text": {
-              "en": "What does soap do to germs?"
+              "en": "What does soap do to germs?",
+              "ml": "സോപ്പ് രോഗാണുക്കളെ എന്തു ചെയ്യും?"
              }
             },
             {
              "answer": "dirt under nails can reach our stomach",
              "concept": "kerala-scert/class-3/evs#clean-hands",
              "explain": {
-              "en": "Dirt under long nails can go into our stomach with food."
+              "en": "Dirt under long nails can go into our stomach with food.",
+              "ml": "നീണ്ട നഖത്തിനടിയിലെ അഴുക്ക് ഭക്ഷണത്തോടൊപ്പം വയറ്റിലെത്താം."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of where food goes after it touches our fingers."
+              "en": "Think of where food goes after it touches our fingers.",
+              "ml": "വിരലുകളിൽ തൊട്ട ഭക്ഷണം എവിടേക്കാണ് പോകുന്നത് എന്ന് ആലോചിക്കൂ."
              },
              "level": 1,
              "options": [
@@ -9375,20 +9403,28 @@
               "to make our hands heavier",
               "nails grow faster when trimmed"
              ],
+             "optionsMl": [
+              "നഖത്തിനടിയിലെ അഴുക്ക് വയറ്റിലെത്താം",
+              "കൈക്ക് ഭാരം കൂടാൻ",
+              "വെട്ടിയാൽ നഖം വേഗം വളരും"
+             ],
              "t": "ask",
              "text": {
-              "en": "Why should we trim our nails?"
+              "en": "Why should we trim our nails?",
+              "ml": "എന്തിനാണ് നമ്മൾ നഖം വെട്ടുന്നത്?"
              }
             },
             {
              "answer": "rinse and dry with a clean cloth",
              "concept": "kerala-scert/class-3/evs#clean-hands",
              "explain": {
-              "en": "The last step is to rinse in clean water and dry with a clean cloth."
+              "en": "The last step is to rinse in clean water and dry with a clean cloth.",
+              "ml": "ശുദ്ധമായ വെള്ളത്തിൽ കഴുകി വൃത്തിയുള്ള തുണി കൊണ്ട് തുടയ്ക്കുന്നതാണ് അവസാന ഘട്ടം."
              },
              "form": "choice",
              "hint": {
-              "en": "It comes after all the rubbing."
+              "en": "It comes after all the rubbing.",
+              "ml": "എല്ലാ ഉരസലും കഴിഞ്ഞാണ് ഇത്."
              },
              "level": 1,
              "options": [
@@ -9396,14 +9432,21 @@
               "put on soap",
               "rub palms together"
              ],
+             "optionsMl": [
+              "വെള്ളത്തിൽ കഴുകി വൃത്തിയുള്ള തുണി കൊണ്ട് തുടയ്ക്കുക",
+              "സോപ്പ് പുരട്ടുക",
+              "ഉള്ളംകൈകൾ ഉരസുക"
+             ],
              "t": "ask",
              "text": {
-              "en": "What is the last step of washing hands?"
+              "en": "What is the last step of washing hands?",
+              "ml": "കൈ കഴുകുന്നതിലെ അവസാന ഘട്ടം ഏതാണ്?"
              }
             }
            ],
            "title": {
-            "en": "Clean hands"
+            "en": "Clean hands",
+            "ml": "വൃത്തിയുള്ള കൈകൾ"
            }
           },
           {
@@ -10539,7 +10582,7 @@
   "public_key": "sb_publishable_aBCqk9nxakWaBvvJj77fgg_AilwaqM8",
   "url": "https://puryjmsnrjkbgvhvofzp.supabase.co/functions/v1/brain"
  },
- "built": 1794572309,
+ "built": 1794572528,
  "concepts": {
   "kerala-scert/class-3/evs#animal-food": {
    "en": "Herbivores, carnivores and omnivores",
@@ -10562,7 +10605,8 @@
    "ml": "ഒരു ചിത്രശലഭത്തിന്റെ ജീവിതം"
   },
   "kerala-scert/class-3/evs#clean-hands": {
-   "en": "Washing hands"
+   "en": "Washing hands",
+   "ml": "കൈ കഴുകൽ"
   },
   "kerala-scert/class-3/evs#clean-surroundings": {
    "en": "Clean surroundings and disease",
@@ -10733,6 +10777,10 @@
    "en": "Next for you:",
    "ml": "അടുത്തത്:"
   },
+  "oopsStrict": {
+   "en": "No, that is not right. Look carefully and try again.",
+   "ml": "അല്ല, അത് ശരിയല്ല. ശ്രദ്ധിച്ച് നോക്കി വീണ്ടും ശ്രമിക്കൂ."
+  },
   "pickLevel": {
    "en": "Tap START to begin the next level.",
    "ml": "അടുത്ത ലെവൽ തുടങ്ങാൻ START അമർത്തൂ."
@@ -10744,6 +10792,10 @@
   "practiceFirst": {
    "en": "Some of these were tricky last time. Let us try them again, slowly.",
    "ml": "കഴിഞ്ഞ തവണ ഇവയിൽ ചിലത് അല്പം പ്രയാസമായിരുന്നു. നമുക്ക് പതുക്കെ ഒന്നുകൂടി നോക്കാം."
+  },
+  "praiseStrict": {
+   "en": "Correct. Good work.",
+   "ml": "ശരിയാണ്. നന്നായി."
   },
   "tapGo": {
    "en": "Tap Let's go, and come with me!",
@@ -10802,6 +10854,7 @@
     ]
    },
    "rate": "-6%",
+   "ready_made": true,
    "shape": "blob",
    "style": "a warm, gentle storyteller talking to a young child, unhurried and smiling",
    "voice": {
@@ -10834,6 +10887,7 @@
     "en": "Oops! Let us crack it together.",
     "ml": "അയ്യോ! നമുക്ക് ഒരുമിച്ച് കണ്ടുപിടിക്കാം."
    },
+   "pitch": "+8Hz",
    "praise": {
     "en": [
      "Boom! Correct! 💥",
@@ -10846,9 +10900,13 @@
      "കലക്കി! ⚡"
     ]
    },
+   "rate": "+6%",
    "shape": "spiky",
    "style": "an excited, playful game host talking to a young child, upbeat and bouncy",
-   "voice": ""
+   "voice": {
+    "en": "en-IN-PrabhatNeural",
+    "ml": "ml-IN-MidhunNeural"
+   }
   },
   {
    "about": {
@@ -10875,6 +10933,7 @@
     "en": "No hurry. Let us look again, slowly.",
     "ml": "തിരക്കില്ല. പതുക്കെ ഒന്നുകൂടി നോക്കാം."
    },
+   "pitch": "-2Hz",
    "praise": {
     "en": [
      "Well done. 🌸",
@@ -10887,9 +10946,13 @@
      "അതെ! പതുക്കെ, ഉറപ്പോടെ. 🐢"
     ]
    },
+   "rate": "-14%",
    "shape": "cloud",
    "style": "a calm, patient, soothing friend talking slowly to a young child",
-   "voice": ""
+   "voice": {
+    "en": "en-IN-NeerjaNeural",
+    "ml": "ml-IN-SobhanaNeural"
+   }
   },
   {
    "about": {
@@ -10916,6 +10979,7 @@
     "en": "Hmm, interesting! Let us find out why.",
     "ml": "ഹും, കൊള്ളാമല്ലോ! കാരണം കണ്ടുപിടിക്കാം."
    },
+   "pitch": "+14Hz",
    "praise": {
     "en": [
      "Ooh, you found it! 🔍",
@@ -10928,9 +10992,13 @@
      "എന്തൊരു കണ്ടുപിടിത്തം! 🚀"
     ]
    },
+   "rate": "+2%",
    "shape": "flower",
    "style": "a curious, wonder-filled young explorer talking to a young child, bright and questioning",
-   "voice": ""
+   "voice": {
+    "en": "en-IN-NeerjaExpressiveNeural",
+    "ml": "ml-IN-SobhanaNeural"
+   }
   },
   {
    "about": {
@@ -10957,6 +11025,7 @@
     "en": "Whoops! Even I get that wrong sometimes.",
     "ml": "അയ്യോ! എനിക്കും ചിലപ്പോൾ ഇത് തെറ്റാറുണ്ട്."
    },
+   "pitch": "-6Hz",
    "praise": {
     "en": [
      "Ha! Too easy for you. 😎",
@@ -10969,10 +11038,14 @@
      "അമ്പോ, വലിയ ബുദ്ധി! 🧠"
     ]
    },
+   "rate": "-4%",
    "shape": "bean",
    "style": "a funny, cheeky, good-humoured friend talking to a young child, with a playful grin in the voice",
-   "voice": ""
+   "voice": {
+    "en": "en-IN-PrabhatNeural",
+    "ml": "ml-IN-MidhunNeural"
+   }
   }
  ],
- "version": "377c911612cc"
+ "version": "a9d8fc88f495"
 }

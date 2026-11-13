@@ -48,6 +48,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     d = TutorDirector(
       lesson: widget.lesson,
       lang: appState.mainLang,
+      tone: appState.tone,
       tutor: tutorById(appState.tutorId),
       recordFor: appState.concept,
       day: dayNumber(),
@@ -196,6 +197,17 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
                         ),
                       ),
                       const SizedBox(width: 8),
+                      // Switch English / Malayalam in the middle of the lesson.
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                            shape: const StadiumBorder(),
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            side: const BorderSide(color: violet, width: 2)),
+                        onPressed: _switchLang,
+                        child: Text(d.lang == 'ml' ? 'English' : 'മലയാളം',
+                            style: const TextStyle(color: violet, fontWeight: FontWeight.w800)),
+                      ),
+                      const SizedBox(width: 6),
                       IconButton.filled(
                         style: IconButton.styleFrom(backgroundColor: violet),
                         tooltip: tr('ask', lang),
@@ -315,6 +327,13 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     return SoftCard(key: ValueKey(v.toString()), child: VisualView(v));
   }
 
+  void _switchLang() {
+    appState.switchLang();
+    d.setLang(appState.mainLang);
+    if (appState.voiceOn) appSpeaker?.prefetch(d.allLines, d.lang, d.tutor);
+    setState(() {});
+  }
+
   /// "Explain more": the tutor brain explains the current step again, another way.
   Future<void> _explainMore() async {
     final step = d.current;
@@ -331,6 +350,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
       tutorName: d.tutor.displayName('en'),
       lessonTitle: pick(widget.lesson.title, 'en'),
       notes: _notes,
+      tone: appState.tone,
     );
     if (!mounted) return;
     setState(() => _explaining = false);

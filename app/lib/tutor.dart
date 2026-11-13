@@ -32,6 +32,7 @@ class TutorDirector extends ChangeNotifier {
   TutorDirector({
     required this.lesson,
     required this.lang,
+    this.tone = 'normal',
     required this.tutor,
     required this.recordFor,
     required this.day,
@@ -47,7 +48,8 @@ class TutorDirector extends ChangeNotifier {
   }
 
   final Lesson lesson;
-  final String lang;
+  String lang; // can change in the middle of a lesson
+  final String tone;
   final TutorCharacter tutor;
   final ConceptRecord Function(String concept) recordFor;
   final int day;
@@ -108,13 +110,27 @@ class TutorDirector extends ChangeNotifier {
   List<String> get allLines => [
         for (final s in lesson.steps) ...[pick(s.text, lang), pick(s.hint, lang), pick(s.explain, lang)],
         for (final a in lesson.alts.values) pick(a.text, lang),
-        ...tutor.praiseList(lang),
-        pick(tutor.oops, lang),
+        ..._praise,
+        _oops,
         _ph('anotherWay'),
         _ph('lookAgain'),
         _ph('tryLater'),
         _ph('again'),
       ];
+
+  List<String> get _praise => tone == 'strict' ? [_ph('praiseStrict')] : tutor.praiseList(lang);
+  String get _oops => tone == 'strict' ? _ph('oopsStrict') : pick(tutor.oops, lang);
+
+  /// The child switched language: say the current step again in the new language.
+  void setLang(String l) {
+    if (l == lang) return;
+    lang = l;
+    if (phase == Phase.talking || phase == Phase.asking || phase == Phase.thinkAsk) {
+      _enter();
+    } else {
+      notifyListeners();
+    }
+  }
 
   void _say(List<String> parts) {
     final said = parts.where((p) => p.isNotEmpty).toList();
@@ -204,7 +220,7 @@ class TutorDirector extends ChangeNotifier {
       _finishQuestion(clean ? 'first' : 'help', millis);
       mood = Mood.happy;
       look = Look.child;
-      final praise = tutor.praiseList(lang);
+      final praise = _praise;
       final explain = pick(q.explain, lang);
       _say(clean || explain.isEmpty ? [praise[_rnd.nextInt(praise.length)]] : [praise.first, explain]);
     } else {
@@ -213,7 +229,7 @@ class TutorDirector extends ChangeNotifier {
       final note = q.mistakes[given];
       if (note != null) _mistakes.add(note);
       mood = Mood.caring;
-      final oops = pick(tutor.oops, lang);
+      final oops = _oops;
       if (_attempts == 1) {
         // First miss: never give the answer away. Give a hint and let them retry.
         final hint = pick(q.hint, lang);

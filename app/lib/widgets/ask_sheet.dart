@@ -127,6 +127,7 @@ class _AskSheetState extends State<_AskSheet> {
       tutorName: tutor.displayName('en'),
       lessonTitle: widget.lessonTitle,
       notes: widget.notes,
+      tone: appState.tone,
     );
     if (!mounted) return;
     setState(() {

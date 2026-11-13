@@ -1,72 +1,88 @@
 # The tutor brain and voices: how to change them
 
-Scol has two separate "AI" jobs. Neither key is ever inside the app.
+Scol has two separate "AI" jobs. No key is ever inside the app.
 
 | Job | What it does | Where it runs | What it uses now |
 | --- | --- | --- | --- |
-| **Brain** | Answers the questions a child asks with the 🎙️ button | A small server: the `brain` function in the Supabase project `scol` | OpenRouter free models: Gemma 4 31B, with Nemotron Ultra as backup |
-| **Voice** | Turns every line Mio says into a sound file, ahead of time | GitHub, in the "Make tutor voices" workflow | Microsoft Edge voices |
+| **Brain** | Answers the child's questions (🎙️) and "🤔 Explain more" | The `brain` function in the Supabase project `scol` | A list of AIs tried in turn: OpenRouter free → Google Gemini → Gemini Lite → Kimi |
+| **Voice** | Speaks every line in a natural voice | Mio's lesson lines: made ahead in GitHub ("Make tutor voices"). Everything else: made on the phone | Microsoft Edge voices |
 
-Lessons themselves are **not** written by the AI while a child learns. They are fixed text in `content/`,
-checked by people, so the tutor never says something wrong about the lesson or the screen. The brain is only
-used for the child's own questions.
+Lessons are fixed text in `content/`, checked by people, so the tutor never says something wrong about the lesson
+or the screen. The AI explains *extra*: when the child asks, or taps "Explain more". Generating every lesson line
+live with AI was left out on purpose: free AI limits (50 a day on OpenRouter) would run out in one lesson, and a
+wrong fact cannot be checked before a child hears it.
 
-## Setup (done)
+## When one AI runs out, the next one answers
 
-The `SUPABASE_ACCESS_TOKEN` and `OPENROUTER_API_KEY` secrets are in GitHub and the brain is live. A parent still has to
-turn on **Let my child ask the tutor questions** in the Parents area of the app.
-
-Free OpenRouter models allow 50 questions a day for the whole account (1,000 a day once $10 of credit has ever been
-bought), and are sometimes busy. That is why `brain.json` lists a backup model and limits questions to 50 a day.
-
-Edit `brain.json` by changing only the values you need; it must stay a complete file, starting with `{` and ending with `}`.
-
-## Changing the AI model or company (no new app needed)
-
-Everything is in `content/_app/brain.json`:
+`content/_app/brain.json` has a `providers` list. The brain tries them top to bottom: if one is busy, out of free
+requests or broken, the next one answers. The app does not change. Each entry:
 
 ```json
 {
-  "base_url": "https://api.moonshot.ai/v1",
-  "model": "kimi-k3",
-  "key_secret": "KIMI_API_KEY"
+  "name": "Google Gemini",
+  "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+  "model": "gemini-flash-latest",
+  "key_secret": "GEMINI_API_KEY"
 }
 ```
 
-- **Another Kimi model:** change `model`. The deploy log lists the models your key can use.
-- **A new Kimi key:** replace the `KIMI_API_KEY` secret in GitHub, then run **Deploy tutor brain**.
-- **Another company:** any service that speaks the OpenAI "chat completions" format works. Add its key as a GitHub
-  secret, then set `base_url`, `model` and `key_secret`:
+- **Reorder** the list to change which AI is asked first.
+- **Add a company:** any service that speaks the OpenAI "chat completions" format works. Add its key as a GitHub
+  secret, then add an entry. Examples:
 
 | Company | base_url | example model | key_secret |
 | --- | --- | --- | --- |
+| OpenRouter | `https://openrouter.ai/api/v1` | `google/gemma-4-31b-it:free` | `OPENROUTER_API_KEY` |
+| Google Gemini | `https://generativelanguage.googleapis.com/v1beta/openai` | `gemini-flash-latest` | `GEMINI_API_KEY` |
+| Hugging Face | `https://router.huggingface.co/v1` | `Qwen/Qwen3-32B` (any chat model it lists) | `HF_TOKEN` |
 | Kimi (Moonshot) | `https://api.moonshot.ai/v1` | `kimi-k3` | `KIMI_API_KEY` |
-| Google Gemini | `https://generativelanguage.googleapis.com/v1beta/openai` | `gemini-2.5-flash` | `GEMINI_API_KEY` |
-| OpenAI | `https://api.openai.com/v1` | `gpt-4o-mini` | `OPENAI_API_KEY` |
 | DeepSeek | `https://api.deepseek.com/v1` | `deepseek-chat` | `DEEPSEEK_API_KEY` |
-| OpenRouter | `https://openrouter.ai/api/v1` | any listed model | `OPENROUTER_API_KEY` |
 
-Commit the change: the deploy runs by itself and the app uses the new brain straight away.
-If your secret has a different name, add that name to the lists in `.github/workflows/brain.yml` and
-`tools/brain_settings.py`.
+- **Wrong model name?** The deploy log ("Deploy tutor brain" in the Actions tab) tests every AI in English and
+  Malayalam, and when a name is wrong it prints the names that key can use.
+- `fallback_models` (OpenRouter only) are other free models tried inside the same OpenRouter account. Note that
+  OpenRouter's free limit (50 a day) counts for the whole account, so a *different company* is the real backup.
+
+Commit the change: the deploy runs by itself. Edit only the values; the file must stay complete, from `{` to `}`.
 
 **Limits** (also in `brain.json`): `device_limit` questions per phone per day (40) and `daily_limit` for all phones
-together (1500). They stop anyone from running up your bill, because the server address in the app is public.
+together (1000). They stop anyone from running up your bill, because the server address in the app is public.
 
-## Changing Mio's voice, or giving other tutors a voice
+**Mood:** the parent's "Tutor's mood" setting (Happy, Normal, Calm, Strict) is sent along, so answers match the mood.
 
-In `content/_app/tutors.json`, each tutor has a `voice`:
+## Voices
 
-- `{"en": "en-IN-NeerjaExpressiveNeural", "ml": "ml-IN-SobhanaNeural"}`: Microsoft Edge voices (Mio now).
-  Other Edge voices: `en-IN-PrabhatNeural`, `ml-IN-MidhunNeural`. `rate` and `pitch` adjust speed and tone.
-- `"Sulafat"` (or another Gemini voice name): Gemini speech, using the `GEMINI_API_KEY` secret.
-- `""`: no sound files; the phone's own voice reads the lines.
+Each tutor in `content/_app/tutors.json` has a `voice` per language, plus `rate` (speed) and `pitch`:
 
-The "Make tutor voices" workflow makes only the files that are missing, so giving a second tutor a voice just
-adds that tutor's files. Live answers from the brain are read by the phone's own voice.
+```json
+"voice": { "en": "en-IN-PrabhatNeural", "ml": "ml-IN-MidhunNeural" }, "rate": "+6%", "pitch": "+8Hz"
+```
+
+Indian Edge voices: English `en-IN-NeerjaNeural`, `en-IN-NeerjaExpressiveNeural` (women), `en-IN-PrabhatNeural`
+(man); Malayalam `ml-IN-SobhanaNeural` (woman), `ml-IN-MidhunNeural` (man). Any other Edge voice name works too
+(the full list: run `pip install edge-tts` then `edge-tts --list-voices`). Different `rate` and `pitch` make the
+same voice sound like a different character.
+
+- **Add a new voice to a tutor:** change its `voice`, `rate` or `pitch`, commit. Nothing else is needed.
+- **Add a new tutor:** copy a tutor block, give it a new `id`, name and voice.
+- `"ready_made": true` (only Mio now): the "Make tutor voices" workflow makes all lesson lines ahead of time, so
+  Mio also works offline. Other tutors' lines are made on the phone the first time they are needed (the whole
+  lesson is prepared while the child listens to the first line) and kept, so the second time is offline too.
+  Making every tutor ready-made would add about 60 MB per tutor to the repository.
+- The mood setting changes speed and pitch on top of the tutor's own setting.
+
+Hugging Face also has free Malayalam voice models (for example AI4Bharat's Indic Parler-TTS). They need a GPU
+server to run fast enough, so they are a later option, not a free one.
 
 **Before a paid launch:** the Edge voices are free but not licensed for commercial apps. Switch to a licensed
-voice service (for example Azure Speech, Google Cloud Text-to-Speech, Sarvam AI, or AI4Bharat's open models).
+voice service (for example Azure Speech, which has these same voices, Google Cloud Text-to-Speech or Sarvam AI).
+
+## Malayalam lessons
+
+Maths has Malayalam written by hand. EVS Malayalam was added by AI with the "Add Malayalam to lessons" workflow
+(`tools/translate_lessons.py`): it only adds `ml:` lines and keeps every English line exactly, and a file is saved
+only if it passes the lesson check. **A Malayalam teacher should read the EVS Malayalam before launch.** To add
+Malayalam to new English lessons, run that workflow from the Actions tab.
 
 ## Children's data
 

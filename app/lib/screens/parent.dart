@@ -91,10 +91,8 @@ class _ParentScreenState extends State<ParentScreen> {
       return;
     }
     setState(() => _reading = true);
-    // Read by the tutor who has a natural voice (Mio), whichever tutor the child chose.
-    final voiced = contentStore.bundle.tutors
-        .firstWhere((t) => t.voiceFor(_reportLang).isNotEmpty, orElse: () => tutorById(appState.tutorId));
-    await appSpeaker?.say(report, _reportLang, voiced);
+    // Read in the Edge voice of the child's own tutor.
+    await appSpeaker?.say(report, _reportLang, tutorById(appState.tutorId));
     if (mounted) setState(() => _reading = false);
   }
 
@@ -213,12 +211,20 @@ class _ParentScreenState extends State<ParentScreen> {
                 chips<String>([for (final t in tutors) t.id], appState.tutorId, (v) => tutorById(v).displayName('en'),
                     (v) => appState.tutorId = v),
                 const SizedBox(height: 10),
+                const Text("Tutor's mood", style: TextStyle(fontWeight: FontWeight.w700)),
+                chips<String>(['happy', 'normal', 'calm', 'strict'], appState.tone,
+                    (v) => {'happy': '😄 Happy', 'normal': '🙂 Normal', 'calm': '😌 Calm', 'strict': '🧐 Strict'}[v]!,
+                    (v) => appState.tone = v),
+                const Text('Changes how the tutor sounds and talks. Strict is firm and serious, but never rude.',
+                    style: TextStyle(color: Color(0xFF6B6F80), fontSize: 13)),
+                const SizedBox(height: 10),
                 const Text('Daily learning time limit', style: TextStyle(fontWeight: FontWeight.w700)),
                 chips<int>([15, 30, 45, 60], appState.dailyLimitMin, (v) => '$v min', (v) => appState.dailyLimitMin = v),
                 SwitchListTile(
                   contentPadding: EdgeInsets.zero,
                   title: const Text('Tutor speaks aloud'),
-                  subtitle: const Text('Mio has a ready-made natural voice. The other tutors, and live answers, use the phone\'s own voice.'),
+                  subtitle: const Text('Every tutor speaks English and Malayalam in a natural Microsoft Edge voice. Lines are made '
+                      'once with internet and kept on the phone; without internet the phone\'s own voice reads new lines.'),
                   value: appState.voiceOn,
                   onChanged: (v) {
                     appState.voiceOn = v;
@@ -229,7 +235,7 @@ class _ParentScreenState extends State<ParentScreen> {
                   contentPadding: EdgeInsets.zero,
                   title: const Text('Let my child ask the tutor questions'),
                   subtitle: const Text('Your child can speak or type a question about the lesson. The words of the question and the lesson '
-                      'topic are sent to an AI service (Kimi, by Moonshot AI) to get an answer. Your child\'s name and progress '
+                      'topic are sent to an AI service (OpenRouter or Google Gemini) to get an answer. Your child\'s name and progress '
                       'are never sent. Speech is turned into words by the phone\'s own speech service. Off unless you turn it on.'),
                   value: appState.askEnabled,
                   onChanged: (v) {

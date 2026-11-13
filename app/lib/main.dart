@@ -15,6 +15,7 @@ Future<void> main() async {
   await initReminders();
   final voice = VoiceSpeaker();
   appSpeaker = voice;
+  voiceTone = () => appState.tone;
   voice.init(); // finds which voice files are ready
   contentStore.refresh(); // looks for new lessons in the background
   runApp(const ScolApp());

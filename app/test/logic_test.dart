@@ -89,8 +89,8 @@ void main() {
       final b = loadBundle();
       expect(b.tutors.length, 5);
       expect(b.tutors.map((t) => t.displayName('en')), ['Mio', 'Leo', 'Yuki', 'Ruby', 'Ollie']);
-      expect(b.tutors.first.voiceFor('ml'), contains('ml-IN')); // only Mio has a ready-made voice
-      expect(b.tutors.skip(1).every((t) => t.voiceFor('en').isEmpty), true);
+      // every tutor speaks both languages in an Edge voice
+      expect(b.tutors.every((t) => t.voiceFor('ml').startsWith('ml-IN') && t.voiceFor('en').startsWith('en-IN')), true);
       expect(b.brain['url'], startsWith('https://'));
       expect('${b.brain}'.toLowerCase(), isNot(contains('sk-'))); // never a secret key in the app
       for (final t in b.tutors) {
@@ -132,6 +132,12 @@ void main() {
     test('symbols are read out in words', () {
       expect(spokenText('3 × 4 = 12 🥭', 'en'), '3 times 4 equals 12');
       expect(spokenText('7 cm', 'en'), '7 centimetres');
+    });
+
+    test('mood changes the speed and pitch on top of the tutor', () {
+      expect(shiftProsody('-6%', 8, '%'), '+2%');
+      expect(shiftProsody('+4Hz', -14, 'Hz'), '-10Hz');
+      expect(shiftProsody('+0Hz', 0, 'Hz'), '+0Hz');
     });
 
     test('language of a line is detected for the voice', () {
@@ -224,6 +230,16 @@ void main() {
       expect(d.firstTryRight, 0);
       expect(d.starsEarned, 1);
       expect(recs.values.first.failed, greaterThan(0));
+    });
+
+    test('switching to Malayalam in the middle of a lesson says the same step in Malayalam', () {
+      final d = make(mathsLessons(loadBundle()).first, {});
+      d.next();
+      final step = d.current;
+      expect(langOf(d.bubble), 'en');
+      d.setLang('ml');
+      expect(identical(d.current, step), true);
+      expect(langOf(d.bubble), 'ml');
     });
 
     test('after a repeated mistake the tutor explains another way and remembers if it worked', () {

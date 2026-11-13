@@ -54,6 +54,7 @@ Future<BrainAnswer> askBrain({
   required String tutorName,
   required String lessonTitle,
   required String notes,
+  String tone = 'normal',
   http.Client? client,
 }) async {
   final url = '${bundle.brain['url'] ?? ''}';
@@ -69,6 +70,7 @@ Future<BrainAnswer> askBrain({
             'tutor': tutorName,
             'lesson': lessonTitle,
             'notes': notes,
+            'tone': tone,
             'device': await deviceId(),
           }),
         )

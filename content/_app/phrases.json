@@ -50,5 +50,13 @@
   "think": {
     "en": "Think about it, then tap Show answer.",
     "ml": "ആലോചിച്ചിട്ട് 'ഉത്തരം കാണിക്കൂ' അമർത്തൂ."
+  },
+  "praiseStrict": {
+    "en": "Correct. Good work.",
+    "ml": "ശരിയാണ്. നന്നായി."
+  },
+  "oopsStrict": {
+    "en": "No, that is not right. Look carefully and try again.",
+    "ml": "അല്ല, അത് ശരിയല്ല. ശ്രദ്ധിച്ച് നോക്കി വീണ്ടും ശ്രമിക്കൂ."
   }
 }

@@ -1,7 +1,8 @@
 // How the tutors speak. Lines a tutor with a ready-made voice says have a
 // sound file (see tools/build_voice.py). The app downloads each file once and
-// keeps it, so lessons also work offline. Anything without a file (other
-// tutors, live answers, lines not made yet) is read by the phone's own voice.
+// keeps it, so lessons also work offline. Other tutors, other moods and live
+// answers are made on the phone in the tutor's Edge voice (and kept); only
+// without internet does the phone's own voice read them.
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io' show File;
@@ -33,6 +34,23 @@ abstract class Speaker {
 
 /// The voice, set up once when the app starts.
 Speaker? appSpeaker;
+
+/// The tutor's mood chosen by the parent: happy | normal | calm | strict.
+String Function() voiceTone = () => 'normal';
+
+/// How each mood changes the voice: [speed change in %, pitch change in Hz].
+const toneShift = {
+  'happy': [8, 10],
+  'normal': [0, 0],
+  'calm': [-12, -4],
+  'strict': [-2, -14],
+};
+
+/// Adds a mood's change to a tutor's own setting, e.g. ('-6%', 8) -> '+2%'.
+String shiftProsody(String base, int by, String unit) {
+  final n = (int.tryParse(base.replaceAll(RegExp(r'[^0-9-]'), '')) ?? 0) + by;
+  return '${n >= 0 ? '+' : ''}$n$unit';
+}
 
 class VoiceSpeaker implements Speaker {
   final ValueNotifier<bool> _speaking = ValueNotifier(false);
@@ -80,7 +98,7 @@ class VoiceSpeaker implements Speaker {
   /// Saves bytes so a half-written file is never played.
   Future<File> _save(String name, List<int> bytes) async {
     final file = File('$_dir/$name');
-    final tmp = File('${file.path}.part');
+    final tmp = File('${file.path}.${DateTime.now().microsecondsSinceEpoch}.part'); // two downloads of one line never clash
     await tmp.writeAsBytes(bytes, flush: true);
     return tmp.rename(file.path);
   }
@@ -88,7 +106,7 @@ class VoiceSpeaker implements Speaker {
   /// The ready-made sound file for a line, downloading it if needed. Null if there is none.
   Future<Source?> _clip(TutorCharacter tutor, String lang, String text) async {
     final voice = tutor.voiceFor(lang);
-    if (voice.isEmpty) return null;
+    if (voice.isEmpty || voiceTone() != 'normal') return null; // ready-made files are in the normal mood
     final id = clipId(voice, lang, text);
     if (!(_index[tutor.id]?.contains(id) ?? false)) return null;
     final url = '${rawBase}voice/${tutor.id}/$id.mp3';
@@ -108,11 +126,14 @@ class VoiceSpeaker implements Speaker {
   Future<Source?> _live(TutorCharacter tutor, String lang, String text) async {
     final voice = tutor.voiceFor(lang);
     if (voice.isEmpty || !voice.endsWith('Neural') || kIsWeb || _dir == null) return null;
-    final name = 'live_${clipId(voice, lang, text)}.mp3';
+    final shift = toneShift[voiceTone()] ?? const [0, 0];
+    final rate = shiftProsody(tutor.rate, shift[0], '%');
+    final pitch = shiftProsody(tutor.pitch, shift[1], 'Hz');
+    final name = 'live_${clipId('$voice|$rate|$pitch', lang, text)}.mp3';
     try {
       final file = File('$_dir/$name');
       if (await file.exists()) return DeviceFileSource(file.path);
-      final bytes = await edgeSpeak(spokenText(text, lang), voice, rate: tutor.rate, pitch: tutor.pitch)
+      final bytes = await edgeSpeak(spokenText(text, lang), voice, rate: rate, pitch: pitch)
           .timeout(const Duration(seconds: 15));
       return DeviceFileSource((await _save(name, bytes)).path);
     } catch (_) {
@@ -124,8 +145,11 @@ class VoiceSpeaker implements Speaker {
   void prefetch(Iterable<String> texts, String lang, TutorCharacter tutor) {
     if (kIsWeb) return;
     () async {
-      for (final t in texts) {
-        if (t.isNotEmpty) await _clip(tutor, langOf(t), t);
+      // Get every line of the lesson ready while the child listens to the first ones.
+      for (final t in texts.toSet()) {
+        if (t.replaceAll(_noise, '').trim().isEmpty) continue;
+        final l = langOf(t);
+        if (await _clip(tutor, l, t) == null) await _live(tutor, l, t);
       }
     }();
   }
@@ -173,8 +197,9 @@ class VoiceSpeaker implements Speaker {
       if (!played && token == _gen) {
         try {
           await _tts.setLanguage(lang == 'ml' ? 'ml-IN' : 'en-IN');
-          await _tts.setSpeechRate(0.42);
-          await _tts.setPitch(1.0 + 0.12 * tutor.energy.clamp(0.5, 1.8));
+          final shift = toneShift[voiceTone()] ?? const [0, 0];
+          await _tts.setSpeechRate(0.42 * (1 + shift[0] / 100));
+          await _tts.setPitch(1.0 + 0.12 * tutor.energy.clamp(0.5, 1.8) + shift[1] / 100);
           await _tts.speak(spokenText(part, lang));
         } catch (_) {
           // No voice at all on this device: the lesson still works with text.

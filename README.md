@@ -11,7 +11,7 @@ where your child is stuck, and tries again in a different way. It works in Engli
 Scol follows two syllabuses: **Kerala State (SCERT)** and **CBSE (NCERT)**.
 
 > Scol is in early testing with a small number of families. Ready now for **Class 3, Kerala syllabus**:
-> **Maths** (24 levels, six units of Part 1) and **Environmental Science** in English medium (17 levels, four units of Part 1).
+> **Maths** (24 levels, six units of Part 1) and **Environmental Science** (17 levels, four units of Part 1), in English and Malayalam.
 > More classes and subjects are being added.
 
 ## How a lesson works
@@ -65,13 +65,14 @@ Tap **Parents** on the home screen (a small sum keeps children out). You will se
 - **What your child understands, in plain words.** For example: *"Counting equal groups: keeps
   making the same mistake: added the numbers instead of making groups. Scol will teach this again in a different way."*
 - **Time spent today, lessons done, and learning days.**
-- **Controls:** tutor language, which tutor, a daily time limit (15 to 60 minutes), and voice on or off.
+- **Controls:** tutor language, which tutor, the tutor's mood (happy, normal, calm or strict), a daily time limit
+  (15 to 60 minutes), and voice on or off.
 
 When the daily limit is reached, the tutor says goodbye until tomorrow.
 
 ## Meet the tutors
 
-Five little creatures live in the app. Each has its own voice and its own way of talking.
+Five little creatures live in the app. Each has its own natural voice, in English and Malayalam, and its own way of talking.
 
 | | |
 | --- | --- |
@@ -89,7 +90,7 @@ Your child picks one and can switch at any time.
 
 - A parent sets up the app. Scol asks only for a first name or nickname.
 - Your child's name and progress are stored **on your phone only**. They are not sent to us or anyone else.
-- Mio's voice is made of sound files we prepare in advance. The app does not record your child.
+- The tutors' voices are made by a voice service from the lesson text. The app does not record your child.
 - Asking the tutor questions is off until you turn it on. When on, only the words of the question and the lesson topic go to an AI service to get an answer; your child's name and progress never do.
 - No advertisements.
 - You can delete everything with one button in the parent area.
@@ -99,23 +100,24 @@ The app uses the internet to download new lessons and voice files, to check for 
 ## Try it
 
 1. On an Android phone or tablet, open the [Releases page](https://github.com/Amaljith75/scol/releases).
-2. Download the **.apk** file from the newest release (for example "Scol V1 build 2") and open it to install.
+2. Download the **.apk** file from the newest release (for example "Scol V1 build 5") and open it to install.
    (Your phone may ask you to allow installing apps from your browser.)
 3. Do the one-minute parent setup: name, syllabus, class, language, tutor.
 4. Hand the phone to your child.
 
-The tutors speak English and Malayalam in natural voices. The first time a level is opened the voice
-files are downloaded, so use Wi-Fi or mobile data for that. After that the level works offline.
+The tutors speak English and Malayalam in natural voices. Your child can switch language in the middle of a
+level with the **മലയാളം / English** button at the top. The first time a level is opened the voice is downloaded,
+so use Wi-Fi or mobile data for that. After that the level works offline.
 
 ## What works today, and what is coming
 
 | Today | Coming next |
 | --- | --- |
 | Class 3 Maths: 24 levels in 6 units | Other subjects and Classes 1, 2 and 4; CBSE |
-| Class 3 EVS (English medium): 17 levels in 4 units | EVS in Malayalam medium |
-| Ask the tutor questions by voice or typing | Natural voices for all five tutors |
-| Mio speaks in a natural voice, English and Malayalam | Touch activities for EVS: sorting waste, matching animals to food |
-| Touch activities: sticks, abacus beads, sliding scale | Weekly report sent automatically |
+| Class 3 EVS: 17 levels in 4 units (Malayalam added by AI, being checked by a teacher) | EVS Malayalam checked by a teacher |
+| Ask the tutor questions by voice or typing | Touch activities for EVS: sorting waste, matching animals to food |
+| All five tutors speak in natural voices, English and Malayalam | Weekly report sent automatically |
+| Touch activities: sticks, abacus beads, sliding scale | |
 | A story or a picture when the first explanation does not work | |
 | Daily study reminders and a parent-chosen study time | |
 | Stars, streaks, badges, level path, weekly report | |

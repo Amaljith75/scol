@@ -20,6 +20,8 @@ class AppState extends ChangeNotifier {
   String boardId = '';
   int classNumber = 3;
   String lang = 'en'; // en | ml | both
+  String bothMain = 'ml'; // in 'both', the language the tutor speaks
+  String tone = 'normal'; // the tutor's mood: happy | normal | calm | strict
   String tutorId = 'minnu';
   bool voiceOn = true;
   int dailyLimitMin = 30;
@@ -47,7 +49,18 @@ class AppState extends ChangeNotifier {
   final Map<String, List<int>> styleStats = {};
 
   /// Language used for speaking and for the main line of text.
-  String get mainLang => lang == 'ml' ? 'ml' : 'en';
+  String get mainLang => lang == 'both' ? (bothMain == 'en' ? 'en' : 'ml') : (lang == 'ml' ? 'ml' : 'en');
+
+  /// Switch between English and Malayalam (also in the middle of a lesson).
+  void switchLang() {
+    final next = mainLang == 'ml' ? 'en' : 'ml';
+    if (lang == 'both') {
+      bothMain = next;
+    } else {
+      lang = next;
+    }
+    save();
+  }
   bool get bilingual => lang == 'both';
   bool get timeUp => todaySeconds >= dailyLimitMin * 60;
   int get dailyGoal => 2;
@@ -237,6 +250,8 @@ class AppState extends ChangeNotifier {
         'boardId': boardId,
         'classNumber': classNumber,
         'lang': lang,
+        'bothMain': bothMain,
+        'tone': tone,
         'tutorId': tutorId,
         'voiceOn': voiceOn,
         'dailyLimitMin': dailyLimitMin,
@@ -265,6 +280,8 @@ class AppState extends ChangeNotifier {
     boardId = j['boardId'] as String? ?? '';
     classNumber = (j['classNumber'] as num?)?.toInt() ?? 3;
     lang = j['lang'] as String? ?? 'en';
+    bothMain = j['bothMain'] as String? ?? 'ml';
+    tone = j['tone'] as String? ?? 'normal';
     tutorId = j['tutorId'] as String? ?? 'minnu';
     voiceOn = j['voiceOn'] != false;
     dailyLimitMin = (j['dailyLimitMin'] as num?)?.toInt() ?? 30;
