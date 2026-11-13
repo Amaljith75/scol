@@ -9,12 +9,12 @@ minutes: 6
 ## say
 en: Pitter patter! After rain the soil is wet, plants look fresh, and new shoots come up. Rain changes everything around us.
 ml: പെയ്യുന്നു മഴ! മഴ പെയ്താൽ മണ്ണ് കുതിരും, ചെടികൾ പച്ചപിടിക്കും, പുതിയ തളിരുകൾ വരും. മഴ നമ്മുക്ക് ചുറ്റുമുള്ളതിനെയെല്ലാം മാറ്റുന്നു.
-visual: emoji 🌧️ 🌱
+visual: picture 🌧️ 🌱
 
 ## say
 en: Some places get a lot of rain and some get very little. How do we know how much rain fell? We measure it.
 ml: ചില സ്ഥലങ്ങളിൽ കൂടുതൽ മഴ കിട്ടും, ചിലയിടത്ത് വളരെ കുറച്ചും. എത്ര മഴ പെയ്തു എന്ന് നമ്മൾ എങ്ങനെ അറിയും? നമ്മളത് അളന്നു നോക്കും.
-visual: emoji 🌧️ ☀️
+visual: picture 🌧️ ☀️
 
 ## say
 en: A rain gauge measures rain. Make one with a glass bottle, a funnel and a scale. Fix the scale to the bottle, put the funnel on top, and keep it in an open place.
@@ -24,13 +24,13 @@ visual: steps bottle + funnel + scale = rain gauge
 ## say
 en: Read the water level in the bottle at the same time every day. The higher the water, the more rain fell that day.
 ml: ദിവസവും ഒരേ സമയത്ത് കുപ്പിയിലെ വെള്ളത്തിന്റെ അളവ് നോക്കുക. വെള്ളത്തിന്റെ അളവ് കൂടുന്തോറും അന്നത്തെ മഴയുടെ അളവും കൂടുതലായിരിക്കും.
-visual: emoji 🧪 📏
+visual: picture 🧪 📏
 
 ## say
 label: example
 en: Rainwater that falls on soil soaks down into it. Some rainwater also flows away into streams and rivers.
 ml: മണ്ണിൽ വീഴുന്ന മഴവെള്ളം താഴേക്ക് താഴ്ന്നിറങ്ങും. കുറച്ച് വെള്ളം തോടുകളിലേക്കും പുഴകളിലേക്കും ഒഴുകിപ്പോകും.
-visual: emoji 🌧️ 🟫
+visual: picture 🌧️ 🟫
 
 ## ask
 form: choice

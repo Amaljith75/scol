@@ -185,8 +185,11 @@ and at least one question that looks different from the examples.
 | `visual: split 1000 300 ?` | A number and the two parts it splits into |
 | `visual: steps 200 + 100 = 300 / 30 + 40 = 70` | Working shown line by line (separate lines with ` / `) |
 | `visual: image tiger.png` | A picture file from this chapter's `images/` folder (needs internet) |
+| `visual: picture 🌱 💧` | A cartoon drawn from the step's own English words by the "Make pictures" workflow (Gemini) and saved in `images/`. The emoji, if given, show until the picture has arrived or without internet. Change the words and a new picture is drawn. |
 
-Pieces of every picture pop in one after another, so the child watches it being built.
+Pieces of every picture pop in one after another, so the child watches it being built. The tutor floats over the
+picture and touches the pieces it talks about (each group, shape, row, card or corner is a piece the tutor brain can name).
+Prefer `picture` over `emoji` for things a small symbol shows badly (soil, a rain gauge, a toilet): a brown square is not soil to a child.
 
 ## 5. Adding a new subject, class or board
 

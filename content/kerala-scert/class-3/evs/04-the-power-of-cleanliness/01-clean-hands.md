@@ -9,7 +9,7 @@ minutes: 6
 ## say
 en: Our hands get dirty when we play and work. Dirt and tiny germs on our hands can reach our mouth with food and make us ill.
 ml: കളിക്കുമ്പോഴും ജോലി ചെയ്യുമ്പോഴും നമ്മുടെ കൈകളിൽ അഴുക്കാകും. കൈകളിലെ അഴുക്കും ചെറിയ രോഗാണുക്കളും ഭക്ഷണത്തോടൊപ്പം വായിലെത്തി നമുക്ക് അസുഖം വരുത്താം.
-visual: emoji 🙌 🦠
+visual: picture 🙌 🦠
 
 ## say
 en: Washing with soap destroys germs. Wash your hands before eating, after eating, after using the toilet, and after travelling.
@@ -30,7 +30,7 @@ visual: steps 4 nails, fingertips / 5 fingers, wrists / 6 rinse and dry
 label: example
 en: Trim and clean your nails too. Dirt hiding under nails can reach your stomach with food.
 ml: നഖങ്ങൾ വെട്ടി വൃത്തിയാക്കുകയും വേണം. നഖത്തിനടിയിലെ അഴുക്ക് ഭക്ഷണത്തോടൊപ്പം വയറ്റിലെത്താം.
-visual: emoji 💅 ✂️
+visual: picture 💅 ✂️
 
 ## ask
 form: number

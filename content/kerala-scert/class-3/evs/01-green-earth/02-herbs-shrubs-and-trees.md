@@ -9,32 +9,32 @@ minutes: 6
 ## say
 en: Are all plants the same? No! Look at their size, their stem, and how long they live.
 ml: എല്ലാ സസ്യങ്ങളും ഒരുപോലെയാണോ? അല്ല! അവയുടെ വലുപ്പവും തണ്ടും ആയുസ്സും നോക്കൂ.
-visual: emoji 🌿 🌺 🌳
+visual: picture 🌿 🌺 🌳
 
 ## say
 en: Herbs are small plants with a soft stem. They do not have deep roots and many live only for a few months. Spinach, called cheera, is a herb.
 ml: മൃദുവായ തണ്ടുള്ള ചെറിയ സസ്യങ്ങളാണ് ചെടികൾ (Herbs). ഇവയ്ക്ക് താഴ്ചയുള്ള വേരുകളില്ല, ഏതാനും മാസങ്ങൾ മാത്രമേ ആയുസ്സുള്ളൂ. ചീര ഒരു ചെടിയാണ്.
-visual: emoji 🌿
+visual: picture 🌿
 
 ## say
 en: Shrubs are small or medium plants, but their stems are hard. They live for years. Hibiscus, the chemparathi, is a shrub.
 ml: ചെറുതോ ഇടത്തരം വലുപ്പമുള്ളതോ ആയ, എന്നാൽ കട്ടിയുള്ള തണ്ടുള്ള സസ്യങ്ങളാണ് കുറ്റിച്ചെടികൾ (Shrubs). ഇവ വർഷങ്ങളോളം ജീവിക്കുന്നു. ചെമ്പരത്തി ഒരു കുറ്റിച്ചെടിയാണ്.
-visual: emoji 🌺
+visual: picture 🌺
 
 ## say
 en: Trees grow very big. Their stems are very hard and they live for many, many years. The mango tree is a tree.
 ml: മരങ്ങൾ (Trees) വളരെ വലുതായി വളരുന്നു. അവയുടെ തണ്ട് വളരെ കട്ടിയുള്ളതാണ്, അവ വർഷങ്ങളോളം ജീവിക്കും. മാവ് ഒരു മരമാണ്.
-visual: emoji 🌳 🥭
+visual: picture 🌳 🥭
 
 ## say
 en: Some plants cannot stand up on their own. These are vine plants. Some spread along the ground. Others climb up by holding on to a support, like a pole or another plant.
 ml: ചില സസ്യങ്ങൾക്ക് സ്വന്തമായി നിവർന്നുനിൽക്കാൻ കഴിയില്ല. ഇവയാണ് വള്ളിച്ചെടികൾ (Vine plants). ചിലത് നിലത്ത് പടരുന്നു. മറ്റു ചിലത് ഏതെങ്കിലും താങ്ങിലോ മറ്റ് സസ്യങ്ങളിലോ പിടിച്ച് കയറുന്നു.
-visual: emoji 🎃 🍇
+visual: picture 🎃 🍇
 
 ## say
 en: Plants that grow in water are called water plants, like the lotus and the water lily.
 ml: വെള്ളത്തിൽ വളരുന്ന സസ്യങ്ങളെ ജലസസ്യങ്ങൾ എന്ന് വിളിക്കുന്നു. താമരയും ആമ്പലും ഉദാഹരണങ്ങളാണ്.
-visual: emoji 🪷 💧
+visual: picture 🪷 💧
 
 ## say
 label: example

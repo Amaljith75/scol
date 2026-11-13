@@ -187,6 +187,18 @@ String _stamp() {
 
 String _escape(String s) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 
+/// A short, plain description of what went wrong with a voice, for the Parents area.
+String describeVoiceError(Object e) {
+  if (e is TimeoutException) return 'too slow, no answer in time';
+  if (e is SocketException) return 'no internet connection';
+  if (e is WebSocketException) {
+    final code = RegExp(r'\b\d{3}\b').firstMatch('$e')?.group(0);
+    return code == null ? 'the voice server refused the connection' : 'the voice server answered HTTP $code';
+  }
+  final t = '$e';
+  return t.length > 90 ? '${t.substring(0, 90)}…' : t;
+}
+
 /// How many seconds the phone's clock is behind the voice server. The token above is
 /// made from the time, so a phone whose clock is off is refused until we learn the difference
 /// (the same trick the edge-tts library uses).
@@ -236,6 +248,7 @@ Future<Uint8List> _edgeSpeak(String text, String voice, {required String rate, r
     'Origin': 'chrome-extension://jdiccldimpdaibmpdkjnbmckianbfold',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
         'Chrome/$major.0.0.0 Safari/537.36 Edg/$major.0.0.0',
+    'Accept-Encoding': 'gzip, deflate, br, zstd',
     'Accept-Language': 'en-US,en;q=0.9',
     'Cookie': 'muid=${_rand(16).toUpperCase()};',
   }).timeout(const Duration(seconds: 10));

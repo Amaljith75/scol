@@ -21,7 +21,15 @@ phone id, never anything about the child. Parents can turn it off in the Parents
 words"); then the tutor reads the lines as written, as before. The `PROMPT_VERSION` constant in the brain function
 makes every level be written again when the teaching prompt changes.
 
+The brain also says which pieces of the board picture the tutor should touch while speaking (for example the three
+corners of a triangle while counting them), so the tutor floats over the board instead of only moving left and right,
+and a child who finds the words hard can follow the pictures. Each piece of a picture is numbered in the request.
+
 The child's own questions and "Explain more" are still answered live, one call each.
+
+**Hello and the child's name:** the first line of every level is a random hello from `intro` in
+`content/_app/phrases.json`; about half of them use the child's first name (`{name}`). This is said by the phone, never
+sent to the AI, so the brain's cached lesson stays the same for every child.
 
 ## When one AI runs out, the next one answers
 
@@ -82,12 +90,13 @@ same voice sound like a different character.
   normal are made on the phone the first time they are needed (the whole lesson is prepared while the child listens
   to the first line) and kept, so the second time is offline too.
   Making every tutor ready-made would add about 60 MB per tutor to the repository.
-- **When does the phone's own voice speak?** Only when a line has no ready-made file and the Edge voice cannot be
-  made within 15 seconds (no internet, a very slow connection, or Edge refusing). The app now refreshes its list of
-  ready-made files when a level starts, looks for a ready-made file even when its list is old, learns the server's
-  clock if Edge refuses (a phone clock that is off used to mean no Edge voice at all), and in a mood other than
-  normal falls back to the normal-mood ready-made file before the phone's voice. If a whole lesson is still read by
-  the phone, check the "Make tutor voices" run in the Actions tab: lines it could not make are listed there.
+- **The phone's own voice is never used.** Every line is an Edge voice: a ready-made file, or made on the phone
+  (long lines such as the parent report or a brain answer are made sentence by sentence, each tried three times,
+  so the voice starts quickly and one slow connection does not silence the tutor). Without internet a new line is
+  shown as text only. The Parents area shows the last voice problem in plain words ("Voice: ..."), which is the first
+  thing to look at if a line was silent. The app refreshes its list of ready-made files when a level starts, looks for
+  a ready-made file even when its list is old, learns the server's clock if Edge refuses (a phone clock that is off
+  used to mean no Edge voice at all), and in a mood other than normal falls back to the normal-mood ready-made file.
 - The mood setting changes speed and pitch on top of the tutor's own setting.
 
 Hugging Face also has free Malayalam voice models (for example AI4Bharat's Indic Parler-TTS). They need a GPU
@@ -109,3 +118,10 @@ When questions are on, the words of the question and the lesson topic go to the 
 The child's name, progress and voice recording are never sent; speech is turned into words by the phone.
 Questions are off until a parent turns them on, and the switch explains this. Before launch, have the consent wording
 checked against India's DPDP rules for children's data.
+
+## Pictures
+
+`visual: picture 🌱 💧` in a lesson asks for a cartoon drawn from that step's English words. The "Make pictures" workflow
+(`tools/build_pictures.py`, Gemini's image model with the same `GEMINI_API_KEY`) draws the missing ones after every content
+change and once a day, and saves them in the chapter's `images/` folder; the app shows the emoji until a picture has arrived.
+To redraw a picture, change the step's words (or delete the file). The style line at the top of the tool sets the look.

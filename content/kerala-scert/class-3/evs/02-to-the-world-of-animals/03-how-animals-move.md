@@ -9,7 +9,7 @@ minutes: 6
 ## say
 en: Do all animals move the same way? No! Some walk, some fly, some swim, some crawl, and some hop.
 ml: എല്ലാ മൃഗങ്ങളും ഒരുപോലെയാണോ സഞ്ചരിക്കുന്നത്? അല്ല! ചിലത് നടക്കുന്നു, ചിലത് പറക്കുന്നു, ചിലത് നീന്തുന്നു, ചിലത് ഇഴയുന്നു, ചിലത് ചാടുന്നു.
-visual: emoji 🐄 🐦 🐟 🐍 🐸
+visual: picture 🐄 🐦 🐟 🐍 🐸
 
 ## say
 en: An animal's body shows how it moves. Legs help to walk and run. Wings help to fly. Fins and a tail help to swim.
@@ -19,13 +19,13 @@ visual: steps legs → walk / wings → fly / fins → swim
 ## say
 en: A snake has no legs. It moves by sliding on its belly. A frog and a grasshopper have strong back legs for jumping.
 ml: പാമ്പിന് കാലുകളില്ല. അത് വയറുകൊണ്ട് ഇഴഞ്ഞാണ് നീങ്ങുന്നത്. തവളയ്ക്കും പുൽച്ചാടിയ്ക്കും ചാടാൻ ശക്തമായ പിൻകാലുകളുണ്ട്.
-visual: emoji 🐍 🐸 🦗
+visual: picture 🐍 🐸 🦗
 
 ## say
 label: example
 en: Some animals move in more than one way. A duck can walk, swim and fly!
 ml: ചില മൃഗങ്ങൾക്ക് ഒന്നിലധികം രീതിയിൽ സഞ്ചരിക്കാൻ കഴിയും. താറാവിന് നടക്കാനും നീന്താനും പറക്കാനും കഴിയും!
-visual: emoji 🦆
+visual: picture 🦆
 
 ## ask
 form: choice

@@ -9,22 +9,22 @@ minutes: 6
 ## say
 en: Why do schools have separate bins for waste? Because different waste must be handled in different ways.
 ml: വിദ്യാലയങ്ങളിൽ എന്തിനാണ് വെവ്വേറെ മാലിന്യപ്പട്ടികൾ വെച്ചിരിക്കുന്നത്? കാരണം ഓരോ തരം മാലിന്യവും വ്യത്യസ്ത രീതിയിലാണ് സംസ്കരിക്കേണ്ടത്.
-visual: emoji 🗑️ 🗑️ 🗑️
+visual: picture 🗑️ 🗑️ 🗑️
 
 ## say
 en: Organic waste rots in the soil. Food scraps, vegetable peels, banana skins and fish waste are organic.
 ml: ജൈവമാലിന്യങ്ങൾ മണ്ണിൽ അളിഞ്ഞുചേരും. ഭക്ഷണ അവശിഷ്ടങ്ങൾ, പച്ചക്കറിത്തോലുകൾ, പഴത്തോലുകൾ, മീൻ അവശിഷ്ടങ്ങൾ എന്നിവ ജൈവമാലിന്യങ്ങളാണ്.
-visual: emoji 🍌 🥕 🐟
+visual: picture 🍌 🥕 🐟
 
 ## say
 en: Inorganic waste does not rot. Plastic bottles, plastic covers and PVC pipes are inorganic.
 ml: അജൈവമാലിന്യങ്ങൾ മണ്ണിൽ അഴുകിപ്പോകില്ല. പ്ലാസ്റ്റിക് കുപ്പികൾ, പ്ലാസ്റ്റിക് കവറുകൾ, പി.വി.സി പൈപ്പുകൾ എന്നിവ അജൈവമാലിന്യങ്ങളാണ്.
-visual: emoji 🧴 🛍️
+visual: picture 🧴 🛍️
 
 ## say
 en: Hazardous waste can harm us. Electronic waste, bulbs, expired medicines and pesticide bottles are hazardous.
 ml: അപകടകരമായ മാലിന്യങ്ങൾ നമുക്ക് ഹാനികരമാണ്. ഇലക്ട്രോണിക് അവശിഷ്ടങ്ങൾ, ബൾബുകൾ, കാലാവധി കഴിഞ്ഞ മരുന്നുകൾ, കീടനാശിനി കുപ്പികൾ എന്നിവ അപകടകരമായ മാലിന്യങ്ങളാണ്.
-visual: emoji 💡 💊 🔋
+visual: picture 💡 💊 🔋
 
 ## say
 label: example
@@ -35,7 +35,7 @@ visual: steps food waste → compost pit → 3 to 4 months → manure
 ## say
 en: Never throw plastic around and never burn it. Burning plastic harms our health. Sort it and give it to the waste collectors for recycling.
 ml: പ്ലാസ്റ്റിക് വലിച്ചെറിയാനോ കത്തിക്കാനോ പാടില്ല. പ്ലാസ്റ്റിക് കത്തിക്കുന്നത് നമ്മുടെ ആരോഗ്യത്തിന് ഹാനികരമാണ്. ഇവ തരംതിരിച്ച് പുനരുപയോഗത്തിനായി മാലിന്യ ശേഖർത്താക്കൾക്ക് നൽകുക.
-visual: emoji 🚫🔥 ♻️
+visual: picture 🚫🔥 ♻️
 
 ## ask
 form: choice

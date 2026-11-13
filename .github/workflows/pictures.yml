@@ -1,0 +1,45 @@
+name: Make pictures
+
+# Draws the cartoon pictures that lessons ask for with "visual: picture ..."
+# (Gemini's image model, with the GEMINI_API_KEY secret) and saves them in the
+# chapter's images/ folder. Runs when lessons change, once a day (to finish
+# anything a daily limit stopped), or by hand from the Actions tab.
+on:
+  push:
+    branches: [main]
+    paths: ["content/**", "tools/build_pictures.py"]
+  schedule:
+    - cron: "10 22 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pictures
+  cancel-in-progress: false
+
+jobs:
+  pictures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: pip install -q pillow
+      - name: Draw missing pictures
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python3 tools/build_pictures.py
+      - name: Save the pictures
+        run: |
+          git add -A content
+          if ! git diff --cached --quiet; then
+            git config user.name "scol-bot"
+            git config user.email "scol-bot@users.noreply.github.com"
+            git commit -q -m "Draw lesson pictures [skip ci]"
+            for i in 1 2 3 4; do
+              git pull -q --rebase -X theirs origin main && git push && break
+              echo "push did not go through, trying again ($i)"; sleep 15
+            done
+          fi

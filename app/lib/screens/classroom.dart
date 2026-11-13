@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../content.dart';
 import '../brain.dart';
 import '../reminders.dart';
+import '../sounds.dart';
 import '../state.dart';
 import '../strings.dart';
 import '../tutor.dart';
@@ -43,6 +44,14 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
   LessonStep? _lastStep;
   Timer? _teachTimer;
   int _teachRequest = 0;
+  // The tutor floats over the board and touches the pieces it talks about.
+  final GlobalKey _stackKey = GlobalKey();
+  final GlobalKey _homeKey = GlobalKey();
+  Offset? _tourAt; // where the tutor is touching right now (in the screen's own coordinates), or null: at home
+  Timer? _tourTimer;
+  int _tourGen = 0;
+  int _lastWrong = 0;
+  Phase _lastPhase = Phase.talking;
 
   /// Should the tutor brain teach this lesson in its own words? Not for the practice lesson,
   /// which is put together differently for every child.
@@ -63,12 +72,16 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
       pickStyle: appState.pickStyle,
       onStyleResult: appState.recordStyle,
       speaker: appState.voiceOn ? appSpeaker : null,
+      childName: appState.childName,
       waitForTeaching: _brainTeaches,
     );
     _lastSpot = d.spot;
     if (appState.voiceOn) appSpeaker?.prefetch(d.allLines, d.lang, d.tutor);
     _lastStep = d.current;
+    _lastPhase = d.phase;
     _fetchTeaching();
+    _planTour();
+    d.speaker?.speaking.addListener(_speakingChanged);
     d.addListener(_onChange);
     WidgetsBinding.instance.addObserver(this);
     _peekTimer = Timer.periodic(const Duration(milliseconds: 2600), (_) {
@@ -78,6 +91,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
 
   /// Where the tutor's eyes should point right now.
   Offset get _gaze {
+    if (_tourAt != null) return const Offset(0, -0.9); // looking up at the piece it is touching
     if (_walkLook != null) return _walkLook!;
     final towardCentre = switch (d.spot) { Spot.left => 0.55, Spot.center => 0.0, Spot.right => -0.55 };
     switch (d.look) {
@@ -121,7 +135,56 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     if (!mounted || request != _teachRequest || d.lang != lang) return;
     _teachTimer?.cancel();
     d.setTeaching(written);
-    if (written != null && appState.voiceOn) appSpeaker?.prefetch(written.whereType<String>(), lang, d.tutor);
+    if (written != null && appState.voiceOn) appSpeaker?.prefetch(written.whereType<Taught>().map((t) => t.say), lang, d.tutor);
+  }
+
+  /// The tutor's walk over the board for the current step: it floats to each piece the brain
+  /// (or, without the brain, every piece in turn) wants touched, in time with what it says.
+  void _planTour() {
+    final gen = ++_tourGen;
+    _tourTimer?.cancel();
+    final wanted = d.touches;
+    if (wanted.isEmpty) {
+      _goHome();
+      return;
+    }
+    // Let the picture finish popping in first.
+    _tourTimer = Timer(const Duration(milliseconds: 1100), () {
+      if (!mounted || gen != _tourGen) return;
+      final have = boardTargets.value;
+      final order = wanted.first == -1 ? (have.keys.toList()..sort()) : wanted.where(have.containsKey).toList();
+      _visit(order, 0, gen);
+    });
+  }
+
+  void _visit(List<int> order, int i, int gen) {
+    if (!mounted || gen != _tourGen) return;
+    if (i >= order.length) {
+      _tourTimer = Timer(const Duration(milliseconds: 900), () {
+        if (mounted && gen == _tourGen) _goHome();
+      });
+      return;
+    }
+    final stack = _stackKey.currentContext?.findRenderObject();
+    final target = boardTargets.value[order[i]];
+    if (stack is RenderBox && target != null) {
+      setState(() => _tourAt = stack.globalToLocal(target));
+    }
+    _tourTimer = Timer(const Duration(milliseconds: 1300), () => _visit(order, i + 1, gen));
+  }
+
+  void _goHome() {
+    _tourTimer?.cancel();
+    if (_tourAt != null && mounted) setState(() => _tourAt = null);
+  }
+
+  /// When the tutor stops talking it drifts back to its place; a new line starts a new walk.
+  void _speakingChanged() {
+    if (!mounted) return;
+    if (d.speaker?.speaking.value == false) {
+      _tourTimer?.cancel();
+      _tourTimer = Timer(const Duration(milliseconds: 700), _goHome);
+    }
   }
 
   /// What this lesson teaches, for the tutor brain when the child asks a question.
@@ -132,10 +195,20 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
 
   void _onChange() {
     _peek = false;
-    if (!identical(d.current, _lastStep)) {
+    final stepChanged = !identical(d.current, _lastStep);
+    if (stepChanged) {
       _lastStep = d.current;
       _hop++;
     }
+    // Little sounds: a ding for a right answer, a soft "oops" for a wrong one.
+    if (d.phase == Phase.feedback && _lastPhase == Phase.asking) {
+      playSound(d.mood == Mood.happy ? 'correct' : 'oops');
+    } else if (d.phase == Phase.asking && d.wrongOptions.length > _lastWrong) {
+      playSound('oops');
+    }
+    _lastWrong = d.wrongOptions.length;
+    if (stepChanged || d.phase != _lastPhase || d.phase == Phase.talking) _planTour();
+    _lastPhase = d.phase;
     if (!identical(d.question, _shownQuestion)) {
       _shownQuestion = d.question;
       _beads = [0, 0, 0];
@@ -181,6 +254,9 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     _walkTimer?.cancel();
     _peekTimer?.cancel();
     _teachTimer?.cancel();
+    _tourTimer?.cancel();
+    d.speaker?.speaking.removeListener(_speakingChanged);
+    boardTargets.value = {};
     d.removeListener(_onChange);
     d.dispose();
     super.dispose();
@@ -210,7 +286,8 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
         return Scaffold(
           backgroundColor: Color.lerp(cream, Color(widget.subject.color), 0.07),
           body: SafeArea(
-            child: Center(
+            child: Stack(key: _stackKey, children: [
+              Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 600),
                 child: Padding(
@@ -256,7 +333,8 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
                         child: SingleChildScrollView(child: _board()),
                       ),
                     ),
-                    // The tutor walks to wherever the action is.
+                    // The tutor's own place, between the board and the speech bubble. The tutor itself is
+                    // drawn in the layer above, so it can float up over the board and touch the pieces.
                     SizedBox(
                       height: 92,
                       child: AnimatedAlign(
@@ -267,20 +345,8 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
                           Spot.center => Alignment.center,
                           Spot.right => Alignment.centerRight,
                         },
-                        child: ValueListenableBuilder<bool>(
-                          valueListenable: d.speaker?.speaking ?? const AlwaysStoppedAnimation(false),
-                          builder: (_, speaking, __) => TweenAnimationBuilder<double>(
-                            key: ValueKey(_hop),
-                            tween: Tween(begin: 0, end: 1),
-                            duration: const Duration(milliseconds: 550),
-                            builder: (_, v, child) => Transform.translate(
-                              offset: Offset(0, -sin(v * pi) * 22),
-                              child: Transform.scale(scaleY: 1 - sin(v * pi * 2).abs() * 0.06, child: child),
-                            ),
-                            child: tutorHero(
-                                TutorAvatar(tutor: d.tutor, size: 88, talking: speaking, mood: d.mood, gaze: _gaze)),
-                          ),
-                        ),
+                        onEnd: () => setState(() {}),
+                        child: SizedBox(key: _homeKey, width: 88, height: 88),
                       ),
                     ),
                     // Speech bubble
@@ -324,10 +390,54 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
                   ]),
                 ),
               ),
-            ),
+              ),
+              _floatingTutor(),
+            ]),
           ),
         );
       },
+    );
+  }
+
+  /// The tutor, drawn above everything: at its place when talking to the child, floating over the
+  /// board with its nose on a piece of the picture when it talks about it.
+  Widget _floatingTutor() {
+    const size = 88.0;
+    Offset? home;
+    final stack = _stackKey.currentContext?.findRenderObject();
+    final slot = _homeKey.currentContext?.findRenderObject();
+    if (stack is RenderBox && slot is RenderBox && slot.attached && stack.attached) {
+      home = stack.globalToLocal(slot.localToGlobal(slot.size.center(Offset.zero)));
+    }
+    final at = _tourAt != null ? _tourAt! + const Offset(0, size * 0.42) : home;
+    final avatar = ValueListenableBuilder<bool>(
+      valueListenable: d.speaker?.speaking ?? const AlwaysStoppedAnimation(false),
+      builder: (_, speaking, __) => TweenAnimationBuilder<double>(
+        key: ValueKey(_hop),
+        tween: Tween(begin: 0, end: 1),
+        duration: const Duration(milliseconds: 550),
+        builder: (_, v, child) => Transform.translate(
+          offset: Offset(0, -sin(v * pi) * 22),
+          child: Transform.scale(scaleY: 1 - sin(v * pi * 2).abs() * 0.06, child: child),
+        ),
+        child: tutorHero(TutorAvatar(tutor: d.tutor, size: size, talking: speaking, mood: d.mood, gaze: _gaze, float: _tourAt != null)),
+      ),
+    );
+    if (at == null) {
+      // First frame: the slot is not laid out yet; draw in place and measure next frame.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) setState(() {});
+      });
+      return const SizedBox.shrink();
+    }
+    return AnimatedPositioned(
+      duration: const Duration(milliseconds: 650),
+      curve: Curves.easeInOutCubic,
+      left: at.dx - size / 2,
+      top: at.dy - size / 2,
+      width: size,
+      height: size,
+      child: IgnorePointer(child: avatar),
     );
   }
 
@@ -537,62 +647,132 @@ class CelebrationScreen extends StatefulWidget {
   State<CelebrationScreen> createState() => _CelebrationScreenState();
 }
 
+/// Level done: a fanfare, then the stars pop in one by one with a rising note each, like a game.
+/// On Continue the stars fly up to the star count at the top and the count bumps up.
 class _CelebrationScreenState extends State<CelebrationScreen> {
-  int get stars => widget.stars;
-  int get xp => widget.xp;
-  bool get newDay => widget.newDay;
+  int _shown = 0; // how many stars have popped in so far
+  bool _leaving = false;
+  final List<Timer> _timers = [];
 
   @override
   void initState() {
     super.initState();
+    playSound('complete');
+    final tutor = tutorById(appState.tutorId);
     if (appState.voiceOn) {
-      final t = tutorById(appState.tutorId);
-      appSpeaker?.say([pick(t.cheer, appState.mainLang)], appState.mainLang, t);
+      _timers.add(Timer(const Duration(milliseconds: 900), () {
+        if (mounted) appSpeaker?.say([pick(tutor.cheer, appState.mainLang)], appState.mainLang, tutor);
+      }));
     }
+    for (var i = 0; i < 3; i++) {
+      _timers.add(Timer(Duration(milliseconds: 700 + i * 520), () {
+        if (!mounted) return;
+        setState(() => _shown = i + 1);
+        if (i < widget.stars) playSound('star${i + 1}');
+      }));
+    }
+  }
+
+  @override
+  void dispose() {
+    for (final t in _timers) {
+      t.cancel();
+    }
+    super.dispose();
+  }
+
+  Future<void> _continue() async {
+    if (_leaving) return;
+    setState(() => _leaving = true);
+    playSound('whoosh');
+    await Future<void>.delayed(const Duration(milliseconds: 720));
+    if (mounted) Navigator.of(context).pop();
   }
 
   @override
   Widget build(BuildContext context) {
     final lang = appState.mainLang;
     final tutor = tutorById(appState.tutorId);
+    final stars = widget.stars;
     return Scaffold(
       backgroundColor: violetSoft,
       body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 520),
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                Center(child: tutorHero(TutorAvatar(tutor: tutor, size: 160, mood: Mood.happy))),
-                const SizedBox(height: 16),
-                Text(tr('lessonDone', lang),
-                    textAlign: TextAlign.center, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: ink)),
-                const SizedBox(height: 12),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        child: Stack(children: [
+          Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 520),
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                  Center(child: tutorHero(TutorAvatar(tutor: tutor, size: 160, mood: Mood.happy, float: true))),
+                  const SizedBox(height: 16),
+                  TweenAnimationBuilder<double>(
+                    tween: Tween(begin: 0, end: 1),
+                    duration: const Duration(milliseconds: 600),
+                    curve: Curves.elasticOut,
+                    builder: (_, v, child) => Transform.scale(scale: v, child: child),
+                    child: Text(tr('lessonDone', lang),
+                        textAlign: TextAlign.center, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: ink)),
+                  ),
+                  const SizedBox(height: 12),
+                  // Space for the stars; they are drawn in the layer above so they can fly away.
+                  const SizedBox(height: 72),
+                  const SizedBox(height: 12),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Pill('⚡', '+${widget.xp} XP'),
+                    if (widget.newDay) ...[const SizedBox(width: 8), Pill('🔥', '${appState.streak} ${tr('dayStreak', lang)}')],
+                  ]),
+                  const SizedBox(height: 32),
+                  Chunky(color: mint, onTap: _continue, child: Text(tr('continue', lang))),
+                ]),
+              ),
+            ),
+          ),
+          // The stars: pop in one by one, then fly to the top right corner, where the star count lives.
+          AnimatedAlign(
+            duration: const Duration(milliseconds: 700),
+            curve: Curves.easeInCubic,
+            alignment: _leaving ? const Alignment(0.92, -0.97) : const Alignment(0, 0.02),
+            child: AnimatedScale(
+              duration: const Duration(milliseconds: 700),
+              curve: Curves.easeInCubic,
+              scale: _leaving ? 0.25 : 1,
+              child: AnimatedOpacity(
+                duration: const Duration(milliseconds: 500),
+                opacity: _leaving ? 0.0 : 1.0,
+                curve: const Interval(0.5, 1),
+                child: Row(mainAxisSize: MainAxisSize.min, children: [
                   for (var i = 0; i < 3; i++)
-                    TweenAnimationBuilder<double>(
-                      tween: Tween(begin: 0, end: 1),
-                      duration: Duration(milliseconds: 500 + i * 300),
+                    AnimatedScale(
+                      duration: const Duration(milliseconds: 650),
                       curve: Curves.elasticOut,
-                      builder: (_, v, __) => Transform.scale(
-                        scale: v,
+                      scale: i < _shown ? 1 : 0,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
                         child: Text(i < stars ? '⭐' : '☆',
-                            style: TextStyle(fontSize: 56, color: i < stars ? null : const Color(0xFFC9A94A))),
+                            style: TextStyle(fontSize: 60, color: i < stars ? null : const Color(0xFFC9A94A))),
                       ),
                     ),
                 ]),
-                const SizedBox(height: 12),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Pill('⚡', '+$xp XP'),
-                  if (newDay) ...[const SizedBox(width: 8), Pill('🔥', '${appState.streak} ${tr('dayStreak', lang)}')],
-                ]),
-                const SizedBox(height: 32),
-                Chunky(color: mint, onTap: () => Navigator.of(context).pop(), child: Text(tr('continue', lang))),
-              ]),
+              ),
             ),
           ),
-        ),
+          // A few sparkles rising while the stars appear.
+          if (!_leaving)
+            for (var k = 0; k < 7; k++)
+              TweenAnimationBuilder<double>(
+                key: ValueKey('spark$k$_shown'),
+                tween: Tween(begin: 0, end: 1),
+                duration: Duration(milliseconds: 1400 + k * 180),
+                builder: (_, v, __) => Align(
+                  alignment: Alignment(-0.9 + k * 0.3, 0.6 - v * 1.5),
+                  child: Opacity(
+                    opacity: (1 - v).clamp(0.0, 1.0),
+                    child: Text(k.isEven ? '✨' : '⭐', style: TextStyle(fontSize: 14 + 10.0 * (k % 3))),
+                  ),
+                ),
+              ),
+        ]),
       ),
     );
   }

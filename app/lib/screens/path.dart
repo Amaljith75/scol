@@ -115,7 +115,7 @@ class PathScreen extends StatelessWidget {
                       Text('${subject.icon} ${pick(subject.name, lang)}',
                           style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: ink)),
                       const Spacer(),
-                      Pill('⭐', '${appState.stars}'),
+                      StarPill(appState.stars),
                     ]),
                   ),
                   Expanded(

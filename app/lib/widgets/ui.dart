@@ -1,5 +1,9 @@
 // Shared look and feel: colours, chunky buttons, cards.
+import 'dart:math' show sin;
+
 import 'package:flutter/material.dart';
+
+import '../sounds.dart';
 
 // Brand colours. Violet is Scol's own colour and is used for everything that
 // belongs to the app itself: main buttons, the bar at the bottom, the tutor's
@@ -108,4 +112,46 @@ class Pill extends StatelessWidget {
             color: Colors.white, borderRadius: BorderRadius.circular(30), border: Border.all(color: cloud, width: 2)),
         child: Text('$emoji $text', style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16, color: ink)),
       );
+}
+
+/// The number of stars the child has already seen counted up, so the star count can
+/// roll from the old number to the new one when they come back from a level.
+int shownStars = -1;
+
+/// The star count at the top of a screen. When new stars have just been earned it counts up
+/// to them with a little bounce and a pop, picking up the stars that flew in from the level.
+class StarPill extends StatefulWidget {
+  const StarPill(this.stars, {super.key});
+  final int stars;
+
+  @override
+  State<StarPill> createState() => _StarPillState();
+}
+
+class _StarPillState extends State<StarPill> {
+  late int _from = shownStars < 0 ? widget.stars : shownStars;
+
+  @override
+  void didUpdateWidget(covariant StarPill old) {
+    super.didUpdateWidget(old);
+    if (old.stars != widget.stars) _from = shownStars < 0 ? old.stars : shownStars;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final grew = widget.stars > _from;
+    if (grew) Future<void>.delayed(const Duration(milliseconds: 150), () => playSound('pop', volume: 0.7));
+    return TweenAnimationBuilder<double>(
+      key: ValueKey('${_from}-${widget.stars}'),
+      tween: Tween(begin: 0, end: 1),
+      duration: Duration(milliseconds: grew ? 900 : 1),
+      curve: Curves.easeOutCubic,
+      onEnd: () => shownStars = widget.stars,
+      builder: (_, v, __) {
+        final n = (_from + (widget.stars - _from) * v).round();
+        final bounce = grew ? 1 + 0.35 * sin(v * 3.1416) : 1.0;
+        return Transform.scale(scale: bounce, child: Pill('⭐', '$n'));
+      },
+    );
+  }
 }

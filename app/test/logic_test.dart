@@ -139,6 +139,16 @@ void main() {
       expect(spokenText('7 cm', 'en'), '7 centimetres');
     });
 
+    test('long lines are spoken sentence by sentence so the voice starts quickly', () {
+      final pieces = sentencePieces('Hello there. This is a long explanation about mangoes! Each basket has four. '
+          'So three baskets have twelve mangoes. Can you see that? Now let us count them together one more time, slowly.');
+      expect(pieces.length, greaterThan(1));
+      expect(pieces.join(' '), contains('twelve mangoes'));
+      expect(pieces.every((p) => p.length <= 240), true);
+      expect(sentencePieces('Short.'), ['Short.']);
+      expect(sentencePieces('നോക്കൂ! ഇതാ 3 കൊട്ടകൾ. ഓരോ കൊട്ടയിലും 4 മാങ്ങ വീതം.').join(' '), 'നോക്കൂ! ഇതാ 3 കൊട്ടകൾ. ഓരോ കൊട്ടയിലും 4 മാങ്ങ വീതം.');
+    });
+
     test('mood changes the speed and pitch on top of the tutor', () {
       expect(shiftProsody('-6%', 8, '%'), '+2%');
       expect(shiftProsody('+4Hz', -14, 'Hz'), '-10Hz');
@@ -171,6 +181,7 @@ void main() {
         phrases: b.phrases,
         recordFor: (k) => recs.putIfAbsent(k, () => ConceptRecord()),
         day: 10,
+        greet: false,
         random: Random(1),
       );
     }
@@ -316,16 +327,18 @@ void main() {
     test('the brain\'s words replace the read line at teaching steps, never at questions', () {
       final lesson = mathsLessons(loadBundle()).first;
       final d = make(lesson, {});
-      final written = [for (final s in lesson.steps) s.isAsk ? null : 'Taught: ${pick(s.text, 'en')}'];
+      final written = [for (final s in lesson.steps) s.isAsk ? null : Taught('Taught: ${pick(s.text, 'en')}', const [1, 2])];
       final firstLine = d.bubble;
       d.setTeaching(written);
       expect(d.taughtByBrain, true);
       expect(d.bubble, startsWith('Taught: '));
+      expect(d.touches, [1, 2]); // and it floats to the pieces the brain named
       expect(d.lessonLine, firstLine); // the checked line stays available to show
       while (d.phase == Phase.talking) {
         expect(d.bubble, startsWith('Taught: '));
         d.next();
       }
+      expect(d.touches, isEmpty); // never while a question is open
       expect(d.taughtByBrain, false);
       expect(d.bubble, pick(d.question!.text, 'en')); // questions are asked exactly as written
       // Switching language drops the brain's words (they were English) until new ones come.
@@ -334,15 +347,48 @@ void main() {
       d.setLang('ml');
       expect(d.taughtByBrain, false);
       // A list that does not fit the lesson is ignored.
-      d.setTeaching(['x']);
+      d.setTeaching([const Taught('x')]);
       expect(d.taughtByBrain, false);
+    });
+
+    test('without the brain, a teaching step with a picture visits every piece of it', () {
+      final lesson = mathsLessons(loadBundle()).first;
+      final d = make(lesson, {});
+      expect(lesson.steps.first.visual, isNotNull);
+      expect(d.touches, [-1]);
+    });
+
+    test('a different hello each time, with the child\'s name now and then', () {
+      final b = loadBundle();
+      final lesson = mathsLessons(b).first;
+      final seen = <String>{};
+      var named = 0;
+      for (var i = 0; i < 30; i++) {
+        final d = TutorDirector(
+            lesson: lesson, lang: 'ml', tutor: b.tutors.first, phrases: b.phrases, childName: 'Anu',
+            recordFor: (_) => ConceptRecord(), day: 1, random: Random(i));
+        expect(d.intro, isNotEmpty);
+        expect(langOf(d.intro), 'ml');
+        expect(d.bubble, startsWith(d.intro));
+        expect(d.bubble, endsWith(pick(lesson.steps.first.text, 'ml')));
+        expect(d.intro, isNot(contains('{name}')));
+        seen.add(d.intro);
+        if (d.intro.contains('Anu')) named++;
+      }
+      expect(seen.length, greaterThan(3));
+      expect(named, greaterThan(3));
+      // No name known: only the hellos that need none.
+      final quiet = TutorDirector(
+          lesson: lesson, lang: 'en', tutor: b.tutors.first, phrases: b.phrases, recordFor: (_) => ConceptRecord(), day: 1);
+      expect(quiet.intro, isNotEmpty);
+      expect(quiet.allLines, contains(quiet.intro));
     });
 
     test('while waiting for the brain the first line is shown, then spoken as written if nothing comes', () {
       final b = loadBundle();
       final lesson = mathsLessons(b).first;
       final d = TutorDirector(
-          lesson: lesson, lang: 'en', tutor: b.tutors.first, recordFor: (_) => ConceptRecord(), day: 1, waitForTeaching: true);
+          lesson: lesson, lang: 'en', tutor: b.tutors.first, recordFor: (_) => ConceptRecord(), day: 1, waitForTeaching: true, greet: false);
       expect(d.bubble, pick(lesson.steps.first.text, 'en'));
       d.stopWaiting();
       expect(d.bubble, pick(lesson.steps.first.text, 'en'));
@@ -383,11 +429,13 @@ void main() {
     test('written lines are lined up with the steps, and a wrong count is refused', () {
       final lesson = mathsLessons(loadBundle()).first;
       final says = lesson.steps.where((s) => !s.isAsk).length;
-      final ok = alignTeaching(lesson, List.generate(says, (i) => 'line $i'))!;
+      final ok = alignTeaching(lesson, List.generate(says, (i) => {'say': 'line $i', 'touch': [1, '2', 0, 'x']}))!;
       expect(ok.length, lesson.steps.length);
       for (var i = 0; i < lesson.steps.length; i++) {
         expect(ok[i] == null, lesson.steps[i].isAsk);
       }
+      expect(ok.whereType<Taught>().first.touch, [1, 2]); // only real item numbers are kept
+      expect(alignTeaching(lesson, List.generate(says, (i) => 'line $i'))!.whereType<Taught>().first, const Taught('line 0'));
       expect(alignTeaching(lesson, List.generate(says + 1, (i) => 'line $i')), isNull);
       expect(alignTeaching(lesson, null), isNull);
     });
@@ -404,12 +452,13 @@ void main() {
         expect(body['mode'], 'teach');
         expect('${body['device']}'.length, 24);
         expect(body.containsKey('question'), false);
-        return http.Response(jsonEncode({'steps': List.generate(says, (i) => 'Taught $i'), 'by': 'test'}), 200,
+        return http.Response(
+            jsonEncode({'steps': List.generate(says, (i) => {'say': 'Taught $i', 'touch': [1]}), 'by': 'test'}), 200,
             headers: {'content-type': 'application/json'});
       });
       final first = await teachLesson(bundle: b, lesson: lesson, lang: 'en', tutor: b.tutors.first, client: client);
       expect(first, isNotNull);
-      expect(first!.whereType<String>().first, 'Taught 0');
+      expect(first!.whereType<Taught>().first, const Taught('Taught 0', [1]));
       final second = await teachLesson(bundle: b, lesson: lesson, lang: 'en', tutor: b.tutors.first, client: client);
       expect(second, first);
       expect(calls, 1);

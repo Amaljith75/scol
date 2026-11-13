@@ -21,7 +21,8 @@ Scol follows two syllabuses: **Kerala State (SCERT)** and **CBSE (NCERT)**.
 2. **The tutor teaches.** Not by reading the lesson out: the tutor explains each step in its own words, starting
    from something your child knows, pointing at the pictures that build up on the board (baskets of mangoes for
    multiplication, an abacus for hundreds, tens and ones, a scale for centimetres) and checking along the way.
-   The checked lesson line stays on screen under the tutor's words.
+   The checked lesson line stays on screen under the tutor's words. The tutor floats over the picture and touches
+   what it is talking about: the three corners of a triangle while counting them, the water while naming it.
 3. **The tutor asks.** Your child answers by tapping a choice or typing a number. A level takes about five minutes.
 4. **Hands on.** Some questions are done with fingers: dragging sticks to build a triangle,
    moving beads on an abacus to make 235, sliding a scale under a pencil to measure it.
@@ -102,7 +103,7 @@ The app uses the internet to download new lessons and voice files, to check for 
 ## Try it
 
 1. On an Android phone or tablet, open the [Releases page](https://github.com/Amaljith75/scol/releases).
-2. Download the **.apk** file from the newest release (for example "Scol V1 build 6") and open it to install.
+2. Download the **.apk** file from the newest release (for example "Scol V1 build 7") and open it to install.
    (Your phone may ask you to allow installing apps from your browser.)
 3. Do the one-minute parent setup: name, syllabus, class, language, tutor.
 4. Hand the phone to your child.

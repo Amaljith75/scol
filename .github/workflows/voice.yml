@@ -44,6 +44,9 @@ jobs:
             git config user.name "scol-bot"
             git config user.email "scol-bot@users.noreply.github.com"
             git commit -q -m "Update tutor voices [skip ci]"
-            git pull -q --rebase origin main
-            git push
+            # Sound files cannot be merged: if another run pushed the same file, keep ours (they are the same line).
+            for i in 1 2 3 4; do
+              git pull -q --rebase -X theirs origin main && git push && break
+              echo "push did not go through, trying again ($i)"; sleep 15
+            done
           fi

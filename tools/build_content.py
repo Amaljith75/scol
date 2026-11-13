@@ -35,6 +35,8 @@ VISUALS = {  # kind -> (min args, max args)
     "text": (1, 99),       # text 3 x 4 = 12
     "emoji": (1, 99),      # emoji 🍎 🍌
     "image": (1, 1),       # image picture.png  (file in the chapter's images/ folder)
+    "picture": (0, 12),    # picture 🌱 💧      (a cartoon drawn from the step's own words by the
+                           #   "Make pictures" workflow; the emoji, if any, show until it arrives)
 }
 SHAPES = ("circle", "triangle", "rectangle", "square")
 FORMS = ("choice", "number", "think", "abacus", "measure", "build")
@@ -124,6 +126,17 @@ def parse_visual(spec, path, line, chapter_dir):
     if kind == "text":
         args = [" ".join(args)]
     return {"kind": kind, "args": args}
+
+
+def finish_picture(visual, text, chapter_dir):
+    """A 'picture' is drawn from the step's English words, so it can only be named once the text is known.
+    The file name comes from those words: change the words and a new picture is drawn."""
+    if not visual or visual.get("kind") != "picture":
+        return visual
+    prompt = (text or {}).get("en") or next(iter((text or {}).values()), "")
+    name = "p-" + hashlib.sha1(prompt.encode("utf-8")).hexdigest()[:12] + ".png"
+    img = chapter_dir / "images" / name
+    return {**visual, "prompt": prompt, "image": str(img.relative_to(ROOT)).replace("\\", "/")}
 
 
 class Block:
@@ -222,7 +235,7 @@ def make_ask(f, lines, path, line, scope, default_concept, chapter_dir, text):
     if mistakes:
         step["mistakes"] = mistakes
     if f.get("visual"):
-        v = parse_visual(f["visual"], path, lines.get("visual", line), chapter_dir)
+        v = finish_picture(parse_visual(f["visual"], path, lines.get("visual", line), chapter_dir), text, chapter_dir)
         if v:
             step["visual"] = v
     return step, concept
@@ -250,7 +263,7 @@ def parse_lesson(path, scope, chapter_dir):
             if f.get("label"):
                 step["label"] = f["label"]
             if f.get("visual"):
-                v = parse_visual(f["visual"], path, b.lines.get("visual", b.line), chapter_dir)
+                v = finish_picture(parse_visual(f["visual"], path, b.lines.get("visual", b.line), chapter_dir), text, chapter_dir)
                 if v:
                     step["visual"] = v
             steps.append(step)
@@ -260,7 +273,7 @@ def parse_lesson(path, scope, chapter_dir):
                 err(path, b.line, f"'## {b.kind}' needs an 'en:' or 'ml:' line")
             alt = {"text": text}
             if f.get("visual"):
-                v = parse_visual(f["visual"], path, b.lines.get("visual", b.line), chapter_dir)
+                v = finish_picture(parse_visual(f["visual"], path, b.lines.get("visual", b.line), chapter_dir), text, chapter_dir)
                 if v:
                     alt["visual"] = v
             elif b.kind == "picture":
@@ -306,7 +319,7 @@ def parse_notes(path, scope, chapter_dir, chapter_title):
             if label:
                 step["label"] = label
             if visual:
-                step["visual"] = visual
+                step["visual"] = finish_picture(visual, step["text"], chapter_dir)
                 visual = None
             cur["steps"].append(step)
             para = []
@@ -328,7 +341,7 @@ def parse_notes(path, scope, chapter_dir, chapter_title):
             f["form"] = "think"
         step, _ = make_ask(f, {}, path, q["line"], scope, c, chapter_dir, {lang: q["text"]})
         if visual:
-            step["visual"] = visual
+            step["visual"] = finish_picture(visual, step["text"], chapter_dir)
             visual = None
         concepts.setdefault(step["concept"], dict(cur["title"]))
         cur["steps"].append(step)
@@ -373,7 +386,7 @@ def parse_notes(path, scope, chapter_dir, chapter_title):
             # A picture belongs to the paragraph just above it, if there is one.
             if visual and cur and cur["steps"] and cur["steps"][-1]["t"] == "say" \
                     and "visual" not in cur["steps"][-1]:
-                cur["steps"][-1]["visual"] = visual
+                cur["steps"][-1]["visual"] = finish_picture(visual, cur["steps"][-1]["text"], chapter_dir)
                 visual = None
         elif low.startswith("example:"):
             flush_para()
