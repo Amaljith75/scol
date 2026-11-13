@@ -57,6 +57,8 @@ class VoiceSpeaker implements Speaker {
   final FlutterTts _tts = FlutterTts();
   AudioPlayer? _player; // a fresh player for every line, so an old line can never block a new one
   Map<String, Set<String>> _index = {};
+  DateTime _indexAt = DateTime.fromMillisecondsSinceEpoch(0); // when the list of ready-made files was last fetched
+  final Set<String> _missing = {}; // ready-made files looked for and not found, so we ask only once
   String? _dir;
   int _gen = 0;
   static const _indexKey = 'voice_index_v1';
@@ -90,6 +92,8 @@ class VoiceSpeaker implements Speaker {
       final res = await http.get(Uri.parse('${rawBase}voice/index.json')).timeout(const Duration(seconds: 8));
       if (res.statusCode != 200) return;
       _index = _parseIndex(res.body);
+      _indexAt = DateTime.now();
+      _missing.clear();
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString(_indexKey, res.body);
     } catch (_) {}
@@ -104,22 +108,35 @@ class VoiceSpeaker implements Speaker {
   }
 
   /// The ready-made sound file for a line, downloading it if needed. Null if there is none.
-  Future<Source?> _clip(TutorCharacter tutor, String lang, String text) async {
+  /// Ready-made files are in the normal mood, so other moods skip them unless [anyMood] says
+  /// a normal-mood file is better than the phone's own voice.
+  Future<Source?> _clip(TutorCharacter tutor, String lang, String text, {bool anyMood = false}) async {
     final voice = tutor.voiceFor(lang);
-    if (voice.isEmpty || voiceTone() != 'normal') return null; // ready-made files are in the normal mood
+    if (voice.isEmpty || (!anyMood && voiceTone() != 'normal')) return null;
     final id = clipId(voice, lang, text);
-    if (!(_index[tutor.id]?.contains(id) ?? false)) return null;
+    final listed = _index[tutor.id]?.contains(id) ?? false;
+    // A tutor with ready-made lines may have new ones our list does not know yet: look once anyway.
+    if (!listed && (!tutor.readyMade || _missing.contains(id))) return null;
     final url = '${rawBase}voice/${tutor.id}/$id.mp3';
-    if (kIsWeb || _dir == null) return UrlSource(url);
     try {
+      if (kIsWeb || _dir == null) return listed ? UrlSource(url) : null;
       final file = File('$_dir/voice_${tutor.id}_$id.mp3');
       if (await file.exists()) return DeviceFileSource(file.path);
       final res = await http.get(Uri.parse(url)).timeout(const Duration(seconds: 8));
+      if (res.statusCode == 404) _missing.add(id);
       if (res.statusCode != 200) return null;
       return DeviceFileSource((await _save('voice_${tutor.id}_$id.mp3', res.bodyBytes)).path);
     } catch (_) {
       return null;
     }
+  }
+
+  /// The best sound for a line: the ready-made file, else made now in the tutor's Edge voice, else
+  /// (in a mood other than normal) the ready-made normal-mood file. Null means the phone's own voice reads it.
+  Future<Source?> _source(TutorCharacter tutor, String lang, String text) async {
+    final s = await _clip(tutor, lang, text) ?? await _live(tutor, lang, text);
+    if (s != null || voiceTone() == 'normal') return s;
+    return _clip(tutor, lang, text, anyMood: true);
   }
 
   /// No ready-made file: make the line now in the tutor's Edge voice (needs internet).
@@ -144,12 +161,14 @@ class VoiceSpeaker implements Speaker {
   @override
   void prefetch(Iterable<String> texts, String lang, TutorCharacter tutor) {
     if (kIsWeb) return;
+    final lines = texts.toSet();
     () async {
+      // New lessons bring new ready-made files: make sure our list of them is fresh.
+      if (DateTime.now().difference(_indexAt) > const Duration(minutes: 10)) await _refreshIndex();
       // Get every line of the lesson ready while the child listens to the first ones.
-      for (final t in texts.toSet()) {
+      for (final t in lines) {
         if (t.replaceAll(_noise, '').trim().isEmpty) continue;
-        final l = langOf(t);
-        if (await _clip(tutor, l, t) == null) await _live(tutor, l, t);
+        await _source(tutor, langOf(t), t);
       }
     }();
   }
@@ -191,7 +210,7 @@ class VoiceSpeaker implements Speaker {
       if (token != _gen) return;
       if (part.replaceAll(_noise, '').trim().isEmpty) continue;
       lang = langOf(part); // English lessons read in English even when the app is in Malayalam
-      final source = await _clip(tutor, lang, part) ?? await _live(tutor, lang, part);
+      final source = await _source(tutor, lang, part);
       if (token != _gen) return;
       final played = source != null && await _play(source);
       if (!played && token == _gen) {

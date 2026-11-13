@@ -18,9 +18,10 @@ Scol follows two syllabuses: **Kerala State (SCERT)** and **CBSE (NCERT)**.
 
 1. **Your child opens the app.** Their tutor greets them and has already chosen what to learn today.
    Ideas your child found hard last time come first, then new lessons.
-2. **The tutor teaches.** A short explanation in simple words, spoken aloud, with pictures that build
-   up on the board: baskets of mangoes for multiplication, an abacus for hundreds, tens and ones,
-   a scale for centimetres.
+2. **The tutor teaches.** Not by reading the lesson out: the tutor explains each step in its own words, starting
+   from something your child knows, pointing at the pictures that build up on the board (baskets of mangoes for
+   multiplication, an abacus for hundreds, tens and ones, a scale for centimetres) and checking along the way.
+   The checked lesson line stays on screen under the tutor's words.
 3. **The tutor asks.** Your child answers by tapping a choice or typing a number. A level takes about five minutes.
 4. **Hands on.** Some questions are done with fingers: dragging sticks to build a triangle,
    moving beads on an abacus to make 235, sliding a scale under a pencil to measure it.
@@ -65,8 +66,8 @@ Tap **Parents** on the home screen (a small sum keeps children out). You will se
 - **What your child understands, in plain words.** For example: *"Counting equal groups: keeps
   making the same mistake: added the numbers instead of making groups. Scol will teach this again in a different way."*
 - **Time spent today, lessons done, and learning days.**
-- **Controls:** tutor language, which tutor, the tutor's mood (happy, normal, calm or strict), a daily time limit
-  (15 to 60 minutes), and voice on or off.
+- **Controls:** tutor language, which tutor, the tutor's mood (happy, normal, calm or strict), whether the tutor
+  teaches in its own words, a daily time limit (15 to 60 minutes), and voice on or off.
 
 When the daily limit is reached, the tutor says goodbye until tomorrow.
 
@@ -91,6 +92,7 @@ Your child picks one and can switch at any time.
 - A parent sets up the app. Scol asks only for a first name or nickname.
 - Your child's name and progress are stored **on your phone only**. They are not sent to us or anyone else.
 - The tutors' voices are made by a voice service from the lesson text. The app does not record your child.
+- The tutor's explanations are written by an AI service from the lesson text; only lesson text is sent, nothing about your child. A parent can turn this off, and the tutor then reads the lesson as written.
 - Asking the tutor questions is off until you turn it on. When on, only the words of the question and the lesson topic go to an AI service to get an answer; your child's name and progress never do.
 - No advertisements.
 - You can delete everything with one button in the parent area.
@@ -100,7 +102,7 @@ The app uses the internet to download new lessons and voice files, to check for 
 ## Try it
 
 1. On an Android phone or tablet, open the [Releases page](https://github.com/Amaljith75/scol/releases).
-2. Download the **.apk** file from the newest release (for example "Scol V1 build 5") and open it to install.
+2. Download the **.apk** file from the newest release (for example "Scol V1 build 6") and open it to install.
    (Your phone may ask you to allow installing apps from your browser.)
 3. Do the one-minute parent setup: name, syllabus, class, language, tutor.
 4. Hand the phone to your child.

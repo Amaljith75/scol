@@ -233,6 +233,20 @@ class _ParentScreenState extends State<ParentScreen> {
                 ),
                 SwitchListTile(
                   contentPadding: EdgeInsets.zero,
+                  title: const Text('The tutor teaches in its own words'),
+                  subtitle: const Text('Before a level starts, the tutor brain (an AI service: OpenRouter or Google Gemini) turns each '
+                      'teaching step of the checked lesson into a proper explanation: it starts from what your child knows, points at '
+                      'the picture on the board and checks along the way. The lesson line stays in view, and questions, hints and answers '
+                      'are always exactly as written. Only lesson text goes to the AI service, never anything about your child. '
+                      'Each level is written once and then kept on the phone.'),
+                  value: appState.teachOn,
+                  onChanged: (v) {
+                    appState.teachOn = v;
+                    appState.save();
+                  },
+                ),
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
                   title: const Text('Let my child ask the tutor questions'),
                   subtitle: const Text('Your child can speak or type a question about the lesson. The words of the question and the lesson '
                       'topic are sent to an AI service (OpenRouter or Google Gemini) to get an answer. Your child\'s name and progress '

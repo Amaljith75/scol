@@ -1,7 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
+import 'package:scol/brain.dart';
 import 'package:scol/content.dart';
 import 'package:scol/edge_voice.dart';
 import 'package:scol/mastery.dart';
@@ -10,6 +14,7 @@ import 'package:scol/state.dart';
 import 'package:scol/tutor.dart';
 import 'package:scol/updates.dart';
 import 'package:scol/voice.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Bundle loadBundle() => Bundle.parse(File('assets/content/bundle.json').readAsStringSync());
 
@@ -308,6 +313,44 @@ void main() {
       expect(weeklyReport(AppState(), b, 'en').length, greaterThan(1)); // works with no data too
     });
 
+    test('the brain\'s words replace the read line at teaching steps, never at questions', () {
+      final lesson = mathsLessons(loadBundle()).first;
+      final d = make(lesson, {});
+      final written = [for (final s in lesson.steps) s.isAsk ? null : 'Taught: ${pick(s.text, 'en')}'];
+      final firstLine = d.bubble;
+      d.setTeaching(written);
+      expect(d.taughtByBrain, true);
+      expect(d.bubble, startsWith('Taught: '));
+      expect(d.lessonLine, firstLine); // the checked line stays available to show
+      while (d.phase == Phase.talking) {
+        expect(d.bubble, startsWith('Taught: '));
+        d.next();
+      }
+      expect(d.taughtByBrain, false);
+      expect(d.bubble, pick(d.question!.text, 'en')); // questions are asked exactly as written
+      // Switching language drops the brain's words (they were English) until new ones come.
+      d.answer(d.question!.answer);
+      d.next();
+      d.setLang('ml');
+      expect(d.taughtByBrain, false);
+      // A list that does not fit the lesson is ignored.
+      d.setTeaching(['x']);
+      expect(d.taughtByBrain, false);
+    });
+
+    test('while waiting for the brain the first line is shown, then spoken as written if nothing comes', () {
+      final b = loadBundle();
+      final lesson = mathsLessons(b).first;
+      final d = TutorDirector(
+          lesson: lesson, lang: 'en', tutor: b.tutors.first, recordFor: (_) => ConceptRecord(), day: 1, waitForTeaching: true);
+      expect(d.bubble, pick(lesson.steps.first.text, 'en'));
+      d.stopWaiting();
+      expect(d.bubble, pick(lesson.steps.first.text, 'en'));
+      d.setTeaching(null);
+      expect(d.bubble, pick(lesson.steps.first.text, 'en'));
+      expect(d.taughtByBrain, false);
+    });
+
     test('the tutor looks at the board while teaching and at the answers while asking', () {
       final d = make(mathsLessons(loadBundle()).first, {});
       expect(d.look, Look.board);
@@ -315,6 +358,64 @@ void main() {
         d.next();
       }
       expect(d.look, Look.answers);
+    });
+  });
+
+  group('teaching from the brain', () {
+    test('the request carries only lesson text, with the board and the answers the tutor must not give away', () {
+      final b = loadBundle();
+      final lesson = mathsLessons(b).first;
+      final req = teachRequest(lesson, 'ml', b.tutors.first, 'calm');
+      expect(req['mode'], 'teach');
+      expect(req['lang'], 'ml');
+      expect(req['tutor'], 'Mio');
+      expect(req['tone'], 'calm');
+      final steps = (req['steps'] as List).cast<Map>();
+      expect(steps.length, lesson.steps.length);
+      expect(steps.where((s) => s['t'] == 'say').length, lesson.steps.where((s) => !s.isAsk).length);
+      expect(steps.any((s) => '${s['visual'] ?? ''}'.isNotEmpty), true);
+      expect(steps.where((s) => s['t'] == 'ask').every((s) => '${s['answer']}'.isNotEmpty), true);
+      expect('$req', isNot(contains('device')));
+      expect(teachKey(lesson, 'ml', b.tutors.first, 'calm'), teachKey(lesson, 'ml', b.tutors.first, 'calm'));
+      expect(teachKey(lesson, 'ml', b.tutors.first, 'calm'), isNot(teachKey(lesson, 'en', b.tutors.first, 'calm')));
+    });
+
+    test('written lines are lined up with the steps, and a wrong count is refused', () {
+      final lesson = mathsLessons(loadBundle()).first;
+      final says = lesson.steps.where((s) => !s.isAsk).length;
+      final ok = alignTeaching(lesson, List.generate(says, (i) => 'line $i'))!;
+      expect(ok.length, lesson.steps.length);
+      for (var i = 0; i < lesson.steps.length; i++) {
+        expect(ok[i] == null, lesson.steps[i].isAsk);
+      }
+      expect(alignTeaching(lesson, List.generate(says + 1, (i) => 'line $i')), isNull);
+      expect(alignTeaching(lesson, null), isNull);
+    });
+
+    test('a lesson is fetched once and then served from the phone', () async {
+      SharedPreferences.setMockInitialValues({});
+      final b = loadBundle();
+      final lesson = mathsLessons(b).first;
+      final says = lesson.steps.where((s) => !s.isAsk).length;
+      var calls = 0;
+      final client = MockClient((req) async {
+        calls++;
+        final body = jsonDecode(req.body) as Map;
+        expect(body['mode'], 'teach');
+        expect('${body['device']}'.length, 24);
+        expect(body.containsKey('question'), false);
+        return http.Response(jsonEncode({'steps': List.generate(says, (i) => 'Taught $i'), 'by': 'test'}), 200,
+            headers: {'content-type': 'application/json'});
+      });
+      final first = await teachLesson(bundle: b, lesson: lesson, lang: 'en', tutor: b.tutors.first, client: client);
+      expect(first, isNotNull);
+      expect(first!.whereType<String>().first, 'Taught 0');
+      final second = await teachLesson(bundle: b, lesson: lesson, lang: 'en', tutor: b.tutors.first, client: client);
+      expect(second, first);
+      expect(calls, 1);
+      // A server that is busy means: read the lesson as written.
+      final busy = MockClient((_) async => http.Response('{"error":"all_busy"}', 503));
+      expect(await teachLesson(bundle: b, lesson: lesson, lang: 'ml', tutor: b.tutors.first, client: busy), isNull);
     });
   });
 }

@@ -41,6 +41,13 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
   int _hop = 0; // the tutor hops each time the lesson moves on
   bool _explaining = false; // waiting for the tutor brain to explain more
   LessonStep? _lastStep;
+  Timer? _teachTimer;
+  int _teachRequest = 0;
+
+  /// Should the tutor brain teach this lesson in its own words? Not for the practice lesson,
+  /// which is put together differently for every child.
+  bool get _brainTeaches =>
+      appState.teachOn && !widget.lesson.id.endsWith('/revision') && '${contentStore.bundle.brain['url'] ?? ''}'.isNotEmpty;
 
   @override
   void initState() {
@@ -56,10 +63,12 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
       pickStyle: appState.pickStyle,
       onStyleResult: appState.recordStyle,
       speaker: appState.voiceOn ? appSpeaker : null,
+      waitForTeaching: _brainTeaches,
     );
     _lastSpot = d.spot;
     if (appState.voiceOn) appSpeaker?.prefetch(d.allLines, d.lang, d.tutor);
     _lastStep = d.current;
+    _fetchTeaching();
     d.addListener(_onChange);
     WidgetsBinding.instance.addObserver(this);
     _peekTimer = Timer.periodic(const Duration(milliseconds: 2600), (_) {
@@ -90,6 +99,29 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     } else if (state == AppLifecycleState.resumed) {
       cancelLeftLevel();
     }
+  }
+
+  /// Asks the brain to write this lesson out in the tutor's own words. The written lines
+  /// are used as soon as they arrive; until then (at most a moment) the lesson is read as written.
+  Future<void> _fetchTeaching() async {
+    if (!_brainTeaches) return;
+    final request = ++_teachRequest;
+    final lang = d.lang;
+    _teachTimer?.cancel();
+    _teachTimer = Timer(const Duration(milliseconds: 2500), () {
+      if (mounted) d.stopWaiting(); // do not keep the child waiting: start, and switch over when the words come
+    });
+    final written = await teachLesson(
+      bundle: contentStore.bundle,
+      lesson: widget.lesson,
+      lang: lang,
+      tutor: d.tutor,
+      tone: appState.tone,
+    );
+    if (!mounted || request != _teachRequest || d.lang != lang) return;
+    _teachTimer?.cancel();
+    d.setTeaching(written);
+    if (written != null && appState.voiceOn) appSpeaker?.prefetch(written.whereType<String>(), lang, d.tutor);
   }
 
   /// What this lesson teaches, for the tutor brain when the child asks a question.
@@ -148,6 +180,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     cancelLeftLevel();
     _walkTimer?.cancel();
     _peekTimer?.cancel();
+    _teachTimer?.cancel();
     d.removeListener(_onChange);
     d.dispose();
     super.dispose();
@@ -171,6 +204,8 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
         String second = '';
         if (appState.bilingual && step != null && step.text is Map && (step.text as Map).containsKey(other)) {
           second = '${(step.text as Map)[other]}';
+        } else if (d.taughtByBrain) {
+          second = d.lessonLine; // the checked lesson line stays in view under the tutor's own words
         }
         return Scaffold(
           backgroundColor: Color.lerp(cream, Color(widget.subject.color), 0.07),
@@ -331,6 +366,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     appState.switchLang();
     d.setLang(appState.mainLang);
     if (appState.voiceOn) appSpeaker?.prefetch(d.allLines, d.lang, d.tutor);
+    _fetchTeaching();
     setState(() {});
   }
 

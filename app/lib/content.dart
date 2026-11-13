@@ -37,6 +37,7 @@ class TutorCharacter {
     this.praise,
     this.oops,
     this.cheer,
+    this.readyMade = false,
   });
   final String id;
   final dynamic name;
@@ -53,6 +54,9 @@ class TutorCharacter {
   final dynamic praise;
   final dynamic oops;
   final dynamic cheer;
+
+  /// True when this tutor's lesson lines have sound files made ahead in voice/ (see tools/build_voice.py).
+  final bool readyMade;
 
   String displayName(String lang) => pick(name, lang);
 
@@ -88,6 +92,7 @@ class TutorCharacter {
       praise: j['praise'],
       oops: j['oops'],
       cheer: j['cheer'],
+      readyMade: j['ready_made'] == true,
     );
   }
 }
