@@ -4,23 +4,22 @@ Scol has two separate "AI" jobs. Neither key is ever inside the app.
 
 | Job | What it does | Where it runs | What it uses now |
 | --- | --- | --- | --- |
-| **Brain** | Answers the questions a child asks with the 🎙️ button | A small server: the `brain` function in the Supabase project `scol` | Kimi (`kimi-k3`) |
+| **Brain** | Answers the questions a child asks with the 🎙️ button | A small server: the `brain` function in the Supabase project `scol` | OpenRouter free models: Gemma 4 31B, with Nemotron Ultra as backup |
 | **Voice** | Turns every line Mio says into a sound file, ahead of time | GitHub, in the "Make tutor voices" workflow | Microsoft Edge voices |
 
 Lessons themselves are **not** written by the AI while a child learns. They are fixed text in `content/`,
 checked by people, so the tutor never says something wrong about the lesson or the screen. The brain is only
 used for the child's own questions.
 
-## One-time setup (needed before questions work)
+## Setup (done)
 
-1. **Top up your Kimi account.** The key works, but Kimi refuses requests because the account balance is empty
-   ("suspended due to insufficient balance"). Add credit at platform.kimi.ai.
-2. **Give GitHub permission to update the server.** Create a token at
-   https://supabase.com/dashboard/account/tokens and save it in the GitHub repository as a secret named
-   `SUPABASE_ACCESS_TOKEN` (Settings > Secrets and variables > Actions > New repository secret).
-3. Open **Actions > Deploy tutor brain > Run workflow**. The log shows which key it found, which models that key
-   can use, a test answer, and finally an answer from the live server.
-4. In the app, a parent turns on **Let my child ask the tutor questions** in the Parents area.
+The `SUPABASE_ACCESS_TOKEN` and `OPENROUTER_API_KEY` secrets are in GitHub and the brain is live. A parent still has to
+turn on **Let my child ask the tutor questions** in the Parents area of the app.
+
+Free OpenRouter models allow 50 questions a day for the whole account (1,000 a day once $10 of credit has ever been
+bought), and are sometimes busy. That is why `brain.json` lists a backup model and limits questions to 50 a day.
+
+Edit `brain.json` by changing only the values you need; it must stay a complete file, starting with `{` and ending with `}`.
 
 ## Changing the AI model or company (no new app needed)
 
