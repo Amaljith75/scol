@@ -15,6 +15,17 @@ en: The new ten moves over to join the tens. 300 and 70 and 13 make 383.
 ml: ആ പുതിയ പത്ത് പത്തുകളുടെ കൂടെ ചേരും. 300-ഉം 70-ഉം 13-ഉം ചേർന്നാൽ 383.
 visual: steps 200 + 100 = 300 / 40 + 30 = 70 / 8 + 5 = 13 / 300 + 70 + 13 = 383
 
+## say
+en: A place can hold only up to 9. Ten ones become one ten, so they move to the tens place.
+ml: ഒരു സ്ഥാനത്ത് 9 വരെ മാത്രമേ നിൽക്കൂ. പത്ത് ഒന്നുകൾ ഒരു പത്താകും, അവ പത്തിന്റെ സ്ഥാനത്തേക്ക് മാറും.
+visual: steps 10 ones = 1 ten
+
+## say
+label: example
+en: Try 126 + 37. Ones: 6 and 7 is 13, so write 3 and move 1 ten. Tens: 2 and 3 and the 1 moved is 6. The sum is 163.
+ml: 126 + 37 നോക്കാം. ഒന്നുകൾ: 6-ഉം 7-ഉം 13, 3 എഴുതി 1 പത്ത് മാറ്റുക. പത്തുകൾ: 2-ഉം 3-ഉം മാറ്റിയ 1-ഉം ചേർന്നാൽ 6. ആകെ 163.
+visual: steps 6 + 7 = 13 / 20 + 30 + 10 = 60 / 100 + 60 + 3 = 163
+
 ## ask
 form: number
 en: 327 + 145 = ?

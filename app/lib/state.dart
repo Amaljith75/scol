@@ -23,6 +23,9 @@ class AppState extends ChangeNotifier {
   String tutorId = 'minnu';
   bool voiceOn = true;
   int dailyLimitMin = 30;
+  bool askEnabled = false; // a parent must turn on questions to the AI tutor
+  bool remindersOn = true;
+  int studyMinute = 18 * 60; // daily study time, minutes after midnight (6:00 PM)
   List<String> subjectKeys = [];
 
   int stars = 0;
@@ -48,6 +51,8 @@ class AppState extends ChangeNotifier {
   bool get bilingual => lang == 'both';
   bool get timeUp => todaySeconds >= dailyLimitMin * 60;
   int get dailyGoal => 2;
+  bool get goalDoneToday => lastActiveDay == dayNumber() && todayLessons >= dailyGoal;
+  bool get learnedToday => lastActiveDay == dayNumber();
 
   void _rollDay() {
     final d = dayNumber();
@@ -234,6 +239,9 @@ class AppState extends ChangeNotifier {
         'tutorId': tutorId,
         'voiceOn': voiceOn,
         'dailyLimitMin': dailyLimitMin,
+        'askEnabled': askEnabled,
+        'remindersOn': remindersOn,
+        'studyMinute': studyMinute,
         'subjectKeys': subjectKeys,
         'stars': stars,
         'xp': xp,
@@ -259,6 +267,9 @@ class AppState extends ChangeNotifier {
     tutorId = j['tutorId'] as String? ?? 'minnu';
     voiceOn = j['voiceOn'] != false;
     dailyLimitMin = (j['dailyLimitMin'] as num?)?.toInt() ?? 30;
+    askEnabled = j['askEnabled'] == true;
+    remindersOn = j['remindersOn'] != false;
+    studyMinute = (j['studyMinute'] as num?)?.toInt() ?? 18 * 60;
     subjectKeys = ((j['subjectKeys'] as List?) ?? const []).map((e) => '$e').toList();
     stars = (j['stars'] as num?)?.toInt() ?? 0;
     xp = (j['xp'] as num?)?.toInt() ?? 0;

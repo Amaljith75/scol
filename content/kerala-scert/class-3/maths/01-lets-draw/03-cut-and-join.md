@@ -15,6 +15,17 @@ en: Look, you get two triangles! Shapes can hide inside other shapes.
 ml: നോക്കൂ, രണ്ട് ത്രികോണങ്ങൾ കിട്ടി! രൂപങ്ങൾക്കുള്ളിൽ വേറെ രൂപങ്ങൾ ഒളിഞ്ഞിരിക്കാം.
 visual: shapes triangle triangle
 
+## say
+en: If you cut a rectangle straight across the middle instead, you get two smaller rectangles. The cut decides the new shapes.
+ml: ചതുരം നടുവിലൂടെ നേരെ കുറുകെ മുറിച്ചാൽ രണ്ട് ചെറിയ ചതുരങ്ങൾ കിട്ടും. എങ്ങനെ മുറിക്കുന്നു എന്നതനുസരിച്ച് പുതിയ രൂപങ്ങൾ മാറും.
+visual: shapes rectangle rectangle
+
+## say
+label: example
+en: Joining works the other way. Put two triangles side by side and they can make a rectangle again.
+ml: ചേർക്കുന്നത് നേരെ തിരിച്ചാണ്. രണ്ട് ത്രികോണങ്ങൾ ചേർത്തുവെച്ചാൽ വീണ്ടും ഒരു ചതുരമാകും.
+visual: steps triangle + triangle = rectangle
+
 ## ask
 form: number
 en: A rectangle is cut once, from corner to corner. How many triangles do you get?

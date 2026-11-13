@@ -39,7 +39,8 @@ class PathScreen extends StatelessWidget {
         var ci = -1;
         for (final ch in subject.chapters) {
           ci++;
-          final chColor = chapterColors[ci % chapterColors.length];
+          final pal = subject.palette.isEmpty ? chapterColors : [for (final c in subject.palette) Color(c)];
+          final chColor = pal[ci % pal.length];
           items.add(Container(
             margin: const EdgeInsets.only(bottom: 18, top: 6),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -59,7 +60,7 @@ class PathScreen extends StatelessWidget {
               child: Align(
                 alignment: Alignment(x, 0),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
-                  if (isCurrent && x > 0) TutorAvatar(tutor: tutor, size: 64, mood: Mood.happy, gaze: const Offset(0.9, 0.1)),
+                  if (isCurrent && x > 0) tutorHero(TutorAvatar(tutor: tutor, size: 64, mood: Mood.happy, gaze: const Offset(0.9, 0.1))),
                   Column(mainAxisSize: MainAxisSize.min, children: [
                     SizedBox(
                       width: 92,
@@ -92,7 +93,7 @@ class PathScreen extends StatelessWidget {
                               color: done || isCurrent ? ink : const Color(0xFF9A948A))),
                     ),
                   ]),
-                  if (isCurrent && x <= 0) TutorAvatar(tutor: tutor, size: 64, mood: Mood.happy, gaze: const Offset(-0.9, 0.1)),
+                  if (isCurrent && x <= 0) tutorHero(TutorAvatar(tutor: tutor, size: 64, mood: Mood.happy, gaze: const Offset(-0.9, 0.1))),
                 ]),
               ),
             ));

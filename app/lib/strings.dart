@@ -34,13 +34,28 @@ const Map<String, List<String>> _s = {
   'lookAgain': ['Look at it once more, slowly.', 'പതുക്കെ ഒന്നുകൂടി നോക്കൂ.'],
   'tryLater': ['We will try this one again in a little while.', 'ഇത് നമുക്ക് കുറച്ചു കഴിഞ്ഞ് ഒന്നുകൂടി നോക്കാം.'],
   'again': ['Remember this one? Let us try again.', 'ഇത് ഓർമ്മയുണ്ടോ? ഒന്നുകൂടി നോക്കാം.'],
-  'think': ['Think about it, then tap the button.', 'ആലോചിച്ചിട്ട് ബട്ടൺ അമർത്തൂ.'],
+  'think': ['Think about it, then tap Show answer.', "ആലോചിച്ചിട്ട് 'ഉത്തരം കാണിക്കൂ' അമർത്തൂ."],
   'example': ['Example', 'ഉദാഹരണം'],
   'story': ['A little story', 'ഒരു കൊച്ചു കഥ'],
   'picture': ['Look at it this way', 'ഇങ്ങനെ നോക്കൂ'],
   'home': ['Home', 'ഹോം'],
   'dragSticks': ['Drag a stick onto a shape', 'ഒരു ഈർക്കിൽ രൂപത്തിലേക്ക് വലിച്ചിടൂ'],
   'moveBeads': ['Tap or drag on a rod to move beads', 'മണികൾ നീക്കാൻ കമ്പിയിൽ തൊടുകയോ വലിക്കുകയോ ചെയ്യൂ'],
+  'askTitle': ['Ask a question', 'ഒരു ചോദ്യം ചോദിക്കൂ'],
+  'askOff': [
+    'Ask a grown-up to turn on "Ask questions" in the Parents section first.',
+    'ആദ്യം രക്ഷിതാക്കളുടെ ഭാഗത്ത് "ചോദ്യങ്ങൾ ചോദിക്കാം" ഓണാക്കാൻ മുതിർന്നവരോട് പറയൂ.'
+  ],
+  'askPrompt': ['Ask {name} anything about this lesson!', 'ഈ പാഠത്തെക്കുറിച്ച് {name}-നോട് എന്തും ചോദിക്കൂ!'],
+  'askListening': ['I am listening...', 'ഞാൻ കേൾക്കുന്നു...'],
+  'askThinking': ['Let me think...', 'ഞാൻ ആലോചിക്കട്ടെ...'],
+  'askType': ['Or type your question', 'അല്ലെങ്കിൽ ചോദ്യം ടൈപ്പ് ചെയ്യൂ'],
+  'askNoMic': [
+    'Speaking is not available on this phone. You can type instead.',
+    'ഈ ഫോണിൽ സംസാരിച്ച് ചോദിക്കാൻ പറ്റില്ല. ടൈപ്പ് ചെയ്യാം.'
+  ],
+  'ask': ['Ask', 'ചോദിക്കൂ'],
+  'newLessons': ['New lessons have arrived!', 'പുതിയ പാഠങ്ങൾ എത്തി!'],
   'slideScale': ['Drag the scale left or right', 'സ്കെയിൽ ഇടത്തോട്ടോ വലത്തോട്ടോ വലിക്കൂ'],
   'locked': ['Finish the lesson before this one first.', 'ഇതിന് മുമ്പുള്ള പാഠം ആദ്യം പൂർത്തിയാക്കൂ.'],
 };

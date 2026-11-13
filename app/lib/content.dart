@@ -40,7 +40,8 @@ class TutorCharacter {
   final dynamic name;
   final String shape; // blob | spiky | cloud | flower | bean
   final int color;
-  final String voice;
+  /// Ready-made voice per language, e.g. {'en': 'en-IN-…Neural'}; empty means the phone's own voice.
+  final Map<String, String> voice;
   final String eyes; // round | wide | soft | curious | sleepy
   final double energy;
   final dynamic about;
@@ -50,6 +51,8 @@ class TutorCharacter {
   final dynamic cheer;
 
   String displayName(String lang) => pick(name, lang);
+
+  String voiceFor(String lang) => voice[lang] ?? '';
 
   List<String> praiseList(String lang) {
     final p = praise;
@@ -67,7 +70,11 @@ class TutorCharacter {
       name: j['name'],
       shape: j['shape'] as String? ?? 'blob',
       color: (int.tryParse(hex, radix: 16) ?? 0xFFB81F) | 0xFF000000,
-      voice: j['voice'] as String? ?? '',
+      voice: switch (j['voice']) {
+        Map v => v.map((k, x) => MapEntry('$k', '$x')),
+        String v when v.isNotEmpty => {'en': v, 'ml': v},
+        _ => const {},
+      },
       eyes: j['eyes'] as String? ?? 'round',
       energy: (j['energy'] as num?)?.toDouble() ?? 1.0,
       about: j['about'],
@@ -79,7 +86,7 @@ class TutorCharacter {
   }
 }
 
-const fallbackTutor = TutorCharacter(id: 'minnu', name: 'Minnu', shape: 'blob', color: 0xFFFFB81F, voice: 'Sulafat');
+const fallbackTutor = TutorCharacter(id: 'minnu', name: 'Mio', shape: 'blob', color: 0xFFFFB81F, voice: {});
 
 class LessonStep {
   LessonStep({
@@ -179,13 +186,23 @@ class Chapter {
 }
 
 class Subject {
-  Subject({required this.id, required this.key, required this.name, required this.icon, required this.color, required this.chapters});
+  Subject(
+      {required this.id,
+      required this.key,
+      required this.name,
+      required this.icon,
+      required this.color,
+      required this.chapters,
+      this.palette = const []});
   final String id;
   final String key;
   final dynamic name;
   final String icon;
   final int color;
   final List<Chapter> chapters;
+
+  /// One colour per chapter (repeats if there are more chapters).
+  final List<int> palette;
 
   List<Lesson> get lessons => [for (final c in chapters) ...c.lessons];
 
@@ -197,6 +214,9 @@ class Subject {
       name: j['name'],
       icon: j['icon'] as String? ?? '📘',
       color: (int.tryParse(hex, radix: 16) ?? 0x5B6CFF) | 0xFF000000,
+      palette: ((j['palette'] as List?) ?? const [])
+          .map((e) => (int.tryParse('$e'.replaceAll('#', ''), radix: 16) ?? 0x5B6CFF) | 0xFF000000)
+          .toList(),
       chapters: ((j['chapters'] as List?) ?? const [])
           .map((e) => Chapter.fromJson((e as Map).cast<String, dynamic>()))
           .toList(),
@@ -219,13 +239,16 @@ class Board {
 
 class Bundle {
   Bundle({required this.version, required this.built, required this.boards, required this.concepts,
-      this.tutors = const [fallbackTutor], this.phrases = const {}});
+      this.tutors = const [fallbackTutor], this.phrases = const {}, this.brain = const {}});
   final String version;
   final int built;
   final List<Board> boards;
   final Map<String, dynamic> concepts;
   final List<TutorCharacter> tutors;
   final Map<String, dynamic> phrases;
+
+  /// Where the live tutor brain is: {'url': ..., 'public_key': ...}. Never a secret key.
+  final Map<String, dynamic> brain;
 
   /// A line the tutor says, e.g. phrase('tryLater', 'ml').
   String phrase(String key, String lang) => pick(phrases[key], lang);
@@ -242,6 +265,7 @@ class Bundle {
     return Bundle(
       tutors: ts.isEmpty ? const [fallbackTutor] : ts,
       phrases: ((j['phrases'] as Map?) ?? const {}).cast<String, dynamic>(),
+      brain: ((j['brain'] as Map?) ?? const {}).cast<String, dynamic>(),
       version: j['version'] as String? ?? '',
       built: (j['built'] as num?)?.toInt() ?? 0,
       concepts: ((j['concepts'] as Map?) ?? const {}).cast<String, dynamic>(),

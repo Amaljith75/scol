@@ -15,6 +15,17 @@ en: Odd numbers always leave one out. 1, 3, 5, 7 and 9 are odd. To check a big n
 ml: ഒറ്റ സംഖ്യകളിൽ എപ്പോഴും ഒന്ന് ബാക്കി വരും. 1, 3, 5, 7, 9 ഒറ്റ സംഖ്യകളാണ്. വലിയ സംഖ്യ പരിശോധിക്കാൻ അവസാനത്തെ അക്കം നോക്കിയാൽ മതി.
 visual: count 7 🔵
 
+## say
+en: The last digit tells you. If a number ends in 0, 2, 4, 6 or 8, it is even. If it ends in 1, 3, 5, 7 or 9, it is odd.
+ml: അവസാനത്തെ അക്കം നോക്കിയാൽ മതി. 0, 2, 4, 6, 8 ഇവയിൽ അവസാനിച്ചാൽ ഇരട്ട. 1, 3, 5, 7, 9 ഇവയിൽ അവസാനിച്ചാൽ ഒറ്റ.
+visual: steps even: 0 2 4 6 8 / odd: 1 3 5 7 9
+
+## say
+label: example
+en: 126 ends in 6, so it is even. 343 ends in 3, so it is odd.
+ml: 126 അവസാനിക്കുന്നത് 6-ൽ, അതുകൊണ്ട് ഇരട്ട. 343 അവസാനിക്കുന്നത് 3-ൽ, അതുകൊണ്ട് ഒറ്റ.
+visual: steps 126 → even / 343 → odd
+
 ## ask
 form: choice
 en: Which of these is an even number?

@@ -15,6 +15,17 @@ en: 1000 and 1 together make 1001. Then come 1002, 1003, and so on.
 ml: 1000-ഉം 1-ഉം ചേർന്നാൽ 1001. പിന്നെ 1002, 1003 എന്നിങ്ങനെ.
 visual: text 1000 + 1 = 1001
 
+## say
+en: 1000 is the same as 10 hundreds. Think of 10 boxes, each with 100 pencils.
+ml: 1000 എന്നാൽ 10 നൂറുകൾ. 100 പെൻസിൽ വീതമുള്ള 10 പെട്ടികൾ ആലോചിച്ചു നോക്കൂ.
+visual: text 10 × 100 = 1000
+
+## say
+label: example
+en: After 1000 we keep counting the same way. 1010 is one thousand and ten. 1100 is one thousand and one hundred.
+ml: 1000 കഴിഞ്ഞും അതേ രീതിയിൽ എണ്ണാം. 1010 എന്നാൽ ആയിരത്തി പത്ത്. 1100 എന്നാൽ ആയിരത്തി ഒരുനൂറ്.
+visual: pattern 1000 1001 1002 ... 1010
+
 ## ask
 form: number
 en: Which chest number comes just after 1004?

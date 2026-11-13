@@ -6,6 +6,7 @@ import 'package:share_plus/share_plus.dart';
 
 import '../content.dart';
 import '../mastery.dart';
+import '../reminders.dart';
 import '../report.dart';
 import '../state.dart';
 import '../voice.dart';
@@ -35,6 +36,12 @@ Future<void> openParentZone(BuildContext context) async {
   if (ok == true && context.mounted) {
     Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ParentScreen()));
   }
+}
+
+String studyTimeLabel(int minute) {
+  final h = minute ~/ 60, m = minute % 60;
+  final h12 = h % 12 == 0 ? 12 : h % 12;
+  return '$h12:${m.toString().padLeft(2, '0')} ${h < 12 ? 'AM' : 'PM'}';
 }
 
 String _statusWords(ConceptRecord r) {
@@ -208,13 +215,54 @@ class _ParentScreenState extends State<ParentScreen> {
                 SwitchListTile(
                   contentPadding: EdgeInsets.zero,
                   title: const Text('Tutor speaks aloud'),
-                  subtitle: const Text('Plays ready-made voice files, or the phone voice when a file is not ready. Nothing is recorded.'),
+                  subtitle: const Text('Mio has a ready-made natural voice. The other tutors, and live answers, use the phone\'s own voice.'),
                   value: appState.voiceOn,
                   onChanged: (v) {
                     appState.voiceOn = v;
                     appState.save();
                   },
                 ),
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: const Text('Let my child ask the tutor questions'),
+                  subtitle: const Text('Your child can speak or type a question about the lesson. The words of the question and the lesson '
+                      'topic are sent to an AI service (Kimi, by Moonshot AI) to get an answer. Your child\'s name and progress '
+                      'are never sent. Speech is turned into words by the phone\'s own speech service. Off unless you turn it on.'),
+                  value: appState.askEnabled,
+                  onChanged: (v) {
+                    appState.askEnabled = v;
+                    appState.save();
+                  },
+                ),
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: const Text('Daily study reminders'),
+                  subtitle: Text('At ${studyTimeLabel(appState.studyMinute)} every day, and a friendly call back if a level is left halfway.'),
+                  value: appState.remindersOn,
+                  onChanged: (v) async {
+                    appState.remindersOn = v;
+                    await appState.save();
+                    if (v) await askReminderPermission();
+                    await planReminders(appState, bundle);
+                  },
+                ),
+                if (appState.remindersOn)
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: OutlinedButton.icon(
+                      icon: const Icon(Icons.schedule_rounded),
+                      label: Text('Study time: ${studyTimeLabel(appState.studyMinute)}'),
+                      onPressed: () async {
+                        final t = await showTimePicker(
+                            context: context,
+                            initialTime: TimeOfDay(hour: appState.studyMinute ~/ 60, minute: appState.studyMinute % 60));
+                        if (t == null) return;
+                        appState.studyMinute = t.hour * 60 + t.minute;
+                        await appState.save();
+                        await planReminders(appState, bundle);
+                      },
+                    ),
+                  ),
                 h('Account'),
                 OutlinedButton(
                   onPressed: () {

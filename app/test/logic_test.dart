@@ -7,6 +7,7 @@ import 'package:scol/mastery.dart';
 import 'package:scol/report.dart';
 import 'package:scol/state.dart';
 import 'package:scol/tutor.dart';
+import 'package:scol/updates.dart';
 import 'package:scol/voice.dart';
 
 Bundle loadBundle() => Bundle.parse(File('assets/content/bundle.json').readAsStringSync());
@@ -86,12 +87,45 @@ void main() {
     test('five tutors, each with a voice and their own lines', () {
       final b = loadBundle();
       expect(b.tutors.length, 5);
-      expect(b.tutors.map((t) => t.voice).toSet().length, 5);
+      expect(b.tutors.map((t) => t.displayName('en')), ['Mio', 'Leo', 'Yuki', 'Ruby', 'Ollie']);
+      expect(b.tutors.first.voiceFor('ml'), contains('ml-IN')); // only Mio has a ready-made voice
+      expect(b.tutors.skip(1).every((t) => t.voiceFor('en').isEmpty), true);
+      expect(b.brain['url'], startsWith('https://'));
+      expect('${b.brain}'.toLowerCase(), isNot(contains('sk-'))); // never a secret key in the app
       for (final t in b.tutors) {
         expect(pick(t.hello, 'ml'), isNotEmpty);
         expect(t.praiseList('ml').length, greaterThan(1));
       }
       expect(b.phrase('tryLater', 'ml'), isNotEmpty);
+    });
+
+    test('Class 3 EVS has four chapters, English medium, each lesson with a story and a picture', () {
+      final b = loadBundle();
+      final evs = b.subjectsFor('kerala-scert', 3).firstWhere((s) => s.key == 'evs');
+      expect(evs.chapters.length, 4);
+      expect(evs.palette, isNotEmpty);
+      for (final l in evs.lessons) {
+        expect(l.alts.keys.toSet(), {'story', 'picture'}, reason: l.id);
+        expect(l.steps.where((s) => !s.isAsk).length, greaterThanOrEqualTo(4), reason: '${l.id} teaches first');
+      }
+    });
+
+    test('lines the tutor speaks never describe button colours', () {
+      final b = loadBundle();
+      final words = RegExp(r'\b(green|violet|purple|blue|red) button', caseSensitive: false);
+      for (final v in b.phrases.values) {
+        expect(words.hasMatch('$v'), false, reason: '$v');
+      }
+    });
+
+    test('language of a line is detected for the voice', () {
+      expect(langOf('Look! Here are 3 baskets.'), 'en');
+      expect(langOf('നോക്കൂ! 3 കൊട്ടകൾ.'), 'ml');
+    });
+
+    test('app update check reads the build number', () {
+      expect(parseBuild('name: scol\nversion: 1.0.0+3\n'), 3);
+      expect(parseBuild('nothing here'), isNull);
     });
 
     test('voice file names match the voice builder', () {

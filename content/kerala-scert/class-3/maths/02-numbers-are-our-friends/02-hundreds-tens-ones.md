@@ -15,6 +15,17 @@ en: 3 beads in hundreds, 4 in tens, 2 in ones. That is 300 and 40 and 2. The num
 ml: നൂറിൽ 3 മണി, പത്തിൽ 4, ഒന്നിൽ 2. അതായത് 300-ഉം 40-ഉം 2-ഉം. സംഖ്യ 342.
 visual: text 342 = 300 + 40 + 2
 
+## say
+en: The same digit is worth different amounts in different places. In 222, the first 2 is 200, the next is 20, and the last is just 2.
+ml: ഒരേ അക്കത്തിന് സ്ഥാനമനുസരിച്ച് വില മാറും. 222-ൽ ആദ്യത്തെ 2 എന്നാൽ 200, അടുത്തത് 20, അവസാനത്തേത് 2 മാത്രം.
+visual: steps 222 = 200 + 20 + 2
+
+## say
+label: example
+en: If a place is empty, we write 0 to keep its spot. 5 hundreds and 7 ones, with no tens, is 507.
+ml: ഒരു സ്ഥാനം ഒഴിഞ്ഞാൽ അതിന്റെ ഇടം കാക്കാൻ 0 എഴുതും. 5 നൂറുകളും 7 ഒന്നുകളും, പത്തുകളില്ല: 507.
+visual: place 5 0 7
+
 ## ask
 form: number
 en: What number does this abacus show?

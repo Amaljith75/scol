@@ -15,6 +15,17 @@ en: 10 packets go into one box. 10 tens make 100. So one box holds 100 pencils.
 ml: ഒരു പെട്ടിയിൽ 10 പാക്കറ്റ്. 10 പത്തുകൾ ചേർന്നാൽ 100. അതുകൊണ്ട് ഒരു പെട്ടിയിൽ 100 പെൻസിൽ.
 visual: text 10 tens = 100
 
+## say
+en: Grouping makes counting quick. Instead of counting 30 pencils one by one, count the packets: 10, 20, 30.
+ml: കൂട്ടങ്ങളാക്കിയാൽ എണ്ണാൻ എളുപ്പമാണ്. 30 പെൻസിൽ ഓരോന്നായി എണ്ണുന്നതിന് പകരം പാക്കറ്റുകൾ എണ്ണൂ: 10, 20, 30.
+visual: groups 3 10 ✏️
+
+## say
+label: example
+en: 2 boxes and 3 packets: 2 hundreds and 3 tens. That is 200 and 30, which is 230 pencils.
+ml: 2 പെട്ടികളും 3 പാക്കറ്റുകളും: 2 നൂറുകളും 3 പത്തുകളും. 200-ഉം 30-ഉം, അതായത് 230 പെൻസിൽ.
+visual: steps 2 boxes = 200 / 3 packets = 30 / 200 + 30 = 230
+
 ## ask
 form: number
 en: How many pencils are in 3 packets?

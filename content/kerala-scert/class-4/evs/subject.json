@@ -5,5 +5,13 @@
   },
   "icon": "🌱",
   "color": "#2BB673",
-  "order": 4
+  "order": 4,
+  "palette": [
+    "#2BB673",
+    "#19A7A0",
+    "#3E9BE0",
+    "#6BBF3B",
+    "#1F8F6A",
+    "#2C7FB8"
+  ]
 }

@@ -45,6 +45,19 @@ Path creaturePath(String shape, Offset c, double r, double t) {
   return path..close();
 }
 
+/// The tutor flies between screens: from the home card to the level path and
+/// into the classroom, along a curved path, with a little spin on the way.
+Widget tutorHero(Widget child) => Hero(
+      tag: 'tutor',
+      createRectTween: (begin, end) => MaterialRectArcTween(begin: begin, end: end),
+      flightShuttleBuilder: (context, animation, direction, from, to) => AnimatedBuilder(
+        animation: animation,
+        child: (direction == HeroFlightDirection.push ? to : from).widget,
+        builder: (_, c) => Transform.rotate(angle: sin(animation.value * pi) * 0.35, child: c),
+      ),
+      child: child,
+    );
+
 class TutorAvatar extends StatefulWidget {
   const TutorAvatar({
     super.key,
@@ -53,6 +66,7 @@ class TutorAvatar extends StatefulWidget {
     this.talking = false,
     this.mood = Mood.calm,
     this.gaze = Offset.zero,
+    this.float = false,
   });
   final TutorCharacter tutor;
   final double size;
@@ -61,6 +75,9 @@ class TutorAvatar extends StatefulWidget {
 
   /// Where to look: (-1,-1) is up-left, (1,1) is down-right, (0,0) is at the child.
   final Offset gaze;
+
+  /// Drift gently from side to side, as if floating in the air.
+  final bool float;
 
   @override
   State<TutorAvatar> createState() => _TutorAvatarState();
@@ -138,7 +155,7 @@ class _TutorAvatarState extends State<TutorAvatar> with SingleTickerProviderStat
         final bob = -(sin(t * 2 * pi * (e > 1.4 ? 2 : 1)).abs()) * widget.size * hop * e.clamp(0.6, 1.6).toDouble();
         final now = DateTime.now().millisecondsSinceEpoch;
         return Transform.translate(
-          offset: Offset(0, bob + widget.size * 0.04),
+          offset: Offset(widget.float ? sin(t * 2 * pi) * widget.size * 0.06 : 0, bob + widget.size * 0.04),
           child: CustomPaint(
             size: Size.square(widget.size),
             painter: _CreaturePainter(

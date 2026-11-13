@@ -2,18 +2,22 @@
 """Makes the tutors' voices.
 
 Every line a tutor can say (lesson text, hints, explanations, greetings) is
-turned into a small sound file with Gemini's speech model, once, and saved in
-voice/<tutor>/. The app downloads these files, so no key is ever inside the app
-and nothing a child does is sent to Gemini.
+turned into a small sound file once, and saved in voice/<tutor>/. The app
+downloads these files, so no key is ever inside the app and nothing a child
+does is sent to a voice service.
 
-Needs the GEMINI_API_KEY environment variable (a GitHub Actions secret).
+Which voice a tutor uses is set in content/_app/tutors.json ("voice"):
+  {"en": "en-IN-NeerjaExpressiveNeural", "ml": "ml-IN-SobhanaNeural"}
+      Microsoft Edge voices (free, no key; fine for testing and demos, not
+      licensed for a paid launch)
+  "Sulafat"   a Gemini voice (needs the GEMINI_API_KEY secret)
+  "" or none  no voice files; the phone's own voice reads the lines
 Run again any time: it only makes the files that are missing.
 
     python3 tools/build_voice.py            # make missing files
     python3 tools/build_voice.py --count    # just say how many are missing
 """
 import base64
-import concurrent.futures as cf
 import hashlib
 import json
 import os
@@ -36,7 +40,7 @@ MODEL = os.environ.get("SCOL_TTS_MODEL", "gemini-3.8-flash-tts")
 OLD_MODEL = "gemini-2.5-flash-preview-tts"
 MAX_SECONDS = int(os.environ.get("SCOL_VOICE_SECONDS", "2700"))
 MAX_NEW = int(os.environ.get("SCOL_VOICE_MAX", "4000"))
-THREADS = int(os.environ.get("SCOL_VOICE_THREADS", "3"))
+THREADS = int(os.environ.get("SCOL_VOICE_THREADS", "4"))
 LANGS = ("en", "ml")
 EMOJI = re.compile("[\U0001F000-\U0001FFFF←-⇿☀-➿⬀-⯿️]")
 SPOKEN = {
@@ -45,6 +49,15 @@ SPOKEN = {
     "ml": [("×", " ഗുണം "), ("=", " സമം "), ("+", " പ്ലസ് "), ("−", " മൈനസ് "),
            ("സെ.മീ", "സെന്റിമീറ്റർ"), ("കി.മീ", "കിലോമീറ്റർ")],
 }
+
+
+def voice_for(tutor, lang):
+    v = tutor.get("voice") or ""
+    return v.get(lang, "") if isinstance(v, dict) else v
+
+
+def is_edge(voice):
+    return voice.endswith("Neural")
 
 
 def clip_id(voice, lang, text):
@@ -189,6 +202,86 @@ def write_index():
     return sum(len(v) for v in index.values())
 
 
+def edge_voices_ok(voices):
+    """Swap any Edge voice that no longer exists for a close one, so a run never silently fails."""
+    import asyncio
+    import edge_tts
+    have = {v["ShortName"] for v in asyncio.run(edge_tts.list_voices())}
+    out = {}
+    for v in voices:
+        if v in have:
+            out[v] = v
+            continue
+        prefix = v.split("-")[0] + "-" + v.split("-")[1] + "-"
+        alt = sorted(x for x in have if x.startswith(prefix))
+        if not alt:
+            sys.exit(f"Edge has no voice for {prefix[:-1]}")
+        print(f"  Edge voice {v} not found; using {alt[0]}")
+        out[v] = alt[0]
+    return out
+
+
+def make_edge(jobs, deadline):
+    import asyncio
+    import edge_tts
+    real = edge_voices_ok({j[4] for j in jobs})
+    sem = asyncio.Semaphore(THREADS)
+    done = {"ok": 0, "fail": 0}
+
+    async def one(tutor, lang, text, dest, voice):
+        if time.time() > deadline:
+            return
+        async with sem:
+            for attempt in range(3):
+                try:
+                    tmp = dest.with_suffix(".part")
+                    dest.parent.mkdir(parents=True, exist_ok=True)
+                    await edge_tts.Communicate(spoken(text, lang), real[voice],
+                                               rate=tutor.get("rate", "-6%"), pitch=tutor.get("pitch", "+0Hz")).save(str(tmp))
+                    if tmp.stat().st_size < 1500:
+                        raise RuntimeError("audio too short")
+                    tmp.rename(dest)
+                    done["ok"] += 1
+                    if done["ok"] % 50 == 0:
+                        print(f"  {done['ok']} made", flush=True)
+                    return
+                except Exception as e:  # noqa: BLE001
+                    if attempt == 2:
+                        done["fail"] += 1
+                        print(f"  failed: {lang} {text[:40]!r}: {e}", flush=True)
+                    await asyncio.sleep(2 + attempt * 3)
+
+    async def run():
+        await asyncio.gather(*(one(*j) for j in jobs))
+
+    asyncio.run(run())
+    return done["ok"], done["fail"]
+
+
+def make_gemini(jobs, deadline):
+    if not os.environ.get("GEMINI_API_KEY"):
+        print("GEMINI_API_KEY is not set, so no Gemini voices were made.")
+        return 0, 0
+    made = failed = quota_hits = 0
+    for tutor, lang, text, dest, voice in jobs:
+        if time.time() > deadline or quota_hits >= 3:
+            break
+        try:
+            audio = synth(spoken(text, lang), voice, tutor.get("style", "a friendly teacher"))
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            to_mp3(audio, dest)
+            made += 1
+        except Quota:
+            quota_hits += 1
+            time.sleep(20)
+        except Exception as e:  # noqa: BLE001
+            failed += 1
+            print(f"  failed: {lang} {text[:40]!r}: {e}", flush=True)
+    if quota_hits >= 3:
+        print("Stopping early: Gemini's daily limit is reached.")
+    return made, failed
+
+
 def main():
     bundle = build_content.build()
     if build_content.errors:
@@ -198,67 +291,38 @@ def main():
     for tutor in bundle.get("tutors", []):
         keep = wanted.setdefault(tutor["id"], set())
         for lang, text in lines_for(bundle, tutor):
-            cid = clip_id(tutor["voice"], lang, text)
+            voice = voice_for(tutor, lang)
+            if not voice:
+                continue
+            cid = clip_id(voice, lang, text)
             keep.add(cid)
             dest = VOICE / tutor["id"] / f"{cid}.mp3"
             if not dest.exists():
-                jobs.append((tutor, lang, text, dest))
-    # Remove sound files for lines that no longer exist.
+                jobs.append((tutor, lang, text, dest, voice))
+    # Remove sound files for lines (or tutors) that no longer have a voice.
     removed = 0
-    for tid, keep in wanted.items():
-        for p in (VOICE / tid).glob("*.mp3") if (VOICE / tid).exists() else []:
-            if p.stem not in keep:
-                p.unlink()
-                removed += 1
+    if VOICE.exists():
+        for d in VOICE.iterdir():
+            if d.is_dir():
+                for f in d.glob("*.mp3"):
+                    if f.stem not in wanted.get(d.name, set()):
+                        f.unlink()
+                        removed += 1
+                if not any(d.iterdir()):
+                    d.rmdir()
     total = sum(len(v) for v in wanted.values())
-    print(f"{total} lines in all, {len(jobs)} still need a voice, {removed} old files removed.", flush=True)
+    print(f"{total} lines have a voice, {len(jobs)} still to make, {removed} old files removed.", flush=True)
     if "--count" in sys.argv or not jobs:
         write_index()
         return 0
-    if not os.environ.get("GEMINI_API_KEY"):
-        print("GEMINI_API_KEY is not set, so no voices were made. "
-              "Add it under the repository's Settings > Secrets and variables > Actions.")
-        write_index()
-        return 0
-
-    start, made, failed, quota_hits = time.time(), 0, 0, 0
     jobs = jobs[:MAX_NEW]
-
-    def work(job):
-        tutor, lang, text, dest = job
-        if time.time() - start > MAX_SECONDS:
-            return "skip"
-        last = "fail"
-        for attempt in range(4):
-            try:
-                audio = synth(spoken(text, lang), tutor["voice"], tutor.get("style", "a friendly teacher"))
-                dest.parent.mkdir(parents=True, exist_ok=True)
-                to_mp3(audio, dest)
-                return "ok"
-            except Quota:
-                last = "quota"
-                time.sleep(20 * (attempt + 1))
-            except Exception as e:  # noqa: BLE001
-                last = "fail"
-                if attempt == 3:
-                    print(f"  failed: {tutor['id']} {lang} {text[:40]!r}: {e}", flush=True)
-                time.sleep(3)
-        return last
-
-    with cf.ThreadPoolExecutor(THREADS) as pool:
-        for n, result in enumerate(pool.map(work, jobs), 1):
-            made += result == "ok"
-            failed += result == "fail"
-            quota_hits += result == "quota"
-            if n % 25 == 0:
-                print(f"  {n}/{len(jobs)} done, {made} made", flush=True)
-            if (quota_hits >= 6 or (failed >= 12 and made == 0)) and start:
-                print("Stopping early: the speech service is refusing requests "
-                      "(daily limit reached, or the key cannot use this model).", flush=True)
-                start = 0  # makes the remaining jobs skip
+    deadline = time.time() + MAX_SECONDS
+    edge = [j for j in jobs if is_edge(j[4])]
+    made, failed = make_edge(edge, deadline) if edge else (0, 0)
+    m2, f2 = make_gemini([j for j in jobs if not is_edge(j[4])], deadline)
     count = write_index()
-    print(f"Made {made} new voice files ({failed} failed). {count} files in voice/ now. "
-          f"{max(0, total - count)} still to do on the next run.")
+    print(f"Made {made + m2} new voice files ({failed + f2} failed). {count} files in voice/ now. "
+          f"{max(0, total - count)} still to do.")
     return 0
 
 

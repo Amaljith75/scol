@@ -22,6 +22,11 @@ en: 2 × 3 has a special name. Two groups of 3 is the same as 3 doubled. 3 doubl
 ml: 2 × 3-ന് ഒരു പ്രത്യേക പേരുണ്ട്. മൂന്നിന്റെ രണ്ട് കൂട്ടങ്ങൾ എന്നാൽ 3-ന്റെ ഇരട്ടി. 3-ന്റെ ഇരട്ടി 6.
 visual: steps 2 × 3 = 3 + 3 / 3 doubled = 6
 
+## say
+en: In 3 × 4, the first number tells how many groups. The second number tells how many are in each group.
+ml: 3 × 4-ൽ ആദ്യത്തെ സംഖ്യ എത്ര കൂട്ടങ്ങൾ എന്ന് പറയുന്നു. രണ്ടാമത്തേത് ഓരോ കൂട്ടത്തിലും എത്ര എന്ന് പറയുന്നു.
+visual: steps 3 × 4 / 3 groups / 4 in each
+
 ## ask
 form: choice
 en: 2 groups of 6. How do we write it?

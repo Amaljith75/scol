@@ -1,15 +1,54 @@
 {
-  "lookAgain": { "en": "Look at it once more, slowly.", "ml": "പതുക്കെ ഒന്നുകൂടി നോക്കൂ." },
-  "tryLater": { "en": "We will try this one again in a little while.", "ml": "ഇത് നമുക്ക് കുറച്ചു കഴിഞ്ഞ് ഒന്നുകൂടി നോക്കാം." },
-  "again": { "en": "Remember this one? Let us try again.", "ml": "ഇത് ഓർമ്മയുണ്ടോ? ഒന്നുകൂടി നോക്കാം." },
-  "nextUp": { "en": "Next for you:", "ml": "അടുത്തത്:" },
-  "practiceFirst": { "en": "Some of these were tricky last time. Let us try them again, slowly.", "ml": "കഴിഞ്ഞ തവണ ഇവയിൽ ചിലത് അല്പം പ്രയാസമായിരുന്നു. നമുക്ക് പതുക്കെ ഒന്നുകൂടി നോക്കാം." },
-  "practice": { "en": "Practice time", "ml": "പരിശീലന സമയം" },
-  "tapGo": { "en": "Tap the green button and follow me!", "ml": "പച്ച ബട്ടൺ അമർത്തി എന്റെ കൂടെ വരൂ!" },
-  "pickLevel": { "en": "Tap the glowing level to start.", "ml": "തിളങ്ങുന്ന ലെവൽ അമർത്തി തുടങ്ങൂ." },
-  "allDone": { "en": "You finished everything here. Amazing!", "ml": "ഇവിടെയുള്ളതെല്ലാം നീ പൂർത്തിയാക്കി. അടിപൊളി!" },
-  "comingSoon": { "en": "Lessons are on the way!", "ml": "പാഠങ്ങൾ ഉടൻ വരും!" },
-  "timeUp": { "en": "That is enough learning for today. See you tomorrow!", "ml": "ഇന്നത്തേക്ക് ഇത്രയും മതി. നാളെ കാണാം!" },
-  "anotherWay": { "en": "Let me show you this another way.", "ml": "ഇത് മറ്റൊരു രീതിയിൽ കാണിച്ചു തരാം." },
-  "think": { "en": "Think about it, then tap the button.", "ml": "ആലോചിച്ചിട്ട് ബട്ടൺ അമർത്തൂ." }
+  "lookAgain": {
+    "en": "Look at it once more, slowly.",
+    "ml": "പതുക്കെ ഒന്നുകൂടി നോക്കൂ."
+  },
+  "tryLater": {
+    "en": "We will try this one again in a little while.",
+    "ml": "ഇത് നമുക്ക് കുറച്ചു കഴിഞ്ഞ് ഒന്നുകൂടി നോക്കാം."
+  },
+  "again": {
+    "en": "Remember this one? Let us try again.",
+    "ml": "ഇത് ഓർമ്മയുണ്ടോ? ഒന്നുകൂടി നോക്കാം."
+  },
+  "nextUp": {
+    "en": "Next for you:",
+    "ml": "അടുത്തത്:"
+  },
+  "practiceFirst": {
+    "en": "Some of these were tricky last time. Let us try them again, slowly.",
+    "ml": "കഴിഞ്ഞ തവണ ഇവയിൽ ചിലത് അല്പം പ്രയാസമായിരുന്നു. നമുക്ക് പതുക്കെ ഒന്നുകൂടി നോക്കാം."
+  },
+  "practice": {
+    "en": "Practice time",
+    "ml": "പരിശീലന സമയം"
+  },
+  "tapGo": {
+    "en": "Tap Let's go, and come with me!",
+    "ml": "ലെറ്റ്സ് ഗോ അമർത്തി എന്റെ കൂടെ വരൂ!"
+  },
+  "pickLevel": {
+    "en": "Tap START to begin the next level.",
+    "ml": "അടുത്ത ലെവൽ തുടങ്ങാൻ START അമർത്തൂ."
+  },
+  "allDone": {
+    "en": "You finished everything here. Amazing!",
+    "ml": "ഇവിടെയുള്ളതെല്ലാം നീ പൂർത്തിയാക്കി. അടിപൊളി!"
+  },
+  "comingSoon": {
+    "en": "Lessons are on the way!",
+    "ml": "പാഠങ്ങൾ ഉടൻ വരും!"
+  },
+  "timeUp": {
+    "en": "That is enough learning for today. See you tomorrow!",
+    "ml": "ഇന്നത്തേക്ക് ഇത്രയും മതി. നാളെ കാണാം!"
+  },
+  "anotherWay": {
+    "en": "Let me show you this another way.",
+    "ml": "ഇത് മറ്റൊരു രീതിയിൽ കാണിച്ചു തരാം."
+  },
+  "think": {
+    "en": "Think about it, then tap Show answer.",
+    "ml": "ആലോചിച്ചിട്ട് 'ഉത്തരം കാണിക്കൂ' അമർത്തൂ."
+  }
 }

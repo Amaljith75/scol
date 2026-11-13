@@ -10,6 +10,17 @@ en: A shop wants 1000 pencils in two bags. One bag has 300. Then the other must 
 ml: ഒരു കടയ്ക്ക് 1000 പെൻസിൽ രണ്ട് സഞ്ചികളിലായി വേണം. ഒന്നിൽ 300. അപ്പോൾ മറ്റേതിൽ 700 വേണം, കാരണം 300-ഉം 700-ഉം ചേർന്നാൽ 1000.
 visual: split 1000 300 700
 
+## say
+en: Splitting is easy with hundreds. Think of 10 as 3 and 7, and you know 1000 is 300 and 700.
+ml: നൂറുകൾ ഉപയോഗിച്ച് പിരിക്കാൻ എളുപ്പമാണ്. 10 എന്നാൽ 3-ഉം 7-ഉം എന്ന് ഓർത്താൽ, 1000 എന്നാൽ 300-ഉം 700-ഉം എന്ന് അറിയാം.
+visual: steps 3 + 7 = 10 / 300 + 700 = 1000
+
+## say
+label: example
+en: To share equally into two, find the number that doubles to the total. 600 shared equally is 300 and 300.
+ml: രണ്ടായി തുല്യമായി പങ്കിടാൻ, ഇരട്ടിച്ചാൽ ആകെ കിട്ടുന്ന സംഖ്യ കണ്ടെത്തൂ. 600 തുല്യമായി പങ്കിട്ടാൽ 300-ഉം 300-ഉം.
+visual: split 600 300 300
+
 ## ask
 form: number
 en: 1000 pencils in two bags. One bag has 400. How many are in the other bag?

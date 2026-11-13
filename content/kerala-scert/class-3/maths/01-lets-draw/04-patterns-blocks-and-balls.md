@@ -10,6 +10,17 @@ en: Shapes can make a pattern. A pattern repeats in the same order, again and ag
 ml: രൂപങ്ങൾ കൊണ്ട് ഒരു ക്രമം ഉണ്ടാക്കാം. ഒരേ രീതിയിൽ വീണ്ടും വീണ്ടും ആവർത്തിക്കുന്നതാണ് ക്രമം.
 visual: pattern 🔺 ⚪ 🔺 ⚪ 🔺 ?
 
+## say
+en: To find what comes next, find the part that repeats. Say it aloud: triangle, circle. Triangle, circle.
+ml: അടുത്തത് കണ്ടെത്താൻ ആവർത്തിക്കുന്ന ഭാഗം കണ്ടുപിടിക്കൂ. ഉറക്കെ പറയൂ: ത്രികോണം, വൃത്തം. ത്രികോണം, വൃത്തം.
+visual: pattern 🔺 ⚪ | 🔺 ⚪ | 🔺 ?
+
+## say
+label: example
+en: The repeating part can be longer too. In square, square, triangle, the part that repeats has three shapes.
+ml: ആവർത്തിക്കുന്ന ഭാഗം നീളമുള്ളതുമാകാം. ചതുരം, ചതുരം, ത്രികോണം എന്നതിൽ മൂന്ന് രൂപങ്ങളാണ് ആവർത്തിക്കുന്നത്.
+visual: pattern 🟦 🟦 🔺 🟦 🟦 🔺
+
 ## ask
 form: choice
 en: What comes next in this pattern?

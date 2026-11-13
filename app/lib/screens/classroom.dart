@@ -1,14 +1,17 @@
 // The classroom: the tutor runs the lesson, the child answers.
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
 import '../content.dart';
+import '../reminders.dart';
 import '../state.dart';
 import '../strings.dart';
 import '../tutor.dart';
 import '../voice.dart';
 import '../widgets/activities.dart';
+import '../widgets/ask_sheet.dart';
 import '../widgets/avatar.dart';
 import '../widgets/ui.dart';
 import '../widgets/visuals.dart';
@@ -22,7 +25,7 @@ class ClassroomScreen extends StatefulWidget {
   State<ClassroomScreen> createState() => _ClassroomScreenState();
 }
 
-class _ClassroomScreenState extends State<ClassroomScreen> {
+class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingObserver {
   late final TutorDirector d;
   final Stopwatch _watch = Stopwatch()..start();
   String _typed = '';
@@ -34,6 +37,8 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
   Timer? _walkTimer;
   Timer? _peekTimer;
   bool _peek = false; // while teaching, glance from the board back to the child
+  int _hop = 0; // the tutor hops each time the lesson moves on
+  LessonStep? _lastStep;
 
   @override
   void initState() {
@@ -51,7 +56,9 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
     );
     _lastSpot = d.spot;
     if (appState.voiceOn) appSpeaker?.prefetch(d.allLines, d.lang, d.tutor);
+    _lastStep = d.current;
     d.addListener(_onChange);
+    WidgetsBinding.instance.addObserver(this);
     _peekTimer = Timer.periodic(const Duration(milliseconds: 2600), (_) {
       if (mounted && d.look == Look.board && d.phase == Phase.talking) setState(() => _peek = !_peek);
     });
@@ -71,8 +78,29 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
     }
   }
 
+  /// Leaving the app halfway through a level: the tutor calls the child back later.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused && d.phase != Phase.finished) {
+      appSpeaker?.stop();
+      remindLeftLevel(appState, contentStore.bundle);
+    } else if (state == AppLifecycleState.resumed) {
+      cancelLeftLevel();
+    }
+  }
+
+  /// What this lesson teaches, for the tutor brain when the child asks a question.
+  String get _notes => [
+        for (final s in widget.lesson.steps)
+          if (!s.isAsk) pick(s.text, 'en')
+      ].join(' ');
+
   void _onChange() {
     _peek = false;
+    if (!identical(d.current, _lastStep)) {
+      _lastStep = d.current;
+      _hop++;
+    }
     if (!identical(d.question, _shownQuestion)) {
       _shownQuestion = d.question;
       _beads = [0, 0, 0];
@@ -113,6 +141,8 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
       _logTime();
       appState.save(); // keep what was learned even if the lesson was left early
     }
+    WidgetsBinding.instance.removeObserver(this);
+    cancelLeftLevel();
     _walkTimer?.cancel();
     _peekTimer?.cancel();
     d.removeListener(_onChange);
@@ -140,6 +170,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
           second = '${(step.text as Map)[other]}';
         }
         return Scaffold(
+          backgroundColor: Color.lerp(cream, Color(widget.subject.color), 0.07),
           body: SafeArea(
             child: Center(
               child: ConstrainedBox(
@@ -162,7 +193,13 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 12),
+                      const SizedBox(width: 8),
+                      IconButton.filled(
+                        style: IconButton.styleFrom(backgroundColor: violet),
+                        tooltip: tr('ask', lang),
+                        onPressed: () => openAskSheet(context, lessonTitle: pick(widget.lesson.title, 'en'), notes: _notes),
+                        icon: const Icon(Icons.mic_rounded, color: Colors.white),
+                      ),
                     ]),
                     // The board: what the tutor is showing.
                     Expanded(
@@ -183,8 +220,17 @@ class _ClassroomScreenState extends State<ClassroomScreen> {
                         },
                         child: ValueListenableBuilder<bool>(
                           valueListenable: d.speaker?.speaking ?? const AlwaysStoppedAnimation(false),
-                          builder: (_, speaking, __) =>
-                              TutorAvatar(tutor: d.tutor, size: 88, talking: speaking, mood: d.mood, gaze: _gaze),
+                          builder: (_, speaking, __) => TweenAnimationBuilder<double>(
+                            key: ValueKey(_hop),
+                            tween: Tween(begin: 0, end: 1),
+                            duration: const Duration(milliseconds: 550),
+                            builder: (_, v, child) => Transform.translate(
+                              offset: Offset(0, -sin(v * pi) * 22),
+                              child: Transform.scale(scaleY: 1 - sin(v * pi * 2).abs() * 0.06, child: child),
+                            ),
+                            child: tutorHero(
+                                TutorAvatar(tutor: d.tutor, size: 88, talking: speaking, mood: d.mood, gaze: _gaze)),
+                          ),
                         ),
                       ),
                     ),
@@ -426,7 +472,7 @@ class _CelebrationScreenState extends State<CelebrationScreen> {
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                Center(child: TutorAvatar(tutor: tutor, size: 160, mood: Mood.happy)),
+                Center(child: tutorHero(TutorAvatar(tutor: tutor, size: 160, mood: Mood.happy))),
                 const SizedBox(height: 16),
                 Text(tr('lessonDone', lang),
                     textAlign: TextAlign.center, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: ink)),

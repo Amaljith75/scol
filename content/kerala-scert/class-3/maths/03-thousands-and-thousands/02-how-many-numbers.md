@@ -15,6 +15,17 @@ en: 20 minus 10 is 10. But that leaves out the first card. Add 1 for it. So ther
 ml: 20-ൽ നിന്ന് 10 കുറച്ചാൽ 10. പക്ഷേ അതിൽ ആദ്യത്തെ കാർഡ് ഇല്ല. അതിനായി 1 ചേർക്കൂ. അപ്പോൾ 11 കാർഡുകൾ.
 visual: text 20 − 10 + 1 = 11
 
+## say
+en: Here is the rule: last number, take away the first number, then add 1.
+ml: നിയമം ഇതാണ്: അവസാന സംഖ്യയിൽ നിന്ന് ആദ്യ സംഖ്യ കുറയ്ക്കുക, പിന്നെ 1 ചേർക്കുക.
+visual: text last − first + 1
+
+## say
+label: example
+en: Cards from 1 to 5. 5 take away 1 is 4. Add 1, and you get 5 cards: 1, 2, 3, 4, 5.
+ml: 1 മുതൽ 5 വരെ കാർഡുകൾ. 5-ൽ നിന്ന് 1 കുറച്ചാൽ 4. 1 ചേർത്താൽ 5 കാർഡുകൾ: 1, 2, 3, 4, 5.
+visual: numberline 1 5
+
 ## ask
 form: number
 en: Cards are numbered from 1 to 10. How many cards?

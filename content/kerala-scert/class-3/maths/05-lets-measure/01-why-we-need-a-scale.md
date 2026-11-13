@@ -15,6 +15,17 @@ en: So everyone uses the same measure: a scale. The gap between two long lines o
 ml: അതുകൊണ്ട് എല്ലാവരും ഒരേ അളവ് ഉപയോഗിക്കുന്നു: സ്കെയിൽ. അതിലെ രണ്ട് നീണ്ട വരകൾക്കിടയിലെ അകലം 1 സെന്റിമീറ്റർ. ചുരുക്കി സെ.മീ എന്ന് എഴുതും.
 visual: ruler 5
 
+## say
+en: Always start measuring at 0, not at the edge of the scale. Put the 0 line at one end of the thing, then read the number at its other end.
+ml: എപ്പോഴും 0-ൽ നിന്ന് അളക്കാൻ തുടങ്ങണം, സ്കെയിലിന്റെ അരികിൽ നിന്നല്ല. 0 എന്ന വര ഒരു അറ്റത്ത് വെച്ച് മറ്റേ അറ്റത്തെ സംഖ്യ വായിക്കൂ.
+visual: ruler 6 ✏️
+
+## say
+label: example
+en: This eraser starts at 0 and ends at 3. So it is 3 centimetres long.
+ml: ഈ റബ്ബർ 0-ൽ തുടങ്ങി 3-ൽ അവസാനിക്കുന്നു. അതുകൊണ്ട് നീളം 3 സെന്റിമീറ്റർ.
+visual: ruler 3 🟪
+
 ## ask
 form: number
 en: How many centimetres long is this pencil?

@@ -414,7 +414,7 @@ def build():
                 scope = f"{bdir.name}/{cdir.name}/{sdir.name}"
                 subject = {"id": scope, "key": sdir.name, "name": loc(smeta.get("name")),
                            "icon": smeta.get("icon", "📘"), "color": smeta.get("color", "#5B6CFF"),
-                           "order": smeta.get("order", 99), "chapters": []}
+                           "order": smeta.get("order", 99), "palette": smeta.get("palette", []), "chapters": []}
                 for chdir in ordered_dirs(sdir):
                     if not (chdir / "chapter.json").exists():
                         err(chdir, 0, "folder has no chapter.json")
@@ -450,10 +450,13 @@ def build():
     tutors = load_json(app_dir / "tutors.json") if (app_dir / "tutors.json").exists() else []
     phrases = load_json(app_dir / "phrases.json") if (app_dir / "phrases.json").exists() else {}
     for t in tutors if isinstance(tutors, list) else []:
-        for k in ("id", "name", "shape", "color", "voice"):
+        for k in ("id", "name", "shape", "color"):
             if k not in t:
                 err(app_dir / "tutors.json", 0, f'tutor is missing "{k}"')
-    body = {"boards": boards, "concepts": concepts, "tutors": tutors, "phrases": phrases}
+    brain = load_json(app_dir / "brain.json") if (app_dir / "brain.json").exists() else {}
+    body = {"boards": boards, "concepts": concepts, "tutors": tutors, "phrases": phrases,
+            # only the public address goes to the app; the key stays on the server
+            "brain": {k: brain[k] for k in ("url", "public_key") if k in brain}}
     digest = hashlib.sha256(json.dumps(body, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12]
     return {"version": digest, **body}
 

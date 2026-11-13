@@ -16,7 +16,15 @@
         "en": "Maths",
         "ml": "ഗണിതം"
        },
-       "order": 1
+       "order": 1,
+       "palette": [
+        "#FF8A3D",
+        "#F2A413",
+        "#E5488B",
+        "#FF6B5E",
+        "#E9792E",
+        "#D6409F"
+       ]
       },
       {
        "chapters": [],
@@ -28,7 +36,8 @@
         "en": "English",
         "ml": "ഇംഗ്ലീഷ്"
        },
-       "order": 2
+       "order": 2,
+       "palette": []
       },
       {
        "chapters": [],
@@ -40,7 +49,8 @@
         "en": "Malayalam",
         "ml": "മലയാളം"
        },
-       "order": 3
+       "order": 3,
+       "palette": []
       }
      ]
     },
@@ -58,7 +68,15 @@
         "en": "Maths",
         "ml": "ഗണിതം"
        },
-       "order": 1
+       "order": 1,
+       "palette": [
+        "#FF8A3D",
+        "#F2A413",
+        "#E5488B",
+        "#FF6B5E",
+        "#E9792E",
+        "#D6409F"
+       ]
       },
       {
        "chapters": [],
@@ -70,7 +88,8 @@
         "en": "English",
         "ml": "ഇംഗ്ലീഷ്"
        },
-       "order": 2
+       "order": 2,
+       "palette": []
       },
       {
        "chapters": [],
@@ -82,7 +101,8 @@
         "en": "Malayalam",
         "ml": "മലയാളം"
        },
-       "order": 3
+       "order": 3,
+       "palette": []
       }
      ]
     },
@@ -152,6 +172,36 @@
                "rectangle"
               ],
               "kind": "shapes"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Look for the corners. A corner is where two straight sides meet and make a point.",
+              "ml": "മൂലകൾ നോക്കൂ. രണ്ട് നേർവശങ്ങൾ ചേർന്ന് ഒരു കൂർത്ത അറ്റമാകുന്നിടമാണ് മൂല."
+             },
+             "visual": {
+              "args": [
+               "triangle",
+               "rectangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "A plate, a bangle and a wheel are circles. The top of a hill looks like a triangle. A door and a slate are rectangles.",
+              "ml": "പാത്രം, വള, ചക്രം ഇവ വൃത്തങ്ങൾ. ഒരു കുന്നിന്റെ മുകൾഭാഗം ത്രികോണം പോലെയാണ്. വാതിലും സ്ലേറ്റും ചതുരങ്ങൾ."
+             },
+             "visual": {
+              "args": [
+               "🍽️",
+               "⛰️",
+               "🚪"
+              ],
+              "kind": "emoji"
              }
             },
             {
@@ -342,6 +392,34 @@
               "args": [
                "Triangle = 3 sticks",
                "Rectangle = 4 sticks"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Each straight side of a shape is one stick. So to know how many sticks you need, count the sides.",
+              "ml": "ഒരു രൂപത്തിന്റെ ഓരോ നേർവശവും ഒരു ഈർക്കിലാണ്. എത്ര ഈർക്കിൽ വേണമെന്നറിയാൻ വശങ്ങൾ എണ്ണിയാൽ മതി."
+             },
+             "visual": {
+              "args": [
+               "triangle",
+               "rectangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Two triangles need 3 sticks and 3 more sticks. That is 6 sticks.",
+              "ml": "രണ്ട് ത്രികോണങ്ങൾക്ക് 3 ഈർക്കിലും 3 ഈർക്കിൽ കൂടിയും വേണം. ആകെ 6 ഈർക്കിൽ."
+             },
+             "visual": {
+              "args": [
+               "3 + 3 = 6"
               ],
               "kind": "steps"
              }
@@ -588,6 +666,34 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "If you cut a rectangle straight across the middle instead, you get two smaller rectangles. The cut decides the new shapes.",
+              "ml": "ചതുരം നടുവിലൂടെ നേരെ കുറുകെ മുറിച്ചാൽ രണ്ട് ചെറിയ ചതുരങ്ങൾ കിട്ടും. എങ്ങനെ മുറിക്കുന്നു എന്നതനുസരിച്ച് പുതിയ രൂപങ്ങൾ മാറും."
+             },
+             "visual": {
+              "args": [
+               "rectangle",
+               "rectangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Joining works the other way. Put two triangles side by side and they can make a rectangle again.",
+              "ml": "ചേർക്കുന്നത് നേരെ തിരിച്ചാണ്. രണ്ട് ത്രികോണങ്ങൾ ചേർത്തുവെച്ചാൽ വീണ്ടും ഒരു ചതുരമാകും."
+             },
+             "visual": {
+              "args": [
+               "triangle + triangle = rectangle"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
              "answer": "2",
              "concept": "kerala-scert/class-3/maths#shape-join",
              "explain": {
@@ -761,6 +867,45 @@
                "⚪",
                "🔺",
                "?"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "To find what comes next, find the part that repeats. Say it aloud: triangle, circle. Triangle, circle.",
+              "ml": "അടുത്തത് കണ്ടെത്താൻ ആവർത്തിക്കുന്ന ഭാഗം കണ്ടുപിടിക്കൂ. ഉറക്കെ പറയൂ: ത്രികോണം, വൃത്തം. ത്രികോണം, വൃത്തം."
+             },
+             "visual": {
+              "args": [
+               "🔺",
+               "⚪",
+               "|",
+               "🔺",
+               "⚪",
+               "|",
+               "🔺",
+               "?"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "The repeating part can be longer too. In square, square, triangle, the part that repeats has three shapes.",
+              "ml": "ആവർത്തിക്കുന്ന ഭാഗം നീളമുള്ളതുമാകാം. ചതുരം, ചതുരം, ത്രികോണം എന്നതിൽ മൂന്ന് രൂപങ്ങളാണ് ആവർത്തിക്കുന്നത്."
+             },
+             "visual": {
+              "args": [
+               "🟦",
+               "🟦",
+               "🔺",
+               "🟦",
+               "🟦",
+               "🔺"
               ],
               "kind": "pattern"
              }
@@ -1029,6 +1174,37 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "Grouping makes counting quick. Instead of counting 30 pencils one by one, count the packets: 10, 20, 30.",
+              "ml": "കൂട്ടങ്ങളാക്കിയാൽ എണ്ണാൻ എളുപ്പമാണ്. 30 പെൻസിൽ ഓരോന്നായി എണ്ണുന്നതിന് പകരം പാക്കറ്റുകൾ എണ്ണൂ: 10, 20, 30."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "10",
+               "✏️"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "2 boxes and 3 packets: 2 hundreds and 3 tens. That is 200 and 30, which is 230 pencils.",
+              "ml": "2 പെട്ടികളും 3 പാക്കറ്റുകളും: 2 നൂറുകളും 3 പത്തുകളും. 200-ഉം 30-ഉം, അതായത് 230 പെൻസിൽ."
+             },
+             "visual": {
+              "args": [
+               "2 boxes = 200",
+               "3 packets = 30",
+               "200 + 30 = 230"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
              "answer": "30",
              "concept": "kerala-scert/class-3/maths#tens-hundreds",
              "explain": {
@@ -1215,6 +1391,35 @@
                "342 = 300 + 40 + 2"
               ],
               "kind": "text"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "The same digit is worth different amounts in different places. In 222, the first 2 is 200, the next is 20, and the last is just 2.",
+              "ml": "ഒരേ അക്കത്തിന് സ്ഥാനമനുസരിച്ച് വില മാറും. 222-ൽ ആദ്യത്തെ 2 എന്നാൽ 200, അടുത്തത് 20, അവസാനത്തേത് 2 മാത്രം."
+             },
+             "visual": {
+              "args": [
+               "222 = 200 + 20 + 2"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "If a place is empty, we write 0 to keep its spot. 5 hundreds and 7 ones, with no tens, is 507.",
+              "ml": "ഒരു സ്ഥാനം ഒഴിഞ്ഞാൽ അതിന്റെ ഇടം കാക്കാൻ 0 എഴുതും. 5 നൂറുകളും 7 ഒന്നുകളും, പത്തുകളില്ല: 507."
+             },
+             "visual": {
+              "args": [
+               "5",
+               "0",
+               "7"
+              ],
+              "kind": "place"
              }
             },
             {
@@ -1445,6 +1650,40 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "To read a three-digit number, say the hundreds first, then the rest. 342 is three hundred, and then forty two.",
+              "ml": "മൂന്നക്ക സംഖ്യ വായിക്കാൻ ആദ്യം നൂറുകൾ പറയൂ, പിന്നെ ബാക്കി. 342 എന്നാൽ മുന്നൂറ്, പിന്നെ നാൽപ്പത്തിരണ്ട്."
+             },
+             "visual": {
+              "args": [
+               "342",
+               "300 and 42",
+               "three hundred forty two"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "When we count on, the ones go up first. When the ones pass 9, the tens go up. When the tens pass 9, a new hundred starts.",
+              "ml": "തുടർന്ന് എണ്ണുമ്പോൾ ആദ്യം ഒന്നുകൾ കൂടും. ഒന്നുകൾ 9 കടന്നാൽ പത്തുകൾ കൂടും. പത്തുകൾ 9 കടന്നാൽ പുതിയ നൂറ് തുടങ്ങും."
+             },
+             "visual": {
+              "args": [
+               "108",
+               "109",
+               "110",
+               "...",
+               "199",
+               "200"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
              "answer": "405",
              "concept": "kerala-scert/class-3/maths#number-names",
              "explain": {
@@ -1621,6 +1860,36 @@
                "1000",
                "300",
                "700"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Splitting is easy with hundreds. Think of 10 as 3 and 7, and you know 1000 is 300 and 700.",
+              "ml": "നൂറുകൾ ഉപയോഗിച്ച് പിരിക്കാൻ എളുപ്പമാണ്. 10 എന്നാൽ 3-ഉം 7-ഉം എന്ന് ഓർത്താൽ, 1000 എന്നാൽ 300-ഉം 700-ഉം എന്ന് അറിയാം."
+             },
+             "visual": {
+              "args": [
+               "3 + 7 = 10",
+               "300 + 700 = 1000"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "To share equally into two, find the number that doubles to the total. 600 shared equally is 300 and 300.",
+              "ml": "രണ്ടായി തുല്യമായി പങ്കിടാൻ, ഇരട്ടിച്ചാൽ ആകെ കിട്ടുന്ന സംഖ്യ കണ്ടെത്തൂ. 600 തുല്യമായി പങ്കിട്ടാൽ 300-ഉം 300-ഉം."
+             },
+             "visual": {
+              "args": [
+               "600",
+               "300",
+               "300"
               ],
               "kind": "split"
              }
@@ -1921,6 +2190,37 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "1000 is the same as 10 hundreds. Think of 10 boxes, each with 100 pencils.",
+              "ml": "1000 എന്നാൽ 10 നൂറുകൾ. 100 പെൻസിൽ വീതമുള്ള 10 പെട്ടികൾ ആലോചിച്ചു നോക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "10 × 100 = 1000"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "After 1000 we keep counting the same way. 1010 is one thousand and ten. 1100 is one thousand and one hundred.",
+              "ml": "1000 കഴിഞ്ഞും അതേ രീതിയിൽ എണ്ണാം. 1010 എന്നാൽ ആയിരത്തി പത്ത്. 1100 എന്നാൽ ആയിരത്തി ഒരുനൂറ്."
+             },
+             "visual": {
+              "args": [
+               "1000",
+               "1001",
+               "1002",
+               "...",
+               "1010"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
              "answer": "1005",
              "concept": "kerala-scert/class-3/maths#beyond-1000",
              "explain": {
@@ -2082,6 +2382,34 @@
                "20 − 10 + 1 = 11"
               ],
               "kind": "text"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Here is the rule: last number, take away the first number, then add 1.",
+              "ml": "നിയമം ഇതാണ്: അവസാന സംഖ്യയിൽ നിന്ന് ആദ്യ സംഖ്യ കുറയ്ക്കുക, പിന്നെ 1 ചേർക്കുക."
+             },
+             "visual": {
+              "args": [
+               "last − first + 1"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Cards from 1 to 5. 5 take away 1 is 4. Add 1, and you get 5 cards: 1, 2, 3, 4, 5.",
+              "ml": "1 മുതൽ 5 വരെ കാർഡുകൾ. 5-ൽ നിന്ന് 1 കുറച്ചാൽ 4. 1 ചേർത്താൽ 5 കാർഡുകൾ: 1, 2, 3, 4, 5."
+             },
+             "visual": {
+              "args": [
+               "1",
+               "5"
+              ],
+              "kind": "numberline"
              }
             },
             {
@@ -2247,6 +2575,35 @@
                "🔵"
               ],
               "kind": "count"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "The last digit tells you. If a number ends in 0, 2, 4, 6 or 8, it is even. If it ends in 1, 3, 5, 7 or 9, it is odd.",
+              "ml": "അവസാനത്തെ അക്കം നോക്കിയാൽ മതി. 0, 2, 4, 6, 8 ഇവയിൽ അവസാനിച്ചാൽ ഇരട്ട. 1, 3, 5, 7, 9 ഇവയിൽ അവസാനിച്ചാൽ ഒറ്റ."
+             },
+             "visual": {
+              "args": [
+               "even: 0 2 4 6 8",
+               "odd: 1 3 5 7 9"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "126 ends in 6, so it is even. 343 ends in 3, so it is odd.",
+              "ml": "126 അവസാനിക്കുന്നത് 6-ൽ, അതുകൊണ്ട് ഇരട്ട. 343 അവസാനിക്കുന്നത് 3-ൽ, അതുകൊണ്ട് ഒറ്റ."
+             },
+             "visual": {
+              "args": [
+               "126 → even",
+               "343 → odd"
+              ],
+              "kind": "steps"
              }
             },
             {
@@ -2442,6 +2799,34 @@
                "2 5 7"
               ],
               "kind": "text"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Why does the first place matter most? Because it counts hundreds. Even one more hundred is bigger than all the tens and ones together.",
+              "ml": "ആദ്യ സ്ഥാനം എന്തുകൊണ്ട് പ്രധാനം? അത് നൂറുകൾ എണ്ണുന്നു. ഒരു നൂറ് കൂടിയാൽ പോലും എല്ലാ പത്തുകളെക്കാളും ഒന്നുകളെക്കാളും വലുതാണ്."
+             },
+             "visual": {
+              "args": [
+               "700 > 99"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "With 0, 4 and 6: the largest is 640. The smallest cannot start with 0, so it is 406.",
+              "ml": "0, 4, 6 കൊണ്ട്: ഏറ്റവും വലുത് 640. ഏറ്റവും ചെറുത് 0-ൽ തുടങ്ങാൻ പറ്റില്ല, അതുകൊണ്ട് 406."
+             },
+             "visual": {
+              "args": [
+               "largest 640",
+               "smallest 406"
+              ],
+              "kind": "steps"
              }
             },
             {
@@ -2677,6 +3062,36 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "Pairs of 10 help with pairs of 100. 3 and 7 make 10, so 30 and 70 make 100.",
+              "ml": "10-ന്റെ ജോഡികൾ 100-ന്റെ ജോഡികൾക്ക് സഹായിക്കും. 3-ഉം 7-ഉം 10, അതുകൊണ്ട് 30-ഉം 70-ഉം 100."
+             },
+             "visual": {
+              "args": [
+               "3 + 7 = 10",
+               "30 + 70 = 100"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "To pair 35 with 100: from 35 go up 5 to reach 40, then 60 more to reach 100. 5 and 60 is 65.",
+              "ml": "35-ന്റെ ജോഡി കാണാൻ: 35-ൽ നിന്ന് 5 കൂടി 40, പിന്നെ 60 കൂടി 100. 5-ഉം 60-ഉം ചേർന്നാൽ 65."
+             },
+             "visual": {
+              "args": [
+               "35 + 5 = 40",
+               "40 + 60 = 100",
+               "5 + 60 = 65"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
              "answer": "40",
              "concept": "kerala-scert/class-3/maths#pairs-100",
              "explain": {
@@ -2853,6 +3268,37 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "Pairs of 10 also help with 1000. 4 and 6 make 10, so 400 and 600 make 1000.",
+              "ml": "10-ന്റെ ജോഡികൾ 1000-നും സഹായിക്കും. 4-ഉം 6-ഉം 10, അതുകൊണ്ട് 400-ഉം 600-ഉം 1000."
+             },
+             "visual": {
+              "args": [
+               "1000",
+               "400",
+               "600"
+              ],
+              "kind": "split"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "For 250: up 50 to reach 300, then 700 to reach 1000. 50 and 700 is 750.",
+              "ml": "250-ന്: 50 കൂടി 300, പിന്നെ 700 കൂടി 1000. 50-ഉം 700-ഉം ചേർന്നാൽ 750."
+             },
+             "visual": {
+              "args": [
+               "250 + 50 = 300",
+               "300 + 700 = 1000",
+               "50 + 700 = 750"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
              "answer": "600",
              "concept": "kerala-scert/class-3/maths#pairs-1000",
              "explain": {
@@ -3024,6 +3470,38 @@
                "30 + 40 = 70",
                "1 + 6 = 7",
                "231 + 146 = 377"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Splitting works because hundreds add to hundreds, tens to tens, and ones to ones. They never get mixed up.",
+              "ml": "പിരിച്ചു കൂട്ടുമ്പോൾ നൂറുകൾ നൂറുകളോടും പത്തുകൾ പത്തുകളോടും ഒന്നുകൾ ഒന്നുകളോടും ചേരുന്നു. അവ കൂടിക്കലരില്ല."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "7",
+               "7"
+              ],
+              "kind": "place"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Try 412 + 135. Hundreds: 400 and 100 is 500. Tens: 10 and 30 is 40. Ones: 2 and 5 is 7. The sum is 547.",
+              "ml": "412 + 135 നോക്കാം. നൂറുകൾ: 400-ഉം 100-ഉം 500. പത്തുകൾ: 10-ഉം 30-ഉം 40. ഒന്നുകൾ: 2-ഉം 5-ഉം 7. ആകെ 547."
+             },
+             "visual": {
+              "args": [
+               "400 + 100 = 500",
+               "10 + 30 = 40",
+               "2 + 5 = 7",
+               "547"
               ],
               "kind": "steps"
              }
@@ -3206,6 +3684,35 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "A place can hold only up to 9. Ten ones become one ten, so they move to the tens place.",
+              "ml": "ഒരു സ്ഥാനത്ത് 9 വരെ മാത്രമേ നിൽക്കൂ. പത്ത് ഒന്നുകൾ ഒരു പത്താകും, അവ പത്തിന്റെ സ്ഥാനത്തേക്ക് മാറും."
+             },
+             "visual": {
+              "args": [
+               "10 ones = 1 ten"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Try 126 + 37. Ones: 6 and 7 is 13, so write 3 and move 1 ten. Tens: 2 and 3 and the 1 moved is 6. The sum is 163.",
+              "ml": "126 + 37 നോക്കാം. ഒന്നുകൾ: 6-ഉം 7-ഉം 13, 3 എഴുതി 1 പത്ത് മാറ്റുക. പത്തുകൾ: 2-ഉം 3-ഉം മാറ്റിയ 1-ഉം ചേർന്നാൽ 6. ആകെ 163."
+             },
+             "visual": {
+              "args": [
+               "6 + 7 = 13",
+               "20 + 30 + 10 = 60",
+               "100 + 60 + 3 = 163"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
              "answer": "472",
              "concept": "kerala-scert/class-3/maths#add-carry",
              "explain": {
@@ -3378,6 +3885,35 @@
              "visual": {
               "args": [
                "5"
+              ],
+              "kind": "ruler"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Always start measuring at 0, not at the edge of the scale. Put the 0 line at one end of the thing, then read the number at its other end.",
+              "ml": "എപ്പോഴും 0-ൽ നിന്ന് അളക്കാൻ തുടങ്ങണം, സ്കെയിലിന്റെ അരികിൽ നിന്നല്ല. 0 എന്ന വര ഒരു അറ്റത്ത് വെച്ച് മറ്റേ അറ്റത്തെ സംഖ്യ വായിക്കൂ."
+             },
+             "visual": {
+              "args": [
+               "6",
+               "✏️"
+              ],
+              "kind": "ruler"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "This eraser starts at 0 and ends at 3. So it is 3 centimetres long.",
+              "ml": "ഈ റബ്ബർ 0-ൽ തുടങ്ങി 3-ൽ അവസാനിക്കുന്നു. അതുകൊണ്ട് നീളം 3 സെന്റിമീറ്റർ."
+             },
+             "visual": {
+              "args": [
+               "3",
+               "🟪"
               ],
               "kind": "ruler"
              }
@@ -3615,6 +4151,33 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "Joining things end to end means there is no gap and no overlap. Then the total length is just the lengths added.",
+              "ml": "അറ്റത്തോടറ്റം ചേർക്കുക എന്നാൽ ഇടയിൽ വിടവോ ഒന്നിനു മുകളിൽ ഒന്നോ ഇല്ല. അപ്പോൾ ആകെ നീളം നീളങ്ങളുടെ തുക മാത്രം."
+             },
+             "visual": {
+              "args": [
+               "10 cm + 12 cm"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "If you cut a piece off instead, the length gets shorter. 30 cm with 10 cm cut off leaves 20 cm.",
+              "ml": "ഒരു കഷണം മുറിച്ചു മാറ്റിയാൽ നീളം കുറയും. 30 സെ.മീ-ൽ നിന്ന് 10 സെ.മീ മുറിച്ചാൽ 20 സെ.മീ ബാക്കി."
+             },
+             "visual": {
+              "args": [
+               "30 cm − 10 cm = 20 cm"
+              ],
+              "kind": "text"
+             }
+            },
+            {
              "answer": "25",
              "concept": "kerala-scert/class-3/maths#add-lengths",
              "explain": {
@@ -3804,6 +4367,35 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "A metre is about one big step of a grown-up, or the height of a Class 3 child's shoulder from the floor.",
+              "ml": "ഒരു മീറ്റർ ഏകദേശം ഒരു മുതിർന്നയാളുടെ വലിയ ഒരു ചുവടിന്റെ നീളം. അല്ലെങ്കിൽ ഒരു മൂന്നാം ക്ലാസുകാരന്റെ തോൾ വരെയുള്ള ഉയരം."
+             },
+             "visual": {
+              "args": [
+               "🚶",
+               "📏"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "150 cm is 100 cm and 50 cm. That is 1 metre 50 centimetres.",
+              "ml": "150 സെ.മീ എന്നാൽ 100 സെ.മീ-ഉം 50 സെ.മീ-ഉം. അതായത് 1 മീറ്റർ 50 സെന്റിമീറ്റർ."
+             },
+             "visual": {
+              "args": [
+               "150 cm = 100 cm + 50 cm",
+               "= 1 m 50 cm"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
              "answer": "200",
              "concept": "kerala-scert/class-3/maths#metre",
              "explain": {
@@ -3968,6 +4560,33 @@
              "visual": {
               "args": [
                "6 + 4 + 6 + 4 = 20 cm"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Going all the way around means every side is counted exactly once. Not one side missed, not one counted twice.",
+              "ml": "ചുറ്റും പോകുക എന്നാൽ ഓരോ വശവും കൃത്യം ഒരു തവണ എണ്ണണം. ഒന്നും വിട്ടുപോകരുത്, രണ്ട് തവണ എണ്ണരുത്."
+             },
+             "visual": {
+              "args": [
+               "rectangle"
+              ],
+              "kind": "shapes"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "A triangle with sides 3 cm, 4 cm and 5 cm: 3 and 4 and 5 make 12 cm all the way around.",
+              "ml": "3 സെ.മീ, 4 സെ.മീ, 5 സെ.മീ വശങ്ങളുള്ള ത്രികോണം: 3-ഉം 4-ഉം 5-ഉം ചേർന്നാൽ ചുറ്റും 12 സെ.മീ."
+             },
+             "visual": {
+              "args": [
+               "3 + 4 + 5 = 12 cm"
               ],
               "kind": "steps"
              }
@@ -4184,6 +4803,37 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "Equal groups must all have the same number. If one basket had 5 mangoes and another had 3, they would not be equal groups.",
+              "ml": "തുല്യ കൂട്ടങ്ങളിൽ എല്ലാത്തിലും ഒരേ എണ്ണം വേണം. ഒരു കൊട്ടയിൽ 5-ഉം മറ്റൊന്നിൽ 3-ഉം ആണെങ്കിൽ അവ തുല്യ കൂട്ടങ്ങളല്ല."
+             },
+             "visual": {
+              "args": [
+               "2",
+               "4",
+               "🥭"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "2 plates with 3 idlis each: count 3, then 6. There are 6 idlis.",
+              "ml": "3 ഇഡ്ഡലി വീതമുള്ള 2 പാത്രങ്ങൾ: 3, പിന്നെ 6. ആകെ 6 ഇഡ്ഡലി."
+             },
+             "visual": {
+              "args": [
+               "2",
+               "3",
+               "⚪"
+              ],
+              "kind": "groups"
+             }
+            },
+            {
              "answer": "12",
              "concept": "kerala-scert/class-3/maths#equal-groups",
              "explain": {
@@ -4381,6 +5031,21 @@
               "args": [
                "2 × 3 = 3 + 3",
                "3 doubled = 6"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "In 3 × 4, the first number tells how many groups. The second number tells how many are in each group.",
+              "ml": "3 × 4-ൽ ആദ്യത്തെ സംഖ്യ എത്ര കൂട്ടങ്ങൾ എന്ന് പറയുന്നു. രണ്ടാമത്തേത് ഓരോ കൂട്ടത്തിലും എത്ര എന്ന് പറയുന്നു."
+             },
+             "visual": {
+              "args": [
+               "3 × 4",
+               "3 groups",
+               "4 in each"
               ],
               "kind": "steps"
              }
@@ -4591,6 +5256,35 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "Rows are equal groups standing in a line. Each row has the same number, so we can multiply.",
+              "ml": "വരികൾ ഒരു നിരയിൽ നിൽക്കുന്ന തുല്യ കൂട്ടങ്ങളാണ്. ഓരോ വരിയിലും ഒരേ എണ്ണം, അതുകൊണ്ട് ഗുണിക്കാം."
+             },
+             "visual": {
+              "args": [
+               "2",
+               "5",
+               "🔵"
+              ],
+              "kind": "array"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "2 rows of 5 is 5 and 5, which is 10. So 2 × 5 = 10.",
+              "ml": "5 വീതമുള്ള 2 വരികൾ എന്നാൽ 5-ഉം 5-ഉം, 10. അതുകൊണ്ട് 2 × 5 = 10."
+             },
+             "visual": {
+              "args": [
+               "2 × 5 = 10"
+              ],
+              "kind": "text"
+             }
+            },
+            {
              "answer": "16",
              "concept": "kerala-scert/class-3/maths#times-facts",
              "explain": {
@@ -4775,6 +5469,36 @@
              }
             },
             {
+             "t": "say",
+             "text": {
+              "en": "Doubling is a shortcut. If you know 2 × 4 = 8, then 4 × 4 is 8 doubled, which is 16.",
+              "ml": "ഇരട്ടിയാക്കൽ ഒരു എളുപ്പവഴിയാണ്. 2 × 4 = 8 എന്നറിയാമെങ്കിൽ 4 × 4 എന്നാൽ 8-ന്റെ ഇരട്ടി, 16."
+             },
+             "visual": {
+              "args": [
+               "2 × 4 = 8",
+               "4 × 4 = 16"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Turning rows into columns does not change the number. 2 × 5 and 5 × 2 are both 10.",
+              "ml": "വരികൾ നിരകളാക്കിയാൽ എണ്ണം മാറില്ല. 2 × 5-ഉം 5 × 2-ഉം രണ്ടും 10."
+             },
+             "visual": {
+              "args": [
+               "2",
+               "5",
+               "🔵"
+              ],
+              "kind": "array"
+             }
+            },
+            {
              "answer": "20",
              "concept": "kerala-scert/class-3/maths#mult-relations",
              "explain": {
@@ -4945,7 +5669,15 @@
         "en": "Maths",
         "ml": "ഗണിതം"
        },
-       "order": 1
+       "order": 1,
+       "palette": [
+        "#FF8A3D",
+        "#F2A413",
+        "#E5488B",
+        "#FF6B5E",
+        "#E9792E",
+        "#D6409F"
+       ]
       },
       {
        "chapters": [],
@@ -4957,7 +5689,8 @@
         "en": "English",
         "ml": "ഇംഗ്ലീഷ്"
        },
-       "order": 2
+       "order": 2,
+       "palette": []
       },
       {
        "chapters": [],
@@ -4969,10 +5702,3812 @@
         "en": "Malayalam",
         "ml": "മലയാളം"
        },
-       "order": 3
+       "order": 3,
+       "palette": []
       },
       {
-       "chapters": [],
+       "chapters": [
+        {
+         "id": "kerala-scert/class-3/evs/01-green-earth",
+         "lessons": [
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Follow the water: it goes in at the root, climbs up the stem, and reaches the leaves, where food is made."
+             },
+             "visual": {
+              "args": [
+               "💧 root → stem → leaf 🍃"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Rootu the root lived under the ground, drinking water all day. Stemmy the stem carried the water up, up, up. Leafy the leaf caught the sunshine and cooked food for everyone. Together they grew a sweet mango for a little girl."
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/01-green-earth/01-parts-of-a-plant",
+           "minutes": 6,
+           "objective": {
+            "en": "Name the parts of a plant and what each part does."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Let's play a game! Fly like a little bird and touch a green tree, a flower and a leaf. Every one of them is a part of a plant."
+             },
+             "visual": {
+              "args": [
+               "🐦",
+               "🌳",
+               "🌺",
+               "🍃"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "A plant has three main parts: the root, the stem and the leaves. Many plants also have flowers, and flowers can become fruits."
+             },
+             "visual": {
+              "args": [
+               "root",
+               "stem",
+               "leaves",
+               "flowers → fruits"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "The root grows under the soil. It holds the plant firmly in the ground, and it drinks water and nutrients from the soil."
+             },
+             "visual": {
+              "args": [
+               "🌱",
+               "🟫",
+               "💧"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "The stem is like a pipe. It carries the water and nutrients from the root up to the leaves. It also holds the plant up."
+             },
+             "visual": {
+              "args": [
+               "root → stem → leaves"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "The leaves are the plant's kitchen. Plants make their own food in their leaves, using sunlight. The extra food is stored in other parts, and animals and people eat it."
+             },
+             "visual": {
+              "args": [
+               "🍃",
+               "☀️",
+               "🍌",
+               "🥕"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Try this. Put a small plant with its roots in red-coloured water. After some time the stem turns a little red. The root drank the water and the stem carried it up."
+             },
+             "visual": {
+              "args": [
+               "🌱",
+               "🧪",
+               "🔴"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "root",
+             "concept": "kerala-scert/class-3/evs#plant-parts",
+             "explain": {
+              "en": "The root holds the plant firmly in the soil and absorbs water."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of the part that grows under the ground."
+             },
+             "level": 1,
+             "mistakes": {
+              "leaf": "mixed up the work of the root and the leaf"
+             },
+             "options": [
+              "root",
+              "leaf",
+              "flower"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which part of the plant fixes it firmly in the soil?"
+             }
+            },
+            {
+             "answer": "leaf",
+             "concept": "kerala-scert/class-3/evs#plant-parts",
+             "explain": {
+              "en": "Leaves make the plant's food using sunlight."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Which part is the plant's kitchen, using sunlight?"
+             },
+             "level": 1,
+             "mistakes": {
+              "root": "thinks the root makes the food, not the leaf",
+              "stem": "mixed up the work of the stem and the leaf"
+             },
+             "options": [
+              "leaf",
+              "stem",
+              "root"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which part makes the plant's food?"
+             }
+            },
+            {
+             "answer": "stem",
+             "concept": "kerala-scert/class-3/evs#plant-parts",
+             "explain": {
+              "en": "The stem carries water and nutrients from the root to the leaves."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It is the part in the middle, like a pipe."
+             },
+             "level": 1,
+             "options": [
+              "stem",
+              "flower",
+              "fruit"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Water goes from the root to the leaves. Which part carries it?"
+             }
+            },
+            {
+             "answer": "3",
+             "concept": "kerala-scert/class-3/evs#plant-parts",
+             "explain": {
+              "en": "The three main parts are the root, the stem and the leaves."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Root, stem, leaves. Count them."
+             },
+             "level": 1,
+             "mistakes": {
+              "5": "counted flowers and fruits as main parts"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many main parts does a plant have? Count root, stem and leaves."
+             }
+            },
+            {
+             "answer": "It wilts",
+             "concept": "kerala-scert/class-3/evs#plant-parts",
+             "explain": {
+              "en": "Without water to absorb, the plant wilts and droops."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "What does the root need to drink?"
+             },
+             "level": 1,
+             "mistakes": {
+              "It grows taller": "does not yet link roots with water"
+             },
+             "options": [
+              "It wilts",
+              "It grows taller",
+              "It makes more flowers"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A plant is kept with its roots in an empty test tube with no water. What happens after a while?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Parts of a plant"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Look at the stems: soft for herbs, hard for shrubs, very hard and thick for trees."
+             },
+             "visual": {
+              "args": [
+               "🌿 soft → herb",
+               "🌺 hard → shrub",
+               "🌳 very hard → tree"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "In a garden lived three friends. Tiny Cheera the herb said, my stem is soft and I am small. Chemparathi the shrub said, my stem is hard, but I am not very tall. Big Mango the tree laughed, my stem is the hardest and I will live for many, many years!"
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/01-green-earth/02-herbs-shrubs-and-trees",
+           "minutes": 6,
+           "objective": {
+            "en": "Group plants as herbs, shrubs, trees, vine plants and water plants."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Are all plants the same? No! Look at their size, their stem, and how long they live."
+             },
+             "visual": {
+              "args": [
+               "🌿",
+               "🌺",
+               "🌳"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Herbs are small plants with a soft stem. They do not have deep roots and many live only for a few months. Spinach, called cheera, is a herb."
+             },
+             "visual": {
+              "args": [
+               "🌿"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Shrubs are small or medium plants, but their stems are hard. They live for years. Hibiscus, the chemparathi, is a shrub."
+             },
+             "visual": {
+              "args": [
+               "🌺"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Trees grow very big. Their stems are very hard and they live for many, many years. The mango tree is a tree."
+             },
+             "visual": {
+              "args": [
+               "🌳",
+               "🥭"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Some plants cannot stand up on their own. These are vine plants. Some spread along the ground. Others climb up by holding on to a support, like a pole or another plant."
+             },
+             "visual": {
+              "args": [
+               "🎃",
+               "🍇"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Plants that grow in water are called water plants, like the lotus and the water lily."
+             },
+             "visual": {
+              "args": [
+               "🪷",
+               "💧"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Remember it like this: soft stem, herb. Hard but small, shrub. Very hard and very big, tree."
+             },
+             "visual": {
+              "args": [
+               "soft stem → herb",
+               "hard, small → shrub",
+               "very hard, very big → tree"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "herb",
+             "concept": "kerala-scert/class-3/evs#plant-types",
+             "explain": {
+              "en": "A plant with a soft stem that lives a short time is a herb."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Which kind has a soft stem?"
+             },
+             "level": 1,
+             "mistakes": {
+              "shrub": "mixed up herbs and shrubs",
+              "tree": "mixed up herbs and trees"
+             },
+             "options": [
+              "herb",
+              "shrub",
+              "tree"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Spinach has a soft stem and lives only for a few months. What kind of plant is it?"
+             }
+            },
+            {
+             "answer": "shrub",
+             "concept": "kerala-scert/class-3/evs#plant-types",
+             "explain": {
+              "en": "A small plant with a hard stem is a shrub."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Small plant, hard stem."
+             },
+             "level": 1,
+             "mistakes": {
+              "herb": "mixed up herbs and shrubs",
+              "tree": "mixed up shrubs and trees"
+             },
+             "options": [
+              "shrub",
+              "herb",
+              "tree"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Hibiscus is not very big, but its stem is hard. What kind of plant is it?"
+             }
+            },
+            {
+             "answer": "mango",
+             "concept": "kerala-scert/class-3/evs#plant-types",
+             "explain": {
+              "en": "The mango tree grows very big, has a very hard stem and lives many years."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Which one grows very big with a very hard stem?"
+             },
+             "level": 1,
+             "options": [
+              "mango",
+              "spinach",
+              "hibiscus"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which plant is a tree?"
+             }
+            },
+            {
+             "answer": "a vine plant",
+             "concept": "kerala-scert/class-3/evs#plant-types",
+             "explain": {
+              "en": "Pumpkin is a vine plant. It spreads along the ground."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Plants that spread or climb and cannot stand alone have a special name."
+             },
+             "level": 1,
+             "options": [
+              "a vine plant",
+              "a tree",
+              "a water plant"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A pumpkin plant spreads along the ground and cannot stand up alone. What is it?"
+             }
+            },
+            {
+             "answer": "in water",
+             "concept": "kerala-scert/class-3/evs#plant-types",
+             "explain": {
+              "en": "Lotus is a water plant. It grows in ponds."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Lotus is a water plant."
+             },
+             "level": 1,
+             "options": [
+              "in water",
+              "on a rock",
+              "on a tree"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Where does a lotus grow?"
+             }
+            },
+            {
+             "answer": "1",
+             "concept": "kerala-scert/class-3/evs#plant-types",
+             "explain": {
+              "en": "Only 1: the mango. Spinach is a herb and hibiscus is a shrub."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Which one grows very big with a very hard stem?"
+             },
+             "level": 1,
+             "mistakes": {
+              "3": "thinks every plant is a tree"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Spinach, hibiscus and mango. How many of these are trees?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Herbs, shrubs and trees"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "A seed grows in steps: first the root, then the shoot, then the leaves."
+             },
+             "visual": {
+              "args": [
+               "🫘",
+               "🌱",
+               "🌿",
+               "🪴"
+              ],
+              "kind": "pattern"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Pinky the pea seed was sleeping in dry sand. One day Saira poured water. Pinky stretched! A tiny root wriggled down, a shoot peeped up, and two green leaves waved hello to the sun."
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/01-green-earth/03-how-new-plants-grow",
+           "minutes": 6,
+           "objective": {
+            "en": "Know that new plants grow from seeds and from other plant parts."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Inside every seed, a baby plant is sleeping. When the seed gets water, it wakes up and starts to grow. This is called germination."
+             },
+             "visual": {
+              "args": [
+               "🫘",
+               "💧",
+               "🌱"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Try it. Put a few pea seeds in wet sand near the side of a clear glass. After a few days the root comes out first, going down. Then the shoot comes up and the first leaves open."
+             },
+             "visual": {
+              "args": [
+               "seed → root grows down → shoot grows up → first leaves"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "A growing plant needs water, air and sunlight, and some manure to grow well. Keep your plant where there is light."
+             },
+             "visual": {
+              "args": [
+               "💧",
+               "💨",
+               "☀️"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "New plants do not come only from seeds. A curry leaf plant can send up new plants from its roots. The miracle leaf plant, ilamulachi, grows new plants from its leaves."
+             },
+             "visual": {
+              "args": [
+               "🌿",
+               "🍃"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Hibiscus and rose can be grown by planting a cut piece of their stem. Mango and pumpkin grow from seeds."
+             },
+             "visual": {
+              "args": [
+               "stem: hibiscus, rose",
+               "root: curry leaf",
+               "leaf: ilamulachi",
+               "seed: mango, pumpkin"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "the root",
+             "concept": "kerala-scert/class-3/evs#new-plants",
+             "explain": {
+              "en": "The root comes out first and grows down. Then the shoot grows up."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It grows downwards into the soil."
+             },
+             "level": 1,
+             "mistakes": {
+              "the flower": "thinks flowers come before roots"
+             },
+             "options": [
+              "the root",
+              "the flower",
+              "the fruit"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "When a seed germinates, which part comes out first?"
+             }
+            },
+            {
+             "answer": "water",
+             "concept": "kerala-scert/class-3/evs#new-plants",
+             "explain": {
+              "en": "A seed starts to germinate when it gets water."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Our pea seeds started growing after the sand was made wet."
+             },
+             "level": 1,
+             "options": [
+              "water",
+              "salt",
+              "darkness and dryness"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What does a seed need first to start growing?"
+             }
+            },
+            {
+             "answer": "leaf",
+             "concept": "kerala-scert/class-3/evs#new-plants",
+             "explain": {
+              "en": "New ilamulachi plants grow from its leaves."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Its name gives you a clue."
+             },
+             "level": 1,
+             "options": [
+              "leaf",
+              "seed",
+              "flower"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "The miracle leaf plant (ilamulachi) makes new plants from which part?"
+             }
+            },
+            {
+             "answer": "from a piece of stem",
+             "concept": "kerala-scert/class-3/evs#new-plants",
+             "explain": {
+              "en": "Hibiscus is grown by planting a cut piece of its stem."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Gardeners cut and plant a piece of it."
+             },
+             "level": 1,
+             "options": [
+              "from a piece of stem",
+              "from its leaf",
+              "from its flower"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "How is a hibiscus plant usually grown?"
+             }
+            },
+            {
+             "answer": "mango",
+             "concept": "kerala-scert/class-3/evs#new-plants",
+             "explain": {
+              "en": "A mango seed grows into a new mango tree."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of the big seed inside the fruit we eat."
+             },
+             "level": 1,
+             "options": [
+              "mango",
+              "curry leaf root",
+              "ilamulachi leaf"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which plant grows from a seed?"
+             }
+            },
+            {
+             "answer": "3",
+             "concept": "kerala-scert/class-3/evs#new-plants",
+             "explain": {
+              "en": "That is 3 things."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count: water, air, sunlight."
+             },
+             "level": 1,
+             "mistakes": {
+              "2": "missed one of the three"
+             },
+             "t": "ask",
+             "text": {
+              "en": "A growing plant needs water, air and sunlight. How many things is that?"
+             }
+            }
+           ],
+           "title": {
+            "en": "How new plants grow"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "A flower helps in two ways: it feeds the bee, and it can turn into a fruit with seeds."
+             },
+             "visual": {
+              "args": [
+               "🌺 → 🐝 nectar",
+               "🌺 → fruit → seeds"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A little flower on a hibiscus plant said, please don't pluck me! A bee is coming to drink my nectar, and soon I will become a seed pod, so more hibiscus plants can grow."
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/01-green-earth/04-leaves-flowers-and-why-plants-matter",
+           "minutes": 6,
+           "objective": {
+            "en": "Notice the variety in leaves and flowers, and why plants matter."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Leaves are not all the same. They differ in shape, size and colour, and some leaves have a smell when you crush them. Thumba leaves are long and tapering."
+             },
+             "visual": {
+              "args": [
+               "🍃",
+               "🌿",
+               "🍁"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Flowers are different too, in colour, smell and shape. Jasmine is white and sweet-smelling. Flowers give nectar to bees and butterflies, and many flowers later become fruits."
+             },
+             "visual": {
+              "args": [
+               "🌼",
+               "🐝",
+               "🍎"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Not every plant has flowers. Ferns and mosses never bloom. And not every flower becomes a fruit."
+             },
+             "visual": {
+              "args": [
+               "🌿"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Here is a special one. Neelakurinji blooms only once in twelve years. Its flowers are blue and can stay for up to three months. The Nilgiri hills are named after it."
+             },
+             "visual": {
+              "args": [
+               "12 years 💙"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Plants give us shade, food, flowers and fresh air, and homes for birds and insects. So it is our duty to plant and protect plants and keep the earth green."
+             },
+             "visual": {
+              "args": [
+               "🌳",
+               "🍌",
+               "🐦",
+               "🌍"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "12",
+             "concept": "kerala-scert/class-3/evs#leaves-flowers",
+             "explain": {
+              "en": "Neelakurinji blooms once in twelve years."
+             },
+             "form": "number",
+             "hint": {
+              "en": "It is a long wait: one dozen years."
+             },
+             "level": 1,
+             "mistakes": {
+              "1": "thinks it blooms every year"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Neelakurinji blooms once in how many years?"
+             }
+            },
+            {
+             "answer": "blue",
+             "concept": "kerala-scert/class-3/evs#leaves-flowers",
+             "explain": {
+              "en": "Neelakurinji flowers are blue. That is why the Nilgiri hills got their name."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Neela means blue."
+             },
+             "level": 1,
+             "options": [
+              "blue",
+              "red",
+              "yellow"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What colour are Neelakurinji flowers?"
+             }
+            },
+            {
+             "answer": "No",
+             "concept": "kerala-scert/class-3/evs#leaves-flowers",
+             "explain": {
+              "en": "No. Ferns and mosses do not bloom."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of ferns and mosses."
+             },
+             "level": 1,
+             "mistakes": {
+              "Yes": "thinks every plant flowers"
+             },
+             "options": [
+              "No",
+              "Yes"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Do all plants have flowers?"
+             }
+            },
+            {
+             "answer": "bees",
+             "concept": "kerala-scert/class-3/evs#leaves-flowers",
+             "explain": {
+              "en": "Bees and butterflies drink nectar from flowers."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "This insect makes honey."
+             },
+             "level": 1,
+             "options": [
+              "bees",
+              "fish",
+              "cows"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Who gets nectar from flowers?"
+             }
+            },
+            {
+             "answer": "They give shade",
+             "concept": "kerala-scert/class-3/evs#leaves-flowers",
+             "explain": {
+              "en": "Plants give shade, food, fresh air and homes for animals."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of sitting under a big tree on a hot day."
+             },
+             "level": 1,
+             "options": [
+              "They give shade",
+              "They make noise",
+              "They eat plastic"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which of these is a way plants help us?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Leaves, flowers and why plants matter"
+           }
+          }
+         ],
+         "objectives": [
+          {
+           "en": "Name the parts of a plant and what each part does"
+          },
+          {
+           "en": "Group plants as herbs, shrubs, trees, vine plants and water plants"
+          },
+          {
+           "en": "Know that new plants grow from seeds and from other plant parts"
+          },
+          {
+           "en": "Notice the variety in leaves and flowers, and why plants matter"
+          }
+         ],
+         "source": "Follows Unit 1 of SCERT Kerala Environmental Science Class III, Part 1 (2024), English medium. Explanations and questions are our own.",
+         "title": {
+          "en": "Green Earth"
+         },
+         "verified": false
+        },
+        {
+         "id": "kerala-scert/class-3/evs/02-to-the-world-of-animals",
+         "lessons": [
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Each domestic animal helps us in its own way."
+             },
+             "visual": {
+              "args": [
+               "🐄 → 🥛",
+               "🐔 → 🥚",
+               "🐕 → 🛡️"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Every morning Mithra greets her friends: the hen who gives her an egg, the cow who gives milk for her tea, and Tommy the dog who barks to keep everyone safe."
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/02-to-the-world-of-animals/01-animals-around-us",
+           "minutes": 6,
+           "objective": {
+            "en": "Say why people raise animals and name creatures around us."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Look around Mithra's house. There are hens, a cow, a goat, a dog, and birds and insects too. Some of these animals live with people."
+             },
+             "visual": {
+              "args": [
+               "🐔",
+               "🐄",
+               "🐐",
+               "🐕"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Animals that people raise at home are called domestic animals. We raise them for different reasons."
+             },
+             "visual": {
+              "args": [
+               "🏡",
+               "🐄"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Some give us food: cows and goats give milk, and hens give eggs. Some keep us safe, like a dog. Some we keep just because we love them, as pets."
+             },
+             "visual": {
+              "args": [
+               "cow, goat → milk",
+               "hen → eggs",
+               "dog → security",
+               "pets → pleasure"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Many creatures live in and around our homes without being raised: lizards, ants, spiders, sparrows and squirrels."
+             },
+             "visual": {
+              "args": [
+               "🦎",
+               "🐜",
+               "🕷️",
+               "🐿️"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "hen",
+             "concept": "kerala-scert/class-3/evs#animals-around",
+             "explain": {
+              "en": "Hens give us eggs."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of the bird that lays eggs we eat."
+             },
+             "level": 1,
+             "options": [
+              "hen",
+              "dog",
+              "cat"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which animal gives us eggs?"
+             }
+            },
+            {
+             "answer": "for security",
+             "concept": "kerala-scert/class-3/evs#animals-around",
+             "explain": {
+              "en": "Dogs guard the house, so they are kept for security, and as pets."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "What does a dog do when a stranger comes?"
+             },
+             "level": 1,
+             "mistakes": {
+              "for milk": "mixed up dogs with milk animals"
+             },
+             "options": [
+              "for security",
+              "for milk",
+              "for eggs"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Why do many people keep a dog at home?"
+             }
+            },
+            {
+             "answer": "cow",
+             "concept": "kerala-scert/class-3/evs#animals-around",
+             "explain": {
+              "en": "A cow is raised at home for milk. It is a domestic animal."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Which one do people raise at home?"
+             },
+             "level": 1,
+             "options": [
+              "cow",
+              "tiger",
+              "whale"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which of these is a domestic animal?"
+             }
+            },
+            {
+             "answer": "2",
+             "concept": "kerala-scert/class-3/evs#animals-around",
+             "explain": {
+              "en": "Both of them, so 2 animals."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count: cow, goat."
+             },
+             "level": 1,
+             "mistakes": {
+              "1": "counted only one of the two animals"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Cows and goats give milk. How many of these two animals give milk?"
+             }
+            },
+            {
+             "answer": "lizard",
+             "concept": "kerala-scert/class-3/evs#animals-around",
+             "explain": {
+              "en": "Lizards live on walls in our homes and eat insects."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It is small and can climb walls."
+             },
+             "level": 1,
+             "options": [
+              "lizard",
+              "elephant",
+              "camel"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which creature often lives on the walls of our homes?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Animals around us"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Lined up by size, from the tiniest to the biggest."
+             },
+             "visual": {
+              "args": [
+               "🐜",
+               "🐞",
+               "🐸",
+               "🐈",
+               "🐄",
+               "🐘",
+               "🐋"
+              ],
+              "kind": "pattern"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Mithra and her friends played a naming game. Grasshopper! Firefly! Beetle! Cow! Then her brother said, blue whale! Everyone laughed. You win, he said, that is the biggest of all."
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/02-to-the-world-of-animals/02-tiny-and-giant",
+           "minutes": 6,
+           "objective": {
+            "en": "Notice how animals differ in size, colour, spots, horns and where they live."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Some creatures are tiny, like ants. Some are giants, like elephants. We can arrange animals from the smallest to the largest."
+             },
+             "visual": {
+              "args": [
+               "🐜",
+               "🐸",
+               "🐕",
+               "🐄",
+               "🐘"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Tiny creatures live in the soil and on plants. A hand lens makes them look bigger, so we can see them clearly."
+             },
+             "visual": {
+              "args": [
+               "🔍",
+               "🐜",
+               "🐛"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "We can recognise animals by their features: colour, spots, stripes, horns and nails. A zebra has stripes. A leopard has spots. A cow has horns."
+             },
+             "visual": {
+              "args": [
+               "🦓",
+               "🐆",
+               "🐄"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "The sea is home to more creatures than the land! Fish, sea horses, sea cucumbers and sea cows all live there."
+             },
+             "visual": {
+              "args": [
+               "🐠",
+               "🐙",
+               "🦀"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "The largest creature on earth is the blue whale. It lives in the sea, but it is not a fish. A blue whale gives birth to its babies."
+             },
+             "visual": {
+              "args": [
+               "🐋"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "blue whale",
+             "concept": "kerala-scert/class-3/evs#animal-variety",
+             "explain": {
+              "en": "The blue whale is the largest creature on earth."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It lives in the sea."
+             },
+             "level": 1,
+             "mistakes": {
+              "elephant": "thinks the largest animal lives on land"
+             },
+             "options": [
+              "blue whale",
+              "elephant",
+              "shark"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which is the largest creature on earth?"
+             }
+            },
+            {
+             "answer": "No",
+             "concept": "kerala-scert/class-3/evs#animal-variety",
+             "explain": {
+              "en": "No. The blue whale is not a fish. It gives birth to its young."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It gives birth to its babies instead of laying eggs like most fish."
+             },
+             "level": 1,
+             "mistakes": {
+              "Yes": "thinks everything in the sea is a fish"
+             },
+             "options": [
+              "No",
+              "Yes"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Is the blue whale a fish?"
+             }
+            },
+            {
+             "answer": "in the sea",
+             "concept": "kerala-scert/class-3/evs#animal-variety",
+             "explain": {
+              "en": "There are more creatures in the sea than on land."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of how big the sea is."
+             },
+             "level": 1,
+             "options": [
+              "in the sea",
+              "on land"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Where do more creatures live?"
+             }
+            },
+            {
+             "answer": "zebra",
+             "concept": "kerala-scert/class-3/evs#animal-variety",
+             "explain": {
+              "en": "A zebra has black and white stripes."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Black and white lines."
+             },
+             "level": 1,
+             "options": [
+              "zebra",
+              "elephant",
+              "frog"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which animal can you recognise by its stripes?"
+             }
+            },
+            {
+             "answer": "a hand lens",
+             "concept": "kerala-scert/class-3/evs#animal-variety",
+             "explain": {
+              "en": "A hand lens makes tiny creatures look bigger."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It makes small things look bigger."
+             },
+             "level": 1,
+             "options": [
+              "a hand lens",
+              "a spoon",
+              "a mirror"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What helps us see tiny creatures clearly?"
+             }
+            },
+            {
+             "answer": "1",
+             "concept": "kerala-scert/class-3/evs#animal-variety",
+             "explain": {
+              "en": "Only 1: the blue whale."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Only one of them swims in the sea."
+             },
+             "level": 1,
+             "mistakes": {
+              "2": "thinks the elephant lives in the sea"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Ant, elephant and blue whale. How many of these live in the sea?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Tiny ones and giants"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Match the body part to the movement."
+             },
+             "visual": {
+              "args": [
+               "🦵 legs → walk",
+               "🪽 wings → fly",
+               "🐟 fins → swim"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "At the park pond, Duck said to Fish, I can swim like you! Then Duck waddled onto the grass and flapped up into the air. Fish blinked. You can walk and fly too? Duck winked. I have webbed feet and wings!"
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/02-to-the-world-of-animals/03-how-animals-move",
+           "minutes": 6,
+           "objective": {
+            "en": "Group animals by how they move."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Do all animals move the same way? No! Some walk, some fly, some swim, some crawl, and some hop."
+             },
+             "visual": {
+              "args": [
+               "🐄",
+               "🐦",
+               "🐟",
+               "🐍",
+               "🐸"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "An animal's body shows how it moves. Legs help to walk and run. Wings help to fly. Fins and a tail help to swim."
+             },
+             "visual": {
+              "args": [
+               "legs → walk",
+               "wings → fly",
+               "fins → swim"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "A snake has no legs. It moves by sliding on its belly. A frog and a grasshopper have strong back legs for jumping."
+             },
+             "visual": {
+              "args": [
+               "🐍",
+               "🐸",
+               "🦗"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Some animals move in more than one way. A duck can walk, swim and fly!"
+             },
+             "visual": {
+              "args": [
+               "🦆"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "it swims",
+             "concept": "kerala-scert/class-3/evs#animal-movement",
+             "explain": {
+              "en": "A fish swims using its fins and tail."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It lives in water and has fins."
+             },
+             "level": 1,
+             "options": [
+              "it swims",
+              "it walks",
+              "it hops"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "How does a fish move?"
+             }
+            },
+            {
+             "answer": "snake",
+             "concept": "kerala-scert/class-3/evs#animal-movement",
+             "explain": {
+              "en": "A snake has no legs, so it slides on its belly."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It has no legs at all."
+             },
+             "level": 1,
+             "options": [
+              "snake",
+              "cow",
+              "crow"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which animal moves by sliding on its belly?"
+             }
+            },
+            {
+             "answer": "strong back legs",
+             "concept": "kerala-scert/class-3/evs#animal-movement",
+             "explain": {
+              "en": "Strong back legs help a frog to jump."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Look at how long and strong its back legs are."
+             },
+             "level": 1,
+             "options": [
+              "strong back legs",
+              "a long tail",
+              "wings"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which body part helps a frog to jump?"
+             }
+            },
+            {
+             "answer": "3",
+             "concept": "kerala-scert/class-3/evs#animal-movement",
+             "explain": {
+              "en": "A duck can move in 3 ways."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count: walk, swim, fly."
+             },
+             "level": 1,
+             "mistakes": {
+              "1": "thinks each animal moves in only one way"
+             },
+             "t": "ask",
+             "text": {
+              "en": "A duck walks, swims and flies. In how many ways can it move?"
+             }
+            },
+            {
+             "answer": "crow",
+             "concept": "kerala-scert/class-3/evs#animal-movement",
+             "explain": {
+              "en": "A crow flies using its wings."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It has wings and feathers."
+             },
+             "level": 1,
+             "options": [
+              "crow",
+              "goat",
+              "fish"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which animal flies?"
+             }
+            }
+           ],
+           "title": {
+            "en": "How animals move"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Three groups, by what they eat."
+             },
+             "visual": {
+              "args": [
+               "herbivore 🐄 → 🌿",
+               "carnivore 🦁 → 🍖",
+               "omnivore 🐔 → 🌿 + 🐛"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Cow, Lion and Crow met for lunch. Cow brought grass. Lion said, no thank you, I eat only meat. Crow said, I will eat a little of everything! Their friend the owl laughed: a herbivore, a carnivore and an omnivore at one table!"
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/02-to-the-world-of-animals/04-what-animals-eat",
+           "minutes": 6,
+           "objective": {
+            "en": "Group animals by what they eat: herbivores, carnivores and omnivores."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Different animals eat different food. A butterfly drinks nectar from flowers. A praying mantis eats ants and small insects."
+             },
+             "visual": {
+              "args": [
+               "🦋",
+               "🌸",
+               "🦗"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Animals that eat only plant parts are called herbivores. Cows, goats and elephants are herbivores."
+             },
+             "visual": {
+              "args": [
+               "🐄",
+               "🐐",
+               "🐘",
+               "🌿"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Animals that eat only other animals are called carnivores. Lions, eagles and kingfishers are carnivores."
+             },
+             "visual": {
+              "args": [
+               "🦁",
+               "🦅",
+               "🐟"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Animals that eat both plants and animals are called omnivores. Crows and hens are omnivores."
+             },
+             "visual": {
+              "args": [
+               "🐦‍⬛",
+               "🐔"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Bodies match food. Carnivores have sharp nails and pointed teeth to catch and tear their prey. Eagles have strong, sharp beaks and bent claws. Herbivores have teeth for chewing plants."
+             },
+             "visual": {
+              "args": [
+               "carnivore → sharp teeth, claws",
+               "herbivore → chewing teeth"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "herbivore",
+             "concept": "kerala-scert/class-3/evs#animal-food",
+             "explain": {
+              "en": "Animals that eat only plant parts are herbivores."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Herb means plant."
+             },
+             "level": 1,
+             "mistakes": {
+              "carnivore": "mixed up herbivore and carnivore",
+              "omnivore": "mixed up herbivore and omnivore"
+             },
+             "options": [
+              "herbivore",
+              "carnivore",
+              "omnivore"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A cow eats only grass and leaves. What is it?"
+             }
+            },
+            {
+             "answer": "carnivore",
+             "concept": "kerala-scert/class-3/evs#animal-food",
+             "explain": {
+              "en": "Animals that eat only meat are carnivores."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It hunts other animals."
+             },
+             "level": 1,
+             "mistakes": {
+              "herbivore": "mixed up herbivore and carnivore"
+             },
+             "options": [
+              "carnivore",
+              "herbivore",
+              "omnivore"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A lion eats only meat. What is it?"
+             }
+            },
+            {
+             "answer": "omnivore",
+             "concept": "kerala-scert/class-3/evs#animal-food",
+             "explain": {
+              "en": "Animals that eat both plants and animals are omnivores."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It eats both plants and animals."
+             },
+             "level": 1,
+             "mistakes": {
+              "carnivore": "did not notice it also eats plants"
+             },
+             "options": [
+              "omnivore",
+              "herbivore",
+              "carnivore"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A crow eats seeds and also small creatures. What is it?"
+             }
+            },
+            {
+             "answer": "sharp bent claws",
+             "concept": "kerala-scert/class-3/evs#animal-food",
+             "explain": {
+              "en": "An eagle has strong legs with sharp bent claws, and a sharp beak."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Look at its feet."
+             },
+             "level": 1,
+             "options": [
+              "sharp bent claws",
+              "flat teeth",
+              "soft feathers on its feet"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What helps an eagle catch its prey?"
+             }
+            },
+            {
+             "answer": "1",
+             "concept": "kerala-scert/class-3/evs#animal-food",
+             "explain": {
+              "en": "Only 1: the cow. The lion eats meat and the crow eats both."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Only the cow eats just plants."
+             },
+             "level": 1,
+             "mistakes": {
+              "2": "counted the crow, which eats both"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Cow, lion, crow. How many of these eat only plant parts?"
+             }
+            }
+           ],
+           "title": {
+            "en": "What animals eat"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Four stages, one life."
+             },
+             "visual": {
+              "args": [
+               "⚪",
+               "🐛",
+               "🫘",
+               "🦋"
+              ],
+              "kind": "pattern"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A tiny egg sat under a curry leaf. Out wriggled Kutti the caterpillar, munching leaves all day. One day Kutti curled up inside a pupa and went quiet. A few days later, out flew a beautiful butterfly!"
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/02-to-the-world-of-animals/05-life-of-a-butterfly",
+           "minutes": 6,
+           "objective": {
+            "en": "Describe the life of a butterfly."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Mithra found tiny pearly eggs under a leaf. Her mother said they were butterfly eggs."
+             },
+             "visual": {
+              "args": [
+               "🍃",
+               "⚪"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "A worm-like larva, called a caterpillar, comes out of each egg. It eats and eats the leaves and grows bigger."
+             },
+             "visual": {
+              "args": [
+               "🐛",
+               "🍃"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Then the larva makes a hard case around itself. This stage is the pupa. Inside, a big change is happening."
+             },
+             "visual": {
+              "args": [
+               "🫘"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "At last, a butterfly comes out of the pupa! So a butterfly's life goes: egg, larva, pupa, butterfly."
+             },
+             "visual": {
+              "args": [
+               "⚪",
+               "🐛",
+               "🫘",
+               "🦋"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Butterflies need plants in two ways: to lay their eggs on, and for food. Caterpillars eat leaves, and butterflies drink nectar from flowers."
+             },
+             "visual": {
+              "args": [
+               "🌿",
+               "🌺",
+               "🦋"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "In Kerala, the largest butterfly is the Southern birdwing, the smallest is the Grass jewel, and our state butterfly is the Malabar banded peacock, Buddha mayoori."
+             },
+             "visual": {
+              "args": [
+               "largest: Southern birdwing",
+               "smallest: Grass jewel",
+               "state butterfly: Buddha mayoori"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "answer": "a larva",
+             "concept": "kerala-scert/class-3/evs#butterfly",
+             "explain": {
+              "en": "A larva, or caterpillar, comes out of the egg."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It looks like a little worm."
+             },
+             "level": 1,
+             "mistakes": {
+              "a butterfly": "thinks a butterfly hatches straight from the egg"
+             },
+             "options": [
+              "a larva",
+              "a butterfly",
+              "a pupa"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What comes out of a butterfly's egg?"
+             }
+            },
+            {
+             "answer": "egg, larva, pupa, butterfly",
+             "concept": "kerala-scert/class-3/evs#butterfly",
+             "explain": {
+              "en": "Egg, larva, pupa, then butterfly."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It starts with the egg and ends with the butterfly."
+             },
+             "level": 1,
+             "mistakes": {
+              "egg, pupa, larva, butterfly": "swapped the larva and pupa stages"
+             },
+             "options": [
+              "egg, larva, pupa, butterfly",
+              "egg, pupa, larva, butterfly",
+              "larva, egg, butterfly, pupa"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which order is right?"
+             },
+             "visual": {
+              "args": [
+               "⚪",
+               "?",
+               "?",
+               "🦋"
+              ],
+              "kind": "pattern"
+             }
+            },
+            {
+             "answer": "4",
+             "concept": "kerala-scert/class-3/evs#butterfly",
+             "explain": {
+              "en": "There are 4 stages."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count all four names."
+             },
+             "level": 1,
+             "mistakes": {
+              "3": "missed one of the stages"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many stages are there in a butterfly's life? Count egg, larva, pupa and butterfly."
+             }
+            },
+            {
+             "answer": "Malabar banded peacock",
+             "concept": "kerala-scert/class-3/evs#butterfly",
+             "explain": {
+              "en": "The Malabar banded peacock, Buddha mayoori, is Kerala's state butterfly."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Its Malayalam name is Buddha mayoori."
+             },
+             "level": 1,
+             "options": [
+              "Malabar banded peacock",
+              "Grass jewel",
+              "Southern birdwing"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What is Kerala's state butterfly?"
+             }
+            },
+            {
+             "answer": "to lay eggs and for food",
+             "concept": "kerala-scert/class-3/evs#butterfly",
+             "explain": {
+              "en": "Butterflies lay eggs on plants and get food from them."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of where the eggs were, and what butterflies drink."
+             },
+             "level": 1,
+             "options": [
+              "to lay eggs and for food",
+              "to sleep inside the roots",
+              "they don't need plants"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Why do butterflies need plants?"
+             }
+            }
+           ],
+           "title": {
+            "en": "The life of a butterfly"
+           }
+          }
+         ],
+         "objectives": [
+          {
+           "en": "Say why people raise animals and name creatures around us"
+          },
+          {
+           "en": "Notice how animals differ in size, colour, spots, horns and where they live"
+          },
+          {
+           "en": "Group animals by how they move"
+          },
+          {
+           "en": "Group animals by what they eat: herbivores, carnivores and omnivores"
+          },
+          {
+           "en": "Describe the life of a butterfly"
+          }
+         ],
+         "source": "Follows Unit 2 of SCERT Kerala Environmental Science Class III, Part 1 (2024), English medium. Explanations and questions are our own.",
+         "title": {
+          "en": "To the World of Animals"
+         },
+         "verified": false
+        },
+        {
+         "id": "kerala-scert/class-3/evs/03-water-and-soil",
+         "lessons": [
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "More water in the gauge means more rain."
+             },
+             "visual": {
+              "args": [
+               "🧪 2 cm → little rain",
+               "🧪 6 cm → lots of rain"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Kuttan put a bottle with a funnel in his courtyard. That night it rained and rained. In the morning, the water reached 6 on the scale! Kuttan wrote in his diary: big rain today."
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/03-water-and-soil/01-rain-and-the-rain-gauge",
+           "minutes": 6,
+           "objective": {
+            "en": "Measure rainfall with a rain gauge."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Pitter patter! After rain the soil is wet, plants look fresh, and new shoots come up. Rain changes everything around us."
+             },
+             "visual": {
+              "args": [
+               "🌧️",
+               "🌱"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Some places get a lot of rain and some get very little. How do we know how much rain fell? We measure it."
+             },
+             "visual": {
+              "args": [
+               "🌧️",
+               "☀️"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "A rain gauge measures rain. Make one with a glass bottle, a funnel and a scale. Fix the scale to the bottle, put the funnel on top, and keep it in an open place."
+             },
+             "visual": {
+              "args": [
+               "bottle + funnel + scale = rain gauge"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Read the water level in the bottle at the same time every day. The higher the water, the more rain fell that day."
+             },
+             "visual": {
+              "args": [
+               "🧪",
+               "📏"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Rainwater that falls on soil soaks down into it. Some rainwater also flows away into streams and rivers."
+             },
+             "visual": {
+              "args": [
+               "🌧️",
+               "🟫"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "a rain gauge",
+             "concept": "kerala-scert/class-3/evs#rain",
+             "explain": {
+              "en": "A rain gauge measures how much rain fell."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Its name has the word rain in it."
+             },
+             "level": 1,
+             "options": [
+              "a rain gauge",
+              "a thermometer",
+              "a clock"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What do we use to measure rainfall?"
+             }
+            },
+            {
+             "answer": "a candle",
+             "concept": "kerala-scert/class-3/evs#rain",
+             "explain": {
+              "en": "We need a glass bottle, a funnel and a scale. Not a candle."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "We used a bottle, a funnel and a scale."
+             },
+             "level": 1,
+             "options": [
+              "a candle",
+              "a funnel",
+              "a scale"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which of these is NOT needed to make our rain gauge?"
+             }
+            },
+            {
+             "answer": "5 cm",
+             "concept": "kerala-scert/class-3/evs#rain",
+             "explain": {
+              "en": "5 cm is higher than 2 cm, so more rain fell that day."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Higher water means more rain."
+             },
+             "level": 1,
+             "mistakes": {
+              "2 cm": "thinks a lower water level means more rain"
+             },
+             "options": [
+              "5 cm",
+              "2 cm"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "On which day did more rain fall: the day the water rose to 5 cm, or the day it rose to 2 cm?"
+             }
+            },
+            {
+             "answer": "7",
+             "concept": "kerala-scert/class-3/evs#rain",
+             "explain": {
+              "en": "3 cm and 4 cm make 7 cm of rain."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Add 3 and 4."
+             },
+             "level": 1,
+             "mistakes": {
+              "1": "subtracted instead of adding"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Our rain gauge showed 3 cm on Monday and 4 cm on Tuesday. How many centimetres of rain on both days together?"
+             }
+            },
+            {
+             "answer": "it soaks into the soil",
+             "concept": "kerala-scert/class-3/evs#rain",
+             "explain": {
+              "en": "Rainwater soaks down into the soil."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of our bottle of dry soil."
+             },
+             "level": 1,
+             "options": [
+              "it soaks into the soil",
+              "it turns into stones",
+              "it goes up into the sky at once"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Where does rainwater go when it falls on soil?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Rain and the rain gauge"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Water comes from many places."
+             },
+             "visual": {
+              "args": [
+               "🌧️ rain → 🏞️ river, pond",
+               "→ 🪣 well, borewell"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A fish in the river called out to Kuttan: please don't throw sweet wrappers in the water. The river is my home, just like your house is yours! Kuttan picked up the wrappers and put them in the bin."
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/03-water-and-soil/02-water-sources-and-saving-water",
+           "minutes": 6,
+           "objective": {
+            "en": "Name water sources and ways to save water."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Where does the water at your home come from? Many homes have a well. Some have a borewell, a deep narrow hole in the ground. Farms may use ponds."
+             },
+             "visual": {
+              "args": [
+               "🪣",
+               "🏞️"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Rivers, ponds, lakes and wells are all water sources. Rainwater fills them."
+             },
+             "visual": {
+              "args": [
+               "🏞️",
+               "🌧️"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Kerala has old ways too. A suranga is a narrow tunnel dug into a hill to bring groundwater out. It is used in Kasaragod. A keni is a well made by putting a hollowed tree trunk into the ground. Many tribal groups still use it."
+             },
+             "visual": {
+              "args": [
+               "suranga → tunnel",
+               "keni → tree-trunk well"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "All living things need water. We use it to drink, cook, bathe, wash and farm. Fish live in it, and elephants drink and bathe in it."
+             },
+             "visual": {
+              "args": [
+               "💧",
+               "🐟",
+               "🐘",
+               "🌾"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Water is precious, so don't waste it. Close the tap after use, and fix leaking pipes."
+             },
+             "visual": {
+              "args": [
+               "🚰",
+               "✅"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "a well",
+             "concept": "kerala-scert/class-3/evs#water-sources",
+             "explain": {
+              "en": "A well is a water source."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "We draw water from it with a bucket."
+             },
+             "level": 1,
+             "options": [
+              "a well",
+              "a chair",
+              "a cupboard"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which is a water source?"
+             }
+            },
+            {
+             "answer": "a tunnel that brings out groundwater",
+             "concept": "kerala-scert/class-3/evs#water-sources",
+             "explain": {
+              "en": "A suranga is a narrow tunnel that brings groundwater out of a hill."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It is used in Kasaragod."
+             },
+             "level": 1,
+             "options": [
+              "a tunnel that brings out groundwater",
+              "a kind of fish",
+              "a big boat"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What is a suranga?"
+             }
+            },
+            {
+             "answer": "a hollowed tree trunk",
+             "concept": "kerala-scert/class-3/evs#water-sources",
+             "explain": {
+              "en": "A keni is a well made by putting a hollowed tree trunk into the ground."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It is a well made with wood."
+             },
+             "level": 1,
+             "options": [
+              "a hollowed tree trunk",
+              "plastic bottles",
+              "glass"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What is a keni made from?"
+             }
+            },
+            {
+             "answer": "leaving the tap open",
+             "concept": "kerala-scert/class-3/evs#water-sources",
+             "explain": {
+              "en": "Leaving the tap open wastes water. Close it after use."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Which one lets water run when nobody needs it?"
+             },
+             "level": 1,
+             "options": [
+              "leaving the tap open",
+              "closing the tap",
+              "fixing a leaking pipe"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which of these wastes water?"
+             }
+            },
+            {
+             "answer": "all living things",
+             "concept": "kerala-scert/class-3/evs#water-sources",
+             "explain": {
+              "en": "All living things need water to live."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Plants, animals and people."
+             },
+             "level": 1,
+             "options": [
+              "all living things",
+              "only fish",
+              "only people"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Who needs water?"
+             }
+            },
+            {
+             "answer": "3",
+             "concept": "kerala-scert/class-3/evs#water-sources",
+             "explain": {
+              "en": "Well, river and pond: 3 water sources."
+             },
+             "form": "number",
+             "hint": {
+              "en": "A chair does not give water."
+             },
+             "level": 1,
+             "mistakes": {
+              "4": "counted the chair as a water source"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Well, river, chair and pond. How many of these are water sources?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Where water comes from"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Soil works like a filter."
+             },
+             "visual": {
+              "args": [
+               "🟤 muddy → 🟫 soil → 💧 clear"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A muddy raindrop named Chelu slid into the soil. Down, down she went, through sand and tiny stones. When she reached the well, she looked in the water and gasped: I am clear and sparkling now!"
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/03-water-and-soil/03-making-water-clean",
+           "minutes": 6,
+           "objective": {
+            "en": "Explain how soil filters water clean."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Muddy rainwater falls on the ground. So how is the water in a well clear?"
+             },
+             "visual": {
+              "args": [
+               "🌧️",
+               "🟫",
+               "🪣"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Part of the rainwater seeps down into the soil. As it goes down through the soil, the dirt stays behind and the water becomes clear. This is called filtering."
+             },
+             "visual": {
+              "args": [
+               "muddy water → through soil → clear water"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "The clear water collects under the ground. It is called groundwater, and it fills wells and other water sources."
+             },
+             "visual": {
+              "args": [
+               "🪣",
+               "💧"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Try it yourself. Put gravel, sand and coconut-shell charcoal in three shells with holes, one above the other. Pour muddy water at the top. Clearer water drips out at the bottom!"
+             },
+             "visual": {
+              "args": [
+               "gravel → sand → charcoal → clearer water"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Clear water may still have tiny germs we cannot see. So drink boiled and cooled water."
+             },
+             "visual": {
+              "args": [
+               "🫖",
+               "💧"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "it becomes clearer",
+             "concept": "kerala-scert/class-3/evs#water-clean",
+             "explain": {
+              "en": "The soil filters the water, so it becomes clearer."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "The soil keeps the dirt back."
+             },
+             "level": 1,
+             "options": [
+              "it becomes clearer",
+              "it becomes muddier",
+              "it turns into milk"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What happens to muddy water as it seeps down through soil?"
+             }
+            },
+            {
+             "answer": "groundwater",
+             "concept": "kerala-scert/class-3/evs#water-clean",
+             "explain": {
+              "en": "Water collected under the ground is groundwater."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It is water under the ground."
+             },
+             "level": 1,
+             "options": [
+              "groundwater",
+              "seawater",
+              "rainbow water"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What do we call the water that collects under the ground?"
+             }
+            },
+            {
+             "answer": "sugar",
+             "concept": "kerala-scert/class-3/evs#water-clean",
+             "explain": {
+              "en": "Our filter uses gravel, sand and coconut-shell charcoal. Not sugar."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "We used gravel, sand and charcoal."
+             },
+             "level": 1,
+             "options": [
+              "sugar",
+              "sand",
+              "gravel"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which is NOT used in our water filter?"
+             }
+            },
+            {
+             "answer": "3",
+             "concept": "kerala-scert/class-3/evs#water-clean",
+             "explain": {
+              "en": "Gravel, sand and charcoal make 3 layers."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count the three things."
+             },
+             "level": 1,
+             "mistakes": {
+              "2": "missed one layer"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Our filter had gravel, sand and charcoal. How many layers is that?"
+             }
+            },
+            {
+             "answer": "boiled and cooled water",
+             "concept": "kerala-scert/class-3/evs#water-clean",
+             "explain": {
+              "en": "Boiled and cooled water is safest to drink."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Boiling kills germs we cannot see."
+             },
+             "level": 1,
+             "options": [
+              "boiled and cooled water",
+              "muddy pond water",
+              "water from a puddle"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What is the safest water to drink?"
+             }
+            }
+           ],
+           "title": {
+            "en": "How soil makes water clean"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Three things hiding in soil."
+             },
+             "visual": {
+              "args": [
+               "🫧 air",
+               "💧 water",
+               "🍂 biomass"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Under the mango tree lived Mannu the earthworm. Mannu said, my soil has air to breathe, water to drink, and lots of yummy dried leaves. And when I eat, I make the soil even better for the tree!"
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/03-water-and-soil/04-what-is-in-soil",
+           "minutes": 6,
+           "objective": {
+            "en": "Know what soil contains and why soil matters."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Is soil the same everywhere? No! Soil from the courtyard, under a tree and the playground can have different colours and different sizes of grains."
+             },
+             "visual": {
+              "args": [
+               "🟫",
+               "🟤",
+               "🟧"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Soil took thousands of years to form, and it is full of life. Earthworms, ants and lakhs of tiny living things live in it."
+             },
+             "visual": {
+              "args": [
+               "🪱",
+               "🐜"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Soil has air in it. Drop a dry clump of soil into water and watch the bubbles come out. Those bubbles are air."
+             },
+             "visual": {
+              "args": [
+               "🟫",
+               "💧",
+               "🫧"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Soil has water in it. Close some garden soil in a clear bottle and keep it in the sun. Little drops of water appear on the sides."
+             },
+             "visual": {
+              "args": [
+               "🫙",
+               "☀️",
+               "💧"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Soil has biomass too: dried leaves, bits of stems and remains of living things. Plants grow well in soil with lots of biomass, and earthworms eat it."
+             },
+             "visual": {
+              "args": [
+               "🍂",
+               "🪱",
+               "🌱"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Plants take water and minerals from the soil, and we use soil for farming and making clay models. So we must keep soil clean and fertile."
+             },
+             "visual": {
+              "args": [
+               "🌾",
+               "🏺"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "there is air in soil",
+             "concept": "kerala-scert/class-3/evs#soil",
+             "explain": {
+              "en": "The bubbles show that soil has air in it."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Bubbles are made of air."
+             },
+             "level": 1,
+             "options": [
+              "there is air in soil",
+              "there is sugar in soil",
+              "the water is boiling"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A dry clump of soil is dropped in water and bubbles come out. What do the bubbles show?"
+             }
+            },
+            {
+             "answer": "there is water in soil",
+             "concept": "kerala-scert/class-3/evs#soil",
+             "explain": {
+              "en": "The drops came from the soil, so soil has water in it."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Where did the drops come from?"
+             },
+             "level": 1,
+             "options": [
+              "there is water in soil",
+              "the bottle is broken",
+              "it rained inside"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Soil in a closed bottle is kept in the sun. Drops appear on the sides. What does this show?"
+             }
+            },
+            {
+             "answer": "dried leaves and remains of living things",
+             "concept": "kerala-scert/class-3/evs#soil",
+             "explain": {
+              "en": "Biomass is dried leaves, bits of stems and remains of living things."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It comes from plants and animals."
+             },
+             "level": 1,
+             "options": [
+              "dried leaves and remains of living things",
+              "small plastic pieces",
+              "stones"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What is biomass in soil?"
+             }
+            },
+            {
+             "answer": "earthworm",
+             "concept": "kerala-scert/class-3/evs#soil",
+             "explain": {
+              "en": "Earthworms feed on soil rich in biomass."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It lives in the soil and has no legs."
+             },
+             "level": 1,
+             "options": [
+              "earthworm",
+              "eagle",
+              "goat"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which creature eats soil rich in biomass?"
+             }
+            },
+            {
+             "answer": "3",
+             "concept": "kerala-scert/class-3/evs#soil",
+             "explain": {
+              "en": "That is 3 things."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count: air, water, biomass."
+             },
+             "level": 1,
+             "mistakes": {
+              "2": "missed one of the three"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Soil has air, water and biomass. How many things is that?"
+             }
+            }
+           ],
+           "title": {
+            "en": "What is in the soil?"
+           }
+          }
+         ],
+         "objectives": [
+          {
+           "en": "Measure rainfall with a rain gauge"
+          },
+          {
+           "en": "Name water sources and ways to save water"
+          },
+          {
+           "en": "Explain how soil filters water clean"
+          },
+          {
+           "en": "Know what soil contains and why soil matters"
+          }
+         ],
+         "source": "Follows Unit 3 of SCERT Kerala Environmental Science Class III, Part 1 (2024), English medium. Explanations and questions are our own.",
+         "title": {
+          "en": "Water and Soil"
+         },
+         "verified": false
+        },
+        {
+         "id": "kerala-scert/class-3/evs/04-the-power-of-cleanliness",
+         "lessons": [
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Clean hands keep germs away from our food."
+             },
+             "visual": {
+              "args": [
+               "🙌 + 🧼 → 🦠 gone",
+               "clean 🙌 → safe 🍛"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "The children washed their hands into one bucket. Then they compared a glass of fresh water with a glass of the washing water. The washing water was cloudy! Alan said, so that is what was on our hands!"
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/04-the-power-of-cleanliness/01-clean-hands",
+           "minutes": 6,
+           "objective": {
+            "en": "Wash hands the right way and know when to wash them."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Our hands get dirty when we play and work. Dirt and tiny germs on our hands can reach our mouth with food and make us ill."
+             },
+             "visual": {
+              "args": [
+               "🙌",
+               "🦠"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Washing with soap destroys germs. Wash your hands before eating, after eating, after using the toilet, and after travelling."
+             },
+             "visual": {
+              "args": [
+               "before eating",
+               "after eating",
+               "after the toilet",
+               "after travelling"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Washing has 6 steps. One: wet your hands and put on soap. Two: rub your palms together. Three: clean the backs of your hands and between your fingers."
+             },
+             "visual": {
+              "args": [
+               "1 wet + soap",
+               "2 rub palms",
+               "3 backs and between fingers"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Four: rub your nails and fingertips on your palm. Five: rub your fingers and wrists in circles. Six: rinse in clean water and dry with a clean cloth."
+             },
+             "visual": {
+              "args": [
+               "4 nails, fingertips",
+               "5 fingers, wrists",
+               "6 rinse and dry"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Trim and clean your nails too. Dirt hiding under nails can reach your stomach with food."
+             },
+             "visual": {
+              "args": [
+               "💅",
+               "✂️"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "6",
+             "concept": "kerala-scert/class-3/evs#clean-hands",
+             "explain": {
+              "en": "There are 6 steps."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Count the steps from wetting to drying."
+             },
+             "level": 1,
+             "mistakes": {
+              "3": "remembered only some of the steps"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many steps are there in washing hands properly?"
+             }
+            },
+            {
+             "answer": "after using the toilet",
+             "concept": "kerala-scert/class-3/evs#clean-hands",
+             "explain": {
+              "en": "Wash with soap after using the toilet, and before and after eating."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of when germs get on our hands."
+             },
+             "level": 1,
+             "mistakes": {
+              "only when they look black": "thinks germs can be seen"
+             },
+             "options": [
+              "after using the toilet",
+              "only on Sundays",
+              "only when they look black"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "When must we wash our hands with soap?"
+             }
+            },
+            {
+             "answer": "it destroys them",
+             "concept": "kerala-scert/class-3/evs#clean-hands",
+             "explain": {
+              "en": "Soap destroys germs on our hands."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "That is why we use soap and not only water."
+             },
+             "level": 1,
+             "options": [
+              "it destroys them",
+              "it feeds them",
+              "nothing"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What does soap do to germs?"
+             }
+            },
+            {
+             "answer": "dirt under nails can reach our stomach",
+             "concept": "kerala-scert/class-3/evs#clean-hands",
+             "explain": {
+              "en": "Dirt under long nails can go into our stomach with food."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of where food goes after it touches our fingers."
+             },
+             "level": 1,
+             "options": [
+              "dirt under nails can reach our stomach",
+              "to make our hands heavier",
+              "nails grow faster when trimmed"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Why should we trim our nails?"
+             }
+            },
+            {
+             "answer": "rinse and dry with a clean cloth",
+             "concept": "kerala-scert/class-3/evs#clean-hands",
+             "explain": {
+              "en": "The last step is to rinse in clean water and dry with a clean cloth."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It comes after all the rubbing."
+             },
+             "level": 1,
+             "options": [
+              "rinse and dry with a clean cloth",
+              "put on soap",
+              "rub palms together"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What is the last step of washing hands?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Clean hands"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Three clean habits every day."
+             },
+             "visual": {
+              "args": [
+               "🪥 brush twice",
+               "🛁 bathe daily",
+               "👕 clean, dry clothes"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "A doctor visited Alan's school. She showed the children how to brush: slant the brush, top to bottom, bottom to top, and don't forget the tongue! That night Alan taught his little sister, and they both grinned with sparkling teeth."
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/04-the-power-of-cleanliness/02-teeth-body-and-clothes",
+           "minutes": 6,
+           "objective": {
+            "en": "Keep teeth, body and clothes clean."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Brush your teeth twice a day: in the morning, and after dinner. If we don't, our teeth get damaged."
+             },
+             "visual": {
+              "args": [
+               "🪥",
+               "🦷"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Hold the brush slanted. Brush the upper teeth from top to bottom and the lower teeth from bottom to top. Brush the chewing surfaces and the inner sides too, and clean your tongue."
+             },
+             "visual": {
+              "args": [
+               "slanted brush",
+               "upper: top to bottom",
+               "lower: bottom to top",
+               "tongue too"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Take a bath every day. Wash every part of your body with soap, and never bathe in dirty water. Use your own clean, dry towel, and wash it after use."
+             },
+             "visual": {
+              "args": [
+               "🛁",
+               "🧼",
+               "🧺"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Don't wear dirty or wet clothes. Germs grow in them and can cause scabies and rashes."
+             },
+             "visual": {
+              "args": [
+               "👕",
+               "🦠"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Not keeping clean causes illnesses like dysentery, cold, scabies and rashes. My hygiene is my responsibility!"
+             },
+             "visual": {
+              "args": [
+               "💪",
+               "✨"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "2",
+             "concept": "kerala-scert/class-3/evs#personal-hygiene",
+             "explain": {
+              "en": "Twice a day: in the morning and after dinner."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Morning and after dinner."
+             },
+             "level": 1,
+             "mistakes": {
+              "1": "brushes only in the morning"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How many times a day should we brush our teeth?"
+             }
+            },
+            {
+             "answer": "from top to bottom",
+             "concept": "kerala-scert/class-3/evs#personal-hygiene",
+             "explain": {
+              "en": "Upper teeth are brushed from top to bottom."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Brush away from the gums."
+             },
+             "level": 1,
+             "options": [
+              "from top to bottom",
+              "only sideways, very hard",
+              "we don't need to brush them"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "How should we brush our upper teeth?"
+             }
+            },
+            {
+             "answer": "your own",
+             "concept": "kerala-scert/class-3/evs#personal-hygiene",
+             "explain": {
+              "en": "Use your own clean towel, never someone else's."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Germs can pass from one person to another."
+             },
+             "level": 1,
+             "options": [
+              "your own",
+              "anyone's",
+              "the dog's"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Whose towel should you use after a bath?"
+             }
+            },
+            {
+             "answer": "rashes and scabies",
+             "concept": "kerala-scert/class-3/evs#personal-hygiene",
+             "explain": {
+              "en": "Germs grow in dirty, wet clothes and can cause scabies and rashes."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Germs grow in them."
+             },
+             "level": 1,
+             "options": [
+              "rashes and scabies",
+              "we grow taller",
+              "nothing at all"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What can happen if we wear dirty or wet clothes?"
+             }
+            },
+            {
+             "answer": "bathing every day",
+             "concept": "kerala-scert/class-3/evs#personal-hygiene",
+             "explain": {
+              "en": "Bathing every day keeps our body clean and keeps illness away."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of the clean habits we learned."
+             },
+             "level": 1,
+             "options": [
+              "bathing every day",
+              "not brushing teeth",
+              "wearing wet clothes"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which helps keep illness away?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Clean teeth, body and clothes"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Empty the water, stop the mosquitoes."
+             },
+             "visual": {
+              "args": [
+               "🥥💧 water collects → 🦟 eggs",
+               "dry day → no water → no 🦟"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Mosquito said to Housefly, I love dirty water lying around. I lay my eggs there! But on Sunday the children of the ward had a dry day. They emptied every coconut shell and old tyre. Mosquito sighed: no place left for my eggs!"
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/04-the-power-of-cleanliness/03-clean-surroundings",
+           "minutes": 6,
+           "objective": {
+            "en": "Keep surroundings clean to stop disease."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Mosquitoes, flies and rats multiply where there is waste and dirty water. They spread many diseases."
+             },
+             "visual": {
+              "args": [
+               "🦟",
+               "🪰",
+               "🐀"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Mosquitoes spread dengue fever, malaria, chikungunya and elephantiasis. They lay their eggs in collected water."
+             },
+             "visual": {
+              "args": [
+               "🦟",
+               "💧"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Coconut shells, old tyres, bottles, caps and toys lying outside can collect rainwater. Mosquito eggs in such water become adult mosquitoes in eight days."
+             },
+             "visual": {
+              "args": [
+               "🥥",
+               "🛞",
+               "🍾"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "So once every seven days, we empty that water and remove things that can hold water. This is called a dry day."
+             },
+             "visual": {
+              "args": [
+               "every 7 days = dry day"
+              ],
+              "kind": "text"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Some diseases spread through dirty water: dysentery, jaundice, cholera and typhoid. Drink boiled and cooled water."
+             },
+             "visual": {
+              "args": [
+               "🫖",
+               "💧"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Dysentery makes the body lose water. It needs to be given back: salted rice water, salted buttermilk, coconut water, or lime juice with salt and sugar. ORS from the health centre, mixed in boiled and cooled water, helps too."
+             },
+             "visual": {
+              "args": [
+               "🥥",
+               "🍋",
+               "🥛"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "7",
+             "concept": "kerala-scert/class-3/evs#clean-surroundings",
+             "explain": {
+              "en": "Once every 7 days."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Mosquito eggs take 8 days to become adults, so we clear water a day before."
+             },
+             "level": 1,
+             "mistakes": {
+              "8": "chose the mosquito growth time instead of the dry-day gap"
+             },
+             "t": "ask",
+             "text": {
+              "en": "How often should we have a dry day? Once every how many days?"
+             }
+            },
+            {
+             "answer": "8",
+             "concept": "kerala-scert/class-3/evs#clean-surroundings",
+             "explain": {
+              "en": "In 8 days. That is why dry day comes every 7 days."
+             },
+             "form": "number",
+             "hint": {
+              "en": "It is one day more than a week."
+             },
+             "level": 1,
+             "mistakes": {
+              "7": "mixed up the dry-day gap and the mosquito growth time"
+             },
+             "t": "ask",
+             "text": {
+              "en": "In how many days do mosquito eggs become adult mosquitoes?"
+             }
+            },
+            {
+             "answer": "dengue fever",
+             "concept": "kerala-scert/class-3/evs#clean-surroundings",
+             "explain": {
+              "en": "Dengue fever is spread by mosquitoes."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Mosquitoes spread dengue, malaria and chikungunya."
+             },
+             "level": 1,
+             "options": [
+              "dengue fever",
+              "toothache",
+              "a broken arm"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which disease is spread by mosquitoes?"
+             }
+            },
+            {
+             "answer": "in collected water",
+             "concept": "kerala-scert/class-3/evs#clean-surroundings",
+             "explain": {
+              "en": "Mosquitoes lay their eggs in collected water."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Think of the coconut shells after rain."
+             },
+             "level": 1,
+             "options": [
+              "in collected water",
+              "in dry sand",
+              "in a hot oven"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Where do mosquitoes lay their eggs?"
+             }
+            },
+            {
+             "answer": "salted rice water",
+             "concept": "kerala-scert/class-3/evs#clean-surroundings",
+             "explain": {
+              "en": "Salted rice water, buttermilk, coconut water or ORS give back lost water."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "The body has lost water and salt."
+             },
+             "level": 1,
+             "options": [
+              "salted rice water",
+              "a fizzy cold drink",
+              "nothing at all"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "Which drink helps someone who has dysentery?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Clean surroundings"
+           }
+          },
+          {
+           "alts": {
+            "picture": {
+             "text": {
+              "en": "Three bins, three kinds of waste."
+             },
+             "visual": {
+              "args": [
+               "organic 🍌 → compost",
+               "inorganic 🧴 → recycle",
+               "hazardous 💡 → special care"
+              ],
+              "kind": "steps"
+             }
+            },
+            "story": {
+             "text": {
+              "en": "Three bins stood in a row at school. Green bin ate banana peels and said, yum, I will become manure! Blue bin collected plastic bottles for recycling. Red bin carefully took the old bulb and the medicine strip. Nothing ended up on the playground."
+             }
+            }
+           },
+           "id": "kerala-scert/class-3/evs/04-the-power-of-cleanliness/04-sorting-waste",
+           "minutes": 6,
+           "objective": {
+            "en": "Sort waste into organic, inorganic and hazardous."
+           },
+           "steps": [
+            {
+             "t": "say",
+             "text": {
+              "en": "Why do schools have separate bins for waste? Because different waste must be handled in different ways."
+             },
+             "visual": {
+              "args": [
+               "🗑️",
+               "🗑️",
+               "🗑️"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Organic waste rots in the soil. Food scraps, vegetable peels, banana skins and fish waste are organic."
+             },
+             "visual": {
+              "args": [
+               "🍌",
+               "🥕",
+               "🐟"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Inorganic waste does not rot. Plastic bottles, plastic covers and PVC pipes are inorganic."
+             },
+             "visual": {
+              "args": [
+               "🧴",
+               "🛍️"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Hazardous waste can harm us. Electronic waste, bulbs, expired medicines and pesticide bottles are hazardous."
+             },
+             "visual": {
+              "args": [
+               "💡",
+               "💊",
+               "🔋"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "label": "example",
+             "t": "say",
+             "text": {
+              "en": "Organic waste can become manure. Put it in a compost pit and cover it with soil. In three to four months it turns into manure."
+             },
+             "visual": {
+              "args": [
+               "food waste → compost pit → 3 to 4 months → manure"
+              ],
+              "kind": "steps"
+             }
+            },
+            {
+             "t": "say",
+             "text": {
+              "en": "Never throw plastic around and never burn it. Burning plastic harms our health. Sort it and give it to the waste collectors for recycling."
+             },
+             "visual": {
+              "args": [
+               "🚫🔥",
+               "♻️"
+              ],
+              "kind": "emoji"
+             }
+            },
+            {
+             "answer": "organic",
+             "concept": "kerala-scert/class-3/evs#waste",
+             "explain": {
+              "en": "A banana peel rots in soil, so it is organic waste."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Does it rot in the soil?"
+             },
+             "level": 1,
+             "mistakes": {
+              "inorganic": "mixed up organic and inorganic"
+             },
+             "options": [
+              "organic",
+              "inorganic",
+              "hazardous"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A banana peel is which kind of waste?"
+             }
+            },
+            {
+             "answer": "inorganic",
+             "concept": "kerala-scert/class-3/evs#waste",
+             "explain": {
+              "en": "Plastic does not rot, so it is inorganic waste."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Plastic does not rot."
+             },
+             "level": 1,
+             "mistakes": {
+              "organic": "thinks plastic rots in soil"
+             },
+             "options": [
+              "inorganic",
+              "organic",
+              "hazardous"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "A plastic bottle is which kind of waste?"
+             }
+            },
+            {
+             "answer": "hazardous",
+             "concept": "kerala-scert/class-3/evs#waste",
+             "explain": {
+              "en": "Bulbs are hazardous waste."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It can hurt us if it breaks."
+             },
+             "level": 1,
+             "mistakes": {
+              "inorganic": "did not know bulbs are hazardous"
+             },
+             "options": [
+              "hazardous",
+              "organic",
+              "inorganic"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "An old bulb is which kind of waste?"
+             }
+            },
+            {
+             "answer": "sort it and give it for recycling",
+             "concept": "kerala-scert/class-3/evs#waste",
+             "explain": {
+              "en": "Sort plastic and give it to waste collectors for recycling."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "Not throwing, not burning."
+             },
+             "level": 1,
+             "mistakes": {
+              "burn it": "thinks burning plastic is safe"
+             },
+             "options": [
+              "sort it and give it for recycling",
+              "burn it",
+              "throw it in the river"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "What should we do with plastic waste?"
+             }
+            },
+            {
+             "answer": "3 to 4 months",
+             "concept": "kerala-scert/class-3/evs#waste",
+             "explain": {
+              "en": "About three to four months."
+             },
+             "form": "choice",
+             "hint": {
+              "en": "It is a few months."
+             },
+             "level": 1,
+             "options": [
+              "3 to 4 months",
+              "1 day",
+              "10 years"
+             ],
+             "t": "ask",
+             "text": {
+              "en": "How long does a compost pit take to turn food waste into manure?"
+             }
+            },
+            {
+             "answer": "2",
+             "concept": "kerala-scert/class-3/evs#waste",
+             "explain": {
+              "en": "2: the banana peel and the vegetable peel. The plastic bottle is inorganic."
+             },
+             "form": "number",
+             "hint": {
+              "en": "Which ones rot in the soil?"
+             },
+             "level": 1,
+             "mistakes": {
+              "3": "thinks plastic is organic"
+             },
+             "t": "ask",
+             "text": {
+              "en": "Banana peel, vegetable peel and plastic bottle. How many of these are organic waste?"
+             }
+            }
+           ],
+           "title": {
+            "en": "Sorting waste"
+           }
+          }
+         ],
+         "objectives": [
+          {
+           "en": "Wash hands the right way and know when to wash them"
+          },
+          {
+           "en": "Keep teeth, body and clothes clean"
+          },
+          {
+           "en": "Keep surroundings clean to stop disease"
+          },
+          {
+           "en": "Sort waste into organic, inorganic and hazardous"
+          }
+         ],
+         "source": "Follows Unit 4 of SCERT Kerala Environmental Science Class III, Part 1 (2024), English medium. Explanations and questions are our own.",
+         "title": {
+          "en": "The Power of Cleanliness"
+         },
+         "verified": false
+        }
+       ],
        "color": "#2BB673",
        "icon": "🌱",
        "id": "kerala-scert/class-3/evs",
@@ -4981,7 +9516,15 @@
         "en": "Environmental Studies",
         "ml": "പരിസരപഠനം"
        },
-       "order": 4
+       "order": 4,
+       "palette": [
+        "#2BB673",
+        "#19A7A0",
+        "#3E9BE0",
+        "#6BBF3B",
+        "#1F8F6A",
+        "#2C7FB8"
+       ]
       }
      ]
     },
@@ -4999,7 +9542,15 @@
         "en": "Maths",
         "ml": "ഗണിതം"
        },
-       "order": 1
+       "order": 1,
+       "palette": [
+        "#FF8A3D",
+        "#F2A413",
+        "#E5488B",
+        "#FF6B5E",
+        "#E9792E",
+        "#D6409F"
+       ]
       },
       {
        "chapters": [],
@@ -5011,7 +9562,8 @@
         "en": "English",
         "ml": "ഇംഗ്ലീഷ്"
        },
-       "order": 2
+       "order": 2,
+       "palette": []
       },
       {
        "chapters": [],
@@ -5023,7 +9575,8 @@
         "en": "Malayalam",
         "ml": "മലയാളം"
        },
-       "order": 3
+       "order": 3,
+       "palette": []
       },
       {
        "chapters": [],
@@ -5035,7 +9588,15 @@
         "en": "Environmental Studies",
         "ml": "പരിസരപഠനം"
        },
-       "order": 4
+       "order": 4,
+       "palette": [
+        "#2BB673",
+        "#19A7A0",
+        "#3E9BE0",
+        "#6BBF3B",
+        "#1F8F6A",
+        "#2C7FB8"
+       ]
       }
      ]
     }
@@ -5063,7 +9624,15 @@
         "en": "Maths",
         "ml": "ഗണിതം"
        },
-       "order": 1
+       "order": 1,
+       "palette": [
+        "#FF8A3D",
+        "#F2A413",
+        "#E5488B",
+        "#FF6B5E",
+        "#E9792E",
+        "#D6409F"
+       ]
       },
       {
        "chapters": [],
@@ -5075,7 +9644,8 @@
         "en": "English",
         "ml": "ഇംഗ്ലീഷ്"
        },
-       "order": 2
+       "order": 2,
+       "palette": []
       }
      ]
     },
@@ -5093,7 +9663,15 @@
         "en": "Maths",
         "ml": "ഗണിതം"
        },
-       "order": 1
+       "order": 1,
+       "palette": [
+        "#FF8A3D",
+        "#F2A413",
+        "#E5488B",
+        "#FF6B5E",
+        "#E9792E",
+        "#D6409F"
+       ]
       },
       {
        "chapters": [],
@@ -5105,7 +9683,8 @@
         "en": "English",
         "ml": "ഇംഗ്ലീഷ്"
        },
-       "order": 2
+       "order": 2,
+       "palette": []
       }
      ]
     },
@@ -5123,7 +9702,15 @@
         "en": "Maths",
         "ml": "ഗണിതം"
        },
-       "order": 1
+       "order": 1,
+       "palette": [
+        "#FF8A3D",
+        "#F2A413",
+        "#E5488B",
+        "#FF6B5E",
+        "#E9792E",
+        "#D6409F"
+       ]
       },
       {
        "chapters": [],
@@ -5135,7 +9722,8 @@
         "en": "English",
         "ml": "ഇംഗ്ലീഷ്"
        },
-       "order": 2
+       "order": 2,
+       "palette": []
       },
       {
        "chapters": [],
@@ -5147,7 +9735,15 @@
         "en": "Environmental Studies",
         "ml": "പരിസരപഠനം"
        },
-       "order": 4
+       "order": 4,
+       "palette": [
+        "#2BB673",
+        "#19A7A0",
+        "#3E9BE0",
+        "#6BBF3B",
+        "#1F8F6A",
+        "#2C7FB8"
+       ]
       }
      ]
     },
@@ -5165,7 +9761,15 @@
         "en": "Maths",
         "ml": "ഗണിതം"
        },
-       "order": 1
+       "order": 1,
+       "palette": [
+        "#FF8A3D",
+        "#F2A413",
+        "#E5488B",
+        "#FF6B5E",
+        "#E9792E",
+        "#D6409F"
+       ]
       },
       {
        "chapters": [],
@@ -5177,7 +9781,8 @@
         "en": "English",
         "ml": "ഇംഗ്ലീഷ്"
        },
-       "order": 2
+       "order": 2,
+       "palette": []
       },
       {
        "chapters": [],
@@ -5189,7 +9794,15 @@
         "en": "Environmental Studies",
         "ml": "പരിസരപഠനം"
        },
-       "order": 4
+       "order": 4,
+       "palette": [
+        "#2BB673",
+        "#19A7A0",
+        "#3E9BE0",
+        "#6BBF3B",
+        "#1F8F6A",
+        "#2C7FB8"
+       ]
       }
      ]
     }
@@ -5202,8 +9815,63 @@
    "order": 2
   }
  ],
- "built": 1794380873,
+ "brain": {
+  "public_key": "sb_publishable_aBCqk9nxakWaBvvJj77fgg_AilwaqM8",
+  "url": "https://puryjmsnrjkbgvhvofzp.supabase.co/functions/v1/brain"
+ },
+ "built": 1794546632,
  "concepts": {
+  "kerala-scert/class-3/evs#animal-food": {
+   "en": "Herbivores, carnivores and omnivores"
+  },
+  "kerala-scert/class-3/evs#animal-movement": {
+   "en": "How animals move"
+  },
+  "kerala-scert/class-3/evs#animal-variety": {
+   "en": "Variety in animals"
+  },
+  "kerala-scert/class-3/evs#animals-around": {
+   "en": "Animals around us"
+  },
+  "kerala-scert/class-3/evs#butterfly": {
+   "en": "The life of a butterfly"
+  },
+  "kerala-scert/class-3/evs#clean-hands": {
+   "en": "Washing hands"
+  },
+  "kerala-scert/class-3/evs#clean-surroundings": {
+   "en": "Clean surroundings and disease"
+  },
+  "kerala-scert/class-3/evs#leaves-flowers": {
+   "en": "Leaves, flowers and the value of plants"
+  },
+  "kerala-scert/class-3/evs#new-plants": {
+   "en": "How new plants grow"
+  },
+  "kerala-scert/class-3/evs#personal-hygiene": {
+   "en": "Personal hygiene"
+  },
+  "kerala-scert/class-3/evs#plant-parts": {
+   "en": "Parts of a plant and their work"
+  },
+  "kerala-scert/class-3/evs#plant-types": {
+   "en": "Kinds of plants"
+  },
+  "kerala-scert/class-3/evs#rain": {
+   "en": "Rain and measuring rain"
+  },
+  "kerala-scert/class-3/evs#soil": {
+   "en": "Soil and what it contains"
+  },
+  "kerala-scert/class-3/evs#waste": {
+   "en": "Sorting waste"
+  },
+  "kerala-scert/class-3/evs#water-clean": {
+   "en": "Clean water"
+  },
+  "kerala-scert/class-3/evs#water-sources": {
+   "en": "Water sources and saving water"
+  },
   "kerala-scert/class-3/maths#add-carry": {
    "en": "Adding when the ones make a new ten",
    "ml": "ഒന്നുകൾ പത്താകുമ്പോഴുള്ള കൂട്ടൽ"
@@ -5330,8 +9998,8 @@
    "ml": "അടുത്തത്:"
   },
   "pickLevel": {
-   "en": "Tap the glowing level to start.",
-   "ml": "തിളങ്ങുന്ന ലെവൽ അമർത്തി തുടങ്ങൂ."
+   "en": "Tap START to begin the next level.",
+   "ml": "അടുത്ത ലെവൽ തുടങ്ങാൻ START അമർത്തൂ."
   },
   "practice": {
    "en": "Practice time",
@@ -5342,12 +10010,12 @@
    "ml": "കഴിഞ്ഞ തവണ ഇവയിൽ ചിലത് അല്പം പ്രയാസമായിരുന്നു. നമുക്ക് പതുക്കെ ഒന്നുകൂടി നോക്കാം."
   },
   "tapGo": {
-   "en": "Tap the green button and follow me!",
-   "ml": "പച്ച ബട്ടൺ അമർത്തി എന്റെ കൂടെ വരൂ!"
+   "en": "Tap Let's go, and come with me!",
+   "ml": "ലെറ്റ്സ് ഗോ അമർത്തി എന്റെ കൂടെ വരൂ!"
   },
   "think": {
-   "en": "Think about it, then tap the button.",
-   "ml": "ആലോചിച്ചിട്ട് ബട്ടൺ അമർത്തൂ."
+   "en": "Think about it, then tap Show answer.",
+   "ml": "ആലോചിച്ചിട്ട് 'ഉത്തരം കാണിക്കൂ' അമർത്തൂ."
   },
   "timeUp": {
    "en": "That is enough learning for today. See you tomorrow!",
@@ -5384,6 +10052,7 @@
     "en": "Not yet, and that is okay.",
     "ml": "സാരമില്ല, ഒന്നുകൂടി നോക്കാം."
    },
+   "pitch": "+4Hz",
    "praise": {
     "en": [
      "Lovely! ✨",
@@ -5396,9 +10065,13 @@
      "അടിപൊളി!"
     ]
    },
+   "rate": "-6%",
    "shape": "blob",
    "style": "a warm, gentle storyteller talking to a young child, unhurried and smiling",
-   "voice": "Sulafat"
+   "voice": {
+    "en": "en-IN-NeerjaExpressiveNeural",
+    "ml": "ml-IN-SobhanaNeural"
+   }
   },
   {
    "about": {
@@ -5439,7 +10112,7 @@
    },
    "shape": "spiky",
    "style": "an excited, playful game host talking to a young child, upbeat and bouncy",
-   "voice": "Puck"
+   "voice": ""
   },
   {
    "about": {
@@ -5480,7 +10153,7 @@
    },
    "shape": "cloud",
    "style": "a calm, patient, soothing friend talking slowly to a young child",
-   "voice": "Vindemiatrix"
+   "voice": ""
   },
   {
    "about": {
@@ -5521,7 +10194,7 @@
    },
    "shape": "flower",
    "style": "a curious, wonder-filled young explorer talking to a young child, bright and questioning",
-   "voice": "Leda"
+   "voice": ""
   },
   {
    "about": {
@@ -5562,8 +10235,8 @@
    },
    "shape": "bean",
    "style": "a funny, cheeky, good-humoured friend talking to a young child, with a playful grin in the voice",
-   "voice": "Sadachbia"
+   "voice": ""
   }
  ],
- "version": "83ee628650b9"
+ "version": "199896647772"
 }

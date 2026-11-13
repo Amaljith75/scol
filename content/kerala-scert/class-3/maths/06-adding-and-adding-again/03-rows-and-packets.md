@@ -15,6 +15,17 @@ en: Chairs stand in rows for a meeting. 3 rows with 6 chairs in each row. That i
 ml: യോഗത്തിനായി കസേരകൾ വരികളായി ഇട്ടിരിക്കുന്നു. 6 കസേര വീതമുള്ള 3 വരികൾ. അതായത് 6 + 6 + 6, അല്ലെങ്കിൽ 3 × 6 = 18.
 visual: array 3 6 🪑
 
+## say
+en: Rows are equal groups standing in a line. Each row has the same number, so we can multiply.
+ml: വരികൾ ഒരു നിരയിൽ നിൽക്കുന്ന തുല്യ കൂട്ടങ്ങളാണ്. ഓരോ വരിയിലും ഒരേ എണ്ണം, അതുകൊണ്ട് ഗുണിക്കാം.
+visual: array 2 5 🔵
+
+## say
+label: example
+en: 2 rows of 5 is 5 and 5, which is 10. So 2 × 5 = 10.
+ml: 5 വീതമുള്ള 2 വരികൾ എന്നാൽ 5-ഉം 5-ഉം, 10. അതുകൊണ്ട് 2 × 5 = 10.
+visual: text 2 × 5 = 10
+
 ## ask
 form: number
 en: 4 teams run in a relay race. Each team has 4 runners. How many runners in all?

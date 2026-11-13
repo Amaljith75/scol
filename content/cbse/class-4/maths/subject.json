@@ -5,5 +5,13 @@
   },
   "icon": "🔢",
   "color": "#FF8A3D",
-  "order": 1
+  "order": 1,
+  "palette": [
+    "#FF8A3D",
+    "#F2A413",
+    "#E5488B",
+    "#FF6B5E",
+    "#E9792E",
+    "#D6409F"
+  ]
 }

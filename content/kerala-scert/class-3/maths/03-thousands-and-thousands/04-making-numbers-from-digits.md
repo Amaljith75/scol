@@ -15,6 +15,17 @@ en: For the smallest number, do the opposite. Put the smallest digit first: 257.
 ml: ഏറ്റവും ചെറിയ സംഖ്യയ്ക്ക് നേരെ തിരിച്ച് ചെയ്യൂ. ഏറ്റവും ചെറിയ അക്കം ആദ്യം: 257.
 visual: text 2 5 7
 
+## say
+en: Why does the first place matter most? Because it counts hundreds. Even one more hundred is bigger than all the tens and ones together.
+ml: ആദ്യ സ്ഥാനം എന്തുകൊണ്ട് പ്രധാനം? അത് നൂറുകൾ എണ്ണുന്നു. ഒരു നൂറ് കൂടിയാൽ പോലും എല്ലാ പത്തുകളെക്കാളും ഒന്നുകളെക്കാളും വലുതാണ്.
+visual: steps 700 > 99
+
+## say
+label: example
+en: With 0, 4 and 6: the largest is 640. The smallest cannot start with 0, so it is 406.
+ml: 0, 4, 6 കൊണ്ട്: ഏറ്റവും വലുത് 640. ഏറ്റവും ചെറുത് 0-ൽ തുടങ്ങാൻ പറ്റില്ല, അതുകൊണ്ട് 406.
+visual: steps largest 640 / smallest 406
+
 ## ask
 form: number
 en: Use the digits 3, 8 and 1 once each. What is the largest number you can make?

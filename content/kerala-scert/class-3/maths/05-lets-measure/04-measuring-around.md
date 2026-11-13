@@ -15,6 +15,17 @@ en: For a shape with straight sides, add all its sides. A rectangle made of stic
 ml: നേർവശങ്ങളുള്ള രൂപത്തിന്, എല്ലാ വശങ്ങളും കൂട്ടിയാൽ മതി. 6, 4, 6, 4 സെ.മീ ഈർക്കിലുകൾ കൊണ്ടുള്ള ചതുരത്തിന് ചുറ്റും ആകെ 20 സെ.മീ.
 visual: steps 6 + 4 + 6 + 4 = 20 cm
 
+## say
+en: Going all the way around means every side is counted exactly once. Not one side missed, not one counted twice.
+ml: ചുറ്റും പോകുക എന്നാൽ ഓരോ വശവും കൃത്യം ഒരു തവണ എണ്ണണം. ഒന്നും വിട്ടുപോകരുത്, രണ്ട് തവണ എണ്ണരുത്.
+visual: shapes rectangle
+
+## say
+label: example
+en: A triangle with sides 3 cm, 4 cm and 5 cm: 3 and 4 and 5 make 12 cm all the way around.
+ml: 3 സെ.മീ, 4 സെ.മീ, 5 സെ.മീ വശങ്ങളുള്ള ത്രികോണം: 3-ഉം 4-ഉം 5-ഉം ചേർന്നാൽ ചുറ്റും 12 സെ.മീ.
+visual: steps 3 + 4 + 5 = 12 cm
+
 ## ask
 form: number
 en: A triangle is made with three sticks, each 5 cm long. How many centimetres of stick were used in all?

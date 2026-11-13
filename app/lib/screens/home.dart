@@ -5,10 +5,13 @@ import 'package:flutter/material.dart';
 
 import '../content.dart';
 import '../mastery.dart';
+import '../reminders.dart';
 import '../state.dart';
 import '../strings.dart';
 import '../tutor.dart';
+import '../updates.dart';
 import '../voice.dart';
+import '../widgets/ask_sheet.dart';
 import '../widgets/avatar.dart';
 import '../widgets/ui.dart';
 import 'classroom.dart';
@@ -56,7 +59,29 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _greet(first: true));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _greet(first: true);
+      planReminders(appState, contentStore.bundle);
+      checkForAppUpdate(context);
+    });
+    _seenVersion = contentStore.bundle.version;
+    contentStore.addListener(_lessonsChanged);
+  }
+
+  String _seenVersion = '';
+
+  /// Lessons were updated online while the app was open: say so.
+  void _lessonsChanged() {
+    final v = contentStore.bundle.version;
+    if (v == _seenVersion || !mounted) return;
+    _seenVersion = v;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('🎉 ${tr('newLessons', appState.mainLang)}')));
+  }
+
+  @override
+  void dispose() {
+    contentStore.removeListener(_lessonsChanged);
+    super.dispose();
   }
 
   /// The tutor says hello and tells the child what to do next.
@@ -133,6 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
           top: false,
           child: Row(children: [
             tab('🏠', tr('home', lang), true, () {}),
+            tab('🎙️', tr('ask', lang), false, () => openAskSheet(context, lessonTitle: plan == null ? '' : pick(plan.lesson.title, 'en'))),
             tab('🏆', tr('rewards', lang), false, () => _showRewards(context)),
             tab('👪', tr('parents', lang), false, () {
               appSpeaker?.stop();
@@ -161,7 +187,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: violetSoft,
                 child: Column(children: [
                   Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                    TutorAvatar(tutor: tutor, size: 104, mood: Mood.happy, gaze: plan == null ? Offset.zero : const Offset(0.7, 0.75)),
+                    tutorHero(TutorAvatar(
+                        tutor: tutor, size: 104, mood: Mood.happy, float: true, gaze: plan == null ? Offset.zero : const Offset(0.7, 0.75))),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Container(
@@ -186,6 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () async {
                         await openLesson(context, plan.subject, plan.lesson);
                         _greet();
+                        planReminders(appState, contentStore.bundle);
                       },
                       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                         Text(tr('go', lang), style: const TextStyle(fontSize: 22)),

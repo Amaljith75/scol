@@ -15,6 +15,17 @@ en: Now add the hundreds, then the tens, then the ones. 300 and 70 and 7. The su
 ml: ഇനി നൂറുകൾ കൂട്ടൂ, പിന്നെ പത്തുകൾ, പിന്നെ ഒന്നുകൾ. 300-ഉം 70-ഉം 7-ഉം. ആകെ 377.
 visual: steps 200 + 100 = 300 / 30 + 40 = 70 / 1 + 6 = 7 / 231 + 146 = 377
 
+## say
+en: Splitting works because hundreds add to hundreds, tens to tens, and ones to ones. They never get mixed up.
+ml: പിരിച്ചു കൂട്ടുമ്പോൾ നൂറുകൾ നൂറുകളോടും പത്തുകൾ പത്തുകളോടും ഒന്നുകൾ ഒന്നുകളോടും ചേരുന്നു. അവ കൂടിക്കലരില്ല.
+visual: place 3 7 7
+
+## say
+label: example
+en: Try 412 + 135. Hundreds: 400 and 100 is 500. Tens: 10 and 30 is 40. Ones: 2 and 5 is 7. The sum is 547.
+ml: 412 + 135 നോക്കാം. നൂറുകൾ: 400-ഉം 100-ഉം 500. പത്തുകൾ: 10-ഉം 30-ഉം 40. ഒന്നുകൾ: 2-ഉം 5-ഉം 7. ആകെ 547.
+visual: steps 400 + 100 = 500 / 10 + 30 = 40 / 2 + 5 = 7 / 547
+
 ## ask
 form: number
 en: 310 + 230 = ?

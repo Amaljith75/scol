@@ -15,6 +15,17 @@ en: Join a 10 cm stick and a 12 cm stick end to end. The total length is 10 and 
 ml: 10 സെ.മീ ഈർക്കിലും 12 സെ.മീ ഈർക്കിലും അറ്റത്തോടറ്റം ചേർത്തു വെക്കൂ. ആകെ നീളം 10-ഉം 12-ഉം ചേർന്നത്: 22 സെ.മീ.
 visual: text 10 cm + 12 cm = 22 cm
 
+## say
+en: Joining things end to end means there is no gap and no overlap. Then the total length is just the lengths added.
+ml: അറ്റത്തോടറ്റം ചേർക്കുക എന്നാൽ ഇടയിൽ വിടവോ ഒന്നിനു മുകളിൽ ഒന്നോ ഇല്ല. അപ്പോൾ ആകെ നീളം നീളങ്ങളുടെ തുക മാത്രം.
+visual: text 10 cm + 12 cm
+
+## say
+label: example
+en: If you cut a piece off instead, the length gets shorter. 30 cm with 10 cm cut off leaves 20 cm.
+ml: ഒരു കഷണം മുറിച്ചു മാറ്റിയാൽ നീളം കുറയും. 30 സെ.മീ-ൽ നിന്ന് 10 സെ.മീ മുറിച്ചാൽ 20 സെ.മീ ബാക്കി.
+visual: text 30 cm − 10 cm = 20 cm
+
 ## ask
 form: number
 en: An 11 cm stick and a 14 cm stick are joined end to end. How many centimetres in all?

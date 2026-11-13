@@ -1,0 +1,58 @@
+name: Deploy tutor brain
+
+# Puts the tutor brain (supabase/functions/brain) on the Supabase server and
+# gives it the AI key from this repository's secrets. Runs when the brain or
+# content/_app/brain.json changes, or by hand from the Actions tab (run it
+# again after changing a key). Needs the secret SUPABASE_ACCESS_TOKEN.
+on:
+  push:
+    branches: [main]
+    paths: ["supabase/**", "content/_app/brain.json", "tools/brain_settings.py"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find the key and check it works
+        env:
+          SECRETS_JSON: ${{ toJSON(secrets) }}
+        run: python3 tools/brain_settings.py
+      - name: Check the Supabase token is there
+        run: |
+          if [ -z "$SUPABASE_ACCESS_TOKEN" ]; then
+            echo "::error::Add a repository secret named SUPABASE_ACCESS_TOKEN (create one at https://supabase.com/dashboard/account/tokens)."
+            exit 1
+          fi
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Set up the usage table
+        run: |
+          REF=$(python3 -c "import json;print(json.load(open('content/_app/brain.json'))['url'].split('//')[1].split('.')[0])")
+          echo "REF=$REF" >> "$GITHUB_ENV"
+          python3 - <<'PY'
+          import json, os, urllib.request
+          sql = open("supabase/sql/setup.sql").read()
+          req = urllib.request.Request(
+              f"https://api.supabase.com/v1/projects/{os.environ['REF']}/database/query",
+              data=json.dumps({"query": sql}).encode(),
+              headers={"authorization": f"Bearer {os.environ['SUPABASE_ACCESS_TOKEN']}",
+                       "content-type": "application/json", "user-agent": "scol-deploy"})
+          urllib.request.urlopen(req, timeout=60).read()
+          print("Usage table ready.")
+          PY
+      - name: Send settings and code to the server
+        run: |
+          supabase secrets set --project-ref "$REF" --env-file brain.env
+          rm brain.env
+          supabase functions deploy brain --project-ref "$REF" --no-verify-jwt --use-api
+      - name: Ask the live brain a test question
+        run: |
+          URL=$(python3 -c "import json;print(json.load(open('content/_app/brain.json'))['url'])")
+          curl -sS -X POST "$URL" -H 'content-type: application/json' \
+            -d '{"question":"Why do leaves need sunlight?","device":"deploy-check-0001","lang":"en","lesson":"Plant parts","notes":"Leaves make food for the plant."}'
+          echo

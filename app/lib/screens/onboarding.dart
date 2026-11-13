@@ -2,11 +2,13 @@
 import 'package:flutter/material.dart';
 
 import '../content.dart';
+import '../reminders.dart';
 import '../state.dart';
 import '../tutor.dart';
 import '../voice.dart';
 import '../widgets/avatar.dart';
 import '../widgets/ui.dart';
+import 'parent.dart' show studyTimeLabel;
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -23,6 +25,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   String lang = appState.lang;
   String tutorId = appState.tutorId;
   Set<String> subjects = appState.subjectKeys.toSet();
+  int studyMinute = appState.studyMinute;
 
   static const _titles = [
     'Welcome to Scol',
@@ -31,6 +34,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     'Which class?',
     'Which language should the tutor use?',
     'Which subjects is your child studying?',
+    'When should your child study each day?',
     'Let your child pick a friend to learn with!',
   ];
 
@@ -67,8 +71,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ..lang = lang
       ..tutorId = tutorId
       ..subjectKeys = subjects.toList()
+      ..studyMinute = studyMinute
       ..onboarded = true;
     appState.save();
+    askReminderPermission().then((_) => planReminders(appState, contentStore.bundle));
   }
 
   Widget _option(String label, bool selected, VoidCallback onTap, {String? leading, String? sub}) => Padding(
@@ -153,6 +159,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             _option(pick(s.name, 'en'), subjects.contains(s.key), () {
               setState(() => subjects.contains(s.key) ? subjects.remove(s.key) : subjects.add(s.key));
             }, leading: s.icon, sub: s.lessons.isEmpty ? 'Lessons coming soon' : '${s.lessons.length} lessons ready'),
+        ];
+      case 6:
+        return [
+          const Text('The tutor will remind your child at this time every day.',
+              style: TextStyle(fontSize: 16, height: 1.4, color: ink)),
+          const SizedBox(height: 14),
+          for (final m in const [16 * 60, 17 * 60, 18 * 60, 19 * 60])
+            _option(studyTimeLabel(m), studyMinute == m, () => setState(() => studyMinute = m), leading: '⏰'),
+          _option(
+            const [16 * 60, 17 * 60, 18 * 60, 19 * 60].contains(studyMinute) ? 'Another time' : studyTimeLabel(studyMinute),
+            !const [16 * 60, 17 * 60, 18 * 60, 19 * 60].contains(studyMinute),
+            () async {
+              final t = await showTimePicker(
+                  context: context, initialTime: TimeOfDay(hour: studyMinute ~/ 60, minute: studyMinute % 60));
+              if (t != null) setState(() => studyMinute = t.hour * 60 + t.minute);
+            },
+            leading: '🕰️',
+          ),
         ];
       default:
         return [

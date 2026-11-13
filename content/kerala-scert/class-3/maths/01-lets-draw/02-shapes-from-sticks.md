@@ -15,6 +15,17 @@ en: 3 sticks make a triangle. 4 sticks make a rectangle.
 ml: 3 ഈർക്കിൽ കൊണ്ട് ഒരു ത്രികോണം. 4 ഈർക്കിൽ കൊണ്ട് ഒരു ചതുരം.
 visual: steps Triangle = 3 sticks / Rectangle = 4 sticks
 
+## say
+en: Each straight side of a shape is one stick. So to know how many sticks you need, count the sides.
+ml: ഒരു രൂപത്തിന്റെ ഓരോ നേർവശവും ഒരു ഈർക്കിലാണ്. എത്ര ഈർക്കിൽ വേണമെന്നറിയാൻ വശങ്ങൾ എണ്ണിയാൽ മതി.
+visual: shapes triangle rectangle
+
+## say
+label: example
+en: Two triangles need 3 sticks and 3 more sticks. That is 6 sticks.
+ml: രണ്ട് ത്രികോണങ്ങൾക്ക് 3 ഈർക്കിലും 3 ഈർക്കിൽ കൂടിയും വേണം. ആകെ 6 ഈർക്കിൽ.
+visual: steps 3 + 3 = 6
+
 ## ask
 form: number
 en: How many sticks do you need to make 2 triangles?

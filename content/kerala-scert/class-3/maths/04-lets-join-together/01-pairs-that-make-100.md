@@ -15,6 +15,17 @@ en: 49 and 51 are a pair too. Here is a trick: go up to the next ten first, then
 ml: 49-ഉം 51-ഉം ഒരു ജോഡിയാണ്. ഒരു സൂത്രം: ആദ്യം അടുത്ത പത്തിലേക്ക് പോകൂ, പിന്നെ 100-ലേക്ക്.
 visual: steps 49 + 1 = 50 / 50 + 50 = 100 / 49 + 51 = 100
 
+## say
+en: Pairs of 10 help with pairs of 100. 3 and 7 make 10, so 30 and 70 make 100.
+ml: 10-ന്റെ ജോഡികൾ 100-ന്റെ ജോഡികൾക്ക് സഹായിക്കും. 3-ഉം 7-ഉം 10, അതുകൊണ്ട് 30-ഉം 70-ഉം 100.
+visual: steps 3 + 7 = 10 / 30 + 70 = 100
+
+## say
+label: example
+en: To pair 35 with 100: from 35 go up 5 to reach 40, then 60 more to reach 100. 5 and 60 is 65.
+ml: 35-ന്റെ ജോഡി കാണാൻ: 35-ൽ നിന്ന് 5 കൂടി 40, പിന്നെ 60 കൂടി 100. 5-ഉം 60-ഉം ചേർന്നാൽ 65.
+visual: steps 35 + 5 = 40 / 40 + 60 = 100 / 5 + 60 = 65
+
 ## ask
 form: number
 en: Which number pairs with 60 to make 100?

@@ -10,6 +10,17 @@ en: Look at these. 2 × 3 = 6. 4 × 3 = 12. 8 × 3 = 24. When the number of grou
 ml: ഇവ നോക്കൂ. 2 × 3 = 6. 4 × 3 = 12. 8 × 3 = 24. കൂട്ടങ്ങളുടെ എണ്ണം ഇരട്ടിയാകുമ്പോൾ ഉത്തരവും ഇരട്ടിയാകും.
 visual: steps 2 × 3 = 6 / 4 × 3 = 12 / 8 × 3 = 24
 
+## say
+en: Doubling is a shortcut. If you know 2 × 4 = 8, then 4 × 4 is 8 doubled, which is 16.
+ml: ഇരട്ടിയാക്കൽ ഒരു എളുപ്പവഴിയാണ്. 2 × 4 = 8 എന്നറിയാമെങ്കിൽ 4 × 4 എന്നാൽ 8-ന്റെ ഇരട്ടി, 16.
+visual: steps 2 × 4 = 8 / 4 × 4 = 16
+
+## say
+label: example
+en: Turning rows into columns does not change the number. 2 × 5 and 5 × 2 are both 10.
+ml: വരികൾ നിരകളാക്കിയാൽ എണ്ണം മാറില്ല. 2 × 5-ഉം 5 × 2-ഉം രണ്ടും 10.
+visual: array 2 5 🔵
+
 ## ask
 form: number
 en: 2 × 5 = 10. So what is 4 × 5?

@@ -15,6 +15,17 @@ en: What about 150? Go up to the next hundred first: 150 to 200 is 50. Then 200 
 ml: 150 ആണെങ്കിലോ? ആദ്യം അടുത്ത നൂറിലേക്ക്: 150 മുതൽ 200 വരെ 50. പിന്നെ 200 മുതൽ 1000 വരെ 800. അപ്പോൾ 150-ന്റെ ജോഡി 850.
 visual: steps 150 + 50 = 200 / 200 + 800 = 1000 / 150 + 850 = 1000
 
+## say
+en: Pairs of 10 also help with 1000. 4 and 6 make 10, so 400 and 600 make 1000.
+ml: 10-ന്റെ ജോഡികൾ 1000-നും സഹായിക്കും. 4-ഉം 6-ഉം 10, അതുകൊണ്ട് 400-ഉം 600-ഉം 1000.
+visual: split 1000 400 600
+
+## say
+label: example
+en: For 250: up 50 to reach 300, then 700 to reach 1000. 50 and 700 is 750.
+ml: 250-ന്: 50 കൂടി 300, പിന്നെ 700 കൂടി 1000. 50-ഉം 700-ഉം ചേർന്നാൽ 750.
+visual: steps 250 + 50 = 300 / 300 + 700 = 1000 / 50 + 700 = 750
+
 ## ask
 form: number
 en: Which number pairs with 400 to make 1000?

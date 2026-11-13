@@ -10,6 +10,17 @@ en: Numbers can be written in words too. On a cheque, people write the amount in
 ml: സംഖ്യകൾ അക്ഷരത്തിലും എഴുതാം. ചെക്കിൽ തുക അക്ഷരത്തിൽ എഴുതാറുണ്ട്. 125 എന്നാൽ നൂറ്റി ഇരുപത്തിയഞ്ച്.
 visual: text 125
 
+## say
+en: To read a three-digit number, say the hundreds first, then the rest. 342 is three hundred, and then forty two.
+ml: മൂന്നക്ക സംഖ്യ വായിക്കാൻ ആദ്യം നൂറുകൾ പറയൂ, പിന്നെ ബാക്കി. 342 എന്നാൽ മുന്നൂറ്, പിന്നെ നാൽപ്പത്തിരണ്ട്.
+visual: steps 342 / 300 and 42 / three hundred forty two
+
+## say
+label: example
+en: When we count on, the ones go up first. When the ones pass 9, the tens go up. When the tens pass 9, a new hundred starts.
+ml: തുടർന്ന് എണ്ണുമ്പോൾ ആദ്യം ഒന്നുകൾ കൂടും. ഒന്നുകൾ 9 കടന്നാൽ പത്തുകൾ കൂടും. പത്തുകൾ 9 കടന്നാൽ പുതിയ നൂറ് തുടങ്ങും.
+visual: pattern 108 109 110 ... 199 200
+
 ## ask
 form: choice
 en: Which number is four hundred five?

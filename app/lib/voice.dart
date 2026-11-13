@@ -1,7 +1,7 @@
-// How the tutors speak. Each line has a ready-made sound file made with
-// Gemini's speech model (see tools/build_voice.py). The app downloads the file
-// once and keeps it, so lessons also work offline. If a file is not ready yet,
-// the phone's own voice reads the line instead.
+// How the tutors speak. Lines a tutor with a ready-made voice says have a
+// sound file (see tools/build_voice.py). The app downloads each file once and
+// keeps it, so lessons also work offline. Anything without a file (other
+// tutors, live answers, lines not made yet) is read by the phone's own voice.
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io' show File;
@@ -15,6 +15,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'content.dart';
+
+/// 'ml' if the text has Malayalam letters, otherwise 'en'.
+String langOf(String text) => RegExp(r'[\u0D00-\u0D7F]').hasMatch(text) ? 'ml' : 'en';
 
 /// Must match clip_id() in tools/build_voice.py.
 String clipId(String voice, String lang, String text) =>
@@ -87,7 +90,9 @@ class VoiceSpeaker implements Speaker {
 
   /// The sound file for a line, downloading it if needed. Null if there is none.
   Future<Source?> _clip(TutorCharacter tutor, String lang, String text) async {
-    final id = clipId(tutor.voice, lang, text);
+    final voice = tutor.voiceFor(lang);
+    if (voice.isEmpty) return null;
+    final id = clipId(voice, lang, text);
     if (!(_index[tutor.id]?.contains(id) ?? false)) return null;
     final url = '${rawBase}voice/${tutor.id}/$id.mp3';
     if (kIsWeb || _dir == null) return UrlSource(url);
@@ -109,7 +114,7 @@ class VoiceSpeaker implements Speaker {
     if (kIsWeb) return;
     () async {
       for (final t in texts) {
-        if (t.isNotEmpty) await _clip(tutor, lang, t);
+        if (t.isNotEmpty) await _clip(tutor, langOf(t), t);
       }
     }();
   }
@@ -122,6 +127,7 @@ class VoiceSpeaker implements Speaker {
     for (final part in parts) {
       if (token != _gen) return;
       if (part.replaceAll(_noise, '').trim().isEmpty) continue;
+      lang = langOf(part); // English lessons read in English even when the app is in Malayalam
       final clip = await _clip(tutor, lang, part);
       if (token != _gen) return;
       var played = false;
@@ -139,7 +145,7 @@ class VoiceSpeaker implements Speaker {
         try {
           await _tts.setLanguage(lang == 'ml' ? 'ml-IN' : 'en-IN');
           await _tts.setSpeechRate(0.42);
-          await _tts.setPitch(1.1);
+          await _tts.setPitch(1.0 + 0.12 * tutor.energy.clamp(0.5, 1.8));
           await _tts.speak(part
               .replaceAll(_noise, ' ')
               .replaceAll('×', lang == 'ml' ? ' ഗുണം ' : ' times ')

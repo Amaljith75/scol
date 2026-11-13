@@ -15,6 +15,17 @@ en: 100 centimetres make 1 metre. We write m for metre.
 ml: 100 സെന്റിമീറ്റർ ചേർന്നാൽ 1 മീറ്റർ. ചുരുക്കി മീ എന്ന് എഴുതും.
 visual: text 100 cm = 1 m
 
+## say
+en: A metre is about one big step of a grown-up, or the height of a Class 3 child's shoulder from the floor.
+ml: ഒരു മീറ്റർ ഏകദേശം ഒരു മുതിർന്നയാളുടെ വലിയ ഒരു ചുവടിന്റെ നീളം. അല്ലെങ്കിൽ ഒരു മൂന്നാം ക്ലാസുകാരന്റെ തോൾ വരെയുള്ള ഉയരം.
+visual: emoji 🚶 📏
+
+## say
+label: example
+en: 150 cm is 100 cm and 50 cm. That is 1 metre 50 centimetres.
+ml: 150 സെ.മീ എന്നാൽ 100 സെ.മീ-ഉം 50 സെ.മീ-ഉം. അതായത് 1 മീറ്റർ 50 സെന്റിമീറ്റർ.
+visual: steps 150 cm = 100 cm + 50 cm / = 1 m 50 cm
+
 ## ask
 form: number
 en: How many centimetres are there in 2 metres?

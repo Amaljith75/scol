@@ -15,6 +15,17 @@ en: The round one is a circle. The one with 3 corners is a triangle. The one wit
 ml: ഉരുണ്ടത് വൃത്തം. 3 മൂലകളുള്ളത് ത്രികോണം. 4 മൂലകളുള്ളത് ചതുരം.
 visual: shapes circle triangle rectangle
 
+## say
+en: Look for the corners. A corner is where two straight sides meet and make a point.
+ml: മൂലകൾ നോക്കൂ. രണ്ട് നേർവശങ്ങൾ ചേർന്ന് ഒരു കൂർത്ത അറ്റമാകുന്നിടമാണ് മൂല.
+visual: shapes triangle rectangle
+
+## say
+label: example
+en: A plate, a bangle and a wheel are circles. The top of a hill looks like a triangle. A door and a slate are rectangles.
+ml: പാത്രം, വള, ചക്രം ഇവ വൃത്തങ്ങൾ. ഒരു കുന്നിന്റെ മുകൾഭാഗം ത്രികോണം പോലെയാണ്. വാതിലും സ്ലേറ്റും ചതുരങ്ങൾ.
+visual: emoji 🍽️ ⛰️ 🚪
+
 ## ask
 form: choice
 en: Which shape has no corners at all?

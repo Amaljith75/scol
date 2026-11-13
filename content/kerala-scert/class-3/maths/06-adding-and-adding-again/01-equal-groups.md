@@ -17,6 +17,17 @@ en: Every basket has the same number of mangoes. We call these equal groups. To 
 ml: എല്ലാ കൊട്ടയിലും ഒരേ എണ്ണം മാങ്ങയുണ്ട്. ഇവയെ തുല്യ കൂട്ടങ്ങൾ എന്ന് പറയും. ആകെ എത്രയെന്നറിയാൻ 4 വീണ്ടും വീണ്ടും കൂട്ടണം: 4 + 4 + 4.
 visual: groups 3 4 🥭
 
+## say
+en: Equal groups must all have the same number. If one basket had 5 mangoes and another had 3, they would not be equal groups.
+ml: തുല്യ കൂട്ടങ്ങളിൽ എല്ലാത്തിലും ഒരേ എണ്ണം വേണം. ഒരു കൊട്ടയിൽ 5-ഉം മറ്റൊന്നിൽ 3-ഉം ആണെങ്കിൽ അവ തുല്യ കൂട്ടങ്ങളല്ല.
+visual: groups 2 4 🥭
+
+## say
+label: example
+en: 2 plates with 3 idlis each: count 3, then 6. There are 6 idlis.
+ml: 3 ഇഡ്ഡലി വീതമുള്ള 2 പാത്രങ്ങൾ: 3, പിന്നെ 6. ആകെ 6 ഇഡ്ഡലി.
+visual: groups 2 3 ⚪
+
 ## ask
 form: choice
 en: How many mangoes are there in all?
