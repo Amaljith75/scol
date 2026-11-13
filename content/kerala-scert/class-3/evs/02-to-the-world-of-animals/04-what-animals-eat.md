@@ -9,22 +9,22 @@ minutes: 6
 ## say
 en: Different animals eat different food. A butterfly drinks nectar from flowers. A praying mantis eats ants and small insects.
 ml: വെവ്വേറെ മൃഗങ്ങൾ വെവ്വേറെ ഭക്ഷണമാണ് കഴിക്കുന്നത്. ചിത്രശലഭം പൂക്കളിൽ നിന്ന് തേൻ കുടിക്കുന്നു. വെട്ടുക്കിളി ഉറുമ്പുകളെയും ചെറിയ പ്രാണികളെയും തിന്നുന്നു.
-visual: emoji 🦋 🌸 🦗
+visual: picture 🦋 🌸 🦗
 
 ## say
 en: Animals that eat only plant parts are called herbivores. Cows, goats and elephants are herbivores.
 ml: സസ്യഭാഗങ്ങൾ മാത്രം തിന്നുന്ന ജീവികളെ സസ്യാഹാരികൾ എന്ന് വിളിക്കുന്നു. പശു, ആട്, ആന എന്നിവ സസ്യാഹാരികളാണ്.
-visual: emoji 🐄 🐐 🐘 🌿
+visual: picture 🐄 🐐 🐘 🌿
 
 ## say
 en: Animals that eat only other animals are called carnivores. Lions, eagles and kingfishers are carnivores.
 ml: മറ്റു ജീവികളെ മാത്രം തിന്നുന്ന ജീവികളെ മാംസാഹാരികൾ എന്ന് വിളിക്കുന്നു. സിംഹം, പരുന്ത്, പൊന്മാൻ എന്നിവ മാംസാഹാരികളാണ്.
-visual: emoji 🦁 🦅 🐟
+visual: picture 🦁 🦅 🐟
 
 ## say
 en: Animals that eat both plants and animals are called omnivores. Crows and hens are omnivores.
 ml: സസ്യങ്ങളെയും മറ്റു ജീവികളെയും തിന്നുന്ന ജീവികളെ മിശ്രാഹാരികൾ എന്ന് വിളിക്കുന്നു. കാക്കയും കോഴിയും മിശ്രാഹാരികളാണ്.
-visual: emoji 🐦‍⬛ 🐔
+visual: picture 🐦‍⬛ 🐔
 
 ## say
 label: example

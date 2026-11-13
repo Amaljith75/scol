@@ -224,12 +224,24 @@ class _ParentScreenState extends State<ParentScreen> {
                   contentPadding: EdgeInsets.zero,
                   title: const Text('Tutor speaks aloud'),
                   subtitle: const Text('Every tutor speaks English and Malayalam in a natural Microsoft Edge voice. Lines are made '
-                      'once with internet and kept on the phone; without internet the phone\'s own voice reads new lines.'),
+                      'once with internet and kept on the phone; without internet a new line is shown as text.'),
                   value: appState.voiceOn,
                   onChanged: (v) {
                     appState.voiceOn = v;
                     appState.save();
                   },
+                ),
+                ValueListenableBuilder<String>(
+                  valueListenable: voiceStatus,
+                  builder: (_, status, __) => Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      status.isEmpty
+                          ? 'Voice: Microsoft Edge voices are working. The phone\'s own voice is never used.'
+                          : 'Voice: the last line could not be made ($status). The tutor shows such lines as text and tries again next time.',
+                      style: TextStyle(color: status.isEmpty ? mint : coral, fontSize: 13, fontWeight: FontWeight.w600),
+                    ),
+                  ),
                 ),
                 SwitchListTile(
                   contentPadding: EdgeInsets.zero,

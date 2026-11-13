@@ -9,17 +9,17 @@ minutes: 6
 ## say
 en: Mosquitoes, flies and rats multiply where there is waste and dirty water. They spread many diseases.
 ml: മാലിന്യങ്ങളും കെട്ടിക്കിടക്കുന്ന വെള്ളവും ഉള്ളിടത്ത് കൊതുകുകളും ஈக்களும் എലികളും പെരുകുന്നു. അവ പല രോഗങ്ങളും പരത്തുന്നു.
-visual: emoji 🦟 🪰 🐀
+visual: picture 🦟 🪰 🐀
 
 ## say
 en: Mosquitoes spread dengue fever, malaria, chikungunya and elephantiasis. They lay their eggs in collected water.
 ml: കൊതുകുകൾ ഡെങ്കിപ്പനി, മലേറിയ, ചിക്കുൻഗുനിയ, മന്ത് തുടങ്ങിയ രോഗങ്ങൾ പരത്തുന്നു. അവ കെട്ടിക്കിടക്കുന്ന വെള്ളത്തിലാണ് മുട്ടയിടുന്നത്.
-visual: emoji 🦟 💧
+visual: picture 🦟 💧
 
 ## say
 en: Coconut shells, old tyres, bottles, caps and toys lying outside can collect rainwater. Mosquito eggs in such water become adult mosquitoes in eight days.
 ml: വീടിനു പുറത്തുകിടക്കുന്ന ചിരട്ടകൾ, പഴയ ടയറുകൾ, കുപ്പികൾ, അടപ്പുകൾ, പാത്രങ്ങൾ എന്നിവയിൽ മഴവെള്ളം കെട്ടിക്കിടക്കാം. അങ്ങനെയുള്ള വെള്ളത്തിലെ കൊതുകുമുട്ടകൾ എട്ടു ദിവസത്തിനകം വളർന്നുവരുന്ന കൊതുകുകളായി മാറുന്നു.
-visual: emoji 🥥 🛞 🍾
+visual: picture 🥥 🛞 🍾
 
 ## say
 en: So once every seven days, we empty that water and remove things that can hold water. This is called a dry day.
@@ -29,13 +29,13 @@ visual: text every 7 days = dry day
 ## say
 en: Some diseases spread through dirty water: dysentery, jaundice, cholera and typhoid. Drink boiled and cooled water.
 ml: അശുദ്ധമായ വെള്ളത്തിലൂടെ വയറിളക്കം, മഞ്ഞപ്പിത്തം, കോളറ, ടൈഫോയ്ഡ് തുടങ്ങിയ രോഗങ്ങൾ പകരുന്നു. തിളപ്പിച്ചാറിയ വെള്ളം കുടിക്കുക.
-visual: emoji 🫖 💧
+visual: picture 🫖 💧
 
 ## say
 label: example
 en: Dysentery makes the body lose water. It needs to be given back: salted rice water, salted buttermilk, coconut water, or lime juice with salt and sugar. ORS from the health centre, mixed in boiled and cooled water, helps too.
 ml: വയറിളക്കം ഉണ്ടാകുമ്പോൾ ശരീരത്തിലെ ജലം നഷ്ടപ്പെടുന്നു. അത് തിരികെ നൽകണം: ഉപ്പിട്ട കഞ്ഞിവെള്ളം, ഉപ്പിട്ട മോര്, കരിക്കിൻവെള്ളം അല്ലെങ്കിൽ ഉപ്പും പഞ്ചസാരയും ചേർത്ത നാരങ്ങാവെള്ളം എന്നിവ നൽകാം. ആരോഗ്യകേന്ദ്രത്തിൽ നിന്ന് ലഭിക്കുന്ന ഒ.ആർ.എസ്. (ORS) തിളപ്പിച്ചാറിയ വെള്ളത്തിൽ കലക്കി നൽകുന്നതും നല്ലതാണ്.
-visual: emoji 🥥 🍋 🥛
+visual: picture 🥥 🍋 🥛
 
 ## ask
 form: number

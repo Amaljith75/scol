@@ -31,7 +31,7 @@ The classroom screen does not know how to teach. It only draws what the **Tutor 
 | The Director can | What the child sees |
 | --- | --- |
 | say something | speech bubble, read aloud |
-| show a picture | the board changes |
+| show a picture | the board changes; the tutor floats over it and touches the pieces it talks about |
 | move | the tutor walks to the left, centre or right, eyes leading the way |
 | look | eyes go to the board while teaching, to the answers while asking, to the child while talking |
 | ask (choice / number / think) | answer buttons or number pad |
@@ -51,8 +51,8 @@ The Director follows the written lesson and adapts with rules (hint first, expla
 | AI Tutor and Conversation | `app/lib/tutor.dart` (Director), `app/lib/brain.dart`, `supabase/functions/brain`, `content/_app/tutors.json` | Five characters. The brain teaches each level in the tutor's own words (cached per level), answers questions and "Explain more". Questions and answers stay scripted. |
 | Adaptive Learning | Director re-teaching; `revisionLesson`, `nextLesson`, `pickStyle` in `app/lib/state.dart` | Working, rule-based. After a repeated mistake it explains with a story or a picture and remembers which works for the child. |
 | Assessment | `app/lib/mastery.dart` | Working. Evidence across attempts, question styles, speed and repeated mistakes. |
-| Gamification and Rewards | `state.dart`, home, path and celebration screens | Stars, XP, streak, badges, path. |
-| Voice and Speech | `tools/build_voice.py`, `app/lib/voice.dart` | Each tutor has a Gemini voice, pre-made per line, cached on the phone; phone voice as fallback. No listening yet. |
+| Gamification and Rewards | `state.dart`, `sounds.dart`, home, path and celebration screens | Stars, XP, streak, badges, path. Reward sounds, stars that pop in one by one and fly to the star count. |
+| Voice and Speech | `tools/build_voice.py`, `app/lib/voice.dart`, `app/lib/edge_voice.dart` | Edge voices only: Mio's lesson lines pre-made, everything else made on the phone sentence by sentence and kept. The phone's own voice is never used. Listening for questions via the phone's speech service. |
 | Timetable and Revision | Tutor's pick on home; daily goal; daily time limit | Simple version. No parent-set schedule yet. |
 | Parent Dashboard | `app/lib/screens/parent.dart`, `app/lib/report.dart` | Weekly report in English and Malayalam with Share and Listen; per-idea report and controls in English. |
 | Child Safety and Privacy | Parent gate; all data on device; no accounts; no recording | Good for this stage. Must be redesigned before any data leaves the phone. |

@@ -14,23 +14,23 @@ visual: pattern 🐜 🐸 🐕 🐄 🐘
 ## say
 en: Tiny creatures live in the soil and on plants. A hand lens makes them look bigger, so we can see them clearly.
 ml: ചെറിയ ജീവികൾ മണ്ണിലും ചെടികളിലും ജീവിക്കുന്നു. ഒരു ഹാൻഡ് ലെൻസ് (ഭൂതക്കണ്ണാടി) ഉപയോഗിച്ചാൽ അവയെ വലുതായി കാണാം, അങ്ങനെ വ്യക്തമായി കാണാൻ കഴിയും.
-visual: emoji 🔍 🐜 🐛
+visual: picture 🔍 🐜 🐛
 
 ## say
 en: We can recognise animals by their features: colour, spots, stripes, horns and nails. A zebra has stripes. A leopard has spots. A cow has horns.
 ml: നിറം, പുള്ളികൾ, വരകൾ, കൊമ്പുകൾ, നഖങ്ങൾ എന്നിവയിലൂടെ നമുക്ക് ജീവികളെ തിരിച്ചറിയാം. വരയൻകുതിരയ്ക്ക് വരകളുണ്ട്. പുള്ളിപ്പുലിക്ക് പുള്ളികളുണ്ട്. പശുകിടാവിന്/പശുവിന് കൊമ്പുകളുണ്ട്.
-visual: emoji 🦓 🐆 🐄
+visual: picture 🦓 🐆 🐄
 
 ## say
 en: The sea is home to more creatures than the land! Fish, sea horses, sea cucumbers and sea cows all live there.
 ml: കരയേക്കാൾ കൂടുതൽ ജീവികൾ ജീവിക്കുന്നത് കടലിലാണ്! മീനുകൾ, കടൽക്കുതിരകൾ, കടൽവെള്ളരികൾ, കടൽപ്പശുക്കൾ എന്നിവയെല്ലാം അവിടെ ജീവിക്കുന്നു.
-visual: emoji 🐠 🐙 🦀
+visual: picture 🐠 🐙 🦀
 
 ## say
 label: example
 en: The largest creature on earth is the blue whale. It lives in the sea, but it is not a fish. A blue whale gives birth to its babies.
 ml: ഭൂമിയിലെ ഏറ്റവും വലിയ ജീവിയാണ് നീലത്തിമിംഗലം. ഇത് കടലിലാണ് ജീവിക്കുന്നത്, എന്നാൽ ഇതൊരു മീനല്ല. നീലത്തിമിംഗലം പ്രസവിക്കുന്ന ജീവിയാണ്.
-visual: emoji 🐋
+visual: picture 🐋
 
 ## ask
 form: choice

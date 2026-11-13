@@ -9,17 +9,17 @@ minutes: 6
 ## say
 en: Leaves are not all the same. They differ in shape, size and colour, and some leaves have a smell when you crush them. Thumba leaves are long and tapering.
 ml: എല്ലാ ഇലകളും ഒരേപോലെയല്ല. അവയുടെ രൂപം, വലിപ്പം, നിറം എന്നിവ വ്യത്യാസപ്പെട്ടിരിക്കുന്നു. ചില ഇലകൾ ഞെരുക്കുമ്പോൾ മണമുണ്ടാകും. തുമ്പയില നീண்டு കൂർത്തതാണ്.
-visual: emoji 🍃 🌿 🍁
+visual: picture 🍃 🌿 🍁
 
 ## say
 en: Flowers are different too, in colour, smell and shape. Jasmine is white and sweet-smelling. Flowers give nectar to bees and butterflies, and many flowers later become fruits.
 ml: പൂക്കളും വ്യത്യസ്തമാണ്, നിറത്തിലും മണത്തിലും രൂപത്തിലും. മല്ലി വെള്ള നിറമുള്ളതും നല്ല മണമുള്ളതുമാണ്. പൂക്കൾ തേനീച്ചകൾക്കും ചിത്രശലഭങ്ങൾക്കും തേൻ നൽകുന്നു. പല പൂക്കളും പിന്നീട് ഫലങ്ങളായി മാറുന്നു.
-visual: emoji 🌼 🐝 🍎
+visual: picture 🌼 🐝 🍎
 
 ## say
 en: Not every plant has flowers. Ferns and mosses never bloom. And not every flower becomes a fruit.
 ml: എല്ലാ ചെടികൾക്കും പൂക്കളില്ല. പന്നലുകളും പായലുകളും പൂക്കാറില്ല. എല്ലാ പൂക്കളും കായകളായി മാറുന്നുമില്ല.
-visual: emoji 🌿
+visual: picture 🌿
 
 ## say
 en: Here is a special one. Neelakurinji blooms only once in twelve years. Its flowers are blue and can stay for up to three months. The Nilgiri hills are named after it.
@@ -29,7 +29,7 @@ visual: text 12 years 💙
 ## say
 en: Plants give us shade, food, flowers and fresh air, and homes for birds and insects. So it is our duty to plant and protect plants and keep the earth green.
 ml: സസ്യങ്ങൾ നമുക്ക് തണലും ഭക്ഷണവും പൂക്കളും ശുദ്ധവായുവും നൽകുന്നു. പക്ഷികൾക്കും പൂച്ചെടികൾക്കും വീടൊരുക്കുന്നു. അതിനാൽ ചെടികൾ നട്ടുപിടിപ്പിക്കാനും സംരക്ഷിക്കാനും ഭൂമി ഹരിതാഭമാക്കാനും നമ്മൾ ബാധ്യസ്ഥരാണ്.
-visual: emoji 🌳 🍌 🐦 🌍
+visual: picture 🌳 🍌 🐦 🌍
 
 ## ask
 form: number

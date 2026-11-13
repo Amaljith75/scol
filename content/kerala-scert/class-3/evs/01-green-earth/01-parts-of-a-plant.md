@@ -9,7 +9,7 @@ minutes: 6
 ## say
 en: Let's play a game! Fly like a little bird and touch a green tree, a flower and a leaf. Every one of them is a part of a plant.
 ml: നമുക്കൊരു കളി കളിക്കാം! ഒരു കുഞ്ഞുപക്ഷിയെപ്പോലെ പറന്ന് പച്ചമരത്തിലും പൂവിലും ഇലയിലും തൊടൂ. ഇവയെല്ലാം ഒരു സസ്യത്തിന്റെ ഭാഗങ്ങളാണ്.
-visual: emoji 🐦 🌳 🌺 🍃
+visual: picture 🐦 🌳 🌺 🍃
 
 ## say
 en: A plant has three main parts: the root, the stem and the leaves. Many plants also have flowers, and flowers can become fruits.
@@ -19,7 +19,7 @@ visual: steps root / stem / leaves / flowers → fruits
 ## say
 en: The root grows under the soil. It holds the plant firmly in the ground, and it drinks water and nutrients from the soil.
 ml: വേര് മണ്ണ അടിയിലാണ് വളരുന്നത്. ഇത് സസ്യത്തെ മണ്ണിൽ ഉറപ്പിച്ചു നിർത്തുകയും മണ്ണിൽ നിന്ന് വെള്ളവും പോഷകങ്ങളും വലിച്ചെടുക്കുകയും ചെയ്യുന്നു.
-visual: emoji 🌱 🟫 💧
+visual: picture 🌱 🟫 💧
 
 ## say
 en: The stem is like a pipe. It carries the water and nutrients from the root up to the leaves. It also holds the plant up.
@@ -29,13 +29,13 @@ visual: steps root → stem → leaves
 ## say
 en: The leaves are the plant's kitchen. Plants make their own food in their leaves, using sunlight. The extra food is stored in other parts, and animals and people eat it.
 ml: ഇലകളാണ് സസ്യത്തിന്റെ അടുക്കള. സൂര്യപ്രകാശം ഉപയോഗിച്ച് സസ്യങ്ങൾ ഇലകളിൽ ആഹാരം ഉണ്ടാക്കുന്നു. ബാക്കി വരുന്ന ആഹാരം മറ്റ് ഭാഗങ്ങളിൽ സംഭരിച്ചു വെക്കുന്നു, ഇത് മൃഗങ്ങളും മനുഷ്യരും കഴിക്കുന്നു.
-visual: emoji 🍃 ☀️ 🍌 🥕
+visual: picture 🍃 ☀️ 🍌 🥕
 
 ## say
 label: example
 en: Try this. Put a small plant with its roots in red-coloured water. After some time the stem turns a little red. The root drank the water and the stem carried it up.
 ml: ഇതൊന്നു ചെയ്തു നോക്കൂ. വേരുകളുള്ള ഒരു കുഞ്ഞുചെടി ചുവന്ന ചായം കലക്കിയ വെള്ളത്തിൽ വെക്കുക. കുറച്ചു സമയം കഴിയുമ്പോൾ തണ്ട് അല്പം ചുവപ്പനിറമാകും. വേര് വെള്ളം കുടിക്കുകയും തണ്ട് അത് മുകളിലേക്ക് എത്തിക്കുകയും ചെയ്തു.
-visual: emoji 🌱 🧪 🔴
+visual: picture 🌱 🧪 🔴
 
 ## ask
 form: choice

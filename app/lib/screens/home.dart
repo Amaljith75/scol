@@ -179,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Pill('🔥', '${appState.liveStreak}'),
                 const SizedBox(width: 8),
-                Pill('⭐', '${appState.stars}'),
+                StarPill(appState.stars),
               ]),
               const SizedBox(height: 16),
               // The tutor's plan for right now.
@@ -333,7 +333,7 @@ void _showRewards(BuildContext context) {
         padding: const EdgeInsets.all(20),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Pill('⭐', '${appState.stars}'),
+            StarPill(appState.stars),
             const SizedBox(width: 8),
             Pill('⚡', '${appState.xp} XP'),
             const SizedBox(width: 8),

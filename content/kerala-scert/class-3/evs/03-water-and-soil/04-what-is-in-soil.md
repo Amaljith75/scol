@@ -9,33 +9,33 @@ minutes: 6
 ## say
 en: Is soil the same everywhere? No! Soil from the courtyard, under a tree and the playground can have different colours and different sizes of grains.
 ml: മണ്ണ് എല്ലായിടത്തും ഒരേപോലെയാണോ? അല്ല! മുറ്റത്തെ മണ്ണും മരച്ചുവട്ടിലെ മണ്ണും കളിക്കളത്തിലെ മണ്ണും വ്യത്യസ്ത നിറങ്ങളിലും തരികളുടെ വലിപ്പത്തിലുമായിരിക്കാം.
-visual: emoji 🟫 🟤 🟧
+visual: picture 🟫 🟤 🟧
 
 ## say
 en: Soil took thousands of years to form, and it is full of life. Earthworms, ants and lakhs of tiny living things live in it.
 ml: മണ്ണ് രൂപപ്പെടാൻ ആയിരക്കണക്കിന് വർഷങ്ങൾ എടുത്തു. അത് ജീവനാൽ നിറഞ്ഞതാണ്. മണ്ണിരകളും ഉറുമ്പുകളും ലക്ഷക്കണക്കിന് ചെറുജീവികളും അതിൽ ജീവിക്കുന്നു.
-visual: emoji 🪱 🐜
+visual: picture 🪱 🐜
 
 ## say
 en: Soil has air in it. Drop a dry clump of soil into water and watch the bubbles come out. Those bubbles are air.
 ml: മണ്ണിൽ വായു ഉണ്ട്. കരിഞ്ഞ മണ്ണിന്റെ ഒരു കഷ്ണം വെള്ളത്തിലിട്ട് കുമിളകൾ വരുന്നതു നോക്കൂ. ആ കുമിളകൾ വായുവാണ്.
-visual: emoji 🟫 💧 🫧
+visual: picture 🟫 💧 🫧
 
 ## say
 en: Soil has water in it. Close some garden soil in a clear bottle and keep it in the sun. Little drops of water appear on the sides.
 ml: മണ്ണിൽ വെള്ളമുണ്ട്. കുറച്ചു തൊട്ടാവാടി മണ്ണോ പൂന്തോട്ടത്തിലെ മണ്ണോ ഒരു കുപ്പിയിലാക്കി വെയിലത്ത് വെക്കുക. കുപ്പിയുടെ ഭിത്തിയിൽ ചെറിയ നീർത്തുള്ളികൾ കാണാം.
-visual: emoji 🫙 ☀️ 💧
+visual: picture 🫙 ☀️ 💧
 
 ## say
 label: example
 en: Soil has biomass too: dried leaves, bits of stems and remains of living things. Plants grow well in soil with lots of biomass, and earthworms eat it.
 ml: മണ്ണിൽ ജൈവവസ്തുക്കളുമുണ്ട്: ഉണങ്ങിയ ഇലകൾ, തണ്ടുകളുടെ കഷണങ്ങൾ, ജീവികളുടെ അവശിഷ്ടങ്ങൾ എന്നിവയാണവ. ധാരാളം ജൈവവസ്തുക്കളുള്ള മണ്ണിൽ ചെടികൾ നന്നായി വളരുന്നു, മണ്ണിരകൾ ഇത് തിന്നുന്നു.
-visual: emoji 🍂 🪱 🌱
+visual: picture 🍂 🪱 🌱
 
 ## say
 en: Plants take water and minerals from the soil, and we use soil for farming and making clay models. So we must keep soil clean and fertile.
 ml: ചെടികൾ മണ്ണിൽ നിന്ന് വെള്ളവും പോഷകങ്ങളും സ്വീകരിക്കുന്നു. നാം കൃഷിക്കாகவும் കളിമൺ ശില്പങ്ങൾ ഉണ്ടാക്കാനாகவும் മണ്ണ് ഉപയോഗിക്കുന്നു. അതിനാൽ നാം മണ്ണ് ശുദ്ധമായും ഫലഭൂയിഷ്ഠമായും സൂക്ഷിക്കണം.
-visual: emoji 🌾 🏺
+visual: picture 🌾 🏺
 
 ## ask
 form: choice

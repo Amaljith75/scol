@@ -9,17 +9,17 @@ minutes: 6
 ## say
 en: Mithra found tiny pearly eggs under a leaf. Her mother said they were butterfly eggs.
 ml: മിത്ര ഒരു ഇലയുടെ അടിയിൽ ചെറിയ മുത്തുപോലെയുള്ള മുട്ടകൾ കണ്ടു. അവ ചിത്രശലഭത്തിന്റെ മുട്ടകളാണെന്ന് അമ്മ പറഞ്ഞു.
-visual: emoji 🍃 ⚪
+visual: picture 🍃 ⚪
 
 ## say
 en: A worm-like larva, called a caterpillar, comes out of each egg. It eats and eats the leaves and grows bigger.
 ml: ഓരോ മുട്ടയിൽ നിന്നും പുഴു പോലെയുള്ള ലാർവ (ശലഭപ്പുഴു) പുറത്തുവരുന്നു. അത് ഇലകൾ തിന്ന് തിന്ന് വലുതാകുന്നു.
-visual: emoji 🐛 🍃
+visual: picture 🐛 🍃
 
 ## say
 en: Then the larva makes a hard case around itself. This stage is the pupa. Inside, a big change is happening.
 ml: തുടർന്ന് ലാർവ തിന് ചുറ്റും ഒരു ഉറപ്പുളള കൂട് ഉണ്ടാക്കുന്നു. ഈ ഘട്ടമാണ് പ്യൂപ്പ. ഇതിനുള്ളിൽ വലിയ മാറ്റങ്ങൾ നടക്കുന്നു.
-visual: emoji 🫘
+visual: picture 🫘
 
 ## say
 en: At last, a butterfly comes out of the pupa! So a butterfly's life goes: egg, larva, pupa, butterfly.
@@ -29,7 +29,7 @@ visual: pattern ⚪ 🐛 🫘 🦋
 ## say
 en: Butterflies need plants in two ways: to lay their eggs on, and for food. Caterpillars eat leaves, and butterflies drink nectar from flowers.
 ml: ചിത്രശലഭങ്ങൾക്ക് രണ്ട് കാര്യങ്ങൾക്ക് സസ്യങ്ങൾ ആവശ്യമാണ്: മുട്ടയിടാനും ഭക്ഷണത്തിനും. ശലഭപ്പുഴുക്കൾ ഇലകൾ തിന്നുന്നു, ചിത്രശലഭങ്ങൾ പൂക്കളിൽ നിന്ന് തേൻ കുടിക്കുന്നു.
-visual: emoji 🌿 🌺 🦋
+visual: picture 🌿 🌺 🦋
 
 ## say
 label: example

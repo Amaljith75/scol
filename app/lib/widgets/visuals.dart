@@ -10,6 +10,51 @@ import 'ui.dart';
 
 const _palette = [coral, indigo, mint, sun, Color(0xFFE5488B)];
 
+/// Where the touchable pieces of the picture on the board are right now, on the screen
+/// (item number, starting at 1, to the centre of the piece). The tutor floats to these
+/// while it teaches. Filled in by [BoardItem]s after they are laid out.
+final ValueNotifier<Map<int, Offset>> boardTargets = ValueNotifier({});
+
+/// Marks one touchable piece of a picture: a group, a shape, a row, a card, a corner...
+class BoardItem extends StatefulWidget {
+  const BoardItem(this.index, {super.key, required this.child});
+  final int index; // 1-based, in the order the lesson text and the brain count them
+  final Widget child;
+
+  @override
+  State<BoardItem> createState() => _BoardItemState();
+}
+
+class _BoardItemState extends State<BoardItem> {
+  void _report(_) {
+    if (!mounted) return;
+    final box = context.findRenderObject();
+    if (box is! RenderBox || !box.hasSize || !box.attached) return;
+    final centre = box.localToGlobal(box.size.center(Offset.zero));
+    final m = boardTargets.value;
+    if (m[widget.index] != centre) boardTargets.value = {...m, widget.index: centre};
+  }
+
+  @override
+  void dispose() {
+    final m = Map<int, Offset>.of(boardTargets.value)..remove(widget.index);
+    boardTargets.value = m;
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(_report);
+    return widget.child;
+  }
+}
+
+/// A point on a shape (for example a corner), placed as a small invisible item.
+Widget _corner(int index, Alignment where) => Align(
+      alignment: where,
+      child: BoardItem(index, child: const SizedBox(width: 10, height: 10)),
+    );
+
 /// Makes its child pop in, a little later for each next piece.
 class Pop extends StatelessWidget {
   const Pop(this.index, {super.key, required this.child, this.gap = 60});
@@ -118,6 +163,22 @@ Widget _chip(String text, {Color color = Colors.white, Color border = cloud, Col
       child: Text(text, style: TextStyle(fontSize: size, fontWeight: FontWeight.w900, color: textColor)),
     );
 
+/// Where the corners of a shape sit inside its box, in the order a child counts them.
+List<Alignment> _corners(String shape) => switch (shape) {
+      'triangle' => const [Alignment(0, -0.9), Alignment(0.9, 0.9), Alignment(-0.9, 0.9)],
+      'circle' => const [],
+      _ => const [Alignment(-0.9, -0.9), Alignment(0.9, -0.9), Alignment(0.9, 0.9), Alignment(-0.9, 0.9)],
+    };
+
+/// How many corner items come before shape [i]'s corners.
+int _cornerStart(List<String> shapes, int i) {
+  var n = 0;
+  for (var k = 0; k < i; k++) {
+    n += _corners(shapes[k]).length;
+  }
+  return n;
+}
+
 class VisualView extends StatelessWidget {
   const VisualView(this.visual, {super.key});
   final Map<String, dynamic> visual;
@@ -141,7 +202,9 @@ class VisualView extends StatelessWidget {
               Pop(
                 g,
                 gap: 140,
-                child: Container(
+                child: BoardItem(
+                  g + 1,
+                  child: Container(
                   padding: const EdgeInsets.all(8),
                   constraints: BoxConstraints(maxWidth: size * (each > 6 ? 6.2 : 3.6) + 16),
                   decoration: BoxDecoration(
@@ -154,6 +217,7 @@ class VisualView extends StatelessWidget {
                     children: [for (var i = 0; i < each; i++) Text(emoji, style: TextStyle(fontSize: size))],
                   ),
                 ),
+                ),
               ),
           ],
         );
@@ -163,7 +227,7 @@ class VisualView extends StatelessWidget {
           alignment: WrapAlignment.center,
           spacing: 4,
           runSpacing: 4,
-          children: [for (var i = 0; i < n(0); i++) Pop(i, child: Text(emoji, style: const TextStyle(fontSize: 30)))],
+          children: [for (var i = 0; i < n(0); i++) Pop(i, child: BoardItem(i + 1, child: Text(emoji, style: const TextStyle(fontSize: 30))))],
         );
       case 'array':
         final rows = n(0), cols = n(1);
@@ -176,12 +240,15 @@ class VisualView extends StatelessWidget {
               Pop(
                 r,
                 gap: 160,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    for (var c = 0; c < cols; c++)
-                      Padding(padding: const EdgeInsets.all(2), child: Text(emoji, style: TextStyle(fontSize: size)))
-                  ],
+                child: BoardItem(
+                  r + 1,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      for (var c = 0; c < cols; c++)
+                        Padding(padding: const EdgeInsets.all(2), child: Text(emoji, style: TextStyle(fontSize: size)))
+                    ],
+                  ),
                 ),
               ),
           ],
@@ -202,7 +269,9 @@ class VisualView extends StatelessWidget {
                   Expanded(
                     child: Pop(
                       i,
-                      child: Container(
+                      child: BoardItem(
+                        i + 1,
+                        child: Container(
                         height: 30,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -217,6 +286,7 @@ class VisualView extends StatelessWidget {
                                   fontWeight: FontWeight.w800,
                                   color: ticks[i] == mark ? Colors.white : ink)),
                         ),
+                      ),
                       ),
                     ),
                   ),
@@ -237,9 +307,23 @@ class VisualView extends StatelessWidget {
               Pop(
                 i,
                 gap: 120,
-                child: CustomPaint(
-                  size: Size(args[i] == 'rectangle' ? 84 : 58, 58),
-                  painter: _ShapePainter(args[i], _palette[i % _palette.length]),
+                child: BoardItem(
+                  i + 1,
+                  child: SizedBox(
+                    width: args[i] == 'rectangle' ? 84 : 58,
+                    height: 58,
+                    child: Stack(children: [
+                      CustomPaint(
+                        size: Size(args[i] == 'rectangle' ? 84 : 58, 58),
+                        painter: _ShapePainter(args[i], _palette[i % _palette.length]),
+                      ),
+                      // Corners are items too, numbered after all the shapes, so the tutor can count them.
+                      ...[
+                        for (var k = 0; k < _corners(args[i]).length; k++)
+                          _corner(args.length + _cornerStart(args, i) + k + 1, _corners(args[i])[k]),
+                      ],
+                    ]),
+                  ),
                 ),
               ),
           ],
@@ -253,12 +337,15 @@ class VisualView extends StatelessWidget {
             for (var i = 0; i < n(0); i++)
               Pop(
                 i,
-                child: Transform.rotate(
-                  angle: (i % 3 - 1) * 0.22,
-                  child: Container(
-                    width: 8,
-                    height: 46,
-                    decoration: BoxDecoration(color: const Color(0xFFB07A3B), borderRadius: BorderRadius.circular(4)),
+                child: BoardItem(
+                  i + 1,
+                  child: Transform.rotate(
+                    angle: (i % 3 - 1) * 0.22,
+                    child: Container(
+                      width: 8,
+                      height: 46,
+                      decoration: BoxDecoration(color: const Color(0xFFB07A3B), borderRadius: BorderRadius.circular(4)),
+                    ),
                   ),
                 ),
               ),
@@ -274,7 +361,9 @@ class VisualView extends StatelessWidget {
             for (var p = 0; p < 3; p++)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                child: BoardItem(
+                  p + 1,
+                  child: Column(mainAxisSize: MainAxisSize.min, children: [
                   SizedBox(
                     width: 44,
                     height: 150,
@@ -299,6 +388,7 @@ class VisualView extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(labels[p], style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16, color: colors[p])),
                 ]),
+                ),
               ),
           ],
         );
@@ -312,10 +402,13 @@ class VisualView extends StatelessWidget {
               Pop(
                 i,
                 gap: 110,
-                child: _chip('₹${args[i]}',
-                    color: n(i) >= 100 ? const Color(0xFFD9F2E3) : (n(i) >= 10 ? const Color(0xFFFFE3D1) : const Color(0xFFFFF1B8)),
-                    border: n(i) >= 100 ? mint : (n(i) >= 10 ? coral : sun),
-                    size: 20),
+                child: BoardItem(
+                  i + 1,
+                  child: _chip('₹${args[i]}',
+                      color: n(i) >= 100 ? const Color(0xFFD9F2E3) : (n(i) >= 10 ? const Color(0xFFFFE3D1) : const Color(0xFFFFF1B8)),
+                      border: n(i) >= 100 ? mint : (n(i) >= 10 ? coral : sun),
+                      size: 20),
+                ),
               ),
           ],
         );
@@ -334,16 +427,19 @@ class VisualView extends StatelessWidget {
                   tween: Tween(begin: 0, end: 1),
                   duration: const Duration(milliseconds: 900),
                   curve: Curves.easeOutCubic,
-                  builder: (_, v, __) => Container(
-                    width: max(unit * len * v, 12.0),
-                    height: 30,
-                    alignment: Alignment.centerRight,
-                    decoration: BoxDecoration(color: _palette[len % _palette.length], borderRadius: BorderRadius.circular(8)),
-                    child: v > 0.9 ? Text(emoji, style: const TextStyle(fontSize: 20)) : null,
+                  builder: (_, v, __) => BoardItem(
+                    1,
+                    child: Container(
+                      width: max(unit * len * v, 12.0),
+                      height: 30,
+                      alignment: Alignment.centerRight,
+                      decoration: BoxDecoration(color: _palette[len % _palette.length], borderRadius: BorderRadius.circular(8)),
+                      child: v > 0.9 ? Text(emoji, style: const TextStyle(fontSize: 20)) : null,
+                    ),
                   ),
                 ),
               ),
-            CustomPaint(size: Size(w, 46), painter: RulerPainter(maxCm)),
+            BoardItem(2, child: CustomPaint(size: Size(w, 46), painter: RulerPainter(maxCm))),
           ]);
         });
       case 'pattern':
@@ -356,18 +452,23 @@ class VisualView extends StatelessWidget {
               Pop(
                 i,
                 gap: 130,
-                child: args[i] == '?'
-                    ? _chip('?', color: const Color(0xFFFFF1B8), border: sun, textColor: coral)
-                    : _chip(args[i], size: args[i].length > 3 ? 18 : 22),
+                child: BoardItem(
+                  i + 1,
+                  child: args[i] == '?'
+                      ? _chip('?', color: const Color(0xFFFFF1B8), border: sun, textColor: coral)
+                      : _chip(args[i], size: args[i].length > 3 ? 18 : 22),
+                ),
               ),
           ],
         );
       case 'split':
         Widget part(String t, int i) => Pop(i,
             gap: 300,
-            child: t == '?'
-                ? _chip('?', color: const Color(0xFFFFF1B8), border: sun, textColor: coral, size: 26)
-                : _chip(t, border: indigo, size: 26));
+            child: BoardItem(
+                i + 1,
+                child: t == '?'
+                    ? _chip('?', color: const Color(0xFFFFF1B8), border: sun, textColor: coral, size: 26)
+                    : _chip(t, border: indigo, size: 26)));
         return Column(mainAxisSize: MainAxisSize.min, children: [
           part(args[0], 0),
           CustomPaint(size: const Size(150, 34), painter: _SplitLines()),
@@ -381,7 +482,9 @@ class VisualView extends StatelessWidget {
               Pop(
                 i,
                 gap: 650,
-                child: Padding(
+                child: BoardItem(
+                  i + 1,
+                  child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 3),
                   child: FittedBox(
                     fit: BoxFit.scaleDown,
@@ -392,25 +495,54 @@ class VisualView extends StatelessWidget {
                             color: i == args.length - 1 && args.length > 1 ? coral : indigo)),
                   ),
                 ),
+                ),
               ),
           ],
         );
       case 'text':
         return Pop(0,
-            child: FittedBox(
-              child: Text(args.join(' '), style: const TextStyle(fontSize: 54, fontWeight: FontWeight.w900, color: indigo)),
+            child: BoardItem(
+              1,
+              child: FittedBox(
+                child: Text(args.join(' '), style: const TextStyle(fontSize: 54, fontWeight: FontWeight.w900, color: indigo)),
+              ),
             ));
       case 'emoji':
         return Wrap(alignment: WrapAlignment.center, spacing: 10, children: [
-          for (var i = 0; i < args.length; i++) Pop(i, gap: 200, child: Text(args[i], style: const TextStyle(fontSize: 64)))
+          for (var i = 0; i < args.length; i++)
+            Pop(i, gap: 200, child: BoardItem(i + 1, child: Text(args[i], style: const TextStyle(fontSize: 64))))
         ]);
+      case 'picture':
+        // A cartoon drawn from the step's words (see tools/build_pictures.py). Until it has arrived,
+        // or without internet, the emoji stand in for it.
+        final emoji = Wrap(alignment: WrapAlignment.center, spacing: 10, children: [
+          for (var i = 0; i < args.length; i++)
+            Pop(i, gap: 200, child: BoardItem(i + 1, child: Text(args[i], style: const TextStyle(fontSize: 64))))
+        ]);
+        final file = '${visual['image'] ?? ''}';
+        if (file.isEmpty) return emoji;
+        return ClipRRect(
+          borderRadius: BorderRadius.circular(18),
+          child: Image.network(
+            '$rawBase$file',
+            fit: BoxFit.contain,
+            height: 190,
+            frameBuilder: (_, child, frame, __) => frame == null
+                ? emoji
+                : Pop(0, child: BoardItem(1, child: child)),
+            errorBuilder: (_, __, ___) => emoji,
+          ),
+        );
       case 'image':
         return ClipRRect(
           borderRadius: BorderRadius.circular(16),
-          child: Image.network(
-            '$rawBase${args.isEmpty ? '' : args.first}',
-            fit: BoxFit.contain,
-            errorBuilder: (_, __, ___) => const Text('🖼️', style: TextStyle(fontSize: 64)),
+          child: BoardItem(
+            1,
+            child: Image.network(
+              '$rawBase${args.isEmpty ? '' : args.first}',
+              fit: BoxFit.contain,
+              errorBuilder: (_, __, ___) => const Text('🖼️', style: TextStyle(fontSize: 64)),
+            ),
           ),
         );
     }

@@ -9,7 +9,7 @@ minutes: 6
 ## say
 en: Muddy rainwater falls on the ground. So how is the water in a well clear?
 ml: ചെളിവെള്ളമുള്ള മഴവെള്ളം നിലത്തു വീഴുന്നു. പിന്നെ എങ്ങനെയാണ് കിണറ്റിലെ വെള്ളം തെളിഞ്ഞിരിക്കുന്നത്?
-visual: emoji 🌧️ 🟫 🪣
+visual: picture 🌧️ 🟫 🪣
 
 ## say
 en: Part of the rainwater seeps down into the soil. As it goes down through the soil, the dirt stays behind and the water becomes clear. This is called filtering.
@@ -19,7 +19,7 @@ visual: steps muddy water → through soil → clear water
 ## say
 en: The clear water collects under the ground. It is called groundwater, and it fills wells and other water sources.
 ml: തെളിഞ്ഞ വെള്ളം ഭൂമിക്കടിയിൽ ശേഖരിക്കപ്പെടുന്നു. ഇതിനെ ഭൂഗർഭജലം എന്ന് വിളിക്കുന്നു, ഇതാണ് കിണറുകളിലും മറ്റ് ജലസ്രോതസ്സുകളിലും നിറയുന്നത്.
-visual: emoji 🪣 💧
+visual: picture 🪣 💧
 
 ## say
 label: example
@@ -30,7 +30,7 @@ visual: steps gravel → sand → charcoal → clearer water
 ## say
 en: Clear water may still have tiny germs we cannot see. So drink boiled and cooled water.
 ml: തെളിഞ്ഞ വെള്ളത്തിലും കണ്ണുകൊണ്ട് കാണാൻ കഴിയാത്ത ചെറിയ രോഗാണുക്കൾ ഉണ്ടായേക്കാം. അതിനാൽ തിളപ്പിച്ചാറിയ വെള്ളം മാത്രം കുടിക്കുക.
-visual: emoji 🫖 💧
+visual: picture 🫖 💧
 
 ## ask
 form: choice

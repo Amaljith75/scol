@@ -9,7 +9,7 @@ minutes: 6
 ## say
 en: Brush your teeth twice a day: in the morning, and after dinner. If we don't, our teeth get damaged.
 ml: ദിവസവും രണ്ടുതരം പല്ലുതേക്കണം: രാവിലെയും രാത്രി ഭക്ഷണത്തിനു ശേഷവും. ഇല്ലെങ്കിൽ പല്ലുകൾ കേടായിപ്പോകും.
-visual: emoji 🪥 🦷
+visual: picture 🪥 🦷
 
 ## say
 en: Hold the brush slanted. Brush the upper teeth from top to bottom and the lower teeth from bottom to top. Brush the chewing surfaces and the inner sides too, and clean your tongue.
@@ -19,18 +19,18 @@ visual: steps slanted brush / upper: top to bottom / lower: bottom to top / tong
 ## say
 en: Take a bath every day. Wash every part of your body with soap, and never bathe in dirty water. Use your own clean, dry towel, and wash it after use.
 ml: എല്ലാ ദിവസവും കുളിക്കണം. സോപ്പ് തേച്ച് ശരീരത്തിന്റെ എല്ലാ ഭാഗങ്ങളും കഴുകുക. ഒരിക്കലും ചളിവെള്ളത്തിൽ കുളിക്കരുത്. നിങ്ങളുടെ സ്വന്തം വൃത്തിയുള്ള തോർത്ത് ഉപയോഗിക്കുക, ഉപയോഗശേഷം അത് കഴുകി ഇടണം.
-visual: emoji 🛁 🧼 🧺
+visual: picture 🛁 🧼 🧺
 
 ## say
 en: Don't wear dirty or wet clothes. Germs grow in them and can cause scabies and rashes.
 ml: അഴുക്കുള്ളതോ നനഞ്ഞതോ ആയ വസ്ത്രങ്ങൾ ധരിക്കരുത്. അവയിൽ അണുക്കൾ വളരുകയും ചൊറിച്ചിലും തടിപ്പുകളും ഉണ്ടാകുകയും ചെയ്യും.
-visual: emoji 👕 🦠
+visual: picture 👕 🦠
 
 ## say
 label: example
 en: Not keeping clean causes illnesses like dysentery, cold, scabies and rashes. My hygiene is my responsibility!
 ml: ശുചിത്വം പാലിച്ചില്ലെങ്കിൽ വയറിളക്കം, ജലദോഷം, ചൊറിച്ചിൽ തുടങ്ങിയ രോഗങ്ങൾ ഉണ്ടാകാം. എന്റെ ശുചിത്വം എന്റെ ഉത്തരവാദിത്തമാണ്!
-visual: emoji 💪 ✨
+visual: picture 💪 ✨
 
 ## ask
 form: number

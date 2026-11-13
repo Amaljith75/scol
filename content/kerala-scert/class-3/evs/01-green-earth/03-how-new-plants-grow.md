@@ -9,7 +9,7 @@ minutes: 6
 ## say
 en: Inside every seed, a baby plant is sleeping. When the seed gets water, it wakes up and starts to grow. This is called germination.
 ml: ഓരോ വിത്തിനുള്ളിലും ഒരു കുഞ്ഞുചെടി ഉറങ്ങിക്കിടപ്പുണ്ട്. വിത്തിന് വെള്ളം ലഭിക്കുമ്പോൾ, അത് ഉണർന്ന് വളരാൻ തുടങ്ങുന്നു. ഇതിനെ മുളയ്ക്കൽ എന്ന് വിളിക്കുന്നു.
-visual: emoji 🫘 💧 🌱
+visual: picture 🫘 💧 🌱
 
 ## say
 en: Try it. Put a few pea seeds in wet sand near the side of a clear glass. After a few days the root comes out first, going down. Then the shoot comes up and the first leaves open.
@@ -19,12 +19,12 @@ visual: steps seed → root grows down → shoot grows up → first leaves
 ## say
 en: A growing plant needs water, air and sunlight, and some manure to grow well. Keep your plant where there is light.
 ml: വളരുന്ന ഒരു ചെടിക്ക് നന്നായി വളരാൻ വെള്ളം, വായു, സൂര്യപ്രകാശം, വളം എന്നിവ ആവശ്യമാണ്. ചെടി നല്ല വെളിച്ചമുള്ളിടത്ത് വെക്കുക.
-visual: emoji 💧 💨 ☀️
+visual: picture 💧 💨 ☀️
 
 ## say
 en: New plants do not come only from seeds. A curry leaf plant can send up new plants from its roots. The miracle leaf plant, ilamulachi, grows new plants from its leaves.
 ml: പുതിയ ചെടികൾ വിത്തുകളിൽ നിന്ന് മാത്രമല്ല ഉണ്ടാകുന്നത്. കറിവേപ്പിലയുടെ വേരുകളിൽ നിന്ന് പുതിയ തൈകൾ ഉണ്ടാകാറുണ്ട്. ഇലമുളച്ചിയുടെ ഇലകളിൽ നിന്നാണ് പുതിയ ചെടികൾ വളരുന്നത്.
-visual: emoji 🌿 🍃
+visual: picture 🌿 🍃
 
 ## say
 label: example

@@ -9,12 +9,12 @@ minutes: 6
 ## say
 en: Look around Mithra's house. There are hens, a cow, a goat, a dog, and birds and insects too. Some of these animals live with people.
 ml: മിത്രയുടെ വീടിന് ചുറ്റും ഒന്നു നോക്കൂ. കോഴികളും പശുവും ആടും പട്ടിയും പക്ഷികളും പ്രാണികളും ഒക്കെയുണ്ട്. ഇവയിൽ ചില മൃഗങ്ങൾ മനുഷ്യരോടൊപ്പമാണ് ജീവിക്കുന്നത്.
-visual: emoji 🐔 🐄 🐐 🐕
+visual: picture 🐔 🐄 🐐 🐕
 
 ## say
 en: Animals that people raise at home are called domestic animals. We raise them for different reasons.
 ml: മനുഷ്യർ വീട്ടിൽ വളർത്തുന്ന മൃഗങ്ങളെ വളർത്തുമൃഗങ്ങൾ എന്ന് വിളിക്കുന്നു. വിവിധ ആവശ്യങ്ങൾക്കായാണ് നമ്മൾ അവയെ വളർത്തുന്നത്.
-visual: emoji 🏡 🐄
+visual: picture 🏡 🐄
 
 ## say
 en: Some give us food: cows and goats give milk, and hens give eggs. Some keep us safe, like a dog. Some we keep just because we love them, as pets.
@@ -24,7 +24,7 @@ visual: steps cow, goat → milk / hen → eggs / dog → security / pets → pl
 ## say
 en: Many creatures live in and around our homes without being raised: lizards, ants, spiders, sparrows and squirrels.
 ml: നമ്മൾ വളർത്താതെ തന്നെ നമ്മുടെ വീടിനകത്തും ചുറ്റും ജീവിക്കുന്ന ഒരുപാട് ജീവികളുണ്ട്: പല്ലി, ഉറുമ്പ്, ചിലന്തി, അങ്ങാടിക്കുരുവി, അണ്ണാൻ എന്നിവ ഉദാഹരണം.
-visual: emoji 🦎 🐜 🕷️ 🐿️
+visual: picture 🦎 🐜 🕷️ 🐿️
 
 ## ask
 form: choice

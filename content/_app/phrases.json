@@ -58,5 +58,31 @@
   "oopsStrict": {
     "en": "No, that is not right. Look carefully and try again.",
     "ml": "അല്ല, അത് ശരിയല്ല. ശ്രദ്ധിച്ച് നോക്കി വീണ്ടും ശ്രമിക്കൂ."
+  },
+  "intro": {
+    "en": [
+      "Hello {name}! Are you ready? Let us learn something new today.",
+      "Hi {name}! I was waiting for you. Come, let us start.",
+      "Welcome back, {name}! Today's lesson is a fun one.",
+      "Hello hello! Sit comfortably, {name}, and look at the board with me.",
+      "Good to see you, {name}! Let us begin.",
+      "Hello! I am so happy you came. Let us learn together.",
+      "Ready? Take a deep breath. Here we go!",
+      "Hi there! Today I have something interesting to show you.",
+      "Welcome! Look at the board, and listen carefully.",
+      "Let us start our lesson. Eyes on the board!"
+    ],
+    "ml": [
+      "ഹലോ {name}! റെഡിയാണോ? ഇന്ന് നമുക്ക് പുതിയൊരു കാര്യം പഠിക്കാം.",
+      "ഹായ് {name}! ഞാൻ നിന്നെ കാത്തിരിക്കുകയായിരുന്നു. വാ, തുടങ്ങാം.",
+      "വീണ്ടും സ്വാഗതം, {name}! ഇന്നത്തെ പാഠം രസകരമാണ്.",
+      "ഹലോ ഹലോ! {name}, സുഖമായി ഇരിക്കൂ, എന്നോടൊപ്പം ബോർഡിലേക്ക് നോക്കൂ.",
+      "നിന്നെ കണ്ടതിൽ സന്തോഷം, {name}! നമുക്ക് തുടങ്ങാം.",
+      "ഹലോ! നീ വന്നതിൽ എനിക്ക് വളരെ സന്തോഷം. നമുക്ക് ഒരുമിച്ച് പഠിക്കാം.",
+      "റെഡിയാണോ? ഒന്ന് ദീർഘമായി ശ്വാസമെടുക്കൂ. തുടങ്ങാം!",
+      "ഹായ്! ഇന്ന് കാണിച്ചു തരാൻ എന്റെ കയ്യിൽ രസകരമായ ഒരു കാര്യമുണ്ട്.",
+      "സ്വാഗതം! ബോർഡിലേക്ക് നോക്കൂ, ശ്രദ്ധിച്ച് കേൾക്കൂ.",
+      "നമ്മുടെ പാഠം തുടങ്ങാം. കണ്ണുകൾ ബോർഡിലേക്ക്!"
+    ]
   }
 }

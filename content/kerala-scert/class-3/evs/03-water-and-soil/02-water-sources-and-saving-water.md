@@ -9,12 +9,12 @@ minutes: 6
 ## say
 en: Where does the water at your home come from? Many homes have a well. Some have a borewell, a deep narrow hole in the ground. Farms may use ponds.
 ml: നിങ്ങളുടെ വീട്ടിലെ വെള്ളം എവിടെ നിന്നാണ് വരുന്നത്? പല വീടുകളിലും കിണറുണ്ട്. ചിലയിടങ്ങളിൽ കുഴൽക്കിണറുണ്ട്, അതായത് ഭൂമിയിലെ ആഴത്തിലുള്ള ചെറിയ കുഴി. കൃഷിയിടങ്ങളിൽ കുളങ്ങൾ ഉപയോഗിക്കാറുണ്ട്.
-visual: emoji 🪣 🏞️
+visual: picture 🪣 🏞️
 
 ## say
 en: Rivers, ponds, lakes and wells are all water sources. Rainwater fills them.
 ml: പുഴകളും കുളങ്ങളും തടാകങ്ങളും കിണറുകളുമെല്ലാം ജലസ്രോതസ്സുകളാണ്. മഴവെള്ളമാണ് അവയെ നിറയ്ക്കുന്നത്.
-visual: emoji 🏞️ 🌧️
+visual: picture 🏞️ 🌧️
 
 ## say
 en: Kerala has old ways too. A suranga is a narrow tunnel dug into a hill to bring groundwater out. It is used in Kasaragod. A keni is a well made by putting a hollowed tree trunk into the ground. Many tribal groups still use it.
@@ -24,13 +24,13 @@ visual: steps suranga → tunnel / keni → tree-trunk well
 ## say
 en: All living things need water. We use it to drink, cook, bathe, wash and farm. Fish live in it, and elephants drink and bathe in it.
 ml: എല്ലാ ജീവജാലങ്ങൾക്കും വെള്ളം ആവശ്യമാണ്. കുടിക്കുന്നതിനും പാചകം ചെയ്യുന്നതിനും കുളിക്കുന്നതിനും തുണികൾ അലക്കുന്നതിനും കൃഷി ചെയ്യുന്നതിനും നാം വെള്ളം ഉപയോഗിക്കുന്നു. മീനുകൾ വെള്ളത്തിലാണ് ജീവിക്കുന്നത്, ആനകൾ വെള്ളം കുടിക്കാനും കുളിക്കാനും ഇത് ഉപയോഗിക്കുന്നു.
-visual: emoji 💧 🐟 🐘 🌾
+visual: picture 💧 🐟 🐘 🌾
 
 ## say
 label: example
 en: Water is precious, so don't waste it. Close the tap after use, and fix leaking pipes.
 ml: വെള്ളം വിലപ്പെട്ടതാണ്, അതിനാൽ അത് പാഴാക്കരുത്. ഉപയോഗത്തിനു ശേഷം ടാപ്പ് അടയ്ക്കുക, ചോർച്ചയുള്ള പൈപ്പുകൾ ശരിയാക്കുക.
-visual: emoji 🚰 ✅
+visual: picture 🚰 ✅
 
 ## ask
 form: choice

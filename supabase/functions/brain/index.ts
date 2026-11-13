@@ -32,7 +32,7 @@ type TeachStep = {
   options?: string[];
 };
 
-const PROMPT_VERSION = "teach-v1"; // change this when the teaching prompt changes, so old cached lessons are redone
+const PROMPT_VERSION = "teach-v2"; // change this when the teaching prompt changes, so old cached lessons are redone
 
 const env = (k: string, d = "") => Deno.env.get(k) ?? d;
 const providers: Provider[] = (() => {
@@ -69,19 +69,23 @@ async function countHit(device: string): Promise<[number, number]> {
 }
 
 /** A lesson already written for this language, tutor and mood, or null. */
-async function cachedTeaching(key: string): Promise<string[] | null> {
+async function cachedTeaching(key: string): Promise<Taught[] | null> {
   try {
     const res = await fetch(`${env("SUPABASE_URL")}/rest/v1/brain_teach?key=eq.${key}&select=body`, { headers: dbHeaders() });
     if (!res.ok) return null;
     const rows = await res.json();
     const steps = rows?.[0]?.body?.steps;
-    return Array.isArray(steps) && steps.length ? steps.map(String) : null;
+    if (!Array.isArray(steps) || !steps.length) return null;
+    return steps.map((s: unknown) => {
+      const o = (s ?? {}) as Record<string, unknown>;
+      return typeof s === "string" ? { say: s, touch: [] } : { say: String(o.say ?? ""), touch: Array.isArray(o.touch) ? (o.touch as number[]) : [] };
+    });
   } catch {
     return null;
   }
 }
 
-async function rememberTeaching(key: string, steps: string[], by: string) {
+async function rememberTeaching(key: string, steps: Taught[], by: string) {
   try {
     await fetch(`${env("SUPABASE_URL")}/rest/v1/brain_teach`, {
       method: "POST",
@@ -123,40 +127,49 @@ function systemPrompt(tutor: string, lang: string, lesson: string, notes: string
   ].join("\n");
 }
 
-/** The picture on the board, in words the AI can point at. */
+/** The picture on the board, in words the AI can point at, with its touchable items numbered. */
 function describeVisual(spec: string): string {
   const [kind, ...a] = spec.split(/\s+/);
+  const numbered = (items: string[]) => items.map((x, i) => `${i + 1}=${x}`).join(", ");
   switch (kind) {
     case "groups":
-      return `${a[0]} groups with ${a[1]} ${a[2] ?? "things"} in each`;
+      return `${a[0]} groups with ${a[1]} ${a[2] ?? "things"} in each; items: ${numbered(Array.from({ length: Number(a[0]) || 0 }, (_, i) => `group ${i + 1}`))}`;
     case "array":
-      return `${a[0]} rows with ${a[1]} ${a[2] ?? "things"} in each row`;
+      return `${a[0]} rows with ${a[1]} ${a[2] ?? "things"} in each row; items: ${numbered(Array.from({ length: Number(a[0]) || 0 }, (_, i) => `row ${i + 1}`))}`;
     case "count":
-      return `${a[0]} ${a[1] ?? "things"} in a row`;
+      return `${a[0]} ${a[1] ?? "things"} in a row; items 1 to ${a[0]} are the ${a[1] ?? "things"} from left to right`;
     case "numberline":
-      return `a number line from ${a[0]} to ${a[1]}${a[2] ? ` with ${a[2]} marked` : ""}`;
-    case "shapes":
-      return `these shapes: ${a.join(", ")}`;
+      return `a number line from ${a[0]} to ${a[1]}${a[2] ? ` with ${a[2]} marked` : ""}; items are the numbers on it from left to right`;
+    case "shapes": {
+      const items: string[] = [];
+      a.forEach((sh) => items.push(sh));
+      a.forEach((sh) => {
+        const corners = sh === "triangle" ? 3 : sh === "circle" ? 0 : 4;
+        for (let k = 1; k <= corners; k++) items.push(`corner ${k} of the ${sh}`);
+      });
+      return `shapes; items: ${numbered(items)}`;
+    }
     case "sticks":
-      return `${a[0]} small sticks`;
+      return `${a[0]} small sticks; items 1 to ${a[0]} are the sticks`;
     case "place":
-      return `an abacus showing ${a[0]} hundreds, ${a[1]} tens and ${a[2]} ones`;
+      return `an abacus showing ${a[0]} hundreds, ${a[1]} tens and ${a[2]} ones; items: 1=hundreds rod, 2=tens rod, 3=ones rod`;
     case "notes":
-      return `money: notes and coins of ${a.join(", ")}`;
+      return `money: ${numbered(a.map((x) => `a ${x} rupee note or coin`))}`;
     case "ruler":
-      return `a scale with a ${a[0]} cm ${a[1] ?? "object"} lying on it`;
+      return `a scale with a ${a[0]} cm ${a[1] ?? "object"} lying on it; items: 1=the ${a[1] ?? "object"}, 2=the scale`;
     case "pattern":
-      return `a row of cards: ${a.join(" ")} (? is the missing one)`;
+      return `a row of cards: ${numbered(a)} (? is the missing one)`;
     case "split":
-      return `the number ${a[0]} split into ${a[1]} and ${a[2]}`;
+      return `the number ${a[0]} split into ${a[1]} and ${a[2]}; items: 1=${a[0]}, 2=${a[1]}, 3=${a[2]}`;
     case "steps":
-      return `working shown line by line: ${a.join(" ")}`;
+      return `working shown line by line; items: ${numbered(a.join(" ").split(" / "))}`;
     case "text":
-      return `big text: ${a.join(" ")}`;
+      return `big text: ${a.join(" ")}; item 1 is the text`;
     case "emoji":
-      return `big pictures: ${a.join(" ")}`;
+    case "picture":
+      return a.length ? `pictures; items: ${numbered(a)}` : "a cartoon picture of this step; item 1 is the picture";
     case "image":
-      return "a picture";
+      return "a picture; item 1 is the picture";
     default:
       return spec;
   }
@@ -165,20 +178,21 @@ function describeVisual(spec: string): string {
 function teachPrompt(tutor: string, about: string, lang: string, tone: string, sayCount: number) {
   return [
     `You are ${tutor}, a tutor inside a learning app for children aged 7 to 9 in Class 3 in Kerala, India. ${about}`.trim(),
-    "You teach one child, one to one, speaking aloud. Below is a lesson written and checked by teachers: numbered teaching steps (SAY) and the questions the child will answer afterwards (ASK). Each SAY step has a picture on the board, described in brackets.",
-    `Your job: for each SAY step, write exactly what you say aloud to TEACH that step like a good tutor, never like someone reading a book.`,
+    "You teach one child, one to one, speaking aloud, while floating next to a board. Below is a lesson written and checked by teachers: numbered teaching steps (SAY) and the questions the child will answer afterwards (ASK). Each SAY step has a picture on the board, described in brackets, with its touchable items numbered.",
+    "Your job: for each SAY step, write exactly what you say aloud to TEACH that step like a good tutor, never like someone reading a book, and which items on the board you touch while saying it.",
     "Rules for every SAY step:",
     "- Explain the idea in your own words in 2 to 4 short sentences a child of 8 understands. Start from something the child knows from home, school, food or play, then explain.",
-    "- Point at the board (\"Look at the board...\") and count or show with the picture when it helps.",
+    "- Many children find the language itself hard. Use the simplest everyday words, one idea per sentence, and say the key word of the step in two different ways. When you name a thing that is on the board, touch it (see below), so the child understands even if a word is new.",
     "- Keep every fact, every number and every key word from the written step (for example 'equal groups'), so the questions afterwards make sense. Add no new facts, no facts from later steps, and nothing that is not true.",
     "- End with a tiny check or a bridge, such as \"Can you see that?\" or \"Now let us look at...\". Never ask a question that needs an answer: the ASK steps do that.",
     "- Never give away the answers to the ASK questions.",
-    "- In the first step, greet the child in one short sentence and say what we will learn today. A step marked (example) is a worked example: walk through it slowly.",
+    "- Do not greet the child or say hello: the app does that before you start. A step marked (example) is a worked example: walk through it slowly.",
+    "Touching the board: for each step give \"touch\", the numbers of the board items you float to and touch, in the order you mention them, so your movement matches your words. Count things by touching them one by one (3 groups: touch 1, 2, 3; a triangle's corners: touch its three corners while counting). Name things by touching each as you name it. Give 0 to 8 touches per step; an empty list is fine when nothing on the board is named.",
     `Write only in ${languageName(lang)}. Write numbers as digits.`,
     TONES[tone] ?? TONES.normal,
     "Never describe the app's screen, buttons or colours; never ask for personal details.",
-    "Plain text only: no lists, no markdown, no emojis, no stage directions, no sentence numbering.",
-    `Reply with JSON only, exactly this shape: {"steps": ["what you say for SAY 1", "what you say for SAY 2", ...]} with exactly ${sayCount} items, one per SAY step, in order.`,
+    "Plain text only inside the strings: no lists, no markdown, no emojis, no stage directions, no sentence numbering.",
+    `Reply with JSON only, exactly this shape: {"steps": [{"say": "what you say for SAY 1", "touch": [1, 2]}, {"say": "what you say for SAY 2", "touch": []}, ...]} with exactly ${sayCount} items, one per SAY step, in order.`,
   ].join("\n");
 }
 
@@ -202,8 +216,10 @@ function teachLessonText(title: string, objective: string, steps: TeachStep[]): 
   return lines.join("\n");
 }
 
+type Taught = { say: string; touch: number[] };
+
 /** Pulls {"steps": [...]} out of whatever the model wrote and checks it is usable. */
-function parseTeaching(raw: string, want: number, lang: string): string[] {
+function parseTeaching(raw: string, want: number, lang: string): Taught[] {
   const text = raw.replace(/<think>[\s\S]*?<\/think>/g, "");
   const start = text.indexOf("{");
   const end = text.lastIndexOf("}");
@@ -211,15 +227,19 @@ function parseTeaching(raw: string, want: number, lang: string): string[] {
   const data = JSON.parse(text.slice(start, end + 1));
   const list = Array.isArray(data) ? data : data?.steps;
   if (!Array.isArray(list)) throw new Error("no steps in answer");
-  const steps = list.map((s: unknown) => {
-    const t = typeof s === "string" ? s : String((s as Record<string, unknown>)?.text ?? (s as Record<string, unknown>)?.say ?? "");
-    return clip(t, 700).replace(/[*_#`]/g, "");
+  const steps: Taught[] = list.map((s: unknown) => {
+    const o = (s ?? {}) as Record<string, unknown>;
+    const t = typeof s === "string" ? s : String(o.say ?? o.text ?? "");
+    const touch = Array.isArray(o.touch)
+      ? (o.touch as unknown[]).map((x) => Number(x)).filter((x) => Number.isInteger(x) && x >= 1 && x <= 60).slice(0, 8)
+      : [];
+    return { say: clip(t, 700).replace(/[*_#`]/g, ""), touch };
   });
   if (steps.length !== want) throw new Error(`wanted ${want} steps, got ${steps.length}`);
   for (const s of steps) {
-    if (s.length < 15) throw new Error("a step is empty");
-    if (lang === "ml" && !MALAYALAM.test(s)) throw new Error("a step is not in Malayalam");
-    if (lang === "en" && MALAYALAM.test(s)) throw new Error("a step is not in English");
+    if (s.say.length < 15) throw new Error("a step is empty");
+    if (lang === "ml" && !MALAYALAM.test(s.say)) throw new Error("a step is not in Malayalam");
+    if (lang === "en" && MALAYALAM.test(s.say)) throw new Error("a step is not in English");
   }
   return steps;
 }

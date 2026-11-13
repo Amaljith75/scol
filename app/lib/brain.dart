@@ -114,20 +114,50 @@ Map<String, dynamic> teachRequest(Lesson lesson, String lang, TutorCharacter tut
       'steps': [for (final s in lesson.steps) _teachStep(s, lang)],
     };
 
-/// Lines the brain wrote, lined up with [lesson.steps]: text for each "say" step, null for questions.
+/// One teaching step as the brain wrote it: what the tutor says, and which numbered
+/// items on the board it floats to and touches while saying it (1-based, in order).
+class Taught {
+  const Taught(this.say, [this.touch = const []]);
+  final String say;
+  final List<int> touch;
+
+  static Taught? from(dynamic v) {
+    if (v is String) return v.trim().isEmpty ? null : Taught(v.trim());
+    if (v is Map) {
+      final say = '${v['say'] ?? v['text'] ?? ''}'.trim();
+      if (say.isEmpty) return null;
+      final touch = [
+        for (final x in (v['touch'] as List?) ?? const [])
+          if (x is num && x >= 1) x.toInt() else if (int.tryParse('$x') != null && int.parse('$x') >= 1) int.parse('$x')
+      ];
+      return Taught(say, touch.take(8).toList());
+    }
+    return null;
+  }
+
+  Map<String, dynamic> toJson() => {'say': say, 'touch': touch};
+
+  @override
+  bool operator ==(Object other) => other is Taught && other.say == say && '${other.touch}' == '$touch';
+
+  @override
+  int get hashCode => Object.hash(say, '$touch');
+}
+
+/// Lines the brain wrote, lined up with [lesson.steps]: a [Taught] for each "say" step, null for questions.
 /// Returns null (use the written lines) if the list does not fit the lesson.
-List<String?>? alignTeaching(Lesson lesson, List<dynamic>? written) {
+List<Taught?>? alignTeaching(Lesson lesson, List<dynamic>? written) {
   if (written == null) return null;
   final says = lesson.steps.where((s) => !s.isAsk).length;
   if (written.length != says) return null;
   var i = 0;
-  final out = <String?>[];
+  final out = <Taught?>[];
   for (final s in lesson.steps) {
     if (s.isAsk) {
       out.add(null);
     } else {
-      final t = '${written[i++]}'.trim();
-      if (t.isEmpty) return null;
+      final t = Taught.from(written[i++]);
+      if (t == null) return null;
       out.add(t);
     }
   }
@@ -138,10 +168,10 @@ List<String?>? alignTeaching(Lesson lesson, List<dynamic>? written) {
 String teachKey(Lesson lesson, String lang, TutorCharacter tutor, String tone) =>
     sha1.convert(utf8.encode(jsonEncode(teachRequest(lesson, lang, tutor, tone)))).toString().substring(0, 24);
 
-const _teachCacheKey = 'teach_cache_v1';
+const _teachCacheKey = 'teach_cache_v2';
 const _teachCacheMax = 80;
 
-Future<List<String?>?> _teachFromCache(String key, Lesson lesson) async {
+Future<List<Taught?>?> _teachFromCache(String key, Lesson lesson) async {
   try {
     final prefs = await SharedPreferences.getInstance();
     final raw = prefs.getString(_teachCacheKey);
@@ -168,10 +198,11 @@ Future<void> _teachToCache(String key, List<dynamic> written) async {
 }
 
 /// Asks the tutor brain to teach [lesson]: what the tutor says at every "say"
-/// step, in its own words, in [lang], as [tutor] in the parent's chosen [tone].
+/// step, in its own words, in [lang], as [tutor] in the parent's chosen [tone],
+/// and what it touches on the board meanwhile.
 /// Kept on the phone, so a lesson is fetched once and then works offline.
 /// Returns null when the brain cannot help; the lesson's own lines are used then.
-Future<List<String?>?> teachLesson({
+Future<List<Taught?>?> teachLesson({
   required Bundle bundle,
   required Lesson lesson,
   required String lang,
