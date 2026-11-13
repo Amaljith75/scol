@@ -77,9 +77,11 @@ class _AskSheetState extends State<_AskSheet> {
     if (_thinking) return;
     appSpeaker?.stop();
     try {
-      if (!_sttReady) _sttReady = await _stt.initialize(onError: (_) => _stopped(), onStatus: (s) {
-        if (s == 'done' || s == 'notListening') _stopped();
-      });
+      if (!_sttReady) {
+        _sttReady = await _stt.initialize(onError: (_) => _stopped(), onStatus: (s) {
+          if (s == 'done' || s == 'notListening') _stopped();
+        });
+      }
     } catch (_) {
       _sttReady = false;
     }
@@ -92,9 +94,11 @@ class _AskSheetState extends State<_AskSheet> {
       _heard = '';
     });
     await _stt.listen(
-      localeId: lang == 'ml' ? 'ml_IN' : 'en_IN',
-      listenFor: const Duration(seconds: 15),
-      pauseFor: const Duration(seconds: 3),
+      listenOptions: SpeechListenOptions(
+        localeId: lang == 'ml' ? 'ml_IN' : 'en_IN',
+        listenFor: const Duration(seconds: 15),
+        pauseFor: const Duration(seconds: 3),
+      ),
       onResult: (r) {
         setState(() => _heard = r.recognizedWords);
         if (r.finalResult) _send(r.recognizedWords);
