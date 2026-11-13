@@ -76,7 +76,7 @@ Deno.serve(async (req) => {
     method: "POST",
     headers: { authorization: `Bearer ${env("BRAIN_API_KEY")}`, "content-type": "application/json" },
     body: JSON.stringify({
-      model: env("BRAIN_MODEL", "kimi-k2.6"),
+      model: env("BRAIN_MODEL", "kimi-k3"),
       max_tokens: 220,
       temperature: 0.6,
       messages: [

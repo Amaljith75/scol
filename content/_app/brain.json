@@ -1,7 +1,7 @@
 {
   "about": "Which AI answers the children's questions. Change model, base_url or key_secret, commit, and the 'Deploy tutor brain' workflow updates the server. key_secret is the NAME of the GitHub secret holding the key, never the key itself.",
   "base_url": "https://api.moonshot.ai/v1",
-  "model": "kimi-k2.6",
+  "model": "kimi-k3",
   "key_secret": "KIMI_API_KEY",
   "device_limit": 40,
   "daily_limit": 1500,
