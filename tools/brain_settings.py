@@ -45,7 +45,15 @@ for p in cfg["providers"]:
             print(f"- {name} [{out.get('model', p['model'])}] {time.time() - t:.1f}s: {text[:160]}")
             works = works or bool(text)
         except urllib.error.HTTPError as e:
-            print(f"- {name}: HTTP {e.code} {e.read().decode()[:160]}")
+            print(f"- {name}: HTTP {e.code} {' '.join(e.read().decode().split())[:300]}")
+            if e.code == 404:  # wrong model name: show the names this key can use
+                try:
+                    req = urllib.request.Request(p["base_url"].rstrip("/") + "/models", headers={"authorization": f"Bearer {key}"})
+                    ids = [m.get("id", "") for m in json.load(urllib.request.urlopen(req, timeout=30)).get("data", [])]
+                    print("  models this key can use:", ", ".join(i for i in ids if "embed" not in i)[:1500])
+                except Exception as e2:  # noqa: BLE001
+                    print("  could not list models:", e2)
+                break
         except Exception as e:  # noqa: BLE001
             print(f"- {name}: {e}")
     if not works:
