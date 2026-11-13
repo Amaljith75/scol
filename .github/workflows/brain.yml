@@ -42,7 +42,7 @@ jobs:
           version: latest
       - name: Set up the usage table
         run: |
-          REF=$(python3 -c "import json;print(json.load(open('content/_app/brain.json'))['url'].split('//')[1].split('.')[0])")
+          export REF=$(python3 -c "import json;print(json.load(open('content/_app/brain.json'))['url'].split('//')[1].split('.')[0])")
           echo "REF=$REF" >> "$GITHUB_ENV"
           python3 - <<'PY'
           import json, os, urllib.request
