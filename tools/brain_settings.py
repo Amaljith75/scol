@@ -9,9 +9,12 @@ import urllib.error
 import urllib.request
 
 cfg = json.load(open("content/_app/brain.json"))
-secrets = json.loads(os.environ.get("SECRETS_JSON") or "{}")
-names = sorted(k for k in secrets if k != "github_token")
-print("Repository secrets found:", ", ".join(names) or "none")
+# The workflow passes these secrets in (add a name here and in brain.yml for a new provider).
+KNOWN = ["BRAIN_API_KEY", "KIMI_API_KEY", "MOONSHOT_API_KEY", "KIMI_KEY", "KIMI_AI_API_KEY", "KIMI",
+         "OPENAI_API_KEY", "GEMINI_API_KEY", "DEEPSEEK_API_KEY", "GROQ_API_KEY", "OPENROUTER_API_KEY"]
+secrets = {n: os.environ[n] for n in KNOWN if os.environ.get(n, "").strip()}
+names = sorted(secrets)
+print("AI key secrets found:", ", ".join(names) or "none")
 
 name = cfg.get("key_secret", "")
 if name not in secrets:
