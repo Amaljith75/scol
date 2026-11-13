@@ -36,18 +36,37 @@ def call(path, body=None):
         return json.load(r)
 
 
+fallbacks = [m for m in cfg.get("fallback_models", []) if m]
 try:
-    models = [m.get("id") for m in call("/models").get("data", [])]
-    print("Models this key can use:", ", ".join(sorted(filter(None, models))))
-    if models and cfg["model"] not in models:
-        sys.exit(f"Model {cfg['model']!r} is not in that list. Pick one of them in content/_app/brain.json.")
-    out = call("/chat/completions", {"model": cfg["model"], "max_tokens": 60, "messages": [
-        {"role": "user", "content": "In one short sentence for an 8-year-old: why do plants need water?"}]})
-    print("Test answer:", out["choices"][0]["message"]["content"].strip()[:200])
+    available = {m.get("id") for m in call("/models").get("data", [])}
 except urllib.error.HTTPError as e:
-    sys.exit(f"The AI provider refused the key or model: HTTP {e.code} {e.read().decode()[:300]}")
+    sys.exit(f"The AI provider refused the key: HTTP {e.code} {e.read().decode()[:300]}")
+if available and cfg["model"] not in available:
+    free = sorted(m for m in available if m and m.endswith(":free")) or sorted(filter(None, available))
+    sys.exit(f"Model {cfg['model']!r} is not offered. Pick one of these in content/_app/brain.json: " + ", ".join(free[:40]))
+for m in fallbacks:
+    if available and m not in available:
+        print(f"Note: fallback model {m} is not offered any more; it will be skipped.")
+fallbacks = [m for m in fallbacks if not available or m in available]
+
+import time  # noqa: E402
+ok = False
+for m in [cfg["model"], *fallbacks]:
+    for q in ("In one or two short sentences for an 8-year-old: why do plants need water?",
+              "ഒരു എട്ടു വയസ്സുകാരനോട് ഒന്നോ രണ്ടോ ചെറിയ വാക്യത്തിൽ: ചെടികൾക്ക് വെള്ളം എന്തിന്?"):
+        t = time.time()
+        try:
+            out = call("/chat/completions", {"model": m, "max_tokens": 700, "messages": [{"role": "user", "content": q}]})
+            text = (out["choices"][0]["message"].get("content") or "").strip()
+            print(f"[{m}] {time.time() - t:.1f}s: {text[:220]}")
+            ok = ok or bool(text)
+        except urllib.error.HTTPError as e:
+            print(f"[{m}] failed: HTTP {e.code} {e.read().decode()[:200]}")
+if not ok:
+    sys.exit("No model gave an answer. Check the key, the account balance, or choose another model.")
 
 with open("brain.env", "w") as f:
     f.write(f"BRAIN_API_KEY={key}\nBRAIN_BASE_URL={base}\nBRAIN_MODEL={cfg['model']}\n"
+            f"BRAIN_FALLBACK_MODELS={','.join(fallbacks)}\n"
             f"BRAIN_DEVICE_LIMIT={cfg.get('device_limit', 40)}\nBRAIN_DAILY_LIMIT={cfg.get('daily_limit', 1500)}\n")
 print("Settings ready for", cfg["model"], "at", base)

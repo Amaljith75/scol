@@ -77,7 +77,9 @@ Deno.serve(async (req) => {
     headers: { authorization: `Bearer ${env("BRAIN_API_KEY")}`, "content-type": "application/json" },
     body: JSON.stringify({
       model: env("BRAIN_MODEL", "kimi-k3"),
-      max_tokens: 220,
+      // OpenRouter only: other models to try in order if the main one is busy.
+      ...(env("BRAIN_FALLBACK_MODELS") ? { models: [env("BRAIN_MODEL"), ...env("BRAIN_FALLBACK_MODELS").split(",")] } : {}),
+      max_tokens: 700, // room for models that think before answering
       temperature: 0.6,
       messages: [
         { role: "system", content: systemPrompt(clip(body.tutor, 30) || "Mio", lang, clip(body.lesson, 120), clip(body.notes, 2500)) },
@@ -90,7 +92,8 @@ Deno.serve(async (req) => {
     return reply({ error: "provider_error" }, 502);
   }
   const data = await res.json();
-  const answer = clip(data?.choices?.[0]?.message?.content, 600).replace(/[*_#`]/g, "");
+  const raw = String(data?.choices?.[0]?.message?.content ?? "").replace(/<think>[\s\S]*?<\/think>/g, "");
+  const answer = clip(raw, 600).replace(/[*_#`]/g, "");
   if (!answer) return reply({ error: "empty_answer" }, 502);
   return reply({ answer });
 });
