@@ -141,8 +141,11 @@ void main() {
 
     test('long lines are spoken sentence by sentence so the voice starts quickly', () {
       final pieces = sentencePieces('Hello there. This is a long explanation about mangoes! Each basket has four. '
-          'So three baskets have twelve mangoes. Can you see that? Now let us count them together one more time, slowly.');
+          'So three baskets have twelve mangoes. Can you see that? Now let us count them together one more time, slowly. '
+          'Look at the first basket: one, two, three, four. The second basket also has four, so that makes eight. '
+          'The third basket brings us to twelve. Well done for counting along with me, you are doing great today!');
       expect(pieces.length, greaterThan(1));
+      expect(sentencePieces('Short one. Short two.'), ['Short one. Short two.']); // short lines stay whole
       expect(pieces.join(' '), contains('twelve mangoes'));
       expect(pieces.every((p) => p.length <= 240), true);
       expect(sentencePieces('Short.'), ['Short.']);
