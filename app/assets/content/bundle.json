@@ -5714,7 +5714,8 @@
            "alts": {
             "picture": {
              "text": {
-              "en": "Follow the water: it goes in at the root, climbs up the stem, and reaches the leaves, where food is made."
+              "en": "Follow the water: it goes in at the root, climbs up the stem, and reaches the leaves, where food is made.",
+              "ml": "വെള്ളത്തിന്റെ വഴി കാണൂ: അത് വേരിലൂടെ കയറി, തണ്ടിലൂടെ മുകളിലേക്ക് പോയി, ആഹാരം ഉണ്ടാക്കുന്ന ഇലകളിൽ എത്തുന്നു."
              },
              "visual": {
               "args": [
@@ -5725,7 +5726,8 @@
             },
             "story": {
              "text": {
-              "en": "Rootu the root lived under the ground, drinking water all day. Stemmy the stem carried the water up, up, up. Leafy the leaf caught the sunshine and cooked food for everyone. Together they grew a sweet mango for a little girl."
+              "en": "Rootu the root lived under the ground, drinking water all day. Stemmy the stem carried the water up, up, up. Leafy the leaf caught the sunshine and cooked food for everyone. Together they grew a sweet mango for a little girl.",
+              "ml": "വേരു മണ്ണിനടിയിൽ ജീവിച്ച് ദിവസം മുഴുവൻ വെള്ളം കുടിച്ചു. തണ്ടു വെള്ളം മുകളിലേക്ക് മുകളിലേക്ക് എത്തിച്ചു. ഇല വെയിൽ കാഞ്ഞ് എല്ലാവർക്കും ആഹാരം ഉണ്ടാക്കി. എല്ലാവരും ചേർന്ന് ഒരു കൊച്ചുപെൺകുട്ടിക്കായി നല്ല മധുരമുള്ള മാമ്പഴം ഉണ്ടാക്കി."
              }
             }
            },
@@ -5738,7 +5740,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Let's play a game! Fly like a little bird and touch a green tree, a flower and a leaf. Every one of them is a part of a plant."
+              "en": "Let's play a game! Fly like a little bird and touch a green tree, a flower and a leaf. Every one of them is a part of a plant.",
+              "ml": "നമുക്കൊരു കളി കളിക്കാം! ഒരു കുഞ്ഞുപക്ഷിയെപ്പോലെ പറന്ന് പച്ചമരത്തിലും പൂവിലും ഇലയിലും തൊടൂ. ഇവയെല്ലാം ഒരു സസ്യത്തിന്റെ ഭാഗങ്ങളാണ്."
              },
              "visual": {
               "args": [
@@ -5753,7 +5756,8 @@
             {
              "t": "say",
              "text": {
-              "en": "A plant has three main parts: the root, the stem and the leaves. Many plants also have flowers, and flowers can become fruits."
+              "en": "A plant has three main parts: the root, the stem and the leaves. Many plants also have flowers, and flowers can become fruits.",
+              "ml": "ഒരു സസ്യത്തിന് പ്രധാനമായും മൂന്ന് ഭാഗങ്ങളുണ്ട്: വേര്, തണ്ട്, ഇലകൾ. പല സസ്യങ്ങൾക്കും പൂക്കളുമുണ്ട്, പൂക്കൾ പിന്നീട് കായ്കളായി മാറും."
              },
              "visual": {
               "args": [
@@ -5768,7 +5772,8 @@
             {
              "t": "say",
              "text": {
-              "en": "The root grows under the soil. It holds the plant firmly in the ground, and it drinks water and nutrients from the soil."
+              "en": "The root grows under the soil. It holds the plant firmly in the ground, and it drinks water and nutrients from the soil.",
+              "ml": "വേര് മണ്ണ അടിയിലാണ് വളരുന്നത്. ഇത് സസ്യത്തെ മണ്ണിൽ ഉറപ്പിച്ചു നിർത്തുകയും മണ്ണിൽ നിന്ന് വെള്ളവും പോഷകങ്ങളും വലിച്ചെടുക്കുകയും ചെയ്യുന്നു."
              },
              "visual": {
               "args": [
@@ -5782,7 +5787,8 @@
             {
              "t": "say",
              "text": {
-              "en": "The stem is like a pipe. It carries the water and nutrients from the root up to the leaves. It also holds the plant up."
+              "en": "The stem is like a pipe. It carries the water and nutrients from the root up to the leaves. It also holds the plant up.",
+              "ml": "തണ്ട് ഒരു പൈപ്പ് പോലെയാണ്. ഇത് വേരിൽ നിന്നുള്ള വെള്ളവും പോഷകങ്ങളും ഇലകളിലേക്ക് എത്തിക്കുന്നു. ഇത് സസ്യത്തെ നിവർന്നു നിൽക്കാൻ സഹായിക്കുകയും ചെയ്യുന്നു."
              },
              "visual": {
               "args": [
@@ -5794,7 +5800,8 @@
             {
              "t": "say",
              "text": {
-              "en": "The leaves are the plant's kitchen. Plants make their own food in their leaves, using sunlight. The extra food is stored in other parts, and animals and people eat it."
+              "en": "The leaves are the plant's kitchen. Plants make their own food in their leaves, using sunlight. The extra food is stored in other parts, and animals and people eat it.",
+              "ml": "ഇലകളാണ് സസ്യത്തിന്റെ അടുക്കള. സൂര്യപ്രകാശം ഉപയോഗിച്ച് സസ്യങ്ങൾ ഇലകളിൽ ആഹാരം ഉണ്ടാക്കുന്നു. ബാക്കി വരുന്ന ആഹാരം മറ്റ് ഭാഗങ്ങളിൽ സംഭരിച്ചു വെക്കുന്നു, ഇത് മൃഗങ്ങളും മനുഷ്യരും കഴിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -5810,7 +5817,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Try this. Put a small plant with its roots in red-coloured water. After some time the stem turns a little red. The root drank the water and the stem carried it up."
+              "en": "Try this. Put a small plant with its roots in red-coloured water. After some time the stem turns a little red. The root drank the water and the stem carried it up.",
+              "ml": "ഇതൊന്നു ചെയ്തു നോക്കൂ. വേരുകളുള്ള ഒരു കുഞ്ഞുചെടി ചുവന്ന ചായം കലക്കിയ വെള്ളത്തിൽ വെക്കുക. കുറച്ചു സമയം കഴിയുമ്പോൾ തണ്ട് അല്പം ചുവപ്പനിറമാകും. വേര് വെള്ളം കുടിക്കുകയും തണ്ട് അത് മുകളിലേക്ക് എത്തിക്കുകയും ചെയ്തു."
              },
              "visual": {
               "args": [
@@ -5825,11 +5833,13 @@
              "answer": "root",
              "concept": "kerala-scert/class-3/evs#plant-parts",
              "explain": {
-              "en": "The root holds the plant firmly in the soil and absorbs water."
+              "en": "The root holds the plant firmly in the soil and absorbs water.",
+              "ml": "വേര് സസ്യത്തെ മണ്ണിൽ ഉറപ്പിച്ചു നിർത്തുകയും വെള്ളം വലിച്ചെടുക്കുകയും ചെയ്യുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of the part that grows under the ground."
+              "en": "Think of the part that grows under the ground.",
+              "ml": "മണ്ണിനടിയിൽ വളരുന്ന ഭാഗത്തെക്കുറിച്ച് ചിന്തിക്കൂ."
              },
              "level": 1,
              "mistakes": {
@@ -5840,20 +5850,28 @@
               "leaf",
               "flower"
              ],
+             "optionsMl": [
+              "വേര്",
+              "ഇല",
+              "പൂവ്"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which part of the plant fixes it firmly in the soil?"
+              "en": "Which part of the plant fixes it firmly in the soil?",
+              "ml": "സസ്യത്തെ മണ്ണിൽ ഉറപ്പിച്ചു നിർത്തുന്ന ഭാഗം ഏതാണ്?"
              }
             },
             {
              "answer": "leaf",
              "concept": "kerala-scert/class-3/evs#plant-parts",
              "explain": {
-              "en": "Leaves make the plant's food using sunlight."
+              "en": "Leaves make the plant's food using sunlight.",
+              "ml": "ഇലകൾ സൂര്യപ്രകാശം ഉപയോഗിച്ച് സസ്യത്തിന് വേണ്ട ആഹാരം ഉണ്ടാക്കുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "Which part is the plant's kitchen, using sunlight?"
+              "en": "Which part is the plant's kitchen, using sunlight?",
+              "ml": "സൂര്യപ്രകാശം ഉപയോഗിച്ച് ആഹാരം ഉണ്ടാക്കുന്ന, സസ്യത്തിന്റെ അടുക്കള ഏതാണ്?"
              },
              "level": 1,
              "mistakes": {
@@ -5865,20 +5883,28 @@
               "stem",
               "root"
              ],
+             "optionsMl": [
+              "ഇല",
+              "തണ്ട്",
+              "വേര്"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which part makes the plant's food?"
+              "en": "Which part makes the plant's food?",
+              "ml": "സസ്യത്തിന് ആവശ്യമായ ആഹാരം ഉണ്ടാക്കുന്ന ഭാഗം ഏതാണ്?"
              }
             },
             {
              "answer": "stem",
              "concept": "kerala-scert/class-3/evs#plant-parts",
              "explain": {
-              "en": "The stem carries water and nutrients from the root to the leaves."
+              "en": "The stem carries water and nutrients from the root to the leaves.",
+              "ml": "തണ്ട് വേരിൽ നിന്നുള്ള വെള്ളവും പോഷകങ്ങളും ഇലകളിലേക്ക് എത്തിക്കുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "It is the part in the middle, like a pipe."
+              "en": "It is the part in the middle, like a pipe.",
+              "ml": "ഇത് പൈപ്പ് പോലെയുള്ള, നടുവിലുള്ള ഭാഗമാണ്."
              },
              "level": 1,
              "options": [
@@ -5886,20 +5912,28 @@
               "flower",
               "fruit"
              ],
+             "optionsMl": [
+              "തണ്ട്",
+              "പൂവ്",
+              "കായ്"
+             ],
              "t": "ask",
              "text": {
-              "en": "Water goes from the root to the leaves. Which part carries it?"
+              "en": "Water goes from the root to the leaves. Which part carries it?",
+              "ml": "വെള്ളം വേരിൽ നിന്ന് ഇലകളിലേക്ക് പോകുന്നു. ഏത് ഭാഗമാണ് ഇത് എത്തിക്കുന്നത്?"
              }
             },
             {
              "answer": "3",
              "concept": "kerala-scert/class-3/evs#plant-parts",
              "explain": {
-              "en": "The three main parts are the root, the stem and the leaves."
+              "en": "The three main parts are the root, the stem and the leaves.",
+              "ml": "വേര്, തണ്ട്, ഇലകൾ എന്നിവയാണ് പ്രധാനപ്പെട്ട മൂന്ന് ഭാഗങ്ങൾ."
              },
              "form": "number",
              "hint": {
-              "en": "Root, stem, leaves. Count them."
+              "en": "Root, stem, leaves. Count them.",
+              "ml": "വേര്, തണ്ട്, ഇലകൾ. ഇവ എണ്ണിനോക്കൂ."
              },
              "level": 1,
              "mistakes": {
@@ -5907,18 +5941,21 @@
              },
              "t": "ask",
              "text": {
-              "en": "How many main parts does a plant have? Count root, stem and leaves."
+              "en": "How many main parts does a plant have? Count root, stem and leaves.",
+              "ml": "ഒരു സസ്യത്തിന് പ്രധാനമായും എത്ര ഭാഗങ്ങളുണ്ട്? വേര്, തണ്ട്, ഇലകൾ എന്നിവ എണ്ണൂ."
              }
             },
             {
              "answer": "It wilts",
              "concept": "kerala-scert/class-3/evs#plant-parts",
              "explain": {
-              "en": "Without water to absorb, the plant wilts and droops."
+              "en": "Without water to absorb, the plant wilts and droops.",
+              "ml": "വലിച്ചെടുക്കാൻ വെള്ളമില്ലെങ്കിൽ ചെടി വാടിത്തളർന്നു പോകുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "What does the root need to drink?"
+              "en": "What does the root need to drink?",
+              "ml": "വേരിന് കുടിക്കാൻ എന്ത് വേണം?"
              },
              "level": 1,
              "mistakes": {
@@ -5929,21 +5966,29 @@
               "It grows taller",
               "It makes more flowers"
              ],
+             "optionsMl": [
+              "അത് വാടിപ്പോകുന്നു",
+              "അത് ഉയരത്തിൽ വളരുന്നു",
+              "അതിൽ കൂടുതൽ പൂക്കളുണ്ടാകുന്നു"
+             ],
              "t": "ask",
              "text": {
-              "en": "A plant is kept with its roots in an empty test tube with no water. What happens after a while?"
+              "en": "A plant is kept with its roots in an empty test tube with no water. What happens after a while?",
+              "ml": "വെള്ളമില്ലാത്ത ഒരു ടെസ്റ്റ് ട്യൂബിൽ ഒരു ചെടിയുടെ വേരുകൾ വെച്ചിരിക്കുന്നു. കുറച്ചു സമയം കഴിയുമ്പോൾ എന്ത് സംഭവിക്കും?"
              }
             }
            ],
            "title": {
-            "en": "Parts of a plant"
+            "en": "Parts of a plant",
+            "ml": "സസ്യത്തിന്റെ ഭാഗങ്ങൾ"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "Look at the stems: soft for herbs, hard for shrubs, very hard and thick for trees."
+              "en": "Look at the stems: soft for herbs, hard for shrubs, very hard and thick for trees.",
+              "ml": "തണ്ടുകൾ നോക്കൂ: ചെടികൾക്ക് മൃദുവായ തണ്ട്, കുറ്റിച്ചെടികൾക്ക് കട്ടിയുള്ള തണ്ട്, മരങ്ങൾക്ക് വളരെ കട്ടിയും തടിയുമുള്ള തണ്ട്."
              },
              "visual": {
               "args": [
@@ -5956,7 +6001,8 @@
             },
             "story": {
              "text": {
-              "en": "In a garden lived three friends. Tiny Cheera the herb said, my stem is soft and I am small. Chemparathi the shrub said, my stem is hard, but I am not very tall. Big Mango the tree laughed, my stem is the hardest and I will live for many, many years!"
+              "en": "In a garden lived three friends. Tiny Cheera the herb said, my stem is soft and I am small. Chemparathi the shrub said, my stem is hard, but I am not very tall. Big Mango the tree laughed, my stem is the hardest and I will live for many, many years!",
+              "ml": "ഒരു തോട്ടത്തിൽ മൂന്ന് കൂട്ടുകാർ ഉണ്ടായിരുന്നു. ചെറിയ ചീരച്ചെടി പറഞ്ഞു: \"എന്റെ തണ്ട് മൃദുവാണ്, ഞാൻ ചെറുതാണ്.\" ചെമ്പരത്തിക്കുറ്റിച്ചെടി പറഞ്ഞു: \"എന്റെ തണ്ട് കട്ടിയുള്ളതാണ്, എന്നാൽ എനിക്ക് വലിയ പൊക്കമില്ല.\" വലിയ മാവുമരം ചിരിച്ചുകൊണ്ട് പറഞ്ഞു: \"എന്റെ തണ്ടാണ് ഏറ്റവും കട്ടിയുള്ളത്, ഞാൻ വർഷങ്ങളോളം ജീവിക്കും!\""
              }
             }
            },
@@ -5969,7 +6015,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Are all plants the same? No! Look at their size, their stem, and how long they live."
+              "en": "Are all plants the same? No! Look at their size, their stem, and how long they live.",
+              "ml": "എല്ലാ സസ്യങ്ങളും ഒരുപോലെയാണോ? അല്ല! അവയുടെ വലുപ്പവും തണ്ടും ആയുസ്സും നോക്കൂ."
              },
              "visual": {
               "args": [
@@ -5983,7 +6030,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Herbs are small plants with a soft stem. They do not have deep roots and many live only for a few months. Spinach, called cheera, is a herb."
+              "en": "Herbs are small plants with a soft stem. They do not have deep roots and many live only for a few months. Spinach, called cheera, is a herb.",
+              "ml": "മൃദുവായ തണ്ടുള്ള ചെറിയ സസ്യങ്ങളാണ് ചെടികൾ (Herbs). ഇവയ്ക്ക് താഴ്ചയുള്ള വേരുകളില്ല, ഏതാനും മാസങ്ങൾ മാത്രമേ ആയുസ്സുള്ളൂ. ചീര ഒരു ചെടിയാണ്."
              },
              "visual": {
               "args": [
@@ -5995,7 +6043,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Shrubs are small or medium plants, but their stems are hard. They live for years. Hibiscus, the chemparathi, is a shrub."
+              "en": "Shrubs are small or medium plants, but their stems are hard. They live for years. Hibiscus, the chemparathi, is a shrub.",
+              "ml": "ചെറുതോ ഇടത്തരം വലുപ്പമുള്ളതോ ആയ, എന്നാൽ കട്ടിയുള്ള തണ്ടുള്ള സസ്യങ്ങളാണ് കുറ്റിച്ചെടികൾ (Shrubs). ഇവ വർഷങ്ങളോളം ജീവിക്കുന്നു. ചെമ്പരത്തി ഒരു കുറ്റിച്ചെടിയാണ്."
              },
              "visual": {
               "args": [
@@ -6007,7 +6056,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Trees grow very big. Their stems are very hard and they live for many, many years. The mango tree is a tree."
+              "en": "Trees grow very big. Their stems are very hard and they live for many, many years. The mango tree is a tree.",
+              "ml": "മരങ്ങൾ (Trees) വളരെ വലുതായി വളരുന്നു. അവയുടെ തണ്ട് വളരെ കട്ടിയുള്ളതാണ്, അവ വർഷങ്ങളോളം ജീവിക്കും. മാവ് ഒരു മരമാണ്."
              },
              "visual": {
               "args": [
@@ -6020,7 +6070,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Some plants cannot stand up on their own. These are vine plants. Some spread along the ground. Others climb up by holding on to a support, like a pole or another plant."
+              "en": "Some plants cannot stand up on their own. These are vine plants. Some spread along the ground. Others climb up by holding on to a support, like a pole or another plant.",
+              "ml": "ചില സസ്യങ്ങൾക്ക് സ്വന്തമായി നിവർന്നുനിൽക്കാൻ കഴിയില്ല. ഇവയാണ് വള്ളിച്ചെടികൾ (Vine plants). ചിലത് നിലത്ത് പടരുന്നു. മറ്റു ചിലത് ഏതെങ്കിലും താങ്ങിലോ മറ്റ് സസ്യങ്ങളിലോ പിടിച്ച് കയറുന്നു."
              },
              "visual": {
               "args": [
@@ -6033,7 +6084,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Plants that grow in water are called water plants, like the lotus and the water lily."
+              "en": "Plants that grow in water are called water plants, like the lotus and the water lily.",
+              "ml": "വെള്ളത്തിൽ വളരുന്ന സസ്യങ്ങളെ ജലസസ്യങ്ങൾ എന്ന് വിളിക്കുന്നു. താമരയും ആമ്പലും ഉദാഹരണങ്ങളാണ്."
              },
              "visual": {
               "args": [
@@ -6047,7 +6099,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Remember it like this: soft stem, herb. Hard but small, shrub. Very hard and very big, tree."
+              "en": "Remember it like this: soft stem, herb. Hard but small, shrub. Very hard and very big, tree.",
+              "ml": "ഇതുപോലെ ഓർക്കുക: മൃദുവായ തണ്ട് - ചെടി. ചെറുതും കട്ടിയുള്ള തണ്ടും - കുറ്റിച്ചെടി. വളരെ വലുതും കട്ടിയുള്ള തണ്ടും - മരം."
              },
              "visual": {
               "args": [
@@ -6062,11 +6115,13 @@
              "answer": "herb",
              "concept": "kerala-scert/class-3/evs#plant-types",
              "explain": {
-              "en": "A plant with a soft stem that lives a short time is a herb."
+              "en": "A plant with a soft stem that lives a short time is a herb.",
+              "ml": "മൃദുവായ തണ്ടുള്ളതും കുറഞ്ഞ ആയുസ്സുള്ളതുമായ സസ്യമാണ് ചെടി (Herb)."
              },
              "form": "choice",
              "hint": {
-              "en": "Which kind has a soft stem?"
+              "en": "Which kind has a soft stem?",
+              "ml": "മൃദുവായ തണ്ടുള്ളത് ഏതിനാണ്?"
              },
              "level": 1,
              "mistakes": {
@@ -6078,20 +6133,28 @@
               "shrub",
               "tree"
              ],
+             "optionsMl": [
+              "ചെടി",
+              "കുറ്റിച്ചെടി",
+              "മരം"
+             ],
              "t": "ask",
              "text": {
-              "en": "Spinach has a soft stem and lives only for a few months. What kind of plant is it?"
+              "en": "Spinach has a soft stem and lives only for a few months. What kind of plant is it?",
+              "ml": "ചീരയ്ക്ക് മൃദുവായ തണ്ടുണ്ട്, ഏതാനും മാസങ്ങൾ മാത്രമേ ആയുസ്സുള്ളൂ. ഇത് ഏത് തരം സസ്യമാണ്?"
              }
             },
             {
              "answer": "shrub",
              "concept": "kerala-scert/class-3/evs#plant-types",
              "explain": {
-              "en": "A small plant with a hard stem is a shrub."
+              "en": "A small plant with a hard stem is a shrub.",
+              "ml": "കട്ടിയുള്ള തണ്ടുള്ള ചെറിയ സസ്യമാണ് കുറ്റിച്ചെടി."
              },
              "form": "choice",
              "hint": {
-              "en": "Small plant, hard stem."
+              "en": "Small plant, hard stem.",
+              "ml": "ചെറിയ സസ്യം, കട്ടിയുള്ള തണ്ട്."
              },
              "level": 1,
              "mistakes": {
@@ -6103,20 +6166,28 @@
               "herb",
               "tree"
              ],
+             "optionsMl": [
+              "കുറ്റിച്ചെടി",
+              "ചെടി",
+              "മരം"
+             ],
              "t": "ask",
              "text": {
-              "en": "Hibiscus is not very big, but its stem is hard. What kind of plant is it?"
+              "en": "Hibiscus is not very big, but its stem is hard. What kind of plant is it?",
+              "ml": "ചെമ്പരത്തി വളരെ വലുതല്ല, എന്നാൽ അതിന്റെ തണ്ട് കട്ടിയുള്ളതാണ്. ഇത് ഏത് തരം സസ്യമാണ്?"
              }
             },
             {
              "answer": "mango",
              "concept": "kerala-scert/class-3/evs#plant-types",
              "explain": {
-              "en": "The mango tree grows very big, has a very hard stem and lives many years."
+              "en": "The mango tree grows very big, has a very hard stem and lives many years.",
+              "ml": "മാവ് വളരെ വലുതായി വളരുന്നു, വളരെ കട്ടിയുള്ള തണ്ടുണ്ട്, വർഷങ്ങളോളം ജീവിക്കുകയും ചെയ്യുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "Which one grows very big with a very hard stem?"
+              "en": "Which one grows very big with a very hard stem?",
+              "ml": "വളരെ കട്ടിയുള്ള തണ്ടോടെ വളരെ വലുതായി വളരുന്നത് ഏതാണ്?"
              },
              "level": 1,
              "options": [
@@ -6124,20 +6195,28 @@
               "spinach",
               "hibiscus"
              ],
+             "optionsMl": [
+              "മാവ്",
+              "ചീര",
+              "ചെമ്പരത്തി"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which plant is a tree?"
+              "en": "Which plant is a tree?",
+              "ml": "ഇതിൽ മരം ഏതാണ്?"
              }
             },
             {
              "answer": "a vine plant",
              "concept": "kerala-scert/class-3/evs#plant-types",
              "explain": {
-              "en": "Pumpkin is a vine plant. It spreads along the ground."
+              "en": "Pumpkin is a vine plant. It spreads along the ground.",
+              "ml": "മത്തൻ ഒരു വള്ളിച്ചെടിയാണ്. ഇത് നിലത്ത് പടർന്നു വളരുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "Plants that spread or climb and cannot stand alone have a special name."
+              "en": "Plants that spread or climb and cannot stand alone have a special name.",
+              "ml": "പടരുകയോ കയറുകയോ ചെയ്യുന്ന, തനിയെ നിൽക്കാൻ കഴിയാത്ത സസ്യങ്ങൾക്ക് പ്രത്യേക പേരുണ്ട്."
              },
              "level": 1,
              "options": [
@@ -6145,20 +6224,28 @@
               "a tree",
               "a water plant"
              ],
+             "optionsMl": [
+              "വള്ളിച്ചെടി",
+              "മരം",
+              "ജലസസ്യം"
+             ],
              "t": "ask",
              "text": {
-              "en": "A pumpkin plant spreads along the ground and cannot stand up alone. What is it?"
+              "en": "A pumpkin plant spreads along the ground and cannot stand up alone. What is it?",
+              "ml": "മത്തൻ നിലത്ത് പടർന്നു വളരുന്നു, അതിന് തനിമച്ച് നിവർന്നുനിൽക്കാൻ കഴിയില്ല. ഇതെന്താണ്?"
              }
             },
             {
              "answer": "in water",
              "concept": "kerala-scert/class-3/evs#plant-types",
              "explain": {
-              "en": "Lotus is a water plant. It grows in ponds."
+              "en": "Lotus is a water plant. It grows in ponds.",
+              "ml": "താമര ഒരു ജലസസ്യമാണ്. ഇത് കുളങ്ങളിൽ വളരുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "Lotus is a water plant."
+              "en": "Lotus is a water plant.",
+              "ml": "താമര ഒരു ജലസസ്യമാണ്."
              },
              "level": 1,
              "options": [
@@ -6166,20 +6253,28 @@
               "on a rock",
               "on a tree"
              ],
+             "optionsMl": [
+              "വെള്ളത്തിൽ",
+              "പാറയിൽ",
+              "മരത്തിൽ"
+             ],
              "t": "ask",
              "text": {
-              "en": "Where does a lotus grow?"
+              "en": "Where does a lotus grow?",
+              "ml": "താമര എവിടെയാണ് വളരുന്നത്?"
              }
             },
             {
              "answer": "1",
              "concept": "kerala-scert/class-3/evs#plant-types",
              "explain": {
-              "en": "Only 1: the mango. Spinach is a herb and hibiscus is a shrub."
+              "en": "Only 1: the mango. Spinach is a herb and hibiscus is a shrub.",
+              "ml": "1 എണ്ണം മാത്രം: മാവ്. ചീര ഒരു ചെടിയും ചെമ്പരത്തി ഒരു കുറ്റിച്ചെടിയുമാണ്."
              },
              "form": "number",
              "hint": {
-              "en": "Which one grows very big with a very hard stem?"
+              "en": "Which one grows very big with a very hard stem?",
+              "ml": "വളരെ കട്ടിയുള്ള തണ്ടോടെ വളരെ വലുതായി വളരുന്നത് ഏതാണ്?"
              },
              "level": 1,
              "mistakes": {
@@ -6187,19 +6282,22 @@
              },
              "t": "ask",
              "text": {
-              "en": "Spinach, hibiscus and mango. How many of these are trees?"
+              "en": "Spinach, hibiscus and mango. How many of these are trees?",
+              "ml": "ചീര, ചെമ്പരത്തി, മാവ്. ഇവയിൽ എത്രയെണ്ണം മരങ്ങളാണ്?"
              }
             }
            ],
            "title": {
-            "en": "Herbs, shrubs and trees"
+            "en": "Herbs, shrubs and trees",
+            "ml": "ചെടികളും കുറ്റിച്ചെടികളും മരങ്ങളും"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "A seed grows in steps: first the root, then the shoot, then the leaves."
+              "en": "A seed grows in steps: first the root, then the shoot, then the leaves.",
+              "ml": "വിത്ത് പടിപടിയായാണ് വളരുന്നത്: ആദ്യം വേര്, പിന്നെ തണ്ട്, അതിനുശേഷം ഇലകൾ."
              },
              "visual": {
               "args": [
@@ -6213,7 +6311,8 @@
             },
             "story": {
              "text": {
-              "en": "Pinky the pea seed was sleeping in dry sand. One day Saira poured water. Pinky stretched! A tiny root wriggled down, a shoot peeped up, and two green leaves waved hello to the sun."
+              "en": "Pinky the pea seed was sleeping in dry sand. One day Saira poured water. Pinky stretched! A tiny root wriggled down, a shoot peeped up, and two green leaves waved hello to the sun.",
+              "ml": "പിങ്കി എന്ന പയർവിത്ത് ഉണങ്ങിയ മണ്ണിൽ ഉറങ്ങുകയായിരുന്നു. ഒരു ദിവസം സൈറ കുറച്ച് വെള്ളമൊഴിച്ചു. പിങ്കി ഉടൻ മെയ് മContent! ഒരു ചെറിയ വേര് താഴേക്ക് വരികയും, കുഞ്ഞുതണ്ട് മുകളിലേക്ക് തലപൊക്കുകയും ചെയ്തു, രണ്ട് പച്ചിലകൾ സൂര്യന് ഹലോ പറഞ്ഞു."
              }
             }
            },
@@ -6226,7 +6325,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Inside every seed, a baby plant is sleeping. When the seed gets water, it wakes up and starts to grow. This is called germination."
+              "en": "Inside every seed, a baby plant is sleeping. When the seed gets water, it wakes up and starts to grow. This is called germination.",
+              "ml": "ഓരോ വിത്തിനുള്ളിലും ഒരു കുഞ്ഞുചെടി ഉറങ്ങിക്കിടപ്പുണ്ട്. വിത്തിന് വെള്ളം ലഭിക്കുമ്പോൾ, അത് ഉണർന്ന് വളരാൻ തുടങ്ങുന്നു. ഇതിനെ മുളയ്ക്കൽ എന്ന് വിളിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -6240,7 +6340,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Try it. Put a few pea seeds in wet sand near the side of a clear glass. After a few days the root comes out first, going down. Then the shoot comes up and the first leaves open."
+              "en": "Try it. Put a few pea seeds in wet sand near the side of a clear glass. After a few days the root comes out first, going down. Then the shoot comes up and the first leaves open.",
+              "ml": "ഇതൊന്ന് ചെയ്തുനോക്കൂ. ഒരു കണ്ണാടി ഗ്ലാസിന്റെ വശത്തായി ഈറനുള്ള മണ്ണിൽ കുറച്ച് പയർവിത്തുകൾ ഇടുക. കുറച്ചു ദിവസങ്ങൾക്ക് ശേഷം ആദ്യം വേരുകൾ താഴേക്ക് വളർന്നുവരുന്നു. പിന്നെ തണ്ട് മുകളിലേക്ക് വരികയും ആദ്യത്തെ ഇലകൾ വിരിയുകയും ചെയ്യുന്നു."
              },
              "visual": {
               "args": [
@@ -6252,7 +6353,8 @@
             {
              "t": "say",
              "text": {
-              "en": "A growing plant needs water, air and sunlight, and some manure to grow well. Keep your plant where there is light."
+              "en": "A growing plant needs water, air and sunlight, and some manure to grow well. Keep your plant where there is light.",
+              "ml": "വളരുന്ന ഒരു ചെടിക്ക് നന്നായി വളരാൻ വെള്ളം, വായു, സൂര്യപ്രകാശം, വളം എന്നിവ ആവശ്യമാണ്. ചെടി നല്ല വെളിച്ചമുള്ളിടത്ത് വെക്കുക."
              },
              "visual": {
               "args": [
@@ -6266,7 +6368,8 @@
             {
              "t": "say",
              "text": {
-              "en": "New plants do not come only from seeds. A curry leaf plant can send up new plants from its roots. The miracle leaf plant, ilamulachi, grows new plants from its leaves."
+              "en": "New plants do not come only from seeds. A curry leaf plant can send up new plants from its roots. The miracle leaf plant, ilamulachi, grows new plants from its leaves.",
+              "ml": "പുതിയ ചെടികൾ വിത്തുകളിൽ നിന്ന് മാത്രമല്ല ഉണ്ടാകുന്നത്. കറിവേപ്പിലയുടെ വേരുകളിൽ നിന്ന് പുതിയ തൈകൾ ഉണ്ടാകാറുണ്ട്. ഇലമുളച്ചിയുടെ ഇലകളിൽ നിന്നാണ് പുതിയ ചെടികൾ വളരുന്നത്."
              },
              "visual": {
               "args": [
@@ -6280,7 +6383,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Hibiscus and rose can be grown by planting a cut piece of their stem. Mango and pumpkin grow from seeds."
+              "en": "Hibiscus and rose can be grown by planting a cut piece of their stem. Mango and pumpkin grow from seeds.",
+              "ml": "ചെമ്പരത്തിയും റോസാച്ചെടിയും കമ്പുകൾ മുറിച്ചുനട്ടാണ് വളർത്തുന്നത്. മാവും മത്തനും വിത്തുകളിൽ നിന്നാണ് വളരുന്നത്."
              },
              "visual": {
               "args": [
@@ -6296,11 +6400,13 @@
              "answer": "the root",
              "concept": "kerala-scert/class-3/evs#new-plants",
              "explain": {
-              "en": "The root comes out first and grows down. Then the shoot grows up."
+              "en": "The root comes out first and grows down. Then the shoot grows up.",
+              "ml": "ആദ്യം വേര് പുറത്തുവന്ന് താഴേക്ക് വളരുന്നു. അതിനുശേഷമാണ് തണ്ട് മുകളിലേക്ക് വളരുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "It grows downwards into the soil."
+              "en": "It grows downwards into the soil.",
+              "ml": "ഇത് മണ്ണിലേക്ക് താഴേക്കാണ് വളരുന്നത്."
              },
              "level": 1,
              "mistakes": {
@@ -6311,20 +6417,28 @@
               "the flower",
               "the fruit"
              ],
+             "optionsMl": [
+              "വേര്",
+              "പൂവ്",
+              "പഴം"
+             ],
              "t": "ask",
              "text": {
-              "en": "When a seed germinates, which part comes out first?"
+              "en": "When a seed germinates, which part comes out first?",
+              "ml": "ഒരു വിത്ത് മുളയ്ക്കുമ്പോൾ ഏത് ഭാഗമാണ് ആദ്യം പുറത്തുവരുന്നത്?"
              }
             },
             {
              "answer": "water",
              "concept": "kerala-scert/class-3/evs#new-plants",
              "explain": {
-              "en": "A seed starts to germinate when it gets water."
+              "en": "A seed starts to germinate when it gets water.",
+              "ml": "വെള്ളം ലഭിക്കുമ്പോഴാണ് വിത്ത് മുളയ്ക്കാൻ തുടങ്ങുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "Our pea seeds started growing after the sand was made wet."
+              "en": "Our pea seeds started growing after the sand was made wet.",
+              "ml": "മണ്ണ് നനച്ച ശേഷമാണ് നമ്മുടെ പയർവിത്തുകൾ വളരാൻ തുടങ്ങിയത്."
              },
              "level": 1,
              "options": [
@@ -6332,20 +6446,28 @@
               "salt",
               "darkness and dryness"
              ],
+             "optionsMl": [
+              "വെള്ളം",
+              "ഉപ്പ്",
+              "ഇരുട്ടും വരൾച്ചയും"
+             ],
              "t": "ask",
              "text": {
-              "en": "What does a seed need first to start growing?"
+              "en": "What does a seed need first to start growing?",
+              "ml": "ഒരു വിത്ത് വളരാൻ തുടങ്ങാൻ ആദ്യം എന്താണ് വേണ്ടത്?"
              }
             },
             {
              "answer": "leaf",
              "concept": "kerala-scert/class-3/evs#new-plants",
              "explain": {
-              "en": "New ilamulachi plants grow from its leaves."
+              "en": "New ilamulachi plants grow from its leaves.",
+              "ml": "ഇലമുളച്ചിയുടെ ഇലകളിൽ നിന്നാണ് പുതിയ ചെടികൾ വളരുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "Its name gives you a clue."
+              "en": "Its name gives you a clue.",
+              "ml": "ഇതിന്റെ പേരിൽ തന്നെ ഉത്തരമുണ്ട്."
              },
              "level": 1,
              "options": [
@@ -6353,20 +6475,28 @@
               "seed",
               "flower"
              ],
+             "optionsMl": [
+              "ഇല",
+              "വിത്ത്",
+              "പൂവ്"
+             ],
              "t": "ask",
              "text": {
-              "en": "The miracle leaf plant (ilamulachi) makes new plants from which part?"
+              "en": "The miracle leaf plant (ilamulachi) makes new plants from which part?",
+              "ml": "ഇലമുളച്ചി ചെടി ഏത് ഭാഗത്ത് നിന്നാണ് പുതിയ ചെടികൾ ഉണ്ടാക്കുന്നത്?"
              }
             },
             {
              "answer": "from a piece of stem",
              "concept": "kerala-scert/class-3/evs#new-plants",
              "explain": {
-              "en": "Hibiscus is grown by planting a cut piece of its stem."
+              "en": "Hibiscus is grown by planting a cut piece of its stem.",
+              "ml": "ചെമ്പരത്തി തണ്ടിന്റെ കമ്പ് മുറിച്ചുനട്ടാണ് വളർത്തുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "Gardeners cut and plant a piece of it."
+              "en": "Gardeners cut and plant a piece of it.",
+              "ml": "ആളുകൾ ഇതിന്റെ കമ്പ് മുറിച്ചുനടുകയാണ് ചെയ്യാറുള്ളത്."
              },
              "level": 1,
              "options": [
@@ -6374,20 +6504,28 @@
               "from its leaf",
               "from its flower"
              ],
+             "optionsMl": [
+              "തണ്ടിന്റെ കഷ്ണം നട്ട്",
+              "ഇലയിൽ നിന്ന്",
+              "പൂവിൽ നിന്ന്"
+             ],
              "t": "ask",
              "text": {
-              "en": "How is a hibiscus plant usually grown?"
+              "en": "How is a hibiscus plant usually grown?",
+              "ml": "ചെമ്പരത്തിച്ചെടി സാധാരണയായി എങ്ങനെയാണ് വളർത്തുന്നത്?"
              }
             },
             {
              "answer": "mango",
              "concept": "kerala-scert/class-3/evs#new-plants",
              "explain": {
-              "en": "A mango seed grows into a new mango tree."
+              "en": "A mango seed grows into a new mango tree.",
+              "ml": "മാങ്ങയുടെ അണ്ടി മുളച്ചാണ് പുതിയ മാവ് ഉണ്ടാകുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of the big seed inside the fruit we eat."
+              "en": "Think of the big seed inside the fruit we eat.",
+              "ml": "നമ്മൾ കഴിക്കുന്ന മാമ്പഴത്തിനുള്ളിലെ വലിയ അണ്ടിയെക്കുറിച്ച് ഓർത്തുനോക്കൂ."
              },
              "level": 1,
              "options": [
@@ -6395,20 +6533,28 @@
               "curry leaf root",
               "ilamulachi leaf"
              ],
+             "optionsMl": [
+              "മാവ്",
+              "കറിവേപ്പിലയുടെ വേര്",
+              "ഇലമുളച്ചിയുടെ ഇല"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which plant grows from a seed?"
+              "en": "Which plant grows from a seed?",
+              "ml": "ഏത് ചെടിയാണ് വിത്തിൽ നിന്ന് വളരുന്നത്?"
              }
             },
             {
              "answer": "3",
              "concept": "kerala-scert/class-3/evs#new-plants",
              "explain": {
-              "en": "That is 3 things."
+              "en": "That is 3 things.",
+              "ml": "അത് 3 കാര്യങ്ങളാണ്."
              },
              "form": "number",
              "hint": {
-              "en": "Count: water, air, sunlight."
+              "en": "Count: water, air, sunlight.",
+              "ml": "എണ്ണിനോക്കൂ: വെള്ളം, വായു, സൂര്യപ്രകാശം."
              },
              "level": 1,
              "mistakes": {
@@ -6416,19 +6562,22 @@
              },
              "t": "ask",
              "text": {
-              "en": "A growing plant needs water, air and sunlight. How many things is that?"
+              "en": "A growing plant needs water, air and sunlight. How many things is that?",
+              "ml": "വളരുന്ന ഒരു ചെടിക്ക് വെള്ളം, വായു, സൂര്യപ്രകാശം എന്നിവ ആവശ്യമാണ്. അപ്പോൾ ആകെ എത്ര കാര്യങ്ങൾ വേണം?"
              }
             }
            ],
            "title": {
-            "en": "How new plants grow"
+            "en": "How new plants grow",
+            "ml": "പുതിയ സസ്യങ്ങൾ എങ്ങനെ വളരുന്നു"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "A flower helps in two ways: it feeds the bee, and it can turn into a fruit with seeds."
+              "en": "A flower helps in two ways: it feeds the bee, and it can turn into a fruit with seeds.",
+              "ml": "ഒരു പൂവ് രണ്ട് രീതിയിൽ സഹായിക്കുന്നു: അത് തേനീച്ചയ്ക്ക് ഭക്ഷണം നൽകുന്നു, കൂടാതെ വിത്തുകളുള്ള ഫലമായി മാറുകയും ചെയ്യുന്നു."
              },
              "visual": {
               "args": [
@@ -6440,7 +6589,8 @@
             },
             "story": {
              "text": {
-              "en": "A little flower on a hibiscus plant said, please don't pluck me! A bee is coming to drink my nectar, and soon I will become a seed pod, so more hibiscus plants can grow."
+              "en": "A little flower on a hibiscus plant said, please don't pluck me! A bee is coming to drink my nectar, and soon I will become a seed pod, so more hibiscus plants can grow.",
+              "ml": "ഒരു ചെമ്പരത്തിച്ചെടിയിലെ ചെറിയ പൂവ് പറഞ്ഞു, ദയവായി എന്നെ പറിക്കരുത്! ഒരു തേനീച്ച എന്റെ തേൻ കുടിക്കാൻ വരുന്നുണ്ട്. ഉടൻ തന്നെ ഞാൻ ഒരു വിത്തുകുടയായി മാറും, അങ്ങനെ കൂടുതൽ ചെമ്പരത്തിച്ചെടികൾ വളരും."
              }
             }
            },
@@ -6453,7 +6603,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Leaves are not all the same. They differ in shape, size and colour, and some leaves have a smell when you crush them. Thumba leaves are long and tapering."
+              "en": "Leaves are not all the same. They differ in shape, size and colour, and some leaves have a smell when you crush them. Thumba leaves are long and tapering.",
+              "ml": "എല്ലാ ഇലകളും ഒരേപോലെയല്ല. അവയുടെ രൂപം, വലിപ്പം, നിറം എന്നിവ വ്യത്യാസപ്പെട്ടിരിക്കുന്നു. ചില ഇലകൾ ഞെരുക്കുമ്പോൾ മണമുണ്ടാകും. തുമ്പയില നീண்டு കൂർത്തതാണ്."
              },
              "visual": {
               "args": [
@@ -6467,7 +6618,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Flowers are different too, in colour, smell and shape. Jasmine is white and sweet-smelling. Flowers give nectar to bees and butterflies, and many flowers later become fruits."
+              "en": "Flowers are different too, in colour, smell and shape. Jasmine is white and sweet-smelling. Flowers give nectar to bees and butterflies, and many flowers later become fruits.",
+              "ml": "പൂക്കളും വ്യത്യസ്തമാണ്, നിറത്തിലും മണത്തിലും രൂപത്തിലും. മല്ലി വെള്ള നിറമുള്ളതും നല്ല മണമുള്ളതുമാണ്. പൂക്കൾ തേനീച്ചകൾക്കും ചിത്രശലഭങ്ങൾക്കും തേൻ നൽകുന്നു. പല പൂക്കളും പിന്നീട് ഫലങ്ങളായി മാറുന്നു."
              },
              "visual": {
               "args": [
@@ -6481,7 +6633,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Not every plant has flowers. Ferns and mosses never bloom. And not every flower becomes a fruit."
+              "en": "Not every plant has flowers. Ferns and mosses never bloom. And not every flower becomes a fruit.",
+              "ml": "എല്ലാ ചെടികൾക്കും പൂക്കളില്ല. പന്നലുകളും പായലുകളും പൂക്കാറില്ല. എല്ലാ പൂക്കളും കായകളായി മാറുന്നുമില്ല."
              },
              "visual": {
               "args": [
@@ -6493,7 +6646,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Here is a special one. Neelakurinji blooms only once in twelve years. Its flowers are blue and can stay for up to three months. The Nilgiri hills are named after it."
+              "en": "Here is a special one. Neelakurinji blooms only once in twelve years. Its flowers are blue and can stay for up to three months. The Nilgiri hills are named after it.",
+              "ml": "ഇതൊരു പ്രത്യേക ചെടിയാണ്. നീലക്കുറിഞ്ഞി പന്ത്രണ്ട് വർഷത്തിലൊരിക്കൽ മാത്രമാണ് പൂക്കുന്നത്. ഇതിന്റെ പൂക്കൾക്ക് നീല നിറമാണ്. മൂന്ന് മാസം വരെ ഇവ ചെടിയിൽ നിൽക്കും. നീലഗിരി മലകൾക്ക് ആ പേര് ലഭിച്ചത് ഇതിൽ നിന്നാണ്."
              },
              "visual": {
               "args": [
@@ -6505,7 +6659,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Plants give us shade, food, flowers and fresh air, and homes for birds and insects. So it is our duty to plant and protect plants and keep the earth green."
+              "en": "Plants give us shade, food, flowers and fresh air, and homes for birds and insects. So it is our duty to plant and protect plants and keep the earth green.",
+              "ml": "സസ്യങ്ങൾ നമുക്ക് തണലും ഭക്ഷണവും പൂക്കളും ശുദ്ധവായുവും നൽകുന്നു. പക്ഷികൾക്കും പൂച്ചെടികൾക്കും വീടൊരുക്കുന്നു. അതിനാൽ ചെടികൾ നട്ടുപിടിപ്പിക്കാനും സംരക്ഷിക്കാനും ഭൂമി ഹരിതാഭമാക്കാനും നമ്മൾ ബാധ്യസ്ഥരാണ്."
              },
              "visual": {
               "args": [
@@ -6521,11 +6676,13 @@
              "answer": "12",
              "concept": "kerala-scert/class-3/evs#leaves-flowers",
              "explain": {
-              "en": "Neelakurinji blooms once in twelve years."
+              "en": "Neelakurinji blooms once in twelve years.",
+              "ml": "നീലക്കുറിഞ്ഞി പന്ത്രണ്ട് വർഷത്തിലൊരിക്കൽ പൂക്കുന്നു."
              },
              "form": "number",
              "hint": {
-              "en": "It is a long wait: one dozen years."
+              "en": "It is a long wait: one dozen years.",
+              "ml": "വളരെ długi കാത്തിരിപ്പാണ്: ഒരു ഡസൻ വർഷങ്ങൾ."
              },
              "level": 1,
              "mistakes": {
@@ -6533,18 +6690,21 @@
              },
              "t": "ask",
              "text": {
-              "en": "Neelakurinji blooms once in how many years?"
+              "en": "Neelakurinji blooms once in how many years?",
+              "ml": "നീലക്കുറിഞ്ഞി എത്ര വർഷത്തിലൊരിക്കലാണ് പൂക്കുന്നത്?"
              }
             },
             {
              "answer": "blue",
              "concept": "kerala-scert/class-3/evs#leaves-flowers",
              "explain": {
-              "en": "Neelakurinji flowers are blue. That is why the Nilgiri hills got their name."
+              "en": "Neelakurinji flowers are blue. That is why the Nilgiri hills got their name.",
+              "ml": "നീലക്കുറിഞ്ഞി പൂക്കൾ നീല നിറത്തിലുള്ളതാണ്. അതുകൊണ്ടാണ് നീലഗിരി മലകൾക്ക് ആ പേര് ലഭിച്ചത്."
              },
              "form": "choice",
              "hint": {
-              "en": "Neela means blue."
+              "en": "Neela means blue.",
+              "ml": "നീല എന്നാൽ നീല നിറം."
              },
              "level": 1,
              "options": [
@@ -6552,20 +6712,28 @@
               "red",
               "yellow"
              ],
+             "optionsMl": [
+              "നീല",
+              "ചുവപ്പ്",
+              "മഞ്ഞ"
+             ],
              "t": "ask",
              "text": {
-              "en": "What colour are Neelakurinji flowers?"
+              "en": "What colour are Neelakurinji flowers?",
+              "ml": "നീലക്കുറിഞ്ഞി പൂക്കളുടെ നിറം എന്താണ്?"
              }
             },
             {
              "answer": "No",
              "concept": "kerala-scert/class-3/evs#leaves-flowers",
              "explain": {
-              "en": "No. Ferns and mosses do not bloom."
+              "en": "No. Ferns and mosses do not bloom.",
+              "ml": "ഇല്ല. പന്നലുകളും പായലുകളും പൂക്കാറില്ല."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of ferns and mosses."
+              "en": "Think of ferns and mosses.",
+              "ml": "പന്നലുകളെയും പായലുകളെയും കുറിച്ച് ഓർക്കൂ."
              },
              "level": 1,
              "mistakes": {
@@ -6575,20 +6743,27 @@
               "No",
               "Yes"
              ],
+             "optionsMl": [
+              "ഇല്ല",
+              "ഉണ്ട്"
+             ],
              "t": "ask",
              "text": {
-              "en": "Do all plants have flowers?"
+              "en": "Do all plants have flowers?",
+              "ml": "എല്ലാ ചെടികൾക്കും പൂക്കളുണ്ടോ?"
              }
             },
             {
              "answer": "bees",
              "concept": "kerala-scert/class-3/evs#leaves-flowers",
              "explain": {
-              "en": "Bees and butterflies drink nectar from flowers."
+              "en": "Bees and butterflies drink nectar from flowers.",
+              "ml": "തേനീച്ചകളും ചിത്രശലഭങ്ങളും പൂക്കളിൽ നിന്ന് തേൻ കുടിക്കുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "This insect makes honey."
+              "en": "This insect makes honey.",
+              "ml": "ഈ പൂച്ചെടി തേൻ ഉണ്ടാക്കുന്നു."
              },
              "level": 1,
              "options": [
@@ -6596,20 +6771,28 @@
               "fish",
               "cows"
              ],
+             "optionsMl": [
+              "തേനീച്ചകൾ",
+              "മീൻ",
+              "പശുക്കൾ"
+             ],
              "t": "ask",
              "text": {
-              "en": "Who gets nectar from flowers?"
+              "en": "Who gets nectar from flowers?",
+              "ml": "പൂക്കളിൽ നിന്ന് തേൻ കുടിക്കുന്നത് ആര്?"
              }
             },
             {
              "answer": "They give shade",
              "concept": "kerala-scert/class-3/evs#leaves-flowers",
              "explain": {
-              "en": "Plants give shade, food, fresh air and homes for animals."
+              "en": "Plants give shade, food, fresh air and homes for animals.",
+              "ml": "സസ്യങ്ങൾ തണലും ഭക്ഷണവും ശുദ്ധവായുവും മൃഗങ്ങൾക്ക് പാർപ്പിടവും നൽകുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of sitting under a big tree on a hot day."
+              "en": "Think of sitting under a big tree on a hot day.",
+              "ml": "നല്ല ചൂടുള്ള ദിവസത്തിൽ വലിയൊരു മരത്തിന്റെ ചുവട്ടിൽ ഇരിക്കുന്ന കാര്യം ഓർക്കൂ."
              },
              "level": 1,
              "options": [
@@ -6617,14 +6800,21 @@
               "They make noise",
               "They eat plastic"
              ],
+             "optionsMl": [
+              "അവ തണൽ തരുന്നു",
+              "അവ ശബ്ദമുണ്ടാക്കുന്നു",
+              "അവ പ്ലാസ്റ്റിക് തിന്നുന്നു"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which of these is a way plants help us?"
+              "en": "Which of these is a way plants help us?",
+              "ml": "സസ്യങ്ങൾ നമ്മെ സഹായിക്കുന്ന ഒരു വഴി ഏതാണ്?"
              }
             }
            ],
            "title": {
-            "en": "Leaves, flowers and why plants matter"
+            "en": "Leaves, flowers and why plants matter",
+            "ml": "ഇലകളും പൂക്കളും സസ്യങ്ങളും"
            }
           }
          ],
@@ -6655,7 +6845,8 @@
            "alts": {
             "picture": {
              "text": {
-              "en": "Each domestic animal helps us in its own way."
+              "en": "Each domestic animal helps us in its own way.",
+              "ml": "ഓരോ വളർത്തുമൃഗവും അവരുടേതായ രീതിയിൽ നമ്മെ സഹായിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -6668,7 +6859,8 @@
             },
             "story": {
              "text": {
-              "en": "Every morning Mithra greets her friends: the hen who gives her an egg, the cow who gives milk for her tea, and Tommy the dog who barks to keep everyone safe."
+              "en": "Every morning Mithra greets her friends: the hen who gives her an egg, the cow who gives milk for her tea, and Tommy the dog who barks to keep everyone safe.",
+              "ml": "ദിവസവും രാവിലെ മിത്ര തന്റെ കൂട്ടുകാരോട് കുശലം പറയും: മുട്ട തരുന്ന കോഴിയോടും, ചായ കുടിക്കാൻ പാൽ തരുന്ന പശുവിനോടും, എല്ലാവരെയും കാത്തുസൂക്ഷിക്കാൻ കുരയ്ക്കുന്ന ടോമി എന്ന പട്ടിയോടും."
              }
             }
            },
@@ -6681,7 +6873,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Look around Mithra's house. There are hens, a cow, a goat, a dog, and birds and insects too. Some of these animals live with people."
+              "en": "Look around Mithra's house. There are hens, a cow, a goat, a dog, and birds and insects too. Some of these animals live with people.",
+              "ml": "മിത്രയുടെ വീടിന് ചുറ്റും ഒന്നു നോക്കൂ. കോഴികളും പശുവും ആടും പട്ടിയും പക്ഷികളും പ്രാണികളും ഒക്കെയുണ്ട്. ഇവയിൽ ചില മൃഗങ്ങൾ മനുഷ്യരോടൊപ്പമാണ് ജീവിക്കുന്നത്."
              },
              "visual": {
               "args": [
@@ -6696,7 +6889,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Animals that people raise at home are called domestic animals. We raise them for different reasons."
+              "en": "Animals that people raise at home are called domestic animals. We raise them for different reasons.",
+              "ml": "മനുഷ്യർ വീട്ടിൽ വളർത്തുന്ന മൃഗങ്ങളെ വളർത്തുമൃഗങ്ങൾ എന്ന് വിളിക്കുന്നു. വിവിധ ആവശ്യങ്ങൾക്കായാണ് നമ്മൾ അവയെ വളർത്തുന്നത്."
              },
              "visual": {
               "args": [
@@ -6709,7 +6903,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Some give us food: cows and goats give milk, and hens give eggs. Some keep us safe, like a dog. Some we keep just because we love them, as pets."
+              "en": "Some give us food: cows and goats give milk, and hens give eggs. Some keep us safe, like a dog. Some we keep just because we love them, as pets.",
+              "ml": "ചില മൃഗങ്ങൾ നമുക്ക് ഭക്ഷണം തരുന്നു: പശുവും ആടും പാൽ തരുന്നു, കോഴി മുട്ട തരുന്നു. പട്ടി നമ്മെ സംരക്ഷിക്കുന്നു. ചിലതിനെ നമ്മൾ ഇഷ്ടം കൊണ്ടാണ് ഇണക്കുമൃഗങ്ങളായി വളർത്തുന്നത്."
              },
              "visual": {
               "args": [
@@ -6724,7 +6919,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Many creatures live in and around our homes without being raised: lizards, ants, spiders, sparrows and squirrels."
+              "en": "Many creatures live in and around our homes without being raised: lizards, ants, spiders, sparrows and squirrels.",
+              "ml": "നമ്മൾ വളർത്താതെ തന്നെ നമ്മുടെ വീടിനകത്തും ചുറ്റും ജീവിക്കുന്ന ഒരുപാട് ജീവികളുണ്ട്: പല്ലി, ഉറുമ്പ്, ചിലന്തി, അങ്ങാടിക്കുരുവി, അണ്ണാൻ എന്നിവ ഉദാഹരണം."
              },
              "visual": {
               "args": [
@@ -6740,11 +6936,13 @@
              "answer": "hen",
              "concept": "kerala-scert/class-3/evs#animals-around",
              "explain": {
-              "en": "Hens give us eggs."
+              "en": "Hens give us eggs.",
+              "ml": "കോഴികൾ നമുക്ക് മുട്ട തരുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of the bird that lays eggs we eat."
+              "en": "Think of the bird that lays eggs we eat.",
+              "ml": "നമ്മൾ കഴിക്കുന്ന മുട്ട ഇടുന്ന പക്ഷിയെക്കുറിച്ച് ഓർക്കൂ."
              },
              "level": 1,
              "options": [
@@ -6752,20 +6950,28 @@
               "dog",
               "cat"
              ],
+             "optionsMl": [
+              "കോഴി",
+              "പട്ടി",
+              "പൂച്ച"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which animal gives us eggs?"
+              "en": "Which animal gives us eggs?",
+              "ml": "ഏത് ജീവിയാണ് നമുക്ക് മുട്ട തരുന്നത്?"
              }
             },
             {
              "answer": "for security",
              "concept": "kerala-scert/class-3/evs#animals-around",
              "explain": {
-              "en": "Dogs guard the house, so they are kept for security, and as pets."
+              "en": "Dogs guard the house, so they are kept for security, and as pets.",
+              "ml": "പട്ടികൾ വീടിന് കാവൽ നിൽക്കുന്നു, അതിനാൽ സുരക്ഷയ്ക്കായും സ്നേഹത്തോടെ ഇണക്കുമൃഗമായുമാണ് അവയെ വളർത്തുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "What does a dog do when a stranger comes?"
+              "en": "What does a dog do when a stranger comes?",
+              "ml": "അപരിചിതർ വരുമ്പോൾ പട്ടി എന്താണ് ചെയ്യുന്നത്?"
              },
              "level": 1,
              "mistakes": {
@@ -6776,20 +6982,28 @@
               "for milk",
               "for eggs"
              ],
+             "optionsMl": [
+              "സംരക്ഷണത്തിന്",
+              "പാലിന്",
+              "മുട്ടയ്ക്ക്"
+             ],
              "t": "ask",
              "text": {
-              "en": "Why do many people keep a dog at home?"
+              "en": "Why do many people keep a dog at home?",
+              "ml": "പലരും വീട്ടിൽ പട്ടിയെ വളർത്തുന്നത് എന്തുകൊണ്ടാണ്?"
              }
             },
             {
              "answer": "cow",
              "concept": "kerala-scert/class-3/evs#animals-around",
              "explain": {
-              "en": "A cow is raised at home for milk. It is a domestic animal."
+              "en": "A cow is raised at home for milk. It is a domestic animal.",
+              "ml": "പാലിനായി പശുവിനെ വീട്ടിൽ വളർത്തുന്നു. ഇതൊരു വളർത്തുമൃഗമാണ്."
              },
              "form": "choice",
              "hint": {
-              "en": "Which one do people raise at home?"
+              "en": "Which one do people raise at home?",
+              "ml": "മനുഷ്യർ വീട്ടിൽ വളർത്തുന്നത് ഏതിനെയാണ്?"
              },
              "level": 1,
              "options": [
@@ -6797,20 +7011,28 @@
               "tiger",
               "whale"
              ],
+             "optionsMl": [
+              "പശു",
+              "കടുവ",
+              "തിമിംഗലം"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which of these is a domestic animal?"
+              "en": "Which of these is a domestic animal?",
+              "ml": "ഇവയിൽ ഏതാണ് ഒരു വളർത്തുമൃഗം?"
              }
             },
             {
              "answer": "2",
              "concept": "kerala-scert/class-3/evs#animals-around",
              "explain": {
-              "en": "Both of them, so 2 animals."
+              "en": "Both of them, so 2 animals.",
+              "ml": "രണ്ടുപേരും പാൽ തരുന്നു, അതിനാൽ 2 മൃഗങ്ങൾ."
              },
              "form": "number",
              "hint": {
-              "en": "Count: cow, goat."
+              "en": "Count: cow, goat.",
+              "ml": "എണ്ണിനോക്കൂ: പശു, ആട്."
              },
              "level": 1,
              "mistakes": {
@@ -6818,18 +7040,21 @@
              },
              "t": "ask",
              "text": {
-              "en": "Cows and goats give milk. How many of these two animals give milk?"
+              "en": "Cows and goats give milk. How many of these two animals give milk?",
+              "ml": "പശുവും ആടും പാൽ തരുന്നു. ഈ രണ്ട് മൃഗങ്ങളിൽ എത്രയെണ്ണമാണ് പാൽ തരുന്നത്?"
              }
             },
             {
              "answer": "lizard",
              "concept": "kerala-scert/class-3/evs#animals-around",
              "explain": {
-              "en": "Lizards live on walls in our homes and eat insects."
+              "en": "Lizards live on walls in our homes and eat insects.",
+              "ml": "പല്ലികൾ നമ്മുടെ വീടുകളിലെ ചുമരുകളിൽ ജീവിക്കുകയും പ്രാണികളെ തിന്നുകയും ചെയ്യുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "It is small and can climb walls."
+              "en": "It is small and can climb walls.",
+              "ml": "ഇത് ചെറുതാണ്, ചുമരിൽ കയറാൻ കഴിയും."
              },
              "level": 1,
              "options": [
@@ -6837,21 +7062,29 @@
               "elephant",
               "camel"
              ],
+             "optionsMl": [
+              "പല്ലി",
+              "ആന",
+              "ഒട്ടകം"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which creature often lives on the walls of our homes?"
+              "en": "Which creature often lives on the walls of our homes?",
+              "ml": "നമ്മുടെ വീടിന്റെ ചുമരുകളിൽ സാധാരണയായി കാണപ്പെടുന്ന ജീവി ഏതാണ്?"
              }
             }
            ],
            "title": {
-            "en": "Animals around us"
+            "en": "Animals around us",
+            "ml": "നമ്മൾക്ക് ചുറ്റുമുള്ള മൃഗങ്ങൾ"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "Lined up by size, from the tiniest to the biggest."
+              "en": "Lined up by size, from the tiniest to the biggest.",
+              "ml": "ഏറ്റവും ചെറുതിൽ നിന്ന് ഏറ്റവും വലുതിലേക്ക് അളവുപ്രകാരം വരിയായി നിർത്തിയിരിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -6868,7 +7101,8 @@
             },
             "story": {
              "text": {
-              "en": "Mithra and her friends played a naming game. Grasshopper! Firefly! Beetle! Cow! Then her brother said, blue whale! Everyone laughed. You win, he said, that is the biggest of all."
+              "en": "Mithra and her friends played a naming game. Grasshopper! Firefly! Beetle! Cow! Then her brother said, blue whale! Everyone laughed. You win, he said, that is the biggest of all.",
+              "ml": "മിത്രയും കൂട്ടുകാരും പേര് പറയുന്ന കളി കളിക്കുകയായിരുന്നു. വെട്ടുക്കിളി! മിന്നാമിനുങ്ങ്! വണ്ട്! പശു! അപ്പോൾ അവളുടെ ചേട്ടൻ പറഞ്ഞു, നീലത്തിമിംഗലം! എല്ലാവരും ചിരിച്ചു. നീ ജയിച്ചു, അവൻ പറഞ്ഞു, അതാണ് എല്ലാവറ്റിലും വലുത്."
              }
             }
            },
@@ -6881,7 +7115,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Some creatures are tiny, like ants. Some are giants, like elephants. We can arrange animals from the smallest to the largest."
+              "en": "Some creatures are tiny, like ants. Some are giants, like elephants. We can arrange animals from the smallest to the largest.",
+              "ml": "ഉറുമ്പിനെപ്പോലെ വളരെ ചെറിയ ജീവികളുണ്ട്. ആനയെപ്പോലെ ഭീമൻമാരായ ജീവികളുമുണ്ട്. ഏറ്റവും ചെറുതിൽ നിന്ന് ഏറ്റവും വലുതിലേക്ക് ജീവികളെ നമുക്ക് ക്രമീകരിക്കാം."
              },
              "visual": {
               "args": [
@@ -6897,7 +7132,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Tiny creatures live in the soil and on plants. A hand lens makes them look bigger, so we can see them clearly."
+              "en": "Tiny creatures live in the soil and on plants. A hand lens makes them look bigger, so we can see them clearly.",
+              "ml": "ചെറിയ ജീവികൾ മണ്ണിലും ചെടികളിലും ജീവിക്കുന്നു. ഒരു ഹാൻഡ് ലെൻസ് (ഭൂതക്കണ്ണാടി) ഉപയോഗിച്ചാൽ അവയെ വലുതായി കാണാം, അങ്ങനെ വ്യക്തമായി കാണാൻ കഴിയും."
              },
              "visual": {
               "args": [
@@ -6911,7 +7147,8 @@
             {
              "t": "say",
              "text": {
-              "en": "We can recognise animals by their features: colour, spots, stripes, horns and nails. A zebra has stripes. A leopard has spots. A cow has horns."
+              "en": "We can recognise animals by their features: colour, spots, stripes, horns and nails. A zebra has stripes. A leopard has spots. A cow has horns.",
+              "ml": "നിറം, പുള്ളികൾ, വരകൾ, കൊമ്പുകൾ, നഖങ്ങൾ എന്നിവയിലൂടെ നമുക്ക് ജീവികളെ തിരിച്ചറിയാം. വരയൻകുതിരയ്ക്ക് വരകളുണ്ട്. പുള്ളിപ്പുലിക്ക് പുള്ളികളുണ്ട്. പശുകിടാവിന്/പശുവിന് കൊമ്പുകളുണ്ട്."
              },
              "visual": {
               "args": [
@@ -6925,7 +7162,8 @@
             {
              "t": "say",
              "text": {
-              "en": "The sea is home to more creatures than the land! Fish, sea horses, sea cucumbers and sea cows all live there."
+              "en": "The sea is home to more creatures than the land! Fish, sea horses, sea cucumbers and sea cows all live there.",
+              "ml": "കരയേക്കാൾ കൂടുതൽ ജീവികൾ ജീവിക്കുന്നത് കടലിലാണ്! മീനുകൾ, കടൽക്കുതിരകൾ, കടൽവെള്ളരികൾ, കടൽപ്പശുക്കൾ എന്നിവയെല്ലാം അവിടെ ജീവിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -6940,7 +7178,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "The largest creature on earth is the blue whale. It lives in the sea, but it is not a fish. A blue whale gives birth to its babies."
+              "en": "The largest creature on earth is the blue whale. It lives in the sea, but it is not a fish. A blue whale gives birth to its babies.",
+              "ml": "ഭൂമിയിലെ ഏറ്റവും വലിയ ജീവിയാണ് നീലത്തിമിംഗലം. ഇത് കടലിലാണ് ജീവിക്കുന്നത്, എന്നാൽ ഇതൊരു മീനല്ല. നീലത്തിമിംഗലം പ്രസവിക്കുന്ന ജീവിയാണ്."
              },
              "visual": {
               "args": [
@@ -6953,11 +7192,13 @@
              "answer": "blue whale",
              "concept": "kerala-scert/class-3/evs#animal-variety",
              "explain": {
-              "en": "The blue whale is the largest creature on earth."
+              "en": "The blue whale is the largest creature on earth.",
+              "ml": "ഭൂമിയിലെ ഏറ്റവും വലിയ ജീവിയാണ് നീലത്തിമിംഗലം."
              },
              "form": "choice",
              "hint": {
-              "en": "It lives in the sea."
+              "en": "It lives in the sea.",
+              "ml": "ഇത് കടലിലാണ് ജീവിക്കുന്നത്."
              },
              "level": 1,
              "mistakes": {
@@ -6968,20 +7209,28 @@
               "elephant",
               "shark"
              ],
+             "optionsMl": [
+              "നീലത്തിമിംഗലം",
+              "ആന",
+              "സ്രാവ്"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which is the largest creature on earth?"
+              "en": "Which is the largest creature on earth?",
+              "ml": "ഭൂമിയിലെ ഏറ്റവും വലിയ ജീവി ഏതാണ്?"
              }
             },
             {
              "answer": "No",
              "concept": "kerala-scert/class-3/evs#animal-variety",
              "explain": {
-              "en": "No. The blue whale is not a fish. It gives birth to its young."
+              "en": "No. The blue whale is not a fish. It gives birth to its young.",
+              "ml": "അല്ല. നീലത്തിമിംഗലം മീനല്ല. ഇത് കുഞ്ഞുങ്ങളെ പ്രസവിക്കുകയാണ് ചെയ്യുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "It gives birth to its babies instead of laying eggs like most fish."
+              "en": "It gives birth to its babies instead of laying eggs like most fish.",
+              "ml": "ഭൂരിഭാഗം മീനുകളെപ്പോലെ മുട്ടയിടുന്നതിന് പകരം ഇത് കുഞ്ഞുങ്ങളെ പ്രസവിക്കുന്നു."
              },
              "level": 1,
              "mistakes": {
@@ -6991,40 +7240,54 @@
               "No",
               "Yes"
              ],
+             "optionsMl": [
+              "അല്ല",
+              "ആണ്"
+             ],
              "t": "ask",
              "text": {
-              "en": "Is the blue whale a fish?"
+              "en": "Is the blue whale a fish?",
+              "ml": "നീലത്തിമിംഗലം ഒരു മീനാണോ?"
              }
             },
             {
              "answer": "in the sea",
              "concept": "kerala-scert/class-3/evs#animal-variety",
              "explain": {
-              "en": "There are more creatures in the sea than on land."
+              "en": "There are more creatures in the sea than on land.",
+              "ml": "കരയേക്കാൾ കൂടുതൽ ജീവികൾ കടലിലുണ്ട്."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of how big the sea is."
+              "en": "Think of how big the sea is.",
+              "ml": "കടൽ എത്ര വലുതാണെന്ന് ചിന്തിക്കൂ."
              },
              "level": 1,
              "options": [
               "in the sea",
               "on land"
              ],
+             "optionsMl": [
+              "കടലിൽ",
+              "കരയിൽ"
+             ],
              "t": "ask",
              "text": {
-              "en": "Where do more creatures live?"
+              "en": "Where do more creatures live?",
+              "ml": "കൂടുതൽ ജീവികൾ എവിടെയാണ് ജീവിക്കുന്നത്?"
              }
             },
             {
              "answer": "zebra",
              "concept": "kerala-scert/class-3/evs#animal-variety",
              "explain": {
-              "en": "A zebra has black and white stripes."
+              "en": "A zebra has black and white stripes.",
+              "ml": "വരയൻകുതിരയ്ക്ക് കറുപ്പും വെളുപ്പും വരകളുണ്ട്."
              },
              "form": "choice",
              "hint": {
-              "en": "Black and white lines."
+              "en": "Black and white lines.",
+              "ml": "കറുപ്പും വെളുപ്പും വരകൾ."
              },
              "level": 1,
              "options": [
@@ -7032,20 +7295,28 @@
               "elephant",
               "frog"
              ],
+             "optionsMl": [
+              "വരയൻകുതിര",
+              "ആന",
+              "തവള"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which animal can you recognise by its stripes?"
+              "en": "Which animal can you recognise by its stripes?",
+              "ml": "വരകൾ കണ്ട് ഏത് ജീവിയെയാണ് തിരിച്ചറിയാൻ കഴിയുക?"
              }
             },
             {
              "answer": "a hand lens",
              "concept": "kerala-scert/class-3/evs#animal-variety",
              "explain": {
-              "en": "A hand lens makes tiny creatures look bigger."
+              "en": "A hand lens makes tiny creatures look bigger.",
+              "ml": "ഹാൻഡ് ലെൻസ് ചെറിയ ജീവികളെ വലുതായി കാണിക്കുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "It makes small things look bigger."
+              "en": "It makes small things look bigger.",
+              "ml": "ഇത് ചെറിയ വസ്തുക്കളെ വലുതായി കാണിക്കുന്നു."
              },
              "level": 1,
              "options": [
@@ -7053,20 +7324,28 @@
               "a spoon",
               "a mirror"
              ],
+             "optionsMl": [
+              "ഹാൻഡ് ലെൻസ്",
+              "സ്പൂൺ",
+              "കണ്ണാടി"
+             ],
              "t": "ask",
              "text": {
-              "en": "What helps us see tiny creatures clearly?"
+              "en": "What helps us see tiny creatures clearly?",
+              "ml": "കൊച്ചു ജീവികളെ വ്യക്തമായി കാണാൻ നമ്മെ സഹായിക്കുന്നത് ഏതാണ്?"
              }
             },
             {
              "answer": "1",
              "concept": "kerala-scert/class-3/evs#animal-variety",
              "explain": {
-              "en": "Only 1: the blue whale."
+              "en": "Only 1: the blue whale.",
+              "ml": "1 എണ്ണം മാത്രം: നീലത്തിമിംഗലം."
              },
              "form": "number",
              "hint": {
-              "en": "Only one of them swims in the sea."
+              "en": "Only one of them swims in the sea.",
+              "ml": "ഇവയിൽ ഒരെണ്ണം മാത്രമാണ് കടലിൽ നീന്തുന്നത്."
              },
              "level": 1,
              "mistakes": {
@@ -7074,19 +7353,22 @@
              },
              "t": "ask",
              "text": {
-              "en": "Ant, elephant and blue whale. How many of these live in the sea?"
+              "en": "Ant, elephant and blue whale. How many of these live in the sea?",
+              "ml": "ഉറുമ്പ്, ആന, നീലത്തിമിംഗലം. ഇവയിൽ എത്രയെണ്ണം കടലിൽ ജീവിക്കുന്നു?"
              }
             }
            ],
            "title": {
-            "en": "Tiny ones and giants"
+            "en": "Tiny ones and giants",
+            "ml": "ചെറുതും വലുതും"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "Match the body part to the movement."
+              "en": "Match the body part to the movement.",
+              "ml": "ശരീരഭാഗത്തെ അതിന്റെ ചലനവുമായി യോജിപ്പിക്കുക."
              },
              "visual": {
               "args": [
@@ -7099,7 +7381,8 @@
             },
             "story": {
              "text": {
-              "en": "At the park pond, Duck said to Fish, I can swim like you! Then Duck waddled onto the grass and flapped up into the air. Fish blinked. You can walk and fly too? Duck winked. I have webbed feet and wings!"
+              "en": "At the park pond, Duck said to Fish, I can swim like you! Then Duck waddled onto the grass and flapped up into the air. Fish blinked. You can walk and fly too? Duck winked. I have webbed feet and wings!",
+              "ml": "പാർക്കിലെ കുളത്തിൽ വെച്ച് താറാവ് മത്സ്യത്തോട് പറഞ്ഞു, \"എനിക്ക് നിന്നെപ്പോലെ നീന്താൻ കഴിയും!\" പിന്നെ താറാവ് പുല്ലിലേക്ക് ആടിയാടി നടന്ന് വായുവിലേക്ക് ചിറകടിച്ചുയർന്നു. മത്സ്യം കണ്ണ് ചിമ്മി ചോദിച്ചു, \"നിനക്ക് നടക്കാനും പറക്കാനും കഴിയുമോ?\" താറാവ് കണ്ണടിച്ചു കാട്ടി, \"എനിക്ക് വിരലുകൾക്കിടയിൽ ചർമ്മബന്ധമുള്ള കാലുകളും ചിറകുകളുമുണ്ട്!\""
              }
             }
            },
@@ -7112,7 +7395,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Do all animals move the same way? No! Some walk, some fly, some swim, some crawl, and some hop."
+              "en": "Do all animals move the same way? No! Some walk, some fly, some swim, some crawl, and some hop.",
+              "ml": "എല്ലാ മൃഗങ്ങളും ഒരുപോലെയാണോ സഞ്ചരിക്കുന്നത്? അല്ല! ചിലത് നടക്കുന്നു, ചിലത് പറക്കുന്നു, ചിലത് നീന്തുന്നു, ചിലത് ഇഴയുന്നു, ചിലത് ചാടുന്നു."
              },
              "visual": {
               "args": [
@@ -7128,7 +7412,8 @@
             {
              "t": "say",
              "text": {
-              "en": "An animal's body shows how it moves. Legs help to walk and run. Wings help to fly. Fins and a tail help to swim."
+              "en": "An animal's body shows how it moves. Legs help to walk and run. Wings help to fly. Fins and a tail help to swim.",
+              "ml": "ഒരു മൃഗത്തിന്റെ ശരീരരചനാ സവിശേഷതകൾ അത് എങ്ങനെ സഞ്ചരിക്കുന്നു എന്ന് കാട്ടിത്തരുന്നു. കാലുകൾ നടക്കാനും ഓടാനും സഹായിക്കുന്നു. ചിറകുകൾ പറക്കാൻ സഹായിക്കുന്നു. തുഴചിറകുകളും വാലും നീന്താൻ സഹായിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -7142,7 +7427,8 @@
             {
              "t": "say",
              "text": {
-              "en": "A snake has no legs. It moves by sliding on its belly. A frog and a grasshopper have strong back legs for jumping."
+              "en": "A snake has no legs. It moves by sliding on its belly. A frog and a grasshopper have strong back legs for jumping.",
+              "ml": "പാമ്പിന് കാലുകളില്ല. അത് വയറുകൊണ്ട് ഇഴഞ്ഞാണ് നീങ്ങുന്നത്. തവളയ്ക്കും പുൽച്ചാടിയ്ക്കും ചാടാൻ ശക്തമായ പിൻകാലുകളുണ്ട്."
              },
              "visual": {
               "args": [
@@ -7157,7 +7443,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Some animals move in more than one way. A duck can walk, swim and fly!"
+              "en": "Some animals move in more than one way. A duck can walk, swim and fly!",
+              "ml": "ചില മൃഗങ്ങൾക്ക് ഒന്നിലധികം രീതിയിൽ സഞ്ചരിക്കാൻ കഴിയും. താറാവിന് നടക്കാനും നീന്താനും പറക്കാനും കഴിയും!"
              },
              "visual": {
               "args": [
@@ -7170,11 +7457,13 @@
              "answer": "it swims",
              "concept": "kerala-scert/class-3/evs#animal-movement",
              "explain": {
-              "en": "A fish swims using its fins and tail."
+              "en": "A fish swims using its fins and tail.",
+              "ml": "മത്സ്യം അതിന്റെ തുഴചിറകുകളും വാലും ഉപയോഗിച്ച് നീന്തുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "It lives in water and has fins."
+              "en": "It lives in water and has fins.",
+              "ml": "ഇത് വെള്ളത്തിലാണ് ജീവിക്കുന്നത്, ഇതിന് തുഴചിറകുകളുണ്ട്."
              },
              "level": 1,
              "options": [
@@ -7182,20 +7471,28 @@
               "it walks",
               "it hops"
              ],
+             "optionsMl": [
+              "അത് നീന്തുന്നു",
+              "അത് നടക്കുന്നു",
+              "അത് ചാടുന്നു"
+             ],
              "t": "ask",
              "text": {
-              "en": "How does a fish move?"
+              "en": "How does a fish move?",
+              "ml": "മത്സ്യം എങ്ങനെയാണ് സഞ്ചരിക്കുന്നത്?"
              }
             },
             {
              "answer": "snake",
              "concept": "kerala-scert/class-3/evs#animal-movement",
              "explain": {
-              "en": "A snake has no legs, so it slides on its belly."
+              "en": "A snake has no legs, so it slides on its belly.",
+              "ml": "പാമ്പിന് കാലുകളില്ല, അതിനാൽ അത് വയറുകൊണ്ട് ഇഴഞ്ഞു നീങ്ങുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "It has no legs at all."
+              "en": "It has no legs at all.",
+              "ml": "ഇതിന് കാലുകൾ തീരെയില്ല."
              },
              "level": 1,
              "options": [
@@ -7203,20 +7500,28 @@
               "cow",
               "crow"
              ],
+             "optionsMl": [
+              "പാമ്പ്",
+              "പശു",
+              "കാക്ക"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which animal moves by sliding on its belly?"
+              "en": "Which animal moves by sliding on its belly?",
+              "ml": "വയറുകൊണ്ട് ഇഴഞ്ഞു നീങ്ങുന്ന മൃഗം ഏതാണ്?"
              }
             },
             {
              "answer": "strong back legs",
              "concept": "kerala-scert/class-3/evs#animal-movement",
              "explain": {
-              "en": "Strong back legs help a frog to jump."
+              "en": "Strong back legs help a frog to jump.",
+              "ml": "ശക്തമായ പിൻകാലുകളാണ് തവളയെ ചാടാൻ സഹായിക്കുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "Look at how long and strong its back legs are."
+              "en": "Look at how long and strong its back legs are.",
+              "ml": "ഇതിന്റെ പിൻകാലുകൾ എത്ര നീളമുള്ളതും ശക്തവുമാണെന്ന് നോക്കൂ."
              },
              "level": 1,
              "options": [
@@ -7224,20 +7529,28 @@
               "a long tail",
               "wings"
              ],
+             "optionsMl": [
+              "ശക്തമായ പിൻകാലുകൾ",
+              "നീളമുള്ള വാല്",
+              "ചിറകുകൾ"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which body part helps a frog to jump?"
+              "en": "Which body part helps a frog to jump?",
+              "ml": "തവളയെ ചാടാൻ സഹായിക്കുന്ന ശരീരഭാഗം ഏതാണ്?"
              }
             },
             {
              "answer": "3",
              "concept": "kerala-scert/class-3/evs#animal-movement",
              "explain": {
-              "en": "A duck can move in 3 ways."
+              "en": "A duck can move in 3 ways.",
+              "ml": "താറാവിന് 3 രീതികളിൽ സഞ്ചരിക്കാം."
              },
              "form": "number",
              "hint": {
-              "en": "Count: walk, swim, fly."
+              "en": "Count: walk, swim, fly.",
+              "ml": "എണ്ണുക: നടക്കുക, നീന്തുക, പറക്കുക."
              },
              "level": 1,
              "mistakes": {
@@ -7245,18 +7558,21 @@
              },
              "t": "ask",
              "text": {
-              "en": "A duck walks, swims and flies. In how many ways can it move?"
+              "en": "A duck walks, swims and flies. In how many ways can it move?",
+              "ml": "താറാവ് നടക്കുകയും നീന്തുകയും പറക്കുകയും ചെയ്യുന്നു. എത്ര രീതിയിൽ ഇതിന് സഞ്ചരിക്കാം?"
              }
             },
             {
              "answer": "crow",
              "concept": "kerala-scert/class-3/evs#animal-movement",
              "explain": {
-              "en": "A crow flies using its wings."
+              "en": "A crow flies using its wings.",
+              "ml": "കാക്ക ചിറകുകൾ ഉപയോഗിച്ച് പറക്കുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "It has wings and feathers."
+              "en": "It has wings and feathers.",
+              "ml": "ഇതിന് ചിറകുകളും തൂവലുകളുമുണ്ട്."
              },
              "level": 1,
              "options": [
@@ -7264,21 +7580,29 @@
               "goat",
               "fish"
              ],
+             "optionsMl": [
+              "കാക്ക",
+              "ആട്",
+              "മത്സ്യം"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which animal flies?"
+              "en": "Which animal flies?",
+              "ml": "പറക്കുന്ന മൃഗം/ജീവി ഏതാണ്?"
              }
             }
            ],
            "title": {
-            "en": "How animals move"
+            "en": "How animals move",
+            "ml": "മൃഗങ്ങൾ എങ്ങനെ സഞ്ചരിക്കുന്നു"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "Three groups, by what they eat."
+              "en": "Three groups, by what they eat.",
+              "ml": "കഴിക്കുന്ന ഭക്ഷണത്തിന്റെ അടിസ്ഥാനത്തിൽ മൂന്ന് കൂട്ടങ്ങൾ."
              },
              "visual": {
               "args": [
@@ -7291,7 +7615,8 @@
             },
             "story": {
              "text": {
-              "en": "Cow, Lion and Crow met for lunch. Cow brought grass. Lion said, no thank you, I eat only meat. Crow said, I will eat a little of everything! Their friend the owl laughed: a herbivore, a carnivore and an omnivore at one table!"
+              "en": "Cow, Lion and Crow met for lunch. Cow brought grass. Lion said, no thank you, I eat only meat. Crow said, I will eat a little of everything! Their friend the owl laughed: a herbivore, a carnivore and an omnivore at one table!",
+              "ml": "പശുവും സിംഹവും കാക്കയും ഉച്ചഭക്ഷണത്തിന് ഒരുമിച്ചുകൂടി. പശു പുല്ല് കൊണ്ടുവന്നു. സിംഹം പറഞ്ഞു, വേണ്ട നന്ദി, ഞാൻ മാംസം മാത്രമേ തിന്നൂ. കാക്ക പറഞ്ഞു, ഞാൻ എല്ലാം കുറച്ചവീതം തിന്നാം! അവരുടെ കൂട്ടുകാരൻ മൂങ്ങ ചിരിച്ചു: ഒരു സസ്യാഹാരിയും മാംസാഹാരിയും മിശ്രാഹാരിയും ഒരു മേശയ്ക്ക് ചുറ്റും!"
              }
             }
            },
@@ -7304,7 +7629,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Different animals eat different food. A butterfly drinks nectar from flowers. A praying mantis eats ants and small insects."
+              "en": "Different animals eat different food. A butterfly drinks nectar from flowers. A praying mantis eats ants and small insects.",
+              "ml": "വെവ്വേറെ മൃഗങ്ങൾ വെവ്വേറെ ഭക്ഷണമാണ് കഴിക്കുന്നത്. ചിത്രശലഭം പൂക്കളിൽ നിന്ന് തേൻ കുടിക്കുന്നു. വെട്ടുക്കിളി ഉറുമ്പുകളെയും ചെറിയ പ്രാണികളെയും തിന്നുന്നു."
              },
              "visual": {
               "args": [
@@ -7318,7 +7644,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Animals that eat only plant parts are called herbivores. Cows, goats and elephants are herbivores."
+              "en": "Animals that eat only plant parts are called herbivores. Cows, goats and elephants are herbivores.",
+              "ml": "സസ്യഭാഗങ്ങൾ മാത്രം തിന്നുന്ന ജീവികളെ സസ്യാഹാരികൾ എന്ന് വിളിക്കുന്നു. പശു, ആട്, ആന എന്നിവ സസ്യാഹാരികളാണ്."
              },
              "visual": {
               "args": [
@@ -7333,7 +7660,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Animals that eat only other animals are called carnivores. Lions, eagles and kingfishers are carnivores."
+              "en": "Animals that eat only other animals are called carnivores. Lions, eagles and kingfishers are carnivores.",
+              "ml": "മറ്റു ജീവികളെ മാത്രം തിന്നുന്ന ജീവികളെ മാംസാഹാരികൾ എന്ന് വിളിക്കുന്നു. സിംഹം, പരുന്ത്, പൊന്മാൻ എന്നിവ മാംസാഹാരികളാണ്."
              },
              "visual": {
               "args": [
@@ -7347,7 +7675,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Animals that eat both plants and animals are called omnivores. Crows and hens are omnivores."
+              "en": "Animals that eat both plants and animals are called omnivores. Crows and hens are omnivores.",
+              "ml": "സസ്യങ്ങളെയും മറ്റു ജീവികളെയും തിന്നുന്ന ജീവികളെ മിശ്രാഹാരികൾ എന്ന് വിളിക്കുന്നു. കാക്കയും കോഴിയും മിശ്രാഹാരികളാണ്."
              },
              "visual": {
               "args": [
@@ -7361,7 +7690,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Bodies match food. Carnivores have sharp nails and pointed teeth to catch and tear their prey. Eagles have strong, sharp beaks and bent claws. Herbivores have teeth for chewing plants."
+              "en": "Bodies match food. Carnivores have sharp nails and pointed teeth to catch and tear their prey. Eagles have strong, sharp beaks and bent claws. Herbivores have teeth for chewing plants.",
+              "ml": "ജീവികളുടെ ശരീരഘടന അവ കഴിക്കുന്ന ഭക്ഷണത്തിന് അനുയോജ്യമാണ്. മാംസാഹാരികൾക്ക് ഇരയെ പിടിക്കാനും കീറിമുറിക്കാനും മൂർച്ചയുള്ള നഖങ്ങളും കൂർത്ത പല്ലുകളുമുണ്ട്. പരുന്തിന് ശക്തമായ മൂർച്ചയുള്ള ചുണ്ടും വളഞ്ഞ നഖങ്ങളുമുണ്ട്. സസ്യാഹാരികൾക്ക് ചെടികൾ അരച്ചരച്ച് തിന്നാൻ പറ്റിയ പല്ലുകളുണ്ട്."
              },
              "visual": {
               "args": [
@@ -7375,11 +7705,13 @@
              "answer": "herbivore",
              "concept": "kerala-scert/class-3/evs#animal-food",
              "explain": {
-              "en": "Animals that eat only plant parts are herbivores."
+              "en": "Animals that eat only plant parts are herbivores.",
+              "ml": "സസ്യഭാഗങ്ങൾ മാത്രം തിന്നുന്ന ജീവികളാണ് സസ്യാഹാരികൾ."
              },
              "form": "choice",
              "hint": {
-              "en": "Herb means plant."
+              "en": "Herb means plant.",
+              "ml": "ചെടികൾ മാത്രം തിന്നുന്ന ജീവി."
              },
              "level": 1,
              "mistakes": {
@@ -7391,20 +7723,28 @@
               "carnivore",
               "omnivore"
              ],
+             "optionsMl": [
+              "സസ്യാഹാരി",
+              "മാംസാഹാരി",
+              "മിശ്രാഹാരി"
+             ],
              "t": "ask",
              "text": {
-              "en": "A cow eats only grass and leaves. What is it?"
+              "en": "A cow eats only grass and leaves. What is it?",
+              "ml": "പശു പുല്ലും ഇലകളും മാത്രമേ തിന്നുകയുള്ളൂ. അത് ഏത് വിഭാഗത്തിൽപ്പെടുന്നു?"
              }
             },
             {
              "answer": "carnivore",
              "concept": "kerala-scert/class-3/evs#animal-food",
              "explain": {
-              "en": "Animals that eat only meat are carnivores."
+              "en": "Animals that eat only meat are carnivores.",
+              "ml": "മാംസം മാത്രം തിന്നുന്ന ജീവികളാണ് മാംസാഹാരികൾ."
              },
              "form": "choice",
              "hint": {
-              "en": "It hunts other animals."
+              "en": "It hunts other animals.",
+              "ml": "ഇത് മറ്റു ജീവികളെ വേട്ടയാടുന്നു."
              },
              "level": 1,
              "mistakes": {
@@ -7415,20 +7755,28 @@
               "herbivore",
               "omnivore"
              ],
+             "optionsMl": [
+              "മാംസാഹാരി",
+              "സസ്യാഹാരി",
+              "മിശ്രാഹാരി"
+             ],
              "t": "ask",
              "text": {
-              "en": "A lion eats only meat. What is it?"
+              "en": "A lion eats only meat. What is it?",
+              "ml": "സിംഹം മാംസം മാത്രമേ തിന്നുകയുള്ളൂ. അത് ഏത് വിഭാഗത്തിൽപ്പെടുന്നു?"
              }
             },
             {
              "answer": "omnivore",
              "concept": "kerala-scert/class-3/evs#animal-food",
              "explain": {
-              "en": "Animals that eat both plants and animals are omnivores."
+              "en": "Animals that eat both plants and animals are omnivores.",
+              "ml": "സസ്യങ്ങളെയും ജീവികളെയും തിന്നുന്നവയാണ് മിശ്രാഹാരികൾ."
              },
              "form": "choice",
              "hint": {
-              "en": "It eats both plants and animals."
+              "en": "It eats both plants and animals.",
+              "ml": "ഇത് സസ്യങ്ങളെയും ജീവികളെയും തിന്നുന്നു."
              },
              "level": 1,
              "mistakes": {
@@ -7439,20 +7787,28 @@
               "herbivore",
               "carnivore"
              ],
+             "optionsMl": [
+              "മിശ്രാഹാരി",
+              "സസ്യാഹാരി",
+              "മാംസാഹാരി"
+             ],
              "t": "ask",
              "text": {
-              "en": "A crow eats seeds and also small creatures. What is it?"
+              "en": "A crow eats seeds and also small creatures. What is it?",
+              "ml": "കാക്ക വിത്തുകളും ചെറിയ ജീവികളെയും തിന്നുന്നു. അത് ഏത് വിഭാഗത്തിൽപ്പെടുന്നു?"
              }
             },
             {
              "answer": "sharp bent claws",
              "concept": "kerala-scert/class-3/evs#animal-food",
              "explain": {
-              "en": "An eagle has strong legs with sharp bent claws, and a sharp beak."
+              "en": "An eagle has strong legs with sharp bent claws, and a sharp beak.",
+              "ml": "പരുന്തിന് മൂർച്ചയുള്ള വളഞ്ഞ നഖങ്ങളുള്ള ശക്തമായ കാലുകളും മൂർച്ചയുള്ള ചുണ്ടുമുണ്ട്."
              },
              "form": "choice",
              "hint": {
-              "en": "Look at its feet."
+              "en": "Look at its feet.",
+              "ml": "അതിന്റെ കാലുകളിലേക്ക് നോക്കൂ."
              },
              "level": 1,
              "options": [
@@ -7460,20 +7816,28 @@
               "flat teeth",
               "soft feathers on its feet"
              ],
+             "optionsMl": [
+              "മൂർച്ചയുള്ള വളഞ്ഞ നഖങ്ങൾ",
+              "പരന്ന പല്ലുകൾ",
+              "കാലുകളിലെ മൃദുവായ തൂവലുകൾ"
+             ],
              "t": "ask",
              "text": {
-              "en": "What helps an eagle catch its prey?"
+              "en": "What helps an eagle catch its prey?",
+              "ml": "ഇരയെ പിടിക്കാൻ പരുന്തിനെ സഹായിക്കുന്നത് എന്താണ്?"
              }
             },
             {
              "answer": "1",
              "concept": "kerala-scert/class-3/evs#animal-food",
              "explain": {
-              "en": "Only 1: the cow. The lion eats meat and the crow eats both."
+              "en": "Only 1: the cow. The lion eats meat and the crow eats both.",
+              "ml": "1 മാത്രം: പശു. സിംഹം മാംസവും കാക്ക രണ്ടും തിന്നുന്നു."
              },
              "form": "number",
              "hint": {
-              "en": "Only the cow eats just plants."
+              "en": "Only the cow eats just plants.",
+              "ml": "പശു മാത്രമേ സസ്യങ്ങൾ മാത്രം തിന്നുന്നുള്ളൂ."
              },
              "level": 1,
              "mistakes": {
@@ -7481,19 +7845,22 @@
              },
              "t": "ask",
              "text": {
-              "en": "Cow, lion, crow. How many of these eat only plant parts?"
+              "en": "Cow, lion, crow. How many of these eat only plant parts?",
+              "ml": "പശു, സിംഹം, കാക്ക. ഇവയിൽ എത്രയെണ്ണം സസ്യഭാഗങ്ങൾ മാത്രമേ തിന്നുകയുള്ളൂ?"
              }
             }
            ],
            "title": {
-            "en": "What animals eat"
+            "en": "What animals eat",
+            "ml": "മൃഗങ്ങൾ എന്ത് കഴിക്കുന്നു"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "Four stages, one life."
+              "en": "Four stages, one life.",
+              "ml": "നാല് ഘട്ടങ്ങൾ, ഒരു ജീവിതം."
              },
              "visual": {
               "args": [
@@ -7507,7 +7874,8 @@
             },
             "story": {
              "text": {
-              "en": "A tiny egg sat under a curry leaf. Out wriggled Kutti the caterpillar, munching leaves all day. One day Kutti curled up inside a pupa and went quiet. A few days later, out flew a beautiful butterfly!"
+              "en": "A tiny egg sat under a curry leaf. Out wriggled Kutti the caterpillar, munching leaves all day. One day Kutti curled up inside a pupa and went quiet. A few days later, out flew a beautiful butterfly!",
+              "ml": "ഒരു കറിവേപ്പിലയുടെ അടിയിൽ ഒരു ചെറിയ മുട്ടയുണ്ടായിരുന്നു. അതിൽ നിന്ന് കുട്ടി എന്ന ശലഭപ്പുഴു പുറത്തുവന്ന് ദിവസം മുഴുവൻ ഇലകൾ കടിച്ച് തിന്നു. ഒരു ദിവസം കുട്ടി ഒരു പ്യൂപ്പയ്ക്കുള്ളിൽ ചുരുണ്ടുകൂടി മിണ്ടാതിരുന്നു. കുറച്ചു ദിവസങ്ങൾക്ക് ശേഷം, മനോഹരമായ ഒരു ചിത്രശലഭം പറന്നുയർന്നു!"
              }
             }
            },
@@ -7520,7 +7888,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Mithra found tiny pearly eggs under a leaf. Her mother said they were butterfly eggs."
+              "en": "Mithra found tiny pearly eggs under a leaf. Her mother said they were butterfly eggs.",
+              "ml": "മിത്ര ഒരു ഇലയുടെ അടിയിൽ ചെറിയ മുത്തുപോലെയുള്ള മുട്ടകൾ കണ്ടു. അവ ചിത്രശലഭത്തിന്റെ മുട്ടകളാണെന്ന് അമ്മ പറഞ്ഞു."
              },
              "visual": {
               "args": [
@@ -7533,7 +7902,8 @@
             {
              "t": "say",
              "text": {
-              "en": "A worm-like larva, called a caterpillar, comes out of each egg. It eats and eats the leaves and grows bigger."
+              "en": "A worm-like larva, called a caterpillar, comes out of each egg. It eats and eats the leaves and grows bigger.",
+              "ml": "ഓരോ മുട്ടയിൽ നിന്നും പുഴു പോലെയുള്ള ലാർവ (ശലഭപ്പുഴു) പുറത്തുവരുന്നു. അത് ഇലകൾ തിന്ന് തിന്ന് വലുതാകുന്നു."
              },
              "visual": {
               "args": [
@@ -7546,7 +7916,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Then the larva makes a hard case around itself. This stage is the pupa. Inside, a big change is happening."
+              "en": "Then the larva makes a hard case around itself. This stage is the pupa. Inside, a big change is happening.",
+              "ml": "തുടർന്ന് ലാർവ തിന് ചുറ്റും ഒരു ഉറപ്പുളള കൂട് ഉണ്ടാക്കുന്നു. ഈ ഘട്ടമാണ് പ്യൂപ്പ. ഇതിനുള്ളിൽ വലിയ മാറ്റങ്ങൾ നടക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -7558,7 +7929,8 @@
             {
              "t": "say",
              "text": {
-              "en": "At last, a butterfly comes out of the pupa! So a butterfly's life goes: egg, larva, pupa, butterfly."
+              "en": "At last, a butterfly comes out of the pupa! So a butterfly's life goes: egg, larva, pupa, butterfly.",
+              "ml": "ഒടുവിൽ, പ്യൂപ്പയിൽ നിന്ന് ഒരു ചിത്രശലഭം പുറത്തുവരുന്നു! അതിനാൽ ഒരു ചിത്രശലഭത്തിന്റെ ജീവിതഘട്ടങ്ങൾ: മുട്ട, ലാർവ, പ്യൂപ്പ, ചിത്രശലഭം."
              },
              "visual": {
               "args": [
@@ -7573,7 +7945,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Butterflies need plants in two ways: to lay their eggs on, and for food. Caterpillars eat leaves, and butterflies drink nectar from flowers."
+              "en": "Butterflies need plants in two ways: to lay their eggs on, and for food. Caterpillars eat leaves, and butterflies drink nectar from flowers.",
+              "ml": "ചിത്രശലഭങ്ങൾക്ക് രണ്ട് കാര്യങ്ങൾക്ക് സസ്യങ്ങൾ ആവശ്യമാണ്: മുട്ടയിടാനും ഭക്ഷണത്തിനും. ശലഭപ്പുഴുക്കൾ ഇലകൾ തിന്നുന്നു, ചിത്രശലഭങ്ങൾ പൂക്കളിൽ നിന്ന് തേൻ കുടിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -7588,7 +7961,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "In Kerala, the largest butterfly is the Southern birdwing, the smallest is the Grass jewel, and our state butterfly is the Malabar banded peacock, Buddha mayoori."
+              "en": "In Kerala, the largest butterfly is the Southern birdwing, the smallest is the Grass jewel, and our state butterfly is the Malabar banded peacock, Buddha mayoori.",
+              "ml": "കേരളത്തിലെ ഏറ്റവും വലിയ ചിത്രശലഭം ഗരുഡശലഭവും (Southern birdwing), ഏറ്റവും ചെറുത് രത്നശലഭവും (Grass jewel) ആണ്. നമ്മുടെ സംസ്ഥാന ചിത്രശലഭം ബുദ്ധമയൂരി (Malabar banded peacock) ആണ്."
              },
              "visual": {
               "args": [
@@ -7603,11 +7977,13 @@
              "answer": "a larva",
              "concept": "kerala-scert/class-3/evs#butterfly",
              "explain": {
-              "en": "A larva, or caterpillar, comes out of the egg."
+              "en": "A larva, or caterpillar, comes out of the egg.",
+              "ml": "മുട്ടയിൽ നിന്ന് ഒരു ലാർവ (ശലഭപ്പുഴു) ആണ് പുറത്തുവരുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "It looks like a little worm."
+              "en": "It looks like a little worm.",
+              "ml": "ഇത് ഒരു ചെറിയ പുഴുവിനെപ്പോലെ ഇരിക്കും."
              },
              "level": 1,
              "mistakes": {
@@ -7618,20 +7994,28 @@
               "a butterfly",
               "a pupa"
              ],
+             "optionsMl": [
+              "ഒരു ലാർവ",
+              "ഒരു ചിത്രശലഭം",
+              "ഒരു പ്യൂപ്പ"
+             ],
              "t": "ask",
              "text": {
-              "en": "What comes out of a butterfly's egg?"
+              "en": "What comes out of a butterfly's egg?",
+              "ml": "ചിത്രശലഭത്തിന്റെ മുട്ടയിൽ നിന്ന് പുറത്തുവരുന്നത് എന്താണ്?"
              }
             },
             {
              "answer": "egg, larva, pupa, butterfly",
              "concept": "kerala-scert/class-3/evs#butterfly",
              "explain": {
-              "en": "Egg, larva, pupa, then butterfly."
+              "en": "Egg, larva, pupa, then butterfly.",
+              "ml": "മുട്ട, ലാർവ, പ്യൂപ്പ, പിന്നെ ചിത്രശലഭം."
              },
              "form": "choice",
              "hint": {
-              "en": "It starts with the egg and ends with the butterfly."
+              "en": "It starts with the egg and ends with the butterfly.",
+              "ml": "ഇത് മുട്ടയിൽ തുടങ്ങി ചിത്രശലഭത്തിൽ അവസാനിക്കുന്നു."
              },
              "level": 1,
              "mistakes": {
@@ -7642,9 +8026,15 @@
               "egg, pupa, larva, butterfly",
               "larva, egg, butterfly, pupa"
              ],
+             "optionsMl": [
+              "മുട്ട, ലാർവ, പ്യൂപ്പ, ചിത്രശലഭം",
+              "മുട്ട, പ്യൂപ്പ, ലാർവ, ചിത്രശലഭം",
+              "ലാർവ, മുട്ട, ചിത്രശലഭം, പ്യൂപ്പ"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which order is right?"
+              "en": "Which order is right?",
+              "ml": "ഏത് ക്രമമാണ് ശരി?"
              },
              "visual": {
               "args": [
@@ -7660,11 +8050,13 @@
              "answer": "4",
              "concept": "kerala-scert/class-3/evs#butterfly",
              "explain": {
-              "en": "There are 4 stages."
+              "en": "There are 4 stages.",
+              "ml": "4 ഘട്ടങ്ങളുണ്ട്."
              },
              "form": "number",
              "hint": {
-              "en": "Count all four names."
+              "en": "Count all four names.",
+              "ml": "നാല് പേരുകളും എണ്ണുക."
              },
              "level": 1,
              "mistakes": {
@@ -7672,18 +8064,21 @@
              },
              "t": "ask",
              "text": {
-              "en": "How many stages are there in a butterfly's life? Count egg, larva, pupa and butterfly."
+              "en": "How many stages are there in a butterfly's life? Count egg, larva, pupa and butterfly.",
+              "ml": "ഒരു ചിത്രശലഭത്തിന്റെ ജീവിതത്തിൽ എത്ര ഘട്ടങ്ങളുണ്ട്? മുട്ട, ലാർവ, പ്യൂപ്പ, ചിത്രശലഭം എന്നിവ എണ്ണുക."
              }
             },
             {
              "answer": "Malabar banded peacock",
              "concept": "kerala-scert/class-3/evs#butterfly",
              "explain": {
-              "en": "The Malabar banded peacock, Buddha mayoori, is Kerala's state butterfly."
+              "en": "The Malabar banded peacock, Buddha mayoori, is Kerala's state butterfly.",
+              "ml": "ബുദ്ധമയൂരി (Malabar banded peacock) ആണ് കേരളത്തിന്റെ സംസ്ഥാന ചിത്രശലഭം."
              },
              "form": "choice",
              "hint": {
-              "en": "Its Malayalam name is Buddha mayoori."
+              "en": "Its Malayalam name is Buddha mayoori.",
+              "ml": "ഇതിന്റെ മലയാളം പേര് ബുദ്ധമയൂരി എന്നാണ്."
              },
              "level": 1,
              "options": [
@@ -7691,20 +8086,28 @@
               "Grass jewel",
               "Southern birdwing"
              ],
+             "optionsMl": [
+              "ബുദ്ധമയൂരി",
+              "രത്നശലഭം",
+              "ഗരുഡശലഭം"
+             ],
              "t": "ask",
              "text": {
-              "en": "What is Kerala's state butterfly?"
+              "en": "What is Kerala's state butterfly?",
+              "ml": "കേരളത്തിന്റെ സംസ്ഥാന ചിത്രശലഭം ഏതാണ്?"
              }
             },
             {
              "answer": "to lay eggs and for food",
              "concept": "kerala-scert/class-3/evs#butterfly",
              "explain": {
-              "en": "Butterflies lay eggs on plants and get food from them."
+              "en": "Butterflies lay eggs on plants and get food from them.",
+              "ml": "ചിത്രശലഭങ്ങൾ ചെടികളിൽ മുട്ടയിടുകയും അവയിൽ നിന്ന് ഭക്ഷണം നേടുകയും ചെയ്യുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of where the eggs were, and what butterflies drink."
+              "en": "Think of where the eggs were, and what butterflies drink.",
+              "ml": "മുട്ടകൾ എവിടെയായിരുന്നുവെന്നും ചിത്രശലഭങ്ങൾ എന്താണ് കുടിക്കുന്നതെന്നും ഓർക്കുക."
              },
              "level": 1,
              "options": [
@@ -7712,14 +8115,21 @@
               "to sleep inside the roots",
               "they don't need plants"
              ],
+             "optionsMl": [
+              "മുട്ടയിടാനും ഭക്ഷണത്തിനും",
+              "വേരുകൾക്കുള്ളിൽ ഉറങ്ങാൻ",
+              "അവയ്ക്ക് സസ്യങ്ങൾ ആവശ്യമില്ല"
+             ],
              "t": "ask",
              "text": {
-              "en": "Why do butterflies need plants?"
+              "en": "Why do butterflies need plants?",
+              "ml": "ചിത്രശലഭങ്ങൾക്ക് സസ്യങ്ങൾ ആവശ്യമുള്ളത് എന്തുകൊണ്ട്?"
              }
             }
            ],
            "title": {
-            "en": "The life of a butterfly"
+            "en": "The life of a butterfly",
+            "ml": "ഒരു ചിത്രശലഭത്തിന്റെ ജീവിതം"
            }
           }
          ],
@@ -7753,7 +8163,8 @@
            "alts": {
             "picture": {
              "text": {
-              "en": "More water in the gauge means more rain."
+              "en": "More water in the gauge means more rain.",
+              "ml": "അളവുപാത്രത്തിൽ വെള്ളം കൂടിയാൽ കൂടുതൽ മഴ പെയ്തു എന്നർത്ഥം."
              },
              "visual": {
               "args": [
@@ -7765,7 +8176,8 @@
             },
             "story": {
              "text": {
-              "en": "Kuttan put a bottle with a funnel in his courtyard. That night it rained and rained. In the morning, the water reached 6 on the scale! Kuttan wrote in his diary: big rain today."
+              "en": "Kuttan put a bottle with a funnel in his courtyard. That night it rained and rained. In the morning, the water reached 6 on the scale! Kuttan wrote in his diary: big rain today.",
+              "ml": "കുട്ടൻ മുറ്റത്ത് ചൊർക്ക വെച്ച ഒരു കുപ്പി എടുത്തു വെച്ചു. അന്ന് രാത്രി നന്നായി മഴ പെയ്തു. രാവിലെ നോക്കിയപ്പോൾ സ്കെയിലിൽ 6 വരെ വെള്ളമെത്തി! കുട്ടൻ ഡയറിയിൽ കുറിച്ചു: ഇന്ന് വലിയ മഴ പെയ്തു."
              }
             }
            },
@@ -7778,7 +8190,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Pitter patter! After rain the soil is wet, plants look fresh, and new shoots come up. Rain changes everything around us."
+              "en": "Pitter patter! After rain the soil is wet, plants look fresh, and new shoots come up. Rain changes everything around us.",
+              "ml": "പെയ്യുന്നു മഴ! മഴ പെയ്താൽ മണ്ണ് കുതിരും, ചെടികൾ പച്ചപിടിക്കും, പുതിയ തളിരുകൾ വരും. മഴ നമ്മുക്ക് ചുറ്റുമുള്ളതിനെയെല്ലാം മാറ്റുന്നു."
              },
              "visual": {
               "args": [
@@ -7791,7 +8204,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Some places get a lot of rain and some get very little. How do we know how much rain fell? We measure it."
+              "en": "Some places get a lot of rain and some get very little. How do we know how much rain fell? We measure it.",
+              "ml": "ചില സ്ഥലങ്ങളിൽ കൂടുതൽ മഴ കിട്ടും, ചിലയിടത്ത് വളരെ കുറച്ചും. എത്ര മഴ പെയ്തു എന്ന് നമ്മൾ എങ്ങനെ അറിയും? നമ്മളത് അളന്നു നോക്കും."
              },
              "visual": {
               "args": [
@@ -7804,7 +8218,8 @@
             {
              "t": "say",
              "text": {
-              "en": "A rain gauge measures rain. Make one with a glass bottle, a funnel and a scale. Fix the scale to the bottle, put the funnel on top, and keep it in an open place."
+              "en": "A rain gauge measures rain. Make one with a glass bottle, a funnel and a scale. Fix the scale to the bottle, put the funnel on top, and keep it in an open place.",
+              "ml": "മഴ അളക്കുന്ന ഉപകരണമാണ് മഴമാപിനി. ഒരു കുപ്പി, ചൊർക്ക (ഫണൽ), സ്കെയിൽ എന്നിവ ഉപയോഗിച്ച് ഇതൊന്നു ഉണ്ടാക്കി നോക്കാം. കുപ്പിയിൽ സ്കെയിൽ ഒട്ടിച്ച്, മുകളിൽ ചൊർക്ക വെച്ച് തുറസ്സായ സ്ഥലത്ത് വെക്കുക."
              },
              "visual": {
               "args": [
@@ -7816,7 +8231,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Read the water level in the bottle at the same time every day. The higher the water, the more rain fell that day."
+              "en": "Read the water level in the bottle at the same time every day. The higher the water, the more rain fell that day.",
+              "ml": "ദിവസവും ഒരേ സമയത്ത് കുപ്പിയിലെ വെള്ളത്തിന്റെ അളവ് നോക്കുക. വെള്ളത്തിന്റെ അളവ് കൂടുന്തോറും അന്നത്തെ മഴയുടെ അളവും കൂടുതലായിരിക്കും."
              },
              "visual": {
               "args": [
@@ -7830,7 +8246,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Rainwater that falls on soil soaks down into it. Some rainwater also flows away into streams and rivers."
+              "en": "Rainwater that falls on soil soaks down into it. Some rainwater also flows away into streams and rivers.",
+              "ml": "മണ്ണിൽ വീഴുന്ന മഴവെള്ളം താഴേക്ക് താഴ്ന്നിറങ്ങും. കുറച്ച് വെള്ളം തോടുകളിലേക്കും പുഴകളിലേക്കും ഒഴുകിപ്പോകും."
              },
              "visual": {
               "args": [
@@ -7844,11 +8261,13 @@
              "answer": "a rain gauge",
              "concept": "kerala-scert/class-3/evs#rain",
              "explain": {
-              "en": "A rain gauge measures how much rain fell."
+              "en": "A rain gauge measures how much rain fell.",
+              "ml": "പെയ്ത മഴയുടെ അളവ് നോക്കാൻ മഴമാപിനി ഉപയോഗിക്കുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "Its name has the word rain in it."
+              "en": "Its name has the word rain in it.",
+              "ml": "മഴ അളക്കുന്ന ഉപകരണം ഏതാണ്?"
              },
              "level": 1,
              "options": [
@@ -7856,20 +8275,28 @@
               "a thermometer",
               "a clock"
              ],
+             "optionsMl": [
+              "മഴമാപിനി",
+              "തെർമോമീറ്റർ",
+              "ക്ലോക്ക്"
+             ],
              "t": "ask",
              "text": {
-              "en": "What do we use to measure rainfall?"
+              "en": "What do we use to measure rainfall?",
+              "ml": "മഴയുടെ അളവ് അറിയാൻ നമ്മൾ എന്താണ് ഉപയോഗിക്കുന്നത്?"
              }
             },
             {
              "answer": "a candle",
              "concept": "kerala-scert/class-3/evs#rain",
              "explain": {
-              "en": "We need a glass bottle, a funnel and a scale. Not a candle."
+              "en": "We need a glass bottle, a funnel and a scale. Not a candle.",
+              "ml": "കുപ്പി, ചൊർക്ക, സ്കെയിൽ എന്നിവയാണ് ആവശ്യം. മെഴുകുതിരി വേണ്ട."
              },
              "form": "choice",
              "hint": {
-              "en": "We used a bottle, a funnel and a scale."
+              "en": "We used a bottle, a funnel and a scale.",
+              "ml": "നമ്മൾ കുപ്പിയും ചൊർക്കയും സ്കെയിലുമാണ് ഉപയോഗിച്ചത്."
              },
              "level": 1,
              "options": [
@@ -7877,20 +8304,28 @@
               "a funnel",
               "a scale"
              ],
+             "optionsMl": [
+              "മെഴുകുതിരി",
+              "ചൊർക്ക (ഫണൽ)",
+              "സ്കെയിൽ"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which of these is NOT needed to make our rain gauge?"
+              "en": "Which of these is NOT needed to make our rain gauge?",
+              "ml": "മഴമാപിനി ഉണ്ടാക്കാൻ താഴെ പറയുന്നവയിൽ ആവശ്യമില്ലാത്തത് ഏതാണ്?"
              }
             },
             {
              "answer": "5 cm",
              "concept": "kerala-scert/class-3/evs#rain",
              "explain": {
-              "en": "5 cm is higher than 2 cm, so more rain fell that day."
+              "en": "5 cm is higher than 2 cm, so more rain fell that day.",
+              "ml": "2 സെ.മീറ്ററിനേക്കാൾ കൂടുതലാണ് 5 സെ.മീ. അതിനാൽ അന്ന് കൂടുതൽ മഴ പെയ്തു."
              },
              "form": "choice",
              "hint": {
-              "en": "Higher water means more rain."
+              "en": "Higher water means more rain.",
+              "ml": "വെള്ളം കൂടുതൽ ഉയരുമ്പോൾ കൂടുതൽ മഴ പെയ്തു എന്നർത്ഥം."
              },
              "level": 1,
              "mistakes": {
@@ -7902,18 +8337,21 @@
              ],
              "t": "ask",
              "text": {
-              "en": "On which day did more rain fall: the day the water rose to 5 cm, or the day it rose to 2 cm?"
+              "en": "On which day did more rain fall: the day the water rose to 5 cm, or the day it rose to 2 cm?",
+              "ml": "ഏത് ദിവസമാണ് കൂടുതൽ മഴ പെയ്തത്: വെള്ളം 5 സെ.മീ ഉയർന്ന ദിവസത്തിലോ, അതോ 2 സെ.മീ ഉയർന്ന ദിവസത്തിലോ?"
              }
             },
             {
              "answer": "7",
              "concept": "kerala-scert/class-3/evs#rain",
              "explain": {
-              "en": "3 cm and 4 cm make 7 cm of rain."
+              "en": "3 cm and 4 cm make 7 cm of rain.",
+              "ml": "3 സെ.മീറ്ററും 4 സെ.മീറ്ററും ചേർന്നാൽ 7 സെ.മീറ്റർ മഴ."
              },
              "form": "number",
              "hint": {
-              "en": "Add 3 and 4."
+              "en": "Add 3 and 4.",
+              "ml": "3 ഉം 4 ഉം കൂട്ടുക."
              },
              "level": 1,
              "mistakes": {
@@ -7921,18 +8359,21 @@
              },
              "t": "ask",
              "text": {
-              "en": "Our rain gauge showed 3 cm on Monday and 4 cm on Tuesday. How many centimetres of rain on both days together?"
+              "en": "Our rain gauge showed 3 cm on Monday and 4 cm on Tuesday. How many centimetres of rain on both days together?",
+              "ml": "നമ്മുടെ മഴമാപിനി തിങ്കളാഴ്ച 3 സെ.മീറ്ററും ചൊവ്വാഴ്ച 4 സെ.മീറ്ററും കാണിച്ചു. രണ്ടു ദിവസങ്ങളിലുമായി ആകെ എത്ര സെന്റീമീറ്റർ മഴ പെയ്തു?"
              }
             },
             {
              "answer": "it soaks into the soil",
              "concept": "kerala-scert/class-3/evs#rain",
              "explain": {
-              "en": "Rainwater soaks down into the soil."
+              "en": "Rainwater soaks down into the soil.",
+              "ml": "മഴവെള്ളം മണ്ണിലേക്ക് താഴ്ന്നിറങ്ങുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of our bottle of dry soil."
+              "en": "Think of our bottle of dry soil.",
+              "ml": "ഉണങ്ങിയ മണ്ണ് അടങ്ങിയ കുപ്പിയെക്കുറിച്ച് ആലോചിക്കൂ."
              },
              "level": 1,
              "options": [
@@ -7940,21 +8381,29 @@
               "it turns into stones",
               "it goes up into the sky at once"
              ],
+             "optionsMl": [
+              "മണ്ണിലേക്ക് താഴ്ന്നിറങ്ങുന്നു",
+              "കല്ലുകളായി മാറുന്നു",
+              "ഉടൻ തന്നെ ആകാശത്തേക്ക് പോകുന്നു"
+             ],
              "t": "ask",
              "text": {
-              "en": "Where does rainwater go when it falls on soil?"
+              "en": "Where does rainwater go when it falls on soil?",
+              "ml": "മണ്ണിൽ വീഴുമ്പോൾ മഴവെള്ളത്തിന് എന്ത് സംഭവിക്കുന്നു?"
              }
             }
            ],
            "title": {
-            "en": "Rain and the rain gauge"
+            "en": "Rain and the rain gauge",
+            "ml": "മഴയും മഴമാപിനിയും"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "Water comes from many places."
+              "en": "Water comes from many places.",
+              "ml": "വെള്ളം പല സ്ഥലങ്ങളിൽ നിന്ന് ലഭിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -7966,7 +8415,8 @@
             },
             "story": {
              "text": {
-              "en": "A fish in the river called out to Kuttan: please don't throw sweet wrappers in the water. The river is my home, just like your house is yours! Kuttan picked up the wrappers and put them in the bin."
+              "en": "A fish in the river called out to Kuttan: please don't throw sweet wrappers in the water. The river is my home, just like your house is yours! Kuttan picked up the wrappers and put them in the bin.",
+              "ml": "പുഴയിലെ ഒരു മീൻ കുട്ടനോട് വിളിച്ചു പറഞ്ഞു: ദയവായി മിഠായിയുടെ അവശിഷ്ടങ്ങൾ വെള്ളത്തിലിടരുത്. നിങ്ങളുടെ വീട് പോലെ തന്നെ എന്റെ വീടാണ് ഈ പുഴ! കുട്ടൻ ആ അവശിഷ്ടങ്ങൾ എടുത്ത് വേസ്റ്റ് ബിന്നിലിട്ടു."
              }
             }
            },
@@ -7979,7 +8429,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Where does the water at your home come from? Many homes have a well. Some have a borewell, a deep narrow hole in the ground. Farms may use ponds."
+              "en": "Where does the water at your home come from? Many homes have a well. Some have a borewell, a deep narrow hole in the ground. Farms may use ponds.",
+              "ml": "നിങ്ങളുടെ വീട്ടിലെ വെള്ളം എവിടെ നിന്നാണ് വരുന്നത്? പല വീടുകളിലും കിണറുണ്ട്. ചിലയിടങ്ങളിൽ കുഴൽക്കിണറുണ്ട്, അതായത് ഭൂമിയിലെ ആഴത്തിലുള്ള ചെറിയ കുഴി. കൃഷിയിടങ്ങളിൽ കുളങ്ങൾ ഉപയോഗിക്കാറുണ്ട്."
              },
              "visual": {
               "args": [
@@ -7992,7 +8443,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Rivers, ponds, lakes and wells are all water sources. Rainwater fills them."
+              "en": "Rivers, ponds, lakes and wells are all water sources. Rainwater fills them.",
+              "ml": "പുഴകളും കുളങ്ങളും തടാകങ്ങളും കിണറുകളുമെല്ലാം ജലസ്രോതസ്സുകളാണ്. മഴവെള്ളമാണ് അവയെ നിറയ്ക്കുന്നത്."
              },
              "visual": {
               "args": [
@@ -8005,7 +8457,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Kerala has old ways too. A suranga is a narrow tunnel dug into a hill to bring groundwater out. It is used in Kasaragod. A keni is a well made by putting a hollowed tree trunk into the ground. Many tribal groups still use it."
+              "en": "Kerala has old ways too. A suranga is a narrow tunnel dug into a hill to bring groundwater out. It is used in Kasaragod. A keni is a well made by putting a hollowed tree trunk into the ground. Many tribal groups still use it.",
+              "ml": "കേരളത്തിന് പഴയ രീതികളുമുണ്ട്. ഭൂഗർഭജലം പുറത്തെടുക്കാൻ കുന്നിൽ തുരന്നുണ്ടാക്കുന്ന ചെറിയ തുരങ്കമാണ് സുരംഗ. ഇത് കാസർഗോഡ് ഉപയോഗിക്കാറുണ്ട്. മരത്തടി തുരന്ന് ഭൂമിയിൽ ഇറക്ക ഉണ്ടാക്കുന്ന കിണറാണ് കേണി. പല ഗോത്രവിഭാഗങ്ങളും ഇത് ഇപ്പഴും ഉപയോഗിക്കുന്നുണ്ട്."
              },
              "visual": {
               "args": [
@@ -8018,7 +8471,8 @@
             {
              "t": "say",
              "text": {
-              "en": "All living things need water. We use it to drink, cook, bathe, wash and farm. Fish live in it, and elephants drink and bathe in it."
+              "en": "All living things need water. We use it to drink, cook, bathe, wash and farm. Fish live in it, and elephants drink and bathe in it.",
+              "ml": "എല്ലാ ജീവജാലങ്ങൾക്കും വെള്ളം ആവശ്യമാണ്. കുടിക്കുന്നതിനും പാചകം ചെയ്യുന്നതിനും കുളിക്കുന്നതിനും തുണികൾ അലക്കുന്നതിനും കൃഷി ചെയ്യുന്നതിനും നാം വെള്ളം ഉപയോഗിക്കുന്നു. മീനുകൾ വെള്ളത്തിലാണ് ജീവിക്കുന്നത്, ആനകൾ വെള്ളം കുടിക്കാനും കുളിക്കാനും ഇത് ഉപയോഗിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -8034,7 +8488,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Water is precious, so don't waste it. Close the tap after use, and fix leaking pipes."
+              "en": "Water is precious, so don't waste it. Close the tap after use, and fix leaking pipes.",
+              "ml": "വെള്ളം വിലപ്പെട്ടതാണ്, അതിനാൽ അത് പാഴാക്കരുത്. ഉപയോഗത്തിനു ശേഷം ടാപ്പ് അടയ്ക്കുക, ചോർച്ചയുള്ള പൈപ്പുകൾ ശരിയാക്കുക."
              },
              "visual": {
               "args": [
@@ -8048,11 +8503,13 @@
              "answer": "a well",
              "concept": "kerala-scert/class-3/evs#water-sources",
              "explain": {
-              "en": "A well is a water source."
+              "en": "A well is a water source.",
+              "ml": "കിണർ ഒരു ജലസ്രോതസ്സാണ്."
              },
              "form": "choice",
              "hint": {
-              "en": "We draw water from it with a bucket."
+              "en": "We draw water from it with a bucket.",
+              "ml": "നമ്മൾ ഇതിൽ നിന്ന് കോരിയാണ് വെള്ളമെടുക്കുന്നത്."
              },
              "level": 1,
              "options": [
@@ -8060,20 +8517,28 @@
               "a chair",
               "a cupboard"
              ],
+             "optionsMl": [
+              "കിണർ",
+              "കസേര",
+              "അലമാര"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which is a water source?"
+              "en": "Which is a water source?",
+              "ml": "ജലസ്രോതസ്സ് ഏതാണ്?"
              }
             },
             {
              "answer": "a tunnel that brings out groundwater",
              "concept": "kerala-scert/class-3/evs#water-sources",
              "explain": {
-              "en": "A suranga is a narrow tunnel that brings groundwater out of a hill."
+              "en": "A suranga is a narrow tunnel that brings groundwater out of a hill.",
+              "ml": "കുന്നിൻ തുരന്ന് ഭൂഗർഭജലം പുറത്തെടുക്കുന്ന ചെറിയ തുരങ്കമാണ് സുരംഗ."
              },
              "form": "choice",
              "hint": {
-              "en": "It is used in Kasaragod."
+              "en": "It is used in Kasaragod.",
+              "ml": "ഇത് കാസർഗോഡ് ഉപയോഗിക്കാറുണ്ട്."
              },
              "level": 1,
              "options": [
@@ -8081,20 +8546,28 @@
               "a kind of fish",
               "a big boat"
              ],
+             "optionsMl": [
+              "ഭൂഗർഭജലം പുറത്തെടുക്കുന്ന തുരങ്കം",
+              "ഒരുതരം മീൻ",
+              "വലിയ ബോട്ട്"
+             ],
              "t": "ask",
              "text": {
-              "en": "What is a suranga?"
+              "en": "What is a suranga?",
+              "ml": "എന്താണ് സുരംഗ?"
              }
             },
             {
              "answer": "a hollowed tree trunk",
              "concept": "kerala-scert/class-3/evs#water-sources",
              "explain": {
-              "en": "A keni is a well made by putting a hollowed tree trunk into the ground."
+              "en": "A keni is a well made by putting a hollowed tree trunk into the ground.",
+              "ml": "മരത്തടി തുരന്ന് ഭൂമിയിൽ ഇറക്കി ഉണ്ടാക്കുന്ന കിണറാണ് കേണി."
              },
              "form": "choice",
              "hint": {
-              "en": "It is a well made with wood."
+              "en": "It is a well made with wood.",
+              "ml": "ഇത് മരം കൊണ്ട് ഉണ്ടാക്കുന്ന കിണറാണ്."
              },
              "level": 1,
              "options": [
@@ -8102,20 +8575,28 @@
               "plastic bottles",
               "glass"
              ],
+             "optionsMl": [
+              "തുരന്ന മരത്തടി",
+              "പ്ലാസ്റ്റിക് കുപ്പികൾ",
+              "ഗ്ലാസ്"
+             ],
              "t": "ask",
              "text": {
-              "en": "What is a keni made from?"
+              "en": "What is a keni made from?",
+              "ml": "കേണി എന്ത് കൊണ്ടാണ് ഉണ്ടാക്കുന്നത്?"
              }
             },
             {
              "answer": "leaving the tap open",
              "concept": "kerala-scert/class-3/evs#water-sources",
              "explain": {
-              "en": "Leaving the tap open wastes water. Close it after use."
+              "en": "Leaving the tap open wastes water. Close it after use.",
+              "ml": "ടാപ്പ് തുറന്നിടുന്നത് വെള്ളം പാഴാക്കുന്നു. ഉപയോഗശേഷം അത് അടയ്ക്കുക."
              },
              "form": "choice",
              "hint": {
-              "en": "Which one lets water run when nobody needs it?"
+              "en": "Which one lets water run when nobody needs it?",
+              "ml": "ആർക്കും ആവശ്യമില്ലാത്തപ്പോൾ വെള്ളം ഒഴുകിപ്പോകാൻ അനുവദിക്കുന്നത് ഏതാണ്?"
              },
              "level": 1,
              "options": [
@@ -8123,20 +8604,28 @@
               "closing the tap",
               "fixing a leaking pipe"
              ],
+             "optionsMl": [
+              "ടാപ്പ് തുറന്നിടുക",
+              "ടാപ്പ് അടയ്ക്കുക",
+              "ചോർച്ചയുള്ള പൈപ്പ് ശരിയാക്കുക"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which of these wastes water?"
+              "en": "Which of these wastes water?",
+              "ml": "താഴെ പറയുന്നവയിൽ ഏതാണ് വെള്ളം പാഴാക്കുന്നത്?"
              }
             },
             {
              "answer": "all living things",
              "concept": "kerala-scert/class-3/evs#water-sources",
              "explain": {
-              "en": "All living things need water to live."
+              "en": "All living things need water to live.",
+              "ml": "ജീവിക്കാൻ എല്ലാ ജീവജാലങ്ങൾക്കും വെള്ളം ആവശ്യമാണ്."
              },
              "form": "choice",
              "hint": {
-              "en": "Plants, animals and people."
+              "en": "Plants, animals and people.",
+              "ml": "ചെടികൾ, മൃഗങ്ങൾ, മനുഷ്യർ."
              },
              "level": 1,
              "options": [
@@ -8144,20 +8633,28 @@
               "only fish",
               "only people"
              ],
+             "optionsMl": [
+              "എല്ലാ ജീവജാലങ്ങൾക്കും",
+              "മീനുകൾക്ക് മാത്രം",
+              "മനുഷ്യർക്ക് മാത്രം"
+             ],
              "t": "ask",
              "text": {
-              "en": "Who needs water?"
+              "en": "Who needs water?",
+              "ml": "ആർക്കാണ് വെള്ളം ആവശ്യം?"
              }
             },
             {
              "answer": "3",
              "concept": "kerala-scert/class-3/evs#water-sources",
              "explain": {
-              "en": "Well, river and pond: 3 water sources."
+              "en": "Well, river and pond: 3 water sources.",
+              "ml": "കിണർ, പുഴ, കുളം: 3 ജലസ്രോതസ്സുകൾ."
              },
              "form": "number",
              "hint": {
-              "en": "A chair does not give water."
+              "en": "A chair does not give water.",
+              "ml": "കസേര വെള്ളം തരില്ല."
              },
              "level": 1,
              "mistakes": {
@@ -8165,19 +8662,22 @@
              },
              "t": "ask",
              "text": {
-              "en": "Well, river, chair and pond. How many of these are water sources?"
+              "en": "Well, river, chair and pond. How many of these are water sources?",
+              "ml": "കിണർ, പുഴ, കസേര, കുളം. ഇതിൽ എത്രയെണ്ണമാണ് ജലസ്രോതസ്സുകൾ?"
              }
             }
            ],
            "title": {
-            "en": "Where water comes from"
+            "en": "Where water comes from",
+            "ml": "വെള്ളം എവിടെ1നിന്ന് ലഭിക്കുന്നു"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "Soil works like a filter."
+              "en": "Soil works like a filter.",
+              "ml": "മണ്ണ് ഒരു ഫിൽട്ടർ പോലെ പ്രവർത്തിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -8188,7 +8688,8 @@
             },
             "story": {
              "text": {
-              "en": "A muddy raindrop named Chelu slid into the soil. Down, down she went, through sand and tiny stones. When she reached the well, she looked in the water and gasped: I am clear and sparkling now!"
+              "en": "A muddy raindrop named Chelu slid into the soil. Down, down she went, through sand and tiny stones. When she reached the well, she looked in the water and gasped: I am clear and sparkling now!",
+              "ml": "ചേലു എന്ന് പേരുള്ള ഒരു ചെളിയുള്ള മഴത്തുള്ളി മണ്ണിലേക്ക് വഴുതിവീണു. മണലിലൂടെയും ചെറിയ കല്ലുകളിലൂടെയും അവൾ താഴേക്ക് താഴേക്ക് പോയി. കിണറ്റിലെത്തിയപ്പോൾ അവൾ വെള്ളത്തിലേക്ക് നോക്കി അത്ഭുതത്തോടെ പറഞ്ഞു: ഞാൻ ഇപ്പോൾ നല്ല തെളിഞ്ഞ തിളക്കമുള്ള വെള്ളമായല്ലോ!"
              }
             }
            },
@@ -8201,7 +8702,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Muddy rainwater falls on the ground. So how is the water in a well clear?"
+              "en": "Muddy rainwater falls on the ground. So how is the water in a well clear?",
+              "ml": "ചെളിവെള്ളമുള്ള മഴവെള്ളം നിലത്തു വീഴുന്നു. പിന്നെ എങ്ങനെയാണ് കിണറ്റിലെ വെള്ളം തെളിഞ്ഞിരിക്കുന്നത്?"
              },
              "visual": {
               "args": [
@@ -8215,7 +8717,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Part of the rainwater seeps down into the soil. As it goes down through the soil, the dirt stays behind and the water becomes clear. This is called filtering."
+              "en": "Part of the rainwater seeps down into the soil. As it goes down through the soil, the dirt stays behind and the water becomes clear. This is called filtering.",
+              "ml": "മഴവെള്ളത്തിന്റെ ഒരു ഭാഗം മണ്ണിലേക്ക് ഊർന്നിറങ്ങുന്നു. മണ്ണിലൂടെ താഴേക്ക് പോകുമ്പോൾ അഴുക്ക് മണ്ണിൽ തങ്ങിനിൽക്കുകയും വെള്ളം തെളിയുകയും ചെയ്യുന്നു. ഇതിനെ അരിച്ചെടുക്കൽ (ഫിൽട്ടറിംഗ്) എന്ന് വിളിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -8227,7 +8730,8 @@
             {
              "t": "say",
              "text": {
-              "en": "The clear water collects under the ground. It is called groundwater, and it fills wells and other water sources."
+              "en": "The clear water collects under the ground. It is called groundwater, and it fills wells and other water sources.",
+              "ml": "തെളിഞ്ഞ വെള്ളം ഭൂമിക്കടിയിൽ ശേഖരിക്കപ്പെടുന്നു. ഇതിനെ ഭൂഗർഭജലം എന്ന് വിളിക്കുന്നു, ഇതാണ് കിണറുകളിലും മറ്റ് ജലസ്രോതസ്സുകളിലും നിറയുന്നത്."
              },
              "visual": {
               "args": [
@@ -8241,7 +8745,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Try it yourself. Put gravel, sand and coconut-shell charcoal in three shells with holes, one above the other. Pour muddy water at the top. Clearer water drips out at the bottom!"
+              "en": "Try it yourself. Put gravel, sand and coconut-shell charcoal in three shells with holes, one above the other. Pour muddy water at the top. Clearer water drips out at the bottom!",
+              "ml": "നിങ്ങളും ഇതൊന്ന് ചെയ്തുനോക്കൂ. തുളയിട്ട മൂന്ന് ചിരട്ടകൾ ഒന്നതിനുമീതെ ഒന്നായി വെച്ച് അതിൽ കല്ലുകൾ, മണൽ, ചിരട്ടക്കരി എന്നിവ നിറയ്ക്കുക. മുകളിൽ ചെളിവെള്ളം ഒഴിക്കുക. താഴെ തെളിഞ്ഞ വെള്ളം തുള്ളിയായി വീഴുന്നത് കാണാം!"
              },
              "visual": {
               "args": [
@@ -8253,7 +8758,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Clear water may still have tiny germs we cannot see. So drink boiled and cooled water."
+              "en": "Clear water may still have tiny germs we cannot see. So drink boiled and cooled water.",
+              "ml": "തെളിഞ്ഞ വെള്ളത്തിലും കണ്ണുകൊണ്ട് കാണാൻ കഴിയാത്ത ചെറിയ രോഗാണുക്കൾ ഉണ്ടായേക്കാം. അതിനാൽ തിളപ്പിച്ചാറിയ വെള്ളം മാത്രം കുടിക്കുക."
              },
              "visual": {
               "args": [
@@ -8267,11 +8773,13 @@
              "answer": "it becomes clearer",
              "concept": "kerala-scert/class-3/evs#water-clean",
              "explain": {
-              "en": "The soil filters the water, so it becomes clearer."
+              "en": "The soil filters the water, so it becomes clearer.",
+              "ml": "മണ്ണ് വെള്ളത്തെ അരിച്ചെടുക്കുന്നതിനാൽ അത് കൂടുതൽ തെളിഞ്ഞതാകുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "The soil keeps the dirt back."
+              "en": "The soil keeps the dirt back.",
+              "ml": "മണ്ണ് അഴുക്കിനെ തടഞ്ഞുനിർത്തുന്നു."
              },
              "level": 1,
              "options": [
@@ -8279,20 +8787,28 @@
               "it becomes muddier",
               "it turns into milk"
              ],
+             "optionsMl": [
+              "അത് തെളിഞ്ഞതായി മാറും",
+              "അത് കൂടുതൽ ചെളിയാകും",
+              "അത് പാലായി മാറും"
+             ],
              "t": "ask",
              "text": {
-              "en": "What happens to muddy water as it seeps down through soil?"
+              "en": "What happens to muddy water as it seeps down through soil?",
+              "ml": "ചെളിവെള്ളം മണ്ണിലൂടെ ഊർന്നിറങ്ങുമ്പോൾ അതിന് എന്ത് സംഭവിക്കും?"
              }
             },
             {
              "answer": "groundwater",
              "concept": "kerala-scert/class-3/evs#water-clean",
              "explain": {
-              "en": "Water collected under the ground is groundwater."
+              "en": "Water collected under the ground is groundwater.",
+              "ml": "ഭൂമിക്കടിയിൽ ശേഖരിക്കപ്പെടുന്ന വെള്ളമാണ് ഭൂഗർഭജലം."
              },
              "form": "choice",
              "hint": {
-              "en": "It is water under the ground."
+              "en": "It is water under the ground.",
+              "ml": "ഇത് ഭൂമിക്കടിയിലെ വെള്ളമാണ്."
              },
              "level": 1,
              "options": [
@@ -8300,20 +8816,28 @@
               "seawater",
               "rainbow water"
              ],
+             "optionsMl": [
+              "ഭൂഗർഭജലം",
+              "കടൽവെള്ളം",
+              "മഴവില്ല് വെള്ളം"
+             ],
              "t": "ask",
              "text": {
-              "en": "What do we call the water that collects under the ground?"
+              "en": "What do we call the water that collects under the ground?",
+              "ml": "ഭൂമിക്കടിയിൽ ശേഖരിക്കപ്പെടുന്ന വെള്ളത്തെ നമ്മൾ എന്ത് വിളിക്കുന്നു?"
              }
             },
             {
              "answer": "sugar",
              "concept": "kerala-scert/class-3/evs#water-clean",
              "explain": {
-              "en": "Our filter uses gravel, sand and coconut-shell charcoal. Not sugar."
+              "en": "Our filter uses gravel, sand and coconut-shell charcoal. Not sugar.",
+              "ml": "നമ്മുടെ ഫിൽട്ടറിൽ കല്ലുകൾ, മണൽ, ചിരട്ടക്കരി എന്നിവയാണ് ഉപയോഗിക്കുന്നത്. പഞ്ചസാരയല്ല."
              },
              "form": "choice",
              "hint": {
-              "en": "We used gravel, sand and charcoal."
+              "en": "We used gravel, sand and charcoal.",
+              "ml": "നമ്മൾ കല്ലുകൾ, മണൽ, കരി എന്നിവയാണ് ഉപയോഗിച്ചത്."
              },
              "level": 1,
              "options": [
@@ -8321,20 +8845,28 @@
               "sand",
               "gravel"
              ],
+             "optionsMl": [
+              "പഞ്ചസാര",
+              "മണൽ",
+              "കല്ലുകൾ"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which is NOT used in our water filter?"
+              "en": "Which is NOT used in our water filter?",
+              "ml": "നമ്മുടെ വാട്ടർ ഫിൽട്ടറിൽ ഉപയോഗിക്കാത്തത് ഏതാണ്?"
              }
             },
             {
              "answer": "3",
              "concept": "kerala-scert/class-3/evs#water-clean",
              "explain": {
-              "en": "Gravel, sand and charcoal make 3 layers."
+              "en": "Gravel, sand and charcoal make 3 layers.",
+              "ml": "കല്ലുകൾ, മണൽ, കരി എന്നിവ ചേർന്ന് 3 പാളികളാകുന്നു."
              },
              "form": "number",
              "hint": {
-              "en": "Count the three things."
+              "en": "Count the three things.",
+              "ml": "ആ മൂന്ന് വസ്തുക്കളും എണ്ണിനോക്കൂ."
              },
              "level": 1,
              "mistakes": {
@@ -8342,18 +8874,21 @@
              },
              "t": "ask",
              "text": {
-              "en": "Our filter had gravel, sand and charcoal. How many layers is that?"
+              "en": "Our filter had gravel, sand and charcoal. How many layers is that?",
+              "ml": "നമ്മുടെ ഫിൽട്ടറിൽ കല്ലുകൾ, മണൽ, കരി എന്നിവയുണ്ടായിരുന്നു. അത് എത്ര പാളികളാണ് (ലെയറുകൾ)?"
              }
             },
             {
              "answer": "boiled and cooled water",
              "concept": "kerala-scert/class-3/evs#water-clean",
              "explain": {
-              "en": "Boiled and cooled water is safest to drink."
+              "en": "Boiled and cooled water is safest to drink.",
+              "ml": "തിളപ്പിച്ചാറിയ വെള്ളമാണ് കുടിക്കാൻ ഏറ്റവും സുരക്ഷിതം."
              },
              "form": "choice",
              "hint": {
-              "en": "Boiling kills germs we cannot see."
+              "en": "Boiling kills germs we cannot see.",
+              "ml": "തിളപ്പിക്കുന്നത് നമ്മൾ കാണാത്ത രോഗാണുക്കളെ നശിപ്പിക്കുന്നു."
              },
              "level": 1,
              "options": [
@@ -8361,21 +8896,29 @@
               "muddy pond water",
               "water from a puddle"
              ],
+             "optionsMl": [
+              "തിളപ്പിച്ചാറിയ വെള്ളം",
+              "ചെളിയുള്ള കുളത്തിലെ വെള്ളം",
+              "വഴിയോരത്തെ വെള്ളക്കെട്ടിലെ വെള്ളം"
+             ],
              "t": "ask",
              "text": {
-              "en": "What is the safest water to drink?"
+              "en": "What is the safest water to drink?",
+              "ml": "കുടിക്കാൻ ഏറ്റവും സുരക്ഷിതമായ വെള്ളം ഏതാണ്?"
              }
             }
            ],
            "title": {
-            "en": "How soil makes water clean"
+            "en": "How soil makes water clean",
+            "ml": "മണ്ണ് വെള്ളത്തെ എങ്ങനെ വൃത്തിയാക്കുന്നു"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "Three things hiding in soil."
+              "en": "Three things hiding in soil.",
+              "ml": "മണ്ണിൽ ഒളിച്ചിരിക്കുന്ന മൂന്ന് കാര്യങ്ങൾ."
              },
              "visual": {
               "args": [
@@ -8388,7 +8931,8 @@
             },
             "story": {
              "text": {
-              "en": "Under the mango tree lived Mannu the earthworm. Mannu said, my soil has air to breathe, water to drink, and lots of yummy dried leaves. And when I eat, I make the soil even better for the tree!"
+              "en": "Under the mango tree lived Mannu the earthworm. Mannu said, my soil has air to breathe, water to drink, and lots of yummy dried leaves. And when I eat, I make the soil even better for the tree!",
+              "ml": "മാഞ്ചുവട്ടിൽ മന്നു എന്ന മണ്ണിര താമസിച്ചിരുന്നു. മന്നു പറഞ്ഞു, എന്റെ മണ്ണിൽ ശ്വസിക്കാൻ വായുവും കുടിക്കാൻ വെള്ളവും ധാരാളം രുചികരമായ ഉണങ്ങിയ ഇലകളുമുണ്ട്. ഞാൻ അവ തിന്നുമ്പോൾ മരത്തിന് മണ്ണ് കൂടുതൽ നല്ലതാക്കി മാറ്റുകയും ചെയ്യുന്നു!"
              }
             }
            },
@@ -8401,7 +8945,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Is soil the same everywhere? No! Soil from the courtyard, under a tree and the playground can have different colours and different sizes of grains."
+              "en": "Is soil the same everywhere? No! Soil from the courtyard, under a tree and the playground can have different colours and different sizes of grains.",
+              "ml": "മണ്ണ് എല്ലായിടത്തും ഒരേപോലെയാണോ? അല്ല! മുറ്റത്തെ മണ്ണും മരച്ചുവട്ടിലെ മണ്ണും കളിക്കളത്തിലെ മണ്ണും വ്യത്യസ്ത നിറങ്ങളിലും തരികളുടെ വലിപ്പത്തിലുമായിരിക്കാം."
              },
              "visual": {
               "args": [
@@ -8415,7 +8960,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Soil took thousands of years to form, and it is full of life. Earthworms, ants and lakhs of tiny living things live in it."
+              "en": "Soil took thousands of years to form, and it is full of life. Earthworms, ants and lakhs of tiny living things live in it.",
+              "ml": "മണ്ണ് രൂപപ്പെടാൻ ആയിരക്കണക്കിന് വർഷങ്ങൾ എടുത്തു. അത് ജീവനാൽ നിറഞ്ഞതാണ്. മണ്ണിരകളും ഉറുമ്പുകളും ലക്ഷക്കണക്കിന് ചെറുജീവികളും അതിൽ ജീവിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -8428,7 +8974,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Soil has air in it. Drop a dry clump of soil into water and watch the bubbles come out. Those bubbles are air."
+              "en": "Soil has air in it. Drop a dry clump of soil into water and watch the bubbles come out. Those bubbles are air.",
+              "ml": "മണ്ണിൽ വായു ഉണ്ട്. കരിഞ്ഞ മണ്ണിന്റെ ഒരു കഷ്ണം വെള്ളത്തിലിട്ട് കുമിളകൾ വരുന്നതു നോക്കൂ. ആ കുമിളകൾ വായുവാണ്."
              },
              "visual": {
               "args": [
@@ -8442,7 +8989,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Soil has water in it. Close some garden soil in a clear bottle and keep it in the sun. Little drops of water appear on the sides."
+              "en": "Soil has water in it. Close some garden soil in a clear bottle and keep it in the sun. Little drops of water appear on the sides.",
+              "ml": "മണ്ണിൽ വെള്ളമുണ്ട്. കുറച്ചു തൊട്ടാവാടി മണ്ണോ പൂന്തോട്ടത്തിലെ മണ്ണോ ഒരു കുപ്പിയിലാക്കി വെയിലത്ത് വെക്കുക. കുപ്പിയുടെ ഭിത്തിയിൽ ചെറിയ നീർത്തുള്ളികൾ കാണാം."
              },
              "visual": {
               "args": [
@@ -8457,7 +9005,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Soil has biomass too: dried leaves, bits of stems and remains of living things. Plants grow well in soil with lots of biomass, and earthworms eat it."
+              "en": "Soil has biomass too: dried leaves, bits of stems and remains of living things. Plants grow well in soil with lots of biomass, and earthworms eat it.",
+              "ml": "മണ്ണിൽ ജൈവവസ്തുക്കളുമുണ്ട്: ഉണങ്ങിയ ഇലകൾ, തണ്ടുകളുടെ കഷണങ്ങൾ, ജീവികളുടെ അവശിഷ്ടങ്ങൾ എന്നിവയാണവ. ധാരാളം ജൈവവസ്തുക്കളുള്ള മണ്ണിൽ ചെടികൾ നന്നായി വളരുന്നു, മണ്ണിരകൾ ഇത് തിന്നുന്നു."
              },
              "visual": {
               "args": [
@@ -8471,7 +9020,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Plants take water and minerals from the soil, and we use soil for farming and making clay models. So we must keep soil clean and fertile."
+              "en": "Plants take water and minerals from the soil, and we use soil for farming and making clay models. So we must keep soil clean and fertile.",
+              "ml": "ചെടികൾ മണ്ണിൽ നിന്ന് വെള്ളവും പോഷകങ്ങളും സ്വീകരിക്കുന്നു. നാം കൃഷിക്കாகவும் കളിമൺ ശില്പങ്ങൾ ഉണ്ടാക്കാനாகவும் മണ്ണ് ഉപയോഗിക്കുന്നു. അതിനാൽ നാം മണ്ണ് ശുദ്ധമായും ഫലഭൂയിഷ്ഠമായും സൂക്ഷിക്കണം."
              },
              "visual": {
               "args": [
@@ -8485,11 +9035,13 @@
              "answer": "there is air in soil",
              "concept": "kerala-scert/class-3/evs#soil",
              "explain": {
-              "en": "The bubbles show that soil has air in it."
+              "en": "The bubbles show that soil has air in it.",
+              "ml": "മണ്ണിൽ വായു ഉണ്ടെന്നാണ് കുമിളകൾ കാണിക്കുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "Bubbles are made of air."
+              "en": "Bubbles are made of air.",
+              "ml": "കുമിളകൾ വായു കൊണ്ടുണ്ടാക്കിയതാണ്."
              },
              "level": 1,
              "options": [
@@ -8497,20 +9049,28 @@
               "there is sugar in soil",
               "the water is boiling"
              ],
+             "optionsMl": [
+              "മണ്ണിൽ വായു ഉണ്ട്",
+              "മണ്ണിൽ പഞ്ചസാരയുണ്ട്",
+              "വെള്ളം തിളയ്ക്കുകയാണ്"
+             ],
              "t": "ask",
              "text": {
-              "en": "A dry clump of soil is dropped in water and bubbles come out. What do the bubbles show?"
+              "en": "A dry clump of soil is dropped in water and bubbles come out. What do the bubbles show?",
+              "ml": "ഉണങ്ങിയ മണ്ണിന്റെ കട്ടി വെള്ളത്തിലിടുമ്പോൾ കുമിളകൾ വരുന്നു. കുമിളകൾ എന്ത് കാണിക്കുന്നു?"
              }
             },
             {
              "answer": "there is water in soil",
              "concept": "kerala-scert/class-3/evs#soil",
              "explain": {
-              "en": "The drops came from the soil, so soil has water in it."
+              "en": "The drops came from the soil, so soil has water in it.",
+              "ml": "തുള്ളികൾ മണ്ണിൽ നിന്നാണ് വന്നത്, അതിനാൽ മണ്ണിൽ വെള്ളമുണ്ട്."
              },
              "form": "choice",
              "hint": {
-              "en": "Where did the drops come from?"
+              "en": "Where did the drops come from?",
+              "ml": "തുള്ളികൾ എവിടെ നിന്നാണ് വന്നത്?"
              },
              "level": 1,
              "options": [
@@ -8518,20 +9078,28 @@
               "the bottle is broken",
               "it rained inside"
              ],
+             "optionsMl": [
+              "മണ്ണിൽ വെള്ളമുണ്ട്",
+              "കുപ്പി പൊട്ടിയിരിക്കുന്നു",
+              "ഉള്ളിൽ മഴ പെയ്തു"
+             ],
              "t": "ask",
              "text": {
-              "en": "Soil in a closed bottle is kept in the sun. Drops appear on the sides. What does this show?"
+              "en": "Soil in a closed bottle is kept in the sun. Drops appear on the sides. What does this show?",
+              "ml": "അടച്ചുവെച്ച കുപ്പിയിലെ മണ്ണ് വെയിലത്ത് വെക്കുന്നു. വശങ്ങളിൽ തുള്ളികൾ കാണപ്പെടുന്നു. ഇത് എന്ത് കാണിക്കുന്നു?"
              }
             },
             {
              "answer": "dried leaves and remains of living things",
              "concept": "kerala-scert/class-3/evs#soil",
              "explain": {
-              "en": "Biomass is dried leaves, bits of stems and remains of living things."
+              "en": "Biomass is dried leaves, bits of stems and remains of living things.",
+              "ml": "ഉണങ്ങിയ ഇലകളും തണ്ടുകളുടെ കഷണങ്ങളും ജീവികളുടെ അവശിഷ്ടങ്ങളുമാണ് ജൈവവസ്തുക്കൾ."
              },
              "form": "choice",
              "hint": {
-              "en": "It comes from plants and animals."
+              "en": "It comes from plants and animals.",
+              "ml": "ഇത് ചെടികളിൽ നിന്നും മൃഗങ്ങളിൽ നിന്നും വരുന്നതാണ്."
              },
              "level": 1,
              "options": [
@@ -8539,20 +9107,28 @@
               "small plastic pieces",
               "stones"
              ],
+             "optionsMl": [
+              "ഉണങ്ങിയ ഇലകളും ജീവികളുടെ അവശിഷ്ടങ്ങളും",
+              "ചെറിയ പ്ലാസ്റ്റിക് കഷണങ്ങൾ",
+              "കല്ലുകൾ"
+             ],
              "t": "ask",
              "text": {
-              "en": "What is biomass in soil?"
+              "en": "What is biomass in soil?",
+              "ml": "മണ്ണിലെ ജൈവവസ്തുക്കൾ എന്നാൽ എന്താണ്?"
              }
             },
             {
              "answer": "earthworm",
              "concept": "kerala-scert/class-3/evs#soil",
              "explain": {
-              "en": "Earthworms feed on soil rich in biomass."
+              "en": "Earthworms feed on soil rich in biomass.",
+              "ml": "മണ്ണിരകൾ ജൈവവസ്തുക്കൾ നിറഞ്ഞ മണ്ണാണ് ഭക്ഷിക്കുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "It lives in the soil and has no legs."
+              "en": "It lives in the soil and has no legs.",
+              "ml": "ഇത് മണ്ണിലാണ് ജീവിക്കുന്നത്, കാലുകളില്ല."
              },
              "level": 1,
              "options": [
@@ -8560,20 +9136,28 @@
               "eagle",
               "goat"
              ],
+             "optionsMl": [
+              "മണ്ണിര",
+              "പരുന്ത്",
+              "ആട്"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which creature eats soil rich in biomass?"
+              "en": "Which creature eats soil rich in biomass?",
+              "ml": "ജൈവവസ്തുക്കൾ നിറഞ്ഞ മണ്ണ് തിന്നുന്ന ജീവി ഏതാണ്?"
              }
             },
             {
              "answer": "3",
              "concept": "kerala-scert/class-3/evs#soil",
              "explain": {
-              "en": "That is 3 things."
+              "en": "That is 3 things.",
+              "ml": "അത് 3 കാര്യങ്ങളാണ്."
              },
              "form": "number",
              "hint": {
-              "en": "Count: air, water, biomass."
+              "en": "Count: air, water, biomass.",
+              "ml": "എണ്ണുക: വായു, വെള്ളം, ജൈവവസ്തുക്കൾ."
              },
              "level": 1,
              "mistakes": {
@@ -8581,12 +9165,14 @@
              },
              "t": "ask",
              "text": {
-              "en": "Soil has air, water and biomass. How many things is that?"
+              "en": "Soil has air, water and biomass. How many things is that?",
+              "ml": "മണ്ണിൽ വായുവും വെള്ളവും ജൈവവസ്തുക്കളുമുണ്ട്. അതുകണക്കാക്കിയാൽ എത്ര കാര്യങ്ങളായി?"
              }
             }
            ],
            "title": {
-            "en": "What is in the soil?"
+            "en": "What is in the soil?",
+            "ml": "മണ്ണിൽ എന്തെല്ലാമുണ്ട്?"
            }
           }
          ],
@@ -8824,7 +9410,8 @@
            "alts": {
             "picture": {
              "text": {
-              "en": "Three clean habits every day."
+              "en": "Three clean habits every day.",
+              "ml": "ദിവസവുമുള്ള മൂന്ന് ശുചിത്വ ശീലങ്ങൾ."
              },
              "visual": {
               "args": [
@@ -8837,7 +9424,8 @@
             },
             "story": {
              "text": {
-              "en": "A doctor visited Alan's school. She showed the children how to brush: slant the brush, top to bottom, bottom to top, and don't forget the tongue! That night Alan taught his little sister, and they both grinned with sparkling teeth."
+              "en": "A doctor visited Alan's school. She showed the children how to brush: slant the brush, top to bottom, bottom to top, and don't forget the tongue! That night Alan taught his little sister, and they both grinned with sparkling teeth.",
+              "ml": "അലന്റെ സ്കൂളിൽ ഒരു ഡോക്ടർ വന്നു. എങ്ങനെ പല്ലുതേക്കണം എന്ന് അവൾ കുട്ടികൾക്ക് കാണിച്ചുകൊടുത്തു: ബ്രഷ് ചരിച്ചു പിടിക്കുക, മുകളിൽ നിന്ന് താഴേക്ക്, താഴെ നിന്ന് മുകളിലേക്ക്, നാവ് വൃത്തിയാക്കാൻ മറക്കരുത്! അന്ന് രാത്രി അലൻ തന്റെ ചെറിയ പെങ്ങൾക്കും ഇത് പഠിപ്പിച്ചുകൊടുത്തു, രണ്ടുപേരും തിളങ്ങുന്ന പല്ലുകൾ കാട്ടി ചിരിച്ചു."
              }
             }
            },
@@ -8850,7 +9438,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Brush your teeth twice a day: in the morning, and after dinner. If we don't, our teeth get damaged."
+              "en": "Brush your teeth twice a day: in the morning, and after dinner. If we don't, our teeth get damaged.",
+              "ml": "ദിവസവും രണ്ടുതരം പല്ലുതേക്കണം: രാവിലെയും രാത്രി ഭക്ഷണത്തിനു ശേഷവും. ഇല്ലെങ്കിൽ പല്ലുകൾ കേടായിപ്പോകും."
              },
              "visual": {
               "args": [
@@ -8863,7 +9452,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Hold the brush slanted. Brush the upper teeth from top to bottom and the lower teeth from bottom to top. Brush the chewing surfaces and the inner sides too, and clean your tongue."
+              "en": "Hold the brush slanted. Brush the upper teeth from top to bottom and the lower teeth from bottom to top. Brush the chewing surfaces and the inner sides too, and clean your tongue.",
+              "ml": "ബ്രഷ് ചെറുതായി ചരിച്ചു പിടിക്കുക. മേൽപ്പല്ലുകൾ മുകളിൽ നിന്ന് താഴേക്കും കീഴ്പ്പല്ലുകൾ താഴെ നിന്ന് മുകളിലേക്കും തേക്കുക. ചവയ്ക്കുന്ന ഭാഗങ്ങളും അകവശവും തേക്കണം, കൂടാതെ നാവ് വടിക്കുകയും വേണം."
              },
              "visual": {
               "args": [
@@ -8878,7 +9468,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Take a bath every day. Wash every part of your body with soap, and never bathe in dirty water. Use your own clean, dry towel, and wash it after use."
+              "en": "Take a bath every day. Wash every part of your body with soap, and never bathe in dirty water. Use your own clean, dry towel, and wash it after use.",
+              "ml": "എല്ലാ ദിവസവും കുളിക്കണം. സോപ്പ് തേച്ച് ശരീരത്തിന്റെ എല്ലാ ഭാഗങ്ങളും കഴുകുക. ഒരിക്കലും ചളിവെള്ളത്തിൽ കുളിക്കരുത്. നിങ്ങളുടെ സ്വന്തം വൃത്തിയുള്ള തോർത്ത് ഉപയോഗിക്കുക, ഉപയോഗശേഷം അത് കഴുകി ഇടണം."
              },
              "visual": {
               "args": [
@@ -8892,7 +9483,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Don't wear dirty or wet clothes. Germs grow in them and can cause scabies and rashes."
+              "en": "Don't wear dirty or wet clothes. Germs grow in them and can cause scabies and rashes.",
+              "ml": "അഴുക്കുള്ളതോ നനഞ്ഞതോ ആയ വസ്ത്രങ്ങൾ ധരിക്കരുത്. അവയിൽ അണുക്കൾ വളരുകയും ചൊറിച്ചിലും തടിപ്പുകളും ഉണ്ടാകുകയും ചെയ്യും."
              },
              "visual": {
               "args": [
@@ -8906,7 +9498,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Not keeping clean causes illnesses like dysentery, cold, scabies and rashes. My hygiene is my responsibility!"
+              "en": "Not keeping clean causes illnesses like dysentery, cold, scabies and rashes. My hygiene is my responsibility!",
+              "ml": "ശുചിത്വം പാലിച്ചില്ലെങ്കിൽ വയറിളക്കം, ജലദോഷം, ചൊറിച്ചിൽ തുടങ്ങിയ രോഗങ്ങൾ ഉണ്ടാകാം. എന്റെ ശുചിത്വം എന്റെ ഉത്തരവാദിത്തമാണ്!"
              },
              "visual": {
               "args": [
@@ -8920,11 +9513,13 @@
              "answer": "2",
              "concept": "kerala-scert/class-3/evs#personal-hygiene",
              "explain": {
-              "en": "Twice a day: in the morning and after dinner."
+              "en": "Twice a day: in the morning and after dinner.",
+              "ml": "ദിവസത്തിൽ രണ്ടുതവണ: രാവിലെയും രാത്രി ഭക്ഷണത്തിനു ശേഷവും."
              },
              "form": "number",
              "hint": {
-              "en": "Morning and after dinner."
+              "en": "Morning and after dinner.",
+              "ml": "രാവിലെയුം രാത്രി ഭക്ഷണത്തിനു ശേഷവും."
              },
              "level": 1,
              "mistakes": {
@@ -8932,18 +9527,21 @@
              },
              "t": "ask",
              "text": {
-              "en": "How many times a day should we brush our teeth?"
+              "en": "How many times a day should we brush our teeth?",
+              "ml": "നമ്മൾ ദിവസത്തിൽ എത്ര തവണ പല്ലുതേക്കണം?"
              }
             },
             {
              "answer": "from top to bottom",
              "concept": "kerala-scert/class-3/evs#personal-hygiene",
              "explain": {
-              "en": "Upper teeth are brushed from top to bottom."
+              "en": "Upper teeth are brushed from top to bottom.",
+              "ml": "മേൽപ്പല്ലുകൾ മുകളിൽ നിന്ന് താഴേക്കാണ് തേക്കേണ്ടത്."
              },
              "form": "choice",
              "hint": {
-              "en": "Brush away from the gums."
+              "en": "Brush away from the gums.",
+              "ml": "ஈறുകളിൽ നിന്ന് അകത്തേക്ക് തേക്കുക."
              },
              "level": 1,
              "options": [
@@ -8951,20 +9549,28 @@
               "only sideways, very hard",
               "we don't need to brush them"
              ],
+             "optionsMl": [
+              "മുകളിൽ നിന്ന് താഴേക്ക്",
+              "വശങ്ങളിലേക്ക് മാത്രം, വളരെ ഉറക്കെ",
+              "നമ്മൾ അവ തേക്കേണ്ടതില്ല"
+             ],
              "t": "ask",
              "text": {
-              "en": "How should we brush our upper teeth?"
+              "en": "How should we brush our upper teeth?",
+              "ml": "മേൽപ്പല്ലുകൾ എങ്ങനെയാണ് തേക്കേണ്ടത്?"
              }
             },
             {
              "answer": "your own",
              "concept": "kerala-scert/class-3/evs#personal-hygiene",
              "explain": {
-              "en": "Use your own clean towel, never someone else's."
+              "en": "Use your own clean towel, never someone else's.",
+              "ml": "നിങ്ങളുടെ സ്വന്തം വൃത്തിയുള്ള തോർത്ത് ഉപയോഗിക്കുക, മറ്റുള്ളവരുടെത് ഉപയോഗിക്കരുത്."
              },
              "form": "choice",
              "hint": {
-              "en": "Germs can pass from one person to another."
+              "en": "Germs can pass from one person to another.",
+              "ml": "അണുക്കൾ ഒരാളിൽ നിന്ന് മറ്റൊരാളിലേക്ക് പകരാം."
              },
              "level": 1,
              "options": [
@@ -8972,20 +9578,28 @@
               "anyone's",
               "the dog's"
              ],
+             "optionsMl": [
+              "നിങ്ങളുടെ സ്വന്തം",
+              "ആരുടെയെങ്കിലും",
+              "പട്ടിയുടെ"
+             ],
              "t": "ask",
              "text": {
-              "en": "Whose towel should you use after a bath?"
+              "en": "Whose towel should you use after a bath?",
+              "ml": "കുളിച്ച ശേഷം ആരുടെ തോർപ്പാണ് ഉപയോഗിക്കേണ്ടത്?"
              }
             },
             {
              "answer": "rashes and scabies",
              "concept": "kerala-scert/class-3/evs#personal-hygiene",
              "explain": {
-              "en": "Germs grow in dirty, wet clothes and can cause scabies and rashes."
+              "en": "Germs grow in dirty, wet clothes and can cause scabies and rashes.",
+              "ml": "അഴുക്കുള്ള നനഞ്ഞ വസ്ത്രങ്ങളിൽ അണുക്കൾ വളരുകയും ചൊറിച്ചിലും തടിപ്പുകളും ഉണ്ടാക്കുകയും ചെയ്യും."
              },
              "form": "choice",
              "hint": {
-              "en": "Germs grow in them."
+              "en": "Germs grow in them.",
+              "ml": "അവയിൽ അണുക്കൾ വളരുന്നു."
              },
              "level": 1,
              "options": [
@@ -8993,20 +9607,28 @@
               "we grow taller",
               "nothing at all"
              ],
+             "optionsMl": [
+              "തടിപ്പുകളും ചൊറിച്ചിലും",
+              "നമ്മൾ ഉയരം വെക്കും",
+              "ഒന്നും സംഭവിക്കില്ല"
+             ],
              "t": "ask",
              "text": {
-              "en": "What can happen if we wear dirty or wet clothes?"
+              "en": "What can happen if we wear dirty or wet clothes?",
+              "ml": "അഴുക്കുള്ളതോ നനഞ്ഞതോ ആയ വസ്ത്രങ്ങൾ ധരിച്ചാൽ എന്ത് സംഭവിക്കും?"
              }
             },
             {
              "answer": "bathing every day",
              "concept": "kerala-scert/class-3/evs#personal-hygiene",
              "explain": {
-              "en": "Bathing every day keeps our body clean and keeps illness away."
+              "en": "Bathing every day keeps our body clean and keeps illness away.",
+              "ml": "ദിവസവും കുളിക്കുന്നത് നമ്മുടെ ശരീരം വൃത്തിയായി സൂക്ഷിക്കുകയും രോഗങ്ങളെ അകറ്റുകയും ചെയ്യുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of the clean habits we learned."
+              "en": "Think of the clean habits we learned.",
+              "ml": "നമ്മൾ പഠിച്ച ശുചിത്വ ശീലങ്ങളെക്കുറിച്ച് ചിന്തിക്കുക."
              },
              "level": 1,
              "options": [
@@ -9014,21 +9636,29 @@
               "not brushing teeth",
               "wearing wet clothes"
              ],
+             "optionsMl": [
+              "ദിവസവും കുളിക്കുന്നത്",
+              "പല്ലുതേക്കാതിരിക്കുന്നത്",
+              "നനഞ്ഞ വസ്ത്രം ധരിക്കുന്നത്"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which helps keep illness away?"
+              "en": "Which helps keep illness away?",
+              "ml": "രോഗങ്ങളെ അകറ്റി നിർത്താൻ സഹായിക്കുന്നത് ഏതാണ്?"
              }
             }
            ],
            "title": {
-            "en": "Clean teeth, body and clothes"
+            "en": "Clean teeth, body and clothes",
+            "ml": "പല്ലും ശരീരവും വസ്ത്രങ്ങളും ശുചിയായി സൂക്ഷിക്കാം"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "Empty the water, stop the mosquitoes."
+              "en": "Empty the water, stop the mosquitoes.",
+              "ml": "വെള്ളം കളയൂ, കൊതുകുകളെ തടയൂ."
              },
              "visual": {
               "args": [
@@ -9040,7 +9670,8 @@
             },
             "story": {
              "text": {
-              "en": "Mosquito said to Housefly, I love dirty water lying around. I lay my eggs there! But on Sunday the children of the ward had a dry day. They emptied every coconut shell and old tyre. Mosquito sighed: no place left for my eggs!"
+              "en": "Mosquito said to Housefly, I love dirty water lying around. I lay my eggs there! But on Sunday the children of the ward had a dry day. They emptied every coconut shell and old tyre. Mosquito sighed: no place left for my eggs!",
+              "ml": "കൊതുക് ഈച്ചയോട് പറഞ്ഞു, കെട്ടിക്കിടക്കുന്ന അഴുക്കു വെള്ളം എനിക്ക് വളരെ ഇഷ്ടമാണ്. ഞാൻ അവിടെയാണ് മുട്ടയിടുന്നത്! എന്നാൽ ഞായറാഴ്ച വാർഡിലെ കുട്ടികൾ ചേർന്ന് ഡ്രൈ ഡേ ആചരിച്ചു. അവർ എല്ലാ ചിരട്ടകളിലെയും പഴയ ടയറുകളിലെയും വെള്ളം കളഞ്ഞു. കൊതുക് നെടുവീർപ്പിട്ടു: എന്റെ മുട്ടകൾക്ക് ഇനി സ്ഥലമില്ല!"
              }
             }
            },
@@ -9053,7 +9684,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Mosquitoes, flies and rats multiply where there is waste and dirty water. They spread many diseases."
+              "en": "Mosquitoes, flies and rats multiply where there is waste and dirty water. They spread many diseases.",
+              "ml": "മാലിന്യങ്ങളും കെട്ടിക്കിടക്കുന്ന വെള്ളവും ഉള്ളിടത്ത് കൊതുകുകളും ஈக்களும் എലികളും പെരുകുന്നു. അവ പല രോഗങ്ങളും പരത്തുന്നു."
              },
              "visual": {
               "args": [
@@ -9067,7 +9699,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Mosquitoes spread dengue fever, malaria, chikungunya and elephantiasis. They lay their eggs in collected water."
+              "en": "Mosquitoes spread dengue fever, malaria, chikungunya and elephantiasis. They lay their eggs in collected water.",
+              "ml": "കൊതുകുകൾ ഡെങ്കിപ്പനി, മലേറിയ, ചിക്കുൻഗുനിയ, മന്ത് തുടങ്ങിയ രോഗങ്ങൾ പരത്തുന്നു. അവ കെട്ടിക്കിടക്കുന്ന വെള്ളത്തിലാണ് മുട്ടയിടുന്നത്."
              },
              "visual": {
               "args": [
@@ -9080,7 +9713,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Coconut shells, old tyres, bottles, caps and toys lying outside can collect rainwater. Mosquito eggs in such water become adult mosquitoes in eight days."
+              "en": "Coconut shells, old tyres, bottles, caps and toys lying outside can collect rainwater. Mosquito eggs in such water become adult mosquitoes in eight days.",
+              "ml": "വീടിനു പുറത്തുകിടക്കുന്ന ചിരട്ടകൾ, പഴയ ടയറുകൾ, കുപ്പികൾ, അടപ്പുകൾ, പാത്രങ്ങൾ എന്നിവയിൽ മഴവെള്ളം കെട്ടിക്കിടക്കാം. അങ്ങനെയുള്ള വെള്ളത്തിലെ കൊതുകുമുട്ടകൾ എട്ടു ദിവസത്തിനകം വളർന്നുവരുന്ന കൊതുകുകളായി മാറുന്നു."
              },
              "visual": {
               "args": [
@@ -9094,7 +9728,8 @@
             {
              "t": "say",
              "text": {
-              "en": "So once every seven days, we empty that water and remove things that can hold water. This is called a dry day."
+              "en": "So once every seven days, we empty that water and remove things that can hold water. This is called a dry day.",
+              "ml": "അതുകൊണ്ട് ഏഴു ദിവസത്തിൽ ഒരിക്കൽ നാം ഈ വെള്ളം കളയുകയും വെള്ളം നിൽക്കാൻ സാധ്യതയുള്ള സാധനങ്ങൾ നീക്കം ചെയ്യുകയും വേണം. ഇതിനെ ഡ്രൈ ഡേ അഥവാ ഉണക്കദിനം എന്ന് വിളിക്കുന്നു."
              },
              "visual": {
               "args": [
@@ -9106,7 +9741,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Some diseases spread through dirty water: dysentery, jaundice, cholera and typhoid. Drink boiled and cooled water."
+              "en": "Some diseases spread through dirty water: dysentery, jaundice, cholera and typhoid. Drink boiled and cooled water.",
+              "ml": "അശുദ്ധമായ വെള്ളത്തിലൂടെ വയറിളക്കം, മഞ്ഞപ്പിത്തം, കോളറ, ടൈഫോയ്ഡ് തുടങ്ങിയ രോഗങ്ങൾ പകരുന്നു. തിളപ്പിച്ചാറിയ വെള്ളം കുടിക്കുക."
              },
              "visual": {
               "args": [
@@ -9120,7 +9756,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Dysentery makes the body lose water. It needs to be given back: salted rice water, salted buttermilk, coconut water, or lime juice with salt and sugar. ORS from the health centre, mixed in boiled and cooled water, helps too."
+              "en": "Dysentery makes the body lose water. It needs to be given back: salted rice water, salted buttermilk, coconut water, or lime juice with salt and sugar. ORS from the health centre, mixed in boiled and cooled water, helps too.",
+              "ml": "വയറിളക്കം ഉണ്ടാകുമ്പോൾ ശരീരത്തിലെ ജലം നഷ്ടപ്പെടുന്നു. അത് തിരികെ നൽകണം: ഉപ്പിട്ട കഞ്ഞിവെള്ളം, ഉപ്പിട്ട മോര്, കരിക്കിൻവെള്ളം അല്ലെങ്കിൽ ഉപ്പും പഞ്ചസാരയും ചേർത്ത നാരങ്ങാവെള്ളം എന്നിവ നൽകാം. ആരോഗ്യകേന്ദ്രത്തിൽ നിന്ന് ലഭിക്കുന്ന ഒ.ആർ.എസ്. (ORS) തിളപ്പിച്ചാറിയ വെള്ളത്തിൽ കലക്കി നൽകുന്നതും നല്ലതാണ്."
              },
              "visual": {
               "args": [
@@ -9135,11 +9772,13 @@
              "answer": "7",
              "concept": "kerala-scert/class-3/evs#clean-surroundings",
              "explain": {
-              "en": "Once every 7 days."
+              "en": "Once every 7 days.",
+              "ml": "7 ദിവസത്തിലൊരിക്കൽ."
              },
              "form": "number",
              "hint": {
-              "en": "Mosquito eggs take 8 days to become adults, so we clear water a day before."
+              "en": "Mosquito eggs take 8 days to become adults, so we clear water a day before.",
+              "ml": "കൊതുകുമുട്ടകൾ വളരാൻ 8 ദിവസം വേണം, അതിനാൽ നാം ഒരു ദിവസം മുമ്പ് വെള്ളം കളയുന്നു."
              },
              "level": 1,
              "mistakes": {
@@ -9147,18 +9786,21 @@
              },
              "t": "ask",
              "text": {
-              "en": "How often should we have a dry day? Once every how many days?"
+              "en": "How often should we have a dry day? Once every how many days?",
+              "ml": "നാം എത്ര ദിവസത്തിലൊരിക്കലാണ് ഡ്രൈ ഡേ ആചരിക്കേണ്ടത്? എത്ര ദിവസം കൂടുമ്പോൾ?"
              }
             },
             {
              "answer": "8",
              "concept": "kerala-scert/class-3/evs#clean-surroundings",
              "explain": {
-              "en": "In 8 days. That is why dry day comes every 7 days."
+              "en": "In 8 days. That is why dry day comes every 7 days.",
+              "ml": "8 ദിവസംകൊണ്ട്. അതുകൊണ്ടാണ് 7 ദിവസത്തിലൊരിക്കൽ ഡ്രൈ ഡേ വരുന്നത്."
              },
              "form": "number",
              "hint": {
-              "en": "It is one day more than a week."
+              "en": "It is one day more than a week.",
+              "ml": "ഇത് ഒരു ആഴ്ചയേക്കാൾ ഒരു ദിവസം കൂടുതലാണ്."
              },
              "level": 1,
              "mistakes": {
@@ -9166,18 +9808,21 @@
              },
              "t": "ask",
              "text": {
-              "en": "In how many days do mosquito eggs become adult mosquitoes?"
+              "en": "In how many days do mosquito eggs become adult mosquitoes?",
+              "ml": "കൊതുകുമുട്ടകൾ എത്ര ദിവസം കൊണ്ടാണ് വളർന്ന കൊതുകുകളായി മാറുന്നത്?"
              }
             },
             {
              "answer": "dengue fever",
              "concept": "kerala-scert/class-3/evs#clean-surroundings",
              "explain": {
-              "en": "Dengue fever is spread by mosquitoes."
+              "en": "Dengue fever is spread by mosquitoes.",
+              "ml": "ഡെങ്കിപ്പനി പരത്തുന്നത് കൊതുകുകളാണ്."
              },
              "form": "choice",
              "hint": {
-              "en": "Mosquitoes spread dengue, malaria and chikungunya."
+              "en": "Mosquitoes spread dengue, malaria and chikungunya.",
+              "ml": "കൊതുകുകൾ ഡെങ്കിപ്പനി, മലേറിയ, ചിക്കുൻഗുനിയ എന്നിവ പരത്തുന്നു."
              },
              "level": 1,
              "options": [
@@ -9185,20 +9830,28 @@
               "toothache",
               "a broken arm"
              ],
+             "optionsMl": [
+              "ഡെങ്കിപ്പനി",
+              "പല്ലുവേദന",
+              "ഒടിഞ്ഞ കൈ"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which disease is spread by mosquitoes?"
+              "en": "Which disease is spread by mosquitoes?",
+              "ml": "കൊതുകുകൾ പരത്തുന്ന രോഗം ഏതാണ്?"
              }
             },
             {
              "answer": "in collected water",
              "concept": "kerala-scert/class-3/evs#clean-surroundings",
              "explain": {
-              "en": "Mosquitoes lay their eggs in collected water."
+              "en": "Mosquitoes lay their eggs in collected water.",
+              "ml": "കൊതുകുകൾ കെട്ടിക്കിടക്കുന്ന വെള്ളത്തിലാണ് മുട്ടയിടുന്നത്."
              },
              "form": "choice",
              "hint": {
-              "en": "Think of the coconut shells after rain."
+              "en": "Think of the coconut shells after rain.",
+              "ml": "മഴയ്ക്ക് ശേഷമുള്ള ചിരട്ടകളെക്കുറിച്ച് ഓർക്കുക."
              },
              "level": 1,
              "options": [
@@ -9206,20 +9859,28 @@
               "in dry sand",
               "in a hot oven"
              ],
+             "optionsMl": [
+              "കെട്ടിക്കിടക്കുന്ന വെള്ളത്തിൽ",
+              "ഉണങ്ങിയ മണലിൽ",
+              "ചൂടുള്ള അടുപ്പിൽ"
+             ],
              "t": "ask",
              "text": {
-              "en": "Where do mosquitoes lay their eggs?"
+              "en": "Where do mosquitoes lay their eggs?",
+              "ml": "കൊതുകുകൾ എവിടയാണ് മുട്ടയിടുന്നത്?"
              }
             },
             {
              "answer": "salted rice water",
              "concept": "kerala-scert/class-3/evs#clean-surroundings",
              "explain": {
-              "en": "Salted rice water, buttermilk, coconut water or ORS give back lost water."
+              "en": "Salted rice water, buttermilk, coconut water or ORS give back lost water.",
+              "ml": "ഉപ്പിട്ട കഞ്ഞിവെള്ളം, മോര്, കരിക്കിൻവെള്ളം അല്ലെങ്കിൽ ഒ.ആർ.എസ്. എന്നിവ നഷ്ടപ്പെട്ട ജലം തിരികെ നൽകുന്നു."
              },
              "form": "choice",
              "hint": {
-              "en": "The body has lost water and salt."
+              "en": "The body has lost water and salt.",
+              "ml": "ശരീരത്തിന് വെള്ളവും ഉപ്പും നഷ്ടപ്പെട്ടിരിക്കുന്നു."
              },
              "level": 1,
              "options": [
@@ -9227,21 +9888,29 @@
               "a fizzy cold drink",
               "nothing at all"
              ],
+             "optionsMl": [
+              "ഉപ്പിട്ട കഞ്ഞിവെള്ളം",
+              "തണുത്ത സോഡ",
+              "ഒന്നും കുടിക്കേണ്ടതില്ല"
+             ],
              "t": "ask",
              "text": {
-              "en": "Which drink helps someone who has dysentery?"
+              "en": "Which drink helps someone who has dysentery?",
+              "ml": "വയറിളക്കമുള്ള ഒരാൾക്ക് കുടിക്കാൻ നല്ലത് ഏതാണ്?"
              }
             }
            ],
            "title": {
-            "en": "Clean surroundings"
+            "en": "Clean surroundings",
+            "ml": "ശുചിയായ ചുറ്റുപാടുകൾ"
            }
           },
           {
            "alts": {
             "picture": {
              "text": {
-              "en": "Three bins, three kinds of waste."
+              "en": "Three bins, three kinds of waste.",
+              "ml": "മൂന്ന് മാലിന്യപ്പട്ടികൾ, മൂന്ന് തരം മാലിന്യങ്ങൾ."
              },
              "visual": {
               "args": [
@@ -9254,7 +9923,8 @@
             },
             "story": {
              "text": {
-              "en": "Three bins stood in a row at school. Green bin ate banana peels and said, yum, I will become manure! Blue bin collected plastic bottles for recycling. Red bin carefully took the old bulb and the medicine strip. Nothing ended up on the playground."
+              "en": "Three bins stood in a row at school. Green bin ate banana peels and said, yum, I will become manure! Blue bin collected plastic bottles for recycling. Red bin carefully took the old bulb and the medicine strip. Nothing ended up on the playground.",
+              "ml": "വിദ്യാലയത്തിൽ മൂന്ന് മാലിന്യപ്പട്ടികൾ വരിവരിയായി ഉണ്ടായിരുന്നു. പച്ചപ്പട്ടി പഴത്തോലുകൾ തിന്ന് സന്തോഷത്തോടെ പറഞ്ഞു, ഞാൻ വളമായി മാറും! നീലപ്പട്ടി പുനരുപയോഗത്തിനായി പ്ലാസ്റ്റിക് കുപ്പികൾ ശേഖരിച്ചു. ചുവപ്പുപ്പട്ടി പഴയ ബൾബും മരുന്നിന്റെ ഉറയും ശ്രദ്ധയോടെ വാങ്ങി. കളിസ്ഥലത്ത് ഒരു മാലിന്യവും വീണുകിടന്നില്ല."
              }
             }
            },
@@ -9267,7 +9937,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Why do schools have separate bins for waste? Because different waste must be handled in different ways."
+              "en": "Why do schools have separate bins for waste? Because different waste must be handled in different ways.",
+              "ml": "വിദ്യാലയങ്ങളിൽ എന്തിനാണ് വെവ്വേറെ മാലിന്യപ്പട്ടികൾ വെച്ചിരിക്കുന്നത്? കാരണം ഓരോ തരം മാലിന്യവും വ്യത്യസ്ത രീതിയിലാണ് സംസ്കരിക്കേണ്ടത്."
              },
              "visual": {
               "args": [
@@ -9281,7 +9952,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Organic waste rots in the soil. Food scraps, vegetable peels, banana skins and fish waste are organic."
+              "en": "Organic waste rots in the soil. Food scraps, vegetable peels, banana skins and fish waste are organic.",
+              "ml": "ജൈവമാലിന്യങ്ങൾ മണ്ണിൽ അളിഞ്ഞുചേരും. ഭക്ഷണ അവശിഷ്ടങ്ങൾ, പച്ചക്കറിത്തോലുകൾ, പഴത്തോലുകൾ, മീൻ അവശിഷ്ടങ്ങൾ എന്നിവ ജൈവമാലിന്യങ്ങളാണ്."
              },
              "visual": {
               "args": [
@@ -9295,7 +9967,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Inorganic waste does not rot. Plastic bottles, plastic covers and PVC pipes are inorganic."
+              "en": "Inorganic waste does not rot. Plastic bottles, plastic covers and PVC pipes are inorganic.",
+              "ml": "അജൈവമാലിന്യങ്ങൾ മണ്ണിൽ അഴുകിപ്പോകില്ല. പ്ലാസ്റ്റിക് കുപ്പികൾ, പ്ലാസ്റ്റിക് കവറുകൾ, പി.വി.സി പൈപ്പുകൾ എന്നിവ അജൈവമാലിന്യങ്ങളാണ്."
              },
              "visual": {
               "args": [
@@ -9308,7 +9981,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Hazardous waste can harm us. Electronic waste, bulbs, expired medicines and pesticide bottles are hazardous."
+              "en": "Hazardous waste can harm us. Electronic waste, bulbs, expired medicines and pesticide bottles are hazardous.",
+              "ml": "അപകടകരമായ മാലിന്യങ്ങൾ നമുക്ക് ഹാനികരമാണ്. ഇലക്ട്രോണിക് അവശിഷ്ടങ്ങൾ, ബൾബുകൾ, കാലാവധി കഴിഞ്ഞ മരുന്നുകൾ, കീടനാശിനി കുപ്പികൾ എന്നിവ അപകടകരമായ മാലിന്യങ്ങളാണ്."
              },
              "visual": {
               "args": [
@@ -9323,7 +9997,8 @@
              "label": "example",
              "t": "say",
              "text": {
-              "en": "Organic waste can become manure. Put it in a compost pit and cover it with soil. In three to four months it turns into manure."
+              "en": "Organic waste can become manure. Put it in a compost pit and cover it with soil. In three to four months it turns into manure.",
+              "ml": "ജൈവമാലിന്യങ്ങൾ വളമാക്കി മാറ്റാം. ഒരു കമ്പോസ്റ്റ് കുഴിയിലിട്ട് മണ്ണുകൊണ്ട് മൂടുക. മൂന്ന് മുതൽ നാല് മാസത്തിനുള്ളിൽ ഇത് വളമായി മാറും."
              },
              "visual": {
               "args": [
@@ -9335,7 +10010,8 @@
             {
              "t": "say",
              "text": {
-              "en": "Never throw plastic around and never burn it. Burning plastic harms our health. Sort it and give it to the waste collectors for recycling."
+              "en": "Never throw plastic around and never burn it. Burning plastic harms our health. Sort it and give it to the waste collectors for recycling.",
+              "ml": "പ്ലാസ്റ്റിക് വലിച്ചെറിയാനോ കത്തിക്കാനോ പാടില്ല. പ്ലാസ്റ്റിക് കത്തിക്കുന്നത് നമ്മുടെ ആരോഗ്യത്തിന് ഹാനികരമാണ്. ഇവ തരംതിരിച്ച് പുനരുപയോഗത്തിനായി മാലിന്യ ശേഖർത്താക്കൾക്ക് നൽകുക."
              },
              "visual": {
               "args": [
@@ -9349,11 +10025,13 @@
              "answer": "organic",
              "concept": "kerala-scert/class-3/evs#waste",
              "explain": {
-              "en": "A banana peel rots in soil, so it is organic waste."
+              "en": "A banana peel rots in soil, so it is organic waste.",
+              "ml": "പഴത്തോൽ മണ്ണിൽ അഴുകിപ്പോകും, അതിനാൽ ഇത് ജൈവമാലിന്യമാണ്."
              },
              "form": "choice",
              "hint": {
-              "en": "Does it rot in the soil?"
+              "en": "Does it rot in the soil?",
+              "ml": "ഇത് മണ്ണിൽ അഴുകിപ്പോകുമോ?"
              },
              "level": 1,
              "mistakes": {
@@ -9364,20 +10042,28 @@
               "inorganic",
               "hazardous"
              ],
+             "optionsMl": [
+              "ജൈവമാലിന്യം",
+              "അജൈവമാലിന്യം",
+              "അപകടകരമായ മാലിന്യം"
+             ],
              "t": "ask",
              "text": {
-              "en": "A banana peel is which kind of waste?"
+              "en": "A banana peel is which kind of waste?",
+              "ml": "നേന്ത്രപ്പഴത്തിന്റെ തൊലി ഏത് തരം മാലിന്യമാണ്?"
              }
             },
             {
              "answer": "inorganic",
              "concept": "kerala-scert/class-3/evs#waste",
              "explain": {
-              "en": "Plastic does not rot, so it is inorganic waste."
+              "en": "Plastic does not rot, so it is inorganic waste.",
+              "ml": "പ്ലാസ്റ്റിക് അഴുകിപ്പോകില്ല, അതിനാൽ ഇത് അജൈവമാലിന്യമാണ്."
              },
              "form": "choice",
              "hint": {
-              "en": "Plastic does not rot."
+              "en": "Plastic does not rot.",
+              "ml": "പ്ലാസ്റ്റിക് അഴുകിപ്പോകില്ല."
              },
              "level": 1,
              "mistakes": {
@@ -9388,20 +10074,28 @@
               "organic",
               "hazardous"
              ],
+             "optionsMl": [
+              "അജൈവമാലിന്യം",
+              "ജൈവമാലിന്യം",
+              "അപകടകരമായ മാലിന്യം"
+             ],
              "t": "ask",
              "text": {
-              "en": "A plastic bottle is which kind of waste?"
+              "en": "A plastic bottle is which kind of waste?",
+              "ml": "പ്ലാസ്റ്റിക് കുപ്പി ഏത് തരം മാലിന്യമാണ്?"
              }
             },
             {
              "answer": "hazardous",
              "concept": "kerala-scert/class-3/evs#waste",
              "explain": {
-              "en": "Bulbs are hazardous waste."
+              "en": "Bulbs are hazardous waste.",
+              "ml": "ബൾബുകൾ അപകടകരമായ മാലിന്യങ്ങളാണ്."
              },
              "form": "choice",
              "hint": {
-              "en": "It can hurt us if it breaks."
+              "en": "It can hurt us if it breaks.",
+              "ml": "ഇത് പൊട്ടിയാൽ നമുക്ക് പരിക്കേൽക്കാം."
              },
              "level": 1,
              "mistakes": {
@@ -9412,20 +10106,28 @@
               "organic",
               "inorganic"
              ],
+             "optionsMl": [
+              "അപകടകരമായ മാലിന്യം",
+              "ജൈവമാലിന്യം",
+              "അജൈവമാലിന്യം"
+             ],
              "t": "ask",
              "text": {
-              "en": "An old bulb is which kind of waste?"
+              "en": "An old bulb is which kind of waste?",
+              "ml": "പഴയ ബൾബ് ഏത് തരം മാലിന്യമാണ്?"
              }
             },
             {
              "answer": "sort it and give it for recycling",
              "concept": "kerala-scert/class-3/evs#waste",
              "explain": {
-              "en": "Sort plastic and give it to waste collectors for recycling."
+              "en": "Sort plastic and give it to waste collectors for recycling.",
+              "ml": "പ്ലാസ്റ്റിക് തരംതിരിച്ച് പുനരുപയോഗത്തിനായി നൽകുക."
              },
              "form": "choice",
              "hint": {
-              "en": "Not throwing, not burning."
+              "en": "Not throwing, not burning.",
+              "ml": "വലിച്ചെറിയുകയോ കത്തിക്കുകയോ ചെയ്യരുത്."
              },
              "level": 1,
              "mistakes": {
@@ -9436,20 +10138,28 @@
               "burn it",
               "throw it in the river"
              ],
+             "optionsMl": [
+              "തരംതിരിച്ച് പുനരുപയോഗത്തിനായി നൽകുക",
+              "കത്തിക്കുക",
+              "പുഴയിൽ എറിയുക"
+             ],
              "t": "ask",
              "text": {
-              "en": "What should we do with plastic waste?"
+              "en": "What should we do with plastic waste?",
+              "ml": "പ്ലാസ്റ്റിക് മാലിന്യങ്ങൾ നമ്മൾ എന്ത് ചെയ്യണം?"
              }
             },
             {
              "answer": "3 to 4 months",
              "concept": "kerala-scert/class-3/evs#waste",
              "explain": {
-              "en": "About three to four months."
+              "en": "About three to four months.",
+              "ml": "മൂന്ന് മുതൽ നാല് മാസം വരെ."
              },
              "form": "choice",
              "hint": {
-              "en": "It is a few months."
+              "en": "It is a few months.",
+              "ml": "ഇത് കുറച്ച് മാസങ്ങളാണ്."
              },
              "level": 1,
              "options": [
@@ -9457,20 +10167,28 @@
               "1 day",
               "10 years"
              ],
+             "optionsMl": [
+              "3 മുതൽ 4 മാസം വരെ",
+              "1 ദിവസം",
+              "10 വർഷം"
+             ],
              "t": "ask",
              "text": {
-              "en": "How long does a compost pit take to turn food waste into manure?"
+              "en": "How long does a compost pit take to turn food waste into manure?",
+              "ml": "ഭക്ഷണ അവശിഷ്ടങ്ങൾ വളമായി മാറാൻ കമ്പോസ്റ്റ് കുഴിക്ക് എത്ര സമയം വേണം?"
              }
             },
             {
              "answer": "2",
              "concept": "kerala-scert/class-3/evs#waste",
              "explain": {
-              "en": "2: the banana peel and the vegetable peel. The plastic bottle is inorganic."
+              "en": "2: the banana peel and the vegetable peel. The plastic bottle is inorganic.",
+              "ml": "2: പഴത്തോലും പച്ചക്കറിത്തോലും. പ്ലാസ്റ്റിക് കുപ്പി അജൈവമാലിന്യമാണ്."
              },
              "form": "number",
              "hint": {
-              "en": "Which ones rot in the soil?"
+              "en": "Which ones rot in the soil?",
+              "ml": "ഇവയിൽ ഏതെല്ലാമാണ് മണ്ണിൽ അഴുകുന്നത്?"
              },
              "level": 1,
              "mistakes": {
@@ -9478,12 +10196,14 @@
              },
              "t": "ask",
              "text": {
-              "en": "Banana peel, vegetable peel and plastic bottle. How many of these are organic waste?"
+              "en": "Banana peel, vegetable peel and plastic bottle. How many of these are organic waste?",
+              "ml": "പഴത്തോൽ, പച്ചക്കറിത്തോൽ, പ്ലാസ്റ്റിക് കുപ്പി. ഇവയിൽ എത്രയെണ്ണം ജൈവമാലിന്യങ്ങളാണ്?"
              }
             }
            ],
            "title": {
-            "en": "Sorting waste"
+            "en": "Sorting waste",
+            "ml": "മാലിന്യങ്ങൾ തരംതിരിക്കൽ"
            }
           }
          ],
@@ -9819,58 +10539,74 @@
   "public_key": "sb_publishable_aBCqk9nxakWaBvvJj77fgg_AilwaqM8",
   "url": "https://puryjmsnrjkbgvhvofzp.supabase.co/functions/v1/brain"
  },
- "built": 1794546632,
+ "built": 1794572309,
  "concepts": {
   "kerala-scert/class-3/evs#animal-food": {
-   "en": "Herbivores, carnivores and omnivores"
+   "en": "Herbivores, carnivores and omnivores",
+   "ml": "സസ്യാഹാരികൾ, മാംസാഹാരികൾ, മിശ്രാഹാരികൾ"
   },
   "kerala-scert/class-3/evs#animal-movement": {
-   "en": "How animals move"
+   "en": "How animals move",
+   "ml": "മൃഗങ്ങൾ എങ്ങനെ സഞ്ചരിക്കുന്നു"
   },
   "kerala-scert/class-3/evs#animal-variety": {
-   "en": "Variety in animals"
+   "en": "Variety in animals",
+   "ml": "ജീവികളിലെ വൈവിധ്യം"
   },
   "kerala-scert/class-3/evs#animals-around": {
-   "en": "Animals around us"
+   "en": "Animals around us",
+   "ml": "നമ്മൾക്ക് ചുറ്റുമുള്ള മൃഗങ്ങൾ"
   },
   "kerala-scert/class-3/evs#butterfly": {
-   "en": "The life of a butterfly"
+   "en": "The life of a butterfly",
+   "ml": "ഒരു ചിത്രശലഭത്തിന്റെ ജീവിതം"
   },
   "kerala-scert/class-3/evs#clean-hands": {
    "en": "Washing hands"
   },
   "kerala-scert/class-3/evs#clean-surroundings": {
-   "en": "Clean surroundings and disease"
+   "en": "Clean surroundings and disease",
+   "ml": "ശുചിയായ ചുറ്റുപാടുകളും രോഗങ്ങളും"
   },
   "kerala-scert/class-3/evs#leaves-flowers": {
-   "en": "Leaves, flowers and the value of plants"
+   "en": "Leaves, flowers and the value of plants",
+   "ml": "ഇലകളും പൂക്കളും സസ്യങ്ങളുടെ പ്രാധാന്യവും"
   },
   "kerala-scert/class-3/evs#new-plants": {
-   "en": "How new plants grow"
+   "en": "How new plants grow",
+   "ml": "പുതിയ സസ്യങ്ങൾ എങ്ങനെ വളരുന്നു"
   },
   "kerala-scert/class-3/evs#personal-hygiene": {
-   "en": "Personal hygiene"
+   "en": "Personal hygiene",
+   "ml": "വ്യക്തിശുചിത്വം"
   },
   "kerala-scert/class-3/evs#plant-parts": {
-   "en": "Parts of a plant and their work"
+   "en": "Parts of a plant and their work",
+   "ml": "സസ്യത്തിന്റെ ഭാഗങ്ങളും അവയുടെ ജോലിയും"
   },
   "kerala-scert/class-3/evs#plant-types": {
-   "en": "Kinds of plants"
+   "en": "Kinds of plants",
+   "ml": "വിവിധതരം സസ്യങ്ങൾ"
   },
   "kerala-scert/class-3/evs#rain": {
-   "en": "Rain and measuring rain"
+   "en": "Rain and measuring rain",
+   "ml": "മഴയും മഴ അളക്കലും"
   },
   "kerala-scert/class-3/evs#soil": {
-   "en": "Soil and what it contains"
+   "en": "Soil and what it contains",
+   "ml": "മണ്ണും അതിലുള്ളവയും"
   },
   "kerala-scert/class-3/evs#waste": {
-   "en": "Sorting waste"
+   "en": "Sorting waste",
+   "ml": "മാലിന്യങ്ങൾ തരംതിരിക്കൽ"
   },
   "kerala-scert/class-3/evs#water-clean": {
-   "en": "Clean water"
+   "en": "Clean water",
+   "ml": "ശുദ്ധജലം"
   },
   "kerala-scert/class-3/evs#water-sources": {
-   "en": "Water sources and saving water"
+   "en": "Water sources and saving water",
+   "ml": "ജലസ്രോതസ്സുകളും വെള്ളം സംരക്ഷിക്കലും"
   },
   "kerala-scert/class-3/maths#add-carry": {
    "en": "Adding when the ones make a new ten",
@@ -10238,5 +10974,5 @@
    "voice": ""
   }
  ],
- "version": "199896647772"
+ "version": "377c911612cc"
 }
