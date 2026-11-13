@@ -1,0 +1,38 @@
+name: Add Malayalam to lessons
+
+# Adds Malayalam lines to lessons that only have English (AI translation with
+# the GEMINI_API_KEY secret), then saves them. Run it from the Actions tab.
+on:
+  workflow_dispatch:
+    inputs:
+      folder:
+        description: "Which lessons (folder)"
+        default: "content/kerala-scert/class-3/evs"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Translate
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python3 tools/translate_lessons.py "${{ github.event.inputs.folder }}"
+      - name: Save, then make voices and a new app
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git add -A content app/assets
+          if ! git diff --cached --quiet; then
+            git config user.name "scol-bot"
+            git config user.email "scol-bot@users.noreply.github.com"
+            git commit -q -m "Add Malayalam to lessons (AI translation, to be checked by a teacher)"
+            git pull -q --rebase origin main
+            git push
+            gh workflow run voice.yml
+          fi
