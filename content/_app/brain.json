@@ -1,11 +1,35 @@
 {
-  "about": "Which AI answers the children's questions. Change model, fallback_models, base_url or key_secret, commit, and the 'Deploy tutor brain' workflow updates the server. key_secret is the NAME of the GitHub secret holding the key, never the key itself. fallback_models are tried in order if the main model is busy (OpenRouter only).",
-  "base_url": "https://openrouter.ai/api/v1",
-  "model": "google/gemma-4-31b-it:free",
-  "fallback_models": ["nvidia/nemotron-3-ultra-550b-a55b:free"],
-  "key_secret": "OPENROUTER_API_KEY",
-  "device_limit": 20,
-  "daily_limit": 50,
+  "about": "Which AIs answer and explain. They are tried top to bottom: when one is busy or out of free requests, the next one answers. Edit the list, commit, and the 'Deploy tutor brain' workflow updates the server. key_secret is the NAME of the GitHub secret holding that key, never the key itself. fallback_models (OpenRouter only) are tried inside the same account. Keep this a complete file: it starts with { and ends with }.",
+  "providers": [
+    {
+      "name": "OpenRouter (free)",
+      "base_url": "https://openrouter.ai/api/v1",
+      "model": "google/gemma-4-31b-it:free",
+      "fallback_models": ["nvidia/nemotron-3-ultra-550b-a55b:free"],
+      "key_secret": "OPENROUTER_API_KEY"
+    },
+    {
+      "name": "Google Gemini",
+      "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+      "model": "gemini-2.5-flash",
+      "extra": { "reasoning_effort": "none" },
+      "key_secret": "GEMINI_API_KEY"
+    },
+    {
+      "name": "Google Gemini Lite",
+      "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+      "model": "gemini-2.5-flash-lite",
+      "key_secret": "GEMINI_API_KEY"
+    },
+    {
+      "name": "Kimi",
+      "base_url": "https://api.moonshot.ai/v1",
+      "model": "kimi-k3",
+      "key_secret": "KIMI_API_KEY"
+    }
+  ],
+  "device_limit": 40,
+  "daily_limit": 1000,
   "url": "https://puryjmsnrjkbgvhvofzp.supabase.co/functions/v1/brain",
   "public_key": "sb_publishable_aBCqk9nxakWaBvvJj77fgg_AilwaqM8"
 }
