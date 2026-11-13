@@ -182,8 +182,9 @@ class AppState extends ChangeNotifier {
 
   List<Subject> mySubjects(Bundle b) {
     final all = b.subjectsFor(boardId, classNumber);
-    if (subjectKeys.isEmpty) return all;
-    return all.where((s) => subjectKeys.contains(s.key)).toList();
+    final mine = subjectKeys.isEmpty ? all : all.where((s) => subjectKeys.contains(s.key)).toList();
+    // Subjects with lessons first; "coming soon" ones after them.
+    return [...mine.where((s) => s.lessons.isNotEmpty), ...mine.where((s) => s.lessons.isEmpty)];
   }
 
   bool isDone(Lesson l) => lessonStars.containsKey(l.id);
