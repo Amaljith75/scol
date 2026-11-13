@@ -10,8 +10,8 @@ where your child is stuck, and tries again in a different way. It works in Engli
 
 Scol follows two syllabuses: **Kerala State (SCERT)** and **CBSE (NCERT)**.
 
-> Scol is in early testing with a small number of families. The first complete subject is
-> **Class 3 Maths, Kerala syllabus**: 24 levels across the six units of Part 1 of the textbook.
+> Scol is in early testing with a small number of families. Ready now for **Class 3, Kerala syllabus**:
+> **Maths** (24 levels, six units of Part 1) and **Environmental Science** in English medium (17 levels, four units of Part 1).
 > More classes and subjects are being added.
 
 ## How a lesson works
@@ -30,6 +30,16 @@ Scol follows two syllabuses: **Kerala State (SCERT)** and **CBSE (NCERT)**.
    which way works better for your child.
 6. **Stars, not pressure.** Your child earns stars, builds a streak of learning days, and collects badges.
    Missing a day takes nothing away.
+
+## Ask Mio anything
+
+Your child can tap the 🎙️ button, ask a question out loud (or type it), and the tutor answers about the lesson,
+in English or Malayalam. This uses an AI service, so it stays off until a parent turns it on in the Parents area.
+
+## Never miss study time
+
+Choose a daily study time and the tutor reminds your child, keeps their streak going, and calls them back if they
+leave a level halfway. Reminders are friendly and can be turned off.
 
 ## How Scol knows whether your child has understood
 
@@ -79,11 +89,12 @@ Your child picks one and can switch at any time.
 
 - A parent sets up the app. Scol asks only for a first name or nickname.
 - Your child's name and progress are stored **on your phone only**. They are not sent to us or anyone else.
-- The tutors' voices are sound files we prepare in advance. Nothing your child says or does is sent to any AI service. The app does not record your child.
+- Mio's voice is made of sound files we prepare in advance. The app does not record your child.
+- Asking the tutor questions is off until you turn it on. When on, only the words of the question and the lesson topic go to an AI service to get an answer; your child's name and progress never do.
 - No advertisements.
 - You can delete everything with one button in the parent area.
 
-The app uses the internet only to download new lessons and the tutors' voice files.
+The app uses the internet to download new lessons and voice files, to check for a new version, and (if you allow it) to answer your child's questions.
 
 ## Try it
 
@@ -100,14 +111,15 @@ files are downloaded, so use Wi-Fi or mobile data for that. After that the level
 
 | Today | Coming next |
 | --- | --- |
-| Class 3 Maths (Kerala): 24 levels in 6 units | Talking to the tutor: your child asks questions by voice and the tutor answers |
-| Five tutors with their own voices, in English and Malayalam | Other subjects and Classes 1, 2 and 4; CBSE |
-| Touch activities: build shapes with sticks, move abacus beads, slide a scale to measure | More activities: matching, drawing, sorting |
-| A story or a picture when the first explanation does not work | A daily timetable across all subjects |
-| Understanding check across several questions | The weekly report sent automatically |
-| Weekly report for parents in English and Malayalam, to share or listen to | |
-| Stars, streaks, badges, level path | |
-| New lessons and voices arrive without reinstalling | |
+| Class 3 Maths: 24 levels in 6 units | Other subjects and Classes 1, 2 and 4; CBSE |
+| Class 3 EVS (English medium): 17 levels in 4 units | EVS in Malayalam medium |
+| Ask the tutor questions by voice or typing | Natural voices for all five tutors |
+| Mio speaks in a natural voice, English and Malayalam | Touch activities for EVS: sorting waste, matching animals to food |
+| Touch activities: sticks, abacus beads, sliding scale | Weekly report sent automatically |
+| A story or a picture when the first explanation does not work | |
+| Daily study reminders and a parent-chosen study time | |
+| Stars, streaks, badges, level path, weekly report | |
+| New lessons arrive by themselves; the app tells you when a new version is ready | |
 
 ## Questions
 
@@ -126,3 +138,4 @@ files are downloaded, so use Wi-Fi or mobile data for that. After that the level
 - [How lessons are added](content/README.md): for the team writing curriculum content.
 - [How Scol is built](docs/HOW_IT_IS_BUILT.md): the parts of the system.
 - [What to build next](docs/NEXT_STEPS.md): features and the plan for the MVP.
+- [The tutor brain and voices](docs/TUTOR_BRAIN.md): how to change the AI model, key or voice.
