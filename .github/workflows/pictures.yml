@@ -1,8 +1,9 @@
 name: Make pictures
 
 # Draws the cartoon pictures that lessons ask for with "visual: picture ..."
-# (Gemini's image model, with the GEMINI_API_KEY secret) and saves them in the
-# chapter's images/ folder. Runs when lessons change, once a day (to finish
+# (Gemini's image model with the GEMINI_API_KEY secret; when that is out of free
+# requests, the same model through OpenRouter with OPENROUTER_API_KEY, paid) and
+# saves them in the chapter's images/ folder. Runs when lessons change, once a day (to finish
 # anything a daily limit stopped), or by hand from the Actions tab.
 on:
   push:
@@ -30,6 +31,7 @@ jobs:
       - name: Draw missing pictures
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python3 tools/build_pictures.py
       - name: Save the pictures
         run: |

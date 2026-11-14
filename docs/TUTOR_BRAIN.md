@@ -140,6 +140,8 @@ checked against India's DPDP rules for children's data.
 ## Pictures
 
 `visual: picture 🌱 💧` in a lesson asks for a cartoon drawn from that step's English words. The "Make pictures" workflow
-(`tools/build_pictures.py`, Gemini's image model with the same `GEMINI_API_KEY`) draws the missing ones after every content
-change and once a day, and saves them in the chapter's `images/` folder; the app shows the emoji until a picture has arrived.
+(`tools/build_pictures.py`) draws the missing ones after every content change and once a day: with Gemini's image model
+(`GEMINI_API_KEY`, free but a small daily limit), and when that is used up, with the same model through OpenRouter
+(`OPENROUTER_API_KEY`, paid, a few rupees for all the pictures). Change `SCOL_IMAGE_MODEL_OPENROUTER` in the workflow
+to use another image model there. It and saves them in the chapter's `images/` folder; the app shows the emoji until a picture has arrived.
 To redraw a picture, change the step's words (or delete the file). The style line at the top of the tool sets the look.
