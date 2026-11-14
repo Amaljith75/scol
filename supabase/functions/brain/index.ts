@@ -6,12 +6,17 @@
 // Limits protect the bill: BRAIN_DEVICE_LIMIT questions per phone per day,
 // BRAIN_DAILY_LIMIT for everyone together.
 //
-// Two jobs, chosen by "mode" in the request:
-//   (none)   answer one question about the lesson
-//   "teach"  turn a whole lesson into what the tutor says at each teaching
-//            step. The result is kept in the brain_teach table, so a lesson is
-//            written once per language, tutor and mood and then served to every
-//            phone without asking the AI again (free limits last).
+// The tutor's rules live in rules.ts and apply to every mode and every AI.
+// Jobs, chosen by "mode" in the request:
+//   (none)    a live conversation turn: the child's question, with the last few
+//             turns ("history") so the talk is two-way, and the lesson notes
+//   "teach"   turn a whole lesson into what the tutor says at each teaching
+//             step. The result is kept in the brain_teach table, so a lesson is
+//             written once per language, tutor and mood and then served to every
+//             phone without asking the AI again (free limits last).
+//   "report"  read the child's progress aloud as the tutor would tell a parent
+//             or the child; the name arrives as {name} and is put back on the phone.
+import { charter, languageName, TONES } from "./rules.ts";
 
 type Provider = {
   name: string;
@@ -32,7 +37,7 @@ type TeachStep = {
   options?: string[];
 };
 
-const PROMPT_VERSION = "teach-v2"; // change this when the teaching prompt changes, so old cached lessons are redone
+const PROMPT_VERSION = "teach-v3"; // change this when the teaching prompt changes, so old cached lessons are redone
 
 const env = (k: string, d = "") => Deno.env.get(k) ?? d;
 const providers: Provider[] = (() => {
@@ -102,29 +107,15 @@ async function sha256(text: string): Promise<string> {
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 40);
 }
 
-const TONES: Record<string, string> = {
-  happy: "Sound cheerful and excited, with lots of encouragement.",
-  normal: "Sound warm and friendly.",
-  calm: "Sound calm, gentle and patient.",
-  strict: "Sound firm and serious like a strict but fair teacher: short sentences, no jokes, still kind and never insulting.",
-};
-
-const languageName = (lang: string) => (lang === "ml" ? "Malayalam (Malayalam script)" : "English");
-
-function systemPrompt(tutor: string, lang: string, lesson: string, notes: string, tone: string) {
+function systemPrompt(tutor: string, about: string, lang: string, lesson: string, notes: string, tone: string, child: string, progress: string) {
   return [
-    `You are ${tutor}, a tutor inside a learning app for children aged 7 to 9 in Class 3 in Kerala, India.`,
-    `The child is on the lesson "${lesson}". What the lesson says:\n${notes}`,
-    `Always reply in ${languageName(lang)}, even if the question is in another language, in at most three short, simple sentences a Class 3 child understands.`,
-    TONES[tone] ?? TONES.normal,
-    "Use simple everyday examples a child knows (home, school, food, play). Every example must be true: do not invent details about festivals, places or customs.",
-    "Stay close to what the lesson says; do not add new facts that the lesson does not need.",
-    "If the question is about a school topic, answer it correctly; if you are not sure, say so and suggest asking a teacher.",
-    "Never describe the app's screen, buttons or colours; you cannot see them.",
-    "Never ask for or repeat personal details (name, address, school, phone, photos).",
-    "If the question is unsafe, scary, rude, or not suitable for a young child, do not answer it; gently suggest talking to a parent or teacher and bring the child back to the lesson.",
-    "Plain text only: no lists, no markdown, no emojis.",
-  ].join("\n");
+    ...charter(tutor, about, lang, tone),
+    child ? `The child's first name is ${child}.` : "",
+    lesson ? `The child is on the lesson "${lesson}". What the lesson says:\n${notes}` : "The child is on the home screen, between lessons.",
+    progress ? `How the child is doing lately (for you only; mention it when it helps or when asked):\n${progress}` : "",
+    "This is a spoken conversation. Answer in at most three short sentences a Class 3 child understands, then, when it fits, one short question back.",
+    "If the child asks about a school topic, answer it correctly and simply. If the child just chats, chat warmly for a moment and bring them back to learning.",
+  ].filter(Boolean).join("\n");
 }
 
 /** The picture on the board, in words the AI can point at, with its touchable items numbered. */
@@ -177,21 +168,17 @@ function describeVisual(spec: string): string {
 
 function teachPrompt(tutor: string, about: string, lang: string, tone: string, sayCount: number) {
   return [
-    `You are ${tutor}, a tutor inside a learning app for children aged 7 to 9 in Class 3 in Kerala, India. ${about}`.trim(),
+    ...charter(tutor, about, lang, tone),
     "You teach one child, one to one, speaking aloud, while floating next to a board. Below is a lesson written and checked by teachers: numbered teaching steps (SAY) and the questions the child will answer afterwards (ASK). Each SAY step has a picture on the board, described in brackets, with its touchable items numbered.",
     "Your job: for each SAY step, write exactly what you say aloud to TEACH that step like a good tutor, never like someone reading a book, and which items on the board you touch while saying it.",
     "Rules for every SAY step:",
-    "- Explain the idea in your own words in 2 to 4 short sentences a child of 8 understands. Start from something the child knows from home, school, food or play, then explain.",
-    "- Many children find the language itself hard. Use the simplest everyday words, one idea per sentence, and say the key word of the step in two different ways. When you name a thing that is on the board, touch it (see below), so the child understands even if a word is new.",
+    "- 2 to 4 short sentences. Start from something the child knows, then explain the idea in your own words.",
+    "- When you name a thing that is on the board, touch it (see below), so the child understands even if a word is new.",
     "- Keep every fact, every number and every key word from the written step (for example 'equal groups'), so the questions afterwards make sense. Add no new facts, no facts from later steps, and nothing that is not true.",
-    "- End with a tiny check or a bridge, such as \"Can you see that?\" or \"Now let us look at...\". Never ask a question that needs an answer: the ASK steps do that.",
+    "- End with a tiny check or a bridge, such as \"Can you see that?\" or \"Now let us look at...\". Never ask a question that needs a real answer: the ASK steps do that.",
     "- Never give away the answers to the ASK questions.",
-    "- Do not greet the child or say hello: the app does that before you start. A step marked (example) is a worked example: walk through it slowly.",
+    "- Do not greet the child or use a name: the app greets by name before you start. A step marked (example) is a worked example: walk through it slowly.",
     "Touching the board: for each step give \"touch\", the numbers of the board items you float to and touch, in the order you mention them, so your movement matches your words. Count things by touching them one by one (3 groups: touch 1, 2, 3; a triangle's corners: touch its three corners while counting). Name things by touching each as you name it. Give 0 to 8 touches per step; an empty list is fine when nothing on the board is named.",
-    `Write only in ${languageName(lang)}. Write numbers as digits.`,
-    TONES[tone] ?? TONES.normal,
-    "Never describe the app's screen, buttons or colours; never ask for personal details.",
-    "Plain text only inside the strings: no lists, no markdown, no emojis, no stage directions, no sentence numbering.",
     `Reply with JSON only, exactly this shape: {"steps": [{"say": "what you say for SAY 1", "touch": [1, 2]}, {"say": "what you say for SAY 2", "touch": []}, ...]} with exactly ${sayCount} items, one per SAY step, in order.`,
   ].join("\n");
 }
@@ -274,7 +261,7 @@ async function ask(p: Provider, messages: unknown[], maxTokens = 700): Promise<s
 
 /** One question, up to three sentences. */
 function answerText(raw: string): string {
-  const answer = clip(raw.replace(/<think>[\s\S]*?<\/think>/g, ""), 600).replace(/[*_#`]/g, "");
+  const answer = clip(raw.replace(/<think>[\s\S]*?<\/think>/g, ""), 900).replace(/[*_#`]/g, "");
   if (!answer) throw new Error("empty answer");
   return answer;
 }
@@ -354,17 +341,29 @@ Deno.serve(async (req) => {
   const lang = body.lang === "ml" ? "ml" : "en";
 
   if (body.mode === "teach") return teach(body, device, lang);
+  if (body.mode === "report") return report(body, device, lang);
 
   const question = clip(body.question, 500);
   if (question.length < 2) return reply({ error: "bad_request" }, 400);
   const limited = await withinLimits(device);
   if (limited) return limited;
 
+  // The last few turns of this conversation, oldest first: [question, answer] pairs.
+  const history = Array.isArray(body.history)
+    ? (body.history as unknown[]).slice(-6).flatMap((h) => {
+        const pair = Array.isArray(h) ? h : [];
+        const q = clip(pair[0], 400);
+        const a = clip(pair[1], 600);
+        return q && a ? [{ role: "user", content: q }, { role: "assistant", content: a }] : [];
+      })
+    : [];
   const messages = [
     {
       role: "system",
-      content: systemPrompt(clip(body.tutor, 30) || "Mio", lang, clip(body.lesson, 120), clip(body.notes, 2500), clip(body.tone, 10)),
+      content: systemPrompt(clip(body.tutor, 30) || "Mio", clip(body.about, 200), lang, clip(body.lesson, 120), clip(body.notes, 2500),
+        clip(body.tone, 10), clip(body.child, 30), clip(body.progress, 1200)),
     },
+    ...history,
     { role: "user", content: question },
   ];
   for (const p of providers) {
@@ -376,3 +375,42 @@ Deno.serve(async (req) => {
   }
   return reply({ error: "all_busy" }, 503);
 });
+
+/** The child's progress, told aloud the way the tutor would tell it. The name arrives as {name}. */
+async function report(body: Record<string, unknown>, device: string, lang: string): Promise<Response> {
+  const facts = clip(body.report, 2500);
+  if (facts.length < 10) return reply({ error: "bad_request" }, 400);
+  const tutor = clip(body.tutor, 30) || "Mio";
+  const about = clip(body.about, 200);
+  const tone = TONES[clip(body.tone, 10)] ? clip(body.tone, 10) : "normal";
+  const listener = body.listener === "child" ? "child" : "parent";
+  const key = await sha256(["report-v1", lang, tutor, tone, listener, facts].join("\n"));
+  const cached = await cachedTeaching(key);
+  if (cached && cached.length === 1) return reply({ answer: cached[0].say, by: "cache" });
+  const limited = await withinLimits(device);
+  if (limited) return limited;
+  const messages = [
+    {
+      role: "system",
+      content: [
+        ...charter(tutor, about, lang, tone),
+        listener === "child"
+          ? "You are telling the child, warmly and honestly, how their learning is going: what they are good at now, what you will practise together, and one small encouraging next step. Four to six short sentences. Use {name} where you would say the child's name (the app fills it in); use it once or twice."
+          : "You are telling the child's parent, in a friendly spoken way, how their child's learning is going this week: time and levels, what is understood, what needs practice and why, what helps this child learn, and one practical thing to try at home. Five to eight short sentences, no lists. Use {name} for the child's name (the app fills it in).",
+        "Use only the facts below; do not invent numbers or topics. Keep every number as it is.",
+      ].join("\n"),
+    },
+    { role: "user", content: facts },
+  ];
+  for (const p of providers) {
+    try {
+      const said = answerText(await ask(p, messages, 900));
+      if (lang === "ml" && !MALAYALAM.test(said)) throw new Error("not Malayalam");
+      await rememberTeaching(key, [{ say: said, touch: [] }], p.name);
+      return reply({ answer: said, by: p.name });
+    } catch (e) {
+      console.error("report provider", p.name, String(e).slice(0, 300));
+    }
+  }
+  return reply({ error: "all_busy" }, 503);
+}

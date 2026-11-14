@@ -1,9 +1,11 @@
-// The "Ask Mio" sheet: hold a conversation by voice, or type.
+// The "Ask Mio" sheet: a live, two-way talk with the tutor. The child speaks, the
+// tutor answers aloud and listens again, until the child taps End (or types instead).
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 import '../brain.dart';
 import '../content.dart';
+import '../report.dart';
 import '../state.dart';
 import '../strings.dart';
 import '../tutor.dart';
@@ -55,6 +57,7 @@ class _AskSheetState extends State<_AskSheet> {
   bool _listening = false;
   bool _thinking = false;
   bool _micMissing = false;
+  bool _live = true; // keep listening after each answer, like a phone call, until End
   final List<List<String>> _chat = []; // [question, answer]
 
   String get lang => appState.mainLang;
@@ -69,8 +72,27 @@ class _AskSheetState extends State<_AskSheet> {
   @override
   void dispose() {
     _text.dispose();
+    appSpeaker?.speaking.removeListener(_spoken);
     if (_listening) _stt.stop();
     super.dispose();
+  }
+
+  /// The tutor finished speaking: in a live talk, listen for the child's next words.
+  void _spoken() {
+    if (!mounted || appSpeaker?.speaking.value != false) return;
+    appSpeaker?.speaking.removeListener(_spoken);
+    if (_live && !_listening && !_thinking) _listen();
+  }
+
+  /// End the live talk: stop listening and speaking; typing still works.
+  void _end() {
+    appSpeaker?.speaking.removeListener(_spoken);
+    appSpeaker?.stop();
+    if (_listening) _stt.stop();
+    setState(() {
+      _live = false;
+      _listening = false;
+    });
   }
 
   Future<void> _listen() async {
@@ -125,9 +147,13 @@ class _AskSheetState extends State<_AskSheet> {
       question: q,
       lang: lang,
       tutorName: tutor.displayName('en'),
+      about: pick(tutor.about, 'en'),
       lessonTitle: widget.lessonTitle,
       notes: widget.notes,
       tone: appState.tone,
+      childName: appState.childName,
+      progress: progressFacts(appState, contentStore.bundle, lang),
+      history: [for (final t in _chat) [t[0], t[1]]],
     );
     if (!mounted) return;
     setState(() {
@@ -136,7 +162,14 @@ class _AskSheetState extends State<_AskSheet> {
       _chat.add([q, reply.text]);
       _heard = '';
     });
-    if (appState.voiceOn) appSpeaker?.say([reply.text], lang, tutor);
+    if (appState.voiceOn && appSpeaker != null) {
+      // Speak, then (in a live talk) listen again as soon as the tutor has finished.
+      appSpeaker!.speaking.removeListener(_spoken);
+      appSpeaker!.speaking.addListener(_spoken);
+      appSpeaker!.say([reply.text], lang, tutor);
+    } else if (_live) {
+      _listen();
+    }
   }
 
   @override
@@ -169,6 +202,17 @@ class _AskSheetState extends State<_AskSheet> {
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: ink),
             ),
           ),
+          // Live talk: a red End button, like a call. Tapping it stops listening and speaking.
+          if (_live)
+            Padding(
+              padding: const EdgeInsets.only(left: 6),
+              child: FilledButton.icon(
+                style: FilledButton.styleFrom(backgroundColor: coral, shape: const StadiumBorder()),
+                onPressed: _end,
+                icon: const Icon(Icons.call_end_rounded, size: 20),
+                label: Text(tr('endTalk', lang)),
+              ),
+            ),
         ]),
         const SizedBox(height: 10),
         ConstrainedBox(
@@ -204,7 +248,15 @@ class _AskSheetState extends State<_AskSheet> {
           ),
           const SizedBox(width: 10),
           GestureDetector(
-            onTap: _listening ? () => _stt.stop() : (_text.text.trim().isNotEmpty ? () => _send(_text.text) : _listen),
+            onTap: _listening
+                ? () => _stt.stop()
+                : (_text.text.trim().isNotEmpty
+                    ? () => _send(_text.text)
+                    : () {
+                        appSpeaker?.stop(); // the child may interrupt the tutor
+                        setState(() => _live = true);
+                        _listen();
+                      }),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 300),
               width: 64,

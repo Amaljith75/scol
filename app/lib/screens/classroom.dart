@@ -91,7 +91,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
 
   /// Where the tutor's eyes should point right now.
   Offset get _gaze {
-    if (_tourAt != null) return const Offset(0, -0.9); // looking up at the piece it is touching
+    if (_tourAt != null) return const Offset(-0.75, -0.75); // looking up-left at the piece it is touching
     if (_walkLook != null) return _walkLook!;
     final towardCentre = switch (d.spot) { Spot.left => 0.55, Spot.center => 0.0, Spot.right => -0.55 };
     switch (d.look) {
@@ -157,6 +157,13 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     });
   }
 
+  /// How long the current line takes to say, roughly: the touches are spread over it.
+  Duration get _sayingTime {
+    final chars = d.bubble.length;
+    final perSecond = d.lang == 'ml' ? 11 : 14;
+    return Duration(milliseconds: (chars / perSecond * 1000).clamp(2500, 30000).toInt());
+  }
+
   void _visit(List<int> order, int i, int gen) {
     if (!mounted || gen != _tourGen) return;
     if (i >= order.length) {
@@ -170,7 +177,9 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     if (stack is RenderBox && target != null) {
       setState(() => _tourAt = stack.globalToLocal(target));
     }
-    _tourTimer = Timer(const Duration(milliseconds: 1300), () => _visit(order, i + 1, gen));
+    // Spread the touches over the time the line takes to say, at least a second apart.
+    final gap = (_sayingTime.inMilliseconds * 0.8 / order.length).clamp(1000, 2600).toInt();
+    _tourTimer = Timer(Duration(milliseconds: gap), () => _visit(order, i + 1, gen));
   }
 
   void _goHome() {
@@ -402,14 +411,21 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
   /// The tutor, drawn above everything: at its place when talking to the child, floating over the
   /// board with its nose on a piece of the picture when it talks about it.
   Widget _floatingTutor() {
-    const size = 88.0;
+    final touring = _tourAt != null;
+    final size = touring ? 56.0 : 88.0; // smaller while over the board, so it never hides the picture
     Offset? home;
+    Size? bounds;
     final stack = _stackKey.currentContext?.findRenderObject();
     final slot = _homeKey.currentContext?.findRenderObject();
     if (stack is RenderBox && slot is RenderBox && slot.attached && stack.attached) {
       home = stack.globalToLocal(slot.localToGlobal(slot.size.center(Offset.zero)));
+      bounds = stack.size;
     }
-    final at = _tourAt != null ? _tourAt! + const Offset(0, size * 0.42) : home;
+    // Beside the piece, below and to the right, with its nose towards it; kept inside the screen.
+    var at = touring ? _tourAt! + Offset(size * 0.62, size * 0.58) : home;
+    if (at != null && bounds != null && touring) {
+      at = Offset(at.dx.clamp(size / 2, bounds.width - size / 2), at.dy.clamp(size / 2, bounds.height - size / 2));
+    }
     final avatar = ValueListenableBuilder<bool>(
       valueListenable: d.speaker?.speaking ?? const AlwaysStoppedAnimation(false),
       builder: (_, speaking, __) => TweenAnimationBuilder<double>(
@@ -420,7 +436,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
           offset: Offset(0, -sin(v * pi) * 22),
           child: Transform.scale(scaleY: 1 - sin(v * pi * 2).abs() * 0.06, child: child),
         ),
-        child: tutorHero(TutorAvatar(tutor: d.tutor, size: size, talking: speaking, mood: d.mood, gaze: _gaze, float: _tourAt != null)),
+        child: tutorHero(TutorAvatar(tutor: d.tutor, size: size, talking: speaking, mood: d.mood, gaze: _gaze, float: touring)),
       ),
     );
     if (at == null) {
@@ -652,6 +668,10 @@ class CelebrationScreen extends StatefulWidget {
 class _CelebrationScreenState extends State<CelebrationScreen> {
   int _shown = 0; // how many stars have popped in so far
   bool _leaving = false;
+  Rect? _flyFrom; // where the stars were when Continue was tapped (in the screen's own coordinates)
+  bool _flown = false; // the stars have been drawn at _flyFrom once, so now they can fly
+  final GlobalKey _starsKey = GlobalKey();
+  final GlobalKey _sceneKey = GlobalKey();
   final List<Timer> _timers = [];
 
   @override
@@ -683,11 +703,38 @@ class _CelebrationScreenState extends State<CelebrationScreen> {
 
   Future<void> _continue() async {
     if (_leaving) return;
+    final scene = _sceneKey.currentContext?.findRenderObject();
+    final stars = _starsKey.currentContext?.findRenderObject();
+    if (scene is RenderBox && stars is RenderBox && stars.attached) {
+      final topLeft = scene.globalToLocal(stars.localToGlobal(Offset.zero));
+      _flyFrom = topLeft & stars.size;
+    }
     setState(() => _leaving = true);
     playSound('whoosh');
-    await Future<void>.delayed(const Duration(milliseconds: 720));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) setState(() => _flown = true);
+    });
+    await Future<void>.delayed(const Duration(milliseconds: 800));
     if (mounted) Navigator.of(context).pop();
   }
+
+  double _sceneWidth(BuildContext context) {
+    final box = _sceneKey.currentContext?.findRenderObject();
+    return box is RenderBox && box.hasSize ? box.size.width : MediaQuery.of(context).size.width;
+  }
+
+  Widget _starRow(int stars, {double size = 60}) => Row(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: [
+        for (var i = 0; i < 3; i++)
+          AnimatedScale(
+            duration: const Duration(milliseconds: 650),
+            curve: Curves.elasticOut,
+            scale: i < _shown ? 1 : 0,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Text(i < stars ? '⭐' : '☆', style: TextStyle(fontSize: size, color: i < stars ? null : const Color(0xFFC9A94A))),
+            ),
+          ),
+      ]);
 
   @override
   Widget build(BuildContext context) {
@@ -697,7 +744,7 @@ class _CelebrationScreenState extends State<CelebrationScreen> {
     return Scaffold(
       backgroundColor: violetSoft,
       body: SafeArea(
-        child: Stack(children: [
+        child: Stack(key: _sceneKey, children: [
           Center(
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 520),
@@ -715,8 +762,11 @@ class _CelebrationScreenState extends State<CelebrationScreen> {
                         textAlign: TextAlign.center, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: ink)),
                   ),
                   const SizedBox(height: 12),
-                  // Space for the stars; they are drawn in the layer above so they can fly away.
-                  const SizedBox(height: 72),
+                  // The stars, in their own row under the title. When leaving, they are drawn in the layer above instead.
+                  SizedBox(
+                    height: 76,
+                    child: Opacity(opacity: _leaving ? 0 : 1, child: Center(child: KeyedSubtree(key: _starsKey, child: _starRow(stars)))),
+                  ),
                   const SizedBox(height: 12),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     Pill('⚡', '+${widget.xp} XP'),
@@ -728,35 +778,22 @@ class _CelebrationScreenState extends State<CelebrationScreen> {
               ),
             ),
           ),
-          // The stars: pop in one by one, then fly to the top right corner, where the star count lives.
-          AnimatedAlign(
-            duration: const Duration(milliseconds: 700),
-            curve: Curves.easeInCubic,
-            alignment: _leaving ? const Alignment(0.92, -0.97) : const Alignment(0, 0.02),
-            child: AnimatedScale(
+          // Leaving: the stars fly from where they were up to the top right corner, where the star count lives.
+          if (_leaving && _flyFrom != null)
+            AnimatedPositioned(
               duration: const Duration(milliseconds: 700),
               curve: Curves.easeInCubic,
-              scale: _leaving ? 0.25 : 1,
+              left: _flown ? _sceneWidth(context) - 16 - _flyFrom!.width * 0.3 : _flyFrom!.left,
+              top: _flown ? 8 : _flyFrom!.top,
+              width: _flown ? _flyFrom!.width * 0.3 : _flyFrom!.width,
+              height: _flown ? _flyFrom!.height * 0.3 : _flyFrom!.height,
               child: AnimatedOpacity(
-                duration: const Duration(milliseconds: 500),
-                opacity: _leaving ? 0.0 : 1.0,
-                curve: const Interval(0.5, 1),
-                child: Row(mainAxisSize: MainAxisSize.min, children: [
-                  for (var i = 0; i < 3; i++)
-                    AnimatedScale(
-                      duration: const Duration(milliseconds: 650),
-                      curve: Curves.elasticOut,
-                      scale: i < _shown ? 1 : 0,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: Text(i < stars ? '⭐' : '☆',
-                            style: TextStyle(fontSize: 60, color: i < stars ? null : const Color(0xFFC9A94A))),
-                      ),
-                    ),
-                ]),
+                duration: const Duration(milliseconds: 700),
+                curve: const Interval(0.6, 1),
+                opacity: _flown ? 0 : 1,
+                child: FittedBox(child: _starRow(stars)),
               ),
             ),
-          ),
           // A few sparkles rising while the stars appear.
           if (!_leaving)
             for (var k = 0; k < 7; k++)

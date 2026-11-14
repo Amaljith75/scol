@@ -31,6 +31,24 @@ The child's own questions and "Explain more" are still answered live, one call e
 `content/_app/phrases.json`; about half of them use the child's first name (`{name}`). This is said by the phone, never
 sent to the AI, so the brain's cached lesson stays the same for every child.
 
+## The tutor's rules, whatever AI is behind it
+
+`supabase/functions/brain/rules.ts` is the tutor's charter: a short list of rules every mode (teaching a level, a live
+talk, reading progress) starts from, for every provider in `brain.json`. Change a model or add a company and the rules
+still hold. In short: a patient one-to-one tutor, never a narrator; short sentences and the simplest words; start from
+what the child knows; the child's name now and then; wrong answers corrected kindly, never the bare answer first; keep
+the talk two-way with a short question back; only true facts, within the syllabus; never the screen, never personal
+details, never unsafe topics; plain spoken text. Edit the file, commit, and the deploy applies it.
+
+## Three jobs
+
+- **Teach** (`mode: teach`): a whole level written out and cached, with the board items to touch (see below).
+- **Talk** (no mode): one turn of a live, two-way conversation. The app sends the last six turns, the lesson notes, the
+  child's first name and a short progress summary (name replaced by `{name}`), so the tutor can be personal and answer
+  "how am I doing?". The Ask sheet listens again after each answer until the child taps **End**.
+- **Report** (`mode: report`): the weekly report told in the tutor's own words, for the parent (Listen in the Parents
+  area) or the child. Cached until the facts change; the name is put back on the phone.
+
 ## When one AI runs out, the next one answers
 
 `content/_app/brain.json` has a `providers` list. The brain tries them top to bottom: if one is busy, out of free

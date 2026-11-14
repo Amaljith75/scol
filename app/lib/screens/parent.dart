@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../content.dart';
+import '../brain.dart';
 import '../mastery.dart';
 import '../reminders.dart';
 import '../report.dart';
@@ -91,8 +92,23 @@ class _ParentScreenState extends State<ParentScreen> {
       return;
     }
     setState(() => _reading = true);
-    // Read in the Edge voice of the child's own tutor.
-    await appSpeaker?.say(report, _reportLang, tutorById(appState.tutorId));
+    final tutor = tutorById(appState.tutorId);
+    // The tutor brain tells the progress in its own words (if a parent turned the brain on and we are online);
+    // otherwise the report is read as written. Either way in the Edge voice of the child's own tutor.
+    List<String> lines = report;
+    if (appState.askEnabled || appState.teachOn) {
+      final told = await tellProgress(
+        bundle: contentStore.bundle,
+        facts: progressFacts(appState, contentStore.bundle, _reportLang),
+        lang: _reportLang,
+        tutor: tutor,
+        childName: appState.childName,
+        tone: appState.tone,
+      );
+      if (told != null) lines = [told];
+    }
+    if (!mounted || !_reading) return;
+    await appSpeaker?.say(lines, _reportLang, tutor);
     if (mounted) setState(() => _reading = false);
   }
 
