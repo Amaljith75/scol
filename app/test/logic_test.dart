@@ -303,6 +303,16 @@ void main() {
       expect(a.bestStyle, 'picture');
     });
 
+    test('progress for the brain keeps the name on the phone', () {
+      final b = loadBundle();
+      final a = AppState()..childName = 'Anu';
+      a.history[dayNumber()] = [600, 2];
+      final facts = progressFacts(a, b, 'en');
+      expect(facts, isNot(contains('Anu')));
+      expect(facts, contains('{name}'));
+      expect(facts, contains('2 levels'));
+    });
+
     test('weekly report reads sensibly in English and Malayalam', () {
       final b = loadBundle();
       final a = AppState()
@@ -380,6 +390,12 @@ void main() {
       }
       expect(seen.length, greaterThan(3));
       expect(named, greaterThan(3));
+      // The hello is said once: when the brain's words arrive and the first step is said again, no second hello.
+      final once = TutorDirector(
+          lesson: lesson, lang: 'en', tutor: b.tutors.first, phrases: b.phrases, childName: 'Anu', recordFor: (_) => ConceptRecord(), day: 1);
+      expect(once.bubble, startsWith(once.intro));
+      once.setTeaching([for (final s in lesson.steps) s.isAsk ? null : const Taught('Taught again, in my own words.')]);
+      expect(once.bubble, 'Taught again, in my own words.');
       // No name known: only the hellos that need none.
       final quiet = TutorDirector(
           lesson: lesson, lang: 'en', tutor: b.tutors.first, phrases: b.phrases, recordFor: (_) => ConceptRecord(), day: 1);

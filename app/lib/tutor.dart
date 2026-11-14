@@ -85,6 +85,7 @@ class TutorDirector extends ChangeNotifier {
 
   /// A different hello each time, said before the first step; about half of them use the child's name.
   String _intro = '';
+  bool _introSaid = false;
 
   /// True while the first line is shown but not yet spoken, because the brain's words are on their way.
   bool _hold;
@@ -207,7 +208,7 @@ class TutorDirector extends ChangeNotifier {
     if (l == lang) return;
     lang = l;
     _teaching = null; // the brain's words were in the old language; the classroom asks for new ones
-    if (_intro.isNotEmpty) _intro = _pickIntro();
+    if (_intro.isNotEmpty && !_introSaid) _intro = _pickIntro();
     if (phase == Phase.talking || phase == Phase.asking || phase == Phase.thinkAsk) {
       _enter();
     } else {
@@ -248,7 +249,9 @@ class TutorDirector extends ChangeNotifier {
       phase = Phase.talking;
       spot = visual == null ? Spot.center : (_index.isEven ? Spot.left : Spot.right);
       look = visual == null ? Look.child : Look.board;
-      _say([if (_index == 0) _intro, _taught(step)?.say ?? text]);
+      final hello = _index == 0 && !_introSaid ? _intro : '';
+      if (hello.isNotEmpty && !_hold) _introSaid = true;
+      _say([hello, _taught(step)?.say ?? text]);
     } else {
       _hold = false; // a question is always asked at once, as written
       question = step;

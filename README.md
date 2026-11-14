@@ -33,10 +33,12 @@ Scol follows two syllabuses: **Kerala State (SCERT)** and **CBSE (NCERT)**.
 6. **Stars, not pressure.** Your child earns stars, builds a streak of learning days, and collects badges.
    Missing a day takes nothing away.
 
-## Ask Mio anything
+## Talk to Mio
 
-Your child can tap the 🎙️ button, ask a question out loud (or type it), and the tutor answers about the lesson,
-in English or Malayalam. This uses an AI service, so it stays off until a parent turns it on in the Parents area.
+Your child can tap the 🎙️ button and simply talk: the tutor listens, answers aloud, and listens again, like a call,
+until your child taps **End** (typing works too). It knows the lesson on screen and how your child has been doing,
+so "how am I doing?" gets a real, kind answer. In English or Malayalam. This uses an AI service, so it stays off until
+a parent turns it on in the Parents area.
 
 ## Never miss study time
 
@@ -94,7 +96,7 @@ Your child picks one and can switch at any time.
 - Your child's name and progress are stored **on your phone only**. They are not sent to us or anyone else.
 - The tutors' voices are made by a voice service from the lesson text. The app does not record your child.
 - The tutor's explanations are written by an AI service from the lesson text; only lesson text is sent, nothing about your child. A parent can turn this off, and the tutor then reads the lesson as written.
-- Asking the tutor questions is off until you turn it on. When on, only the words of the question and the lesson topic go to an AI service to get an answer; your child's name and progress never do.
+- Asking the tutor questions is off until you turn it on. When on, the child's words, the lesson topic, the last few turns of the talk, your child's first name and a short progress summary (so the tutor can answer "how am I doing?") go to an AI service. Nothing else, and never a recording: speech is turned into words by the phone.
 - No advertisements.
 - You can delete everything with one button in the parent area.
 
@@ -103,7 +105,7 @@ The app uses the internet to download new lessons and voice files, to check for 
 ## Try it
 
 1. On an Android phone or tablet, open the [Releases page](https://github.com/Amaljith75/scol/releases).
-2. Download the **.apk** file from the newest release (for example "Scol V1 build 7") and open it to install.
+2. Download the **.apk** file from the newest release (for example "Scol V1 build 8") and open it to install.
    (Your phone may ask you to allow installing apps from your browser.)
 3. Do the one-minute parent setup: name, syllabus, class, language, tutor.
 4. Hand the phone to your child.

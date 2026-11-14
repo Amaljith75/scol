@@ -82,3 +82,11 @@ List<String> weeklyReport(AppState a, Bundle b, String lang) {
   }
   return out;
 }
+
+/// The same report with the child's name replaced by {name}, for the tutor brain to tell
+/// aloud in its own words. The name itself never leaves the phone; the app puts it back.
+String progressFacts(AppState a, Bundle b, String lang) {
+  final name = a.childName.trim();
+  final lines = weeklyReport(a, b, lang);
+  return lines.map((l) => name.isEmpty ? l : l.replaceAll(name, '{name}')).join('\n');
+}

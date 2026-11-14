@@ -242,7 +242,11 @@ Future<Uint8List> _edgeSpeak(String text, String voice, {required String rate, r
   final url = 'wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1'
       '?TrustedClientToken=$_token&ConnectionId=${_rand(16)}'
       '&Sec-MS-GEC=${secMsGec(DateTime.now().millisecondsSinceEpoch / 1000 + _clockSkew)}&Sec-MS-GEC-Version=2-$_chromium';
-  final ws = await WebSocket.connect(url, headers: {
+  // dart:io would add its own "Dart/3.x (dart:io)" User-Agent next to ours; the voice server must see one browser only.
+  final client = HttpClient()
+    ..userAgent = null
+    ..connectionTimeout = const Duration(seconds: 10);
+  final ws = await WebSocket.connect(url, customClient: client, headers: {
     'Pragma': 'no-cache',
     'Cache-Control': 'no-cache',
     'Origin': 'chrome-extension://jdiccldimpdaibmpdkjnbmckianbfold',

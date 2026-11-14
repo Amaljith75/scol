@@ -47,8 +47,11 @@ const _sorry = {
 
 String sorry(String kind, String lang) => _sorry[kind]![lang == 'ml' ? 1 : 0];
 
-/// Asks the tutor brain. [notes] is what the lesson on screen is teaching,
-/// so the answer stays about the lesson. Never sends the child's name.
+/// One turn of a conversation with the tutor brain. [notes] is what the lesson on screen is
+/// teaching, so the answer stays about the lesson; [history] is the last few [question, answer]
+/// pairs of this conversation, so the talk is two-way; [childName] (first name only) and
+/// [progress] (how the child is doing, name replaced by {name}) make it personal. They are
+/// sent only because a parent turned questions on.
 Future<BrainAnswer> askBrain({
   required Bundle bundle,
   required String question,
@@ -57,6 +60,10 @@ Future<BrainAnswer> askBrain({
   required String lessonTitle,
   required String notes,
   String tone = 'normal',
+  String about = '',
+  String childName = '',
+  String progress = '',
+  List<List<String>> history = const [],
   http.Client? client,
 }) async {
   final url = '${bundle.brain['url'] ?? ''}';
@@ -70,9 +77,13 @@ Future<BrainAnswer> askBrain({
             'question': question,
             'lang': lang,
             'tutor': tutorName,
+            'about': about,
             'lesson': lessonTitle,
             'notes': notes,
             'tone': tone,
+            'child': childName.trim(),
+            'progress': progress,
+            'history': history.length > 6 ? history.sublist(history.length - 6) : history,
             'device': await deviceId(),
           }),
         )
@@ -229,6 +240,58 @@ Future<List<Taught?>?> teachLesson({
     final aligned = alignTeaching(lesson, written);
     if (aligned != null) await _teachToCache(key, written!);
     return aligned;
+  } catch (_) {
+    return null;
+  }
+}
+
+/// The child's progress told aloud by the tutor brain in its own words, for the parent or the
+/// child. [facts] is the report with the name replaced by {name}; the name is put back here.
+/// Kept on the phone until the facts change. Null when the brain cannot help (read the report as written).
+Future<String?> tellProgress({
+  required Bundle bundle,
+  required String facts,
+  required String lang,
+  required TutorCharacter tutor,
+  required String childName,
+  String tone = 'normal',
+  String listener = 'parent',
+  http.Client? client,
+}) async {
+  final url = '${bundle.brain['url'] ?? ''}';
+  if (url.isEmpty || facts.trim().length < 10) return null;
+  final key = sha1.convert(utf8.encode('report|$lang|${tutor.id}|$tone|$listener|$facts')).toString().substring(0, 24);
+  String withName(String t) => t.replaceAll('{name}', childName.trim().isEmpty ? (lang == 'ml' ? 'കുട്ടി' : 'your child') : childName.trim());
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    final cached = prefs.getString('report_$key');
+    if (cached != null) return withName(cached);
+  } catch (_) {}
+  try {
+    final res = await (client ?? http.Client())
+        .post(
+          Uri.parse(url),
+          headers: {'content-type': 'application/json', 'apikey': '${bundle.brain['public_key'] ?? ''}'},
+          body: jsonEncode({
+            'mode': 'report',
+            'report': facts,
+            'lang': lang,
+            'tutor': tutor.displayName('en'),
+            'about': pick(tutor.about, 'en'),
+            'tone': tone,
+            'listener': listener,
+            'device': await deviceId(),
+          }),
+        )
+        .timeout(const Duration(seconds: 45));
+    if (res.statusCode != 200) return null;
+    final said = '${(jsonDecode(utf8.decode(res.bodyBytes)) as Map)['answer'] ?? ''}'.trim();
+    if (said.isEmpty) return null;
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('report_$key', said);
+    } catch (_) {}
+    return withName(said);
   } catch (_) {
     return null;
   }
