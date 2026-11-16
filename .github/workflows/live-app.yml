@@ -77,7 +77,7 @@ jobs:
               names = []
           live = [n for n in names if "live" in n or "native-audio" in n]
           print("Live models this key can use:", ", ".join(live) or "none found")
-          for want in ("models/gemini-2.5-flash-native-audio-preview-12-2025", "models/gemini-live-2.5-flash-preview"):
+          for want in ("models/gemini-2.5-flash-native-audio-preview-12-2025", "models/gemini-2.5-flash-native-audio-latest"):
               print(("  ok   " if want in names else "  MISSING ") + want)
           PY
           rm -f models.json
