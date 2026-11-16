@@ -146,3 +146,4 @@ so use Wi-Fi or mobile data for that. After that the level works offline.
 - [How Scol is built](docs/HOW_IT_IS_BUILT.md): the parts of the system.
 - [What to build next](docs/NEXT_STEPS.md): features and the plan for the MVP.
 - [The tutor brain and voices](docs/TUTOR_BRAIN.md): how to change the AI model, key or voice.
+- [Scol Live, the Gemini Live version](docs/GEMINI_LIVE_APP.md): the native Android app with live tutoring, how it is built and released.
