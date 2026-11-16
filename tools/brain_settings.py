@@ -87,7 +87,7 @@ with open("brain.env", "w") as f:
     f.write(f"BRAIN_PROVIDERS_B64={blob}\nBRAIN_DEVICE_LIMIT={cfg.get('device_limit', 40)}\n"
             f"BRAIN_DAILY_LIMIT={cfg.get('daily_limit', 1000)}\n"
             f"BRAIN_TTS_DEVICE_LIMIT={cfg.get('voice_device_limit', 400)}\nBRAIN_TTS_DAILY_LIMIT={cfg.get('voice_daily_limit', 8000)}\n"
-            f"BRAIN_TTS_MODELS={','.join(cfg.get('voice_models', ['gemini-2.5-flash-preview-tts', 'gemini-2.5-pro-preview-tts']))}\n"
+            f"BRAIN_TTS_MODELS={','.join(cfg.get('voice_models', ['gemini-3.8-flash-tts', 'gemini-2.5-flash-preview-tts']))}\n"
             f"BRAIN_GEMINI_KEY={secrets.get('GEMINI_API_KEY', '')}\n"
             f"PREWARM_TOKEN={prewarm if os.environ.get('SUPABASE_ACCESS_TOKEN') else ''}\n")
 print("Order the brain will try:", " -> ".join(p["name"] for p in ready))

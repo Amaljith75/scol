@@ -449,7 +449,8 @@ const VOICES = new Set([
   "Umbriel", "Algieba", "Despina", "Erinome", "Algenib", "Rasalgethi", "Laomedeia", "Achernar", "Alnilam", "Schedar",
   "Gacrux", "Pulcherrima", "Achird", "Zubenelgenubi", "Vindemiatrix", "Sadachbia", "Sadaltager", "Sulafat",
 ]);
-const TTS_MODELS = (env("BRAIN_TTS_MODELS") || "gemini-2.5-flash-preview-tts,gemini-2.5-pro-preview-tts")
+const TTS_MODELS = (env("BRAIN_TTS_MODELS") ||
+  "gemini-3.8-flash-tts,gemini-3.8-flash-lite-tts,gemini-3.1-flash-tts-preview,gemini-2.5-flash-preview-tts,gemini-2.5-pro-preview-tts")
   .split(",").map((m) => m.trim()).filter(Boolean);
 let ttsModel = 0; // moves on when a model name is not offered any more
 
@@ -490,9 +491,9 @@ async function geminiSpeech(text: string, voice: string, style: string): Promise
         },
       }),
     });
-    if (res.status === 404 || res.status === 400) {
+    if (res.status === 404 || res.status === 400 || res.status === 429 || res.status === 503) {
       lastError = `${model}: ${res.status} ${(await res.text()).slice(0, 160)}`;
-      continue; // this model is not offered: try the next one
+      continue; // not offered, out of quota or busy: each model has its own quota, so try the next one
     }
     if (!res.ok) throw new Error(`${model}: ${res.status} ${(await res.text()).slice(0, 200)}`);
     const data = await res.json();
