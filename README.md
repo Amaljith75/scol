@@ -1,10 +1,10 @@
 # Scol
 
-**A personal tutor for every child in Classes 1 to 4.**
+**A personal tutor for every students in Classes 1 to 10.**
 
 <img src="app/branding/logo.png" width="96" alt="Scol">
 
-Scol is an Android app where a friendly little creature teaches your child their own school
+Scol is an Android app where a friendly little avatars teaches your child their own school
 syllabus, one short level at a time. The tutor explains, shows pictures, asks questions, notices
 where your child is stuck, and tries again in a different way. It works in English, Malayalam, or both together.
 
