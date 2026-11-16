@@ -114,8 +114,10 @@ Map<String, dynamic> _teachStep(LessonStep s, String lang) {
 }
 
 /// What is sent to the brain so it can teach [lesson] in [lang]. Only lesson text, never anything about the child.
-Map<String, dynamic> teachRequest(Lesson lesson, String lang, TutorCharacter tutor, String tone) => {
+/// [variant] (0 to 2) asks for a differently worded explanation, so a lesson heard again does not sound the same.
+Map<String, dynamic> teachRequest(Lesson lesson, String lang, TutorCharacter tutor, String tone, {int variant = 0}) => {
       'mode': 'teach',
+      'variant': variant,
       'lang': lang,
       'tutor': tutor.displayName('en'),
       'about': pick(tutor.about, 'en'),
@@ -125,34 +127,67 @@ Map<String, dynamic> teachRequest(Lesson lesson, String lang, TutorCharacter tut
       'steps': [for (final s in lesson.steps) _teachStep(s, lang)],
     };
 
-/// One teaching step as the brain wrote it: what the tutor says, and which numbered
-/// items on the board it floats to and touches while saying it (1-based, in order).
+/// One teaching step as the brain wrote it: what the tutor says, which numbered items on the board
+/// it floats to and touches (1-based, in order), and for each touch the word it is said at.
 class Taught {
-  const Taught(this.say, [this.touch = const []]);
+  const Taught(this.say, [this.touch = const [], this.at = const []]);
   final String say;
   final List<int> touch;
+  final List<String> at;
+
+  static int? _item(dynamic x) {
+    final v = x is Map ? x['item'] : x;
+    final n = v is num ? v.toInt() : int.tryParse('$v');
+    return n != null && n >= 1 ? n : null;
+  }
 
   static Taught? from(dynamic v) {
     if (v is String) return v.trim().isEmpty ? null : Taught(v.trim());
     if (v is Map) {
       final say = '${v['say'] ?? v['text'] ?? ''}'.trim();
       if (say.isEmpty) return null;
-      final touch = [
-        for (final x in (v['touch'] as List?) ?? const [])
-          if (x is num && x >= 1) x.toInt() else if (int.tryParse('$x') != null && int.parse('$x') >= 1) int.parse('$x')
-      ];
-      return Taught(say, touch.take(8).toList());
+      final raw = (v['touch'] as List?) ?? const [];
+      final ats = (v['at'] as List?) ?? const [];
+      final touch = <int>[];
+      final at = <String>[];
+      for (var i = 0; i < raw.length && touch.length < 8; i++) {
+        final n = _item(raw[i]);
+        if (n == null) continue;
+        touch.add(n);
+        final word = raw[i] is Map ? raw[i]['at'] : (i < ats.length ? ats[i] : '');
+        at.add('${word ?? ''}');
+      }
+      return Taught(say, touch, at);
     }
     return null;
   }
 
-  Map<String, dynamic> toJson() => {'say': say, 'touch': touch};
+  /// Where in [say] each touch happens, 0 to 1: at its word if the brain named one, else spread evenly.
+  List<double> get touchAt {
+    final lower = say.toLowerCase();
+    final out = <double>[];
+    var from = 0;
+    for (var i = 0; i < touch.length; i++) {
+      final word = i < at.length ? at[i].trim().toLowerCase() : '';
+      final found = word.isEmpty ? -1 : lower.indexOf(word, from);
+      if (found >= 0) {
+        out.add(found / max(1, say.length));
+        from = found + word.length;
+      } else {
+        out.add((i + 0.5) / touch.length * 0.9);
+      }
+    }
+    return out;
+  }
+
+  Map<String, dynamic> toJson() => {'say': say, 'touch': touch, 'at': at};
 
   @override
-  bool operator ==(Object other) => other is Taught && other.say == say && '${other.touch}' == '$touch';
+  bool operator ==(Object other) =>
+      other is Taught && other.say == say && '${other.touch}' == '$touch' && '${other.at}' == '$at';
 
   @override
-  int get hashCode => Object.hash(say, '$touch');
+  int get hashCode => Object.hash(say, '$touch', '$at');
 }
 
 /// Lines the brain wrote, lined up with [lesson.steps]: a [Taught] for each "say" step, null for questions.
@@ -176,11 +211,24 @@ List<Taught?>? alignTeaching(Lesson lesson, List<dynamic>? written) {
 }
 
 /// The same lesson, language, tutor and mood always give the same key, so a lesson is written once.
-String teachKey(Lesson lesson, String lang, TutorCharacter tutor, String tone) =>
-    sha1.convert(utf8.encode(jsonEncode(teachRequest(lesson, lang, tutor, tone)))).toString().substring(0, 24);
+String teachKey(Lesson lesson, String lang, TutorCharacter tutor, String tone, {int variant = 0}) =>
+    sha1.convert(utf8.encode(jsonEncode(teachRequest(lesson, lang, tutor, tone, variant: variant)))).toString().substring(0, 24);
 
-const _teachCacheKey = 'teach_cache_v2';
-const _teachCacheMax = 80;
+const _teachCacheKey = 'teach_cache_v3';
+const _teachCacheMax = 300;
+
+/// Which wording of [lessonId] the child hears next: the first time 0, then 1, 2, 0... (see [teachRequest]).
+Future<int> lessonVariant(String lessonId, {bool advance = false}) async {
+  try {
+    final prefs = await SharedPreferences.getInstance();
+    final k = 'variant_$lessonId';
+    final n = prefs.getInt(k) ?? 0;
+    if (advance) await prefs.setInt(k, n + 1);
+    return n % 3;
+  } catch (_) {
+    return 0;
+  }
+}
 
 Future<List<Taught?>?> _teachFromCache(String key, Lesson lesson) async {
   try {
@@ -219,10 +267,11 @@ Future<List<Taught?>?> teachLesson({
   required String lang,
   required TutorCharacter tutor,
   String tone = 'normal',
+  int variant = 0,
   http.Client? client,
 }) async {
   if (lesson.steps.every((s) => s.isAsk)) return null;
-  final key = teachKey(lesson, lang, tutor, tone);
+  final key = teachKey(lesson, lang, tutor, tone, variant: variant);
   final cached = await _teachFromCache(key, lesson);
   if (cached != null) return cached;
   final url = '${bundle.brain['url'] ?? ''}';
@@ -232,7 +281,7 @@ Future<List<Taught?>?> teachLesson({
         .post(
           Uri.parse(url),
           headers: {'content-type': 'application/json', 'apikey': '${bundle.brain['public_key'] ?? ''}'},
-          body: jsonEncode({...teachRequest(lesson, lang, tutor, tone), 'device': await deviceId()}),
+          body: jsonEncode({...teachRequest(lesson, lang, tutor, tone, variant: variant), 'device': await deviceId()}),
         )
         .timeout(const Duration(seconds: 45));
     if (res.statusCode != 200) return null;

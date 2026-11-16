@@ -10718,7 +10718,7 @@
   "public_key": "sb_publishable_aBCqk9nxakWaBvvJj77fgg_AilwaqM8",
   "url": "https://puryjmsnrjkbgvhvofzp.supabase.co/functions/v1/brain"
  },
- "built": 1794601269,
+ "built": 1794840936,
  "concepts": {
   "kerala-scert/class-3/evs#animal-food": {
    "en": "Herbivores, carnivores and omnivores",
@@ -10888,18 +10888,140 @@
    "ml": "× ചിഹ്നത്തിന്റെ അർത്ഥം"
   }
  },
+ "items": {
+  "⚽": {
+   "image": "content/_app/items/26bd.png",
+   "prompt": "a single soccer ball, alone, as a cute clear sticker for counting"
+  },
+  "⛰️": {
+   "image": "content/_app/items/26f0.png",
+   "prompt": "a single mountain, alone, as a cute clear sticker for counting"
+  },
+  "✏️": {
+   "image": "content/_app/items/270f.png",
+   "prompt": "a single pencil, alone, as a cute clear sticker for counting"
+  },
+  "⭐": {
+   "image": "content/_app/items/2b50.png",
+   "prompt": "a single white medium star, alone, as a cute clear sticker for counting"
+  },
+  "🍽️": {
+   "image": "content/_app/items/1f37d.png",
+   "prompt": "a single fork and knife with plate, alone, as a cute clear sticker for counting"
+  },
+  "🎀": {
+   "image": "content/_app/items/1f380.png",
+   "prompt": "a single ribbon, alone, as a cute clear sticker for counting"
+  },
+  "🎈": {
+   "image": "content/_app/items/1f388.png",
+   "prompt": "a single balloon, alone, as a cute clear sticker for counting"
+  },
+  "🎉": {
+   "image": "content/_app/items/1f389.png",
+   "prompt": "a single party popper, alone, as a cute clear sticker for counting"
+  },
+  "🎏": {
+   "image": "content/_app/items/1f38f.png",
+   "prompt": "a single carp streamer, alone, as a cute clear sticker for counting"
+  },
+  "🏃": {
+   "image": "content/_app/items/1f3c3.png",
+   "prompt": "a single runner, alone, as a cute clear sticker for counting"
+  },
+  "🐟": {
+   "image": "content/_app/items/1f41f.png",
+   "prompt": "a single fish, alone, as a cute clear sticker for counting"
+  },
+  "👣": {
+   "image": "content/_app/items/1f463.png",
+   "prompt": "a single footprints, alone, as a cute clear sticker for counting"
+  },
+  "📏": {
+   "image": "content/_app/items/1f4cf.png",
+   "prompt": "a single straight ruler, alone, as a cute clear sticker for counting"
+  },
+  "🖍️": {
+   "image": "content/_app/items/1f58d.png",
+   "prompt": "a single lower left crayon, alone, as a cute clear sticker for counting"
+  },
+  "🚪": {
+   "image": "content/_app/items/1f6aa.png",
+   "prompt": "a single door, alone, as a cute clear sticker for counting"
+  },
+  "🚶": {
+   "image": "content/_app/items/1f6b6.png",
+   "prompt": "a single pedestrian, alone, as a cute clear sticker for counting"
+  },
+  "🤔": {
+   "image": "content/_app/items/1f914.png",
+   "prompt": "a single thinking face, alone, as a cute clear sticker for counting"
+  },
+  "🥭": {
+   "image": "content/_app/items/1f96d.png",
+   "prompt": "a single mango, alone, as a cute clear sticker for counting"
+  },
+  "🥻": {
+   "image": "content/_app/items/1f97b.png",
+   "prompt": "a single sari, alone, as a cute clear sticker for counting"
+  },
+  "🧒": {
+   "image": "content/_app/items/1f9d2.png",
+   "prompt": "a single child, alone, as a cute clear sticker for counting"
+  },
+  "🧱": {
+   "image": "content/_app/items/1f9f1.png",
+   "prompt": "a single brick, alone, as a cute clear sticker for counting"
+  },
+  "🧴": {
+   "image": "content/_app/items/1f9f4.png",
+   "prompt": "a single lotion bottle, alone, as a cute clear sticker for counting"
+  },
+  "🧵": {
+   "image": "content/_app/items/1f9f5.png",
+   "prompt": "a single spool of thread, alone, as a cute clear sticker for counting"
+  },
+  "🧼": {
+   "image": "content/_app/items/1f9fc.png",
+   "prompt": "a single bar of soap, alone, as a cute clear sticker for counting"
+  },
+  "🪑": {
+   "image": "content/_app/items/1fa91.png",
+   "prompt": "a single chair, alone, as a cute clear sticker for counting"
+  }
+ },
  "phrases": {
   "again": {
-   "en": "Remember this one? Let us try again.",
-   "ml": "ഇത് ഓർമ്മയുണ്ടോ? ഒന്നുകൂടി നോക്കാം."
+   "en": [
+    "Remember this one? Let us try again.",
+    "Here is that question again.",
+    "This one is back! You can do it now.",
+    "Let us try this one once more."
+   ],
+   "ml": [
+    "ഇത് ഓർമ്മയുണ്ടോ? ഒന്നുകൂടി നോക്കാം.",
+    "ആ ചോദ്യം വീണ്ടും വന്നു.",
+    "ഇത് തിരിച്ചെത്തി! ഇപ്പോൾ നിനക്ക് പറ്റും.",
+    "ഇത് ഒന്നുകൂടി ശ്രമിക്കാം."
+   ]
   },
   "allDone": {
    "en": "You finished everything here. Amazing!",
    "ml": "ഇവിടെയുള്ളതെല്ലാം നീ പൂർത്തിയാക്കി. അടിപൊളി!"
   },
   "anotherWay": {
-   "en": "Let me show you this another way.",
-   "ml": "ഇത് മറ്റൊരു രീതിയിൽ കാണിച്ചു തരാം."
+   "en": [
+    "Let me show you this another way.",
+    "Let us look at it in a different way.",
+    "Here is another way to see it.",
+    "Let me tell it another way."
+   ],
+   "ml": [
+    "ഇത് മറ്റൊരു രീതിയിൽ കാണിച്ചു തരാം.",
+    "നമുക്ക് ഇത് വേറൊരു രീതിയിൽ നോക്കാം.",
+    "ഇത് കാണാൻ മറ്റൊരു വഴി ഇതാ.",
+    "ഞാൻ ഇത് വേറൊരു രീതിയിൽ പറയാം."
+   ]
   },
   "comingSoon": {
    "en": "Lessons are on the way!",
@@ -10932,16 +11054,34 @@
    ]
   },
   "lookAgain": {
-   "en": "Look at it once more, slowly.",
-   "ml": "പതുക്കെ ഒന്നുകൂടി നോക്കൂ."
+   "en": [
+    "Look at it once more, slowly.",
+    "Look at the picture again, carefully.",
+    "Let us look again together.",
+    "Take another look."
+   ],
+   "ml": [
+    "പതുക്കെ ഒന്നുകൂടി നോക്കൂ.",
+    "ചിത്രം ഒന്നുകൂടി ശ്രദ്ധിച്ച് നോക്കൂ.",
+    "നമുക്ക് ഒരുമിച്ച് വീണ്ടും നോക്കാം.",
+    "ഒന്നുകൂടി നോക്കൂ."
+   ]
   },
   "nextUp": {
    "en": "Next for you:",
    "ml": "അടുത്തത്:"
   },
   "oopsStrict": {
-   "en": "No, that is not right. Look carefully and try again.",
-   "ml": "അല്ല, അത് ശരിയല്ല. ശ്രദ്ധിച്ച് നോക്കി വീണ്ടും ശ്രമിക്കൂ."
+   "en": [
+    "No, that is not right. Look carefully and try again.",
+    "Not correct. Read it again.",
+    "That is wrong. Think and try again."
+   ],
+   "ml": [
+    "അല്ല, അത് ശരിയല്ല. ശ്രദ്ധിച്ച് നോക്കി വീണ്ടും ശ്രമിക്കൂ.",
+    "ശരിയല്ല. വീണ്ടും വായിക്കൂ.",
+    "അത് തെറ്റാണ്. ആലോചിച്ച് വീണ്ടും ശ്രമിക്കൂ."
+   ]
   },
   "pickLevel": {
    "en": "Tap START to begin the next level.",
@@ -10956,8 +11096,18 @@
    "ml": "കഴിഞ്ഞ തവണ ഇവയിൽ ചിലത് അല്പം പ്രയാസമായിരുന്നു. നമുക്ക് പതുക്കെ ഒന്നുകൂടി നോക്കാം."
   },
   "praiseStrict": {
-   "en": "Correct. Good work.",
-   "ml": "ശരിയാണ്. നന്നായി."
+   "en": [
+    "Correct. Good work.",
+    "Right. Well done.",
+    "That is correct.",
+    "Correct. Keep going."
+   ],
+   "ml": [
+    "ശരിയാണ്. നന്നായി.",
+    "ശരി. നന്നായി ചെയ്തു.",
+    "അത് ശരിയാണ്.",
+    "ശരിയാണ്. തുടരൂ."
+   ]
   },
   "tapGo": {
    "en": "Tap Let's go, and come with me!",
@@ -10972,8 +11122,18 @@
    "ml": "ഇന്നത്തേക്ക് ഇത്രയും മതി. നാളെ കാണാം!"
   },
   "tryLater": {
-   "en": "We will try this one again in a little while.",
-   "ml": "ഇത് നമുക്ക് കുറച്ചു കഴിഞ്ഞ് ഒന്നുകൂടി നോക്കാം."
+   "en": [
+    "We will try this one again in a little while.",
+    "This one comes back a bit later.",
+    "Let us meet this question again soon.",
+    "We will come back to this one."
+   ],
+   "ml": [
+    "ഇത് നമുക്ക് കുറച്ചു കഴിഞ്ഞ് ഒന്നുകൂടി നോക്കാം.",
+    "ഈ ചോദ്യം കുറച്ചു കഴിഞ്ഞ് വീണ്ടും വരും.",
+    "ഈ ചോദ്യം നമുക്ക് ഉടൻ വീണ്ടും കാണാം.",
+    "ഇതിലേക്ക് നമ്മൾ തിരിച്ചു വരും."
+   ]
   }
  },
  "tutors": [
@@ -10989,6 +11149,7 @@
    "color": "#FFB81F",
    "energy": 1.0,
    "eyes": "round",
+   "gemini_voice": "Sulafat",
    "hello": {
     "en": "Hello! I am Mio. Shall we learn with a story today?",
     "ml": "ഹലോ! ഞാൻ മിയോ. ഇന്ന് ഒരു കഥയിലൂടെ പഠിക്കാമോ?"
@@ -10999,20 +11160,38 @@
     "ml": "മിയോ"
    },
    "oops": {
-    "en": "Not yet, and that is okay.",
-    "ml": "സാരമില്ല, ഒന്നുകൂടി നോക്കാം."
+    "en": [
+     "Not yet, and that is okay.",
+     "Almost! Let us look again.",
+     "Hmm, not this one. Try once more.",
+     "That is all right. Look closely."
+    ],
+    "ml": [
+     "സാരമില്ല, ഒന്നുകൂടി നോക്കാം.",
+     "ഏതാണ്ട് ശരിയായി! വീണ്ടും നോക്കാം.",
+     "ഇതല്ല. ഒന്നുകൂടി ശ്രമിക്കൂ.",
+     "കുഴപ്പമില്ല. ശ്രദ്ധിച്ച് നോക്കൂ."
+    ]
    },
    "pitch": "+4Hz",
    "praise": {
     "en": [
      "Lovely! ✨",
      "You shine! 🌟",
-     "Beautifully done!"
+     "Beautifully done!",
+     "That is it, well done!",
+     "Yes, you got it!",
+     "Wonderful thinking!",
+     "Just right!"
     ],
     "ml": [
      "വളരെ നന്നായി! ✨",
      "നീ തിളങ്ങുന്നു! 🌟",
-     "അടിപൊളി!"
+     "അടിപൊളി!",
+     "അതുതന്നെ, നന്നായി!",
+     "അതെ, നിനക്ക് കിട്ടി!",
+     "നല്ല ആലോചന!",
+     "കൃത്യം!"
     ]
    },
    "rate": "-6%",
@@ -11036,6 +11215,7 @@
    "color": "#19B5A5",
    "energy": 1.8,
    "eyes": "wide",
+   "gemini_voice": "Puck",
    "hello": {
     "en": "Hey hey! I am Leo. Ready to play and win?",
     "ml": "ഹേയ്! ഞാൻ ലിയോ. കളിച്ചു ജയിക്കാൻ റെഡിയാണോ?"
@@ -11046,23 +11226,40 @@
     "ml": "ലിയോ"
    },
    "oops": {
-    "en": "Oops! Let us crack it together.",
-    "ml": "അയ്യോ! നമുക്ക് ഒരുമിച്ച് കണ്ടുപിടിക്കാം."
+    "en": [
+     "Oops! Let us crack it together.",
+     "Close one! Again!",
+     "Not this time. Go again, champ!",
+     "Whoa, nearly! Try once more."
+    ],
+    "ml": [
+     "അയ്യോ! നമുക്ക് ഒരുമിച്ച് കണ്ടുപിടിക്കാം.",
+     "തൊട്ടടുത്തെത്തി! വീണ്ടും!",
+     "ഇത്തവണ അല്ല. ഒന്നുകൂടി, ചാമ്പ്യൻ!",
+     "ഹോ, ഏതാണ്ട്! ഒന്നുകൂടി നോക്കൂ."
+    ]
    },
    "pitch": "+8Hz",
    "praise": {
     "en": [
      "Boom! Correct! 💥",
      "High five! 🙌",
-     "Zap! You got it! ⚡"
+     "Zap! You got it! ⚡",
+     "Goal! Right answer!",
+     "Super speed! Correct!",
+     "Yes yes yes!"
     ],
     "ml": [
      "ബൂം! ശരിയാണ്! 💥",
      "സൂപ്പർ! 🙌",
-     "കലക്കി! ⚡"
+     "കലക്കി! ⚡",
+     "ഗോൾ! ശരിയുത്തരം!",
+     "മിന്നൽ വേഗം! ശരി!",
+     "അതെ അതെ അതെ!"
     ]
    },
    "rate": "+6%",
+   "ready_made": false,
    "shape": "spiky",
    "style": "an excited, playful game host talking to a young child, upbeat and bouncy",
    "voice": {
@@ -11082,6 +11279,7 @@
    "color": "#F178A6",
    "energy": 0.6,
    "eyes": "soft",
+   "gemini_voice": "Achernar",
    "hello": {
     "en": "Hello, little one. I am Yuki. We will go nice and slow.",
     "ml": "ഹലോ കുഞ്ഞേ. ഞാൻ യൂകി. നമുക്ക് പതുക്കെ പതുക്കെ പഠിക്കാം."
@@ -11092,23 +11290,38 @@
     "ml": "യൂകി"
    },
    "oops": {
-    "en": "No hurry. Let us look again, slowly.",
-    "ml": "തിരക്കില്ല. പതുക്കെ ഒന്നുകൂടി നോക്കാം."
+    "en": [
+     "No hurry. Let us look again, slowly.",
+     "That is okay. Take a breath and look again.",
+     "Gently now. Look once more.",
+     "We have time. Try again slowly."
+    ],
+    "ml": [
+     "തിരക്കില്ല. പതുക്കെ ഒന്നുകൂടി നോക്കാം.",
+     "സാരമില്ല. ഒന്ന് ശ്വാസമെടുത്ത് വീണ്ടും നോക്കൂ.",
+     "പതുക്കെ. ഒന്നുകൂടി നോക്കൂ.",
+     "നമുക്ക് സമയമുണ്ട്. പതുക്കെ വീണ്ടും ശ്രമിക്കൂ."
+    ]
    },
    "pitch": "-2Hz",
    "praise": {
     "en": [
      "Well done. 🌸",
      "That is right. Nicely thought.",
-     "Yes! Slow and steady. 🐢"
+     "Yes! Slow and steady. 🐢",
+     "Very good. Calm and correct.",
+     "Lovely, that is right."
     ],
     "ml": [
      "നന്നായി. 🌸",
      "അത് ശരിയാണ്. നന്നായി ആലോചിച്ചു.",
-     "അതെ! പതുക്കെ, ഉറപ്പോടെ. 🐢"
+     "അതെ! പതുക്കെ, ഉറപ്പോടെ. 🐢",
+     "വളരെ നല്ലത്. ശാന്തമായി, ശരിയായി.",
+     "മനോഹരം, അത് ശരിയാണ്."
     ]
    },
    "rate": "-14%",
+   "ready_made": false,
    "shape": "cloud",
    "style": "a calm, patient, soothing friend talking slowly to a young child",
    "voice": {
@@ -11128,6 +11341,7 @@
    "color": "#8E6BFF",
    "energy": 1.2,
    "eyes": "curious",
+   "gemini_voice": "Leda",
    "hello": {
     "en": "Ooh, hello! I am Ruby. I wonder what we will discover today?",
     "ml": "ഓ, ഹലോ! ഞാൻ റൂബി. ഇന്ന് നമ്മൾ എന്താണ് കണ്ടുപിടിക്കുക?"
@@ -11138,23 +11352,38 @@
     "ml": "റൂബി"
    },
    "oops": {
-    "en": "Hmm, interesting! Let us find out why.",
-    "ml": "ഹും, കൊള്ളാമല്ലോ! കാരണം കണ്ടുപിടിക്കാം."
+    "en": [
+     "Hmm, interesting! Let us find out why.",
+     "Not quite. Let us look for clues.",
+     "Ooh, a puzzle! Try again.",
+     "Wait, let us look closer."
+    ],
+    "ml": [
+     "ഹും, കൊള്ളാമല്ലോ! കാരണം കണ്ടുപിടിക്കാം.",
+     "ശരിയായില്ല. സൂചനകൾ നോക്കാം.",
+     "ഓ, ഒരു കടങ്കഥ! വീണ്ടും ശ്രമിക്കൂ.",
+     "നിൽക്കൂ, അടുത്ത് നോക്കാം."
+    ]
    },
    "pitch": "+14Hz",
    "praise": {
     "en": [
      "Ooh, you found it! 🔍",
      "Yes! Now I know why. 💡",
-     "What a discovery! 🚀"
+     "What a discovery! 🚀",
+     "Clever! That is the answer.",
+     "You solved the mystery!"
     ],
     "ml": [
      "ഓ, നീ കണ്ടുപിടിച്ചു! 🔍",
      "അതെ! ഇപ്പോൾ കാരണം മനസ്സിലായി. 💡",
-     "എന്തൊരു കണ്ടുപിടിത്തം! 🚀"
+     "എന്തൊരു കണ്ടുപിടിത്തം! 🚀",
+     "മിടുക്കൻ! അതാണ് ഉത്തരം.",
+     "നീ രഹസ്യം കണ്ടുപിടിച്ചു!"
     ]
    },
    "rate": "+2%",
+   "ready_made": false,
    "shape": "flower",
    "style": "a curious, wonder-filled young explorer talking to a young child, bright and questioning",
    "voice": {
@@ -11174,6 +11403,7 @@
    "color": "#FF7A45",
    "energy": 0.9,
    "eyes": "sleepy",
+   "gemini_voice": "Umbriel",
    "hello": {
     "en": "Yo! Ollie here. I was napping, but maths is more fun.",
     "ml": "ഹായ്! ഞാൻ ഒല്ലി. ഉറങ്ങുകയായിരുന്നു, പക്ഷേ കണക്കാണ് കൂടുതൽ രസം."
@@ -11184,23 +11414,38 @@
     "ml": "ഒല്ലി"
    },
    "oops": {
-    "en": "Whoops! Even I get that wrong sometimes.",
-    "ml": "അയ്യോ! എനിക്കും ചിലപ്പോൾ ഇത് തെറ്റാറുണ്ട്."
+    "en": [
+     "Whoops! Even I get that wrong sometimes.",
+     "Oh no, my sleepy brain did that too! Again?",
+     "Hmm, not that one. Another go!",
+     "Ha, tricky one! Try again."
+    ],
+    "ml": [
+     "അയ്യോ! എനിക്കും ചിലപ്പോൾ ഇത് തെറ്റാറുണ്ട്.",
+     "ഓ, എന്റെ ഉറക്കം തൂങ്ങിയ തലയും ഇത് ചെയ്തു! വീണ്ടും?",
+     "ഹും, അതല്ല. ഒന്നുകൂടി!",
+     "ഹ, കുറച്ച് കുഴപ്പമുള്ളതാണ്! വീണ്ടും ശ്രമിക്കൂ."
+    ]
    },
    "pitch": "-6Hz",
    "praise": {
     "en": [
      "Ha! Too easy for you. 😎",
      "Nailed it! 🎯",
-     "Whoa, big brain! 🧠"
+     "Whoa, big brain! 🧠",
+     "Easy peasy! Correct!",
+     "You make it look simple!"
     ],
     "ml": [
      "ഹ! നിനക്കിത് നിസ്സാരം. 😎",
      "കൃത്യം! 🎯",
-     "അമ്പോ, വലിയ ബുദ്ധി! 🧠"
+     "അമ്പോ, വലിയ ബുദ്ധി! 🧠",
+     "എളുപ്പം! ശരിയാണ്!",
+     "നീ ഇത് നിസ്സാരമാക്കി!"
     ]
    },
    "rate": "-4%",
+   "ready_made": false,
    "shape": "bean",
    "style": "a funny, cheeky, good-humoured friend talking to a young child, with a playful grin in the voice",
    "voice": {
@@ -11209,5 +11454,5 @@
    }
   }
  ],
- "version": "ef1bd09bd0c3"
+ "version": "20eca920ba12"
 }

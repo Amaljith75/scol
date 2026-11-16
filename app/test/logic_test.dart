@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
@@ -484,6 +485,95 @@ void main() {
       // A server that is busy means: read the lesson as written.
       final busy = MockClient((_) async => http.Response('{"error":"all_busy"}', 503));
       expect(await teachLesson(bundle: b, lesson: lesson, lang: 'ml', tutor: b.tutors.first, client: busy), isNull);
+    });
+  });
+
+  group('variety, timing and voices', () {
+    test('a line with several wordings gives one of them, and not the same one twice in a row', () {
+      final lines = {'en': ['A', 'B', 'C', 'D'], 'ml': ['അ', 'ആ']};
+      final said = <String>[];
+      for (var i = 0; i < 20; i++) {
+        final w = pick(lines, 'en');
+        expect(['A', 'B', 'C', 'D'], contains(w));
+        said.add(w);
+      }
+      for (var i = 1; i < said.length; i++) {
+        expect(said[i], isNot(said[i - 1]));
+      }
+      expect(said.toSet().length, 4);
+      expect(pickAll(lines, 'ml'), ['അ', 'ആ']);
+      expect(pick('just one', 'en'), 'just one');
+      final b = loadBundle();
+      expect(b.phrase('tryLater', 'en'), isNot(startsWith('[')));
+      expect(pickAll(b.phrases['tryLater'], 'en').length, greaterThan(2));
+      expect(b.tutors.every((t) => t.geminiVoice.isNotEmpty), true);
+      expect(b.tutors.map((t) => t.geminiVoice).toSet().length, b.tutors.length); // every character sounds different
+    });
+
+    test('each board touch happens at its own word in the line', () {
+      const t = Taught('Look, here is one basket, two baskets and three baskets.', [1, 2, 3], ['one', 'two', 'three']);
+      final at = t.touchAt;
+      expect(at.length, 3);
+      expect(at[0] < at[1] && at[1] < at[2], true);
+      expect(at[0], closeTo('Look, here is '.length / t.say.length, 0.001));
+      final parsed = Taught.from({
+        'say': 'One mango, two mangoes.',
+        'touch': [
+          {'item': 1, 'at': 'One'},
+          {'item': 2, 'at': 'two'}
+        ]
+      })!;
+      expect(parsed.touch, [1, 2]);
+      expect(parsed.at, ['One', 'two']);
+      expect(parsed.touchAt.first, 0);
+    });
+
+    test('the touch plan follows the brain and sits after the hello', () {
+      final b = loadBundle();
+      final lesson = mathsLessons(b).first;
+      final d = TutorDirector(
+          lesson: lesson, lang: 'en', tutor: b.tutors.first, phrases: b.phrases, childName: 'Anu', recordFor: (_) => ConceptRecord(), day: 1);
+      d.setTeaching([
+        for (final s in lesson.steps) s.isAsk ? null : const Taught('Here is one basket and here is two.', [1, 2], ['one', 'two'])
+      ]);
+      final plan = d.touchPlan;
+      expect(plan.map((e) => e.key), [1, 2]);
+      expect(plan.first.value < plan.last.value, true);
+      expect(plan.last.value <= 1, true);
+    });
+
+    test('the mouth follows the loudness of the voice', () {
+      // 1 second of 16-bit mono WAV at 8000 Hz: silent, then loud.
+      const rate = 8000;
+      final pcm = ByteData(rate * 2);
+      for (var i = rate ~/ 2; i < rate; i++) {
+        pcm.setInt16(i * 2, i.isEven ? 12000 : -12000, Endian.little);
+      }
+      final head = ByteData(44);
+      void text(int o, String t) {
+        for (var i = 0; i < t.length; i++) {
+          head.setUint8(o + i, t.codeUnitAt(i));
+        }
+      }
+
+      text(0, 'RIFF');
+      head.setUint32(4, 36 + rate * 2, Endian.little);
+      text(8, 'WAVEfmt ');
+      head.setUint32(16, 16, Endian.little);
+      head.setUint16(20, 1, Endian.little);
+      head.setUint16(22, 1, Endian.little);
+      head.setUint32(24, rate, Endian.little);
+      head.setUint32(28, rate * 2, Endian.little);
+      head.setUint16(32, 2, Endian.little);
+      head.setUint16(34, 16, Endian.little);
+      text(36, 'data');
+      head.setUint32(40, rate * 2, Endian.little);
+      final wav = Uint8List.fromList([...head.buffer.asUint8List(), ...pcm.buffer.asUint8List()]);
+      final env = wavEnvelope(wav)!;
+      expect(env.length, greaterThan(20));
+      expect(env.first, lessThan(0.1)); // quiet: mouth closed
+      expect(env.last, greaterThan(0.8)); // loud: mouth open
+      expect(wavEnvelope(Uint8List.fromList(utf8.encode('not a wav file at all, just some text'))), isNull);
     });
   });
 }

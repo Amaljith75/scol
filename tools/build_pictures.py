@@ -9,7 +9,9 @@ only draws pictures that are missing.
 
     python3 tools/build_pictures.py            # draw missing pictures
     python3 tools/build_pictures.py --count    # just say how many are missing
-Needs GEMINI_API_KEY and Pillow (pip install pillow).
+Draws with Gemini's image model (GEMINI_API_KEY); when that key is out of free
+requests, with the same model through OpenRouter (OPENROUTER_API_KEY, paid, a
+few paise per picture). Needs Pillow (pip install pillow).
 """
 import base64
 import io
@@ -27,8 +29,11 @@ import build_content  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 API = "https://generativelanguage.googleapis.com/v1beta"
 MODEL = os.environ.get("SCOL_IMAGE_MODEL", "gemini-2.5-flash-image")
+OPENROUTER_MODEL = os.environ.get("SCOL_IMAGE_MODEL_OPENROUTER", "google/gemini-2.5-flash-image")
 MAX_SECONDS = int(os.environ.get("SCOL_PICTURE_SECONDS", "2400"))
 MAX_NEW = int(os.environ.get("SCOL_PICTURE_MAX", "300"))
+ITEM_STYLE = ("A single cute cartoon object for a children's maths book, like a sticker: flat colours, thick clean "
+              "outline, centered, filling most of a plain white square background, no shadow, no text. The object: ")
 SIZE = 640  # longest side, in pixels; keeps the repository small
 
 STYLE = ("A simple, warm, friendly cartoon illustration for a children's school book (children aged 7 to 9 in "
@@ -54,6 +59,8 @@ def pictures(bundle):
                             take(st.get("visual"))
                         for alt in lesson.get("alts", {}).values():
                             take(alt.get("visual"))
+    for item in bundle.get("items", {}).values():
+        out.setdefault(item["image"], item["prompt"])
     return out
 
 
@@ -74,14 +81,81 @@ def find_image(node):
     return None
 
 
-def draw(prompt):
-    body = {"contents": [{"parts": [{"text": STYLE + prompt}]}],
+class Quota(Exception):
+    pass
+
+
+def styled(prompt):
+    return (ITEM_STYLE if prompt.startswith("a single ") else STYLE) + prompt
+
+
+def draw_gemini(prompt):
+    body = {"contents": [{"parts": [{"text": styled(prompt)}]}],
             "generationConfig": {"responseModalities": ["IMAGE"]}}
     req = urllib.request.Request(f"{API}/models/{MODEL}:generateContent", data=json.dumps(body).encode(),
                                  headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "content-type": "application/json"})
-    with urllib.request.urlopen(req, timeout=180) as r:
-        png = find_image(json.load(r))
+    try:
+        with urllib.request.urlopen(req, timeout=180) as r:
+            return find_image(json.load(r))
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", "replace")[:300]
+        if e.code == 429:
+            raise Quota(detail) from None
+        raise RuntimeError(f"HTTP {e.code} {detail}") from None
+
+
+def draw_openrouter(prompt):
+    """The same model through OpenRouter: the picture comes back as a data: URL in message.images."""
+    body = {"model": OPENROUTER_MODEL, "modalities": ["image", "text"],
+            "messages": [{"role": "user", "content": styled(prompt)}]}
+    req = urllib.request.Request("https://openrouter.ai/api/v1/chat/completions", data=json.dumps(body).encode(),
+                                 headers={"authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
+                                          "content-type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=180) as r:
+            out = json.load(r)
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", "replace")[:300]
+        if e.code in (402, 429):
+            raise Quota(detail) from None
+        raise RuntimeError(f"HTTP {e.code} {detail}") from None
+    for img in (out.get("choices") or [{}])[0].get("message", {}).get("images") or []:
+        url = (img.get("image_url") or {}).get("url", "")
+        if url.startswith("data:image") and "," in url:
+            return base64.b64decode(url.split(",", 1)[1])
+    return find_image(out)
+
+
+# The newest Gemini key wins (a new key can be added to the repository secrets under any of these names).
+for _name in ("NEW_GEMINI_API_KEY", "GEMINI_NEW_API_KEY", "GEMINI_NEW_KEY", "NEW_GEMINI_KEY", "GEMINI_LIVE_API_KEY",
+              "GEMINI_LIVE_KEY", "GEMINI_KEY"):
+    if os.environ.get(_name, "").strip():
+        os.environ["GEMINI_API_KEY"] = os.environ[_name].strip()
+        print(f"Using the Gemini key in the secret {_name}")
+        break
+
+# Which services can draw, in the order they are tried.
+PAINTERS = [(n, f) for n, key, f in (("Gemini", "GEMINI_API_KEY", draw_gemini),
+                                     ("OpenRouter", "OPENROUTER_API_KEY", draw_openrouter))
+            if os.environ.get(key)]
+_tired = set()  # painters that said their limit is reached
+
+
+def draw(prompt):
+    png = None
+    for name, paint in PAINTERS:
+        if name in _tired:
+            continue
+        try:
+            png = paint(prompt)
+            if png:
+                break
+        except Quota as e:
+            _tired.add(name)
+            print(f"  {name} says the limit is reached: {str(e)[:160]}", flush=True)
     if not png:
+        if len(_tired) == len(PAINTERS):
+            raise Quota("every service is out of requests")
         raise RuntimeError("no picture in the answer")
     from PIL import Image
     img = Image.open(io.BytesIO(png)).convert("RGB")
@@ -101,13 +175,15 @@ def main():
     print(f"{len(wanted)} pictures in the lessons, {len(todo)} still to draw.", flush=True)
     if "--count" in sys.argv or not todo:
         return 0
-    if not os.environ.get("GEMINI_API_KEY"):
-        print("GEMINI_API_KEY is not set, so no pictures were drawn.")
+    if not PAINTERS:
+        print("Neither GEMINI_API_KEY nor OPENROUTER_API_KEY is set, so no pictures were drawn.")
         return 0
+    print("Drawing with:", " then ".join(n for n, _ in PAINTERS), flush=True)
     deadline = time.time() + MAX_SECONDS
-    made = failed = quota = 0
+    made = failed = 0
+    stopped = False
     for f, prompt in list(todo.items())[:MAX_NEW]:
-        if time.time() > deadline or quota >= 3:
+        if time.time() > deadline:
             break
         try:
             png = draw(prompt)
@@ -116,20 +192,14 @@ def main():
             dest.write_bytes(png)
             made += 1
             print(f"  drew {f} ({len(png) // 1024} KB): {prompt[:60]}", flush=True)
-        except urllib.error.HTTPError as e:
-            detail = e.read().decode("utf-8", "replace")[:300]
-            if e.code == 429:
-                quota += 1
-                print(f"  Gemini says the limit is reached: {detail}", flush=True)
-                time.sleep(30)
-            else:
-                failed += 1
-                print(f"  failed: {prompt[:50]!r}: HTTP {e.code} {detail}", flush=True)
+        except Quota:
+            stopped = True
+            break
         except Exception as e:  # noqa: BLE001
             failed += 1
             print(f"  failed: {prompt[:50]!r}: {e}", flush=True)
-    if quota >= 3:
-        print("Stopping early: Gemini's daily limit is reached. The daily run will continue.")
+    if stopped:
+        print("Stopping early: every drawing service is out of requests. The daily run will continue.")
     print(f"Drew {made} pictures ({failed} failed). {len(todo) - made} still to do.")
     return 0
 

@@ -1,13 +1,16 @@
-// How the tutors speak. Every line is a Microsoft Edge voice, never the phone's
-// own voice. Lines a tutor with a ready-made voice says have a sound file (see
-// tools/build_voice.py); the app downloads each file once and keeps it, so
-// lessons also work offline. Other tutors, other moods, the brain's teaching
-// and answers, and the parent report are made on the phone in the tutor's Edge
-// voice (long text is made sentence by sentence, so it starts quickly) and kept.
-// Without internet a new line is shown as text only.
+// How the tutors speak. Every character has its own Gemini voice, made on the
+// Scol server (the Gemini key never leaves the server) and kept there, so each
+// line is made once for every child; the phone keeps its copy too, so a lesson
+// heard once works offline. If the Gemini voice cannot be had, the character's
+// Microsoft Edge voice speaks instead. The phone's own voice is never used:
+// without internet a new line is shown as text only.
+// While a line plays, [Speaker.mouth] follows the loudness of the sound itself
+// (so the mouth moves with the words) and [Speaker.progress] says how far
+// through the line the voice is (so the tutor touches the board on the word).
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io' show File;
+import 'dart:math';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:crypto/crypto.dart';
@@ -16,6 +19,7 @@ import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'brain.dart' show deviceId;
 import 'content.dart';
 import 'edge_voice.dart';
 
@@ -28,6 +32,12 @@ String clipId(String voice, String lang, String text) =>
 
 abstract class Speaker {
   ValueListenable<bool> get speaking;
+
+  /// How open the mouth should be right now, 0 to 1, from the sound being played.
+  ValueListenable<double> get mouth;
+
+  /// How far through the current [say] the voice is, 0 to 1 (by letters of what is said).
+  ValueListenable<double> get progress;
   Future<void> say(List<String> parts, String lang, TutorCharacter tutor);
   void prefetch(Iterable<String> texts, String lang, TutorCharacter tutor);
   void stop();
@@ -35,6 +45,9 @@ abstract class Speaker {
 
 /// The voice, set up once when the app starts.
 Speaker? appSpeaker;
+
+/// Where the Scol server is ({'url': .., 'public_key': ..}); set when the app starts.
+Map<String, dynamic> Function() voiceServer = () => const {};
 
 /// What happened with the voice most recently, for the Parents area: '' when all is well,
 /// otherwise a short note such as "Edge voice: no internet". Helps find out why a line was silent.
@@ -97,12 +110,59 @@ List<String> sentencePieces(String text, {int max = 220}) {
   return fine;
 }
 
+/// How a mood changes the way the Gemini voice is asked to speak.
+const toneStyle = {
+  'happy': 'sounding extra cheerful and excited',
+  'calm': 'speaking slowly, calmly and gently',
+  'strict': 'speaking firmly and clearly, like a strict but kind teacher',
+};
+
+/// Loudness of a WAV file every 40 ms, 0 to 1, for the mouth. Null for anything that is not 16-bit WAV.
+List<double>? wavEnvelope(Uint8List bytes, {int windowMs = 40}) {
+  if (bytes.length < 46 || String.fromCharCodes(bytes.sublist(0, 4)) != 'RIFF') return null;
+  final data = ByteData.sublistView(bytes);
+  final rate = data.getUint32(24, Endian.little);
+  final bits = data.getUint16(34, Endian.little);
+  if (bits != 16 || rate == 0) return null;
+  // Find the "data" chunk (usually right after the 36-byte header).
+  var off = 12;
+  while (off + 8 <= bytes.length) {
+    final id = String.fromCharCodes(bytes.sublist(off, off + 4));
+    final size = data.getUint32(off + 4, Endian.little);
+    if (id == 'data') {
+      off += 8;
+      break;
+    }
+    off += 8 + size;
+  }
+  final per = max(1, rate * windowMs ~/ 1000);
+  final out = <double>[];
+  var peak = 1.0;
+  for (var i = off; i + 1 < bytes.length; i += per * 2) {
+    var sum = 0.0;
+    var n = 0;
+    for (var j = i; j + 1 < bytes.length && j < i + per * 2; j += 2) {
+      final v = data.getInt16(j, Endian.little).toDouble();
+      sum += v * v;
+      n++;
+    }
+    final rms = n == 0 ? 0.0 : sqrt(sum / n);
+    out.add(rms);
+    if (rms > peak) peak = rms;
+  }
+  return [for (final v in out) (v / (peak * 0.6)).clamp(0.0, 1.0).toDouble()];
+}
+
 class VoiceSpeaker implements Speaker {
   final ValueNotifier<bool> _speaking = ValueNotifier(false);
+  final ValueNotifier<double> _mouth = ValueNotifier(0);
+  final ValueNotifier<double> _progress = ValueNotifier(0);
   AudioPlayer? _player; // a fresh player for every line, so an old line can never block a new one
   Map<String, Set<String>> _index = {};
   DateTime _indexAt = DateTime.fromMillisecondsSinceEpoch(0); // when the list of ready-made files was last fetched
   final Set<String> _missing = {}; // ready-made files looked for and not found, so we ask only once
+  final Map<String, Future<Source?>> _making = {}; // lines being fetched right now, so two asks share one fetch
+  final Map<String, List<double>?> _envelopes = {};
   String? _dir;
   int _gen = 0;
   static const _indexKey = 'voice_index_v1';
@@ -112,6 +172,12 @@ class VoiceSpeaker implements Speaker {
 
   @override
   ValueListenable<bool> get speaking => _speaking;
+
+  @override
+  ValueListenable<double> get mouth => _mouth;
+
+  @override
+  ValueListenable<double> get progress => _progress;
 
   Future<void> init() async {
     try {
@@ -148,15 +214,58 @@ class VoiceSpeaker implements Speaker {
     return tmp.rename(file.path);
   }
 
+  String _style(TutorCharacter tutor) {
+    final mood = toneStyle[voiceTone()];
+    final base = tutor.style.isEmpty ? 'a warm, friendly teacher talking to a young child' : tutor.style;
+    return mood == null ? base : '$base, $mood';
+  }
+
+  /// The line in the character's own Gemini voice: the phone's copy, or the Scol server's (made there once).
+  Future<Source?> _gemini(TutorCharacter tutor, String lang, String text) async {
+    final voice = tutor.geminiVoice;
+    final server = voiceServer();
+    final url = '${server['url'] ?? ''}';
+    if (voice.isEmpty || kIsWeb || _dir == null) return null;
+    final style = _style(tutor);
+    final name = 'gem_${clipId('$voice|$style', lang, text)}.wav';
+    final file = File('$_dir/$name');
+    if (await file.exists()) return DeviceFileSource(file.path);
+    if (url.isEmpty) return null;
+    try {
+      final res = await http
+          .post(Uri.parse(url),
+              headers: {'content-type': 'application/json', 'apikey': '${server['public_key'] ?? ''}'},
+              body: jsonEncode({
+                'mode': 'speak',
+                'text': spokenText(text, lang),
+                'lang': lang,
+                'voice': voice,
+                'style': style,
+                'device': await deviceId(),
+              }))
+          .timeout(const Duration(seconds: 30));
+      if (res.statusCode != 200) {
+        voiceStatus.value = 'Gemini voice: the server answered ${res.statusCode}';
+        return null;
+      }
+      final where = '${(jsonDecode(utf8.decode(res.bodyBytes)) as Map)['url'] ?? ''}';
+      if (where.isEmpty) return null;
+      final audio = await http.get(Uri.parse(where)).timeout(const Duration(seconds: 30));
+      if (audio.statusCode != 200 || audio.bodyBytes.length < 1000) return null;
+      voiceStatus.value = '';
+      return DeviceFileSource((await _save(name, audio.bodyBytes)).path);
+    } catch (e) {
+      voiceStatus.value = 'Gemini voice: ${describeVoiceError(e)}';
+      return null;
+    }
+  }
+
   /// The ready-made sound file for a line, downloading it if needed. Null if there is none.
-  /// Ready-made files are in the normal mood, so other moods skip them unless [anyMood] says
-  /// a normal-mood file is better than silence.
-  Future<Source?> _clip(TutorCharacter tutor, String lang, String text, {bool anyMood = false}) async {
+  Future<Source?> _clip(TutorCharacter tutor, String lang, String text) async {
     final voice = tutor.voiceFor(lang);
-    if (voice.isEmpty || (!anyMood && voiceTone() != 'normal')) return null;
+    if (voice.isEmpty || voiceTone() != 'normal') return null;
     final id = clipId(voice, lang, text);
     final listed = _index[tutor.id]?.contains(id) ?? false;
-    // A tutor with ready-made lines may have new ones our list does not know yet: look once anyway.
     if (!listed && (!tutor.readyMade || _missing.contains(id))) return null;
     final url = '${rawBase}voice/${tutor.id}/$id.mp3';
     try {
@@ -172,9 +281,8 @@ class VoiceSpeaker implements Speaker {
     }
   }
 
-  /// No ready-made file: make the line now in the tutor's Edge voice (needs internet).
-  /// Tries three times, because one slow or refused connection should not silence the tutor.
-  Future<Source?> _live(TutorCharacter tutor, String lang, String text, {int tries = 3}) async {
+  /// The character's Edge voice, made on the phone (needs internet): the stand-in when Gemini cannot speak.
+  Future<Source?> _edge(TutorCharacter tutor, String lang, String text, {int tries = 2}) async {
     final voice = tutor.voiceFor(lang);
     if (voice.isEmpty || !voice.endsWith('Neural') || kIsWeb || _dir == null) return null;
     final shift = toneShift[voiceTone()] ?? const [0, 0];
@@ -187,7 +295,6 @@ class VoiceSpeaker implements Speaker {
       try {
         final bytes = await edgeSpeak(spokenText(text, lang), voice, rate: rate, pitch: pitch)
             .timeout(const Duration(seconds: 20));
-        voiceStatus.value = '';
         return DeviceFileSource((await _save(name, bytes)).path);
       } catch (e) {
         voiceStatus.value = 'Edge voice: ${describeVoiceError(e)}';
@@ -197,60 +304,98 @@ class VoiceSpeaker implements Speaker {
     return null;
   }
 
-  /// The best sound for a line: the ready-made file, else made now in the tutor's Edge voice, else
-  /// (in a mood other than normal) the ready-made normal-mood file. Null means the line stays silent.
-  Future<Source?> _source(TutorCharacter tutor, String lang, String text, {int tries = 3}) async {
-    final s = await _clip(tutor, lang, text) ?? await _live(tutor, lang, text, tries: tries);
-    if (s != null || voiceTone() == 'normal') return s;
-    return _clip(tutor, lang, text, anyMood: true);
+  /// The best sound for a line: the Gemini voice, else a ready-made file, else the Edge voice.
+  /// Null means the line stays silent (shown as text). Two asks for one line share one fetch.
+  Future<Source?> _source(TutorCharacter tutor, String lang, String text) {
+    final key = '${tutor.id}|${voiceTone()}|$lang|$text';
+    final running = _making[key];
+    if (running != null) return running;
+    final made = () async {
+      try {
+        return await _gemini(tutor, lang, text) ?? await _clip(tutor, lang, text) ?? await _edge(tutor, lang, text);
+      } finally {
+        _making.remove(key);
+      }
+    }();
+    _making[key] = made;
+    return made;
   }
 
-  /// The pieces a line is spoken in: a ready-made file plays whole; anything made live is
-  /// made sentence by sentence.
-  List<String> _pieces(TutorCharacter tutor, String lang, String text) {
-    final voice = tutor.voiceFor(lang);
-    final listed = voice.isNotEmpty && (_index[tutor.id]?.contains(clipId(voice, lang, text)) ?? false);
-    if (listed || tutor.readyMade && text.length <= 220) return [text];
-    return sentencePieces(text);
-  }
+  /// The pieces a line is spoken in: short lines whole, long ones sentence by sentence so the first is quick.
+  List<String> _pieces(String text) => text.length <= 260 ? [text] : sentencePieces(text);
 
   @override
   void prefetch(Iterable<String> texts, String lang, TutorCharacter tutor) {
     if (kIsWeb) return;
-    final lines = texts.toSet();
+    final lines = <String>[
+      for (final t in texts.toSet())
+        if (t.replaceAll(_noise, '').trim().isNotEmpty) ..._pieces(t),
+    ];
     () async {
-      // New lessons bring new ready-made files: make sure our list of them is fresh.
-      if (DateTime.now().difference(_indexAt) > const Duration(minutes: 10)) await _refreshIndex();
-      // Get every line of the lesson ready while the child listens to the first ones.
-      for (final t in lines) {
-        if (t.replaceAll(_noise, '').trim().isEmpty) continue;
-        for (final piece in _pieces(tutor, langOf(t), t)) {
-          await _source(tutor, langOf(piece), piece, tries: 1);
+      if (DateTime.now().difference(_indexAt) > const Duration(minutes: 10)) unawaited(_refreshIndex());
+      // Three at a time, in the order the child will hear them.
+      var next = 0;
+      Future<void> worker() async {
+        while (next < lines.length) {
+          final t = lines[next++];
+          await _source(tutor, langOf(t), t);
         }
       }
+
+      await Future.wait([worker(), worker(), worker()]);
     }();
   }
 
-  /// Plays one sound to the end (or until a newer line starts).
-  Future<bool> _play(Source source) async {
+  Future<List<double>?> _envelopeOf(Source source) async {
+    if (source is! DeviceFileSource || !source.path.endsWith('.wav')) return null;
+    if (_envelopes.containsKey(source.path)) return _envelopes[source.path];
+    try {
+      final env = wavEnvelope(await File(source.path).readAsBytes());
+      if (_envelopes.length > 200) _envelopes.remove(_envelopes.keys.first);
+      return _envelopes[source.path] = env;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Plays one sound to the end (or until a newer line starts), moving the mouth with its loudness
+  /// and [progress] from [from] to [to].
+  Future<bool> _play(Source source, double from, double to, int token) async {
     final player = AudioPlayer();
     _player = player;
     final done = Completer<void>();
+    final envelope = await _envelopeOf(source);
     final subs = [
       player.onPlayerComplete.listen((_) {
         if (!done.isCompleted) done.complete();
       }),
     ];
+    Timer? ticker;
     try {
       await player.play(source);
-      // Never wait longer than the sound itself (plus a little), even if no "finished" signal comes.
+      final clock = Stopwatch()..start();
       final length = await player.getDuration() ?? const Duration(seconds: 20);
+      final ms = max(1, length.inMilliseconds);
+      ticker = Timer.periodic(const Duration(milliseconds: 33), (_) {
+        if (token != _gen) return;
+        final t = clock.elapsedMilliseconds;
+        _progress.value = from + (to - from) * (t / ms).clamp(0.0, 1.0);
+        if (envelope != null && envelope.isNotEmpty) {
+          _mouth.value = envelope[(t ~/ 40).clamp(0, envelope.length - 1)];
+        } else {
+          // No loudness to read (an Edge mp3): open and close at the pace of syllables.
+          _mouth.value =
+              (sin(t / 1000 * 2 * pi * 4.2) * 0.5 + 0.5) * (0.6 + 0.4 * sin(t / 1000 * 2 * pi * 0.9).abs());
+        }
+      });
       await done.future.timeout(length + const Duration(seconds: 2), onTimeout: () {});
       return true;
     } catch (e) {
       voiceStatus.value = 'Playing a sound failed: ${describeVoiceError(e)}';
       return false;
     } finally {
+      ticker?.cancel();
+      _mouth.value = 0;
       for (final s in subs) {
         await s.cancel();
       }
@@ -264,28 +409,40 @@ class VoiceSpeaker implements Speaker {
     final token = ++_gen;
     await _halt();
     if (token != _gen) return;
+    _progress.value = 0;
     _speaking.value = true;
-    // Every piece of every part, in order. The next piece is made while the current one plays.
     final pieces = <String>[
       for (final part in parts)
-        if (part.replaceAll(_noise, '').trim().isNotEmpty) ..._pieces(tutor, langOf(part), part),
+        if (part.replaceAll(_noise, '').trim().isNotEmpty) ..._pieces(part),
     ];
-    Future<Source?> fetch(int i) => i < pieces.length ? _source(tutor, langOf(pieces[i]), pieces[i]) : Future.value(null);
+    final total = max(1, pieces.fold<int>(0, (a, p) => a + p.length));
+    Future<Source?> fetch(int i) =>
+        i < pieces.length ? _source(tutor, langOf(pieces[i]), pieces[i]) : Future<Source?>.value(null);
     var next = fetch(0);
+    var done = 0;
     for (var i = 0; i < pieces.length; i++) {
       if (token != _gen) return;
       final source = await next;
-      next = fetch(i + 1);
+      next = fetch(i + 1); // the next piece is made while this one plays
       if (token != _gen) return;
-      if (source != null) await _play(source);
-      // No sound could be made (no internet): the words stay on screen; the phone's own voice is never used.
+      final from = done / total;
+      done += pieces[i].length;
+      if (source != null) {
+        await _play(source, from, done / total, token);
+      } else {
+        _progress.value = done / total; // silent: the words stay on screen
+      }
     }
-    if (token == _gen) _speaking.value = false;
+    if (token == _gen) {
+      _progress.value = 1;
+      _speaking.value = false;
+    }
   }
 
   Future<void> _halt() async {
     final p = _player;
     _player = null;
+    _mouth.value = 0;
     try {
       await p?.stop();
       await p?.dispose();

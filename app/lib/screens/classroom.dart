@@ -18,6 +18,29 @@ import '../widgets/avatar.dart';
 import '../widgets/ui.dart';
 import '../widgets/visuals.dart';
 
+/// Gets [lesson] ready before the child opens it: the tutor brain's words (kept on the phone) and the sound of
+/// every line, so the lesson starts at once. Safe to call often: whatever is already there is not fetched again.
+Future<void> warmLesson(Lesson lesson, {String? lang, TutorCharacter? tutor}) async {
+  final l = lang ?? appState.mainLang;
+  final t = tutor ?? tutorById(appState.tutorId);
+  final speaker = appState.voiceOn ? appSpeaker : null;
+  final lines = <String>[
+    for (final s in lesson.steps) ...[pick(s.text, l), pick(s.hint, l), pick(s.explain, l)],
+  ];
+  if (appState.teachOn && '${contentStore.bundle.brain['url'] ?? ''}'.isNotEmpty && !lesson.id.endsWith('/revision')) {
+    final written = await teachLesson(
+      bundle: contentStore.bundle,
+      lesson: lesson,
+      lang: l,
+      tutor: t,
+      tone: appState.tone,
+      variant: await lessonVariant(lesson.id),
+    );
+    if (written != null) lines.insertAll(0, written.whereType<Taught>().map((w) => w.say));
+  }
+  speaker?.prefetch(lines.where((x) => x.isNotEmpty), l, t);
+}
+
 class ClassroomScreen extends StatefulWidget {
   const ClassroomScreen({super.key, required this.subject, required this.lesson});
   final Subject subject;
@@ -44,11 +67,13 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
   LessonStep? _lastStep;
   Timer? _teachTimer;
   int _teachRequest = 0;
+  int? _variant; // which wording of this lesson the child hears this time
   // The tutor floats over the board and touches the pieces it talks about.
   final GlobalKey _stackKey = GlobalKey();
   final GlobalKey _homeKey = GlobalKey();
   Offset? _tourAt; // where the tutor is touching right now (in the screen's own coordinates), or null: at home
   Timer? _tourTimer;
+  Timer? _warmTimer;
   int _tourGen = 0;
   int _lastWrong = 0;
   Phase _lastPhase = Phase.talking;
@@ -82,6 +107,13 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     _fetchTeaching();
     _planTour();
     d.speaker?.speaking.addListener(_speakingChanged);
+    d.speaker?.progress.addListener(_followVoice);
+    // While this lesson plays, get the next one ready (its teaching and voices), so tapping on is quick.
+    _warmTimer = Timer(const Duration(seconds: 6), () {
+      final all = widget.subject.lessons;
+      final i = all.indexWhere((l) => l.id == widget.lesson.id);
+      if (mounted && i >= 0 && i + 1 < all.length) warmLesson(all[i + 1], lang: d.lang, tutor: d.tutor);
+    });
     d.addListener(_onChange);
     WidgetsBinding.instance.addObserver(this);
     _peekTimer = Timer.periodic(const Duration(milliseconds: 2600), (_) {
@@ -131,6 +163,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
       lang: lang,
       tutor: d.tutor,
       tone: appState.tone,
+      variant: _variant ??= await lessonVariant(widget.lesson.id, advance: true),
     );
     if (!mounted || request != _teachRequest || d.lang != lang) return;
     _teachTimer?.cancel();
@@ -143,12 +176,17 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
   void _planTour() {
     final gen = ++_tourGen;
     _tourTimer?.cancel();
+    _tourIndex = -1;
     final wanted = d.touches;
     if (wanted.isEmpty) {
       _goHome();
       return;
     }
-    // Let the picture finish popping in first.
+    if (d.speaker != null) {
+      _followVoice(); // the voice drives the walk (see _followVoice)
+      return;
+    }
+    // No voice: walk at the pace of reading.
     _tourTimer = Timer(const Duration(milliseconds: 1100), () {
       if (!mounted || gen != _tourGen) return;
       final have = boardTargets.value;
@@ -157,11 +195,39 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     });
   }
 
-  /// How long the current line takes to say, roughly: the touches are spread over it.
-  Duration get _sayingTime {
-    final chars = d.bubble.length;
-    final perSecond = d.lang == 'ml' ? 11 : 14;
-    return Duration(milliseconds: (chars / perSecond * 1000).clamp(2500, 30000).toInt());
+  /// Which board item to be at, and from how far through the spoken line: the brain's plan (each touch at
+  /// its word), or, without the brain, every piece of the picture spread over the line.
+  List<MapEntry<int, double>> get _plan {
+    final brain = d.touchPlan;
+    if (brain.isNotEmpty) return brain.where((e) => boardTargets.value.containsKey(e.key)).toList();
+    if (d.touches.isEmpty) return const [];
+    final items = boardTargets.value.keys.toList()..sort();
+    final n = items.length;
+    // Pictures pop in first, so start a little way into the line.
+    return [for (var i = 0; i < n; i++) MapEntry(items[i], 0.12 + 0.78 * i / max(1, n))];
+  }
+
+  int _tourIndex = -1;
+
+  /// Moves the tutor to the piece being talked about, by how far the voice has got through the line.
+  /// It leaves a moment early, so it arrives as the word is said.
+  void _followVoice() {
+    if (!mounted || d.phase != Phase.talking) return;
+    final speaker = d.speaker;
+    if (speaker == null || !speaker.speaking.value) return;
+    final plan = _plan;
+    if (plan.isEmpty) return;
+    const lead = 0.04;
+    final now = speaker.progress.value;
+    var index = -1;
+    for (var i = 0; i < plan.length; i++) {
+      if (now + lead >= plan[i].value) index = i;
+    }
+    if (index == _tourIndex || index < 0) return;
+    _tourIndex = index;
+    final stack = _stackKey.currentContext?.findRenderObject();
+    final target = boardTargets.value[plan[index].key];
+    if (stack is RenderBox && target != null) setState(() => _tourAt = stack.globalToLocal(target));
   }
 
   void _visit(List<int> order, int i, int gen) {
@@ -177,13 +243,15 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     if (stack is RenderBox && target != null) {
       setState(() => _tourAt = stack.globalToLocal(target));
     }
-    // Spread the touches over the time the line takes to say, at least a second apart.
-    final gap = (_sayingTime.inMilliseconds * 0.8 / order.length).clamp(1000, 2600).toInt();
+    final perSecond = d.lang == 'ml' ? 11 : 14;
+    final saying = (d.bubble.length / perSecond * 1000).clamp(2500, 30000);
+    final gap = (saying * 0.8 / order.length).clamp(1000, 2600).toInt();
     _tourTimer = Timer(Duration(milliseconds: gap), () => _visit(order, i + 1, gen));
   }
 
   void _goHome() {
     _tourTimer?.cancel();
+    _tourIndex = -1;
     if (_tourAt != null && mounted) setState(() => _tourAt = null);
   }
 
@@ -264,7 +332,9 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     _peekTimer?.cancel();
     _teachTimer?.cancel();
     _tourTimer?.cancel();
+    _warmTimer?.cancel();
     d.speaker?.speaking.removeListener(_speakingChanged);
+    d.speaker?.progress.removeListener(_followVoice);
     boardTargets.value = {};
     d.removeListener(_onChange);
     d.dispose();
@@ -436,7 +506,8 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
           offset: Offset(0, -sin(v * pi) * 22),
           child: Transform.scale(scaleY: 1 - sin(v * pi * 2).abs() * 0.06, child: child),
         ),
-        child: tutorHero(TutorAvatar(tutor: d.tutor, size: size, talking: speaking, mood: d.mood, gaze: _gaze, float: touring)),
+        child: tutorHero(TutorAvatar(
+            tutor: d.tutor, size: size, talking: speaking, mood: d.mood, gaze: _gaze, float: touring, mouthLevel: d.speaker?.mouth)),
       ),
     );
     if (at == null) {

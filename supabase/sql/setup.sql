@@ -36,3 +36,28 @@ create table if not exists public.brain_teach (
 );
 alter table public.brain_teach enable row level security;
 -- No policies on purpose: only the server can read or write it.
+
+-- Counts per kind of use: "tts:<device>" rows are voices, plain rows are questions. Each kind has its own limits.
+create or replace function public.brain_hit2(p_device text)
+returns table(device_count int, total_count int)
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  kind text := case when position(':' in p_device) > 0 then split_part(p_device, ':', 1) else '' end;
+begin
+  insert into brain_usage(device, day, count) values (p_device, current_date, 1)
+  on conflict (device, day) do update set count = brain_usage.count + 1;
+  delete from brain_usage where day < current_date - 7;
+  return query
+    select (select b.count from brain_usage b where b.device = p_device and b.day = current_date),
+           (select coalesce(sum(b.count), 0)::int from brain_usage b
+             where b.day = current_date
+               and (case when position(':' in b.device) > 0 then split_part(b.device, ':', 1) else '' end) = kind);
+end;
+$$;
+revoke all on function public.brain_hit2(text) from public, anon, authenticated;
+
+-- The characters' voices, made once on the server and read by every phone.
+insert into storage.buckets (id, name, public) values ('voices', 'voices', true) on conflict (id) do nothing;

@@ -61,6 +61,9 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _greet(first: true);
+      // Get the tutor's pick ready now, so it starts at once when the child taps Go.
+      final plan = _tutorPlan(appState.mySubjects(contentStore.bundle));
+      if (plan != null && !plan.isRevision) Future<void>.delayed(const Duration(seconds: 3), () => warmLesson(plan.lesson));
       planReminders(appState, contentStore.bundle);
       checkForAppUpdate(context);
     });
@@ -213,6 +216,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () async {
                         await openLesson(context, plan.subject, plan.lesson);
                         _greet();
+                        final next = _tutorPlan(appState.mySubjects(contentStore.bundle));
+                        if (next != null && !next.isRevision) warmLesson(next.lesson);
                         planReminders(appState, contentStore.bundle);
                       },
                       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [

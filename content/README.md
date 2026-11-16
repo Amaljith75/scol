@@ -190,6 +190,9 @@ and at least one question that looks different from the examples.
 Pieces of every picture pop in one after another, so the child watches it being built. The tutor floats over the
 picture and touches the pieces it talks about (each group, shape, row, card or corner is a piece the tutor brain can name).
 Prefer `picture` over `emoji` for things a small symbol shows badly (soil, a rain gauge, a toilet): a brown square is not soil to a child.
+Objects in counting pictures (`groups 3 4 🥭`, `count`, `array`, `ruler`, `emoji`) are shown as cartoons too: the
+"Make pictures" workflow draws each object once (in `content/_app/items/`). Coloured dots and squares (🔵 🟡 🟥) are
+drawn as real shapes.
 
 ## 5. Adding a new subject, class or board
 

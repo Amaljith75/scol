@@ -9,11 +9,27 @@ import '../strings.dart';
 import '../tutor.dart';
 import '../widgets/avatar.dart';
 import '../widgets/ui.dart';
+import 'classroom.dart' show warmLesson;
 import 'home.dart' show openLesson;
 
-class PathScreen extends StatelessWidget {
+class PathScreen extends StatefulWidget {
   const PathScreen({super.key, required this.subject});
   final Subject subject;
+
+  @override
+  State<PathScreen> createState() => _PathScreenState();
+}
+
+class _PathScreenState extends State<PathScreen> {
+  Subject get subject => widget.subject;
+
+  @override
+  void initState() {
+    super.initState();
+    // The next level is the one the child will most likely tap: get it ready.
+    final next = appState.nextLesson(subject);
+    if (next != null) Future<void>.delayed(const Duration(milliseconds: 800), () => warmLesson(next));
+  }
 
   @override
   Widget build(BuildContext context) {

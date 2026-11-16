@@ -1,15 +1,45 @@
 {
   "lookAgain": {
-    "en": "Look at it once more, slowly.",
-    "ml": "പതുക്കെ ഒന്നുകൂടി നോക്കൂ."
+    "en": [
+      "Look at it once more, slowly.",
+      "Look at the picture again, carefully.",
+      "Let us look again together.",
+      "Take another look."
+    ],
+    "ml": [
+      "പതുക്കെ ഒന്നുകൂടി നോക്കൂ.",
+      "ചിത്രം ഒന്നുകൂടി ശ്രദ്ധിച്ച് നോക്കൂ.",
+      "നമുക്ക് ഒരുമിച്ച് വീണ്ടും നോക്കാം.",
+      "ഒന്നുകൂടി നോക്കൂ."
+    ]
   },
   "tryLater": {
-    "en": "We will try this one again in a little while.",
-    "ml": "ഇത് നമുക്ക് കുറച്ചു കഴിഞ്ഞ് ഒന്നുകൂടി നോക്കാം."
+    "en": [
+      "We will try this one again in a little while.",
+      "This one comes back a bit later.",
+      "Let us meet this question again soon.",
+      "We will come back to this one."
+    ],
+    "ml": [
+      "ഇത് നമുക്ക് കുറച്ചു കഴിഞ്ഞ് ഒന്നുകൂടി നോക്കാം.",
+      "ഈ ചോദ്യം കുറച്ചു കഴിഞ്ഞ് വീണ്ടും വരും.",
+      "ഈ ചോദ്യം നമുക്ക് ഉടൻ വീണ്ടും കാണാം.",
+      "ഇതിലേക്ക് നമ്മൾ തിരിച്ചു വരും."
+    ]
   },
   "again": {
-    "en": "Remember this one? Let us try again.",
-    "ml": "ഇത് ഓർമ്മയുണ്ടോ? ഒന്നുകൂടി നോക്കാം."
+    "en": [
+      "Remember this one? Let us try again.",
+      "Here is that question again.",
+      "This one is back! You can do it now.",
+      "Let us try this one once more."
+    ],
+    "ml": [
+      "ഇത് ഓർമ്മയുണ്ടോ? ഒന്നുകൂടി നോക്കാം.",
+      "ആ ചോദ്യം വീണ്ടും വന്നു.",
+      "ഇത് തിരിച്ചെത്തി! ഇപ്പോൾ നിനക്ക് പറ്റും.",
+      "ഇത് ഒന്നുകൂടി ശ്രമിക്കാം."
+    ]
   },
   "nextUp": {
     "en": "Next for you:",
@@ -44,20 +74,48 @@
     "ml": "ഇന്നത്തേക്ക് ഇത്രയും മതി. നാളെ കാണാം!"
   },
   "anotherWay": {
-    "en": "Let me show you this another way.",
-    "ml": "ഇത് മറ്റൊരു രീതിയിൽ കാണിച്ചു തരാം."
+    "en": [
+      "Let me show you this another way.",
+      "Let us look at it in a different way.",
+      "Here is another way to see it.",
+      "Let me tell it another way."
+    ],
+    "ml": [
+      "ഇത് മറ്റൊരു രീതിയിൽ കാണിച്ചു തരാം.",
+      "നമുക്ക് ഇത് വേറൊരു രീതിയിൽ നോക്കാം.",
+      "ഇത് കാണാൻ മറ്റൊരു വഴി ഇതാ.",
+      "ഞാൻ ഇത് വേറൊരു രീതിയിൽ പറയാം."
+    ]
   },
   "think": {
     "en": "Think about it, then tap Show answer.",
     "ml": "ആലോചിച്ചിട്ട് 'ഉത്തരം കാണിക്കൂ' അമർത്തൂ."
   },
   "praiseStrict": {
-    "en": "Correct. Good work.",
-    "ml": "ശരിയാണ്. നന്നായി."
+    "en": [
+      "Correct. Good work.",
+      "Right. Well done.",
+      "That is correct.",
+      "Correct. Keep going."
+    ],
+    "ml": [
+      "ശരിയാണ്. നന്നായി.",
+      "ശരി. നന്നായി ചെയ്തു.",
+      "അത് ശരിയാണ്.",
+      "ശരിയാണ്. തുടരൂ."
+    ]
   },
   "oopsStrict": {
-    "en": "No, that is not right. Look carefully and try again.",
-    "ml": "അല്ല, അത് ശരിയല്ല. ശ്രദ്ധിച്ച് നോക്കി വീണ്ടും ശ്രമിക്കൂ."
+    "en": [
+      "No, that is not right. Look carefully and try again.",
+      "Not correct. Read it again.",
+      "That is wrong. Think and try again."
+    ],
+    "ml": [
+      "അല്ല, അത് ശരിയല്ല. ശ്രദ്ധിച്ച് നോക്കി വീണ്ടും ശ്രമിക്കൂ.",
+      "ശരിയല്ല. വീണ്ടും വായിക്കൂ.",
+      "അത് തെറ്റാണ്. ആലോചിച്ച് വീണ്ടും ശ്രമിക്കൂ."
+    ]
   },
   "intro": {
     "en": [

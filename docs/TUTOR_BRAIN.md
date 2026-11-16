@@ -5,7 +5,7 @@ Scol has two separate "AI" jobs. No key is ever inside the app.
 | Job | What it does | Where it runs | What it uses now |
 | --- | --- | --- | --- |
 | **Brain** | Teaches each level in the tutor's own words, answers the child's questions (🎙️) and "🤔 Explain more" | The `brain` function in the Supabase project `scol` | A list of AIs tried in turn: OpenRouter free → Google Gemini → Gemini Lite → Kimi |
-| **Voice** | Speaks every line in a natural voice | Mio's lesson lines: made ahead in GitHub ("Make tutor voices"). Everything else: made on the phone | Microsoft Edge voices |
+| **Voice** | Speaks every line, each character in its own voice | The `brain` function (`mode: speak`): made once with Gemini speech and kept in the Supabase storage bucket `voices`, then kept on the phone | Gemini voices (one per character); Microsoft Edge voices only as a stand-in |
 
 Lessons are fixed text in `content/`, checked by people. Questions, hints, answers and explanations after a mistake
 are always said exactly as written. The teaching steps (`## say`) are different: before a level starts, the brain
@@ -140,6 +140,37 @@ checked against India's DPDP rules for children's data.
 ## Pictures
 
 `visual: picture 🌱 💧` in a lesson asks for a cartoon drawn from that step's English words. The "Make pictures" workflow
-(`tools/build_pictures.py`, Gemini's image model with the same `GEMINI_API_KEY`) draws the missing ones after every content
-change and once a day, and saves them in the chapter's `images/` folder; the app shows the emoji until a picture has arrived.
+(`tools/build_pictures.py`) draws the missing ones after every content change and once a day: with Gemini's image model
+(`GEMINI_API_KEY`, free but a small daily limit), and when that is used up, with the same model through OpenRouter
+(`OPENROUTER_API_KEY`, paid, a few rupees for all the pictures). Change `SCOL_IMAGE_MODEL_OPENROUTER` in the workflow
+to use another image model there. It and saves them in the chapter's `images/` folder; the app shows the emoji until a picture has arrived.
 To redraw a picture, change the step's words (or delete the file). The style line at the top of the tool sets the look.
+
+## The characters' Gemini voices
+
+Each tutor in `content/_app/tutors.json` has a `gemini_voice` (Mio: Sulafat, Leo: Puck, Yuki: Achernar, Ruby: Leda,
+Ollie: Umbriel) and a `style` that tells Gemini how the character talks. The app asks the brain server for a line
+(`mode: speak`); the server makes it once with Gemini speech, keeps it in the public storage bucket `voices`, and hands
+every later phone the same file. The phone keeps its copy, so a lesson heard once works offline. The Gemini key stays on
+the server: the deploy takes the first of `NEW_GEMINI_API_KEY`, `GEMINI_NEW_API_KEY`, `GEMINI_NEW_KEY`, `NEW_GEMINI_KEY`,
+`GEMINI_LIVE_API_KEY`, `GEMINI_LIVE_KEY`, `GEMINI_KEY`, `GEMINI_API_KEY` that is set (the deploy log says which). Speech
+models are tried in the order of `voice_models` in `brain.json`; the deploy log lists the ones the key can use.
+
+If Gemini cannot make a line (no internet, a limit), the character's Edge voice says it, and Mio's ready-made Edge files
+cover her written lines offline. The phone's own voice is never used.
+
+**The mouth and the board follow the voice.** While a line plays, the app reads the loudness of the sound to open and
+close the mouth, and follows how far through the line the voice is. The brain gives each board touch the word it
+belongs to (`touch: [{item, at}]`), so the tutor reaches each picture as the word is said.
+
+## Speed: everything is made ahead
+
+The **Prepare lessons** workflow (`tools/prepare_lessons.py`) asks the server to teach every lesson for every tutor in
+English and Malayalam and to make every line in every character's voice, after each brain deploy, after lesson changes,
+and once a day. What is ready costs nothing, so each run finishes a little more (limits per run: `SCOL_PREPARE_TEACH`,
+`SCOL_PREPARE_SPEAK`). In the app, the next lesson is prepared while the child is still on the current one (and the
+tutor's pick is prepared on the home screen), so tapping on starts at once.
+
+**Not the same words every time.** Each lesson has three wordings from the brain, used in turn when a child repeats a
+lesson; praise, "try again" and the other shared lines have several wordings each (`tutors.json`, `phrases.json`) and
+the app never repeats one it said in the last few lines.
