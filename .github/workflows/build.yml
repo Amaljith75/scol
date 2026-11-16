@@ -56,6 +56,20 @@ jobs:
           flutter analyze --no-fatal-infos
           flutter test
 
+      - name: Install the Android NDK (with retries; a broken download once failed a release)
+        run: |
+          NDK=$(grep -rhoE 'ndkVersion[^"]*"[0-9.]+"' "$FLUTTER_ROOT/packages/flutter_tools/gradle" 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+          NDK=${NDK:-28.2.13676358}
+          echo "Flutter wants NDK $NDK"
+          SDKM="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          yes | "$SDKM" --licenses > /dev/null || true
+          for i in 1 2 3; do
+            if [ -f "$ANDROID_HOME/ndk/$NDK/source.properties" ]; then echo "NDK $NDK ready"; break; fi
+            rm -rf "$ANDROID_HOME/ndk/$NDK"
+            "$SDKM" --install "ndk;$NDK" > /dev/null && continue
+            echo "NDK download failed, trying again ($i)"; sleep 10
+          done
+
       - name: Build Android app
         working-directory: app
         run: |
