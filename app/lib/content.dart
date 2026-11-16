@@ -44,8 +44,13 @@ final List<String> _recentlySaid = [];
 String pickOne(List<String> options, {Random? random}) {
   if (options.isEmpty) return '';
   if (options.length == 1) return options.first;
-  final fresh = options.where((o) => !_recentlySaid.contains(o)).toList();
-  final from = fresh.isEmpty ? options : fresh;
+  // Skip the wordings said most recently (up to all but one of them), so the same one never comes twice running.
+  final blocked = <String>{};
+  for (final said in _recentlySaid.reversed) {
+    if (blocked.length >= options.length - 1) break;
+    if (options.contains(said)) blocked.add(said);
+  }
+  final from = options.where((o) => !blocked.contains(o)).toList();
   final chosen = from[(random ?? _variety).nextInt(from.length)];
   _recentlySaid.add(chosen);
   if (_recentlySaid.length > 12) _recentlySaid.removeAt(0);
