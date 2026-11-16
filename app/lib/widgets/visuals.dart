@@ -38,7 +38,7 @@ Future<File?> keptPicture(String path) {
       }
       final tmp = File('${file.path}.${DateTime.now().microsecondsSinceEpoch}.part');
       await tmp.writeAsBytes(res.bodyBytes, flush: true);
-      return tmp.rename(file.path);
+      return await tmp.rename(file.path);
     } catch (_) {
       _pictureFetches.remove(path);
       return null;
