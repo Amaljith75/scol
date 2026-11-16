@@ -32,6 +32,8 @@ MODEL = os.environ.get("SCOL_IMAGE_MODEL", "gemini-2.5-flash-image")
 OPENROUTER_MODEL = os.environ.get("SCOL_IMAGE_MODEL_OPENROUTER", "google/gemini-2.5-flash-image")
 MAX_SECONDS = int(os.environ.get("SCOL_PICTURE_SECONDS", "2400"))
 MAX_NEW = int(os.environ.get("SCOL_PICTURE_MAX", "300"))
+ITEM_STYLE = ("A single cute cartoon object for a children's maths book, like a sticker: flat colours, thick clean "
+              "outline, centered, filling most of a plain white square background, no shadow, no text. The object: ")
 SIZE = 640  # longest side, in pixels; keeps the repository small
 
 STYLE = ("A simple, warm, friendly cartoon illustration for a children's school book (children aged 7 to 9 in "
@@ -57,6 +59,8 @@ def pictures(bundle):
                             take(st.get("visual"))
                         for alt in lesson.get("alts", {}).values():
                             take(alt.get("visual"))
+    for item in bundle.get("items", {}).values():
+        out.setdefault(item["image"], item["prompt"])
     return out
 
 
@@ -81,8 +85,12 @@ class Quota(Exception):
     pass
 
 
+def styled(prompt):
+    return (ITEM_STYLE if prompt.startswith("a single ") else STYLE) + prompt
+
+
 def draw_gemini(prompt):
-    body = {"contents": [{"parts": [{"text": STYLE + prompt}]}],
+    body = {"contents": [{"parts": [{"text": styled(prompt)}]}],
             "generationConfig": {"responseModalities": ["IMAGE"]}}
     req = urllib.request.Request(f"{API}/models/{MODEL}:generateContent", data=json.dumps(body).encode(),
                                  headers={"x-goog-api-key": os.environ["GEMINI_API_KEY"], "content-type": "application/json"})
@@ -99,7 +107,7 @@ def draw_gemini(prompt):
 def draw_openrouter(prompt):
     """The same model through OpenRouter: the picture comes back as a data: URL in message.images."""
     body = {"model": OPENROUTER_MODEL, "modalities": ["image", "text"],
-            "messages": [{"role": "user", "content": STYLE + prompt}]}
+            "messages": [{"role": "user", "content": styled(prompt)}]}
     req = urllib.request.Request("https://openrouter.ai/api/v1/chat/completions", data=json.dumps(body).encode(),
                                  headers={"authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
                                           "content-type": "application/json"})
@@ -117,6 +125,14 @@ def draw_openrouter(prompt):
             return base64.b64decode(url.split(",", 1)[1])
     return find_image(out)
 
+
+# The newest Gemini key wins (a new key can be added to the repository secrets under any of these names).
+for _name in ("NEW_GEMINI_API_KEY", "GEMINI_NEW_API_KEY", "GEMINI_NEW_KEY", "NEW_GEMINI_KEY", "GEMINI_LIVE_API_KEY",
+              "GEMINI_LIVE_KEY", "GEMINI_KEY"):
+    if os.environ.get(_name, "").strip():
+        os.environ["GEMINI_API_KEY"] = os.environ[_name].strip()
+        print(f"Using the Gemini key in the secret {_name}")
+        break
 
 # Which services can draw, in the order they are tried.
 PAINTERS = [(n, f) for n, key, f in (("Gemini", "GEMINI_API_KEY", draw_gemini),

@@ -468,10 +468,55 @@ def build():
                 err(app_dir / "tutors.json", 0, f'tutor is missing "{k}"')
     brain = load_json(app_dir / "brain.json") if (app_dir / "brain.json").exists() else {}
     body = {"boards": boards, "concepts": concepts, "tutors": tutors, "phrases": phrases,
+            # objects drawn in pictures (a mango in a basket, a pencil on a scale) get a cartoon each
+            "items": item_pictures(boards),
             # only the public address goes to the app; the key stays on the server
             "brain": {k: brain[k] for k in ("url", "public_key") if k in brain}}
     digest = hashlib.sha256(json.dumps(body, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12]
     return {"version": digest, **body}
+
+
+# Coloured dots and squares are drawn by the app itself, as real shapes.
+GEOMETRIC = re.compile(r"(CIRCLE|SQUARE|DIAMOND)$")
+ITEM_KINDS = ("groups", "count", "array", "ruler", "emoji")
+
+
+def item_name(emoji):
+    import unicodedata
+    names = []
+    for ch in emoji:
+        if ord(ch) < 0x2000 or ch in "\ufe0f\u200d":
+            continue
+        try:
+            names.append(unicodedata.name(ch).lower())
+        except ValueError:
+            pass
+    return " ".join(names)
+
+
+def item_pictures(boards):
+    """Every object emoji used in a counting or object picture: {emoji: {"image": file, "prompt": words}}.
+    The "Make pictures" workflow draws each one once as a cartoon, in content/_app/items/."""
+    found = {}
+    for b in boards:
+        for c in b["classes"]:
+            for s in c["subjects"]:
+                for ch in s["chapters"]:
+                    for lesson in ch["lessons"]:
+                        visuals = [st.get("visual") for st in lesson["steps"]]
+                        visuals += [a.get("visual") for a in lesson.get("alts", {}).values()]
+                        for v in visuals:
+                            if not v or v["kind"] not in ITEM_KINDS:
+                                continue
+                            args = v["args"]
+                            emojis = args if v["kind"] == "emoji" else (args[1:2] if v["kind"] == "ruler" else args[-1:])
+                            for e in emojis:
+                                name = item_name(e)
+                                if name and not GEOMETRIC.search(name.upper()):
+                                    code = "-".join(f"{ord(ch):x}" for ch in e if ch != "\ufe0f")
+                                    found[e] = {"image": f"content/_app/items/{code}.png",
+                                                "prompt": f"a single {name}, alone, as a cute clear sticker for counting"}
+    return dict(sorted(found.items()))
 
 
 def main():

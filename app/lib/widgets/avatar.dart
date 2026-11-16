@@ -4,6 +4,7 @@
 // while talking, and glance at wherever the child touches the screen.
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -67,6 +68,7 @@ class TutorAvatar extends StatefulWidget {
     this.mood = Mood.calm,
     this.gaze = Offset.zero,
     this.float = false,
+    this.mouthLevel,
   });
   final TutorCharacter tutor;
   final double size;
@@ -78,6 +80,10 @@ class TutorAvatar extends StatefulWidget {
 
   /// Drift gently from side to side, as if floating in the air.
   final bool float;
+
+  /// How open the mouth is, 0 to 1, taken from the voice that is playing (see Speaker.mouth).
+  /// When given, the mouth follows the sound instead of a steady flap.
+  final ValueListenable<double>? mouthLevel;
 
   @override
   State<TutorAvatar> createState() => _TutorAvatarState();
@@ -163,7 +169,9 @@ class _TutorAvatarState extends State<TutorAvatar> with SingleTickerProviderStat
               t: t,
               eyes: _eyes,
               blink: now < _blinkUntil,
-              mouthOpen: widget.talking && ((t * 14).floor().isEven),
+              mouthOpen: widget.mouthLevel != null
+                  ? widget.mouthLevel!.value
+                  : (widget.talking && ((t * 14).floor().isEven) ? 1.0 : 0.0),
               mood: widget.mood,
             ),
           ),
@@ -186,7 +194,7 @@ class _CreaturePainter extends CustomPainter {
   final double t;
   final Offset eyes;
   final bool blink;
-  final bool mouthOpen;
+  final double mouthOpen; // 0 closed .. 1 wide open
   final Mood mood;
 
   @override
@@ -252,8 +260,12 @@ class _CreaturePainter extends CustomPainter {
 
     // mouth
     final mouth = Offset(s / 2, s * 0.64) + lookShift;
-    if (mouthOpen) {
-      canvas.drawOval(Rect.fromCenter(center: mouth, width: s * 0.11, height: s * 0.09), fill..color = dark);
+    if (mouthOpen > 0.12) {
+      // Opens with the loudness of the voice: a little for soft sounds, wide for loud ones.
+      final open = mouthOpen.clamp(0.0, 1.0);
+      canvas.drawOval(
+          Rect.fromCenter(center: mouth, width: s * (0.08 + 0.05 * open), height: s * (0.025 + 0.09 * open)),
+          fill..color = dark);
     } else {
       final w = mood == Mood.happy ? s * 0.2 : s * 0.13;
       canvas.drawArc(

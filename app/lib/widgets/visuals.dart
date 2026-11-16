@@ -1,14 +1,144 @@
 // Pictures the tutor can put on the board. Each one is described in a lesson
 // file with a single line such as "visual: groups 3 4 🥭". Pieces pop in one
 // after another so the picture builds up in front of the child.
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io' show File;
 import 'dart:math';
 
+import 'package:crypto/crypto.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 
 import '../content.dart';
+import '../state.dart' show contentStore;
 import 'ui.dart';
 
 const _palette = [coral, indigo, mint, sun, Color(0xFFE5488B)];
+
+
+// ---------------- Pictures from the repository, kept on the phone ----------------
+
+final Map<String, Future<File?>> _pictureFetches = {};
+String? _pictureDir;
+
+/// The picture at [path] in the repository, downloaded once and kept on the phone. Null if it is not there (yet).
+Future<File?> keptPicture(String path) {
+  return _pictureFetches.putIfAbsent(path, () async {
+    try {
+      _pictureDir ??= (await getApplicationSupportDirectory()).path;
+      final file = File('$_pictureDir/pic_${sha1.convert(utf8.encode(path)).toString().substring(0, 20)}.png');
+      if (await file.exists()) return file;
+      final res = await http.get(Uri.parse('$rawBase$path')).timeout(const Duration(seconds: 20));
+      if (res.statusCode != 200 || res.bodyBytes.length < 200) {
+        _pictureFetches.remove(path); // not drawn yet: ask again another time
+        return null;
+      }
+      final tmp = File('${file.path}.${DateTime.now().microsecondsSinceEpoch}.part');
+      await tmp.writeAsBytes(res.bodyBytes, flush: true);
+      return tmp.rename(file.path);
+    } catch (_) {
+      _pictureFetches.remove(path);
+      return null;
+    }
+  });
+}
+
+/// Shows a picture from the repository (kept on the phone after the first time), or [fallback] until it is there.
+class NetPicture extends StatelessWidget {
+  const NetPicture(this.path, {super.key, required this.fallback, this.width, this.height});
+  final String path;
+  final Widget fallback;
+  final double? width;
+  final double? height;
+
+  @override
+  Widget build(BuildContext context) {
+    if (kIsWeb || path.isEmpty) return fallback;
+    return FutureBuilder<File?>(
+      future: keptPicture(path),
+      builder: (_, snap) {
+        final file = snap.data;
+        if (file == null) return fallback;
+        return Image.file(file, width: width, height: height, fit: BoxFit.contain, errorBuilder: (_, __, ___) => fallback);
+      },
+    );
+  }
+}
+
+/// Plain coloured dots and squares, drawn as shapes rather than shown as emoji.
+const Map<String, List<Object>> _geometric = {
+  '⚪': [true, Color(0xFFF4F1EA)], '⚫': [true, Color(0xFF2A2350)], '🔴': [true, Color(0xFFE5484D)],
+  '🔵': [true, Color(0xFF3B82F6)], '🟠': [true, Color(0xFFF59E0B)], '🟡': [true, Color(0xFFFACC15)],
+  '🟢': [true, Color(0xFF22C55E)], '🟣': [true, Color(0xFF8B5CF6)], '🟤': [true, Color(0xFF92400E)],
+  '🟥': [false, Color(0xFFE5484D)], '🟦': [false, Color(0xFF3B82F6)], '🟧': [false, Color(0xFFF59E0B)],
+  '🟨': [false, Color(0xFFFACC15)], '🟩': [false, Color(0xFF22C55E)], '🟪': [false, Color(0xFF8B5CF6)],
+  '🟫': [false, Color(0xFF92400E)], '⬛': [false, Color(0xFF2A2350)], '⬜': [false, Color(0xFFF4F1EA)],
+};
+
+/// One object in a counting picture: a drawn shape for a coloured dot, the cartoon for an object
+/// (a mango, a pencil), or the emoji itself until the cartoon has arrived.
+class ItemIcon extends StatelessWidget {
+  const ItemIcon(this.emoji, {super.key, this.size = 28});
+  final String emoji;
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    final shape = _geometric[emoji.replaceAll('\ufe0f', '')];
+    if (shape != null) {
+      final color = shape[1] as Color;
+      return Container(
+        width: size * 0.9,
+        height: size * 0.9,
+        margin: EdgeInsets.all(size * 0.05),
+        decoration: BoxDecoration(
+          shape: shape[0] == true ? BoxShape.circle : BoxShape.rectangle,
+          borderRadius: shape[0] == true ? null : BorderRadius.circular(size * 0.12),
+          border: Border.all(color: darker(color, 0.15), width: max(1.5, size * 0.07)),
+          gradient: RadialGradient(
+              center: const Alignment(-0.35, -0.4), colors: [Color.lerp(color, Colors.white, 0.45)!, color], stops: const [0, 0.7]),
+        ),
+      );
+    }
+    final text = Text(emoji, style: TextStyle(fontSize: size * 0.86, height: 1.05));
+    final file = contentStore.bundle.items[emoji] ?? contentStore.bundle.items[emoji.replaceAll('\ufe0f', '')];
+    if (file == null) return text;
+    return SizedBox(width: size, height: size, child: NetPicture(file, width: size, height: size, fallback: Center(child: text)));
+  }
+}
+
+/// A picture that breathes gently, so the board never looks frozen.
+class _Breathing extends StatefulWidget {
+  const _Breathing({required this.child});
+  final Widget child;
+
+  @override
+  State<_Breathing> createState() => _BreathingState();
+}
+
+class _BreathingState extends State<_Breathing> with SingleTickerProviderStateMixin {
+  late final AnimationController _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 3600))
+    ..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _c.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => AnimatedBuilder(
+        animation: _c,
+        builder: (_, child) => Transform.translate(
+          offset: Offset(0, -4 * Curves.easeInOut.transform(_c.value)),
+          child: Transform.scale(scale: 1 + 0.02 * Curves.easeInOut.transform(_c.value), child: child),
+        ),
+        child: widget.child,
+      );
+}
 
 /// Where the touchable pieces of the picture on the board are right now, on the screen
 /// (item number, starting at 1, to the centre of the piece). The tutor floats to these
@@ -214,7 +344,7 @@ class VisualView extends StatelessWidget {
                   ),
                   child: Wrap(
                     alignment: WrapAlignment.center,
-                    children: [for (var i = 0; i < each; i++) Text(emoji, style: TextStyle(fontSize: size))],
+                    children: [for (var i = 0; i < each; i++) ItemIcon(emoji, size: size * 1.15)],
                   ),
                 ),
                 ),
@@ -227,7 +357,7 @@ class VisualView extends StatelessWidget {
           alignment: WrapAlignment.center,
           spacing: 4,
           runSpacing: 4,
-          children: [for (var i = 0; i < n(0); i++) Pop(i, child: BoardItem(i + 1, child: Text(emoji, style: const TextStyle(fontSize: 30))))],
+          children: [for (var i = 0; i < n(0); i++) Pop(i, child: BoardItem(i + 1, child: ItemIcon(emoji, size: 34)))],
         );
       case 'array':
         final rows = n(0), cols = n(1);
@@ -246,7 +376,7 @@ class VisualView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       for (var c = 0; c < cols; c++)
-                        Padding(padding: const EdgeInsets.all(2), child: Text(emoji, style: TextStyle(fontSize: size)))
+                        Padding(padding: const EdgeInsets.all(2), child: ItemIcon(emoji, size: size * 1.15))
                     ],
                   ),
                 ),
@@ -434,7 +564,7 @@ class VisualView extends StatelessWidget {
                       height: 30,
                       alignment: Alignment.centerRight,
                       decoration: BoxDecoration(color: _palette[len % _palette.length], borderRadius: BorderRadius.circular(8)),
-                      child: v > 0.9 ? Text(emoji, style: const TextStyle(fontSize: 20)) : null,
+                      child: v > 0.9 ? ItemIcon(emoji, size: 26) : null,
                     ),
                   ),
                 ),
@@ -510,7 +640,7 @@ class VisualView extends StatelessWidget {
       case 'emoji':
         return Wrap(alignment: WrapAlignment.center, spacing: 10, children: [
           for (var i = 0; i < args.length; i++)
-            Pop(i, gap: 200, child: BoardItem(i + 1, child: Text(args[i], style: const TextStyle(fontSize: 64))))
+            Pop(i, gap: 200, child: BoardItem(i + 1, child: _Breathing(child: ItemIcon(args[i], size: 72))))
         ]);
       case 'picture':
         // A cartoon drawn from the step's words (see tools/build_pictures.py). Until it has arrived,
@@ -521,28 +651,23 @@ class VisualView extends StatelessWidget {
         ]);
         final file = '${visual['image'] ?? ''}';
         if (file.isEmpty) return emoji;
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(18),
-          child: Image.network(
-            '$rawBase$file',
-            fit: BoxFit.contain,
-            height: 190,
-            frameBuilder: (_, child, frame, __) => frame == null
-                ? emoji
-                : Pop(0, child: BoardItem(1, child: child)),
-            errorBuilder: (_, __, ___) => emoji,
-          ),
+        return FutureBuilder<File?>(
+          future: kIsWeb ? Future.value(null) : keptPicture(file),
+          builder: (_, snap) => snap.data == null
+              ? emoji
+              : Pop(0,
+                  child: BoardItem(1,
+                      child: _Breathing(
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(18),
+                              child: Image.file(snap.data!, height: 200, fit: BoxFit.contain, errorBuilder: (_, __, ___) => emoji))))),
         );
       case 'image':
         return ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: BoardItem(
             1,
-            child: Image.network(
-              '$rawBase${args.isEmpty ? '' : args.first}',
-              fit: BoxFit.contain,
-              errorBuilder: (_, __, ___) => const Text('🖼️', style: TextStyle(fontSize: 64)),
-            ),
+            child: NetPicture(args.isEmpty ? '' : args.first, fallback: const Text('🖼️', style: TextStyle(fontSize: 64))),
           ),
         );
     }

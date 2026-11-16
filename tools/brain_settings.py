@@ -12,10 +12,26 @@ import urllib.request
 
 cfg = json.load(open("content/_app/brain.json"))
 # The workflow passes these secrets in (add a name here and in brain.yml for a new company).
-KNOWN = ["BRAIN_API_KEY", "KIMI_API_KEY", "MOONSHOT_API_KEY", "OPENAI_API_KEY", "GEMINI_API_KEY",
+# The newest Gemini key wins: the first of these names that is set (a new key can be added under any of them).
+GEMINI_NAMES = ["NEW_GEMINI_API_KEY", "GEMINI_NEW_API_KEY", "GEMINI_NEW_KEY", "NEW_GEMINI_KEY", "GEMINI_LIVE_API_KEY",
+                "GEMINI_LIVE_KEY", "GEMINI_KEY", "GEMINI_API_KEY"]
+KNOWN = ["BRAIN_API_KEY", "KIMI_API_KEY", "MOONSHOT_API_KEY", "OPENAI_API_KEY", *GEMINI_NAMES,
          "DEEPSEEK_API_KEY", "GROQ_API_KEY", "OPENROUTER_API_KEY", "HF_TOKEN", "HUGGINGFACE_API_KEY"]
 secrets = {n: os.environ[n].strip() for n in KNOWN if os.environ.get(n, "").strip()}
 print("AI key secrets found:", ", ".join(sorted(secrets)) or "none")
+gemini_name = next((n for n in GEMINI_NAMES if n in secrets), None)
+if gemini_name:
+    secrets["GEMINI_API_KEY"] = secrets[gemini_name]
+    print(f"Gemini key: using the secret {gemini_name} (for teaching, talking and the characters' voices)")
+    try:
+        req = urllib.request.Request("https://generativelanguage.googleapis.com/v1beta/models?pageSize=300",
+                                     headers={"x-goog-api-key": secrets[gemini_name]})
+        names = [m.get("name", "") for m in json.load(urllib.request.urlopen(req, timeout=30)).get("models", [])]
+        print("  voice (TTS) models this key can use:", ", ".join(n for n in names if "tts" in n) or "none")
+    except Exception as e:  # noqa: BLE001
+        print("  could not list models:", e)
+else:
+    print("No Gemini key secret found: the characters' Gemini voices will not work.")
 
 
 def call(base, key, body):
@@ -64,7 +80,14 @@ for p in cfg["providers"]:
 if not ready:
     sys.exit("No AI has a key. Add the secrets named in content/_app/brain.json.")
 blob = base64.b64encode(json.dumps(ready).encode()).decode()
+# The pre-warm workflow proves itself with this token; both workflows derive it from the Supabase token.
+import hashlib  # noqa: E402
+prewarm = hashlib.sha256(("scol-prewarm|" + os.environ.get("SUPABASE_ACCESS_TOKEN", "")).encode()).hexdigest()[:40]
 with open("brain.env", "w") as f:
     f.write(f"BRAIN_PROVIDERS_B64={blob}\nBRAIN_DEVICE_LIMIT={cfg.get('device_limit', 40)}\n"
-            f"BRAIN_DAILY_LIMIT={cfg.get('daily_limit', 1000)}\n")
+            f"BRAIN_DAILY_LIMIT={cfg.get('daily_limit', 1000)}\n"
+            f"BRAIN_TTS_DEVICE_LIMIT={cfg.get('voice_device_limit', 400)}\nBRAIN_TTS_DAILY_LIMIT={cfg.get('voice_daily_limit', 8000)}\n"
+            f"BRAIN_TTS_MODELS={','.join(cfg.get('voice_models', ['gemini-2.5-flash-preview-tts', 'gemini-2.5-pro-preview-tts']))}\n"
+            f"BRAIN_GEMINI_KEY={secrets.get('GEMINI_API_KEY', '')}\n"
+            f"PREWARM_TOKEN={prewarm if os.environ.get('SUPABASE_ACCESS_TOKEN') else ''}\n")
 print("Order the brain will try:", " -> ".join(p["name"] for p in ready))

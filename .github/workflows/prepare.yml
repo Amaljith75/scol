@@ -1,0 +1,32 @@
+name: Prepare lessons
+
+# Gets every lesson ready on the Scol server (the tutor brain's teaching and every
+# line in each character's Gemini voice), so children never wait for the AI. Runs
+# after the tutor brain is deployed, once a day to finish what limits stopped, or
+# by hand from the Actions tab. What is ready already costs nothing.
+on:
+  workflow_run:
+    workflows: ["Deploy tutor brain"]
+    types: [completed]
+  push:
+    branches: [main]
+    paths: ["content/**"]
+  schedule:
+    - cron: "25 20 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: prepare-lessons
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - name: Teach every lesson and make every voice line ahead of time
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: python3 tools/prepare_lessons.py

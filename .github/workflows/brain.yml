@@ -19,6 +19,14 @@ jobs:
       - uses: actions/checkout@v4
       - name: Find the key and check it works
         env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          NEW_GEMINI_API_KEY: ${{ secrets.NEW_GEMINI_API_KEY }}
+          GEMINI_NEW_API_KEY: ${{ secrets.GEMINI_NEW_API_KEY }}
+          GEMINI_NEW_KEY: ${{ secrets.GEMINI_NEW_KEY }}
+          NEW_GEMINI_KEY: ${{ secrets.NEW_GEMINI_KEY }}
+          GEMINI_LIVE_API_KEY: ${{ secrets.GEMINI_LIVE_API_KEY }}
+          GEMINI_LIVE_KEY: ${{ secrets.GEMINI_LIVE_KEY }}
+          GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
           BRAIN_API_KEY: ${{ secrets.BRAIN_API_KEY }}
           KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
           MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
@@ -67,6 +75,12 @@ jobs:
           URL=$(python3 -c "import json;print(json.load(open('content/_app/brain.json'))['url'])")
           curl -sS -X POST "$URL" -H 'content-type: application/json' \
             -d '{"question":"Why do leaves need sunlight?","device":"deploy-check-0001","lang":"en","lesson":"Plant parts","notes":"Leaves make food for the plant."}'
+          echo
+      - name: Ask for one line in Mio's Gemini voice
+        run: |
+          URL=$(python3 -c "import json;print(json.load(open('content/_app/brain.json'))['url'])")
+          curl -sS -X POST "$URL" -H 'content-type: application/json' \
+            -d '{"mode":"speak","device":"deploy-check-0001","lang":"en","voice":"Sulafat","style":"a warm, gentle storyteller","text":"Hello! Shall we learn something new today?"}'
           echo
       - name: Ask the live brain to teach a small lesson
         run: |

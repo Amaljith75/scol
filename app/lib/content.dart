@@ -1,6 +1,7 @@
 // Curriculum content: everything the app teaches comes from one bundle file
 // built from the content/ folder. No lesson text lives in the app code.
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -10,14 +11,45 @@ import 'package:shared_preferences/shared_preferences.dart';
 const String rawBase = 'https://raw.githubusercontent.com/Amaljith75/scol/main/';
 const String contentUrl = '${rawBase}app/assets/content/bundle.json';
 
-/// Picks the right language from "text" or {"en": .., "ml": ..}.
+/// Picks the right language from "text" or {"en": .., "ml": ..}. A list of lines gives one of them
+/// (see [pickOne]), so lines that have several wordings never come out as "[a, b]".
 String pick(dynamic text, String lang) {
   if (text is String) return text;
+  if (text is List) return text.isEmpty ? '' : pickOne(text.map((e) => '$e').toList());
   if (text is Map && text.isNotEmpty) {
     final v = text[lang] ?? text['en'] ?? text.values.first;
+    if (v is List) return v.isEmpty ? '' : pickOne(v.map((e) => '$e').toList());
     return v?.toString() ?? '';
   }
   return '';
+}
+
+/// Every wording a line has, in [lang] ("Well done!", "Lovely!", ...).
+List<String> pickAll(dynamic text, String lang) {
+  if (text is String) return text.isEmpty ? const [] : [text];
+  if (text is List) return text.map((e) => '$e').toList();
+  if (text is Map && text.isNotEmpty) {
+    final v = text[lang] ?? text['en'] ?? text.values.first;
+    if (v is List) return v.map((e) => '$e').toList();
+    return v == null || '$v'.isEmpty ? const [] : ['$v'];
+  }
+  return const [];
+}
+
+final Random _variety = Random();
+final List<String> _recentlySaid = [];
+
+/// One of [options], never one of the last few said anywhere in the app, so the tutor does not
+/// sound like a recording. With one option, that option.
+String pickOne(List<String> options, {Random? random}) {
+  if (options.isEmpty) return '';
+  if (options.length == 1) return options.first;
+  final fresh = options.where((o) => !_recentlySaid.contains(o)).toList();
+  final from = fresh.isEmpty ? options : fresh;
+  final chosen = from[(random ?? _variety).nextInt(from.length)];
+  _recentlySaid.add(chosen);
+  if (_recentlySaid.length > 12) _recentlySaid.removeAt(0);
+  return chosen;
 }
 
 /// A tutor character. Defined in content/_app/tutors.json.
@@ -38,6 +70,8 @@ class TutorCharacter {
     this.oops,
     this.cheer,
     this.readyMade = false,
+    this.geminiVoice = '',
+    this.style = '',
   });
   final String id;
   final dynamic name;
@@ -58,17 +92,17 @@ class TutorCharacter {
   /// True when this tutor's lesson lines have sound files made ahead in voice/ (see tools/build_voice.py).
   final bool readyMade;
 
+  /// The character's own Gemini voice (for example "Puck"), made on the Scol server, and how it speaks.
+  final String geminiVoice;
+  final String style;
+
   String displayName(String lang) => pick(name, lang);
 
   String voiceFor(String lang) => voice[lang] ?? '';
 
   List<String> praiseList(String lang) {
-    final p = praise;
-    if (p is Map) {
-      final l = p[lang] ?? p['en'];
-      if (l is List && l.isNotEmpty) return l.map((e) => '$e').toList();
-    }
-    return const ['Well done!'];
+    final l = pickAll(praise, lang);
+    return l.isEmpty ? const ['Well done!'] : l;
   }
 
   factory TutorCharacter.fromJson(Map<String, dynamic> j) {
@@ -93,6 +127,8 @@ class TutorCharacter {
       oops: j['oops'],
       cheer: j['cheer'],
       readyMade: j['ready_made'] == true,
+      geminiVoice: j['gemini_voice'] as String? ?? '',
+      style: j['style'] as String? ?? '',
     );
   }
 }
@@ -250,7 +286,7 @@ class Board {
 
 class Bundle {
   Bundle({required this.version, required this.built, required this.boards, required this.concepts,
-      this.tutors = const [fallbackTutor], this.phrases = const {}, this.brain = const {}});
+      this.tutors = const [fallbackTutor], this.phrases = const {}, this.brain = const {}, this.items = const {}});
   final String version;
   final int built;
   final List<Board> boards;
@@ -260,6 +296,9 @@ class Bundle {
 
   /// Where the live tutor brain is: {'url': ..., 'public_key': ...}. Never a secret key.
   final Map<String, dynamic> brain;
+
+  /// A cartoon for each object drawn in pictures: emoji -> picture file in the repository (may not exist yet).
+  final Map<String, String> items;
 
   /// A line the tutor says, e.g. phrase('tryLater', 'ml').
   String phrase(String key, String lang) => pick(phrases[key], lang);
@@ -277,6 +316,7 @@ class Bundle {
       tutors: ts.isEmpty ? const [fallbackTutor] : ts,
       phrases: ((j['phrases'] as Map?) ?? const {}).cast<String, dynamic>(),
       brain: ((j['brain'] as Map?) ?? const {}).cast<String, dynamic>(),
+      items: ((j['items'] as Map?) ?? const {}).map((k, v) => MapEntry('$k', '${v is Map ? v['image'] ?? '' : v}')),
       version: j['version'] as String? ?? '',
       built: (j['built'] as num?)?.toInt() ?? 0,
       concepts: ((j['concepts'] as Map?) ?? const {}).cast<String, dynamic>(),

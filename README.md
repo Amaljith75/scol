@@ -105,7 +105,7 @@ The app uses the internet to download new lessons and voice files, to check for 
 ## Try it
 
 1. On an Android phone or tablet, open the [Releases page](https://github.com/Amaljith75/scol/releases).
-2. Download the **.apk** file from the newest release (for example "Scol V1 build 8") and open it to install.
+2. Download the **.apk** file from the newest release (for example "Scol V1 build 9") and open it to install.
    (Your phone may ask you to allow installing apps from your browser.)
 3. Do the one-minute parent setup: name, syllabus, class, language, tutor.
 4. Hand the phone to your child.

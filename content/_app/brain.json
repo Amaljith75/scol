@@ -1,15 +1,6 @@
 {
-  "about": "Which AIs answer and explain. They are tried top to bottom: when one is busy or out of free requests, the next one answers. Edit the list, commit, and the 'Deploy tutor brain' workflow updates the server. key_secret is the NAME of the GitHub secret holding that key, never the key itself. fallback_models (OpenRouter only) are tried inside the same account. Keep this a complete file: it starts with { and ends with }.",
+  "about": "Which AIs answer and explain. They are tried top to bottom: when one is busy or out of free requests, the next one answers. Edit the list, commit, and the 'Deploy tutor brain' workflow updates the server. key_secret is the NAME of the GitHub secret holding that key, never the key itself. fallback_models (OpenRouter only) are tried inside the same account. Keep this a complete file: it starts with { and ends with }. The Gemini key also makes the characters' voices (voice_models); it stays on the server.",
   "providers": [
-    {
-      "name": "OpenRouter (free)",
-      "base_url": "https://openrouter.ai/api/v1",
-      "model": "google/gemma-4-31b-it:free",
-      "fallback_models": [
-        "nvidia/nemotron-3-ultra-550b-a55b:free"
-      ],
-      "key_secret": "OPENROUTER_API_KEY"
-    },
     {
       "name": "Google Gemini",
       "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
@@ -18,6 +9,15 @@
         "reasoning_effort": "low"
       },
       "key_secret": "GEMINI_API_KEY"
+    },
+    {
+      "name": "OpenRouter (free)",
+      "base_url": "https://openrouter.ai/api/v1",
+      "model": "google/gemma-4-31b-it:free",
+      "fallback_models": [
+        "nvidia/nemotron-3-ultra-550b-a55b:free"
+      ],
+      "key_secret": "OPENROUTER_API_KEY"
     },
     {
       "name": "Google Gemini Lite",
@@ -35,5 +35,11 @@
   "device_limit": 40,
   "daily_limit": 1000,
   "url": "https://puryjmsnrjkbgvhvofzp.supabase.co/functions/v1/brain",
-  "public_key": "sb_publishable_aBCqk9nxakWaBvvJj77fgg_AilwaqM8"
+  "public_key": "sb_publishable_aBCqk9nxakWaBvvJj77fgg_AilwaqM8",
+  "voice_device_limit": 400,
+  "voice_daily_limit": 8000,
+  "voice_models": [
+    "gemini-2.5-flash-preview-tts",
+    "gemini-2.5-pro-preview-tts"
+  ]
 }

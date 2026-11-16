@@ -143,11 +143,24 @@ class TutorDirector extends ChangeNotifier {
     // Without a name, only the lines that do not need one.
     if (childName.trim().isEmpty) options = options.where((o) => !o.contains('{name}')).toList();
     if (options.isEmpty) return '';
-    return options[_rnd.nextInt(options.length)].replaceAll('{name}', childName.trim());
+    return pickOne(options, random: _rnd).replaceAll('{name}', childName.trim());
   }
 
   /// The hello said before the first step (for the screen and for fetching its sound early).
   String get intro => _intro;
+
+  /// When the tutor touches which board item, as (item, how far through what is being said now, 0 to 1),
+  /// placed at the word the brain gave for each touch. Empty when the brain gave no touches.
+  List<MapEntry<int, double>> get touchPlan {
+    final c = current;
+    if (c == null || phase != Phase.talking) return const [];
+    final t = _taught(c);
+    if (t == null || t.touch.isEmpty) return const [];
+    final total = max(1, bubble.length);
+    final start = (bubble.length - t.say.length).clamp(0, bubble.length); // after the hello, if one came first
+    final at = t.touchAt;
+    return [for (var i = 0; i < t.touch.length; i++) MapEntry(t.touch[i], (start + at[i] * t.say.length) / total)];
+  }
 
   /// The lesson's own line for the current step, so it can be shown under the tutor's words.
   String get lessonLine => current == null ? '' : pick(current!.text, lang);
@@ -193,14 +206,17 @@ class TutorDirector extends ChangeNotifier {
         for (final s in lesson.steps) ...[pick(s.text, lang), pick(s.hint, lang), pick(s.explain, lang)],
         for (final a in lesson.alts.values) pick(a.text, lang),
         ..._praise,
-        _oops,
-        _ph('anotherWay'),
-        _ph('lookAgain'),
-        _ph('tryLater'),
-        _ph('again'),
+        ...(tone == 'strict' ? _phAll('oopsStrict') : pickAll(tutor.oops, lang)),
+        for (final k in const ['anotherWay', 'lookAgain', 'tryLater', 'again']) ..._phAll(k),
       ];
 
-  List<String> get _praise => tone == 'strict' ? [_ph('praiseStrict')] : tutor.praiseList(lang);
+  /// Every wording of a shared line, so all of them can be fetched early.
+  List<String> _phAll(String key) {
+    final l = pickAll(phrases[key], lang);
+    return l.isNotEmpty ? l : [tr(key, lang)];
+  }
+
+  List<String> get _praise => tone == 'strict' ? _phAll('praiseStrict') : tutor.praiseList(lang);
   String get _oops => tone == 'strict' ? _ph('oopsStrict') : pick(tutor.oops, lang);
 
   /// The child switched language: say the current step again in the new language.
@@ -309,7 +325,7 @@ class TutorDirector extends ChangeNotifier {
       look = Look.child;
       final praise = _praise;
       final explain = pick(q.explain, lang);
-      _say(clean || explain.isEmpty ? [praise[_rnd.nextInt(praise.length)]] : [praise.first, explain]);
+      _say([pickOne(praise, random: _rnd), if (!clean && explain.isNotEmpty) explain]);
     } else {
       _attempts++;
       wrongOptions.add(given);

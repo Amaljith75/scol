@@ -15,6 +15,7 @@ Future<void> main() async {
   await initReminders();
   final voice = VoiceSpeaker();
   appSpeaker = voice;
+  voiceServer = () => contentStore.bundle.brain; // the characters' Gemini voices come from the Scol server
   voiceTone = () => appState.tone;
   voice.init(); // finds which voice files are ready
   contentStore.refresh(); // looks for new lessons in the background
