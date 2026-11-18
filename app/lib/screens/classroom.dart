@@ -227,6 +227,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     _tourIndex = index;
     final stack = _stackKey.currentContext?.findRenderObject();
     final target = boardTargets.value[plan[index].key];
+    boardFocus.value = plan[index].key;
     if (stack is RenderBox && target != null) setState(() => _tourAt = stack.globalToLocal(target));
   }
 
@@ -240,6 +241,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     }
     final stack = _stackKey.currentContext?.findRenderObject();
     final target = boardTargets.value[order[i]];
+    boardFocus.value = order[i];
     if (stack is RenderBox && target != null) {
       setState(() => _tourAt = stack.globalToLocal(target));
     }
@@ -252,6 +254,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
   void _goHome() {
     _tourTimer?.cancel();
     _tourIndex = -1;
+    boardFocus.value = null;
     if (_tourAt != null && mounted) setState(() => _tourAt = null);
   }
 
@@ -336,6 +339,7 @@ class _ClassroomScreenState extends State<ClassroomScreen> with WidgetsBindingOb
     d.speaker?.speaking.removeListener(_speakingChanged);
     d.speaker?.progress.removeListener(_followVoice);
     boardTargets.value = {};
+    boardFocus.value = null;
     d.removeListener(_onChange);
     d.dispose();
     super.dispose();

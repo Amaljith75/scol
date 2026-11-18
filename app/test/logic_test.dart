@@ -9,7 +9,9 @@ import 'package:http/testing.dart';
 import 'package:scol/brain.dart';
 import 'package:scol/content.dart';
 import 'package:scol/edge_voice.dart';
+import 'package:scol/live.dart';
 import 'package:scol/mastery.dart';
+import 'package:scol/pcm_out.dart';
 import 'package:scol/report.dart';
 import 'package:scol/state.dart';
 import 'package:scol/tutor.dart';
@@ -574,6 +576,70 @@ void main() {
       expect(env.first, lessThan(0.1)); // quiet: mouth closed
       expect(env.last, greaterThan(0.8)); // loud: mouth open
       expect(wavEnvelope(Uint8List.fromList(utf8.encode('not a wav file at all, just some text'))), isNull);
+    });
+  });
+
+  group('clean sound and Gemini Live', () {
+    Uint8List tone(int rate, int ms, int amp) {
+      final d = ByteData(rate * ms ~/ 1000 * 2);
+      for (var i = 0; i < d.lengthInBytes ~/ 2; i++) {
+        d.setInt16(i * 2, (amp * sin(i / rate * 2 * pi * 220)).round(), Endian.little);
+      }
+      return d.buffer.asUint8List();
+    }
+
+    test('a line starts and ends softly, with the silence at its ends trimmed', () {
+      const rate = 24000;
+      final pcm = Uint8List.fromList([...Uint8List(rate), ...tone(rate, 500, 12000), ...Uint8List(rate)]); // 0.5 s silence each side
+      final out = smoothPcm(pcm, rate);
+      final d = ByteData.sublistView(out);
+      final n = out.length ~/ 2;
+      expect(n, lessThan(pcm.length ~/ 2)); // silence trimmed
+      expect(n, greaterThan(rate * 500 ~/ 1000)); // the sound itself kept
+      expect(d.getInt16(0, Endian.little).abs(), lessThan(200)); // no click at the start
+      expect(d.getInt16((n - 1) * 2, Endian.little).abs(), lessThan(200)); // nor at the end
+      expect(smoothPcm(Uint8List(rate * 2), rate), isEmpty); // all silence: nothing to play
+    });
+
+    test('the samples of a WAV file are found after its header', () {
+      const rate = 24000;
+      final pcm = tone(rate, 100, 8000);
+      final head = ByteData(44);
+      void text(int o, String t) {
+        for (var i = 0; i < t.length; i++) {
+          head.setUint8(o + i, t.codeUnitAt(i));
+        }
+      }
+
+      text(0, 'RIFF');
+      head.setUint32(4, 36 + pcm.length, Endian.little);
+      text(8, 'WAVEfmt ');
+      head.setUint32(16, 16, Endian.little);
+      head.setUint16(20, 1, Endian.little);
+      head.setUint16(22, 1, Endian.little);
+      head.setUint32(24, rate, Endian.little);
+      head.setUint32(28, rate * 2, Endian.little);
+      head.setUint16(32, 2, Endian.little);
+      head.setUint16(34, 16, Endian.little);
+      text(36, 'data');
+      head.setUint32(40, pcm.length, Endian.little);
+      final w = wavPcm(Uint8List.fromList([...head.buffer.asUint8List(), ...pcm]))!;
+      expect(w.rate, rate);
+      expect(w.pcm, pcm);
+      expect(wavPcm(Uint8List.fromList(List.filled(60, 7))), isNull);
+    });
+
+    test('a live talk starts with the character voice and the rules', () {
+      final b = loadBundle();
+      final mio = b.tutors.first;
+      final setup = liveSetup('models/live', mio.geminiVoice, 'Be kind.')['setup'] as Map;
+      expect(setup['model'], 'models/live');
+      expect(((((setup['generationConfig'] as Map)['speechConfig'] as Map)['voiceConfig'] as Map)['prebuiltVoiceConfig']
+          as Map)['voiceName'], 'Aoede');
+      expect('${setup['systemInstruction']}', contains('Be kind.'));
+      expect(b.tutors.map((t) => t.geminiVoice).toList(), ['Aoede', 'Puck', 'Kore', 'Zephyr', 'Charon']);
+      expect(pcmLoudness(tone(16000, 100, 10000)), greaterThan(5000));
+      expect(pcmLoudness(Uint8List(3200)), 0);
     });
   });
 }

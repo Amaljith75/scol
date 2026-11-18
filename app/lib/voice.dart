@@ -22,6 +22,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'brain.dart' show deviceId;
 import 'content.dart';
 import 'edge_voice.dart';
+import 'pcm_out.dart';
 
 /// 'ml' if the text has Malayalam letters, otherwise 'en'.
 String langOf(String text) => RegExp(r'[ഀ-ൿ]').hasMatch(text) ? 'ml' : 'en';
@@ -117,31 +118,22 @@ const toneStyle = {
   'strict': 'speaking firmly and clearly, like a strict but kind teacher',
 };
 
-/// Loudness of a WAV file every 40 ms, 0 to 1, for the mouth. Null for anything that is not 16-bit WAV.
+/// Loudness of a WAV file every 40 ms, 0 to 1, for the mouth. Null for anything that is not 16-bit mono WAV.
 List<double>? wavEnvelope(Uint8List bytes, {int windowMs = 40}) {
-  if (bytes.length < 46 || String.fromCharCodes(bytes.sublist(0, 4)) != 'RIFF') return null;
-  final data = ByteData.sublistView(bytes);
-  final rate = data.getUint32(24, Endian.little);
-  final bits = data.getUint16(34, Endian.little);
-  if (bits != 16 || rate == 0) return null;
-  // Find the "data" chunk (usually right after the 36-byte header).
-  var off = 12;
-  while (off + 8 <= bytes.length) {
-    final id = String.fromCharCodes(bytes.sublist(off, off + 4));
-    final size = data.getUint32(off + 4, Endian.little);
-    if (id == 'data') {
-      off += 8;
-      break;
-    }
-    off += 8 + size;
-  }
+  final w = wavPcm(bytes);
+  return w == null ? null : pcmEnvelope(w.pcm, w.rate, windowMs: windowMs);
+}
+
+/// Loudness of 16-bit mono sound every [windowMs], 0 to 1.
+List<double> pcmEnvelope(Uint8List pcm, int rate, {int windowMs = 40}) {
+  final data = ByteData.sublistView(pcm);
   final per = max(1, rate * windowMs ~/ 1000);
   final out = <double>[];
   var peak = 1.0;
-  for (var i = off; i + 1 < bytes.length; i += per * 2) {
+  for (var i = 0; i + 1 < pcm.length; i += per * 2) {
     var sum = 0.0;
     var n = 0;
-    for (var j = i; j + 1 < bytes.length && j < i + per * 2; j += 2) {
+    for (var j = i; j + 1 < pcm.length && j < i + per * 2; j += 2) {
       final v = data.getInt16(j, Endian.little).toDouble();
       sum += v * v;
       n++;
@@ -227,7 +219,7 @@ class VoiceSpeaker implements Speaker {
     final url = '${server['url'] ?? ''}';
     if (voice.isEmpty || kIsWeb || _dir == null) return null;
     final style = _style(tutor);
-    final name = 'gem_${clipId('$voice|$style', lang, text)}.wav';
+    final name = 'gem2_${clipId('$voice|$style', lang, text)}.wav';
     final file = File('$_dir/$name');
     if (await file.exists()) return DeviceFileSource(file.path);
     if (url.isEmpty) return null;
@@ -358,9 +350,41 @@ class VoiceSpeaker implements Speaker {
     }
   }
 
+  /// Plays a Gemini voice line as raw sound (like the Gemini Live app does): smooth start and end,
+  /// the mouth following its loudness and [progress] from [from] to [to].
+  Future<bool> _playPcm(String path, double from, double to, int token) async {
+    final w = wavPcm(await File(path).readAsBytes());
+    if (w == null || token != _gen) return false;
+    final pcm = smoothPcm(w.pcm, w.rate);
+    if (pcm.isEmpty) return true;
+    final envelope = pcmEnvelope(pcm, w.rate);
+    final ms = max(1, pcm.length ~/ 2 * 1000 ~/ w.rate);
+    final out = PcmOut.instance;
+    final ticker = Timer.periodic(const Duration(milliseconds: 33), (_) {
+      if (token != _gen) return;
+      final t = out.framesPlayed * 1000 ~/ w.rate;
+      _progress.value = from + (to - from) * (t / ms).clamp(0.0, 1.0);
+      _mouth.value = envelope[(t ~/ 40).clamp(0, envelope.length - 1)];
+    });
+    try {
+      await out.play(pcm, w.rate);
+      return true;
+    } catch (e) {
+      voiceStatus.value = 'Playing a sound failed: ${describeVoiceError(e)}';
+      return false;
+    } finally {
+      ticker.cancel();
+      _mouth.value = 0;
+    }
+  }
+
   /// Plays one sound to the end (or until a newer line starts), moving the mouth with its loudness
   /// and [progress] from [from] to [to].
   Future<bool> _play(Source source, double from, double to, int token) async {
+    if (source is DeviceFileSource && source.path.endsWith('.wav')) {
+      final ok = await _playPcm(source.path, from, to, token);
+      if (ok || token != _gen) return ok;
+    }
     final player = AudioPlayer();
     _player = player;
     final done = Completer<void>();
@@ -443,6 +467,9 @@ class VoiceSpeaker implements Speaker {
     final p = _player;
     _player = null;
     _mouth.value = 0;
+    try {
+      await PcmOut.instance.stop();
+    } catch (_) {}
     try {
       await p?.stop();
       await p?.dispose();

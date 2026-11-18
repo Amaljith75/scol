@@ -148,8 +148,8 @@ To redraw a picture, change the step's words (or delete the file). The style lin
 
 ## The characters' Gemini voices
 
-Each tutor in `content/_app/tutors.json` has a `gemini_voice` (Mio: Sulafat, Leo: Puck, Yuki: Achernar, Ruby: Leda,
-Ollie: Umbriel) and a `style` that tells Gemini how the character talks. The app asks the brain server for a line
+Each tutor in `content/_app/tutors.json` has a `gemini_voice` (the same voices as the Gemini Live app: Mio Aoede,
+Leo Puck, Yuki Kore, Ruby Zephyr, Ollie Charon) and a `style` that tells Gemini how the character talks. The app asks the brain server for a line
 (`mode: speak`); the server makes it once with Gemini speech, keeps it in the public storage bucket `voices`, and hands
 every later phone the same file. The phone keeps its copy, so a lesson heard once works offline. The Gemini key stays on
 the server: the deploy takes the first of `NEW_GEMINI_API_KEY`, `GEMINI_NEW_API_KEY`, `GEMINI_NEW_KEY`, `NEW_GEMINI_KEY`,
@@ -174,3 +174,21 @@ tutor's pick is prepared on the home screen), so tapping on starts at once.
 **Not the same words every time.** Each lesson has three wordings from the brain, used in turn when a child repeats a
 lesson; praise, "try again" and the other shared lines have several wordings each (`tutors.json`, `phrases.json`) and
 the app never repeats one it said in the last few lines.
+
+## Clean sound
+
+Every Gemini voice line is cleaned on the server before it is kept: a short burst of noise after the last word (which
+speech models sometimes add) is cut, the silence at both ends is trimmed, and the line fades in and out. The phone
+plays these lines as raw sound straight to the speaker (`app/lib/pcm_out.dart`), the way the Gemini Live app does,
+instead of through the media player, and smooths the ends again, so a line never ends on a crackle or a click.
+
+## Gemini Live
+
+The 🎙️ button starts a live spoken talk with the tutor through Gemini Live, in the character's own voice
+(`app/lib/live.dart`). The Gemini key never goes into the app: the phone asks the brain server for a one-use pass
+(`mode: live`, Gemini's "ephemeral token", valid for two minutes to start and half an hour in all), and the server
+sends the tutor charter along with it. The phone adds the lesson, the child's first name and a progress summary,
+records the microphone in the phone's echo-cancelling voice mode, and plays the tutor as it speaks. The child can
+talk over the tutor; the red End button stops it. Each phone may start 30 live talks a day. If a live talk cannot
+start (no internet, the limit), the sheet falls back to the phone's speech recognition and the tutor brain. The
+model is `live_model` in `brain.json`; the deploy log holds a real live talk with a pass to show it works.

@@ -10718,7 +10718,7 @@
   "public_key": "sb_publishable_aBCqk9nxakWaBvvJj77fgg_AilwaqM8",
   "url": "https://puryjmsnrjkbgvhvofzp.supabase.co/functions/v1/brain"
  },
- "built": 1794840936,
+ "built": 1794992954,
  "concepts": {
   "kerala-scert/class-3/evs#animal-food": {
    "en": "Herbivores, carnivores and omnivores",
@@ -11149,7 +11149,7 @@
    "color": "#FFB81F",
    "energy": 1.0,
    "eyes": "round",
-   "gemini_voice": "Sulafat",
+   "gemini_voice": "Aoede",
    "hello": {
     "en": "Hello! I am Mio. Shall we learn with a story today?",
     "ml": "ഹലോ! ഞാൻ മിയോ. ഇന്ന് ഒരു കഥയിലൂടെ പഠിക്കാമോ?"
@@ -11279,7 +11279,7 @@
    "color": "#F178A6",
    "energy": 0.6,
    "eyes": "soft",
-   "gemini_voice": "Achernar",
+   "gemini_voice": "Kore",
    "hello": {
     "en": "Hello, little one. I am Yuki. We will go nice and slow.",
     "ml": "ഹലോ കുഞ്ഞേ. ഞാൻ യൂകി. നമുക്ക് പതുക്കെ പതുക്കെ പഠിക്കാം."
@@ -11341,7 +11341,7 @@
    "color": "#8E6BFF",
    "energy": 1.2,
    "eyes": "curious",
-   "gemini_voice": "Leda",
+   "gemini_voice": "Zephyr",
    "hello": {
     "en": "Ooh, hello! I am Ruby. I wonder what we will discover today?",
     "ml": "ഓ, ഹലോ! ഞാൻ റൂബി. ഇന്ന് നമ്മൾ എന്താണ് കണ്ടുപിടിക്കുക?"
@@ -11403,7 +11403,7 @@
    "color": "#FF7A45",
    "energy": 0.9,
    "eyes": "sleepy",
-   "gemini_voice": "Umbriel",
+   "gemini_voice": "Charon",
    "hello": {
     "en": "Yo! Ollie here. I was napping, but maths is more fun.",
     "ml": "ഹായ്! ഞാൻ ഒല്ലി. ഉറങ്ങുകയായിരുന്നു, പക്ഷേ കണക്കാണ് കൂടുതൽ രസം."
@@ -11454,5 +11454,5 @@
    }
   }
  ],
- "version": "20eca920ba12"
+ "version": "5d2a47709c60"
 }

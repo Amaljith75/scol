@@ -145,6 +145,10 @@ class _BreathingState extends State<_Breathing> with SingleTickerProviderStateMi
 /// while it teaches. Filled in by [BoardItem]s after they are laid out.
 final ValueNotifier<Map<int, Offset>> boardTargets = ValueNotifier({});
 
+/// The piece of the picture the tutor is touching right now (its item number), or null. That piece grows and
+/// glows, so a child who finds the words hard can still follow what is being talked about.
+final ValueNotifier<int?> boardFocus = ValueNotifier(null);
+
 /// Marks one touchable piece of a picture: a group, a shape, a row, a card, a corner...
 class BoardItem extends StatefulWidget {
   const BoardItem(this.index, {super.key, required this.child});
@@ -175,7 +179,26 @@ class _BoardItemState extends State<BoardItem> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(_report);
-    return widget.child;
+    return ValueListenableBuilder<int?>(
+      valueListenable: boardFocus,
+      child: widget.child,
+      builder: (_, focus, child) {
+        final on = focus == widget.index;
+        return AnimatedScale(
+          scale: on ? 1.16 : 1.0,
+          duration: const Duration(milliseconds: 260),
+          curve: on ? Curves.easeOutBack : Curves.easeOut,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 260),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [if (on) BoxShadow(color: sun.withAlpha(170), blurRadius: 18, spreadRadius: 3)],
+            ),
+            child: child,
+          ),
+        );
+      },
+    );
   }
 }
 
