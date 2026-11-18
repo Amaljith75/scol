@@ -55,6 +55,27 @@ elif groovy.exists():
         g += "\ndependencies {\n    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'\n}\n"
     groovy.write_text(g)
 
+# Some plugins (flutter_pcm_sound) still compile against an old Android (33), and the build stops when a library
+# needs 34 or later. Raise every Android library to at least API 36, in the one hook the Android Gradle plugin
+# allows for it (finalizeDsl runs after the plugin's own build file, before its settings are locked).
+root_kts = app / "android/build.gradle.kts"
+if root_kts.exists():
+    r = root_kts.read_text()
+    if "finalizeDsl" not in r:
+        hook = """
+subprojects {
+    plugins.withId("com.android.library") {
+        extensions.getByType(com.android.build.api.variant.LibraryAndroidComponentsExtension::class.java)
+            .finalizeDsl { android ->
+                if ((android.compileSdk ?: 0) < 36) android.compileSdk = 36
+            }
+    }
+}
+"""
+        marker = "subprojects {\n    project.evaluationDependsOn"
+        r = r.replace(marker, hook.lstrip("\n") + marker, 1) if marker in r else r + hook
+        root_kts.write_text(r)
+
 # Icon: plain files for old phones, a full-bleed "adaptive" icon for new ones.
 for d in ("mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"):
     (res / f"mipmap-{d}").mkdir(parents=True, exist_ok=True)

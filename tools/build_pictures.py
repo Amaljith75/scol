@@ -14,6 +14,7 @@ requests, with the same model through OpenRouter (OPENROUTER_API_KEY, paid, a
 few paise per picture). Needs Pillow (pip install pillow).
 """
 import base64
+import hashlib
 import io
 import json
 import os
@@ -134,10 +135,33 @@ for _name in ("NEW_GEMINI_API_KEY", "GEMINI_NEW_API_KEY", "GEMINI_NEW_KEY", "NEW
         print(f"Using the Gemini key in the secret {_name}")
         break
 
-# Which services can draw, in the order they are tried.
+def draw_pollinations(prompt):
+    """Pollinations: free, no key. Only the lesson's own words are sent. Slow, so one at a time."""
+    import urllib.parse
+    seed = int(hashlib.sha1(prompt.encode("utf-8")).hexdigest()[:6], 16)
+    url = ("https://image.pollinations.ai/prompt/" + urllib.parse.quote(styled(prompt)[:1500])
+           + f"?width=768&height=576&nologo=true&model=flux&seed={seed}")
+    req = urllib.request.Request(url, headers={"user-agent": "scol-pictures/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=240) as r:
+            data = r.read()
+    except urllib.error.HTTPError as e:
+        if e.code in (402, 429):
+            raise Quota(f"HTTP {e.code}") from None
+        raise RuntimeError(f"HTTP {e.code}") from None
+    time.sleep(4)  # be gentle with a free service
+    if len(data) < 2000 or not data[:4] in (b"\xff\xd8\xff\xe0", b"\xff\xd8\xff\xe1", b"\x89PNG", b"\xff\xd8\xff\xdb") and data[:2] != b"\xff\xd8":
+        raise RuntimeError("no picture in the answer")
+    return data
+
+
+# Which services can draw, in the order they are tried: Gemini and OpenRouter with their keys,
+# then Pollinations, which needs none (set SCOL_PICTURES_FREE=0 to leave it out).
 PAINTERS = [(n, f) for n, key, f in (("Gemini", "GEMINI_API_KEY", draw_gemini),
                                      ("OpenRouter", "OPENROUTER_API_KEY", draw_openrouter))
             if os.environ.get(key)]
+if os.environ.get("SCOL_PICTURES_FREE", "1") != "0":
+    PAINTERS.append(("Pollinations", draw_pollinations))
 _tired = set()  # painters that said their limit is reached
 
 

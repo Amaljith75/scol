@@ -30,13 +30,14 @@ Scol follows two syllabuses: **Kerala State (SCERT)** and **CBSE (NCERT)**.
    lets your child try again. If it is still hard, the tutor corrects the mistake kindly and then
    explains the idea another way, as a little story or as a picture, and asks again. Scol remembers
    which way works better for your child.
-6. **Stars, not pressure.** Your child earns stars, builds a streak of learning days, and collects badges.
+6. **Learn anywhere.** Every level is open: the tutor suggests the next one, but your child can pick any level.
+7. **Stars, not pressure.** Your child earns stars, builds a streak of learning days, and collects badges.
    Missing a day takes nothing away.
 
 ## Talk to Mio
 
-Your child can tap the 🎙️ button and simply talk: the tutor listens, answers aloud, and listens again, like a call,
-until your child taps **End** (typing works too). It knows the lesson on screen and how your child has been doing,
+Your child can tap the 🎙️ button and simply talk, live, with Gemini Live: the tutor answers at once in its own voice,
+your child can interrupt, and **End** stops the call (typing works too). It knows the lesson on screen and how your child has been doing,
 so "how am I doing?" gets a real, kind answer. In English or Malayalam. This uses an AI service, so it stays off until
 a parent turns it on in the Parents area.
 
@@ -105,7 +106,7 @@ The app uses the internet to download new lessons and voice files, to check for 
 ## Try it
 
 1. On an Android phone or tablet, open the [Releases page](https://github.com/Amaljith75/scol/releases).
-2. Download the **.apk** file from the newest release (for example "Scol V1 build 9") and open it to install.
+2. Download the **.apk** file from the newest release (for example "Scol V1 build 10") and open it to install.
    (Your phone may ask you to allow installing apps from your browser.)
 3. Do the one-minute parent setup: name, syllabus, class, language, tutor.
 4. Hand the phone to your child.

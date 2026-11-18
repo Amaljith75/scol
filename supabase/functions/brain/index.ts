@@ -288,6 +288,8 @@ async function withinLimits(device: string, kind = ""): Promise<Response | null>
   // Voices are counted apart from questions: one lesson needs many lines.
   const [deviceLimit, dailyLimit] = kind === "tts"
     ? [Number(env("BRAIN_TTS_DEVICE_LIMIT", "400")), Number(env("BRAIN_TTS_DAILY_LIMIT", "8000"))]
+    : kind === "live"
+    ? [30, 600] // live talks per phone and for everyone, per day
     : [Number(env("BRAIN_DEVICE_LIMIT", "40")), Number(env("BRAIN_DAILY_LIMIT", "1000"))];
   try {
     const [mine, all] = await countHit(kind ? `${kind}:${device}` : device);
@@ -365,6 +367,7 @@ Deno.serve(async (req) => {
 
   prewarm = !!env("PREWARM_TOKEN") && req.headers.get("x-scol-prewarm") === env("PREWARM_TOKEN");
   if (body.mode === "speak") return speak(body, device, lang);
+  if (body.mode === "live") return liveToken(body, device, lang);
   if (body.mode === "teach") return teach(body, device, lang);
   if (body.mode === "report") return report(body, device, lang);
 
@@ -467,6 +470,53 @@ function wav(pcm: Uint8Array, rate: number): Uint8Array {
   return out;
 }
 
+/**
+ * Cleans a spoken line before it is kept: cuts a short burst of noise that speech models sometimes add after the
+ * last word (a sound of under 0.35 s that comes after at least 0.3 s of silence at the very end), trims the
+ * silence at both ends, and fades in and out so the line never starts or stops on a click.
+ */
+function cleanSpeech(pcm: Uint8Array, rate: number): Uint8Array {
+  const n = pcm.length >> 1;
+  if (n === 0) return pcm;
+  const v = new DataView(pcm.buffer, pcm.byteOffset, pcm.byteLength);
+  const win = Math.max(1, Math.floor(rate / 50)); // 20 ms
+  const loud: boolean[] = [];
+  for (let i = 0; i < n; i += win) {
+    let sum = 0;
+    const end = Math.min(n, i + win);
+    for (let j = i; j < end; j++) {
+      const x = v.getInt16(j * 2, true);
+      sum += x * x;
+    }
+    loud.push(Math.sqrt(sum / (end - i)) > 450);
+  }
+  let last = loud.lastIndexOf(true);
+  if (last < 0) return new Uint8Array(0);
+  // the final sound run, and the silence before it
+  let runStart = last;
+  while (runStart > 0 && loud[runStart - 1]) runStart--;
+  let gapStart = runStart;
+  while (gapStart > 0 && !loud[gapStart - 1]) gapStart--;
+  const runMs = (last - runStart + 1) * 20;
+  const gapMs = (runStart - gapStart) * 20;
+  if (gapStart > 0 && runMs < 350 && gapMs >= 300) last = gapStart - 1; // drop the stray burst
+  const first = loud.indexOf(true);
+  const from = Math.max(0, first * win - Math.floor(rate * 0.03));
+  const to = Math.min(n, (last + 1) * win + Math.floor(rate * 0.08));
+  const out = new Uint8Array((to - from) * 2);
+  const o = new DataView(out.buffer);
+  const fadeIn = Math.floor(rate * 0.01);
+  const fadeOut = Math.floor(rate * 0.06);
+  const len = to - from;
+  for (let i = 0; i < len; i++) {
+    let x = v.getInt16((from + i) * 2, true);
+    if (i < fadeIn) x = Math.round((x * i) / fadeIn);
+    if (i > len - fadeOut) x = Math.round((x * (len - i)) / fadeOut);
+    o.setInt16(i * 2, x, true);
+  }
+  return out;
+}
+
 function fromBase64(b64: string): Uint8Array {
   const bin = atob(b64);
   const out = new Uint8Array(bin.length);
@@ -502,7 +552,7 @@ async function geminiSpeech(text: string, voice: string, style: string): Promise
     if (!b64) throw new Error(`${model}: no audio`);
     ttsModel = (ttsModel + attempt) % TTS_MODELS.length;
     const rate = Number(/rate=(\d+)/.exec(String(part.inlineData.mimeType ?? ""))?.[1] ?? 24000);
-    return wav(fromBase64(b64), rate);
+    return wav(cleanSpeech(fromBase64(b64), rate), rate);
   }
   throw new Error(lastError || "no speech model answered");
 }
@@ -514,7 +564,7 @@ async function speak(body: Record<string, unknown>, device: string, lang: string
   const voice = clip(body.voice, 30);
   const style = clip(body.style, 160);
   if (text.length < 1 || !VOICES.has(voice)) return reply({ error: "bad_request" }, 400);
-  const path = `g1/${voice}/${await sha256([voice, style, lang, text].join("|"))}.wav`;
+  const path = `g2/${voice}/${await sha256([voice, style, lang, text].join("|"))}.wav`;
   // Already made for someone: hand out the same file.
   try {
     const head = await fetch(voiceUrl(path), { method: "HEAD" });
@@ -540,5 +590,55 @@ async function speak(body: Record<string, unknown>, device: string, lang: string
   } catch (e) {
     console.error("speak", String(e).slice(0, 300));
     return reply({ error: "voice_unavailable" }, 503);
+  }
+}
+
+
+// ---------------- Gemini Live ----------------
+
+const LIVE_MODEL = () => env("BRAIN_LIVE_MODEL") || "models/gemini-2.5-flash-native-audio-preview-12-2025";
+
+/**
+ * A one-use pass for a Gemini Live session (an "ephemeral token"): the phone talks to Gemini Live directly, with
+ * this pass instead of the key. It must be used within two minutes and the session ends within half an hour.
+ */
+async function liveToken(body: Record<string, unknown>, device: string, lang: string): Promise<Response> {
+  const key = env("BRAIN_GEMINI_KEY");
+  if (!key) return reply({ error: "not_configured" }, 503);
+  const limited = await withinLimits(device, "live");
+  if (limited) return limited;
+  const now = Date.now();
+  try {
+    const res = await fetch("https://generativelanguage.googleapis.com/v1alpha/auth_tokens", {
+      method: "POST",
+      headers: { "x-goog-api-key": key, "content-type": "application/json" },
+      body: JSON.stringify({
+        uses: 1,
+        expireTime: new Date(now + 30 * 60 * 1000).toISOString(),
+        newSessionExpireTime: new Date(now + 2 * 60 * 1000).toISOString(),
+      }),
+    });
+    if (!res.ok) {
+      console.error("live token", res.status, (await res.text()).slice(0, 300));
+      return reply({ error: "live_unavailable" }, 503);
+    }
+    const data = await res.json();
+    const token = String(data?.name ?? "");
+    if (!token) return reply({ error: "live_unavailable" }, 503);
+    const tone = TONES[clip(body.tone, 10)] ? clip(body.tone, 10) : "normal";
+    return reply({
+      token,
+      model: LIVE_MODEL(),
+      // the tutor's charter, the same rules as every other mode; the phone adds the lesson and the child's name
+      rules: [
+        ...charter(clip(body.tutor, 30) || "Mio", clip(body.about, 200), lang, tone),
+        "This is a live spoken conversation. Keep every turn to one to three short sentences, then let the child talk.",
+        "If the child is quiet, gently ask one simple question about the lesson. If the child goes off the lesson, answer kindly in one sentence and bring them back.",
+      ].join("\n"),
+      url: "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContentConstrained",
+    });
+  } catch (e) {
+    console.error("live token", String(e).slice(0, 300));
+    return reply({ error: "live_unavailable" }, 503);
   }
 }

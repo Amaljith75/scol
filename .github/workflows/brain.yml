@@ -7,7 +7,7 @@ name: Deploy tutor brain
 on:
   push:
     branches: [main]
-    paths: ["supabase/**", "content/_app/brain.json", "tools/brain_settings.py"]
+    paths: ["supabase/**", "content/_app/brain.json", "tools/brain_settings.py", "tools/check_live.py"]
   workflow_dispatch:
 
 jobs:
@@ -82,6 +82,11 @@ jobs:
           curl -sS -X POST "$URL" -H 'content-type: application/json' \
             -d '{"mode":"speak","device":"deploy-check-0001","lang":"en","voice":"Sulafat","style":"a warm, gentle storyteller","text":"Hello! Shall we learn something new today?"}'
           echo
+      - name: Talk to the tutor through Gemini Live, as the app does
+        continue-on-error: true
+        run: |
+          pip install -q websockets
+          python3 tools/check_live.py
       - name: Ask the live brain to teach a small lesson
         run: |
           URL=$(python3 -c "import json;print(json.load(open('content/_app/brain.json'))['url'])")

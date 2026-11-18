@@ -5,6 +5,7 @@ import 'package:speech_to_text/speech_to_text.dart';
 
 import '../brain.dart';
 import '../content.dart';
+import '../live.dart';
 import '../report.dart';
 import '../state.dart';
 import '../strings.dart';
@@ -60,13 +61,54 @@ class _AskSheetState extends State<_AskSheet> {
   bool _live = true; // keep listening after each answer, like a phone call, until End
   final List<List<String>> _chat = []; // [question, answer]
 
+  /// A Gemini Live talk, when one can be had; otherwise the phone's speech recognition and the tutor brain.
+  LiveTalk? _talk;
+  bool _starting = true;
+
   String get lang => appState.mainLang;
   TutorCharacter get tutor => tutorById(appState.tutorId);
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _listen());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _startLive());
+  }
+
+  /// Tries a Gemini Live talk first; if it cannot start, talks through speech recognition instead.
+  Future<void> _startLive() async {
+    appSpeaker?.stop();
+    if (appState.voiceOn) {
+      final talk = LiveTalk(
+        server: contentStore.bundle.brain,
+        tutor: tutor,
+        lang: lang,
+        tone: appState.tone,
+        childName: appState.childName,
+        lessonTitle: widget.lessonTitle,
+        notes: widget.notes,
+        progress: progressFacts(appState, contentStore.bundle, lang),
+      );
+      if (await talk.start()) {
+        if (!mounted) {
+          talk.dispose();
+          return;
+        }
+        talk.addListener(_liveChanged);
+        setState(() {
+          _talk = talk;
+          _starting = false;
+        });
+        return;
+      }
+      talk.dispose();
+    }
+    if (!mounted) return;
+    setState(() => _starting = false);
+    _listen();
+  }
+
+  void _liveChanged() {
+    if (mounted) setState(() {});
   }
 
   @override
@@ -74,14 +116,19 @@ class _AskSheetState extends State<_AskSheet> {
     _text.dispose();
     appSpeaker?.speaking.removeListener(_spoken);
     if (_listening) _stt.stop();
+    _talk?.removeListener(_liveChanged);
+    _talk?.dispose();
     super.dispose();
   }
 
-  /// The tutor finished speaking: in a live talk, listen for the child's next words.
+  /// The tutor finished speaking: in a live talk, listen for the child's next words
+  /// (after a short pause, so the speaker has gone quiet before the microphone opens).
   void _spoken() {
     if (!mounted || appSpeaker?.speaking.value != false) return;
     appSpeaker?.speaking.removeListener(_spoken);
-    if (_live && !_listening && !_thinking) _listen();
+    Future<void>.delayed(const Duration(milliseconds: 450), () {
+      if (mounted && _live && !_listening && !_thinking && appSpeaker?.speaking.value != true) _listen();
+    });
   }
 
   /// End the live talk: stop listening and speaking; typing still works.
@@ -89,6 +136,7 @@ class _AskSheetState extends State<_AskSheet> {
     appSpeaker?.speaking.removeListener(_spoken);
     appSpeaker?.stop();
     if (_listening) _stt.stop();
+    _talk?.end();
     setState(() {
       _live = false;
       _listening = false;
@@ -134,6 +182,13 @@ class _AskSheetState extends State<_AskSheet> {
 
   Future<void> _send(String question) async {
     final q = question.trim();
+    final talk = _talk;
+    if (talk != null && talk.isLive) {
+      // Typed words go into the live talk.
+      if (q.isNotEmpty) talk.sendText(q);
+      _text.clear();
+      return;
+    }
     if (q.length < 2 || _thinking) return;
     if (_listening) await _stt.stop();
     setState(() {
@@ -182,28 +237,37 @@ class _AskSheetState extends State<_AskSheet> {
         const SizedBox(height: 10),
         Row(children: [
           ValueListenableBuilder<bool>(
-            valueListenable: appSpeaker?.speaking ?? ValueNotifier(false),
+            valueListenable: _talk?.speaking ?? appSpeaker?.speaking ?? ValueNotifier(false),
             builder: (_, speaking, __) => TutorAvatar(
               tutor: tutor,
               size: 76,
               talking: speaking,
+              mouthLevel: _talk?.mouth ?? appSpeaker?.mouth,
               mood: _thinking ? Mood.caring : Mood.happy,
-              gaze: _listening ? Offset.zero : const Offset(0.6, 0.6),
+              gaze: _listening || (_talk?.isLive ?? false) ? Offset.zero : const Offset(0.6, 0.6),
             ),
           ),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
-              _thinking
-                  ? tr('askThinking', lang)
-                  : _listening
-                      ? tr('askListening', lang)
-                      : tr('askPrompt', lang).replaceAll('{name}', tutor.displayName(lang)),
+              _starting
+                  ? tr('liveConnecting', lang)
+                  : _talk != null
+                      ? (_talk!.isLive
+                          ? (_talk!.speaking.value
+                              ? tr('liveTalking', lang).replaceAll('{name}', tutor.displayName(lang))
+                              : tr('askListening', lang))
+                          : tr('liveEnded', lang))
+                      : _thinking
+                          ? tr('askThinking', lang)
+                          : _listening
+                              ? tr('askListening', lang)
+                              : tr('askPrompt', lang).replaceAll('{name}', tutor.displayName(lang)),
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: ink),
             ),
           ),
           // Live talk: a red End button, like a call. Tapping it stops listening and speaking.
-          if (_live)
+          if (_live && (_talk == null || _talk!.isLive))
             Padding(
               padding: const EdgeInsets.only(left: 6),
               child: FilledButton.icon(
@@ -218,10 +282,14 @@ class _AskSheetState extends State<_AskSheet> {
         ConstrainedBox(
           constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.32),
           child: ListView(shrinkWrap: true, reverse: true, children: [
-            if (_heard.isNotEmpty) _bubble(_heard, mine: true, faint: true),
-            for (final turn in _chat.reversed) ...[
-              _bubble(turn[1], mine: false),
-              _bubble(turn[0], mine: true),
+            if (_talk != null)
+              for (final line in _talk!.lines.reversed) _bubble(line.text.trim(), mine: line.fromChild)
+            else ...[
+              if (_heard.isNotEmpty) _bubble(_heard, mine: true, faint: true),
+              for (final turn in _chat.reversed) ...[
+                _bubble(turn[1], mine: false),
+                _bubble(turn[0], mine: true),
+              ],
             ],
           ]),
         ),
@@ -248,7 +316,23 @@ class _AskSheetState extends State<_AskSheet> {
           ),
           const SizedBox(width: 10),
           GestureDetector(
-            onTap: _listening
+            onTap: _talk != null
+                ? () {
+                    if (_text.text.trim().isNotEmpty) {
+                      _send(_text.text);
+                    } else if (!_talk!.isLive) {
+                      // talk again: a fresh live talk
+                      _talk!.removeListener(_liveChanged);
+                      _talk!.dispose();
+                      setState(() {
+                        _talk = null;
+                        _starting = true;
+                        _live = true;
+                      });
+                      _startLive();
+                    }
+                  }
+                : _listening
                 ? () => _stt.stop()
                 : (_text.text.trim().isNotEmpty
                     ? () => _send(_text.text)

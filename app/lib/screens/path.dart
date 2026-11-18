@@ -83,17 +83,11 @@ class _PathScreenState extends State<PathScreen> {
                       child: Chunky(
                         radius: 46,
                         padding: const EdgeInsets.symmetric(vertical: 20),
-                        color: done ? chColor : (isCurrent ? violet : cloud),
-                        onTap: () {
-                          if (done || isCurrent) {
-                            openLesson(context, subject, l);
-                          } else {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(SnackBar(content: Text(tr('locked', lang))));
-                          }
-                        },
+                        // Every level is open: the child learns wherever they like. The suggested next one is violet.
+                        color: done ? chColor : (isCurrent ? violet : Color.lerp(chColor, Colors.white, 0.35)!),
+                        onTap: () => openLesson(context, subject, l),
                         child: Text(
-                          done ? '★' * stars + '☆' * (3 - stars) : (isCurrent ? tr('start', lang) : '🔒'),
+                          done ? '★' * stars + '☆' * (3 - stars) : (isCurrent ? tr('start', lang) : '$level'),
                           style: TextStyle(fontSize: done ? 20 : (isCurrent ? 15 : 24), color: Colors.white),
                         ),
                       ),
@@ -106,7 +100,7 @@ class _PathScreenState extends State<PathScreen> {
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
-                              color: done || isCurrent ? ink : const Color(0xFF9A948A))),
+                              color: ink)),
                     ),
                   ]),
                   if (isCurrent && x <= 0) tutorHero(TutorAvatar(tutor: tutor, size: 64, mood: Mood.happy, gaze: const Offset(-0.9, 0.1))),
