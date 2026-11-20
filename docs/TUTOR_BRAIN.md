@@ -156,6 +156,17 @@ the server: the deploy takes the first of `NEW_GEMINI_API_KEY`, `GEMINI_NEW_API_
 `GEMINI_LIVE_API_KEY`, `GEMINI_LIVE_KEY`, `GEMINI_KEY`, `GEMINI_API_KEY` that is set (the deploy log says which). Speech
 models are tried in the order of `voice_models` in `brain.json`; the deploy log lists the ones the key can use.
 
+**Gemini Live voice.** Gemini speech has a small daily quota. When every speech model is out of quota (429), the
+server makes the line with the Gemini Live native-audio model instead (same character voice, its own larger quota,
+English and Malayalam), and keeps using it for ten minutes before trying speech again. Greetings and character hellos
+ask for the Live voice first (`live: true`) because it sounds the most like a real person. Lines are kept under
+`voices/g3/`.
+
+**Like a teacher, not a show.** The character `style`s describe a calm, natural teacher (no exaggerated excitement).
+On the home screen the tutor greets the child by name and time of day in one flowing sentence (`welcome`,
+`nextLesson`, `tapGo` in `phrases.json`). Now and then (about one line in seven, never close together, never before a
+short word of praise) the tutor takes a quiet breath or a soft sigh before speaking (`breathPcm` in `pcm_out.dart`).
+
 If Gemini cannot make a line (no internet, a limit), the character's Edge voice says it, and Mio's ready-made Edge files
 cover her written lines offline. The phone's own voice is never used.
 
@@ -181,6 +192,10 @@ Every Gemini voice line is cleaned on the server before it is kept: a short burs
 speech models sometimes add) is cut, the silence at both ends is trimmed, and the line fades in and out. The phone
 plays these lines as raw sound straight to the speaker (`app/lib/pcm_out.dart`), the way the Gemini Live app does,
 instead of through the media player, and smooths the ends again, so a line never ends on a crackle or a click.
+The speaker is never left to run dry (a dry Android speaker buffer buzzes like a radio): while Gemini Live is still
+sending, silence fills the gaps, and every sound ends with a quarter second of silence before the speaker is closed.
+Each piece handed to the speaker is its own copy: the sound plugin sends the whole buffer behind a view, which once
+made lines replay themselves and stutter.
 
 ## Gemini Live
 
@@ -188,7 +203,9 @@ The 🎙️ button starts a live spoken talk with the tutor through Gemini Live,
 (`app/lib/live.dart`). The Gemini key never goes into the app: the phone asks the brain server for a one-use pass
 (`mode: live`, Gemini's "ephemeral token", valid for two minutes to start and half an hour in all), and the server
 sends the tutor charter along with it. The phone adds the lesson, the child's first name and a progress summary,
-records the microphone in the phone's echo-cancelling voice mode, and plays the tutor as it speaks. The child can
-talk over the tutor; the red End button stops it. Each phone may start 30 live talks a day. If a live talk cannot
+records the microphone in the phone's echo-cancelling voice mode, and plays the tutor as it speaks. The two take
+turns: no microphone sound is sent while the tutor speaks or for 0.7 s after (otherwise the tutor hears itself from
+the speaker and keeps answering itself), and Gemini waits for 0.9 s of quiet before it decides the child has finished.
+Tapping the tutor stops it so the child can speak; the red End button stops the talk. Each phone may start 30 live talks a day. If a live talk cannot
 start (no internet, the limit), the sheet falls back to the phone's speech recognition and the tutor brain. The
 model is `live_model` in `brain.json`; the deploy log holds a real live talk with a pass to show it works.

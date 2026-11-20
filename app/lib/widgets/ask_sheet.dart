@@ -238,13 +238,17 @@ class _AskSheetState extends State<_AskSheet> {
         Row(children: [
           ValueListenableBuilder<bool>(
             valueListenable: _talk?.speaking ?? appSpeaker?.speaking ?? ValueNotifier(false),
-            builder: (_, speaking, __) => TutorAvatar(
-              tutor: tutor,
-              size: 76,
-              talking: speaking,
-              mouthLevel: _talk?.mouth ?? appSpeaker?.mouth,
-              mood: _thinking ? Mood.caring : Mood.happy,
-              gaze: _listening || (_talk?.isLive ?? false) ? Offset.zero : const Offset(0.6, 0.6),
+            // Tap the tutor to stop it talking, so the child can speak.
+            builder: (_, speaking, __) => GestureDetector(
+              onTap: speaking ? () => _talk?.hush() : null,
+              child: TutorAvatar(
+                tutor: tutor,
+                size: 76,
+                talking: speaking,
+                mouthLevel: _talk?.mouth ?? appSpeaker?.mouth,
+                mood: _thinking ? Mood.caring : Mood.happy,
+                gaze: _listening || (_talk?.isLive ?? false) ? Offset.zero : const Offset(0.6, 0.6),
+              ),
             ),
           ),
           const SizedBox(width: 10),

@@ -456,6 +456,7 @@ const TTS_MODELS = (env("BRAIN_TTS_MODELS") ||
   "gemini-3.8-flash-tts,gemini-3.8-flash-lite-tts,gemini-3.1-flash-tts-preview,gemini-2.5-flash-preview-tts,gemini-2.5-pro-preview-tts")
   .split(",").map((m) => m.trim()).filter(Boolean);
 let ttsModel = 0; // moves on when a model name is not offered any more
+let ttsRestUntil = 0; // when every speech model is out of quota, use the Live voice for a while
 
 /** 16-bit mono PCM to a WAV file. */
 function wav(pcm: Uint8Array, rate: number): Uint8Array {
@@ -557,6 +558,108 @@ async function geminiSpeech(text: string, voice: string, style: string): Promise
   throw new Error(lastError || "no speech model answered");
 }
 
+const LANG_NAMES: Record<string, string> = { en: "English (Indian accent)", ml: "Malayalam" };
+
+/**
+ * The line spoken by the Gemini Live native-audio voice: the most natural sounding, and it has its own
+ * (much larger) quota. The model is told to read the words exactly, like a voice actor.
+ */
+async function liveSpeech(text: string, voice: string, style: string, lang: string): Promise<Uint8Array> {
+  const key = env("BRAIN_GEMINI_KEY");
+  if (!key) throw new Error("no Gemini key on the server");
+  const url = "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent?key=" +
+    encodeURIComponent(key);
+  const language = LANG_NAMES[lang] ?? "English";
+  const chunks: Uint8Array[] = [];
+  await new Promise<void>((resolve, reject) => {
+    const ws = new WebSocket(url);
+    const timer = setTimeout(() => {
+      try { ws.close(); } catch { /* closed */ }
+      chunks.length ? resolve() : reject(new Error("live speech: no answer in time"));
+    }, 40000);
+    const done = (e?: Error) => {
+      clearTimeout(timer);
+      try { ws.close(); } catch { /* closed */ }
+      e ? reject(e) : resolve();
+    };
+    ws.onopen = () => {
+      ws.send(JSON.stringify({
+        setup: {
+          model: LIVE_MODEL(),
+          generationConfig: {
+            responseModalities: ["AUDIO"],
+            speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: voice } } },
+          },
+          systemInstruction: {
+            parts: [{
+              text: [
+                `You are a voice actor reading lines for a children's learning app, in ${language}.`,
+                `Speak as ${style || "a warm, kind teacher talking to a young child"}.`,
+                "Read the user's text aloud exactly as written, word for word, and nothing else.",
+                "Do not answer it, explain it, greet, add words, or say anything before or after it.",
+                "Sound like a real person: natural pace, calm, not exaggerated.",
+              ].join(" "),
+            }],
+          },
+        },
+      }));
+    };
+    ws.onmessage = async (ev: MessageEvent) => {
+      try {
+        const raw = typeof ev.data === "string" ? ev.data : await new Response(ev.data).text();
+        const msg = JSON.parse(raw);
+        if (msg.setupComplete) {
+          ws.send(JSON.stringify({
+            clientContent: { turns: [{ role: "user", parts: [{ text: `Read this aloud:\n${text}` }] }], turnComplete: true },
+          }));
+          return;
+        }
+        const content = msg.serverContent;
+        for (const part of content?.modelTurn?.parts ?? []) {
+          const data = part?.inlineData?.data;
+          if (data && String(part.inlineData.mimeType ?? "").startsWith("audio/pcm")) chunks.push(fromBase64(data));
+        }
+        if (content?.turnComplete) done();
+      } catch (e) {
+        done(e instanceof Error ? e : new Error(String(e)));
+      }
+    };
+    ws.onerror = () => done(new Error("live speech: connection failed"));
+    ws.onclose = (ev: CloseEvent) => {
+      if (chunks.length) done();
+      else done(new Error(`live speech: closed ${ev.code} ${String(ev.reason).slice(0, 160)}`));
+    };
+  });
+  const size = chunks.reduce((a, c) => a + c.length, 0);
+  if (size < 4800) throw new Error("live speech: no audio");
+  const pcm = new Uint8Array(size);
+  let at = 0;
+  for (const c of chunks) {
+    pcm.set(c, at);
+    at += c.length;
+  }
+  return wav(cleanSpeech(pcm, 24000), 24000);
+}
+
+/** The Live voice first when asked (greetings) or while the speech models are out of quota; each backs up the other. */
+async function anySpeech(text: string, voice: string, style: string, lang: string, live: boolean): Promise<[Uint8Array, string]> {
+  const errors: string[] = [];
+  const useLive = live || Date.now() < ttsRestUntil;
+  const order: Array<"live" | "tts"> = useLive ? ["live", "tts"] : ["tts", "live"];
+  for (const kind of order) {
+    if (kind === "tts" && Date.now() < ttsRestUntil) continue;
+    try {
+      if (kind === "live") return [await liveSpeech(text, voice, style, lang), "gemini-live"];
+      return [await geminiSpeech(text, voice, style), "gemini"];
+    } catch (e) {
+      const why = String(e);
+      errors.push(why.slice(0, 200));
+      if (kind === "tts" && why.includes("429")) ttsRestUntil = Date.now() + 10 * 60 * 1000;
+    }
+  }
+  throw new Error(errors.join(" | ") || "no voice");
+}
+
 const voiceUrl = (path: string) => `${env("SUPABASE_URL")}/storage/v1/object/public/voices/${path}`;
 
 async function speak(body: Record<string, unknown>, device: string, lang: string): Promise<Response> {
@@ -564,7 +667,8 @@ async function speak(body: Record<string, unknown>, device: string, lang: string
   const voice = clip(body.voice, 30);
   const style = clip(body.style, 160);
   if (text.length < 1 || !VOICES.has(voice)) return reply({ error: "bad_request" }, 400);
-  const path = `g2/${voice}/${await sha256([voice, style, lang, text].join("|"))}.wav`;
+  const live = body.live === true;
+  const path = `g3/${voice}/${await sha256([voice, style, lang, live ? "live" : "", text].join("|"))}.wav`;
   // Already made for someone: hand out the same file.
   try {
     const head = await fetch(voiceUrl(path), { method: "HEAD" });
@@ -573,7 +677,7 @@ async function speak(body: Record<string, unknown>, device: string, lang: string
   const limited = await withinLimits(device, "tts");
   if (limited) return limited;
   try {
-    const audio = await geminiSpeech(text, voice, style);
+    const [audio, by] = await anySpeech(text, voice, style, lang, live);
     const up = await fetch(`${env("SUPABASE_URL")}/storage/v1/object/voices/${path}`, {
       method: "POST",
       headers: {
@@ -586,7 +690,7 @@ async function speak(body: Record<string, unknown>, device: string, lang: string
       body: audio,
     });
     if (!up.ok) console.error("voice upload", up.status, (await up.text()).slice(0, 200));
-    return reply({ url: voiceUrl(path), by: "gemini" });
+    return reply({ url: voiceUrl(path), by });
   } catch (e) {
     console.error("speak", String(e).slice(0, 300));
     return reply({ error: "voice_unavailable" }, 503);

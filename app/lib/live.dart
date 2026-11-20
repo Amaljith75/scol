@@ -1,8 +1,9 @@
 // A live spoken talk with the tutor through Gemini Live, in the character's
 // own voice. The phone gets a one-use pass from the Scol server (the Gemini key
 // never leaves the server), connects to Gemini Live with it, sends the
-// microphone, and plays the tutor's voice as it arrives. The child can talk
-// over the tutor; End stops everything.
+// microphone, and plays the tutor's voice as it arrives. The two take turns: the
+// microphone is not sent while the tutor speaks, so the tutor never hears itself
+// from the speaker (which made it answer itself and repeat). End stops everything.
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -36,6 +37,15 @@ Map<String, dynamic> liveSetup(String model, String voice, String instructions) 
               'prebuiltVoiceConfig': {'voiceName': voice}
             }
           },
+        },
+        // Wait for the child to really finish: children pause while they think.
+        'realtimeInputConfig': {
+          'automaticActivityDetection': {
+            'startOfSpeechSensitivity': 'START_SENSITIVITY_LOW',
+            'endOfSpeechSensitivity': 'END_SENSITIVITY_LOW',
+            'prefixPaddingMs': 200,
+            'silenceDurationMs': 900,
+          }
         },
         'inputAudioTranscription': {},
         'outputAudioTranscription': {},
@@ -96,6 +106,7 @@ class LiveTalk extends ChangeNotifier {
   Completer<bool>? _ready;
   Future<void> _out = Future.value(); // keeps the tutor's sound in order
   bool _playing = false;
+  DateTime _micOpensAt = DateTime(0); // the microphone waits a moment after the tutor stops
   final List<double> _envelope = []; // loudness of the tutor's voice since it started, every 40 ms
   Timer? _ticker;
   static const _rate = 24000;
@@ -165,8 +176,8 @@ class LiveTalk extends ChangeNotifier {
       _set(LiveState.live);
       // The tutor speaks first.
       sendText(lang == 'ml'
-          ? 'കുട്ടിയെ ഒരു ചെറിയ വാക്യത്തിൽ സന്തോഷത്തോടെ അഭിവാദ്യം ചെയ്ത്, ഈ പാഠത്തെക്കുറിച്ച് എന്താണ് അറിയേണ്ടത് എന്ന് ചോദിക്കൂ.'
-          : 'Greet the child warmly in one short sentence and ask what they would like to know about this lesson.',
+          ? 'ഒരു സാധാരണ ടീച്ചറെപ്പോലെ ശാന്തമായി, ഒരു ചെറിയ വാക്യത്തിൽ കുട്ടിയെ അഭിവാദ്യം ചെയ്ത്, ഈ പാഠത്തെക്കുറിച്ച് എന്താണ് അറിയേണ്ടത് എന്ന് ചോദിക്കൂ. മലയാളത്തിൽ മാത്രം സംസാരിക്കൂ.'
+          : 'Greet the child the way a calm, kind teacher would, in one short natural sentence (no big excitement), and ask what they would like to know about this lesson.',
           show: false);
       return true;
     } catch (e) {
@@ -179,9 +190,8 @@ class LiveTalk extends ChangeNotifier {
   void _sendMic(Uint8List chunk) {
     final ws = _ws;
     if (ws == null || state != LiveState.live) return;
-    // While the tutor talks, only a loud voice (the child talking over it) goes through,
-    // so the tutor does not hear itself from the speaker.
-    if (_playing && pcmLoudness(chunk) < 2200) return;
+    // Turn-taking: nothing goes out while the tutor talks or just after (its echo would come back).
+    if (_playing || DateTime.now().isBefore(_micOpensAt)) return;
     ws.add(jsonEncode({
       'realtimeInput': {
         'mediaChunks': [
@@ -238,7 +248,10 @@ class LiveTalk extends ChangeNotifier {
         final data = '${inline['data'] ?? ''}';
         if (mime.startsWith('audio/pcm') && data.isNotEmpty) _play(base64Decode(data));
       }
-      if (content['turnComplete'] == true) _closeLines();
+      if (content['turnComplete'] == true) {
+        _closeLines();
+        _out = _out.then((_) => PcmOut.instance.finish()); // the tutor's turn ends once its sound has played
+      }
     } catch (_) {
       // one odd message must not end the talk
     }
@@ -267,12 +280,13 @@ class LiveTalk extends ChangeNotifier {
         _playing = true;
         speaking.value = true;
         _envelope.clear();
-        await out.begin(_rate);
+        await out.begin(_rate, open: true);
         unawaited(() async {
           await out.drained();
-          // the queue ran dry: the tutor has finished (more sound starts a new stretch)
+          // the tutor's turn has played to the end
           if (_playing) {
             _playing = false;
+            _micOpensAt = DateTime.now().add(const Duration(milliseconds: 700));
             speaking.value = false;
             mouth.value = 0;
           }
@@ -296,9 +310,15 @@ class LiveTalk extends ChangeNotifier {
     _out = _out.then((_) async {
       await PcmOut.instance.stop();
       _playing = false;
+      _micOpensAt = DateTime.now().add(const Duration(milliseconds: 400));
       speaking.value = false;
       mouth.value = 0;
     });
+  }
+
+  /// The child tapped to stop the tutor: quiet now, and the microphone opens.
+  void hush() {
+    if (_playing) _interrupt();
   }
 
   void _onClosed() {

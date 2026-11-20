@@ -39,7 +39,9 @@ abstract class Speaker {
 
   /// How far through the current [say] the voice is, 0 to 1 (by letters of what is said).
   ValueListenable<double> get progress;
-  Future<void> say(List<String> parts, String lang, TutorCharacter tutor);
+  /// Says [parts] one after another. [natural]: a greeting or chat, spoken by the Gemini Live voice
+  /// (the most natural one) when the server can.
+  Future<void> say(List<String> parts, String lang, TutorCharacter tutor, {bool natural = false});
   void prefetch(Iterable<String> texts, String lang, TutorCharacter tutor);
   void stop();
 }
@@ -213,13 +215,13 @@ class VoiceSpeaker implements Speaker {
   }
 
   /// The line in the character's own Gemini voice: the phone's copy, or the Scol server's (made there once).
-  Future<Source?> _gemini(TutorCharacter tutor, String lang, String text) async {
+  Future<Source?> _gemini(TutorCharacter tutor, String lang, String text, {bool natural = false}) async {
     final voice = tutor.geminiVoice;
     final server = voiceServer();
     final url = '${server['url'] ?? ''}';
     if (voice.isEmpty || kIsWeb || _dir == null) return null;
     final style = _style(tutor);
-    final name = 'gem2_${clipId('$voice|$style', lang, text)}.wav';
+    final name = 'gem3_${clipId('$voice|$style${natural ? '|live' : ''}', lang, text)}.wav';
     final file = File('$_dir/$name');
     if (await file.exists()) return DeviceFileSource(file.path);
     if (url.isEmpty) return null;
@@ -233,6 +235,7 @@ class VoiceSpeaker implements Speaker {
                 'lang': lang,
                 'voice': voice,
                 'style': style,
+                if (natural) 'live': true,
                 'device': await deviceId(),
               }))
           .timeout(const Duration(seconds: 30));
@@ -298,13 +301,13 @@ class VoiceSpeaker implements Speaker {
 
   /// The best sound for a line: the Gemini voice, else a ready-made file, else the Edge voice.
   /// Null means the line stays silent (shown as text). Two asks for one line share one fetch.
-  Future<Source?> _source(TutorCharacter tutor, String lang, String text) {
-    final key = '${tutor.id}|${voiceTone()}|$lang|$text';
+  Future<Source?> _source(TutorCharacter tutor, String lang, String text, {bool natural = false}) {
+    final key = '${tutor.id}|${voiceTone()}|$lang|$natural|$text';
     final running = _making[key];
     if (running != null) return running;
     final made = () async {
       try {
-        return await _gemini(tutor, lang, text) ?? await _clip(tutor, lang, text) ?? await _edge(tutor, lang, text);
+        return await _gemini(tutor, lang, text, natural: natural) ?? await _clip(tutor, lang, text) ?? await _edge(tutor, lang, text);
       } finally {
         _making.remove(key);
       }
@@ -352,17 +355,25 @@ class VoiceSpeaker implements Speaker {
 
   /// Plays a Gemini voice line as raw sound (like the Gemini Live app does): smooth start and end,
   /// the mouth following its loudness and [progress] from [from] to [to].
-  Future<bool> _playPcm(String path, double from, double to, int token) async {
+  Future<bool> _playPcm(String path, double from, double to, int token, {Breath breath = Breath.none}) async {
     final w = wavPcm(await File(path).readAsBytes());
     if (w == null || token != _gen) return false;
-    final pcm = smoothPcm(w.pcm, w.rate);
+    var pcm = smoothPcm(w.pcm, w.rate);
     if (pcm.isEmpty) return true;
     final envelope = pcmEnvelope(pcm, w.rate);
     final ms = max(1, pcm.length ~/ 2 * 1000 ~/ w.rate);
+    // A quiet breath before the words, now and then; the mouth and the board wait for the words.
+    var lead = 0;
+    if (breath != Breath.none) {
+      final b = breathPcm(w.rate, sigh: breath == Breath.sigh, seed: _rnd.nextInt(1 << 20));
+      final gap = Uint8List(w.rate * 70 ~/ 1000 * 2);
+      lead = (b.length + gap.length) ~/ 2;
+      pcm = Uint8List.fromList([...b, ...gap, ...pcm]);
+    }
     final out = PcmOut.instance;
     final ticker = Timer.periodic(const Duration(milliseconds: 33), (_) {
       if (token != _gen) return;
-      final t = out.framesPlayed * 1000 ~/ w.rate;
+      final t = max(0, out.framesPlayed - lead) * 1000 ~/ w.rate;
       _progress.value = from + (to - from) * (t / ms).clamp(0.0, 1.0);
       _mouth.value = envelope[(t ~/ 40).clamp(0, envelope.length - 1)];
     });
@@ -380,9 +391,9 @@ class VoiceSpeaker implements Speaker {
 
   /// Plays one sound to the end (or until a newer line starts), moving the mouth with its loudness
   /// and [progress] from [from] to [to].
-  Future<bool> _play(Source source, double from, double to, int token) async {
+  Future<bool> _play(Source source, double from, double to, int token, {Breath breath = Breath.none}) async {
     if (source is DeviceFileSource && source.path.endsWith('.wav')) {
-      final ok = await _playPcm(source.path, from, to, token);
+      final ok = await _playPcm(source.path, from, to, token, breath: breath);
       if (ok || token != _gen) return ok;
     }
     final player = AudioPlayer();
@@ -429,7 +440,7 @@ class VoiceSpeaker implements Speaker {
   }
 
   @override
-  Future<void> say(List<String> parts, String lang, TutorCharacter tutor) async {
+  Future<void> say(List<String> parts, String lang, TutorCharacter tutor, {bool natural = false}) async {
     final token = ++_gen;
     await _halt();
     if (token != _gen) return;
@@ -441,7 +452,8 @@ class VoiceSpeaker implements Speaker {
     ];
     final total = max(1, pieces.fold<int>(0, (a, p) => a + p.length));
     Future<Source?> fetch(int i) =>
-        i < pieces.length ? _source(tutor, langOf(pieces[i]), pieces[i]) : Future<Source?>.value(null);
+        i < pieces.length ? _source(tutor, langOf(pieces[i]), pieces[i], natural: natural) : Future<Source?>.value(null);
+    final breath = _nextBreath(pieces);
     var next = fetch(0);
     var done = 0;
     for (var i = 0; i < pieces.length; i++) {
@@ -452,7 +464,7 @@ class VoiceSpeaker implements Speaker {
       final from = done / total;
       done += pieces[i].length;
       if (source != null) {
-        await _play(source, from, done / total, token);
+        await _play(source, from, done / total, token, breath: i == 0 ? breath : Breath.none);
       } else {
         _progress.value = done / total; // silent: the words stay on screen
       }
@@ -461,6 +473,19 @@ class VoiceSpeaker implements Speaker {
       _progress.value = 1;
       _speaking.value = false;
     }
+  }
+
+  final Random _rnd = Random();
+  int _sinceBreath = 0;
+
+  /// Now and then (about one line in seven, never two close together) the tutor takes a quiet breath
+  /// before speaking, and once in a while a soft sigh, like a person. Never before a short word of praise.
+  Breath _nextBreath(List<String> pieces) {
+    _sinceBreath++;
+    final words = pieces.join(' ').split(RegExp(r'\s+')).length;
+    if (words < 6 || _sinceBreath < 4 || _rnd.nextDouble() > 0.16) return Breath.none;
+    _sinceBreath = 0;
+    return _rnd.nextDouble() < 0.3 ? Breath.sigh : Breath.breath;
   }
 
   Future<void> _halt() async {
@@ -483,6 +508,8 @@ class VoiceSpeaker implements Speaker {
     _speaking.value = false;
   }
 }
+
+enum Breath { none, breath, sigh }
 
 /// Reads symbols the way a teacher would say them. Must match spoken() in tools/build_voice.py
 /// in spirit (the files are made there; this is for lines spoken live).

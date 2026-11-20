@@ -80,7 +80,16 @@ jobs:
         run: |
           URL=$(python3 -c "import json;print(json.load(open('content/_app/brain.json'))['url'])")
           curl -sS -X POST "$URL" -H 'content-type: application/json' \
-            -d '{"mode":"speak","device":"deploy-check-0001","lang":"en","voice":"Sulafat","style":"a warm, gentle storyteller","text":"Hello! Shall we learn something new today?"}'
+            -d '{"mode":"speak","device":"deploy-check-0001","lang":"en","voice":"Aoede","style":"a kind, warm primary school teacher","text":"Hello! Shall we learn something new today?"}'
+          echo
+      - name: Ask for a greeting and a Malayalam line in the Gemini Live voice
+        run: |
+          URL=$(python3 -c "import json;print(json.load(open('content/_app/brain.json'))['url'])")
+          curl -sS -X POST "$URL" -H 'content-type: application/json' \
+            -d '{"mode":"speak","device":"deploy-check-0001","lang":"en","voice":"Puck","live":true,"style":"a friendly, lively young teacher talking to one child, natural and relaxed","text":"Good morning. Shall we do Plant parts today? Tap Lets go when you are ready."}'
+          echo
+          curl -sS -X POST "$URL" -H 'content-type: application/json' \
+            -d '{"mode":"speak","device":"deploy-check-0001","lang":"ml","voice":"Kore","live":true,"style":"a calm, patient teacher","text":"നമസ്കാരം. ഇന്ന് നമുക്ക് ചെടിയുടെ ഭാഗങ്ങൾ പഠിക്കാം."}'
           echo
       - name: Talk to the tutor through Gemini Live, as the app does
         continue-on-error: true

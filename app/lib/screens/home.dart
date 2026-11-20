@@ -87,7 +87,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  /// The tutor says hello and tells the child what to do next.
+  /// The tutor says hello and tells the child what to do next, the way a teacher would: calmly, by
+  /// name, in a sentence or two, in the natural Gemini Live voice.
   void _greet({bool first = false}) {
     if (!mounted || !appState.voiceOn) return;
     final lang = appState.mainLang;
@@ -95,19 +96,31 @@ class _HomeScreenState extends State<HomeScreen> {
     final tutor = tutorById(appState.tutorId);
     final subjects = appState.mySubjects(b);
     final plan = _tutorPlan(subjects);
-    final parts = <String>[if (first) pick(tutor.hello, lang)];
+    final hour = DateTime.now().hour;
+    final time = hour < 12 ? 'morning' : (hour < 17 ? 'afternoon' : 'evening');
+    final name = appState.childName.trim();
+    final parts = <String>[
+      if (first)
+        (name.isEmpty ? b.phrase('welcomeNoName', lang) : b.phrase('welcome', lang))
+            .replaceAll('{name}', name)
+            .replaceAll('{time}', time),
+    ];
     if (appState.timeUp) {
       parts.add(b.phrase('timeUp', lang));
     } else if (plan == null) {
       parts.add(b.phrase(subjects.any((s) => s.lessons.isNotEmpty) ? 'allDone' : 'comingSoon', lang));
+    } else if (plan.isRevision) {
+      parts.addAll([b.phrase('practice', lang), b.phrase('tapGo', lang)]);
     } else {
+      final title = pick(plan.lesson.title, lang);
+      final next = b.phrase('nextLesson', lang);
       parts.addAll([
-        b.phrase('nextUp', lang),
-        plan.isRevision ? b.phrase('practice', lang) : pick(plan.lesson.title, lang),
+        next.isEmpty ? '${b.phrase('nextUp', lang)} $title.' : next.replaceAll('{title}', title),
         b.phrase('tapGo', lang),
       ]);
     }
-    appSpeaker?.say(parts, lang, tutor);
+    // One flowing line, so it sounds like one person talking, not pieces read out.
+    appSpeaker?.say([parts.where((p) => p.trim().isNotEmpty).join(' ')], lang, tutor, natural: true);
   }
 
   // Redraw whenever progress or lessons change (stars, streak, next level).
