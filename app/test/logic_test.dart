@@ -641,5 +641,24 @@ void main() {
       expect(pcmLoudness(tone(16000, 100, 10000)), greaterThan(5000));
       expect(pcmLoudness(Uint8List(3200)), 0);
     });
-  });
+      test('breaths are quiet, short and end in silence', () {
+      final b = breathPcm(24000, seed: 3);
+      final s = breathPcm(24000, sigh: true, seed: 3);
+      expect(b.length ~/ 2, lessThan(24000 * 0.5));
+      expect(s.length, greaterThan(b.length));
+      final peak = pcmLoudness(s);
+      expect(peak, greaterThan(50));
+      expect(peak, lessThan(2500)); // far quieter than a voice
+      final end = ByteData.sublistView(b).getInt16(b.length - 2, Endian.little);
+      expect(end, 0);
+      expect(breathPcm(24000, seed: 3), b); // same seed, same sound
+    });
+
+    test('live waits for the child to finish talking', () {
+      final setup = liveSetup('m', 'Puck', 'rules')['setup'] as Map;
+      final vad = (setup['realtimeInputConfig'] as Map)['automaticActivityDetection'] as Map;
+      expect(vad['endOfSpeechSensitivity'], 'END_SENSITIVITY_LOW');
+      expect(vad['silenceDurationMs'], greaterThanOrEqualTo(800));
+    });
+});
 }

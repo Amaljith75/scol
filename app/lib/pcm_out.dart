@@ -63,6 +63,44 @@ Uint8List smoothPcm(Uint8List pcm, int rate, {int fadeInMs = 8, int fadeOutMs = 
   return null;
 }
 
+/// A soft breath or sigh, made from shaped noise, to play quietly before a line now and then so the tutor
+/// sounds like a person. [sigh] is a longer, lower breath out. Same random [seed], same sound.
+Uint8List breathPcm(int rate, {bool sigh = false, int seed = 0}) {
+  final rnd = Random(seed);
+  final inMs = sigh ? 380 : 300;
+  final outMs = sigh ? 720 : 0;
+  final n = rate * (inMs + outMs + 90) ~/ 1000;
+  final out = ByteData(n * 2);
+  final inN = rate * inMs ~/ 1000;
+  final outN = rate * outMs ~/ 1000;
+  // Two one-pole filters make a soft band of noise: airy breath in, lower breath out.
+  var low = 0.0, lower = 0.0;
+  for (var i = 0; i < n; i++) {
+    final white = rnd.nextDouble() * 2 - 1;
+    final inhale = i < inN;
+    final a = inhale ? 0.35 : 0.18; // how much high sound passes
+    low += a * (white - low);
+    lower += 0.04 * (low - lower);
+    final band = low - lower;
+    double env;
+    if (inhale) {
+      final x = i / inN;
+      env = sin(pi * x) * (0.6 + 0.4 * x);
+    } else if (i < inN + outN) {
+      final x = (i - inN) / outN;
+      env = pow(sin(pi * min(1.0, x * 1.6)), 1.4).toDouble() * (1 - x * 0.5) * 0.9;
+    } else {
+      env = 0;
+    }
+    final v = band * env * (sigh ? 5200 : 4200);
+    out.setInt16(i * 2, v.round().clamp(-32768, 32767), Endian.little);
+  }
+  return out.buffer.asUint8List();
+}
+
+/// Plays raw sound. While a sound is "open" (Gemini Live still sending) the speaker is kept fed with
+/// silence so it never runs dry: a dry Android speaker buffer can buzz like a radio. Every sound ends
+/// with a short stretch of silence, then the speaker is closed.
 class PcmOut {
   PcmOut._();
   static final PcmOut instance = PcmOut._();
@@ -71,45 +109,86 @@ class PcmOut {
   int _rate = 0;
   bool _ready = false;
   bool _feeding = false;
+  bool _open = false; // more sound may still come
+  bool _tailFed = false;
+  int _gen = 0;
   Completer<void>? _drained;
   final Stopwatch _clock = Stopwatch();
-  int _playedBefore = 0; // frames that finished before the clock was last started
+  int _fed = 0; // frames handed over since begin, silence included
+  final List<(int, int)> _pads = []; // where silence was put in (start frame, length), not part of the sound
 
-  /// About how many frames have reached the speaker since [begin], for the mouth and the progress bar.
-  int get framesPlayed => _rate == 0 ? 0 : _playedBefore + _clock.elapsedMilliseconds * _rate ~/ 1000;
+  /// About how many frames of the sound itself (not the silence put in) have reached the speaker since [begin].
+  int get framesPlayed {
+    if (_rate == 0) return 0;
+    final t = _clock.elapsedMilliseconds * _rate ~/ 1000;
+    var p = t;
+    for (final (start, len) in _pads) {
+      if (start < t) p -= min(len, t - start);
+    }
+    return max(0, p);
+  }
 
   Future<void> _setup(int rate) async {
     if (_ready && rate == _rate) return;
     if (_ready) await FlutterPcmSound.release();
     await FlutterPcmSound.setLogLevel(LogLevel.none);
     await FlutterPcmSound.setup(sampleRate: rate, channelCount: 1);
-    await FlutterPcmSound.setFeedThreshold(rate ~/ 10); // ask for more when under 100 ms is left
+    await FlutterPcmSound.setFeedThreshold(rate ~/ 8); // ask for more when under 125 ms is waiting
     FlutterPcmSound.setFeedCallback(_onFeed);
     _rate = rate;
     _ready = true;
   }
 
+  void _feed(Uint8List chunk, {bool silence = false}) {
+    final frames = chunk.length ~/ 2;
+    if (silence) _pads.add((_fed, frames));
+    _fed += frames;
+    // A copy of exactly this piece: the plugin sends the whole buffer behind a view, so a view of a
+    // longer sound would play all of that sound again (the tutor 'repeating' and stuttering).
+    final own = Uint8List.fromList(chunk);
+    FlutterPcmSound.feed(PcmArrayInt16(bytes: own.buffer.asByteData()));
+  }
+
+  Uint8List _silence(int ms) => Uint8List(max(2, _rate * ms ~/ 1000) * 2);
+
   void _onFeed(int remaining) {
+    if (!_feeding) return;
     if (_queue.isNotEmpty) {
-      final chunk = _queue.removeAt(0);
-      FlutterPcmSound.feed(PcmArrayInt16(bytes: ByteData.sublistView(chunk)));
+      _feed(_queue.removeAt(0));
+    } else if (_open) {
+      _feed(_silence(60), silence: true); // waiting for more: keep the speaker playing silence
+    } else if (!_tailFed) {
+      _tailFed = true;
+      _feed(_silence(260), silence: true); // let the voice ring out into silence
     } else if (remaining == 0) {
       _feeding = false;
       _clock.stop();
       final d = _drained;
       _drained = null;
       if (d != null && !d.isCompleted) d.complete();
+      // Close the speaker once the silence has played, unless a new sound started.
+      final gen = _gen;
+      Future<void>.delayed(const Duration(milliseconds: 250), () async {
+        if (gen != _gen || _feeding || !_ready) return;
+        _ready = false;
+        try {
+          await FlutterPcmSound.release();
+        } catch (_) {}
+      });
     }
   }
 
-  /// Starts a fresh sound: anything still queued from before is dropped.
-  Future<void> begin(int rate) async {
+  /// Starts a fresh sound: anything still queued from before is dropped. With [open], the sound
+  /// keeps going (as silence) until [finish] is called, for sound that arrives in pieces.
+  Future<void> begin(int rate, {bool open = false}) async {
     await stop();
+    _gen++;
     await _setup(rate);
-    _playedBefore = 0;
-    _clock
-      ..reset()
-      ..start();
+    _open = open;
+    _tailFed = false;
+    _fed = 0;
+    _pads.clear();
+    _clock.reset();
   }
 
   /// Adds sound to play after what is queued (100 ms pieces, so stopping is quick).
@@ -117,19 +196,31 @@ class PcmOut {
     if (!_ready || pcm.isEmpty) return;
     final piece = max(2, _rate ~/ 10) * 2;
     for (var i = 0; i < pcm.length; i += piece) {
-      final c = Uint8List.sublistView(pcm, i, min(pcm.length, i + piece));
-      _queue.add(c);
+      _queue.add(Uint8List.sublistView(pcm, i, min(pcm.length, i + piece)));
     }
+    _tailFed = false;
     if (!_feeding) {
       _feeding = true;
       if (!_clock.isRunning) _clock.start();
-      if (!FlutterPcmSound.start()) _onFeed(0);
+      // Start with a little silence so the first word is not clipped, then the sound.
+      _feed(_silence(40), silence: true);
+      FlutterPcmSound.start();
     }
   }
 
-  /// Completes when everything added so far has been played (or [stop] was called).
+  /// No more sound will come for this one: it ends (with silence) once what is queued has played.
+  void finish() {
+    _open = false;
+    if (!_feeding && _drained != null) {
+      final d = _drained;
+      _drained = null;
+      if (!d!.isCompleted) d.complete();
+    }
+  }
+
+  /// Completes when everything added so far has been played and [finish] was called (or [stop]).
   Future<void> drained() {
-    if (!_feeding && _queue.isEmpty) return Future.value();
+    if (!_feeding && _queue.isEmpty && !_open) return Future.value();
     return (_drained ??= Completer<void>()).future;
   }
 
@@ -137,23 +228,26 @@ class PcmOut {
   Future<void> play(Uint8List pcm, int rate) async {
     await begin(rate);
     add(pcm);
+    finish();
     await drained();
   }
 
   /// Drops what is queued and silences the speaker at once.
   Future<void> stop() async {
+    _gen++;
     _queue.clear();
+    _open = false;
     _clock.stop();
     final d = _drained;
     _drained = null;
     if (d != null && !d.isCompleted) d.complete();
-    if (_feeding && _ready) {
-      _feeding = false;
+    final wasFeeding = _feeding;
+    _feeding = false;
+    if (wasFeeding && _ready) {
       _ready = false; // release() silences what is already in the speaker's buffer
       try {
         await FlutterPcmSound.release();
       } catch (_) {}
     }
-    _feeding = false;
   }
 }

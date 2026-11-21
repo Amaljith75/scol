@@ -54,8 +54,15 @@
     "ml": "പരിശീലന സമയം"
   },
   "tapGo": {
-    "en": "Tap Let's go, and come with me!",
-    "ml": "ലെറ്റ്സ് ഗോ അമർത്തി എന്റെ കൂടെ വരൂ!"
+    "en": [
+      "Tap Let's go when you're ready.",
+      "Whenever you're ready, tap Let's go.",
+      "Tap Let's go, and we'll start."
+    ],
+    "ml": [
+      "തയ്യാറാകുമ്പോൾ ലെറ്റ്സ് ഗോ അമർത്തൂ.",
+      "റെഡിയാകുമ്പോൾ ലെറ്റ്സ് ഗോ അമർത്തിക്കോളൂ."
+    ]
   },
   "pickLevel": {
     "en": "Tap START to begin the next level.",
@@ -141,6 +148,46 @@
       "ഹായ്! ഇന്ന് കാണിച്ചു തരാൻ എന്റെ കയ്യിൽ രസകരമായ ഒരു കാര്യമുണ്ട്.",
       "സ്വാഗതം! ബോർഡിലേക്ക് നോക്കൂ, ശ്രദ്ധിച്ച് കേൾക്കൂ.",
       "നമ്മുടെ പാഠം തുടങ്ങാം. കണ്ണുകൾ ബോർഡിലേക്ക്!"
+    ]
+  },
+  "welcome": {
+    "en": [
+      "Good {time}, {name}.",
+      "Hello {name}. Nice to see you again.",
+      "Hi {name}, good to see you.",
+      "Ah, {name}, there you are. Good {time}."
+    ],
+    "ml": [
+      "നമസ്കാരം, {name}.",
+      "{name}, വന്നല്ലോ. കണ്ടതിൽ സന്തോഷം.",
+      "ഹായ് {name}, വീണ്ടും കണ്ടതിൽ സന്തോഷം.",
+      "ആഹാ, {name} എത്തിയോ. നന്നായി."
+    ]
+  },
+  "welcomeNoName": {
+    "en": [
+      "Good {time}. Nice to see you again.",
+      "Hello again. Good to see you.",
+      "Hi there, good {time}."
+    ],
+    "ml": [
+      "നമസ്കാരം. വീണ്ടും കണ്ടതിൽ സന്തോഷം.",
+      "ഹായ്, വന്നല്ലോ. നന്നായി.",
+      "നമസ്കാരം, കൂട്ടുകാരാ."
+    ]
+  },
+  "nextLesson": {
+    "en": [
+      "Today, let's look at {title}.",
+      "Shall we do {title} today?",
+      "I thought we could do {title} next.",
+      "Next, we have {title}."
+    ],
+    "ml": [
+      "ഇന്ന് നമുക്ക് {title} നോക്കാം.",
+      "ഇന്ന് {title} പഠിച്ചാലോ?",
+      "അടുത്തത് {title} ആണ്.",
+      "നമുക്ക് ഇനി {title} നോക്കാം."
     ]
   }
 }

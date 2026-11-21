@@ -188,7 +188,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 onTap: () {
                   setState(() => tutorId = t.id);
                   final l = lang == 'ml' ? 'ml' : 'en';
-                  appSpeaker?.say([pick(t.hello, l)], l, t);
+                  appSpeaker?.say([pick(t.hello, l)], l, t, natural: true);
                 },
                 child: Row(children: [
                   TutorAvatar(tutor: t, size: 78, mood: tutorId == t.id ? Mood.happy : Mood.calm),
