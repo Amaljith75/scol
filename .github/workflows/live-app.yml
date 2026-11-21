@@ -1,0 +1,113 @@
+name: Build Scol Live (Gemini)
+
+# Builds the native Android app in android/ (Gemini Live tutor, a Gemini voice per
+# character) and puts the APK in a DRAFT release: only the repository owner sees it
+# until they press "Publish release". The Gemini key is built into this app, so
+# anyone who downloads the APK could dig it out; read docs/GEMINI_LIVE_APP.md first.
+on:
+  push:
+    branches: [main, claude/gemini-live-app]
+    paths: ["android/**", "content/**", ".github/workflows/live-app.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-app-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use the newest lessons
+        run: |
+          python3 tools/build_content.py
+          cp app/assets/content/bundle.json android/app/src/main/assets/content/bundle.json
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "9.3.1"
+
+      - name: Accept Android SDK licences
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+
+      - name: Put the Gemini key in place (never printed)
+        env:
+          GEMINI_LIVE_API_KEY: ${{ secrets.GEMINI_LIVE_API_KEY }}
+          GEMINI_LIVE_KEY: ${{ secrets.GEMINI_LIVE_KEY }}
+          GEMINI_LIVE: ${{ secrets.GEMINI_LIVE }}
+          LIVE_API_KEY: ${{ secrets.LIVE_API_KEY }}
+          GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          used=""
+          for name in GEMINI_LIVE_API_KEY GEMINI_LIVE_KEY GEMINI_LIVE LIVE_API_KEY GEMINI_KEY GEMINI_API_KEY; do
+            value="${!name}"
+            if [ -n "$value" ]; then used="$name"; break; fi
+          done
+          if [ -z "$used" ]; then
+            echo "::error::No Gemini key found. Add a repository secret named GEMINI_LIVE_API_KEY."
+            exit 1
+          fi
+          echo "Using the secret named $used"
+          printf 'GEMINI_API_KEY=%s\n' "$(printf '%s' "${!used}" | tr -d '[:space:]')" > android/.env
+          echo "KEY_SECRET_NAME=$used" >> "$GITHUB_ENV"
+
+      - name: Check the key can reach the Live models
+        run: |
+          key=$(sed -n 's/^GEMINI_API_KEY=//p' android/.env)
+          code=$(curl -sS -o models.json -w '%{http_code}' -H "x-goog-api-key: $key" \
+            "https://generativelanguage.googleapis.com/v1beta/models?pageSize=200")
+          echo "Gemini answered HTTP $code for the secret $KEY_SECRET_NAME"
+          python3 - <<'PY'
+          import json
+          try:
+              names = [m["name"] for m in json.load(open("models.json")).get("models", [])]
+          except Exception:
+              names = []
+          live = [n for n in names if "live" in n or "native-audio" in n]
+          print("Live models this key can use:", ", ".join(live) or "none found")
+          for want in ("models/gemini-2.5-flash-native-audio-preview-12-2025", "models/gemini-2.5-flash-native-audio-latest"):
+              print(("  ok   " if want in names else "  MISSING ") + want)
+          PY
+          rm -f models.json
+
+      - name: Build the app
+        working-directory: android
+        env:
+          KEYSTORE_PATH: ${{ github.workspace }}/android/scol-test.keystore
+          STORE_PASSWORD: scoltest
+          KEY_PASSWORD: scoltest
+        run: gradle :app:assembleRelease --no-configuration-cache --stacktrace
+
+      - name: Remove the key from the runner
+        if: always()
+        run: rm -f android/.env
+
+      - name: Put the APK in a draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(sed -n 's/.*versionName = "\(.*\)".*/\1/p' android/app/build.gradle.kts | head -1)
+          BUILD=$(sed -n 's/.*versionCode = \([0-9]*\).*/\1/p' android/app/build.gradle.kts | head -1)
+          TAG="live-v${VERSION}-build${BUILD}"
+          FILE="scol-live-v${VERSION}-build${BUILD}.apk"
+          cp android/app/build/outputs/apk/release/app-release.apk "$FILE"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$FILE" --clobber
+          else
+            gh release create "$TAG" "$FILE" --draft --target "$GITHUB_SHA" \
+              --title "Scol Live ${VERSION} build ${BUILD} (Gemini Live)" \
+              --notes "Scol with the Gemini Live tutor and a Gemini voice for each character. Installs next to the older Scol app. DRAFT: the Gemini key is inside this APK; read docs/GEMINI_LIVE_APP.md before pressing Publish."
+          fi
+          echo "Draft release: $TAG ($FILE)"
