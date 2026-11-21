@@ -10718,7 +10718,7 @@
   "public_key": "sb_publishable_aBCqk9nxakWaBvvJj77fgg_AilwaqM8",
   "url": "https://puryjmsnrjkbgvhvofzp.supabase.co/functions/v1/brain"
  },
- "built": 1794992954,
+ "built": 1795231815,
  "concepts": {
   "kerala-scert/class-3/evs#animal-food": {
    "en": "Herbivores, carnivores and omnivores",
@@ -11067,6 +11067,20 @@
     "ഒന്നുകൂടി നോക്കൂ."
    ]
   },
+  "nextLesson": {
+   "en": [
+    "Today, let's look at {title}.",
+    "Shall we do {title} today?",
+    "I thought we could do {title} next.",
+    "Next, we have {title}."
+   ],
+   "ml": [
+    "ഇന്ന് നമുക്ക് {title} നോക്കാം.",
+    "ഇന്ന് {title} പഠിച്ചാലോ?",
+    "അടുത്തത് {title} ആണ്.",
+    "നമുക്ക് ഇനി {title} നോക്കാം."
+   ]
+  },
   "nextUp": {
    "en": "Next for you:",
    "ml": "അടുത്തത്:"
@@ -11110,8 +11124,15 @@
    ]
   },
   "tapGo": {
-   "en": "Tap Let's go, and come with me!",
-   "ml": "ലെറ്റ്സ് ഗോ അമർത്തി എന്റെ കൂടെ വരൂ!"
+   "en": [
+    "Tap Let's go when you're ready.",
+    "Whenever you're ready, tap Let's go.",
+    "Tap Let's go, and we'll start."
+   ],
+   "ml": [
+    "തയ്യാറാകുമ്പോൾ ലെറ്റ്സ് ഗോ അമർത്തൂ.",
+    "റെഡിയാകുമ്പോൾ ലെറ്റ്സ് ഗോ അമർത്തിക്കോളൂ."
+   ]
   },
   "think": {
    "en": "Think about it, then tap Show answer.",
@@ -11134,6 +11155,32 @@
     "ഈ ചോദ്യം നമുക്ക് ഉടൻ വീണ്ടും കാണാം.",
     "ഇതിലേക്ക് നമ്മൾ തിരിച്ചു വരും."
    ]
+  },
+  "welcome": {
+   "en": [
+    "Good {time}, {name}.",
+    "Hello {name}. Nice to see you again.",
+    "Hi {name}, good to see you.",
+    "Ah, {name}, there you are. Good {time}."
+   ],
+   "ml": [
+    "നമസ്കാരം, {name}.",
+    "{name}, വന്നല്ലോ. കണ്ടതിൽ സന്തോഷം.",
+    "ഹായ് {name}, വീണ്ടും കണ്ടതിൽ സന്തോഷം.",
+    "ആഹാ, {name} എത്തിയോ. നന്നായി."
+   ]
+  },
+  "welcomeNoName": {
+   "en": [
+    "Good {time}. Nice to see you again.",
+    "Hello again. Good to see you.",
+    "Hi there, good {time}."
+   ],
+   "ml": [
+    "നമസ്കാരം. വീണ്ടും കണ്ടതിൽ സന്തോഷം.",
+    "ഹായ്, വന്നല്ലോ. നന്നായി.",
+    "നമസ്കാരം, കൂട്ടുകാരാ."
+   ]
   }
  },
  "tutors": [
@@ -11151,8 +11198,8 @@
    "eyes": "round",
    "gemini_voice": "Aoede",
    "hello": {
-    "en": "Hello! I am Mio. Shall we learn with a story today?",
-    "ml": "ഹലോ! ഞാൻ മിയോ. ഇന്ന് ഒരു കഥയിലൂടെ പഠിക്കാമോ?"
+    "en": "Hello, I'm Mio. Shall we learn something together?",
+    "ml": "നമസ്കാരം, ഞാൻ മിയോ. നമുക്ക് ഒരുമിച്ച് പഠിക്കാം?"
    },
    "id": "minnu",
    "name": {
@@ -11197,7 +11244,7 @@
    "rate": "-6%",
    "ready_made": true,
    "shape": "blob",
-   "style": "a warm, gentle storyteller talking to a young child, unhurried and smiling",
+   "style": "a kind, warm primary school teacher talking to one child, natural and unhurried, gently smiling, not exaggerated",
    "voice": {
     "en": "en-IN-NeerjaExpressiveNeural",
     "ml": "ml-IN-SobhanaNeural"
@@ -11217,8 +11264,8 @@
    "eyes": "wide",
    "gemini_voice": "Puck",
    "hello": {
-    "en": "Hey hey! I am Leo. Ready to play and win?",
-    "ml": "ഹേയ്! ഞാൻ ലിയോ. കളിച്ചു ജയിക്കാൻ റെഡിയാണോ?"
+    "en": "Hi, I'm Leo. Let's have some fun learning today.",
+    "ml": "ഹായ്, ഞാൻ ലിയോ. ഇന്ന് രസമായി പഠിക്കാം."
    },
    "id": "tiko",
    "name": {
@@ -11261,7 +11308,7 @@
    "rate": "+6%",
    "ready_made": false,
    "shape": "spiky",
-   "style": "an excited, playful game host talking to a young child, upbeat and bouncy",
+   "style": "a friendly, lively young teacher talking to one child, natural and relaxed, a little playful but not shouting or over-excited",
    "voice": {
     "en": "en-IN-PrabhatNeural",
     "ml": "ml-IN-MidhunNeural"
@@ -11281,8 +11328,8 @@
    "eyes": "soft",
    "gemini_voice": "Kore",
    "hello": {
-    "en": "Hello, little one. I am Yuki. We will go nice and slow.",
-    "ml": "ഹലോ കുഞ്ഞേ. ഞാൻ യൂകി. നമുക്ക് പതുക്കെ പതുക്കെ പഠിക്കാം."
+    "en": "Hello, I'm Yuki. We'll take it nice and slow.",
+    "ml": "നമസ്കാരം, ഞാൻ യൂകി. നമുക്ക് പതുക്കെ പഠിക്കാം."
    },
    "id": "pompy",
    "name": {
@@ -11323,7 +11370,7 @@
    "rate": "-14%",
    "ready_made": false,
    "shape": "cloud",
-   "style": "a calm, patient, soothing friend talking slowly to a young child",
+   "style": "a calm, patient teacher talking slowly and softly to one child, natural and reassuring",
    "voice": {
     "en": "en-IN-NeerjaNeural",
     "ml": "ml-IN-SobhanaNeural"
@@ -11343,8 +11390,8 @@
    "eyes": "curious",
    "gemini_voice": "Zephyr",
    "hello": {
-    "en": "Ooh, hello! I am Ruby. I wonder what we will discover today?",
-    "ml": "ഓ, ഹലോ! ഞാൻ റൂബി. ഇന്ന് നമ്മൾ എന്താണ് കണ്ടുപിടിക്കുക?"
+    "en": "Hi, I'm Ruby. I wonder what we'll find out today.",
+    "ml": "ഹായ്, ഞാൻ റൂബി. ഇന്ന് നമ്മൾ എന്ത് കണ്ടുപിടിക്കുമെന്ന് നോക്കാം."
    },
    "id": "zizu",
    "name": {
@@ -11385,7 +11432,7 @@
    "rate": "+2%",
    "ready_made": false,
    "shape": "flower",
-   "style": "a curious, wonder-filled young explorer talking to a young child, bright and questioning",
+   "style": "a curious, thoughtful teacher talking to one child, natural and interested, softly wondering, not exaggerated",
    "voice": {
     "en": "en-IN-NeerjaExpressiveNeural",
     "ml": "ml-IN-SobhanaNeural"
@@ -11405,8 +11452,8 @@
    "eyes": "sleepy",
    "gemini_voice": "Charon",
    "hello": {
-    "en": "Yo! Ollie here. I was napping, but maths is more fun.",
-    "ml": "ഹായ്! ഞാൻ ഒല്ലി. ഉറങ്ങുകയായിരുന്നു, പക്ഷേ കണക്കാണ് കൂടുതൽ രസം."
+    "en": "Hey, I'm Ollie. Come, let's do some learning.",
+    "ml": "ഹായ്, ഞാൻ ഒല്ലി. വാ, നമുക്ക് കുറച്ച് പഠിക്കാം."
    },
    "id": "koko",
    "name": {
@@ -11447,12 +11494,12 @@
    "rate": "-4%",
    "ready_made": false,
    "shape": "bean",
-   "style": "a funny, cheeky, good-humoured friend talking to a young child, with a playful grin in the voice",
+   "style": "a relaxed, good-humoured teacher talking to one child, natural and easy-going with a quiet smile, not loud",
    "voice": {
     "en": "en-IN-PrabhatNeural",
     "ml": "ml-IN-MidhunNeural"
    }
   }
  ],
- "version": "5d2a47709c60"
+ "version": "7a2b4aacaddb"
 }
