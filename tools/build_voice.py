@@ -173,7 +173,7 @@ def synth(text, voice, style):
         except RuntimeError as e:
             print(f"  new speech API did not work ({e}); switching to the older one", flush=True)
             _mode["api"] = "generate"
-    body = {"contents": [{"parts": [{"text": f"Say this as {style}: {text}"}]}],
+    body = {"contents": [{"parts": [{"text": text}]}],
             "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {
                 "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}}}}
     audio = _find_audio(_post(f"{API}/models/{OLD_MODEL}:generateContent", body))

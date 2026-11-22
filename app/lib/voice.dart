@@ -221,7 +221,7 @@ class VoiceSpeaker implements Speaker {
     final url = '${server['url'] ?? ''}';
     if (voice.isEmpty || kIsWeb || _dir == null) return null;
     final style = _style(tutor);
-    final name = 'gem3_${clipId('$voice|$style${natural ? '|live' : ''}', lang, text)}.wav';
+    final name = 'gem4_${clipId('$voice|$style${natural ? '|live' : ''}', lang, text)}.wav';
     final file = File('$_dir/$name');
     if (await file.exists()) return DeviceFileSource(file.path);
     if (url.isEmpty) return null;

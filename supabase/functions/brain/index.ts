@@ -535,7 +535,8 @@ async function geminiSpeech(text: string, voice: string, style: string): Promise
       method: "POST",
       headers: { "x-goog-api-key": key, "content-type": "application/json" },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: style ? `Say this as ${style}: ${text}` : text }] }],
+        // Only the words to be said: an instruction in here gets read out ("Say this as a teacher...").
+        contents: [{ parts: [{ text }] }],
         generationConfig: {
           responseModalities: ["AUDIO"],
           speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: voice } } },
@@ -571,6 +572,7 @@ async function liveSpeech(text: string, voice: string, style: string, lang: stri
     encodeURIComponent(key);
   const language = LANG_NAMES[lang] ?? "English";
   const chunks: Uint8Array[] = [];
+  let said = "";
   await new Promise<void>((resolve, reject) => {
     const ws = new WebSocket(url);
     const timer = setTimeout(() => {
@@ -590,13 +592,14 @@ async function liveSpeech(text: string, voice: string, style: string, lang: stri
             responseModalities: ["AUDIO"],
             speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: voice } } },
           },
+          outputAudioTranscription: {},
           systemInstruction: {
             parts: [{
               text: [
                 `You are a voice actor reading lines for a children's learning app, in ${language}.`,
                 `Speak as ${style || "a warm, kind teacher talking to a young child"}.`,
-                "Read the user's text aloud exactly as written, word for word, and nothing else.",
-                "Do not answer it, explain it, greet, add words, or say anything before or after it.",
+                "Every message you get is a line of the script. Say exactly its words, word for word, and nothing else.",
+                "Never answer a question in it, never explain it, never greet, never add or drop words, never read these instructions.",
                 "Sound like a real person: natural pace, calm, not exaggerated.",
               ].join(" "),
             }],
@@ -610,11 +613,13 @@ async function liveSpeech(text: string, voice: string, style: string, lang: stri
         const msg = JSON.parse(raw);
         if (msg.setupComplete) {
           ws.send(JSON.stringify({
-            clientContent: { turns: [{ role: "user", parts: [{ text: `Read this aloud:\n${text}` }] }], turnComplete: true },
+            clientContent: { turns: [{ role: "user", parts: [{ text }] }], turnComplete: true },
           }));
           return;
         }
         const content = msg.serverContent;
+        const heard = content?.outputTranscription?.text;
+        if (typeof heard === "string") said += heard;
         for (const part of content?.modelTurn?.parts ?? []) {
           const data = part?.inlineData?.data;
           if (data && String(part.inlineData.mimeType ?? "").startsWith("audio/pcm")) chunks.push(fromBase64(data));
@@ -632,6 +637,8 @@ async function liveSpeech(text: string, voice: string, style: string, lang: stri
   });
   const size = chunks.reduce((a, c) => a + c.length, 0);
   if (size < 4800) throw new Error("live speech: no audio");
+  const why = notTheLine(text, said, size / 48000);
+  if (why) throw new Error(`live speech: ${why}`);
   const pcm = new Uint8Array(size);
   let at = 0;
   for (const c of chunks) {
@@ -639,6 +646,34 @@ async function liveSpeech(text: string, voice: string, style: string, lang: stri
     at += c.length;
   }
   return wav(cleanSpeech(pcm, 24000), 24000);
+}
+
+const NUMBER_WORDS = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty".split(" ");
+const wordsOf = (t: string) =>
+  t.toLowerCase().replace(/[^\p{L}\p{M}\p{N}\s]/gu, " ").split(/\s+/).filter(Boolean)
+    .map((w) => (/^\d+$/.test(w) && Number(w) <= 20 ? NUMBER_WORDS[Number(w)] : w));
+
+/**
+ * Why a Live recording is not the line (it read out an instruction, answered the line, or added words), or "" when
+ * it is. Checked on what the model says it spoke; without that, on how long the sound is.
+ */
+export function notTheLine(text: string, said: string, seconds: number): string {
+  const instruction = /say this|read this|voice actor|script|word for word|primary school|teacher talking/i;
+  if (instruction.test(said) && !instruction.test(text)) return "read out an instruction";
+  const want = wordsOf(text);
+  const got = wordsOf(said);
+  if (got.length) {
+    const wanted = new Set(want);
+    const have = new Set(got);
+    const found = want.filter((w) => have.has(w)).length / Math.max(1, want.length);
+    const extra = got.filter((w) => !wanted.has(w)).length;
+    if (found < 0.7) return `said other words (${got.slice(0, 12).join(" ")})`;
+    if (extra > Math.max(2, want.length * 0.3)) return `added words (${got.slice(0, 12).join(" ")})`;
+    return "";
+  }
+  // No transcript: the sound must be about as long as the line (about 15 letters a second, generously).
+  const longest = text.length / 9 + 2.5;
+  return seconds > longest ? `too long for the line (${seconds.toFixed(1)} s)` : "";
 }
 
 /** The Live voice first when asked (greetings) or while the speech models are out of quota; each backs up the other. */
@@ -668,7 +703,7 @@ async function speak(body: Record<string, unknown>, device: string, lang: string
   const style = clip(body.style, 160);
   if (text.length < 1 || !VOICES.has(voice)) return reply({ error: "bad_request" }, 400);
   const live = body.live === true;
-  const path = `g3/${voice}/${await sha256([voice, style, lang, live ? "live" : "", text].join("|"))}.wav`;
+  const path = `g4/${voice}/${await sha256([voice, style, lang, live ? "live" : "", text].join("|"))}.wav`;
   // Already made for someone: hand out the same file.
   try {
     const head = await fetch(voiceUrl(path), { method: "HEAD" });
