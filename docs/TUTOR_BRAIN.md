@@ -160,7 +160,12 @@ models are tried in the order of `voice_models` in `brain.json`; the deploy log 
 server makes the line with the Gemini Live native-audio model instead (same character voice, its own larger quota,
 English and Malayalam), and keeps using it for ten minutes before trying speech again. Greetings and character hellos
 ask for the Live voice first (`live: true`) because it sounds the most like a real person. Lines are kept under
-`voices/g3/`.
+`voices/g4/`.
+
+**Only the words are spoken.** The text sent to a voice is only the line itself, never an instruction (an
+instruction such as "Say this as a teacher..." gets read out). The Live voice gets its role in its system
+instruction, and the server checks what it actually said (its transcript) against the line: a recording that read
+out an instruction, answered the line, or added words is thrown away (`notTheLine`).
 
 **Like a teacher, not a show.** The character `style`s describe a calm, natural teacher (no exaggerated excitement).
 On the home screen the tutor greets the child by name and time of day in one flowing sentence (`welcome`,
